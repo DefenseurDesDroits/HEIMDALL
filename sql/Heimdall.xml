@@ -11,6 +11,26 @@
         <Imports />
       </Info>
       <Tables>
+        <Table name="Accreditations" deploy_name="Accreditations" inherit="" isview="False">
+          <Rows>
+            <Row name="nId_Accreditations" deploy_name="Id_Accreditations" key="primary" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Identifiant de la table des accrédiations</Comment>
+            </Row>
+            <Row name="sNom" deploy_name="Nom" key="unique" foreign="" type="s32" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Nom de l'accrédiation</Comment>
+            </Row>
+            <Row name="nNiveau" deploy_name="Niveau" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Niveau de l'accréditation</Comment>
+            </Row>
+          </Rows>
+          <Comment>Table des accréditations sur les items</Comment>
+        </Table>
         <Table name="Item_Types" deploy_name="Item_Types" inherit="" isview="False">
           <Rows>
             <Row name="nId_item_types" deploy_name="Id_item_types" key="primary" foreign="" type="n" isnullable="False">
@@ -38,7 +58,7 @@
               </DefaultValue>
               <Comment>Groupe possedant l'item</Comment>
             </Row>
-            <Row name="nId_Accreditations_Item" deploy_name="Id_Accreditations_Item" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Accreditations_Item" deploy_name="Id_Accreditations_Item" key="foreign" foreign="Contacts.Accreditations.nId_Accreditations" type="n" isnullable="True">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur le niveau d'accreditation</Comment>
@@ -53,7 +73,7 @@
         </Table>
         <Table name="Noeuds" deploy_name="Noeuds" inherit="Contacts.Items" isview="False">
           <Rows>
-            <Row name="nId_Noeuds" deploy_name="Id_Noeuds" key="foreign" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+            <Row name="nId_Noeuds" deploy_name="Id_Noeuds" key="unique" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Identité de la table</Comment>
@@ -88,7 +108,7 @@
               </DefaultValue>
               <Comment>Le texte de la note</Comment>
             </Row>
-            <Row name="nId_Items_Linked" deploy_name="Id_Items_Linked" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Items_Linked" deploy_name="Id_Items_Linked" key="foreign" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Objet sur lequel est liée la note</Comment>
@@ -133,7 +153,7 @@
         </Table>
         <Table name="Civilites" deploy_name="Civilites" inherit="" isview="False">
           <Rows>
-            <Row name="nID_Civilites" deploy_name="ID_Civilites" key="primary" foreign="" type="n" isnullable="False">
+            <Row name="nId_Civilites" deploy_name="Id_Civilites" key="primary" foreign="" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Identité de nde la table civilité</Comment>
@@ -168,17 +188,17 @@
               </DefaultValue>
               <Comment>Nom du contact</Comment>
             </Row>
-            <Row name="nId_Civilites" deploy_name="Id_Civilites" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Civilites" deploy_name="Id_Civilites" key="foreign" foreign="Contacts.Civilites.nId_Civilites" type="n" isnullable="True">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur la table civilité pour noter le contact</Comment>
             </Row>
-            <Row name="nId_Titres" deploy_name="Id_Titres" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Titres" deploy_name="Id_Titres" key="foreign" foreign="Contacts.Titres.nId_Titres" type="n" isnullable="True">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur les titres pour noter le titre du contact</Comment>
             </Row>
-            <Row name="nId_Contact_Types" deploy_name="Id_Contact_Types" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Contact_Types" deploy_name="Id_Contact_Types" key="foreign" foreign="Contacts.Contact_Types.nId_Contact_Types" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur le contact pour obtenir le type du contact</Comment>
@@ -203,7 +223,7 @@
         </Table>
         <Table name="Pays" deploy_name="Pays" inherit="" isview="False">
           <Rows>
-            <Row name="nIdPays" deploy_name="IdPays" key="primary" foreign="" type="n" isnullable="False">
+            <Row name="nId_Pays" deploy_name="Id_Pays" key="primary" foreign="" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Identifiant de la table</Comment>
@@ -238,12 +258,12 @@
         </Table>
         <Table name="Contact_Infos" deploy_name="Contact_Infos" inherit="Contacts.Items" isview="False">
           <Rows>
-            <Row name="nId_Contact_Infos" deploy_name="nId_Contact_Infos" key="unique" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+            <Row name="nId_Contact_Infos" deploy_name="Id_Contact_Infos" key="unique" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Identifiant sur la table contact</Comment>
             </Row>
-            <Row name="nId_Contacts" deploy_name="Id_Contacts" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Contacts" deploy_name="Id_Contacts" key="foreign" foreign="Contacts.Contacts.nId_Contacts" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur la contact</Comment>
@@ -323,38 +343,18 @@
               </DefaultValue>
               <Comment>Adresse du site web</Comment>
             </Row>
-            <Row name="nId_Pays" deploy_name="Id_Pays" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Pays" deploy_name="Id_Pays" key="foreign" foreign="Contacts.Pays.nId_Pays" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur la table pays. C'est le pays de l'adresse.</Comment>
             </Row>
-            <Row name="nId_Contact_Infos" deploy_name="Id_Contact_Infos" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Contact_Infos" deploy_name="Id_Contact_Infos" key="foreign" foreign="Contacts.Contact_Infos.nId_Contact_Infos" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur la table Contact_Infos Le contact info propriétaire de cette adresse</Comment>
             </Row>
           </Rows>
           <Comment>Table des adresses. Hérité de la classe item.</Comment>
-        </Table>
-        <Table name="Accreditations" deploy_name="Accreditations" inherit="" isview="False">
-          <Rows>
-            <Row name="nId_Accreditations" deploy_name="Id_Accreditations" key="primary" foreign="" type="n" isnullable="False">
-              <DefaultValue>
-              </DefaultValue>
-              <Comment>Identifiant de la table des accrédiations</Comment>
-            </Row>
-            <Row name="sNom" deploy_name="Nom" key="unique" foreign="" type="s32" isnullable="False">
-              <DefaultValue>
-              </DefaultValue>
-              <Comment>Nom de l'accrédiation</Comment>
-            </Row>
-            <Row name="nNiveau" deploy_name="Niveau" key="" foreign="" type="n" isnullable="False">
-              <DefaultValue>
-              </DefaultValue>
-              <Comment>Niveau de l'accréditation</Comment>
-            </Row>
-          </Rows>
-          <Comment>Table des accréditations sur les items</Comment>
         </Table>
         <Table name="Organisation_Types" deploy_name="Organisation_Types" inherit="" isview="False">
           <Rows>
@@ -378,7 +378,7 @@
               </DefaultValue>
               <Comment>Identifiant hérité de la table Contacts</Comment>
             </Row>
-            <Row name="nId_Organisation_Type" deploy_name="Id_Organisation_Type" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Organisation_Type" deploy_name="Id_Organisation_Type" key="foreign" foreign="Contacts.Organisation_Types.nId_Organisation_Types" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur la table Organistion_Types. Type de l'organisation</Comment>
@@ -423,12 +423,12 @@
               </DefaultValue>
               <Comment>Message de la notification</Comment>
             </Row>
-            <Row name="nId_Auteur" deploy_name="Id_Auteur" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Auteur" deploy_name="Id_Auteur" key="foreign" foreign="Contacts.Users.nId_Users" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur la table User. L'auteur de la notification.</Comment>
             </Row>
-            <Row name="nId_Destinataire" deploy_name="Id_Destinataire" key="" foreign="" type="n" isnullable="False">
+            <Row name="nId_Destinataire" deploy_name="Id_Destinataire" key="foreign" foreign="Contacts.Users.nId_Users" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur la table User. Le destiantaire de la notification.</Comment>

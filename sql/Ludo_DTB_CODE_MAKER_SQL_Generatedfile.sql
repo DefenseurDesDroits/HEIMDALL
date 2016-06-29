@@ -1,7 +1,7 @@
 -- #####################################
 -- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.6
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 27/06/2016 00:00:00
+-- Automatique generation made on 29/06/2016 00:00:00
 -- #####################################
 
 
@@ -12,6 +12,23 @@
 -- Description :
 -- Genereted with Ludo Library
 -- ************************************
+
+
+-- ++++++++++++++++++++++++++++++++++++
+-- Table Accreditations
+-- Description :
+-- 	Table des accréditations sur les items
+-- ++++++++++++++++++++++++++++++++++++
+
+CREATE TABLE IF NOT EXISTS xxx.Accreditations (
+	-- Identifiant de la table des accrédiations	Id_Accreditations serial PRIMARY KEY NOT NULL,
+	-- Nom de l'accrédiation	Nom varchar(32) UNIQUE NOT NULL,
+	-- Niveau de l'accréditation	Niveau integer  NOT NULL
+);
+COMMENT ON TABLE xxx.Accreditations IS 'Table des accréditations sur les items';
+COMMENT ON COLUMN xxx.Accreditations.Id_Accreditations IS 'Identifiant de la table des accrédiations';
+COMMENT ON COLUMN xxx.Accreditations.Nom IS 'Nom de l''accrédiation';
+COMMENT ON COLUMN xxx.Accreditations.Niveau IS 'Niveau de l''accréditation';
 
 
 -- ++++++++++++++++++++++++++++++++++++
@@ -38,7 +55,7 @@ COMMENT ON COLUMN xxx.Item_Types.Nom IS 'Nom de l''item';
 CREATE TABLE IF NOT EXISTS xxx.Items (
 	-- Identité de la table	Id_Items serial PRIMARY KEY NOT NULL,
 	-- Groupe possedant l'item	Id_groups_owner integer  NOT NULL,
-	-- Clef étrangère sur le niveau d'accreditation	Id_Accreditations_Item integer  NOT NULL,
+	-- Clef étrangère sur le niveau d'accreditation	Id_Accreditations_Item integer REFERENCES xxx.Accreditations (Id_Accreditations) NULL,
 	-- date de dernière modification	Modifie timestamp  NOT NULL
 );
 COMMENT ON TABLE xxx.Items IS 'Table de tous les items avec des droits';
@@ -55,7 +72,7 @@ COMMENT ON COLUMN xxx.Items.Modifie IS 'date de dernière modification';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Noeuds (
-	-- Identité de la table	Id_Noeuds integer REFERENCES xxx.Items (Id_Items) NOT NULL,
+	-- Identité de la table	Id_Noeuds integer UNIQUE REFERENCES xxx.Items (Id_Items) NOT NULL,
 	-- identité de la table sur le noeuds parent	Id_Noeuds_Parent integer REFERENCES xxx.Items (Id_Items) NOT NULL
 );
 COMMENT ON TABLE xxx.Noeuds IS 'Table pour gérer les noeuds';
@@ -70,11 +87,11 @@ COMMENT ON COLUMN xxx.Noeuds.Id_Noeuds_Parent IS 'identité de la table sur le n
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Notes (
-	-- Identifiant sur la tables	Id_Notes integer UNIQUE NOT NULL,
+	-- Identifiant sur la tables	Id_Notes integer UNIQUE REFERENCES xxx.Items (Id_Items) NOT NULL,
 	-- Titre de la note	Titre varchar(64)  NOT NULL,
 	-- Urgente la note ?	Urgente bit  NOT NULL,
 	-- Le texte de la note	Texte varchar(512)  NOT NULL,
-	-- Objet sur lequel est liée la note	Id_Items_Linked integer  NOT NULL
+	-- Objet sur lequel est liée la note	Id_Items_Linked integer REFERENCES xxx.Items (Id_Items) NOT NULL
 );
 COMMENT ON TABLE xxx.Notes IS 'Table des notes sur les items';
 COMMENT ON COLUMN xxx.Notes.Id_Notes IS 'Identifiant sur la tables';
@@ -123,12 +140,12 @@ COMMENT ON COLUMN xxx.Titres.Rang IS 'Rang du titre';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Civilites (
-	-- Identité de nde la table civilité	ID_Civilites serial PRIMARY KEY NOT NULL,
+	-- Identité de nde la table civilité	Id_Civilites serial PRIMARY KEY NOT NULL,
 	-- Nom de la civilité	Nom varchar(32) UNIQUE NOT NULL,
 	-- Abréviation	Abr varchar(8)  NOT NULL
 );
 COMMENT ON TABLE xxx.Civilites IS 'Table des civilités des contacts';
-COMMENT ON COLUMN xxx.Civilites.ID_Civilites IS 'Identité de nde la table civilité';
+COMMENT ON COLUMN xxx.Civilites.Id_Civilites IS 'Identité de nde la table civilité';
 COMMENT ON COLUMN xxx.Civilites.Nom IS 'Nom de la civilité';
 COMMENT ON COLUMN xxx.Civilites.Abr IS 'Abréviation';
 
@@ -140,12 +157,12 @@ COMMENT ON COLUMN xxx.Civilites.Abr IS 'Abréviation';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Contacts (
-	-- Identité de la table contact, héritée de celle noeuds	Id_Contacts integer UNIQUE NOT NULL,
+	-- Identité de la table contact, héritée de celle noeuds	Id_Contacts integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) NOT NULL,
 	-- Prénom du contact	Prenom varchar(32)  NOT NULL,
 	-- Nom du contact	Nom varchar(32)  NOT NULL,
-	-- Clef étrangère sur la table civilité pour noter le contact	Id_Civilites integer  NOT NULL,
-	-- Clef étrangère sur les titres pour noter le titre du contact	Id_Titres integer  NOT NULL,
-	-- Clef étrangère sur le contact pour obtenir le type du contact	Id_Contact_Types integer  NOT NULL
+	-- Clef étrangère sur la table civilité pour noter le contact	Id_Civilites integer REFERENCES xxx.Civilites (Id_Civilites) NULL,
+	-- Clef étrangère sur les titres pour noter le titre du contact	Id_Titres integer REFERENCES xxx.Titres (Id_Titres) NULL,
+	-- Clef étrangère sur le contact pour obtenir le type du contact	Id_Contact_Types integer REFERENCES xxx.Contact_Types (Id_Contact_Types) NOT NULL
 );
 COMMENT ON TABLE xxx.Contacts IS 'Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie';
 COMMENT ON COLUMN xxx.Contacts.Id_Contacts IS 'Identité de la table contact, héritée de celle noeuds';
@@ -178,7 +195,7 @@ COMMENT ON COLUMN xxx.Langues.Nom IS 'Nom du pays';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Pays (
-	-- Identifiant de la table	IdPays serial PRIMARY KEY NOT NULL,
+	-- Identifiant de la table	Id_Pays serial PRIMARY KEY NOT NULL,
 	-- Code du pays	Code varchar(8)  NOT NULL,
 	-- Code alpha du pays en 2 caractères	Alpha2 varchar(8)  NOT NULL,
 	-- Code alpha du pays en 3 caractères	Alpha3 varchar(8)  NOT NULL,
@@ -186,7 +203,7 @@ CREATE TABLE IF NOT EXISTS xxx.Pays (
 	-- Liste des langues du pays	Id_Langues_Json varchar   NOT NULL
 );
 COMMENT ON TABLE xxx.Pays IS 'Tables des pays';
-COMMENT ON COLUMN xxx.Pays.IdPays IS 'Identifiant de la table';
+COMMENT ON COLUMN xxx.Pays.Id_Pays IS 'Identifiant de la table';
 COMMENT ON COLUMN xxx.Pays.Code IS 'Code du pays';
 COMMENT ON COLUMN xxx.Pays.Alpha2 IS 'Code alpha du pays en 2 caractères';
 COMMENT ON COLUMN xxx.Pays.Alpha3 IS 'Code alpha du pays en 3 caractères';
@@ -201,13 +218,13 @@ COMMENT ON COLUMN xxx.Pays.Id_Langues_Json IS 'Liste des langues du pays';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Contact_Infos (
-	-- Identifiant sur la table contact	nId_Contact_Infos integer UNIQUE NOT NULL,
-	-- Clef étrangère sur la contact	Id_Contacts integer  NOT NULL,
+	-- Identifiant sur la table contact	Id_Contact_Infos integer UNIQUE REFERENCES xxx.Items (Id_Items) NOT NULL,
+	-- Clef étrangère sur la contact	Id_Contacts integer REFERENCES xxx.Contacts (Id_Contacts) NOT NULL,
 	-- Fonction du contact	Fonction varchar(128)  NOT NULL,
 	-- Clef étrangère sur la table langue. Langue du contact pour cette fonction.	Id_Langues integer  NOT NULL
 );
 COMMENT ON TABLE xxx.Contact_Infos IS 'Table des informations liées au contact';
-COMMENT ON COLUMN xxx.Contact_Infos.nId_Contact_Infos IS 'Identifiant sur la table contact';
+COMMENT ON COLUMN xxx.Contact_Infos.Id_Contact_Infos IS 'Identifiant sur la table contact';
 COMMENT ON COLUMN xxx.Contact_Infos.Id_Contacts IS 'Clef étrangère sur la contact';
 COMMENT ON COLUMN xxx.Contact_Infos.Fonction IS 'Fonction du contact';
 COMMENT ON COLUMN xxx.Contact_Infos.Id_Langues IS 'Clef étrangère sur la table langue. Langue du contact pour cette fonction.';
@@ -220,7 +237,7 @@ COMMENT ON COLUMN xxx.Contact_Infos.Id_Langues IS 'Clef étrangère sur la table
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Infos (
-	-- Identifiant des adresses	Id_Infos integer UNIQUE NOT NULL,
+	-- Identifiant des adresses	Id_Infos integer UNIQUE REFERENCES xxx.Items (Id_Items) NOT NULL,
 	-- Première partie de l'adresse	Adr1 varchar(256)  NOT NULL,
 	-- Deuxième partie de l'adresse	Adr2 varchar(256)  NOT NULL,
 	-- Troisième et dernière partie de l'adresse	Adr3 varchar(256)  NOT NULL,
@@ -232,8 +249,8 @@ CREATE TABLE IF NOT EXISTS xxx.Infos (
 	-- Téléphone numéro 2	Telephone2 varchar(16)  NOT NULL,
 	-- Courriel numéro 2	Courriel2 varchar(64)  NOT NULL,
 	-- Adresse du site web	Site varchar(64)  NOT NULL,
-	-- Clef étrangère sur la table pays. C'est le pays de l'adresse.	Id_Pays integer  NOT NULL,
-	-- Clef étrangère sur la table Contact_Infos Le contact info propriétaire de cette adresse	Id_Contact_Infos integer  NOT NULL
+	-- Clef étrangère sur la table pays. C'est le pays de l'adresse.	Id_Pays integer REFERENCES xxx.Pays (Id_Pays) NOT NULL,
+	-- Clef étrangère sur la table Contact_Infos Le contact info propriétaire de cette adresse	Id_Contact_Infos integer REFERENCES xxx.Contact_Infos (Id_Contact_Infos) NOT NULL
 );
 COMMENT ON TABLE xxx.Infos IS 'Table des adresses. Hérité de la classe item.';
 COMMENT ON COLUMN xxx.Infos.Id_Infos IS 'Identifiant des adresses';
@@ -250,23 +267,6 @@ COMMENT ON COLUMN xxx.Infos.Courriel2 IS 'Courriel numéro 2';
 COMMENT ON COLUMN xxx.Infos.Site IS 'Adresse du site web';
 COMMENT ON COLUMN xxx.Infos.Id_Pays IS 'Clef étrangère sur la table pays. C''est le pays de l''adresse.';
 COMMENT ON COLUMN xxx.Infos.Id_Contact_Infos IS 'Clef étrangère sur la table Contact_Infos Le contact info propriétaire de cette adresse';
-
-
--- ++++++++++++++++++++++++++++++++++++
--- Table Accreditations
--- Description :
--- 	Table des accréditations sur les items
--- ++++++++++++++++++++++++++++++++++++
-
-CREATE TABLE IF NOT EXISTS xxx.Accreditations (
-	-- Identifiant de la table des accrédiations	Id_Accreditations serial PRIMARY KEY NOT NULL,
-	-- Nom de l'accrédiation	Nom varchar(32) UNIQUE NOT NULL,
-	-- Niveau de l'accréditation	Niveau integer  NOT NULL
-);
-COMMENT ON TABLE xxx.Accreditations IS 'Table des accréditations sur les items';
-COMMENT ON COLUMN xxx.Accreditations.Id_Accreditations IS 'Identifiant de la table des accrédiations';
-COMMENT ON COLUMN xxx.Accreditations.Nom IS 'Nom de l''accrédiation';
-COMMENT ON COLUMN xxx.Accreditations.Niveau IS 'Niveau de l''accréditation';
 
 
 -- ++++++++++++++++++++++++++++++++++++
@@ -292,7 +292,7 @@ COMMENT ON COLUMN xxx.Organisation_Types.Nom IS 'Nom du type d''organisation';
 
 CREATE TABLE IF NOT EXISTS xxx.Organisations (
 	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE NOT NULL,
-	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer  NOT NULL,
+	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer REFERENCES xxx.Organisation_Types (Id_Organisation_Types) NOT NULL,
 	-- Nom de l'organisation	Nom varchar(256)  NOT NULL
 );
 COMMENT ON TABLE xxx.Organisations IS 'Table des organisations. héritant de celle des contacts';
@@ -308,7 +308,7 @@ COMMENT ON COLUMN xxx.Organisations.Nom IS 'Nom de l''organisation';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Users (
-	-- Identifiant de la table hérité de la table contact	Id_Users integer UNIQUE NOT NULL,
+	-- Identifiant de la table hérité de la table contact	Id_Users integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) NOT NULL,
 	-- Pseudo de l'utilisateur	Pseudo varchar(32) UNIQUE NOT NULL,
 	-- Json des différantes accréditations	Id_Accreditations_Exp_Json varchar   NOT NULL
 );
@@ -327,8 +327,8 @@ COMMENT ON COLUMN xxx.Users.Id_Accreditations_Exp_Json IS 'Json des différantes
 CREATE TABLE IF NOT EXISTS xxx.Notifications (
 	-- Identifiant de la table	Id_Notifications serial PRIMARY KEY NOT NULL,
 	-- Message de la notification	Msg varchar(256)  NOT NULL,
-	-- Clef étrangère sur la table User. L'auteur de la notification.	Id_Auteur integer  NOT NULL,
-	-- Clef étrangère sur la table User. Le destiantaire de la notification.	Id_Destinataire integer  NOT NULL
+	-- Clef étrangère sur la table User. L'auteur de la notification.	Id_Auteur integer REFERENCES xxx.Users (Id_Users) NOT NULL,
+	-- Clef étrangère sur la table User. Le destiantaire de la notification.	Id_Destinataire integer REFERENCES xxx.Users (Id_Users) NOT NULL
 );
 COMMENT ON TABLE xxx.Notifications IS 'Tables des notifications utilisateurs';
 COMMENT ON COLUMN xxx.Notifications.Id_Notifications IS 'Identifiant de la table';
@@ -344,7 +344,7 @@ COMMENT ON COLUMN xxx.Notifications.Id_Destinataire IS 'Clef étrangère sur la 
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Groups (
-	-- Identifiant de la table Groups. Clef étrangère sur la table contact	Id_Groups integer UNIQUE NOT NULL,
+	-- Identifiant de la table Groups. Clef étrangère sur la table contact	Id_Groups integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) NOT NULL,
 	-- Json, liste des utilisateurs	UGrp_Json varchar   NOT NULL,
 	-- Ce groupe héberge t'il des fichiers ?	Fichiers bit  NOT NULL
 );
