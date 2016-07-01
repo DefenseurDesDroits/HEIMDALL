@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Users.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -26,7 +26,7 @@ class Users extends Contacts{
 			"jsonId_Accreditations_Exp_Json" => ""
 		);
 		//get the legacy
-		this->$members += $UsersmemberSet;	}
+		$this->$members += $UsersmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -36,21 +36,21 @@ class Users extends Contacts{
 	public function getId_Users(){
 		//Return the getter in inheritage
 		return $this->getId_Contacts();
-	};
+	}
 
 	///[METHOD][getPseudo]Method to get the Pseudo
 	///[RETURNS]The Pseudo
 	public function getPseudo(){
 		//Return the member
 		return $this->$members["sPseudo"];
-	};
+	}
 
 	///[METHOD][getId_Accreditations_Exp_Json]Method to get the Id_Accreditations_Exp_Json
 	///[RETURNS]The Id_Accreditations_Exp_Json
 	public function getId_Accreditations_Exp_Json(){
 		//Return the member
 		return $this->$members["jsonId_Accreditations_Exp_Json"];
-	};
+	}
 
 
 
@@ -61,8 +61,8 @@ class Users extends Contacts{
 	///[RETURNS]Boolean true if done 
 	public function setId_Users($nValue){
 		//Return the member
-		return this->setId_Contacts($nValue);
-	};
+		return $this->setId_Contacts($nValue);
+	}
 
 	///[METHOD][setPseudo]Method to set the Pseudo
 	///[PARAMETER][string][$sValue]Our new value for Pseudo
@@ -80,7 +80,7 @@ class Users extends Contacts{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Accreditations_Exp_Json]Method to set the Id_Accreditations_Exp_Json
 	///[PARAMETER][string][$sValue]Our new value for Id_Accreditations_Exp_Json
@@ -97,7 +97,7 @@ class Users extends Contacts{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -109,8 +109,19 @@ class Users extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json"
-		return "xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json"
+			return "xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json";
+		return "xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Users" => "Id_Users", 
+			"sPseudo" => "Pseudo", 
+			"jsonId_Accreditations_Exp_Json" => "Id_Accreditations_Exp_Json"
+);
 	}
 
 
@@ -119,8 +130,8 @@ class Users extends Contacts{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Users"
-		return "xxx.Users"
+			return "xxx.Users";
+		return "xxx.Users";
 	}
 
 
@@ -186,7 +197,7 @@ class Users extends Contacts{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -195,9 +206,9 @@ class Users extends Contacts{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getId_Users());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getPseudo());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Accreditations_Exp_Json());
+		$sValues .= Quotes( $this->getId_Users());
+		$sValues .= ", " . Quotes( $this->getPseudo());
+		$sValues .= ", " . Quotes( $this->getId_Accreditations_Exp_Json());
 		
 		//return the get value chain !
 		return $sValues;
@@ -260,7 +271,7 @@ class Users extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Users() == 0)
 			$sQuery = $this->getInsertQuery();

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Accreditations.php
 //Description : Table des accréditations sur les items
 
@@ -33,21 +33,21 @@ class Accreditations{
 	public function getId_Accreditations(){
 		//Return the member
 		return $this->$members["nId_Accreditations"];
-	};
+	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
 		return $this->$members["sNom"];
-	};
+	}
 
 	///[METHOD][getNiveau]Method to get the Niveau
 	///[RETURNS]The Niveau
 	public function getNiveau(){
 		//Return the member
 		return $this->$members["nNiveau"];
-	};
+	}
 
 
 
@@ -68,7 +68,7 @@ class Accreditations{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNom]Method to set the Nom
 	///[PARAMETER][string][$sValue]Our new value for Nom
@@ -86,7 +86,7 @@ class Accreditations{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNiveau]Method to set the Niveau
 	///[PARAMETER][integer][$nValue]Our new value for Niveau
@@ -103,7 +103,7 @@ class Accreditations{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -115,8 +115,19 @@ class Accreditations{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Accreditations.Id_Accreditations, xxx.Accreditations.Nom, xxx.Accreditations.Niveau"
-		return "xxx.Accreditations.Nom, xxx.Accreditations.Niveau"
+			return "xxx.Accreditations.Id_Accreditations, xxx.Accreditations.Nom, xxx.Accreditations.Niveau";
+		return "xxx.Accreditations.Nom, xxx.Accreditations.Niveau";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Accreditations" => "Id_Accreditations", 
+			"sNom" => "Nom", 
+			"nNiveau" => "Niveau"
+);
 	}
 
 
@@ -125,8 +136,8 @@ class Accreditations{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Accreditations"
-		return "xxx.Accreditations"
+			return "xxx.Accreditations";
+		return "xxx.Accreditations";
 	}
 
 
@@ -192,7 +203,7 @@ class Accreditations{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -201,8 +212,8 @@ class Accreditations{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getNom());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getNiveau());
+		$sValues .= Quotes( $this->getNom());
+		$sValues .= ", " . Quotes( $this->getNiveau());
 		
 		//return the get value chain !
 		return $sValues;
@@ -265,7 +276,7 @@ class Accreditations{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Accreditations() == 0)
 			$sQuery = $this->getInsertQuery();

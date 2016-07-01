@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Infos.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -48,7 +48,7 @@ class Infos extends Items{
 			"nId_Contact_Infos" => 0
 		);
 		//get the legacy
-		this->$members += $InfosmemberSet;	}
+		$this->$members += $InfosmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -58,98 +58,98 @@ class Infos extends Items{
 	public function getId_Infos(){
 		//Return the getter in inheritage
 		return $this->getId_Items();
-	};
+	}
 
 	///[METHOD][getAdr1]Method to get the Adr1
 	///[RETURNS]The Adr1
 	public function getAdr1(){
 		//Return the member
 		return $this->$members["sAdr1"];
-	};
+	}
 
 	///[METHOD][getAdr2]Method to get the Adr2
 	///[RETURNS]The Adr2
 	public function getAdr2(){
 		//Return the member
 		return $this->$members["sAdr2"];
-	};
+	}
 
 	///[METHOD][getAdr3]Method to get the Adr3
 	///[RETURNS]The Adr3
 	public function getAdr3(){
 		//Return the member
 		return $this->$members["sAdr3"];
-	};
+	}
 
 	///[METHOD][getCP]Method to get the CP
 	///[RETURNS]The CP
 	public function getCP(){
 		//Return the member
 		return $this->$members["sCP"];
-	};
+	}
 
 	///[METHOD][getCedex]Method to get the Cedex
 	///[RETURNS]The Cedex
 	public function getCedex(){
 		//Return the member
 		return $this->$members["sCedex"];
-	};
+	}
 
 	///[METHOD][getVille]Method to get the Ville
 	///[RETURNS]The Ville
 	public function getVille(){
 		//Return the member
 		return $this->$members["sVille"];
-	};
+	}
 
 	///[METHOD][getTelephone1]Method to get the Telephone1
 	///[RETURNS]The Telephone1
 	public function getTelephone1(){
 		//Return the member
 		return $this->$members["sTelephone1"];
-	};
+	}
 
 	///[METHOD][getCourriel1]Method to get the Courriel1
 	///[RETURNS]The Courriel1
 	public function getCourriel1(){
 		//Return the member
 		return $this->$members["sCourriel1"];
-	};
+	}
 
 	///[METHOD][getTelephone2]Method to get the Telephone2
 	///[RETURNS]The Telephone2
 	public function getTelephone2(){
 		//Return the member
 		return $this->$members["sTelephone2"];
-	};
+	}
 
 	///[METHOD][getCourriel2]Method to get the Courriel2
 	///[RETURNS]The Courriel2
 	public function getCourriel2(){
 		//Return the member
 		return $this->$members["sCourriel2"];
-	};
+	}
 
 	///[METHOD][getSite]Method to get the Site
 	///[RETURNS]The Site
 	public function getSite(){
 		//Return the member
 		return $this->$members["sSite"];
-	};
+	}
 
 	///[METHOD][getId_Pays]Method to get the Id_Pays
 	///[RETURNS]The Id_Pays
 	public function getId_Pays(){
 		//Return the member
 		return $this->$members["nId_Pays"];
-	};
+	}
 
 	///[METHOD][getId_Contact_Infos]Method to get the Id_Contact_Infos
 	///[RETURNS]The Id_Contact_Infos
 	public function getId_Contact_Infos(){
 		//Return the member
 		return $this->$members["nId_Contact_Infos"];
-	};
+	}
 
 
 
@@ -160,8 +160,8 @@ class Infos extends Items{
 	///[RETURNS]Boolean true if done 
 	public function setId_Infos($nValue){
 		//Return the member
-		return this->setId_Items($nValue);
-	};
+		return $this->setId_Items($nValue);
+	}
 
 	///[METHOD][setAdr1]Method to set the Adr1
 	///[PARAMETER][string][$sValue]Our new value for Adr1
@@ -179,7 +179,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setAdr2]Method to set the Adr2
 	///[PARAMETER][string][$sValue]Our new value for Adr2
@@ -197,7 +197,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setAdr3]Method to set the Adr3
 	///[PARAMETER][string][$sValue]Our new value for Adr3
@@ -215,7 +215,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setCP]Method to set the CP
 	///[PARAMETER][string][$sValue]Our new value for CP
@@ -233,7 +233,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setCedex]Method to set the Cedex
 	///[PARAMETER][string][$sValue]Our new value for Cedex
@@ -251,7 +251,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setVille]Method to set the Ville
 	///[PARAMETER][string][$sValue]Our new value for Ville
@@ -269,7 +269,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setTelephone1]Method to set the Telephone1
 	///[PARAMETER][string][$sValue]Our new value for Telephone1
@@ -287,7 +287,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setCourriel1]Method to set the Courriel1
 	///[PARAMETER][string][$sValue]Our new value for Courriel1
@@ -305,7 +305,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setTelephone2]Method to set the Telephone2
 	///[PARAMETER][string][$sValue]Our new value for Telephone2
@@ -323,7 +323,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setCourriel2]Method to set the Courriel2
 	///[PARAMETER][string][$sValue]Our new value for Courriel2
@@ -341,7 +341,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setSite]Method to set the Site
 	///[PARAMETER][string][$sValue]Our new value for Site
@@ -359,7 +359,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Pays]Method to set the Id_Pays
 	///[PARAMETER][integer][$nValue]Our new value for Id_Pays
@@ -376,7 +376,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Contact_Infos]Method to set the Id_Contact_Infos
 	///[PARAMETER][integer][$nValue]Our new value for Id_Contact_Infos
@@ -393,7 +393,7 @@ class Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -405,8 +405,30 @@ class Infos extends Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos"
-		return "xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos"
+			return "xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos";
+		return "xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Infos" => "Id_Infos", 
+			"sAdr1" => "Adr1", 
+			"sAdr2" => "Adr2", 
+			"sAdr3" => "Adr3", 
+			"sCP" => "CP", 
+			"sCedex" => "Cedex", 
+			"sVille" => "Ville", 
+			"sTelephone1" => "Telephone1", 
+			"sCourriel1" => "Courriel1", 
+			"sTelephone2" => "Telephone2", 
+			"sCourriel2" => "Courriel2", 
+			"sSite" => "Site", 
+			"nId_Pays" => "Id_Pays", 
+			"nId_Contact_Infos" => "Id_Contact_Infos"
+);
 	}
 
 
@@ -415,8 +437,8 @@ class Infos extends Items{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Infos"
-		return "xxx.Infos"
+			return "xxx.Infos";
+		return "xxx.Infos";
 	}
 
 
@@ -482,7 +504,7 @@ class Infos extends Items{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -491,20 +513,20 @@ class Infos extends Items{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getId_Infos());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getAdr1());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getAdr2());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getAdr3());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getCP());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getCedex());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getVille());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getTelephone1());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getCourriel1());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getTelephone2());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getCourriel2());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getSite());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Pays());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Contact_Infos());
+		$sValues .= Quotes( $this->getId_Infos());
+		$sValues .= ", " . Quotes( $this->getAdr1());
+		$sValues .= ", " . Quotes( $this->getAdr2());
+		$sValues .= ", " . Quotes( $this->getAdr3());
+		$sValues .= ", " . Quotes( $this->getCP());
+		$sValues .= ", " . Quotes( $this->getCedex());
+		$sValues .= ", " . Quotes( $this->getVille());
+		$sValues .= ", " . Quotes( $this->getTelephone1());
+		$sValues .= ", " . Quotes( $this->getCourriel1());
+		$sValues .= ", " . Quotes( $this->getTelephone2());
+		$sValues .= ", " . Quotes( $this->getCourriel2());
+		$sValues .= ", " . Quotes( $this->getSite());
+		$sValues .= ", " . Quotes( $this->getId_Pays());
+		$sValues .= ", " . Quotes( $this->getId_Contact_Infos());
 		
 		//return the get value chain !
 		return $sValues;
@@ -578,7 +600,7 @@ class Infos extends Items{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Infos() == 0)
 			$sQuery = $this->getInsertQuery();

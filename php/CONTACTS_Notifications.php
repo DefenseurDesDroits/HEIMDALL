@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Notifications.php
 //Description : Tables des notifications utilisateurs
 
@@ -35,28 +35,28 @@ class Notifications{
 	public function getId_Notifications(){
 		//Return the member
 		return $this->$members["nId_Notifications"];
-	};
+	}
 
 	///[METHOD][getMsg]Method to get the Msg
 	///[RETURNS]The Msg
 	public function getMsg(){
 		//Return the member
 		return $this->$members["sMsg"];
-	};
+	}
 
 	///[METHOD][getId_Auteur]Method to get the Id_Auteur
 	///[RETURNS]The Id_Auteur
 	public function getId_Auteur(){
 		//Return the member
 		return $this->$members["nId_Auteur"];
-	};
+	}
 
 	///[METHOD][getId_Destinataire]Method to get the Id_Destinataire
 	///[RETURNS]The Id_Destinataire
 	public function getId_Destinataire(){
 		//Return the member
 		return $this->$members["nId_Destinataire"];
-	};
+	}
 
 
 
@@ -77,7 +77,7 @@ class Notifications{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setMsg]Method to set the Msg
 	///[PARAMETER][string][$sValue]Our new value for Msg
@@ -95,7 +95,7 @@ class Notifications{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Auteur]Method to set the Id_Auteur
 	///[PARAMETER][integer][$nValue]Our new value for Id_Auteur
@@ -112,7 +112,7 @@ class Notifications{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Destinataire]Method to set the Id_Destinataire
 	///[PARAMETER][integer][$nValue]Our new value for Id_Destinataire
@@ -129,7 +129,7 @@ class Notifications{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -141,8 +141,20 @@ class Notifications{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Notifications.Id_Notifications, xxx.Notifications.Msg, xxx.Notifications.Id_Auteur, xxx.Notifications.Id_Destinataire"
-		return "xxx.Notifications.Msg, xxx.Notifications.Id_Auteur, xxx.Notifications.Id_Destinataire"
+			return "xxx.Notifications.Id_Notifications, xxx.Notifications.Msg, xxx.Notifications.Id_Auteur, xxx.Notifications.Id_Destinataire";
+		return "xxx.Notifications.Msg, xxx.Notifications.Id_Auteur, xxx.Notifications.Id_Destinataire";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Notifications" => "Id_Notifications", 
+			"sMsg" => "Msg", 
+			"nId_Auteur" => "Id_Auteur", 
+			"nId_Destinataire" => "Id_Destinataire"
+);
 	}
 
 
@@ -151,8 +163,8 @@ class Notifications{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Notifications"
-		return "xxx.Notifications"
+			return "xxx.Notifications";
+		return "xxx.Notifications";
 	}
 
 
@@ -218,7 +230,7 @@ class Notifications{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -227,9 +239,9 @@ class Notifications{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getMsg());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Auteur());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Destinataire());
+		$sValues .= Quotes( $this->getMsg());
+		$sValues .= ", " . Quotes( $this->getId_Auteur());
+		$sValues .= ", " . Quotes( $this->getId_Destinataire());
 		
 		//return the get value chain !
 		return $sValues;
@@ -293,7 +305,7 @@ class Notifications{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Notifications() == 0)
 			$sQuery = $this->getInsertQuery();

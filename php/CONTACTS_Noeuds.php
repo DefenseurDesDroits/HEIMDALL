@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Noeuds.php
 //Description : Table pour gérer les noeuds
 
@@ -24,7 +24,7 @@ class Noeuds extends Items{
 			"nId_Noeuds_Parent" => 0
 		);
 		//get the legacy
-		this->$members += $NoeudsmemberSet;	}
+		$this->$members += $NoeudsmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -34,14 +34,14 @@ class Noeuds extends Items{
 	public function getId_Noeuds(){
 		//Return the getter in inheritage
 		return $this->getId_Items();
-	};
+	}
 
 	///[METHOD][getId_Noeuds_Parent]Method to get the Id_Noeuds_Parent
 	///[RETURNS]The Id_Noeuds_Parent
 	public function getId_Noeuds_Parent(){
 		//Return the member
 		return $this->$members["nId_Noeuds_Parent"];
-	};
+	}
 
 
 
@@ -52,8 +52,8 @@ class Noeuds extends Items{
 	///[RETURNS]Boolean true if done 
 	public function setId_Noeuds($nValue){
 		//Return the member
-		return this->setId_Items($nValue);
-	};
+		return $this->setId_Items($nValue);
+	}
 
 	///[METHOD][setId_Noeuds_Parent]Method to set the Id_Noeuds_Parent
 	///[PARAMETER][integer][$nValue]Our new value for Id_Noeuds_Parent
@@ -70,7 +70,7 @@ class Noeuds extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -82,8 +82,18 @@ class Noeuds extends Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent"
-		return "xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent"
+			return "xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent";
+		return "xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Noeuds" => "Id_Noeuds", 
+			"nId_Noeuds_Parent" => "Id_Noeuds_Parent"
+);
 	}
 
 
@@ -92,8 +102,8 @@ class Noeuds extends Items{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Noeuds"
-		return "xxx.Noeuds"
+			return "xxx.Noeuds";
+		return "xxx.Noeuds";
 	}
 
 
@@ -159,7 +169,7 @@ class Noeuds extends Items{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -168,8 +178,8 @@ class Noeuds extends Items{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getId_Noeuds());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Noeuds_Parent());
+		$sValues .= Quotes( $this->getId_Noeuds());
+		$sValues .= ", " . Quotes( $this->getId_Noeuds_Parent());
 		
 		//return the get value chain !
 		return $sValues;
@@ -231,7 +241,7 @@ class Noeuds extends Items{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Noeuds() == 0)
 			$sQuery = $this->getInsertQuery();

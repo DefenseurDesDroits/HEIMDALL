@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Civilites.php
 //Description : Table des civilités des contacts
 
@@ -33,21 +33,21 @@ class Civilites{
 	public function getId_Civilites(){
 		//Return the member
 		return $this->$members["nId_Civilites"];
-	};
+	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
 		return $this->$members["sNom"];
-	};
+	}
 
 	///[METHOD][getAbr]Method to get the Abr
 	///[RETURNS]The Abr
 	public function getAbr(){
 		//Return the member
 		return $this->$members["sAbr"];
-	};
+	}
 
 
 
@@ -68,7 +68,7 @@ class Civilites{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNom]Method to set the Nom
 	///[PARAMETER][string][$sValue]Our new value for Nom
@@ -86,7 +86,7 @@ class Civilites{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setAbr]Method to set the Abr
 	///[PARAMETER][string][$sValue]Our new value for Abr
@@ -104,7 +104,7 @@ class Civilites{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -116,8 +116,19 @@ class Civilites{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Civilites.Id_Civilites, xxx.Civilites.Nom, xxx.Civilites.Abr"
-		return "xxx.Civilites.Nom, xxx.Civilites.Abr"
+			return "xxx.Civilites.Id_Civilites, xxx.Civilites.Nom, xxx.Civilites.Abr";
+		return "xxx.Civilites.Nom, xxx.Civilites.Abr";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Civilites" => "Id_Civilites", 
+			"sNom" => "Nom", 
+			"sAbr" => "Abr"
+);
 	}
 
 
@@ -126,8 +137,8 @@ class Civilites{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Civilites"
-		return "xxx.Civilites"
+			return "xxx.Civilites";
+		return "xxx.Civilites";
 	}
 
 
@@ -193,7 +204,7 @@ class Civilites{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -202,8 +213,8 @@ class Civilites{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getNom());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getAbr());
+		$sValues .= Quotes( $this->getNom());
+		$sValues .= ", " . Quotes( $this->getAbr());
 		
 		//return the get value chain !
 		return $sValues;
@@ -266,7 +277,7 @@ class Civilites{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Civilites() == 0)
 			$sQuery = $this->getInsertQuery();

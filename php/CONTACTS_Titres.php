@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Titres.php
 //Description : Tables des titres des contacts
 
@@ -33,21 +33,21 @@ class Titres{
 	public function getId_Titres(){
 		//Return the member
 		return $this->$members["nId_Titres"];
-	};
+	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
 		return $this->$members["sNom"];
-	};
+	}
 
 	///[METHOD][getRang]Method to get the Rang
 	///[RETURNS]The Rang
 	public function getRang(){
 		//Return the member
 		return $this->$members["nRang"];
-	};
+	}
 
 
 
@@ -68,7 +68,7 @@ class Titres{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNom]Method to set the Nom
 	///[PARAMETER][string][$sValue]Our new value for Nom
@@ -86,7 +86,7 @@ class Titres{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setRang]Method to set the Rang
 	///[PARAMETER][integer][$nValue]Our new value for Rang
@@ -103,7 +103,7 @@ class Titres{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -115,8 +115,19 @@ class Titres{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Titres.Id_Titres, xxx.Titres.Nom, xxx.Titres.Rang"
-		return "xxx.Titres.Nom, xxx.Titres.Rang"
+			return "xxx.Titres.Id_Titres, xxx.Titres.Nom, xxx.Titres.Rang";
+		return "xxx.Titres.Nom, xxx.Titres.Rang";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Titres" => "Id_Titres", 
+			"sNom" => "Nom", 
+			"nRang" => "Rang"
+);
 	}
 
 
@@ -125,8 +136,8 @@ class Titres{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Titres"
-		return "xxx.Titres"
+			return "xxx.Titres";
+		return "xxx.Titres";
 	}
 
 
@@ -192,7 +203,7 @@ class Titres{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -201,8 +212,8 @@ class Titres{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getNom());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getRang());
+		$sValues .= Quotes( $this->getNom());
+		$sValues .= ", " . Quotes( $this->getRang());
 		
 		//return the get value chain !
 		return $sValues;
@@ -265,7 +276,7 @@ class Titres{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Titres() == 0)
 			$sQuery = $this->getInsertQuery();

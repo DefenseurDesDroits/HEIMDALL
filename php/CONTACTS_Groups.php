@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -26,7 +26,7 @@ class Groups extends Contacts{
 			"bFichiers" => false
 		);
 		//get the legacy
-		this->$members += $GroupsmemberSet;	}
+		$this->$members += $GroupsmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -36,21 +36,21 @@ class Groups extends Contacts{
 	public function getId_Groups(){
 		//Return the getter in inheritage
 		return $this->getId_Contacts();
-	};
+	}
 
 	///[METHOD][getUGrp_Json]Method to get the UGrp_Json
 	///[RETURNS]The UGrp_Json
 	public function getUGrp_Json(){
 		//Return the member
 		return $this->$members["jsonUGrp_Json"];
-	};
+	}
 
 	///[METHOD][getFichiers]Method to get the Fichiers
 	///[RETURNS]The Fichiers
 	public function getFichiers(){
 		//Return the member
 		return $this->$members["bFichiers"];
-	};
+	}
 
 
 
@@ -61,8 +61,8 @@ class Groups extends Contacts{
 	///[RETURNS]Boolean true if done 
 	public function setId_Groups($nValue){
 		//Return the member
-		return this->setId_Contacts($nValue);
-	};
+		return $this->setId_Contacts($nValue);
+	}
 
 	///[METHOD][setUGrp_Json]Method to set the UGrp_Json
 	///[PARAMETER][string][$sValue]Our new value for UGrp_Json
@@ -79,7 +79,7 @@ class Groups extends Contacts{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setFichiers]Method to set the Fichiers
 	///[PARAMETER][boolean][$bValue]Our new value for Fichiers
@@ -96,7 +96,7 @@ class Groups extends Contacts{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -108,8 +108,19 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers"
-		return "xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers"
+			return "xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
+		return "xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Groups" => "Id_Groups", 
+			"jsonUGrp_Json" => "UGrp_Json", 
+			"bFichiers" => "Fichiers"
+);
 	}
 
 
@@ -118,8 +129,8 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Groups"
-		return "xxx.Groups"
+			return "xxx.Groups";
+		return "xxx.Groups";
 	}
 
 
@@ -185,7 +196,7 @@ class Groups extends Contacts{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -194,9 +205,9 @@ class Groups extends Contacts{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getId_Groups());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getUGrp_Json());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getFichiers());
+		$sValues .= Quotes( $this->getId_Groups());
+		$sValues .= ", " . Quotes( $this->getUGrp_Json());
+		$sValues .= ", " . Quotes( $this->getFichiers());
 		
 		//return the get value chain !
 		return $sValues;
@@ -259,7 +270,7 @@ class Groups extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Groups() == 0)
 			$sQuery = $this->getInsertQuery();

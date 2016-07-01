@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -26,7 +26,7 @@ class Organisations extends Contacts{
 			"sNom" => ""
 		);
 		//get the legacy
-		this->$members += $OrganisationsmemberSet;	}
+		$this->$members += $OrganisationsmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -36,21 +36,21 @@ class Organisations extends Contacts{
 	public function getId_Organisations(){
 		//[ERROR]The column Contacts.Organisations.nId_Organisations has an inheritance : Contacts.Contacts WITHOUT any linked row !!!
 		return $this->$members["nId_Organisations"];
-	};
+	}
 
 	///[METHOD][getId_Organisation_Type]Method to get the Id_Organisation_Type
 	///[RETURNS]The Id_Organisation_Type
 	public function getId_Organisation_Type(){
 		//Return the member
 		return $this->$members["nId_Organisation_Type"];
-	};
+	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
 		return $this->$members["sNom"];
-	};
+	}
 
 
 
@@ -62,7 +62,7 @@ class Organisations extends Contacts{
 	public function setId_Organisations($nValue){
 		//[ERROR]Return the member
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Organisation_Type]Method to set the Id_Organisation_Type
 	///[PARAMETER][integer][$nValue]Our new value for Id_Organisation_Type
@@ -79,7 +79,7 @@ class Organisations extends Contacts{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNom]Method to set the Nom
 	///[PARAMETER][string][$sValue]Our new value for Nom
@@ -97,7 +97,7 @@ class Organisations extends Contacts{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -109,8 +109,19 @@ class Organisations extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Nom"
-		return "xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Nom"
+			return "xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Nom";
+		return "xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Nom";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Organisations" => "Id_Organisations", 
+			"nId_Organisation_Type" => "Id_Organisation_Type", 
+			"sNom" => "Nom"
+);
 	}
 
 
@@ -119,8 +130,8 @@ class Organisations extends Contacts{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Organisations"
-		return "xxx.Organisations"
+			return "xxx.Organisations";
+		return "xxx.Organisations";
 	}
 
 
@@ -186,7 +197,7 @@ class Organisations extends Contacts{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -195,9 +206,9 @@ class Organisations extends Contacts{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getId_Organisations());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Organisation_Type());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getNom());
+		$sValues .= Quotes( $this->getId_Organisations());
+		$sValues .= ", " . Quotes( $this->getId_Organisation_Type());
+		$sValues .= ", " . Quotes( $this->getNom());
 		
 		//return the get value chain !
 		return $sValues;
@@ -260,7 +271,7 @@ class Organisations extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Organisations() == 0)
 			$sQuery = $this->getInsertQuery();

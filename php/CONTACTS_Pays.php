@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Pays.php
 //Description : Tables des pays
 
@@ -39,42 +39,42 @@ class Pays{
 	public function getId_Pays(){
 		//Return the member
 		return $this->$members["nId_Pays"];
-	};
+	}
 
 	///[METHOD][getCode]Method to get the Code
 	///[RETURNS]The Code
 	public function getCode(){
 		//Return the member
 		return $this->$members["sCode"];
-	};
+	}
 
 	///[METHOD][getAlpha2]Method to get the Alpha2
 	///[RETURNS]The Alpha2
 	public function getAlpha2(){
 		//Return the member
 		return $this->$members["sAlpha2"];
-	};
+	}
 
 	///[METHOD][getAlpha3]Method to get the Alpha3
 	///[RETURNS]The Alpha3
 	public function getAlpha3(){
 		//Return the member
 		return $this->$members["sAlpha3"];
-	};
+	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
 		return $this->$members["sNom"];
-	};
+	}
 
 	///[METHOD][getId_Langues_Json]Method to get the Id_Langues_Json
 	///[RETURNS]The Id_Langues_Json
 	public function getId_Langues_Json(){
 		//Return the member
 		return $this->$members["jsonId_Langues_Json"];
-	};
+	}
 
 
 
@@ -95,7 +95,7 @@ class Pays{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setCode]Method to set the Code
 	///[PARAMETER][string][$sValue]Our new value for Code
@@ -113,7 +113,7 @@ class Pays{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setAlpha2]Method to set the Alpha2
 	///[PARAMETER][string][$sValue]Our new value for Alpha2
@@ -131,7 +131,7 @@ class Pays{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setAlpha3]Method to set the Alpha3
 	///[PARAMETER][string][$sValue]Our new value for Alpha3
@@ -149,7 +149,7 @@ class Pays{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNom]Method to set the Nom
 	///[PARAMETER][string][$sValue]Our new value for Nom
@@ -167,7 +167,7 @@ class Pays{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Langues_Json]Method to set the Id_Langues_Json
 	///[PARAMETER][string][$sValue]Our new value for Id_Langues_Json
@@ -184,7 +184,7 @@ class Pays{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -196,8 +196,22 @@ class Pays{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Pays.Id_Pays, xxx.Pays.Code, xxx.Pays.Alpha2, xxx.Pays.Alpha3, xxx.Pays.Nom, xxx.Pays.Id_Langues_Json"
-		return "xxx.Pays.Code, xxx.Pays.Alpha2, xxx.Pays.Alpha3, xxx.Pays.Nom, xxx.Pays.Id_Langues_Json"
+			return "xxx.Pays.Id_Pays, xxx.Pays.Code, xxx.Pays.Alpha2, xxx.Pays.Alpha3, xxx.Pays.Nom, xxx.Pays.Id_Langues_Json";
+		return "xxx.Pays.Code, xxx.Pays.Alpha2, xxx.Pays.Alpha3, xxx.Pays.Nom, xxx.Pays.Id_Langues_Json";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Pays" => "Id_Pays", 
+			"sCode" => "Code", 
+			"sAlpha2" => "Alpha2", 
+			"sAlpha3" => "Alpha3", 
+			"sNom" => "Nom", 
+			"jsonId_Langues_Json" => "Id_Langues_Json"
+);
 	}
 
 
@@ -206,8 +220,8 @@ class Pays{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Pays"
-		return "xxx.Pays"
+			return "xxx.Pays";
+		return "xxx.Pays";
 	}
 
 
@@ -273,7 +287,7 @@ class Pays{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -282,11 +296,11 @@ class Pays{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getCode());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getAlpha2());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getAlpha3());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getNom());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Langues_Json());
+		$sValues .= Quotes( $this->getCode());
+		$sValues .= ", " . Quotes( $this->getAlpha2());
+		$sValues .= ", " . Quotes( $this->getAlpha3());
+		$sValues .= ", " . Quotes( $this->getNom());
+		$sValues .= ", " . Quotes( $this->getId_Langues_Json());
 		
 		//return the get value chain !
 		return $sValues;
@@ -352,7 +366,7 @@ class Pays{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Pays() == 0)
 			$sQuery = $this->getInsertQuery();

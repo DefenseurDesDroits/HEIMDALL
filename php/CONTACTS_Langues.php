@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Langues.php
 //Description : Tables des langues
 
@@ -31,14 +31,14 @@ class Langues{
 	public function getId_Langues(){
 		//Return the member
 		return $this->$members["nId_Langues"];
-	};
+	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
 		return $this->$members["sNom"];
-	};
+	}
 
 
 
@@ -59,7 +59,7 @@ class Langues{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNom]Method to set the Nom
 	///[PARAMETER][string][$sValue]Our new value for Nom
@@ -77,7 +77,7 @@ class Langues{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -89,8 +89,18 @@ class Langues{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Langues.Id_Langues, xxx.Langues.Nom"
-		return "xxx.Langues.Nom"
+			return "xxx.Langues.Id_Langues, xxx.Langues.Nom";
+		return "xxx.Langues.Nom";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Langues" => "Id_Langues", 
+			"sNom" => "Nom"
+);
 	}
 
 
@@ -99,8 +109,8 @@ class Langues{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Langues"
-		return "xxx.Langues"
+			return "xxx.Langues";
+		return "xxx.Langues";
 	}
 
 
@@ -166,7 +176,7 @@ class Langues{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -175,7 +185,7 @@ class Langues{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getNom());
+		$sValues .= Quotes( $this->getNom());
 		
 		//return the get value chain !
 		return $sValues;
@@ -237,7 +247,7 @@ class Langues{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Langues() == 0)
 			$sQuery = $this->getInsertQuery();

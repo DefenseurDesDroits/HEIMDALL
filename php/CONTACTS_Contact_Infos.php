@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Contact_Infos.php
 //Description : Table des informations liées au contact
 
@@ -28,7 +28,7 @@ class Contact_Infos extends Items{
 			"nId_Langues" => 0
 		);
 		//get the legacy
-		this->$members += $Contact_InfosmemberSet;	}
+		$this->$members += $Contact_InfosmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -38,28 +38,28 @@ class Contact_Infos extends Items{
 	public function getId_Contact_Infos(){
 		//Return the getter in inheritage
 		return $this->getId_Items();
-	};
+	}
 
 	///[METHOD][getId_Contacts]Method to get the Id_Contacts
 	///[RETURNS]The Id_Contacts
 	public function getId_Contacts(){
 		//Return the member
 		return $this->$members["nId_Contacts"];
-	};
+	}
 
 	///[METHOD][getFonction]Method to get the Fonction
 	///[RETURNS]The Fonction
 	public function getFonction(){
 		//Return the member
 		return $this->$members["sFonction"];
-	};
+	}
 
 	///[METHOD][getId_Langues]Method to get the Id_Langues
 	///[RETURNS]The Id_Langues
 	public function getId_Langues(){
 		//Return the member
 		return $this->$members["nId_Langues"];
-	};
+	}
 
 
 
@@ -70,8 +70,8 @@ class Contact_Infos extends Items{
 	///[RETURNS]Boolean true if done 
 	public function setId_Contact_Infos($nValue){
 		//Return the member
-		return this->setId_Items($nValue);
-	};
+		return $this->setId_Items($nValue);
+	}
 
 	///[METHOD][setId_Contacts]Method to set the Id_Contacts
 	///[PARAMETER][integer][$nValue]Our new value for Id_Contacts
@@ -88,7 +88,7 @@ class Contact_Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setFonction]Method to set the Fonction
 	///[PARAMETER][string][$sValue]Our new value for Fonction
@@ -106,7 +106,7 @@ class Contact_Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Langues]Method to set the Id_Langues
 	///[PARAMETER][integer][$nValue]Our new value for Id_Langues
@@ -123,7 +123,7 @@ class Contact_Infos extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -135,8 +135,20 @@ class Contact_Infos extends Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Contact_Infos.Id_Contact_Infos, xxx.Contact_Infos.Id_Contacts, xxx.Contact_Infos.Fonction, xxx.Contact_Infos.Id_Langues"
-		return "xxx.Contact_Infos.Id_Contact_Infos, xxx.Contact_Infos.Id_Contacts, xxx.Contact_Infos.Fonction, xxx.Contact_Infos.Id_Langues"
+			return "xxx.Contact_Infos.Id_Contact_Infos, xxx.Contact_Infos.Id_Contacts, xxx.Contact_Infos.Fonction, xxx.Contact_Infos.Id_Langues";
+		return "xxx.Contact_Infos.Id_Contact_Infos, xxx.Contact_Infos.Id_Contacts, xxx.Contact_Infos.Fonction, xxx.Contact_Infos.Id_Langues";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Contact_Infos" => "Id_Contact_Infos", 
+			"nId_Contacts" => "Id_Contacts", 
+			"sFonction" => "Fonction", 
+			"nId_Langues" => "Id_Langues"
+);
 	}
 
 
@@ -145,8 +157,8 @@ class Contact_Infos extends Items{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Contact_Infos"
-		return "xxx.Contact_Infos"
+			return "xxx.Contact_Infos";
+		return "xxx.Contact_Infos";
 	}
 
 
@@ -212,7 +224,7 @@ class Contact_Infos extends Items{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -221,10 +233,10 @@ class Contact_Infos extends Items{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getId_Contact_Infos());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Contacts());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getFonction());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Langues());
+		$sValues .= Quotes( $this->getId_Contact_Infos());
+		$sValues .= ", " . Quotes( $this->getId_Contacts());
+		$sValues .= ", " . Quotes( $this->getFonction());
+		$sValues .= ", " . Quotes( $this->getId_Langues());
 		
 		//return the get value chain !
 		return $sValues;
@@ -288,7 +300,7 @@ class Contact_Infos extends Items{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Contact_Infos() == 0)
 			$sQuery = $this->getInsertQuery();

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Contacts.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
@@ -32,7 +32,7 @@ class Contacts extends Noeuds{
 			"nId_Contact_Types" => 0
 		);
 		//get the legacy
-		this->$members += $ContactsmemberSet;	}
+		$this->$members += $ContactsmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -42,42 +42,42 @@ class Contacts extends Noeuds{
 	public function getId_Contacts(){
 		//Return the getter in inheritage
 		return $this->getId_Noeuds();
-	};
+	}
 
 	///[METHOD][getPrenom]Method to get the Prenom
 	///[RETURNS]The Prenom
 	public function getPrenom(){
 		//Return the member
 		return $this->$members["sPrenom"];
-	};
+	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
 		return $this->$members["sNom"];
-	};
+	}
 
 	///[METHOD][getId_Civilites]Method to get the Id_Civilites
 	///[RETURNS]The Id_Civilites
 	public function getId_Civilites(){
 		//Return the member
 		return $this->$members["nId_Civilites"];
-	};
+	}
 
 	///[METHOD][getId_Titres]Method to get the Id_Titres
 	///[RETURNS]The Id_Titres
 	public function getId_Titres(){
 		//Return the member
 		return $this->$members["nId_Titres"];
-	};
+	}
 
 	///[METHOD][getId_Contact_Types]Method to get the Id_Contact_Types
 	///[RETURNS]The Id_Contact_Types
 	public function getId_Contact_Types(){
 		//Return the member
 		return $this->$members["nId_Contact_Types"];
-	};
+	}
 
 
 
@@ -88,8 +88,8 @@ class Contacts extends Noeuds{
 	///[RETURNS]Boolean true if done 
 	public function setId_Contacts($nValue){
 		//Return the member
-		return this->setId_Noeuds($nValue);
-	};
+		return $this->setId_Noeuds($nValue);
+	}
 
 	///[METHOD][setPrenom]Method to set the Prenom
 	///[PARAMETER][string][$sValue]Our new value for Prenom
@@ -107,7 +107,7 @@ class Contacts extends Noeuds{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNom]Method to set the Nom
 	///[PARAMETER][string][$sValue]Our new value for Nom
@@ -125,7 +125,7 @@ class Contacts extends Noeuds{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Civilites]Method to set the Id_Civilites
 	///[PARAMETER][integer][$nValue]Our new value for Id_Civilites
@@ -142,7 +142,7 @@ class Contacts extends Noeuds{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Titres]Method to set the Id_Titres
 	///[PARAMETER][integer][$nValue]Our new value for Id_Titres
@@ -159,7 +159,7 @@ class Contacts extends Noeuds{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Contact_Types]Method to set the Id_Contact_Types
 	///[PARAMETER][integer][$nValue]Our new value for Id_Contact_Types
@@ -176,7 +176,7 @@ class Contacts extends Noeuds{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -188,8 +188,22 @@ class Contacts extends Noeuds{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types"
-		return "xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types"
+			return "xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types";
+		return "xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Contacts" => "Id_Contacts", 
+			"sPrenom" => "Prenom", 
+			"sNom" => "Nom", 
+			"nId_Civilites" => "Id_Civilites", 
+			"nId_Titres" => "Id_Titres", 
+			"nId_Contact_Types" => "Id_Contact_Types"
+);
 	}
 
 
@@ -198,8 +212,8 @@ class Contacts extends Noeuds{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Contacts"
-		return "xxx.Contacts"
+			return "xxx.Contacts";
+		return "xxx.Contacts";
 	}
 
 
@@ -265,7 +279,7 @@ class Contacts extends Noeuds{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -274,12 +288,12 @@ class Contacts extends Noeuds{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getId_Contacts());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getPrenom());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getNom());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Civilites());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Titres());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Contact_Types());
+		$sValues .= Quotes( $this->getId_Contacts());
+		$sValues .= ", " . Quotes( $this->getPrenom());
+		$sValues .= ", " . Quotes( $this->getNom());
+		$sValues .= ", " . Quotes( $this->getId_Civilites());
+		$sValues .= ", " . Quotes( $this->getId_Titres());
+		$sValues .= ", " . Quotes( $this->getId_Contact_Types());
 		
 		//return the get value chain !
 		return $sValues;
@@ -345,7 +359,7 @@ class Contacts extends Noeuds{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Contacts() == 0)
 			$sQuery = $this->getInsertQuery();

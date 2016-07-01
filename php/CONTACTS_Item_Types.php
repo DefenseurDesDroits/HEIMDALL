@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Item_Types.php
 //Description : Table des types d'items
 
@@ -31,14 +31,14 @@ class Item_Types{
 	public function getId_item_types(){
 		//Return the member
 		return $this->$members["nId_item_types"];
-	};
+	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
 		return $this->$members["sNom"];
-	};
+	}
 
 
 
@@ -59,7 +59,7 @@ class Item_Types{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setNom]Method to set the Nom
 	///[PARAMETER][string][$sValue]Our new value for Nom
@@ -77,7 +77,7 @@ class Item_Types{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -89,8 +89,18 @@ class Item_Types{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Item_Types.Id_item_types, xxx.Item_Types.Nom"
-		return "xxx.Item_Types.Nom"
+			return "xxx.Item_Types.Id_item_types, xxx.Item_Types.Nom";
+		return "xxx.Item_Types.Nom";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_item_types" => "Id_item_types", 
+			"sNom" => "Nom"
+);
 	}
 
 
@@ -99,8 +109,8 @@ class Item_Types{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Item_Types"
-		return "xxx.Item_Types"
+			return "xxx.Item_Types";
+		return "xxx.Item_Types";
 	}
 
 
@@ -166,7 +176,7 @@ class Item_Types{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -175,7 +185,7 @@ class Item_Types{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getNom());
+		$sValues .= Quotes( $this->getNom());
 		
 		//return the get value chain !
 		return $sValues;
@@ -237,7 +247,7 @@ class Item_Types{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_item_types() == 0)
 			$sQuery = $this->getInsertQuery();

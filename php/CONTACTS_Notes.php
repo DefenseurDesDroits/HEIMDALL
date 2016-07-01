@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 11:15:50
+//Generated on : 2016-07-01 02:58:42
 //Filename : Notes.php
 //Description : Table des notes sur les items
 
@@ -30,7 +30,7 @@ class Notes extends Items{
 			"nId_Items_Linked" => 0
 		);
 		//get the legacy
-		this->$members += $NotesmemberSet;	}
+		$this->$members += $NotesmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -40,35 +40,35 @@ class Notes extends Items{
 	public function getId_Notes(){
 		//Return the getter in inheritage
 		return $this->getId_Items();
-	};
+	}
 
 	///[METHOD][getTitre]Method to get the Titre
 	///[RETURNS]The Titre
 	public function getTitre(){
 		//Return the member
 		return $this->$members["sTitre"];
-	};
+	}
 
 	///[METHOD][getUrgente]Method to get the Urgente
 	///[RETURNS]The Urgente
 	public function getUrgente(){
 		//Return the member
 		return $this->$members["bUrgente"];
-	};
+	}
 
 	///[METHOD][getTexte]Method to get the Texte
 	///[RETURNS]The Texte
 	public function getTexte(){
 		//Return the member
 		return $this->$members["sTexte"];
-	};
+	}
 
 	///[METHOD][getId_Items_Linked]Method to get the Id_Items_Linked
 	///[RETURNS]The Id_Items_Linked
 	public function getId_Items_Linked(){
 		//Return the member
 		return $this->$members["nId_Items_Linked"];
-	};
+	}
 
 
 
@@ -79,8 +79,8 @@ class Notes extends Items{
 	///[RETURNS]Boolean true if done 
 	public function setId_Notes($nValue){
 		//Return the member
-		return this->setId_Items($nValue);
-	};
+		return $this->setId_Items($nValue);
+	}
 
 	///[METHOD][setTitre]Method to set the Titre
 	///[PARAMETER][string][$sValue]Our new value for Titre
@@ -98,7 +98,7 @@ class Notes extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setUrgente]Method to set the Urgente
 	///[PARAMETER][boolean][$bValue]Our new value for Urgente
@@ -115,7 +115,7 @@ class Notes extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setTexte]Method to set the Texte
 	///[PARAMETER][string][$sValue]Our new value for Texte
@@ -133,7 +133,7 @@ class Notes extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 	///[METHOD][setId_Items_Linked]Method to set the Id_Items_Linked
 	///[PARAMETER][integer][$nValue]Our new value for Id_Items_Linked
@@ -150,7 +150,7 @@ class Notes extends Items{
 		}
 		//Don't fool me next Time !!!
 		return false;
-	};
+	}
 
 
 
@@ -162,8 +162,21 @@ class Notes extends Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Notes.Id_Notes, xxx.Notes.Titre, xxx.Notes.Urgente, xxx.Notes.Texte, xxx.Notes.Id_Items_Linked"
-		return "xxx.Notes.Id_Notes, xxx.Notes.Titre, xxx.Notes.Urgente, xxx.Notes.Texte, xxx.Notes.Id_Items_Linked"
+			return "xxx.Notes.Id_Notes, xxx.Notes.Titre, xxx.Notes.Urgente, xxx.Notes.Texte, xxx.Notes.Id_Items_Linked";
+		return "xxx.Notes.Id_Notes, xxx.Notes.Titre, xxx.Notes.Urgente, xxx.Notes.Texte, xxx.Notes.Id_Items_Linked";
+	}
+
+
+	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
+	///[RETURNS][array]array, our columns correspondancein an array 
+	public function getCorrespondanceArray(){
+		return array(
+			"nId_Notes" => "Id_Notes", 
+			"sTitre" => "Titre", 
+			"bUrgente" => "Urgente", 
+			"sTexte" => "Texte", 
+			"nId_Items_Linked" => "Id_Items_Linked"
+);
 	}
 
 
@@ -172,8 +185,8 @@ class Notes extends Items{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Notes"
-		return "xxx.Notes"
+			return "xxx.Notes";
+		return "xxx.Notes";
 	}
 
 
@@ -239,7 +252,7 @@ class Notes extends Items{
 	public function exportToJson(){
 		//Return the job !
 		return json_encode($this->$members);
-	};
+	}
 
 
 	///[METHOD][getValues]Method to get the values 
@@ -248,11 +261,11 @@ class Notes extends Items{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getTable() . "." . $this->getId_Notes());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getTitre());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getUrgente());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getTexte());
-		$sValues .= ", " . Quotes( $this->getTable() . "." . $this->getId_Items_Linked());
+		$sValues .= Quotes( $this->getId_Notes());
+		$sValues .= ", " . Quotes( $this->getTitre());
+		$sValues .= ", " . Quotes( $this->getUrgente());
+		$sValues .= ", " . Quotes( $this->getTexte());
+		$sValues .= ", " . Quotes( $this->getId_Items_Linked());
 		
 		//return the get value chain !
 		return $sValues;
@@ -317,7 +330,7 @@ class Notes extends Items{
 	///[RETURNS]boolean, true if done
 	public function save($session, $url){
 		//Our query
-		$sQuery = ""
+		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Notes() == 0)
 			$sQuery = $this->getInsertQuery();
