@@ -1,7 +1,7 @@
 -- #####################################
 -- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.6
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 29/06/2016 00:00:00
+-- Automatique generation made on 01/07/2016 00:00:00
 -- #####################################
 
 
@@ -55,7 +55,7 @@ COMMENT ON COLUMN xxx.Item_Types.Nom IS 'Nom de l''item';
 CREATE TABLE IF NOT EXISTS xxx.Items (
 	-- Identité de la table	Id_Items serial PRIMARY KEY NOT NULL,
 	-- Groupe possedant l'item	Id_groups_owner integer  NOT NULL,
-	-- Clef étrangère sur le niveau d'accreditation	Id_Accreditations_Item integer REFERENCES xxx.Accreditations (Id_Accreditations) NULL,
+	-- Clef étrangère sur le niveau d'accreditation	Id_Accreditations_Item integer REFERENCES xxx.Accreditations (Id_Accreditations) ON DELETE CASCADE NULL,
 	-- date de dernière modification	Modifie timestamp  NOT NULL
 );
 COMMENT ON TABLE xxx.Items IS 'Table de tous les items avec des droits';
@@ -72,8 +72,8 @@ COMMENT ON COLUMN xxx.Items.Modifie IS 'date de dernière modification';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Noeuds (
-	-- Identité de la table	Id_Noeuds integer UNIQUE REFERENCES xxx.Items (Id_Items) NOT NULL,
-	-- identité de la table sur le noeuds parent	Id_Noeuds_Parent integer REFERENCES xxx.Items (Id_Items) NOT NULL
+	-- Identité de la table	Id_Noeuds integer UNIQUE REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
+	-- identité de la table sur le noeuds parent	Id_Noeuds_Parent integer REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL
 );
 COMMENT ON TABLE xxx.Noeuds IS 'Table pour gérer les noeuds';
 COMMENT ON COLUMN xxx.Noeuds.Id_Noeuds IS 'Identité de la table';
@@ -87,11 +87,11 @@ COMMENT ON COLUMN xxx.Noeuds.Id_Noeuds_Parent IS 'identité de la table sur le n
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Notes (
-	-- Identifiant sur la tables	Id_Notes integer UNIQUE REFERENCES xxx.Items (Id_Items) NOT NULL,
+	-- Identifiant sur la tables	Id_Notes integer UNIQUE REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
 	-- Titre de la note	Titre varchar(64)  NOT NULL,
 	-- Urgente la note ?	Urgente bit  NOT NULL,
 	-- Le texte de la note	Texte varchar(512)  NOT NULL,
-	-- Objet sur lequel est liée la note	Id_Items_Linked integer REFERENCES xxx.Items (Id_Items) NOT NULL
+	-- Objet sur lequel est liée la note	Id_Items_Linked integer REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL
 );
 COMMENT ON TABLE xxx.Notes IS 'Table des notes sur les items';
 COMMENT ON COLUMN xxx.Notes.Id_Notes IS 'Identifiant sur la tables';
@@ -157,12 +157,12 @@ COMMENT ON COLUMN xxx.Civilites.Abr IS 'Abréviation';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Contacts (
-	-- Identité de la table contact, héritée de celle noeuds	Id_Contacts integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) NOT NULL,
+	-- Identité de la table contact, héritée de celle noeuds	Id_Contacts integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) ON DELETE CASCADE NOT NULL,
 	-- Prénom du contact	Prenom varchar(32)  NOT NULL,
 	-- Nom du contact	Nom varchar(32)  NOT NULL,
-	-- Clef étrangère sur la table civilité pour noter le contact	Id_Civilites integer REFERENCES xxx.Civilites (Id_Civilites) NULL,
-	-- Clef étrangère sur les titres pour noter le titre du contact	Id_Titres integer REFERENCES xxx.Titres (Id_Titres) NULL,
-	-- Clef étrangère sur le contact pour obtenir le type du contact	Id_Contact_Types integer REFERENCES xxx.Contact_Types (Id_Contact_Types) NOT NULL
+	-- Clef étrangère sur la table civilité pour noter le contact	Id_Civilites integer REFERENCES xxx.Civilites (Id_Civilites) ON DELETE CASCADE NULL,
+	-- Clef étrangère sur les titres pour noter le titre du contact	Id_Titres integer REFERENCES xxx.Titres (Id_Titres) ON DELETE CASCADE NULL,
+	-- Clef étrangère sur le contact pour obtenir le type du contact	Id_Contact_Types integer REFERENCES xxx.Contact_Types (Id_Contact_Types) ON DELETE CASCADE NOT NULL
 );
 COMMENT ON TABLE xxx.Contacts IS 'Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie';
 COMMENT ON COLUMN xxx.Contacts.Id_Contacts IS 'Identité de la table contact, héritée de celle noeuds';
@@ -218,8 +218,8 @@ COMMENT ON COLUMN xxx.Pays.Id_Langues_Json IS 'Liste des langues du pays';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Contact_Infos (
-	-- Identifiant sur la table contact	Id_Contact_Infos integer UNIQUE REFERENCES xxx.Items (Id_Items) NOT NULL,
-	-- Clef étrangère sur la contact	Id_Contacts integer REFERENCES xxx.Contacts (Id_Contacts) NOT NULL,
+	-- Identifiant sur la table contact	Id_Contact_Infos integer UNIQUE REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
+	-- Clef étrangère sur la contact	Id_Contacts integer REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
 	-- Fonction du contact	Fonction varchar(128)  NOT NULL,
 	-- Clef étrangère sur la table langue. Langue du contact pour cette fonction.	Id_Langues integer  NOT NULL
 );
@@ -237,7 +237,7 @@ COMMENT ON COLUMN xxx.Contact_Infos.Id_Langues IS 'Clef étrangère sur la table
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Infos (
-	-- Identifiant des adresses	Id_Infos integer UNIQUE REFERENCES xxx.Items (Id_Items) NOT NULL,
+	-- Identifiant des adresses	Id_Infos integer UNIQUE REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
 	-- Première partie de l'adresse	Adr1 varchar(256)  NOT NULL,
 	-- Deuxième partie de l'adresse	Adr2 varchar(256)  NOT NULL,
 	-- Troisième et dernière partie de l'adresse	Adr3 varchar(256)  NOT NULL,
@@ -249,8 +249,8 @@ CREATE TABLE IF NOT EXISTS xxx.Infos (
 	-- Téléphone numéro 2	Telephone2 varchar(16)  NOT NULL,
 	-- Courriel numéro 2	Courriel2 varchar(64)  NOT NULL,
 	-- Adresse du site web	Site varchar(64)  NOT NULL,
-	-- Clef étrangère sur la table pays. C'est le pays de l'adresse.	Id_Pays integer REFERENCES xxx.Pays (Id_Pays) NOT NULL,
-	-- Clef étrangère sur la table Contact_Infos Le contact info propriétaire de cette adresse	Id_Contact_Infos integer REFERENCES xxx.Contact_Infos (Id_Contact_Infos) NOT NULL
+	-- Clef étrangère sur la table pays. C'est le pays de l'adresse.	Id_Pays integer REFERENCES xxx.Pays (Id_Pays) ON DELETE CASCADE NOT NULL,
+	-- Clef étrangère sur la table Contact_Infos Le contact info propriétaire de cette adresse	Id_Contact_Infos integer REFERENCES xxx.Contact_Infos (Id_Contact_Infos) ON DELETE CASCADE NOT NULL
 );
 COMMENT ON TABLE xxx.Infos IS 'Table des adresses. Hérité de la classe item.';
 COMMENT ON COLUMN xxx.Infos.Id_Infos IS 'Identifiant des adresses';
@@ -292,7 +292,7 @@ COMMENT ON COLUMN xxx.Organisation_Types.Nom IS 'Nom du type d''organisation';
 
 CREATE TABLE IF NOT EXISTS xxx.Organisations (
 	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE NOT NULL,
-	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer REFERENCES xxx.Organisation_Types (Id_Organisation_Types) NOT NULL,
+	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer REFERENCES xxx.Organisation_Types (Id_Organisation_Types) ON DELETE CASCADE NOT NULL,
 	-- Nom de l'organisation	Nom varchar(256)  NOT NULL
 );
 COMMENT ON TABLE xxx.Organisations IS 'Table des organisations. héritant de celle des contacts';
@@ -308,7 +308,7 @@ COMMENT ON COLUMN xxx.Organisations.Nom IS 'Nom de l''organisation';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Users (
-	-- Identifiant de la table hérité de la table contact	Id_Users integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) NOT NULL,
+	-- Identifiant de la table hérité de la table contact	Id_Users integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
 	-- Pseudo de l'utilisateur	Pseudo varchar(32) UNIQUE NOT NULL,
 	-- Json des différantes accréditations	Id_Accreditations_Exp_Json varchar   NOT NULL
 );
@@ -327,8 +327,8 @@ COMMENT ON COLUMN xxx.Users.Id_Accreditations_Exp_Json IS 'Json des différantes
 CREATE TABLE IF NOT EXISTS xxx.Notifications (
 	-- Identifiant de la table	Id_Notifications serial PRIMARY KEY NOT NULL,
 	-- Message de la notification	Msg varchar(256)  NOT NULL,
-	-- Clef étrangère sur la table User. L'auteur de la notification.	Id_Auteur integer REFERENCES xxx.Users (Id_Users) NOT NULL,
-	-- Clef étrangère sur la table User. Le destiantaire de la notification.	Id_Destinataire integer REFERENCES xxx.Users (Id_Users) NOT NULL
+	-- Clef étrangère sur la table User. L'auteur de la notification.	Id_Auteur integer REFERENCES xxx.Users (Id_Users) ON DELETE CASCADE NOT NULL,
+	-- Clef étrangère sur la table User. Le destiantaire de la notification.	Id_Destinataire integer REFERENCES xxx.Users (Id_Users) ON DELETE CASCADE NOT NULL
 );
 COMMENT ON TABLE xxx.Notifications IS 'Tables des notifications utilisateurs';
 COMMENT ON COLUMN xxx.Notifications.Id_Notifications IS 'Identifiant de la table';
@@ -344,7 +344,7 @@ COMMENT ON COLUMN xxx.Notifications.Id_Destinataire IS 'Clef étrangère sur la 
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Groups (
-	-- Identifiant de la table Groups. Clef étrangère sur la table contact	Id_Groups integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) NOT NULL,
+	-- Identifiant de la table Groups. Clef étrangère sur la table contact	Id_Groups integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
 	-- Json, liste des utilisateurs	UGrp_Json varchar   NOT NULL,
 	-- Ce groupe héberge t'il des fichiers ?	Fichiers bit  NOT NULL
 );
