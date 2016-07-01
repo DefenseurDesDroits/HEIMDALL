@@ -1,6 +1,6 @@
 //Module : None
 //Created by : Ludo Lib JsPhp
-//Generated on : 2016-06-29 04:04:05
+//Generated on : 2016-07-01 11:15:47
 //Filename : main.js
 //Description : Main file of our main app
 
