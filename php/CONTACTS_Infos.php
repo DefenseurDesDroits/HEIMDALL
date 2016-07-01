@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 02:58:42
+//Generated on : 2016-07-01 04:15:17
 //Filename : Infos.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -405,8 +405,8 @@ class Infos extends Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos";
-		return "xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos";
+			return parent::getColumns($bId) . ", xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos";
+		return parent::getColumns($bId) . ", xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos";
 	}
 
 

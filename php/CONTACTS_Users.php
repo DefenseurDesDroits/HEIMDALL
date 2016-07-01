@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 02:58:42
+//Generated on : 2016-07-01 04:15:17
 //Filename : Users.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -109,8 +109,8 @@ class Users extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json";
-		return "xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json";
+			return parent::getColumns($bId) . ", xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json";
+		return parent::getColumns($bId) . ", xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json";
 	}
 
 

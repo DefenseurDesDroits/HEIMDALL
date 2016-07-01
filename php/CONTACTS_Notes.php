@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 02:58:42
+//Generated on : 2016-07-01 04:15:17
 //Filename : Notes.php
 //Description : Table des notes sur les items
 
@@ -162,8 +162,8 @@ class Notes extends Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Notes.Id_Notes, xxx.Notes.Titre, xxx.Notes.Urgente, xxx.Notes.Texte, xxx.Notes.Id_Items_Linked";
-		return "xxx.Notes.Id_Notes, xxx.Notes.Titre, xxx.Notes.Urgente, xxx.Notes.Texte, xxx.Notes.Id_Items_Linked";
+			return parent::getColumns($bId) . ", xxx.Notes.Id_Notes, xxx.Notes.Titre, xxx.Notes.Urgente, xxx.Notes.Texte, xxx.Notes.Id_Items_Linked";
+		return parent::getColumns($bId) . ", xxx.Notes.Id_Notes, xxx.Notes.Titre, xxx.Notes.Urgente, xxx.Notes.Texte, xxx.Notes.Id_Items_Linked";
 	}
 
 

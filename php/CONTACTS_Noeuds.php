@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 02:58:42
+//Generated on : 2016-07-01 04:15:17
 //Filename : Noeuds.php
 //Description : Table pour gérer les noeuds
 
@@ -82,8 +82,8 @@ class Noeuds extends Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent";
-		return "xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent";
+			return parent::getColumns($bId) . ", xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent";
+		return parent::getColumns($bId) . ", xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent";
 	}
 
 

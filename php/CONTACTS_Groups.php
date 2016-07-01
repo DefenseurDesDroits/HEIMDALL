@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 02:58:42
+//Generated on : 2016-07-01 04:15:17
 //Filename : Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -108,8 +108,8 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
-		return "xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
+			return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
+		return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
 	}
 
 
