@@ -1,9 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-01 04:15:17
+//Generated on : 2016-07-04 05:56:08
 //Filename : Pays.php
 //Description : Tables des pays
+
+
+//include to dtb connection
+include "connection.php";
 
 ///[CLASS][Pays]Tables des pays
 ///[AUTHOR]Ludo
@@ -270,15 +274,26 @@ class Pays{
 	///[METHOD][loadFromConnection]Method to load from a connection
 	///[PARAMETER][string][$session]Our string with Json encoding
 	///[PARAMETER][string][$url]Our string with Json encoding
+	///[PARAMETER][string][$oAgent]Agent who make the load from
 	///[RETURNS]boolean, true if done
-	public function loadFromConnection($session, $url){
+	public function loadFromConnection($session, $url, $oAgent){
 		//Our query
 		$sQuery = $this->getSelectQuery();
+		//Our result object
+		$ary_o = null;
 		
-		/*Not generated yet (think to call loadFromJson with true  for the $bFromQuery) */
+		//open first
+		$oConnection->open();
+		//do the select request
+		$ary_o = $oConnection->selectRequest($sQuery, explode(", ", $this->getColumns()), $oAgent);
+		//Close now !!! It's not Jurassic Park here !!!
+		$oConnection->close();
 		
+		//now have we something ?
+		if(count($ary_o) <= 0)
+			return false;
 		//Return the job !
-		return true;
+		return $this->loadFromJson( json_encode($ary_o[0]), true);
 	}
 
 
@@ -348,12 +363,19 @@ class Pays{
 	///[METHOD][deleteMyself]Method to delte this instance
 	///[PARAMETER][string][$session]Our string with Json encoding
 	///[PARAMETER][string][$url]Our string with Json encoding
+	///[PARAMETER][string][$oAgent]Agent who make the delete
 	///[RETURNS]boolean, true if done
-	public function deleteMyself($session, $url){
+	public function deleteMyself($session, $url, $oAgent){
 		//Our query
 		$sQuery = $this->getDeleteQuery();
 		
-		/*Not generated yet (think to call loadFromJson) */
+		//Use the connection object in : "php/connection.php"
+		//open it
+		$oConnection->open();
+		//do the job;
+		$oConnection->deleteRequest($sQuery, $oAgent);
+		//don't be a douche : close it !!
+		$oConnection->close();
 		
 		//Return the job !
 		return true;
@@ -363,8 +385,9 @@ class Pays{
 	///[METHOD][save]Method to save an object in the database
 	///[PARAMETER][string][$session]Our string with Json encoding
 	///[PARAMETER][string][$url]Our string with Json encoding
+	///[PARAMETER][string][$oAgent]Agent who make the save
 	///[RETURNS]boolean, true if done
-	public function save($session, $url){
+	public function save($session, $url, $oAgent){
 		//Our query
 		$sQuery = "";
 		//Get the query !!!
@@ -373,10 +396,16 @@ class Pays{
 		else
 			$sQuery = $this->getUpdateQuery();
 		
-		/*Not generated yet (think to call loadFromJson) */
+		//Use the connection object in : "php/connection.php"
+		//Don't be fool !!! open before eat !!!
+		$oConnection->open();
+		//Do da Update/Insert ( the updateRequest and the insertRequest are basiclly the same ...)
+		$oConnection->updateRequest($sQuery, $oAgent);
+		//Close it !!! For Goddess Sake !!!
+		$oConnection->close();
 		
 		//Return the job !
-		return true;
+		return $this->loadFromConnection($session, $url, $oAgent);
 	}
 
 
