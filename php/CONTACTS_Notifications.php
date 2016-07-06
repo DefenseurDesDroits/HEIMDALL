@@ -1,8 +1,8 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-04 05:56:08
-//Filename : Notifications.php
+//Generated on : 2016-07-06 08:20:52
+//Filename : Contacts_Notifications.php
 //Description : Tables des notifications utilisateurs
 
 
@@ -216,10 +216,8 @@ class Notifications{
 
 	///[METHOD][loadFromConnection]Method to load from a connection
 	///[PARAMETER][string][$session]Our string with Json encoding
-	///[PARAMETER][string][$url]Our string with Json encoding
-	///[PARAMETER][string][$oAgent]Agent who make the load from
 	///[RETURNS]boolean, true if done
-	public function loadFromConnection($session, $url, $oAgent){
+	public function loadFromConnection($oAgent){
 		//Our query
 		$sQuery = $this->getSelectQuery();
 		//Our result object
@@ -300,11 +298,9 @@ class Notifications{
 
 
 	///[METHOD][deleteMyself]Method to delte this instance
-	///[PARAMETER][string][$session]Our string with Json encoding
-	///[PARAMETER][string][$url]Our string with Json encoding
 	///[PARAMETER][string][$oAgent]Agent who make the delete
 	///[RETURNS]boolean, true if done
-	public function deleteMyself($session, $url, $oAgent){
+	public function deleteMyself($oAgent){
 		//Our query
 		$sQuery = $this->getDeleteQuery();
 		
@@ -322,11 +318,9 @@ class Notifications{
 
 
 	///[METHOD][save]Method to save an object in the database
-	///[PARAMETER][string][$session]Our string with Json encoding
-	///[PARAMETER][string][$url]Our string with Json encoding
 	///[PARAMETER][string][$oAgent]Agent who make the save
 	///[RETURNS]boolean, true if done
-	public function save($session, $url, $oAgent){
+	public function save($oAgent){
 		//Our query
 		$sQuery = "";
 		//Get the query !!!

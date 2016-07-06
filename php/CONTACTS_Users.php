@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-04 05:56:08
-//Filename : Users.php
+//Generated on : 2016-07-06 08:20:52
+//Filename : Contacts_Users.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
 
 //include to dtb connection
-include "connection.php";
+include "Contacts_Contacts.php";
 
 ///[CLASS][Users]Table des utilisateurs, héritant de celle des contacts
 ///[AUTHOR]Ludo
@@ -183,10 +183,8 @@ class Users extends Contacts{
 
 	///[METHOD][loadFromConnection]Method to load from a connection
 	///[PARAMETER][string][$session]Our string with Json encoding
-	///[PARAMETER][string][$url]Our string with Json encoding
-	///[PARAMETER][string][$oAgent]Agent who make the load from
 	///[RETURNS]boolean, true if done
-	public function loadFromConnection($session, $url, $oAgent){
+	public function loadFromConnection($oAgent){
 		//Our query
 		$sQuery = $this->getSelectQuery();
 		//Our result object
@@ -266,11 +264,9 @@ class Users extends Contacts{
 
 
 	///[METHOD][deleteMyself]Method to delte this instance
-	///[PARAMETER][string][$session]Our string with Json encoding
-	///[PARAMETER][string][$url]Our string with Json encoding
 	///[PARAMETER][string][$oAgent]Agent who make the delete
 	///[RETURNS]boolean, true if done
-	public function deleteMyself($session, $url, $oAgent){
+	public function deleteMyself($oAgent){
 		//Our query
 		$sQuery = $this->getDeleteQuery();
 		
@@ -288,11 +284,9 @@ class Users extends Contacts{
 
 
 	///[METHOD][save]Method to save an object in the database
-	///[PARAMETER][string][$session]Our string with Json encoding
-	///[PARAMETER][string][$url]Our string with Json encoding
 	///[PARAMETER][string][$oAgent]Agent who make the save
 	///[RETURNS]boolean, true if done
-	public function save($session, $url, $oAgent){
+	public function save($oAgent){
 		//Our query
 		$sQuery = "";
 		//Get the query !!!

@@ -1,5 +1,10 @@
 <?PHP
 
+//Module : Common
+//Created by : Ludowic "MagnusMoi" EMMANUEL
+//Filename : Noeuds.php
+//Description : Connection file
+
 //Connection 
 
 //Choose your include*********************************
@@ -14,5 +19,15 @@ include "Potours_Connection.php";
 $oConnection = new Potours_Connection("ip", "dtb", "usr", "pwd");
 //default case
 //$oConnection = new Potours_Connection_PGSQL("ip", "dtb", "usr", "pwd");
+
+//Quotes Function
+
+///[METHOD][setId_Noeuds]Method to set the Id_Noeuds
+///[PARAMETER][string][$sStr]Our string to escape
+///[RETURNS]string, da job !!!
+public function Quotes($sStr){
+	//return da escape string
+	return pg_escape_literal($sStr);
+}
 
 ?>
