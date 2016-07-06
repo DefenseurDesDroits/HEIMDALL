@@ -2857,6 +2857,12 @@ Ludo
  </summary>
 	<returns>LAY_LUDO_DTB_Table_editor, our layout</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getIDColumn">
+	<summary>
+ Method to get the Identity column if exists
+ </summary>
+	<returns>Ludo.DTB.Ludo_DTB_Column, our identity column</returns>
+	<remarks>Identity can be Primary Key, our unique with foreign path</remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Table.#ctor">
 	<summary>
  Default Builder
