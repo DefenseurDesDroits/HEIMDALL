@@ -1,0 +1,116 @@
+/*Styles files of the application*/
+
+/*CLASS******************************/
+
+/* Our Body shape */
+html, body{
+	/*to force our min body height*/
+	height: 100vh;
+	/*width: 100vw;*/
+	font-family: 'Open Sans', sans-serif;
+}
+
+/*Our win main class*/
+div.WIN_Main {
+	
+	width : 100%;
+	height : 100%;
+	/*background-color: #3498DB*/
+	background-color: #ECF0F1;
+	margin : 0;
+	border : 0;
+	padding : 0;
+	/*position: fixed;*/
+	display : flex;
+}
+
+/*Current selected class*/
+.current{
+	
+}
+/*Not current selected class*/
+.others{
+	
+}
+
+/*our menu class*/
+.MENU_{
+	height: 100%;
+	/*display: block;*/
+}
+
+.NAV{
+	
+}
+
+.OPT_{
+	/*display : block;*/
+}
+.OPT_.current{
+	background-color: #ECF0F1;
+	color: #3498DB;
+}
+.OPT_:hover{
+	cursor : default;
+}
+.OPT_.others:hover{
+	background-color: #389CDF;
+	color: #E8ECED;
+}
+.OPT_.current:hover{
+	color : #FF0000;
+	transition : color 2s;
+}
+
+/*ITEMS******************************/
+
+#OPT_Menu{
+	background-color: #3498DB;
+	color: #ECF0F1;
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+	/*position: fixed;
+	/*width: 105px;*/
+	width: 150px;
+}
+
+#OPT_user{
+	text-align : center;
+}
+
+#OPT_shrink{
+	text-align : right;
+}
+
+#OPT_bottom{
+	bottom : 5px;
+	position: fixed;
+	text-align : center;
+}
+
+#LAY_App{
+	background-color: #FF0000;
+	color: #0000FF;
+	height: 100%;
+	width: 95%;
+	/*display: block;*/
+	/*position: fixed;
+	left : 150px;*/
+	display: block;
+	
+}
+
+#LAY_Search{
+	background-color: #0000FF;
+	width: 100%;
+	height : 25px;
+	position : relative;
+}
+
+#LAY_Content{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	width: 100%;
+	height: 98%;
+	position : relative;
+}
