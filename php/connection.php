@@ -25,7 +25,7 @@ $oConnection = new Potours_Connection("ip", "dtb", "usr", "pwd");
 ///[METHOD][setId_Noeuds]Method to set the Id_Noeuds
 ///[PARAMETER][string][$sStr]Our string to escape
 ///[RETURNS]string, da job !!!
-public function Quotes($sStr){
+function Quotes($sStr){
 	//return da escape string
 	return pg_escape_literal($sStr);
 }

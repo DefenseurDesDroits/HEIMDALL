@@ -7,7 +7,8 @@ html, body{
 	/*to force our min body height*/
 	height: 100vh;
 	/*width: 100vw;*/
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: 'Ubuntu', sans-serif;
 }
 
 /*Our win main class*/
@@ -31,6 +32,26 @@ div.WIN_Main {
 /*Not current selected class*/
 .others{
 	
+}
+
+.heim_Left{
+	float : left;
+}
+.heim_Center{
+	/*float : initial;*/
+	padding-left: 40%;
+	/*padding-right: 50%;*/
+}
+.heim_Right{
+	float : right;
+}
+.heim_Inline_Block{
+	/*display: inline-flex;*/
+	display: inline-block;
+	/*display: inline;*/
+}
+.heim_Block{
+	display: block;
 }
 
 /*our menu class*/
@@ -62,6 +83,20 @@ div.WIN_Main {
 	transition : color 2s;
 }
 
+.BTN_{
+	
+}
+
+.PNL_{
+	background-color: #00FF00
+}
+
+h1{
+	font-size: 2.75em;
+}
+
+
+
 /*ITEMS******************************/
 
 #OPT_Menu{
@@ -69,9 +104,9 @@ div.WIN_Main {
 	color: #ECF0F1;
 	font-family: 'Open Sans', sans-serif;
 	height: 100%;
-	/*position: fixed;
-	/*width: 105px;*/
-	width: 150px;
+	/*position: fixed;*/
+	/*width: 150px;*/
+	width: 10%;
 }
 
 #OPT_user{
@@ -100,17 +135,53 @@ div.WIN_Main {
 	
 }
 
+#BTN_User{
+	float : right;
+}
+
+#BTN_Add{
+	float : right;
+}
+
+#LAB_User{
+	display : inline-block;
+	float : right;
+}
+#LAB_User:hover{
+	cursor : default;
+}
+
 #LAY_Search{
-	background-color: #0000FF;
+	background-color: #3498FF;
 	width: 100%;
-	height : 25px;
+	/*height : 25px;*/
+	/*height : 3%;*/
 	position : relative;
+}
+
+#LAY_Title{
+	height : 50px;
+}
+#LAY_Query{
+	height : 50px;
+}
+
+#PNL_Research{
+	/*width: 250px;*/
+	width: 14%;
+	height: 100%;
+	background-color: #38AFEF;
+}
+#PNL_List{
+	min-width : 85%;
+	height: 100%;
+	position: absolute;
 }
 
 #LAY_Content{
 	background-color: #ECF0F1;
 	color: #3498DB;
 	width: 100%;
-	height: 98%;
+	height: 97%;
 	position : relative;
 }

@@ -12,7 +12,7 @@ include "Contacts_Contacts.php";
 ///[FUNCTION][ContactsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function ContactsgetFromID($nId){
+function ContactsgetFromID($nId){
 	//Our object declaration
 	$oContacts = new Contacts();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function ContactsgetFromID($nId){
 ///[FUNCTION][ContactssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function ContactssaveFromJson($jsonObj){
+function ContactssaveFromJson($jsonObj){
 	//Our object declaration
 	$oContacts = new Contacts();
 	
@@ -48,7 +48,7 @@ public function ContactssaveFromJson($jsonObj){
 ///[FUNCTION][ContactsdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function ContactsdeleteFromID($nID){
+function ContactsdeleteFromID($nID){
 	//Our object declaration
 	$oContacts = new Contacts();
 	
@@ -63,7 +63,7 @@ public function ContactsdeleteFromID($nID){
 
 ///[FUNCTION][ContactsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function ContactsManager(){
+function ContactsManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

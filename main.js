@@ -7,5 +7,5 @@
 ///[METHOD][main]Our main function
 function main(){
 	//To your job
-	alert("It's working bro");
+	init();
 };
