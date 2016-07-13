@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Contact_Types.php
 //Description : Table des types de contact
 
@@ -34,14 +34,14 @@ class Contact_Types{
 	///[RETURNS]The Id_Contact_Types
 	public function getId_Contact_Types(){
 		//Return the member
-		return $this->$members["nId_Contact_Types"];
+		return $this->members["nId_Contact_Types"];
 	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
-		return $this->$members["sNom"];
+		return $this->members["sNom"];
 	}
 
 
@@ -57,7 +57,7 @@ class Contact_Types{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Contact_Types"] = $nValue;
+			 $this->members["nId_Contact_Types"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -75,7 +75,7 @@ class Contact_Types{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sNom"] = substr($sValue, 0, 64);
+			 $this->members["sNom"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -128,7 +128,7 @@ class Contact_Types{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -144,15 +144,15 @@ class Contact_Types{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -188,7 +188,7 @@ class Contact_Types{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Items.php
 //Description : Table de tous les items avec des droits
 
@@ -38,28 +38,28 @@ class Items{
 	///[RETURNS]The Id_Items
 	public function getId_Items(){
 		//Return the member
-		return $this->$members["nId_Items"];
+		return $this->members["nId_Items"];
 	}
 
 	///[METHOD][getId_groups_owner]Method to get the Id_groups_owner
 	///[RETURNS]The Id_groups_owner
 	public function getId_groups_owner(){
 		//Return the member
-		return $this->$members["nId_groups_owner"];
+		return $this->members["nId_groups_owner"];
 	}
 
 	///[METHOD][getId_Accreditations_Item]Method to get the Id_Accreditations_Item
 	///[RETURNS]The Id_Accreditations_Item
 	public function getId_Accreditations_Item(){
 		//Return the member
-		return $this->$members["nId_Accreditations_Item"];
+		return $this->members["nId_Accreditations_Item"];
 	}
 
 	///[METHOD][getModifie]Method to get the Modifie
 	///[RETURNS]The Modifie
 	public function getModifie(){
 		//Return the member
-		return $this->$members["dtModifie"];
+		return $this->members["dtModifie"];
 	}
 
 
@@ -75,7 +75,7 @@ class Items{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Items"] = $nValue;
+			 $this->members["nId_Items"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -92,7 +92,7 @@ class Items{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_groups_owner"] = $nValue;
+			 $this->members["nId_groups_owner"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -109,7 +109,7 @@ class Items{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Accreditations_Item"] = $nValue;
+			 $this->members["nId_Accreditations_Item"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -126,7 +126,7 @@ class Items{
 			return false;
 		//security on type guy !!!
 		if(getType($dtValue) == 'string'){
-			 $this->$members["dtModifie"] = $dtValue;
+			 $this->members["dtModifie"] = $dtValue;
 			//Happy end
 			return true;
 		}
@@ -181,7 +181,7 @@ class Items{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -197,15 +197,15 @@ class Items{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -241,7 +241,7 @@ class Items{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

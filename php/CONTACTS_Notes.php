@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Notes.php
 //Description : Table des notes sur les items
 
@@ -34,7 +34,7 @@ class Notes extends Items{
 			"nId_Items_Linked" => 0
 		);
 		//get the legacy
-		$this->$members += $NotesmemberSet;	}
+		$this->members += $NotesmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -50,28 +50,28 @@ class Notes extends Items{
 	///[RETURNS]The Titre
 	public function getTitre(){
 		//Return the member
-		return $this->$members["sTitre"];
+		return $this->members["sTitre"];
 	}
 
 	///[METHOD][getUrgente]Method to get the Urgente
 	///[RETURNS]The Urgente
 	public function getUrgente(){
 		//Return the member
-		return $this->$members["bUrgente"];
+		return $this->members["bUrgente"];
 	}
 
 	///[METHOD][getTexte]Method to get the Texte
 	///[RETURNS]The Texte
 	public function getTexte(){
 		//Return the member
-		return $this->$members["sTexte"];
+		return $this->members["sTexte"];
 	}
 
 	///[METHOD][getId_Items_Linked]Method to get the Id_Items_Linked
 	///[RETURNS]The Id_Items_Linked
 	public function getId_Items_Linked(){
 		//Return the member
-		return $this->$members["nId_Items_Linked"];
+		return $this->members["nId_Items_Linked"];
 	}
 
 
@@ -96,7 +96,7 @@ class Notes extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sTitre"] = substr($sValue, 0, 64);
+			 $this->members["sTitre"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -113,7 +113,7 @@ class Notes extends Items{
 			return false;
 		//security on type guy !!!
 		if(getType($bValue) == 'boolean'){
-			 $this->$members["bUrgente"] = $bValue;
+			 $this->members["bUrgente"] = $bValue;
 			//Happy end
 			return true;
 		}
@@ -131,7 +131,7 @@ class Notes extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sTexte"] = substr($sValue, 0, 512);
+			 $this->members["sTexte"] = substr($sValue, 0, 512);
 			//Happy end
 			return true;
 		}
@@ -148,7 +148,7 @@ class Notes extends Items{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Items_Linked"] = $nValue;
+			 $this->members["nId_Items_Linked"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -204,7 +204,7 @@ class Notes extends Items{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -220,15 +220,15 @@ class Notes extends Items{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -264,7 +264,7 @@ class Notes extends Items{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Langues.php
 //Description : Tables des langues
 
@@ -34,14 +34,14 @@ class Langues{
 	///[RETURNS]The Id_Langues
 	public function getId_Langues(){
 		//Return the member
-		return $this->$members["nId_Langues"];
+		return $this->members["nId_Langues"];
 	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
-		return $this->$members["sNom"];
+		return $this->members["sNom"];
 	}
 
 
@@ -57,7 +57,7 @@ class Langues{
 			return false;
 		//security on type guy !!!
 		if(getType($lValue) == 'integer'){
-			 $this->$members["nId_Langues"] = $lValue;
+			 $this->members["nId_Langues"] = $lValue;
 			//Happy end
 			return true;
 		}
@@ -75,7 +75,7 @@ class Langues{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sNom"] = substr($sValue, 0, 64);
+			 $this->members["sNom"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -128,7 +128,7 @@ class Langues{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -144,15 +144,15 @@ class Langues{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -188,7 +188,7 @@ class Langues{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

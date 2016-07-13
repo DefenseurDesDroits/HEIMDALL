@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Accreditations.php
 //Description : Table des accréditations sur les items
 
@@ -36,21 +36,21 @@ class Accreditations{
 	///[RETURNS]The Id_Accreditations
 	public function getId_Accreditations(){
 		//Return the member
-		return $this->$members["nId_Accreditations"];
+		return $this->members["nId_Accreditations"];
 	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
-		return $this->$members["sNom"];
+		return $this->members["sNom"];
 	}
 
 	///[METHOD][getNiveau]Method to get the Niveau
 	///[RETURNS]The Niveau
 	public function getNiveau(){
 		//Return the member
-		return $this->$members["nNiveau"];
+		return $this->members["nNiveau"];
 	}
 
 
@@ -66,7 +66,7 @@ class Accreditations{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Accreditations"] = $nValue;
+			 $this->members["nId_Accreditations"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -84,7 +84,7 @@ class Accreditations{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sNom"] = substr($sValue, 0, 32);
+			 $this->members["sNom"] = substr($sValue, 0, 32);
 			//Happy end
 			return true;
 		}
@@ -101,7 +101,7 @@ class Accreditations{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nNiveau"] = $nValue;
+			 $this->members["nNiveau"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -155,7 +155,7 @@ class Accreditations{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -171,15 +171,15 @@ class Accreditations{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -215,7 +215,7 @@ class Accreditations{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

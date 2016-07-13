@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Pays.php
 //Description : Tables des pays
 
@@ -42,42 +42,42 @@ class Pays{
 	///[RETURNS]The Id_Pays
 	public function getId_Pays(){
 		//Return the member
-		return $this->$members["nId_Pays"];
+		return $this->members["nId_Pays"];
 	}
 
 	///[METHOD][getCode]Method to get the Code
 	///[RETURNS]The Code
 	public function getCode(){
 		//Return the member
-		return $this->$members["sCode"];
+		return $this->members["sCode"];
 	}
 
 	///[METHOD][getAlpha2]Method to get the Alpha2
 	///[RETURNS]The Alpha2
 	public function getAlpha2(){
 		//Return the member
-		return $this->$members["sAlpha2"];
+		return $this->members["sAlpha2"];
 	}
 
 	///[METHOD][getAlpha3]Method to get the Alpha3
 	///[RETURNS]The Alpha3
 	public function getAlpha3(){
 		//Return the member
-		return $this->$members["sAlpha3"];
+		return $this->members["sAlpha3"];
 	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
-		return $this->$members["sNom"];
+		return $this->members["sNom"];
 	}
 
 	///[METHOD][getId_Langues_Json]Method to get the Id_Langues_Json
 	///[RETURNS]The Id_Langues_Json
 	public function getId_Langues_Json(){
 		//Return the member
-		return $this->$members["jsonId_Langues_Json"];
+		return $this->members["jsonId_Langues_Json"];
 	}
 
 
@@ -93,7 +93,7 @@ class Pays{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Pays"] = $nValue;
+			 $this->members["nId_Pays"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -111,7 +111,7 @@ class Pays{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sCode"] = substr($sValue, 0, 8);
+			 $this->members["sCode"] = substr($sValue, 0, 8);
 			//Happy end
 			return true;
 		}
@@ -129,7 +129,7 @@ class Pays{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sAlpha2"] = substr($sValue, 0, 8);
+			 $this->members["sAlpha2"] = substr($sValue, 0, 8);
 			//Happy end
 			return true;
 		}
@@ -147,7 +147,7 @@ class Pays{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sAlpha3"] = substr($sValue, 0, 8);
+			 $this->members["sAlpha3"] = substr($sValue, 0, 8);
 			//Happy end
 			return true;
 		}
@@ -165,7 +165,7 @@ class Pays{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sNom"] = substr($sValue, 0, 64);
+			 $this->members["sNom"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -182,7 +182,7 @@ class Pays{
 			return false;
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
-			 $this->$members["jsonId_Langues_Json"] = $sValue;
+			 $this->members["jsonId_Langues_Json"] = $sValue;
 			//Happy end
 			return true;
 		}
@@ -239,7 +239,7 @@ class Pays{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -255,15 +255,15 @@ class Pays{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -299,7 +299,7 @@ class Pays{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

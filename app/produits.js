@@ -4,7 +4,7 @@
 *
 */
 
-//</// <reference path="contact.js" />
+/// <reference path="contacts.js" />
 
 ///[FUNCTION][init]Function to init all the products
 function init(){

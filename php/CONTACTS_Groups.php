@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -30,7 +30,7 @@ class Groups extends Contacts{
 			"bFichiers" => false
 		);
 		//get the legacy
-		$this->$members += $GroupsmemberSet;	}
+		$this->members += $GroupsmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -46,14 +46,14 @@ class Groups extends Contacts{
 	///[RETURNS]The UGrp_Json
 	public function getUGrp_Json(){
 		//Return the member
-		return $this->$members["jsonUGrp_Json"];
+		return $this->members["jsonUGrp_Json"];
 	}
 
 	///[METHOD][getFichiers]Method to get the Fichiers
 	///[RETURNS]The Fichiers
 	public function getFichiers(){
 		//Return the member
-		return $this->$members["bFichiers"];
+		return $this->members["bFichiers"];
 	}
 
 
@@ -77,7 +77,7 @@ class Groups extends Contacts{
 			return false;
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
-			 $this->$members["jsonUGrp_Json"] = $sValue;
+			 $this->members["jsonUGrp_Json"] = $sValue;
 			//Happy end
 			return true;
 		}
@@ -94,7 +94,7 @@ class Groups extends Contacts{
 			return false;
 		//security on type guy !!!
 		if(getType($bValue) == 'boolean'){
-			 $this->$members["bFichiers"] = $bValue;
+			 $this->members["bFichiers"] = $bValue;
 			//Happy end
 			return true;
 		}
@@ -148,7 +148,7 @@ class Groups extends Contacts{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -164,15 +164,15 @@ class Groups extends Contacts{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -208,7 +208,7 @@ class Groups extends Contacts{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

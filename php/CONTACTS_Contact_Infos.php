@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Contact_Infos.php
 //Description : Table des informations liées au contact
 
@@ -32,7 +32,7 @@ class Contact_Infos extends Items{
 			"nId_Langues" => 0
 		);
 		//get the legacy
-		$this->$members += $Contact_InfosmemberSet;	}
+		$this->members += $Contact_InfosmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -48,21 +48,21 @@ class Contact_Infos extends Items{
 	///[RETURNS]The Id_Contacts
 	public function getId_Contacts(){
 		//Return the member
-		return $this->$members["nId_Contacts"];
+		return $this->members["nId_Contacts"];
 	}
 
 	///[METHOD][getFonction]Method to get the Fonction
 	///[RETURNS]The Fonction
 	public function getFonction(){
 		//Return the member
-		return $this->$members["sFonction"];
+		return $this->members["sFonction"];
 	}
 
 	///[METHOD][getId_Langues]Method to get the Id_Langues
 	///[RETURNS]The Id_Langues
 	public function getId_Langues(){
 		//Return the member
-		return $this->$members["nId_Langues"];
+		return $this->members["nId_Langues"];
 	}
 
 
@@ -86,7 +86,7 @@ class Contact_Infos extends Items{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Contacts"] = $nValue;
+			 $this->members["nId_Contacts"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -104,7 +104,7 @@ class Contact_Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sFonction"] = substr($sValue, 0, 128);
+			 $this->members["sFonction"] = substr($sValue, 0, 128);
 			//Happy end
 			return true;
 		}
@@ -121,7 +121,7 @@ class Contact_Infos extends Items{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Langues"] = $nValue;
+			 $this->members["nId_Langues"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -176,7 +176,7 @@ class Contact_Infos extends Items{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -192,15 +192,15 @@ class Contact_Infos extends Items{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -236,7 +236,7 @@ class Contact_Infos extends Items{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

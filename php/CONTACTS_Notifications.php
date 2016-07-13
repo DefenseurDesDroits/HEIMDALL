@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Notifications.php
 //Description : Tables des notifications utilisateurs
 
@@ -38,28 +38,28 @@ class Notifications{
 	///[RETURNS]The Id_Notifications
 	public function getId_Notifications(){
 		//Return the member
-		return $this->$members["nId_Notifications"];
+		return $this->members["nId_Notifications"];
 	}
 
 	///[METHOD][getMsg]Method to get the Msg
 	///[RETURNS]The Msg
 	public function getMsg(){
 		//Return the member
-		return $this->$members["sMsg"];
+		return $this->members["sMsg"];
 	}
 
 	///[METHOD][getId_Auteur]Method to get the Id_Auteur
 	///[RETURNS]The Id_Auteur
 	public function getId_Auteur(){
 		//Return the member
-		return $this->$members["nId_Auteur"];
+		return $this->members["nId_Auteur"];
 	}
 
 	///[METHOD][getId_Destinataire]Method to get the Id_Destinataire
 	///[RETURNS]The Id_Destinataire
 	public function getId_Destinataire(){
 		//Return the member
-		return $this->$members["nId_Destinataire"];
+		return $this->members["nId_Destinataire"];
 	}
 
 
@@ -75,7 +75,7 @@ class Notifications{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Notifications"] = $nValue;
+			 $this->members["nId_Notifications"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -93,7 +93,7 @@ class Notifications{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sMsg"] = substr($sValue, 0, 256);
+			 $this->members["sMsg"] = substr($sValue, 0, 256);
 			//Happy end
 			return true;
 		}
@@ -110,7 +110,7 @@ class Notifications{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Auteur"] = $nValue;
+			 $this->members["nId_Auteur"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -127,7 +127,7 @@ class Notifications{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Destinataire"] = $nValue;
+			 $this->members["nId_Destinataire"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -182,7 +182,7 @@ class Notifications{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -198,15 +198,15 @@ class Notifications{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -242,7 +242,7 @@ class Notifications{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

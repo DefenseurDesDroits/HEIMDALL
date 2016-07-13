@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Titres.php
 //Description : Tables des titres des contacts
 
@@ -36,21 +36,21 @@ class Titres{
 	///[RETURNS]The Id_Titres
 	public function getId_Titres(){
 		//Return the member
-		return $this->$members["nId_Titres"];
+		return $this->members["nId_Titres"];
 	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
-		return $this->$members["sNom"];
+		return $this->members["sNom"];
 	}
 
 	///[METHOD][getRang]Method to get the Rang
 	///[RETURNS]The Rang
 	public function getRang(){
 		//Return the member
-		return $this->$members["nRang"];
+		return $this->members["nRang"];
 	}
 
 
@@ -66,7 +66,7 @@ class Titres{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Titres"] = $nValue;
+			 $this->members["nId_Titres"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -84,7 +84,7 @@ class Titres{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sNom"] = substr($sValue, 0, 64);
+			 $this->members["sNom"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -101,7 +101,7 @@ class Titres{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nRang"] = $nValue;
+			 $this->members["nRang"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -155,7 +155,7 @@ class Titres{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -171,15 +171,15 @@ class Titres{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -215,7 +215,7 @@ class Titres{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

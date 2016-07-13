@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Infos.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -52,7 +52,7 @@ class Infos extends Items{
 			"nId_Contact_Infos" => 0
 		);
 		//get the legacy
-		$this->$members += $InfosmemberSet;	}
+		$this->members += $InfosmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -68,91 +68,91 @@ class Infos extends Items{
 	///[RETURNS]The Adr1
 	public function getAdr1(){
 		//Return the member
-		return $this->$members["sAdr1"];
+		return $this->members["sAdr1"];
 	}
 
 	///[METHOD][getAdr2]Method to get the Adr2
 	///[RETURNS]The Adr2
 	public function getAdr2(){
 		//Return the member
-		return $this->$members["sAdr2"];
+		return $this->members["sAdr2"];
 	}
 
 	///[METHOD][getAdr3]Method to get the Adr3
 	///[RETURNS]The Adr3
 	public function getAdr3(){
 		//Return the member
-		return $this->$members["sAdr3"];
+		return $this->members["sAdr3"];
 	}
 
 	///[METHOD][getCP]Method to get the CP
 	///[RETURNS]The CP
 	public function getCP(){
 		//Return the member
-		return $this->$members["sCP"];
+		return $this->members["sCP"];
 	}
 
 	///[METHOD][getCedex]Method to get the Cedex
 	///[RETURNS]The Cedex
 	public function getCedex(){
 		//Return the member
-		return $this->$members["sCedex"];
+		return $this->members["sCedex"];
 	}
 
 	///[METHOD][getVille]Method to get the Ville
 	///[RETURNS]The Ville
 	public function getVille(){
 		//Return the member
-		return $this->$members["sVille"];
+		return $this->members["sVille"];
 	}
 
 	///[METHOD][getTelephone1]Method to get the Telephone1
 	///[RETURNS]The Telephone1
 	public function getTelephone1(){
 		//Return the member
-		return $this->$members["sTelephone1"];
+		return $this->members["sTelephone1"];
 	}
 
 	///[METHOD][getCourriel1]Method to get the Courriel1
 	///[RETURNS]The Courriel1
 	public function getCourriel1(){
 		//Return the member
-		return $this->$members["sCourriel1"];
+		return $this->members["sCourriel1"];
 	}
 
 	///[METHOD][getTelephone2]Method to get the Telephone2
 	///[RETURNS]The Telephone2
 	public function getTelephone2(){
 		//Return the member
-		return $this->$members["sTelephone2"];
+		return $this->members["sTelephone2"];
 	}
 
 	///[METHOD][getCourriel2]Method to get the Courriel2
 	///[RETURNS]The Courriel2
 	public function getCourriel2(){
 		//Return the member
-		return $this->$members["sCourriel2"];
+		return $this->members["sCourriel2"];
 	}
 
 	///[METHOD][getSite]Method to get the Site
 	///[RETURNS]The Site
 	public function getSite(){
 		//Return the member
-		return $this->$members["sSite"];
+		return $this->members["sSite"];
 	}
 
 	///[METHOD][getId_Pays]Method to get the Id_Pays
 	///[RETURNS]The Id_Pays
 	public function getId_Pays(){
 		//Return the member
-		return $this->$members["nId_Pays"];
+		return $this->members["nId_Pays"];
 	}
 
 	///[METHOD][getId_Contact_Infos]Method to get the Id_Contact_Infos
 	///[RETURNS]The Id_Contact_Infos
 	public function getId_Contact_Infos(){
 		//Return the member
-		return $this->$members["nId_Contact_Infos"];
+		return $this->members["nId_Contact_Infos"];
 	}
 
 
@@ -177,7 +177,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sAdr1"] = substr($sValue, 0, 256);
+			 $this->members["sAdr1"] = substr($sValue, 0, 256);
 			//Happy end
 			return true;
 		}
@@ -195,7 +195,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sAdr2"] = substr($sValue, 0, 256);
+			 $this->members["sAdr2"] = substr($sValue, 0, 256);
 			//Happy end
 			return true;
 		}
@@ -213,7 +213,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sAdr3"] = substr($sValue, 0, 256);
+			 $this->members["sAdr3"] = substr($sValue, 0, 256);
 			//Happy end
 			return true;
 		}
@@ -231,7 +231,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sCP"] = substr($sValue, 0, 8);
+			 $this->members["sCP"] = substr($sValue, 0, 8);
 			//Happy end
 			return true;
 		}
@@ -249,7 +249,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sCedex"] = substr($sValue, 0, 8);
+			 $this->members["sCedex"] = substr($sValue, 0, 8);
 			//Happy end
 			return true;
 		}
@@ -267,7 +267,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sVille"] = substr($sValue, 0, 64);
+			 $this->members["sVille"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -285,7 +285,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sTelephone1"] = substr($sValue, 0, 16);
+			 $this->members["sTelephone1"] = substr($sValue, 0, 16);
 			//Happy end
 			return true;
 		}
@@ -303,7 +303,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sCourriel1"] = substr($sValue, 0, 64);
+			 $this->members["sCourriel1"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -321,7 +321,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sTelephone2"] = substr($sValue, 0, 16);
+			 $this->members["sTelephone2"] = substr($sValue, 0, 16);
 			//Happy end
 			return true;
 		}
@@ -339,7 +339,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sCourriel2"] = substr($sValue, 0, 64);
+			 $this->members["sCourriel2"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -357,7 +357,7 @@ class Infos extends Items{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sSite"] = substr($sValue, 0, 64);
+			 $this->members["sSite"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -374,7 +374,7 @@ class Infos extends Items{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Pays"] = $nValue;
+			 $this->members["nId_Pays"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -391,7 +391,7 @@ class Infos extends Items{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Contact_Infos"] = $nValue;
+			 $this->members["nId_Contact_Infos"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -456,7 +456,7 @@ class Infos extends Items{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -472,15 +472,15 @@ class Infos extends Items{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -516,7 +516,7 @@ class Infos extends Items{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

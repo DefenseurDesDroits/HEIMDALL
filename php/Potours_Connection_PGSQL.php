@@ -15,6 +15,13 @@ class Potours_Connection_PGSQL extends Potours_Connection{
 		//return our connection string
 		return $this->members["sConnectionString"];
 	}
+
+	///[METHOD][getConnectionString]Method to get the connection string
+	///[RETURNS]string, our connection
+	public function getConnectionObject(){
+		//return our connection string
+		return $this->members["pgConnection"];
+	}
 	
 	///[SECTION][WORKSHOP]#################################################
 	

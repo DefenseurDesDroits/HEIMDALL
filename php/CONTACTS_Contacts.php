@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Contacts.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
@@ -36,7 +36,7 @@ class Contacts extends Noeuds{
 			"nId_Contact_Types" => 0
 		);
 		//get the legacy
-		$this->$members += $ContactsmemberSet;	}
+		$this->members += $ContactsmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -52,35 +52,35 @@ class Contacts extends Noeuds{
 	///[RETURNS]The Prenom
 	public function getPrenom(){
 		//Return the member
-		return $this->$members["sPrenom"];
+		return $this->members["sPrenom"];
 	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
-		return $this->$members["sNom"];
+		return $this->members["sNom"];
 	}
 
 	///[METHOD][getId_Civilites]Method to get the Id_Civilites
 	///[RETURNS]The Id_Civilites
 	public function getId_Civilites(){
 		//Return the member
-		return $this->$members["nId_Civilites"];
+		return $this->members["nId_Civilites"];
 	}
 
 	///[METHOD][getId_Titres]Method to get the Id_Titres
 	///[RETURNS]The Id_Titres
 	public function getId_Titres(){
 		//Return the member
-		return $this->$members["nId_Titres"];
+		return $this->members["nId_Titres"];
 	}
 
 	///[METHOD][getId_Contact_Types]Method to get the Id_Contact_Types
 	///[RETURNS]The Id_Contact_Types
 	public function getId_Contact_Types(){
 		//Return the member
-		return $this->$members["nId_Contact_Types"];
+		return $this->members["nId_Contact_Types"];
 	}
 
 
@@ -105,7 +105,7 @@ class Contacts extends Noeuds{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sPrenom"] = substr($sValue, 0, 32);
+			 $this->members["sPrenom"] = substr($sValue, 0, 32);
 			//Happy end
 			return true;
 		}
@@ -123,7 +123,7 @@ class Contacts extends Noeuds{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sNom"] = substr($sValue, 0, 32);
+			 $this->members["sNom"] = substr($sValue, 0, 32);
 			//Happy end
 			return true;
 		}
@@ -140,7 +140,7 @@ class Contacts extends Noeuds{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Civilites"] = $nValue;
+			 $this->members["nId_Civilites"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -157,7 +157,7 @@ class Contacts extends Noeuds{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Titres"] = $nValue;
+			 $this->members["nId_Titres"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -174,7 +174,7 @@ class Contacts extends Noeuds{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Contact_Types"] = $nValue;
+			 $this->members["nId_Contact_Types"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -231,7 +231,7 @@ class Contacts extends Noeuds{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -247,15 +247,15 @@ class Contacts extends Noeuds{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -291,7 +291,7 @@ class Contacts extends Noeuds{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

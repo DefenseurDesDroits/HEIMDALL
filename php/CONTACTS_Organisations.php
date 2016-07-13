@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 09:15:42
+//Generated on : 2016-07-13 02:38:35
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -30,7 +30,7 @@ class Organisations extends Contacts{
 			"sNom" => ""
 		);
 		//get the legacy
-		$this->$members += $OrganisationsmemberSet;	}
+		$this->members += $OrganisationsmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -39,21 +39,21 @@ class Organisations extends Contacts{
 	///[RETURNS]The Id_Organisations
 	public function getId_Organisations(){
 		//[ERROR]The column Contacts.Organisations.nId_Organisations has an inheritance : Contacts.Contacts WITHOUT any linked row !!!
-		return $this->$members["nId_Organisations"];
+		return $this->members["nId_Organisations"];
 	}
 
 	///[METHOD][getId_Organisation_Type]Method to get the Id_Organisation_Type
 	///[RETURNS]The Id_Organisation_Type
 	public function getId_Organisation_Type(){
 		//Return the member
-		return $this->$members["nId_Organisation_Type"];
+		return $this->members["nId_Organisation_Type"];
 	}
 
 	///[METHOD][getNom]Method to get the Nom
 	///[RETURNS]The Nom
 	public function getNom(){
 		//Return the member
-		return $this->$members["sNom"];
+		return $this->members["sNom"];
 	}
 
 
@@ -77,7 +77,7 @@ class Organisations extends Contacts{
 			return false;
 		//security on type guy !!!
 		if(getType($nValue) == 'integer'){
-			 $this->$members["nId_Organisation_Type"] = $nValue;
+			 $this->members["nId_Organisation_Type"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -95,7 +95,7 @@ class Organisations extends Contacts{
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->$members["sNom"] = substr($sValue, 0, 256);
+			 $this->members["sNom"] = substr($sValue, 0, 256);
 			//Happy end
 			return true;
 		}
@@ -149,7 +149,7 @@ class Organisations extends Contacts{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . WHERE  . $this->getConditions();
+		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
 	}
 
 
@@ -165,15 +165,15 @@ class Organisations extends Contacts{
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
-			foreach($this->$members as $key => $value){
-				$this->$members[$key] = $jsonSet[$bindSet[$key]];
+			foreach($this->members as $key => $value){
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		//Return the job !
@@ -209,7 +209,7 @@ class Organisations extends Contacts{
 	///[RETURNS]string, our json ready to go
 	public function exportToJson(){
 		//Return the job !
-		return json_encode($this->$members);
+		return json_encode($this->members);
 	}
 
 

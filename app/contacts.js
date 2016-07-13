@@ -6,8 +6,12 @@
 
 ///[FUNCTION][contactDoQuery]Function to manage the research
 function contactDoQuery(){
+
+    //get the content layout
+    var oElement = document.getElementById("SAI_search_Query");
+
     //Ya ya ya !
-    alert("It's working bro ! or sis ... :)");
+    alert("It's working bro ! or sis ... :)" );
 
     //Our request object
     var oReq = new XMLHttpRequest();
@@ -24,7 +28,7 @@ function contactDoQuery(){
     oReq.open("POST", "php/queryManager.php", true);
     //set the request header
     oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-    oReq.send("Id=0&Session=" + "" + "&Action=contacts_contacts&Args=" + JSON.stringify({Method : "Like", Value : "Name"})); 
+    oReq.send("Id=0&Session=" + "" + "&Action=contacts_contacts&Args=" + JSON.stringify({Method : "Like", Name : "nom", Value : oElement.value})); 
     //Return the job !
     return true;
 }

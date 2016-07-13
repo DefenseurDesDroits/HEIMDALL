@@ -18,7 +18,9 @@ include "Potours_Connection_PGSQL.php";
 //default case
 //$oConnection = new Potours_Connection("ip", "dtb", "usr", "pwd");
 //default case
-$oConnection = new Potours_Connection_PGSQL("ip", "dtb", "usr", "pwd");
+//$oConnection = new Potours_Connection_PGSQL("192.168.1.183:5432", "crm", "infocom", "07_PVo-DT1G6");
+$oConnection = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
+$oConnection->open();
 
 //Quotes Function
 
@@ -27,7 +29,8 @@ $oConnection = new Potours_Connection_PGSQL("ip", "dtb", "usr", "pwd");
 ///[RETURNS]string, da job !!!
 function Quotes($sStr){
 	//return da escape string
-	return pg_escape_literal($sStr);
+	return pg_escape_literal($GLOBALS["oConnection"]->getConnectionObject(), $sStr);
+	//return pg_escape_literal(null, $sStr);
 }
 
 ?>

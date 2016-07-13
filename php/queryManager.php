@@ -1,17 +1,35 @@
 <?php //yeah
 
+//put your include
 include_once("CONTACTS_Contacts.php");
+
+/// <reference path="CONTACTS_Contacts.php" />
 
 ///[FUNCTION][searchQuery]Function to search the contact
 function searchQuery($Args){
 
-    $ary_sResult = (array) $Args;
-    
-    $ary_sResult["Mister"] = "Freeze";
+    //Our query 
+    $sQuery = "";
+    //our contact
+    $oContact = new Contacts();
 
-    echo json_encode($ary_sResult);
+    //recreate the query
+    $sQuery = "SELECT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
 
-    return true;
+    //add the link between column s and foreign Key
+    $sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
+
+    //argument ?
+    if($Args["Method"] == "Like" && $Args["Value"] != ""){
+        //add the LIKE condition
+        $sQuery .= " AND xxx.Contacts." . $Args["Name"] . " LIKE " . Quotes($Args["Value"] . "%");
+    }
+
+    //return something to the JS dude !!
+    echo $sQuery;
+
+    //Happy End
+    return True;
 }
 
 ///[FUNCTION][queryCenter]Function to manage the call from the call of query
@@ -22,14 +40,14 @@ function queryCenter(){
     //our argument
     $Arg = $_POST["Args"];
 
-    //
+    //Action selector
     switch($Action){
         case "contacts_contacts":
-            return searchQuery(json_decode($Arg));
+            return searchQuery((array)json_decode($Arg));
         break;
     }
 
-    //return false
+    //Is Star Wars Episode VII a good movie ?
     return false;
 }
 
