@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Contacts_Users.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 

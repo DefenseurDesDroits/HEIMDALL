@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Langues_manager.php
 //Description : Tables des langues
 
@@ -12,7 +12,7 @@ include "Contacts_Langues.php";
 ///[FUNCTION][LanguesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function LanguesgetFromID($nId){
+function LanguesgetFromID($nId){
 	//Our object declaration
 	$oLangues = new Langues();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function LanguesgetFromID($nId){
 ///[FUNCTION][LanguessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function LanguessaveFromJson($jsonObj){
+function LanguessaveFromJson($jsonObj){
 	//Our object declaration
 	$oLangues = new Langues();
 	
@@ -48,7 +48,7 @@ public function LanguessaveFromJson($jsonObj){
 ///[FUNCTION][LanguesdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function LanguesdeleteFromID($nID){
+function LanguesdeleteFromID($nID){
 	//Our object declaration
 	$oLangues = new Langues();
 	
@@ -63,7 +63,7 @@ public function LanguesdeleteFromID($nID){
 
 ///[FUNCTION][LanguesManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function LanguesManager(){
+function LanguesManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Civilites_manager.php
 //Description : Table des civilités des contacts
 
@@ -12,7 +12,7 @@ include "Contacts_Civilites.php";
 ///[FUNCTION][CivilitesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function CivilitesgetFromID($nId){
+function CivilitesgetFromID($nId){
 	//Our object declaration
 	$oCivilites = new Civilites();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function CivilitesgetFromID($nId){
 ///[FUNCTION][CivilitessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function CivilitessaveFromJson($jsonObj){
+function CivilitessaveFromJson($jsonObj){
 	//Our object declaration
 	$oCivilites = new Civilites();
 	
@@ -48,7 +48,7 @@ public function CivilitessaveFromJson($jsonObj){
 ///[FUNCTION][CivilitesdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function CivilitesdeleteFromID($nID){
+function CivilitesdeleteFromID($nID){
 	//Our object declaration
 	$oCivilites = new Civilites();
 	
@@ -63,7 +63,7 @@ public function CivilitesdeleteFromID($nID){
 
 ///[FUNCTION][CivilitesManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function CivilitesManager(){
+function CivilitesManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

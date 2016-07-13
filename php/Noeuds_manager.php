@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Noeuds_manager.php
 //Description : Table pour gérer les noeuds
 
@@ -12,7 +12,7 @@ include "Contacts_Noeuds.php";
 ///[FUNCTION][NoeudsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function NoeudsgetFromID($nId){
+function NoeudsgetFromID($nId){
 	//Our object declaration
 	$oNoeuds = new Noeuds();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function NoeudsgetFromID($nId){
 ///[FUNCTION][NoeudssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function NoeudssaveFromJson($jsonObj){
+function NoeudssaveFromJson($jsonObj){
 	//Our object declaration
 	$oNoeuds = new Noeuds();
 	
@@ -48,7 +48,7 @@ public function NoeudssaveFromJson($jsonObj){
 ///[FUNCTION][NoeudsdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function NoeudsdeleteFromID($nID){
+function NoeudsdeleteFromID($nID){
 	//Our object declaration
 	$oNoeuds = new Noeuds();
 	
@@ -63,7 +63,7 @@ public function NoeudsdeleteFromID($nID){
 
 ///[FUNCTION][NoeudsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function NoeudsManager(){
+function NoeudsManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

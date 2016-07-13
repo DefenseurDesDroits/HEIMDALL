@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Contacts_Infos.php
 //Description : Table des adresses. Hérité de la classe item.
 

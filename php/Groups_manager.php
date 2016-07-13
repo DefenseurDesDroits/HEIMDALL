@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Groups_manager.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -12,7 +12,7 @@ include "Contacts_Groups.php";
 ///[FUNCTION][GroupsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function GroupsgetFromID($nId){
+function GroupsgetFromID($nId){
 	//Our object declaration
 	$oGroups = new Groups();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function GroupsgetFromID($nId){
 ///[FUNCTION][GroupssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function GroupssaveFromJson($jsonObj){
+function GroupssaveFromJson($jsonObj){
 	//Our object declaration
 	$oGroups = new Groups();
 	
@@ -48,7 +48,7 @@ public function GroupssaveFromJson($jsonObj){
 ///[FUNCTION][GroupsdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function GroupsdeleteFromID($nID){
+function GroupsdeleteFromID($nID){
 	//Our object declaration
 	$oGroups = new Groups();
 	
@@ -63,7 +63,7 @@ public function GroupsdeleteFromID($nID){
 
 ///[FUNCTION][GroupsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function GroupsManager(){
+function GroupsManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Contact_Types_manager.php
 //Description : Table des types de contact
 
@@ -12,7 +12,7 @@ include "Contacts_Contact_Types.php";
 ///[FUNCTION][Contact_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function Contact_TypesgetFromID($nId){
+function Contact_TypesgetFromID($nId){
 	//Our object declaration
 	$oContact_Types = new Contact_Types();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function Contact_TypesgetFromID($nId){
 ///[FUNCTION][Contact_TypessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function Contact_TypessaveFromJson($jsonObj){
+function Contact_TypessaveFromJson($jsonObj){
 	//Our object declaration
 	$oContact_Types = new Contact_Types();
 	
@@ -48,7 +48,7 @@ public function Contact_TypessaveFromJson($jsonObj){
 ///[FUNCTION][Contact_TypesdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function Contact_TypesdeleteFromID($nID){
+function Contact_TypesdeleteFromID($nID){
 	//Our object declaration
 	$oContact_Types = new Contact_Types();
 	
@@ -63,7 +63,7 @@ public function Contact_TypesdeleteFromID($nID){
 
 ///[FUNCTION][Contact_TypesManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function Contact_TypesManager(){
+function Contact_TypesManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

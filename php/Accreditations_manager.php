@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Accreditations_manager.php
 //Description : Table des accréditations sur les items
 
@@ -12,7 +12,7 @@ include "Contacts_Accreditations.php";
 ///[FUNCTION][AccreditationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function AccreditationsgetFromID($nId){
+function AccreditationsgetFromID($nId){
 	//Our object declaration
 	$oAccreditations = new Accreditations();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function AccreditationsgetFromID($nId){
 ///[FUNCTION][AccreditationssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function AccreditationssaveFromJson($jsonObj){
+function AccreditationssaveFromJson($jsonObj){
 	//Our object declaration
 	$oAccreditations = new Accreditations();
 	
@@ -48,7 +48,7 @@ public function AccreditationssaveFromJson($jsonObj){
 ///[FUNCTION][AccreditationsdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function AccreditationsdeleteFromID($nID){
+function AccreditationsdeleteFromID($nID){
 	//Our object declaration
 	$oAccreditations = new Accreditations();
 	
@@ -63,7 +63,7 @@ public function AccreditationsdeleteFromID($nID){
 
 ///[FUNCTION][AccreditationsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function AccreditationsManager(){
+function AccreditationsManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

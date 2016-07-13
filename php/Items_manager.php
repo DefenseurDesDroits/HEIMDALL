@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Items_manager.php
 //Description : Table de tous les items avec des droits
 
@@ -12,7 +12,7 @@ include "Contacts_Items.php";
 ///[FUNCTION][ItemsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function ItemsgetFromID($nId){
+function ItemsgetFromID($nId){
 	//Our object declaration
 	$oItems = new Items();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function ItemsgetFromID($nId){
 ///[FUNCTION][ItemssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function ItemssaveFromJson($jsonObj){
+function ItemssaveFromJson($jsonObj){
 	//Our object declaration
 	$oItems = new Items();
 	
@@ -48,7 +48,7 @@ public function ItemssaveFromJson($jsonObj){
 ///[FUNCTION][ItemsdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function ItemsdeleteFromID($nID){
+function ItemsdeleteFromID($nID){
 	//Our object declaration
 	$oItems = new Items();
 	
@@ -63,7 +63,7 @@ public function ItemsdeleteFromID($nID){
 
 ///[FUNCTION][ItemsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function ItemsManager(){
+function ItemsManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

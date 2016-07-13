@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Organisation_Types_manager.php
 //Description : Tables des différants type d'organisations possibles
 
@@ -12,7 +12,7 @@ include "Contacts_Organisation_Types.php";
 ///[FUNCTION][Organisation_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function Organisation_TypesgetFromID($nId){
+function Organisation_TypesgetFromID($nId){
 	//Our object declaration
 	$oOrganisation_Types = new Organisation_Types();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function Organisation_TypesgetFromID($nId){
 ///[FUNCTION][Organisation_TypessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function Organisation_TypessaveFromJson($jsonObj){
+function Organisation_TypessaveFromJson($jsonObj){
 	//Our object declaration
 	$oOrganisation_Types = new Organisation_Types();
 	
@@ -48,7 +48,7 @@ public function Organisation_TypessaveFromJson($jsonObj){
 ///[FUNCTION][Organisation_TypesdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function Organisation_TypesdeleteFromID($nID){
+function Organisation_TypesdeleteFromID($nID){
 	//Our object declaration
 	$oOrganisation_Types = new Organisation_Types();
 	
@@ -63,7 +63,7 @@ public function Organisation_TypesdeleteFromID($nID){
 
 ///[FUNCTION][Organisation_TypesManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function Organisation_TypesManager(){
+function Organisation_TypesManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

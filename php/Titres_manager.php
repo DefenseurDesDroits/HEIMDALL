@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Titres_manager.php
 //Description : Tables des titres des contacts
 
@@ -12,7 +12,7 @@ include "Contacts_Titres.php";
 ///[FUNCTION][TitresgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function TitresgetFromID($nId){
+function TitresgetFromID($nId){
 	//Our object declaration
 	$oTitres = new Titres();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function TitresgetFromID($nId){
 ///[FUNCTION][TitressaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function TitressaveFromJson($jsonObj){
+function TitressaveFromJson($jsonObj){
 	//Our object declaration
 	$oTitres = new Titres();
 	
@@ -48,7 +48,7 @@ public function TitressaveFromJson($jsonObj){
 ///[FUNCTION][TitresdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function TitresdeleteFromID($nID){
+function TitresdeleteFromID($nID){
 	//Our object declaration
 	$oTitres = new Titres();
 	
@@ -63,7 +63,7 @@ public function TitresdeleteFromID($nID){
 
 ///[FUNCTION][TitresManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function TitresManager(){
+function TitresManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

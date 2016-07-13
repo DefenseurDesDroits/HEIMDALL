@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Pays_manager.php
 //Description : Tables des pays
 
@@ -12,7 +12,7 @@ include "Contacts_Pays.php";
 ///[FUNCTION][PaysgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function PaysgetFromID($nId){
+function PaysgetFromID($nId){
 	//Our object declaration
 	$oPays = new Pays();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function PaysgetFromID($nId){
 ///[FUNCTION][PayssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function PayssaveFromJson($jsonObj){
+function PayssaveFromJson($jsonObj){
 	//Our object declaration
 	$oPays = new Pays();
 	
@@ -48,7 +48,7 @@ public function PayssaveFromJson($jsonObj){
 ///[FUNCTION][PaysdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function PaysdeleteFromID($nID){
+function PaysdeleteFromID($nID){
 	//Our object declaration
 	$oPays = new Pays();
 	
@@ -63,7 +63,7 @@ public function PaysdeleteFromID($nID){
 
 ///[FUNCTION][PaysManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function PaysManager(){
+function PaysManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

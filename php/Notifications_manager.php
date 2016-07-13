@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Notifications_manager.php
 //Description : Tables des notifications utilisateurs
 
@@ -12,7 +12,7 @@ include "Contacts_Notifications.php";
 ///[FUNCTION][NotificationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function NotificationsgetFromID($nId){
+function NotificationsgetFromID($nId){
 	//Our object declaration
 	$oNotifications = new Notifications();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function NotificationsgetFromID($nId){
 ///[FUNCTION][NotificationssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function NotificationssaveFromJson($jsonObj){
+function NotificationssaveFromJson($jsonObj){
 	//Our object declaration
 	$oNotifications = new Notifications();
 	
@@ -48,7 +48,7 @@ public function NotificationssaveFromJson($jsonObj){
 ///[FUNCTION][NotificationsdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function NotificationsdeleteFromID($nID){
+function NotificationsdeleteFromID($nID){
 	//Our object declaration
 	$oNotifications = new Notifications();
 	
@@ -63,7 +63,7 @@ public function NotificationsdeleteFromID($nID){
 
 ///[FUNCTION][NotificationsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function NotificationsManager(){
+function NotificationsManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

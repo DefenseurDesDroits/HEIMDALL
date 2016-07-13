@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Organisations_manager.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -12,7 +12,7 @@ include "Contacts_Organisations.php";
 ///[FUNCTION][OrganisationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function OrganisationsgetFromID($nId){
+function OrganisationsgetFromID($nId){
 	//Our object declaration
 	$oOrganisations = new Organisations();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function OrganisationsgetFromID($nId){
 ///[FUNCTION][OrganisationssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function OrganisationssaveFromJson($jsonObj){
+function OrganisationssaveFromJson($jsonObj){
 	//Our object declaration
 	$oOrganisations = new Organisations();
 	
@@ -48,7 +48,7 @@ public function OrganisationssaveFromJson($jsonObj){
 ///[FUNCTION][OrganisationsdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function OrganisationsdeleteFromID($nID){
+function OrganisationsdeleteFromID($nID){
 	//Our object declaration
 	$oOrganisations = new Organisations();
 	
@@ -63,7 +63,7 @@ public function OrganisationsdeleteFromID($nID){
 
 ///[FUNCTION][OrganisationsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function OrganisationsManager(){
+function OrganisationsManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Notes_manager.php
 //Description : Table des notes sur les items
 
@@ -12,7 +12,7 @@ include "Contacts_Notes.php";
 ///[FUNCTION][NotesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function NotesgetFromID($nId){
+function NotesgetFromID($nId){
 	//Our object declaration
 	$oNotes = new Notes();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function NotesgetFromID($nId){
 ///[FUNCTION][NotessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function NotessaveFromJson($jsonObj){
+function NotessaveFromJson($jsonObj){
 	//Our object declaration
 	$oNotes = new Notes();
 	
@@ -48,7 +48,7 @@ public function NotessaveFromJson($jsonObj){
 ///[FUNCTION][NotesdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function NotesdeleteFromID($nID){
+function NotesdeleteFromID($nID){
 	//Our object declaration
 	$oNotes = new Notes();
 	
@@ -63,7 +63,7 @@ public function NotesdeleteFromID($nID){
 
 ///[FUNCTION][NotesManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function NotesManager(){
+function NotesManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

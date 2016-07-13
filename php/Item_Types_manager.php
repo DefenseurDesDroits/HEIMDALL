@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Item_Types_manager.php
 //Description : Table des types d'items
 
@@ -12,7 +12,7 @@ include "Contacts_Item_Types.php";
 ///[FUNCTION][Item_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function Item_TypesgetFromID($nId){
+function Item_TypesgetFromID($nId){
 	//Our object declaration
 	$oItem_Types = new Item_Types();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function Item_TypesgetFromID($nId){
 ///[FUNCTION][Item_TypessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function Item_TypessaveFromJson($jsonObj){
+function Item_TypessaveFromJson($jsonObj){
 	//Our object declaration
 	$oItem_Types = new Item_Types();
 	
@@ -48,7 +48,7 @@ public function Item_TypessaveFromJson($jsonObj){
 ///[FUNCTION][Item_TypesdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function Item_TypesdeleteFromID($nID){
+function Item_TypesdeleteFromID($nID){
 	//Our object declaration
 	$oItem_Types = new Item_Types();
 	
@@ -63,7 +63,7 @@ public function Item_TypesdeleteFromID($nID){
 
 ///[FUNCTION][Item_TypesManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function Item_TypesManager(){
+function Item_TypesManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

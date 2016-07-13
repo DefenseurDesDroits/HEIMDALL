@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Infos_manager.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -12,7 +12,7 @@ include "Contacts_Infos.php";
 ///[FUNCTION][InfosgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function InfosgetFromID($nId){
+function InfosgetFromID($nId){
 	//Our object declaration
 	$oInfos = new Infos();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function InfosgetFromID($nId){
 ///[FUNCTION][InfossaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function InfossaveFromJson($jsonObj){
+function InfossaveFromJson($jsonObj){
 	//Our object declaration
 	$oInfos = new Infos();
 	
@@ -48,7 +48,7 @@ public function InfossaveFromJson($jsonObj){
 ///[FUNCTION][InfosdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function InfosdeleteFromID($nID){
+function InfosdeleteFromID($nID){
 	//Our object declaration
 	$oInfos = new Infos();
 	
@@ -63,7 +63,7 @@ public function InfosdeleteFromID($nID){
 
 ///[FUNCTION][InfosManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function InfosManager(){
+function InfosManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json

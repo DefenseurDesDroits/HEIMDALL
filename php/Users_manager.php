@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-06 08:20:52
+//Generated on : 2016-07-13 09:15:42
 //Filename : Users_manager.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -12,7 +12,7 @@ include "Contacts_Users.php";
 ///[FUNCTION][UsersgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
 ///[RETURNS]string, our json ready to go
-public function UsersgetFromID($nId){
+function UsersgetFromID($nId){
 	//Our object declaration
 	$oUsers = new Users();
 	//Our variable declaration
@@ -32,7 +32,7 @@ public function UsersgetFromID($nId){
 ///[FUNCTION][UserssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
 ///[RETURNS]json, hte json state of the object after change
-public function UserssaveFromJson($jsonObj){
+function UserssaveFromJson($jsonObj){
 	//Our object declaration
 	$oUsers = new Users();
 	
@@ -48,7 +48,7 @@ public function UserssaveFromJson($jsonObj){
 ///[FUNCTION][UsersdeleteFromID]Function to save the an object from it's Json expression
 ///[PARAMETER][integer][$nID]the id of the object we must delete
 ///[RETURNS]boolean, true if done
-public function UsersdeleteFromID($nID){
+function UsersdeleteFromID($nID){
 	//Our object declaration
 	$oUsers = new Users();
 	
@@ -63,7 +63,7 @@ public function UsersdeleteFromID($nID){
 
 ///[FUNCTION][UsersManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
-public function UsersManager(){
+function UsersManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json
