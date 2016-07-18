@@ -29,7 +29,8 @@ $oConnection->open();
 ///[RETURNS]string, da job !!!
 function Quotes($sStr){
 	//return da escape string
-	return pg_escape_literal($GLOBALS["oConnection"]->getConnectionObject(), $sStr);
+	return "'" . str_replace("'", "\'", $sStr) . "'";
+	//return pg_escape_literal($GLOBALS["oConnection"]->getConnectionObject(), $sStr);
 	//return pg_escape_literal(null, $sStr);
 }
 
