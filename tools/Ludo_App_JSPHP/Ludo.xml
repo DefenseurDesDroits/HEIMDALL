@@ -181,12 +181,45 @@ Ludo
  our table object we edit
  </summary>
 	<remarks></remarks>
+</member><member name="F:LAY_LUDO_DTB_Table_editor.lst_oLay">
+	<summary>
+ Our list of layout to manage column
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Table_editor.eUpdate">
+	<summary>
+ our event to update the table
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Table_editor.eQuit">
+	<summary>
+ Our event to quit the table
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Table_editor.eDelete">
+	<summary>
+ Our event to delete the Table
+ </summary>
+	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Table_editor.init(Ludo.DTB.Ludo_DTB_Table@)">
 	<summary>
  Method to initialize the layout
  </summary>
 	<param name="oATable">Ludo.DTB.Ludo_DTB_Table, our table we want edit</param>
 	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.setTable(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method to set the table
+ </summary>
+	<param name="oATable">Ludo.DTB.Ludo_DTB_Table, our next table</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.getLudo_DTB_Table">
+	<summary>
+ Method to get the Table
+ </summary>
+	<returns>Ludo.DTB.Ludo_DTB_Table, our table or nothing</returns>
 	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Table_editor.fillColumns">
 	<summary>
@@ -199,6 +232,70 @@ Ludo
  method to fill the table field
  </summary>
 	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.objToView(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ method to fill the table field
+ </summary>
+	<param name="oTab">Ludo.DTB.Ludo_DTB_Table, our table to plot</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.viewToObj(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ method to fill the table field
+ </summary>
+	<param name="oTab">Ludo.DTB.Ludo_DTB_Table, Our table to plot</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.deleteColumn(LAY_LUDO_DTB_Column_editor@)">
+	<summary>
+ Method to delete a column
+ </summary>
+	<param name="oLay_Column">LAY_LUDO_DTB_Column_editor, our column graphic object</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.addColumn">
+	<summary>
+ Method to add a column
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.checkValidity">
+	<summary>
+ Method to check the validity of the table
+ </summary>
+	<returns>Boolean, true if valide</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.saveTable">
+	<summary>
+ Method to save the content of a table
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.raiseeDeleteEvent">
+	<summary>
+ Method to raise the delete event
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.raiseeQuit">
+	<summary>
+ Method to raise the quit event
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.raiseeUpdate">
+	<summary>
+ Method to raise the update event
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.HANDLER_Column_Delete(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the delete event thrown by a column
+ </summary>
+	<param name="sender">Object, our object who sends the event</param>
+	<param name="e">Eventargs, our argument</param>
 	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Table_editor.BTN_Save_Click(System.Object,System.EventArgs)">
 	<summary>
@@ -228,6 +325,27 @@ Ludo
 	<param name="sender">Object, our object who sends the event</param>
 	<param name="e">Eventargs, our argument</param>
 	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.OPT_Check_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage manual check
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks>This Handler calls the public overridable method checkValidity()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.OPT_Clone_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the clonage of this column
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Table_editor.OPT_Delete_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the delete from the ContextMenu
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks>This Handler calls the public overridable method raiseeDeleteEvent()</remarks>
 </member><member name="M:LAY_LUDO_DTB_Table_editor.#ctor">
 	<summary>
  default builder
@@ -317,6 +435,13 @@ Ludo
 	<param name="sTarget">String, Text you want to analize</param>
 	<returns>String, String without starting and ending blanks</returns>
 	<remarks>This function conciders as blank vbCr, vbTab and 0x0A too</remarks>
+</member><member name="M:Ludo_Tools.NoSpace(System.Windows.Forms.Control@)">
+	<summary>
+ Function to delete the " " before and after from a text in a control
+ </summary>
+	<param name="oControl">System.Windows.Forms.Control, our control</param>
+	<returns>String, String without starting and ending blanks</returns>
+	<remarks>The function use the "Text" property of System.Windows.Forms.Control to call the function "NoSpace(ByVal sTarget As String)"</remarks>
 </member><member name="M:Ludo_Tools.ObtainStrBetweenTagAAndB(System.String,System.String,System.String)">
 	<summary>
  Function to obtain a str between tag A And Tag B!
@@ -1026,6 +1151,14 @@ Ludo
 	<param name="nLimit">Integer, Tree limit</param>
 	<returns>Boolean, True if done</returns>
 	<remarks>This function calls XML_PlotsIn_TREE</remarks>
+</member><member name="M:Ludo_Tools.TREE_plots_LUDO_DTB_Schema(System.Windows.Forms.TreeView@,Ludo.DTB.Ludo_DTB_Schema@)">
+	<summary>
+ Function to plot a DTB schema in a Tree Node object
+ </summary>
+	<param name="TREE_">System.Windows.Forms.TreeView, our view</param>
+	<param name="oSchema">Ludo.DTB.Ludo_DTB_Schema, our DTB schema</param>
+	<returns>True if done</returns>
+	<remarks></remarks>
 </member><member name="M:Ludo_Tools.FILES_KeepOnlyTheFile(System.Collections.Generic.List{System.String})">
 	<summary>
  Public function to keep only the file from a list of file
@@ -1188,6 +1321,120 @@ Ludo
 	<param name="sURI">String, URI in the Package</param>
 	<returns>List Of String, The list of the File Name</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_GetElementsByTagName(System.Xml.XmlElement@,System.String)">
+	<summary>
+ Function to GetElementsByTagName if they are sun of the node that invoke the method !
+ </summary>
+	<param name="oElement">Xml.XmlElement, our node</param>
+	<param name="sTag">string, our searched tag</param>
+	<returns>List(Of Xml.XmlNode), our list of node</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_GetElementsByTagName(System.Xml.XmlDocument@,System.String)">
+	<summary>
+ Function to GetElementsByTagName if they are son of the node that invoke the method !
+ </summary>
+	<param name="oDocument">Xml.XmlDocument, our document with tag</param>
+	<param name="sTag">string, our searched tag</param>
+	<returns>List(Of Xml.XmlNode), our list of node</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_GetElementInline(System.Xml.XmlDocument@,System.Collections.Generic.List{System.String})">
+	<summary>
+ Function to get an element from inline list of string
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="lst_sInLineXML">List(Of String), path of the seeked element</param>
+	<returns>Xml.XmlElement, our element or nothing</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_GetElementInline(System.Xml.XmlDocument@,System.String)">
+	<summary>
+ Function to get an element from inline string
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<returns>Xml.XmlElement, our element or nothing</returns>
+	<remarks>Sample of path : Root.node.SubNode[4]</remarks>
+</member><member name="M:Ludo_Tools.XML_GetAttributs(System.Xml.XmlElement@)">
+	<summary>
+ Function to get the list of attribut from an element
+ </summary>
+	<param name="xmlElement">Xml.XmlElement, our list of elements</param>
+	<returns>List(Of Xml.XmlAttribute), our list of attributs</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_GetAttributs(System.Xml.XmlDocument@,System.String)">
+	<summary>
+ Function to get the list of attribut from an inline element in a xmlDocument, calls XML_GetElementInline and XML_GetAttributs
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<returns>List(Of Xml.XmlAttribute), our attributs</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_GetAttributNames(System.Collections.Generic.List{System.Xml.XmlAttribute}@)">
+	<summary>
+ Function to obtain a list of the attribut's name as a list of string
+ </summary>
+	<param name="lst_oAttributs">List(Of Xml.XmlAttribute), our list of attributs</param>
+	<returns>list(of string), our list of attributs names</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_GetAttributNames(System.Xml.XmlElement@)">
+	<summary>
+ Function to get all the attributs names of an element
+ </summary>
+	<param name="xmlElement">Xml.XmlElement, our element</param>
+	<returns>List(Of String), our list of attributs names</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_GetAttributNames(System.Xml.XmlDocument@,System.String)">
+	<summary>
+ Function to get all the attributs names from a document and a path to an element
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<returns>List(Of String), our list of attributs names</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_InLineLst(System.String)">
+	<summary>
+ Function to get the list of element in a inline commande
+ </summary>
+	<param name="sInLineXML">srgine, inline element</param>
+	<returns>list(of String), our list of node</returns>
+	<remarks>split on "."</remarks>
+</member><member name="M:Ludo_Tools.XML_Read(System.Xml.XmlDocument@,System.Collections.Generic.List{System.String},System.String)">
+	<summary>
+ Function to Read Value From a XML Doc with a XML Inline Path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="lst_sInLineXML">List(Of String), path of the seeked element</param>
+	<param name="sDefaultValue">string, our default value</param>
+	<returns>string, our value</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Read(System.Xml.XmlDocument@,System.String,System.String)">
+	<summary>
+ Function to Read Value From a XML Doc with a XML Inline Path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<param name="sDefaultValue">string, our default value</param>
+	<returns>string, our value</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Read_Attribut(System.Xml.XmlDocument@,System.Collections.Generic.List{System.String},System.String,System.String)">
+	<summary>
+ Function to Read Attribut Value From a XML Doc with a XML Inline Path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="lst_sInLineXML">List(Of String), path of the seeked element</param>
+	<param name="sAttribut">string, our attribut name</param>
+	<param name="sDefaultValue">string, our default value</param>
+	<returns>string, our attribut value</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Read_Attribut(System.Xml.XmlDocument@,System.String,System.String,System.String)">
+	<summary>
+ Function to Read Attribut Value From a XML Doc with a XML Inline Path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<param name="sAttribut">string, our attribut name</param>
+	<param name="sDefaultValue">string, our default value</param>
+	<returns>string, our attribut value</returns>
+	<remarks></remarks>
 </member><member name="M:Ludo_Tools.XML_StructInText(System.Xml.XmlElement@,System.Int32,System.Int32,System.String)">
 	<summary>
  Function to obtain the struct of the XML Element as a text with a line for each element
@@ -1222,6 +1469,112 @@ Ludo
 	<param name="nLimit">[OPTIONAL] Integer, our limit</param>
 	<returns>List(Of String), our list of elements</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_CreatePath(System.Xml.XmlDocument@,System.Collections.Generic.List{System.String})">
+	<summary>
+ Function to create the path in the XML Document
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="lst_sInLineXML">List(Of String), path of the seeked element</param>
+	<returns>Xml.XmlElement, the new element or Nothing</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_CreatePath(System.Xml.XmlDocument@,System.String)">
+	<summary>
+ Function to create the path in the XML Document
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<returns>Xml.XmlElement, the new element or Nothing</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Write_Value(System.Xml.XmlDocument@,System.Collections.Generic.List{System.String},System.String)">
+	<summary>
+ Function to Write Value From a XML Doc to Path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="lst_sInLineXML">List(Of String), path of the seeked element</param>
+	<param name="sValue">string our new value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Write_Value(System.Xml.XmlDocument@,System.String,System.String)">
+	<summary>
+ Function to Write Value From a XML Doc to Path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<param name="sValue">string our new value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Write_Attribut(System.Xml.XmlDocument@,System.Collections.Generic.List{System.String},System.String,System.String)">
+	<summary>
+ Function to Write Attribut Value From a XML Doc to Path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="lst_sInLineXML">List(Of String), path of the seeked element</param>
+	<param name="sAttribut">string, our attribut name</param>
+	<param name="sValue">string our new value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Write_Attribut(System.Xml.XmlDocument@,System.String,System.String,System.String)">
+	<summary>
+ Function to Write Attribut Value From a XML Doc to Path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<param name="sAttribut">string, our attribut name</param>
+	<param name="sValue">string our new value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Remove_Element(System.Xml.XmlDocument@,System.Collections.Generic.List{System.String})">
+	<summary>
+ Function to remove an element from a path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="lst_sInLineXML">List(Of String), path of the seeked element</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Remove_Element(System.Xml.XmlDocument@,System.String)">
+	<summary>
+ Function to remove an element from a path
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Remove_Attribut(System.Xml.XmlDocument@,System.Collections.Generic.List{System.String},System.String)">
+	<summary>
+ Function to remove an attribut
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="lst_sInLineXML">List(Of String), path of the seeked element</param>
+	<param name="sAttribut">string, our attribut</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_Remove_Attribut(System.Xml.XmlDocument@,System.String,System.String)">
+	<summary>
+ Function to remove an attribut
+ </summary>
+	<param name="oXml">System.Xml.XmlDocument, our document</param>
+	<param name="sInLineXML">string, our path</param>
+	<param name="sAttribut">string, our attribut</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_PlotsIn_TREE(System.Xml.XmlElement@,System.Windows.Forms.TreeView@,System.Int32)">
+	<summary>
+ Function to plot a XML in a System.Windows.Forms.TreeView
+ </summary>
+	<param name="xmlElement">Xml.XmlElement, our element</param>
+	<param name="TREE_">System.Windows.Forms.TreeView, our tree view object</param>
+	<param name="nLimit">integer, limit of node level, 0 means limit less</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.XML_PlotsIn_TREE(System.Xml.XmlDocument@,System.Windows.Forms.TreeView@,System.Int32)">
+	<summary>
+ Function to plot a XML in a System.Windows.Forms.TreeView
+ </summary>
+	<param name="xmlDocument">Xml.XmlDocument, our element</param>
+	<param name="TREE_">System.Windows.Forms.TreeView, our tree view object</param>
+	<param name="nLimit">integer, limit of node level, 0 means limit less</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
 </member><member name="T:Ludo_Tools">
 	<summary>
  Public module to provide globales functions
@@ -1253,6 +1606,13 @@ Ludo
 </member><member name="T:Ludo.EVENTS.events.LUDO_EVENT_EXIT">
 	<summary>
  Event to quit
+ </summary>
+	<param name="sender">Object, sender of the event</param>
+	<param name="e">EventArgs, Argument of our signal</param>
+	<remarks></remarks>
+</member><member name="T:Ludo.EVENTS.events.LUDO_EVENT_UPDATE">
+	<summary>
+ Event to update
  </summary>
 	<param name="sender">Object, sender of the event</param>
 	<param name="e">EventArgs, Argument of our signal</param>
@@ -1512,6 +1872,21 @@ Ludo
  our module object to édit the modue
  </summary>
 	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Module_editor.eUpdate">
+	<summary>
+ our event to update the module
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Module_editor.eQuit">
+	<summary>
+ Our event to quit the module
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Module_editor.eDelete">
+	<summary>
+ Our event to delete the module
+ </summary>
+	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Module_editor.init(Ludo.DTB.Ludo_DTB_Module@)">
 	<summary>
  Method to init the 
@@ -1519,12 +1894,69 @@ Ludo
 	<param name="oMod">Ludo.DTB.Ludo_DTB_Module, our module</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.setModule(Ludo.DTB.Ludo_DTB_Module@)">
+	<summary>
+ Method to assign a module
+ </summary>
+	<param name="oMod">Ludo.DTB.Ludo_DTB_Module, our module</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.getLudo_DTB_Module">
+	<summary>
+ Method to obtain the current Module
+ </summary>
+	<returns> Ludo.DTB.Ludo_DTB_Module, our module</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.checkValidity">
+	<summary>
+ Method to check the validity on field
+ </summary>
+	<returns>Booleen, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.objToView(Ludo.DTB.Ludo_DTB_Module@)">
+	<summary>
+ Method to put obj properties in view
+ </summary>
+	<param name="oMod">Ludo.DTB.Ludo_DTB_Module</param>
+	<returns>Booleam, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.viewToObj(Ludo.DTB.Ludo_DTB_Module@)">
+	<summary>
+ Method to move a view to the object
+ </summary>
+	<param name="oMod">Ludo.DTB.Ludo_DTB_Module</param>
+	<returns>Booleam, true if done</returns>
+	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Module_editor.fillFields">
 	<summary>
  Method to fill the module field
  </summary>
 	<returns>Boolean, true if done</returns>
 	<remarks>This metod contain a Library security against thief, overload this function in a herited class to unlock the author field</remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.saveModule">
+	<summary>
+ Method to save the Module
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.raiseeDeleteEvent">
+	<summary>
+ Method to raise the delete event
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.raiseeQuit">
+	<summary>
+ Method to raise the quit event
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.raiseeUpdate">
+	<summary>
+ Method to raise the update event
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Module_editor.BTN_Save_Click(System.Object,System.EventArgs)">
 	<summary>
  Handler to manage the save event
@@ -1542,6 +1974,34 @@ Ludo
 </member><member name="M:LAY_LUDO_DTB_Module_editor.BTN_Quit_Click(System.Object,System.EventArgs)">
 	<summary>
  Handler to manage the quit event
+ </summary>
+	<param name="sender">Object, our object who sends the event</param>
+	<param name="e">Eventargs, our argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.OPT_Check_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage manual check
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks>This Handler calls the public overridable method checkValidity()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.OPT_Clone_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the clonage of this column
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.OPT_Delete_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the delete from the ContextMenu
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks>This Handler calls the public overridable method raiseeDeleteEvent()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Module_editor.LAY_LUDO_DTB_Module_editor_Load(System.Object,System.EventArgs)">
+	<summary>
+ Method to do something on load
  </summary>
 	<param name="sender">Object, our object who sends the event</param>
 	<param name="e">Eventargs, our argument</param>
@@ -1910,6 +2370,11 @@ Ludo
  Windows form to edit Debitor
  </summary>
 	<remarks></remarks>
+</member><member name="F:LAY_LUDO_DTB_Schema_Editor.oSchema">
+	<summary>
+ Our member schema
+ </summary>
+	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Schema_Editor.plotsSchema">
 	<summary>
  Method t ot plot the schema into
@@ -1936,9 +2401,152 @@ Ludo
  </summary>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.updateTable(System.Windows.Forms.TreeNode@,LAY_LUDO_DTB_Table_editor@)">
+	<summary>
+ Method to update the table name
+ </summary>
+	<param name="oNode">System.Windows.Forms.TreeNode, the node we have to fix</param>
+	<param name="oLay">LAY_LUDO_DTB_Table_editor, our layout table editor</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.updateModule(System.Windows.Forms.TreeNode@,LAY_LUDO_DTB_Module_editor@)">
+	<summary>
+ Method to update the module name
+ </summary>
+	<param name="oNode">System.Windows.Forms.TreeNode, the node we have to fix</param>
+	<param name="oLay">LAY_LUDO_DTB_Table_editor, our layout table editor</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.resetInterface">
+	<summary>
+ Method to clear the PNL and unselect the Tree node !
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.closeTableLayout(LAY_LUDO_DTB_Table_editor@)">
+	<summary>
+ Method to clear the PNL after close a Layout to edit table
+ </summary>
+	<param name="oLay">LAY_LUDO_DTB_Table_editor, our layout</param>
+	<returns>Boolean, True if done</returns>
+	<remarks>this method call resetInterface()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.closeModuleLayout(LAY_LUDO_DTB_Module_editor@)">
+	<summary>
+ Method to clear the PNL after close a Layout to edit table
+ </summary>
+	<param name="oLay">LAY_LUDO_DTB_Module_editor, our layout</param>
+	<returns>Boolean, True if done</returns>
+	<remarks>this method call resetInterface()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.addTable">
+	<summary>
+ Method to add a table
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.addModule">
+	<summary>
+ Method to add a Table
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.delTable">
+	<summary>
+ Method to delete a table
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.delModule">
+	<summary>
+ Method to delete a Module
+ </summary>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.deleteBlind">
+	<summary>
+ Method to delete an element
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Schema_Editor.TREE_Module_Table_Selected(System.Object,System.EventArgs)">
 	<summary>
  Handler to manage the change of selected node
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.BTN_Add_Module_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to add a module
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.BTN_Del_Module_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to delete a Module 
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.BTN_Add_Table_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to add a tablmlme
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.BTN_Del_Table_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to delete a table
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.OPT_Refresh_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the refresh the tree
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.OPT_Clone_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the clone click
+ <param name="sender">Object, our object than throw the event</param>
+		<param name="e">EventArgs, our argument for the event</param>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.OPT_Delete_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the delete event
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.HANDLER_Update_Table(System.Object,System.EventArgs)">
+	<summary>
+ Handler to update the table
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.HANDLER_Update_Module(System.Object,System.EventArgs)">
+	<summary>
+ Handler to update table
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.HANDLER_Quit_Table(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the quit event from table
+ </summary>
+	<param name="sender">Object, our object than throw the event</param>
+	<param name="e">EventArgs, our argument for the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Schema_Editor.HANDLER_Quit_Module(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the quit event from module
  </summary>
 	<param name="sender">Object, our object than throw the event</param>
 	<param name="e">EventArgs, our argument for the event</param>
@@ -2377,212 +2985,220 @@ Ludo
  Our default creation file name
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.sTrueName">
+</member><member name="M:Ludo.DTB.Globals.getIndexFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Table}@,System.String)">
+	<summary>
+ Function to obtain an index from a name in a List of table
+ </summary>
+	<param name="lst_oTable">List(Of Ludo.DTB.Ludo_DTB_Table), our list of table</param>
+	<param name="sName">string, the true name of the table seeked</param>
+	<returns>integer, position of lesser than zero</returns>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.sTrueName">
 	<summary>
  our True Name
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.sName">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.sName">
 	<summary>
  our deploy Name
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.sKey">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.sKey">
 	<summary>
  Our Key property
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.sForeign">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.sForeign">
 	<summary>
  Foreign dependancy
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.sValueType">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.sValueType">
 	<summary>
  Value Type
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.bNullable">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.bNullable">
 	<summary>
  Is Nullable
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.sDefaultValue">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.sDefaultValue">
 	<summary>
  Default value
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.oParentTable">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.oParentTable">
 	<summary>
  Our parent Table
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Row.sComment">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Column.sComment">
 	<summary>
  Comment :)
  </summary>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getTrueName">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getTrueName">
 	<summary>
  Method to get the true name
  </summary>
 	<returns>String, our true name</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getName">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getName">
 	<summary>
  Method to get the name
  </summary>
 	<returns>String, our DTB Name</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getKeyProperty">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getKeyProperty">
 	<summary>
  Method to get the Key type
  </summary>
 	<returns>String, our key property</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getForeignPath">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getForeignPath">
 	<summary>
  Method to get the Foreign dependancy
  </summary>
 	<returns>String, the foreign dependancy</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getValueType">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getValueType">
 	<summary>
  Method to get the Value Type
  </summary>
 	<returns>String, the type of the value</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.isNullable">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.isNullable">
 	<summary>
  Method to learn if Is nullable
  </summary>
 	<returns>Boolean, is nullable value</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getDefaultValue">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getDefaultValue">
 	<summary>
  Method to obtain the default value
  </summary>
 	<returns>String, the default value</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getTableName">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getTableName">
 	<summary>
  Method to obtain the Table Name (It's True Name !)
  </summary>
 	<returns>String, the table name</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getParentTable">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getParentTable">
 	<summary>
  Method to get our parent table
  </summary>
 	<returns>Ludo.DTB.Ludo_DTB_Table, our parent or nothing</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getModuleName">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getModuleName">
 	<summary>
  Method to get the Module Name
  </summary>
 	<returns>STring, Module name</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getPath">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getPath">
 	<summary>
  Method to get our path
  </summary>
 	<returns>String, Path; Path = ModuleName.TableName.TrueName</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getListOfDependantPaths">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getListOfDependantPaths">
 	<summary>
- Method to know the list of paths that depend from our row
+ Method to know the list of paths that depend from our Column
  </summary>
 	<returns>List(Of String), list of dependant elements, returns Null</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getListOfDependantRows">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getListOfDependantColumns">
 	<summary>
- Method to know the list of rows(columns) that depend from our row(cloums)
+ Method to know the list of Columns(columns) that depend from our Column(cloums)
  </summary>
-	<returns>List(Of Ludo.DTB.Ludo_DTB_Row), returns Null</returns>
+	<returns>List(Of Ludo.DTB.Ludo_DTB_Column), returns Null</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getOriginalRow">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getOriginalColumn">
 	<summary>
- Method to get the row we depend !
+ Method to get the Column we depend !
  </summary>
-	<returns>Ludo.DTB.Ludo_DTB_Row, Returns Null</returns>
+	<returns>Ludo.DTB.Ludo_DTB_Column, Returns Null</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getComment">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getComment">
 	<summary>
  Method to get the comment !
  </summary>
 	<returns>String, the comment</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setTrueName(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setTrueName(System.String)">
 	<summary>
  Method to set the true name
  </summary>
 	<param name="sTN">String, our new True Name</param>
 	<returns>Boolean, True if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setName(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setName(System.String)">
 	<summary>
  Method to set the name
  </summary>
 	<param name="sN">String, our new name</param>
 	<returns>Boolean, True if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setKeyType(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setKeyType(System.String)">
 	<summary>
  Method to set the Key type
  </summary>
 	<param name="sStr">String, the new Key Type</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setForeignDependancy(System.String@)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setForeignDependancy(System.String@)">
 	<summary>
  Method to set the Foreign dependancy
  </summary>
 	<param name="sStr">String, the foreign dependancy</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setValuetype(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setValuetype(System.String)">
 	<summary>
  Method to set the Value Type
  </summary>
 	<param name="sStr">STring, the new value</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setNullable(System.Boolean)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setNullable(System.Boolean)">
 	<summary>
  Method to set if Is nullable
  </summary>
 	<param name="bValue">Boolean, our new nullable value</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setDefaultValue(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setDefaultValue(System.String)">
 	<summary>
  Method to set the default value
  </summary>
 	<param name="sStr">String, our new default value</param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setTable(Ludo.DTB.Ludo_DTB_Table@)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setTable(Ludo.DTB.Ludo_DTB_Table@)">
 	<summary>
  Method to set the Parent table
  </summary>
 	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our new parent table</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.setComment(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.setComment(System.String)">
 	<summary>
  Method to set the comment
  </summary>
 	<param name="sStr">String, our new comment</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.loadXML(System.Xml.XmlElement@)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.loadXML(System.Xml.XmlElement@)">
 	<summary>
  Method to load from the XML element
  </summary>
 	<param name="oNode">Xml.XmlElement, our xml element</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.saveXML(System.Xml.XmlElement@,System.Xml.XmlDocument@)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.saveXML(System.Xml.XmlElement@,System.Xml.XmlDocument@)">
 	<summary>
  Method to save from Parent node
  </summary>
@@ -2590,37 +3206,43 @@ Ludo
 	<param name="oXML">Xml.XmlDocument, our xml document</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.isPathRowExists(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.isPathColumnExists(System.String)">
 	<summary>
- Method to know if another row exists with the indicate path
+ Method to know if another Column exists with the indicate path
  </summary>
 	<param name="sPath">String, the path we want test</param>
 	<returns>Boolean, true if exists</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getLayout">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getLayout">
 	<summary>
  Method to obtain the layout to edit the column
  </summary>
 	<returns>LAY_LUDO_DTB_Column_editor, our editor</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.getAviableType">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getAviableType">
 	<summary>
  Method to get the aviable list of type in this column object
  </summary>
 	<returns>List(Of String), our list of aviable object</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.#ctor">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.getColumnType">
+	<summary>
+ Method to get the type of the column
+ </summary>
+	<returns>String, the type</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.#ctor">
 	<summary>
  default builder
  </summary>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Row.#ctor(System.Xml.XmlElement@)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Column.#ctor(System.Xml.XmlElement@)">
 	<summary>
  Builer with XML Node
  </summary>
 	<param name="oNode">Xml.XmlElement, node to build</param>
 	<remarks>This builder calls the method loadXML</remarks>
-</member><member name="T:Ludo.DTB.Ludo_DTB_Row">
+</member><member name="T:Ludo.DTB.Ludo_DTB_Column">
 	<summary>
  Class to describe a column in a DTB
  </summary>
@@ -2650,9 +3272,9 @@ Ludo
  Is view
  </summary>
 	<remarks></remarks>
-</member><member name="F:Ludo.DTB.Ludo_DTB_Table.lst_oRows">
+</member><member name="F:Ludo.DTB.Ludo_DTB_Table.lst_oColumns">
 	<summary>
- Our rows
+ Our Columns
  </summary>
 	<remarks></remarks>
 </member><member name="F:Ludo.DTB.Ludo_DTB_Table.sComment">
@@ -2684,9 +3306,9 @@ Ludo
  </summary>
 	<returns>Boolean, true if it's a view</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getNumberOfRows">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getNumberOfColumns">
 	<summary>
- Method to get the number of Rows !
+ Method to get the number of Columns !
  </summary>
 	<returns>Integer, to get the number of columns</returns>
 	<remarks></remarks>
@@ -2697,25 +3319,31 @@ Ludo
 	<param name="sStr">String, </param>
 	<returns>Integer, index of the column</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getRow(System.Int32)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getColumn(System.Int32)">
 	<summary>
  Method to obtain a column from an index
  </summary>
 	<param name="nIndex">Integer, index</param>
-	<returns>Ludo.DTB.Ludo_DTB_Row</returns>
+	<returns>Ludo.DTB.Ludo_DTB_Column</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getRow(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getColumn(System.String)">
 	<summary>
- Method to obtain a row from a name (his true name !)
+ Method to obtain a Column from a name (his true name !)
  </summary>
 	<param name="sStr">String, Our true Table name</param>
-	<returns>Ludo.DTB.Ludo_DTB_Row, our column</returns>
+	<returns>Ludo.DTB.Ludo_DTB_Column, our column</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getRows">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getColumns">
 	<summary>
  Method to obtain Columns
  </summary>
-	<returns>List(Of Ludo.DTB.Ludo_DTB_Row), list of the Columns</returns>
+	<returns>List(Of Ludo.DTB.Ludo_DTB_Column), list of the Columns</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getParentModule">
+	<summary>
+ Method to obtain the parent module
+ </summary>
+	<returns>Ludo.DTB.Ludo_DTB_Module, our module</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Table.getModuleName">
 	<summary>
@@ -2741,7 +3369,7 @@ Ludo
  </summary>
 	<returns>String, our comment</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getRowsPath">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getColumnsPath">
 	<summary>
  Method to get the list of path of the columns
  </summary>
@@ -2752,7 +3380,7 @@ Ludo
  Method to obtain a Column from a path
  </summary>
 	<param name="sPath">string, our path</param>
-	<returns>Ludo.DTB.Ludo_DTB_Row, our column or nothing</returns>
+	<returns>Ludo.DTB.Ludo_DTB_Column, our column or nothing</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Table.getAllPossiblePaths">
 	<summary>
@@ -2788,11 +3416,11 @@ Ludo
 	<param name="bValue">Boolean, our new value</param>
 	<returns>Boolean, our view</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Table.add(Ludo.DTB.Ludo_DTB_Row)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.add(Ludo.DTB.Ludo_DTB_Column)">
 	<summary>
  Method to add a column !
  </summary>
-	<param name="oRow">Ludo.DTB.Ludo_DTB_Row our column</param>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column our column</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Table.del(System.Int32)">
@@ -2809,9 +3437,9 @@ Ludo
 	<param name="sStr">String, the name of the column</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Table.clearRows">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.clearColumns">
 	<summary>
- Method to delete all rows
+ Method to delete all Columns
  </summary>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
@@ -2844,9 +3472,9 @@ Ludo
 	<param name="oXML">Xml.XmlDocument, our xml document to create element</param>
 	<returns>Boolean, true if node</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Table.isPathRowExists(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.isPathColumnExists(System.String)">
 	<summary>
- Method to know if another row exists with the indicate path
+ Method to know if another Column exists with the indicate path
  </summary>
 	<param name="sPath">String, path </param>
 	<returns>Boolean, true if the column exists</returns>
@@ -2863,6 +3491,12 @@ Ludo
  </summary>
 	<returns>Ludo.DTB.Ludo_DTB_Column, our identity column</returns>
 	<remarks>Identity can be Primary Key, our unique with foreign path</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Table.getTableType">
+	<summary>
+ Method to get our table type
+ </summary>
+	<returns>String, our type</returns>
+	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Table.#ctor">
 	<summary>
  Default Builder
@@ -2918,6 +3552,12 @@ Ludo
 	<summary>
  Our Table !
  </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Module.getParentSchema">
+	<summary>
+ Method to get the schema
+ </summary>
+	<returns>Ludo.DTB.Ludo_DTB_Schema, our schema</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Module.getId">
 	<summary>
@@ -2981,9 +3621,9 @@ Ludo
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Module.getTableIndex(System.String)">
 	<summary>
- Method to get an index from a name
+ Method to get an index from a true name table
  </summary>
-	<param name="sName">String, Our table name</param>
+	<param name="sName">String, Our table true name</param>
 	<returns>Integer, our table index</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Module.getTable(System.Int32)">
@@ -3023,7 +3663,7 @@ Ludo
  Method to obtain a Column from a path
  </summary>
 	<param name="sPath">string, our path</param>
-	<returns>Ludo.DTB.Ludo_DTB_Row, our column or nothing</returns>
+	<returns>Ludo.DTB.Ludo_DTB_Column, our column or nothing</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Module.setSchem(Ludo.DTB.Ludo_DTB_Schema@)">
 	<summary>
@@ -3140,9 +3780,9 @@ Ludo
 	<param name="PG_Tables">[OPTIONAL] ProgressBar, to show the progression</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_Module.isPathRowExists(System.String)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_Module.isPathColumnExists(System.String)">
 	<summary>
- to know if another row exists with the indicate path
+ to know if another Column exists with the indicate path
  </summary>
 	<param name="sPath">String, the path of the column </param>
 	<returns>Boolean, true if the path exists</returns>
@@ -3152,6 +3792,12 @@ Ludo
  Method to get the lay to edit the 
  </summary>
 	<returns>LAY_LUDO_DTB_Module_editor, our layout to edit the current module</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Module.getModuleType">
+	<summary>
+ Method to return the module type
+ </summary>
+	<returns>String, our type</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Module.#ctor">
 	<summary>
@@ -3171,12 +3817,193 @@ Ludo
  Class to describe a module
  </summary>
 	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Ludo_DTB_Schema.lst_oModule">
+	<summary>
+ Our list of module
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getModules">
+	<summary>
+ Method to get the list of Module
+ </summary>
+	<returns>List(Of Ludo.DTB.Ludo_DTB_Module), our list</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getNumberOfModule">
+	<summary>
+ Method to get the number of module
+ </summary>
+	<returns>integer, our number of module</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getModulesName">
+	<summary>
+ Method to get Module names
+ </summary>
+	<returns>List(Of String), our list of module names</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getModuleIndex(System.String)">
+	<summary>
+ Method to get the index of a module from name
+ </summary>
+	<param name="sName">string, our seeked module name</param>
+	<returns>integer, our position or lesser than zero</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getModule(System.Int32)">
+	<summary>
+ Method to get module by index
+ </summary>
+	<param name="nIndex">integer, our index</param>
+	<returns>Ludo.DTB.Ludo_DTB_Module, our module or null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getModule(System.String)">
+	<summary>
+ Method to get module by name
+ </summary>
+	<param name="sName">string, our module name</param>
+	<returns>Ludo.DTB.Ludo_DTB_Module, our module or null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getTable(System.String)">
+	<summary>
+ Method to get a Table from a Path
+ </summary>
+	<param name="sPath">string, our path</param>
+	<returns>Ludo.DTB.Ludo_DTB_Table</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getAllPossiblePaths">
+	<summary>
+ Method to obtain all possible paths
+ </summary>
+	<returns>List(Of string), our list of possible paths</returns>
+	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getColumnsFromPath(System.String)">
 	<summary>
  Method to obtain a Column from a path
  </summary>
 	<param name="sPath">string, our path</param>
-	<returns>Ludo.DTB.Ludo_DTB_Row, our column or nothing</returns>
+	<returns>Ludo.DTB.Ludo_DTB_Column, our column or nothing</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.addModule(Ludo.DTB.Ludo_DTB_Module@)">
+	<summary>
+ Method to add a Module
+ </summary>
+	<param name="oModule">Ludo.DTB.Ludo_DTB_Module, our module</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.delModule(System.Int32)">
+	<summary>
+ Method to delete a module from index
+ </summary>
+	<param name="nIndex">integer, our module index</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.delModule(System.String)">
+	<summary>
+ Method to delete a module from Name
+ </summary>
+	<param name="sName">string, our module name</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.clearModule">
+	<summary>
+ Method to clear all modules
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.import(System.String,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to import modules from filename
+ </summary>
+	<param name="sFilename">string, our file name</param>
+	<param name="PG_Modules">[Optional]System.Windows.Forms.ProgressBar, control to show the progression by modules</param>
+	<param name="LAB_Module">[Optional]System.Windows.Forms.Label, control to show the progression with a text text</param>
+	<param name="PG_Tables">[Optional]System.Windows.Forms.ProgressBar, control to show the progression in a module by Tables</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.import(System.IO.StreamReader@,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to import module from stream
+ </summary>
+	<param name="oStream">System.IO.StreamReader, our stream</param>
+	<param name="PG_Modules">[Optional]System.Windows.Forms.ProgressBar, control to show the progression by modules</param>
+	<param name="LAB_Module">[Optional]System.Windows.Forms.Label, control to show the progression with a text text</param>
+	<param name="PG_Tables">[Optional]System.Windows.Forms.ProgressBar, control to show the progression in a module by Tables</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.load(System.String,System.Boolean,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to load from filename
+ </summary>
+	<param name="sFilename">string, our file name</param>
+	<param name="bImport">boolean, import only</param>
+	<param name="PG_Modules">[Optional]System.Windows.Forms.ProgressBar, control to show the progression by modules</param>
+	<param name="LAB_Module">[Optional]System.Windows.Forms.Label, control to show the progression with a text text</param>
+	<param name="PG_Tables">[Optional]System.Windows.Forms.ProgressBar, control to show the progression in a module by Tables</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.load(System.IO.StreamReader@,System.Boolean,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to load from streamReader !
+ </summary>
+	<param name="oStream">System.IO.StreamReader, our stream</param>
+	<param name="bImport">boolean, import only</param>
+	<param name="PG_Modules">[Optional]System.Windows.Forms.ProgressBar, control to show the progression by modules</param>
+	<param name="LAB_Module">[Optional]System.Windows.Forms.Label, control to show the progression with a text text</param>
+	<param name="PG_Tables">[Optional]System.Windows.Forms.ProgressBar, control to show the progression in a module by Tables</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.save(System.String,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method save in the file name
+ </summary>
+	<param name="sFilename">string, our file name</param>
+	<param name="PG_Modules">[Optional]System.Windows.Forms.ProgressBar, control to show the progression by modules</param>
+	<param name="LAB_Module">[Optional]System.Windows.Forms.Label, control to show the progression with a text text</param>
+	<param name="PG_Tables">[Optional]System.Windows.Forms.ProgressBar, control to show the progression in a module by Tables</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.save(System.IO.StreamWriter@,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to save in the stream
+ </summary>
+	<param name="oStream">System.IO.StreamWriter, our stream</param>
+	<param name="PG_Modules">[Optional]System.Windows.Forms.ProgressBar, control to show the progression by modules</param>
+	<param name="LAB_Module">[Optional]System.Windows.Forms.Label, control to show the progression with a text text</param>
+	<param name="PG_Tables">[Optional]System.Windows.Forms.ProgressBar, control to show the progression in a module by Tables</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.isPathColumnExists(System.String)">
+	<summary>
+ Method to know if another column exists with the indicate path
+ </summary>
+	<param name="sPath">string, our path</param>
+	<returns>Boolean, if existes</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.getSchemaType">
+	<summary>
+ Method to get the type of the schema
+ </summary>
+	<returns>String, our schema type</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.#ctor">
+	<summary>
+ Our default builder
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.#ctor(System.String)">
+	<summary>
+ Our builder loading data from a file
+ </summary>
+	<param name="sFilename">string, our file name</param>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_Schema.#ctor(System.IO.StreamReader@)">
+	<summary>
+ Our builder loading from streamReader !
+ </summary>
+	<param name="oStream"></param>
+	<remarks></remarks>
+</member><member name="T:Ludo.DTB.Ludo_DTB_Schema">
+	<summary>
+ Class to describe a DTB Schema
+ </summary>
 	<remarks></remarks>
 </member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER">
 	<summary>
@@ -3207,11 +4034,11 @@ Ludo
 	<param name="sName">String, our name</param>
 	<returns>Boolean, True if done </returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL.GenerateRow(Ludo.DTB.Ludo_DTB_Row@,System.IO.StreamWriter@,System.Boolean)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL.GenerateColumn(Ludo.DTB.Ludo_DTB_Column@,System.IO.StreamWriter@,System.Boolean)">
 	<summary>
  Method to generate a Column
  </summary>
-	<param name="oRow">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
 	<param name="oStream">System.IO.StreamWriter, our file to write</param>
 	<param name="bNext">boolean, add the boolean flag or not</param>
 	<returns>Boolean, true if done</returns>
@@ -3258,21 +4085,21 @@ Ludo
  </summary>
 	<returns>string, the description</returns>
 	<remarks>It's a description</remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateRow(Ludo.DTB.Ludo_DTB_Row@,System.IO.StreamWriter@,System.Boolean)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateColumn(Ludo.DTB.Ludo_DTB_Column@,System.IO.StreamWriter@,System.Boolean)">
 	<summary>
  Method to generate a Column
  </summary>
-	<param name="oRow">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
 	<param name="oStream">System.IO.StreamWriter, our file to write</param>
 	<param name="bNext">boolean, add the boolean flag or not</param>
 	<returns>Boolean, true if done</returns>
 	<remarks>It's an overload</remarks>
-</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateCommentOnColumn(Ludo.DTB.Ludo_DTB_Table@,Ludo.DTB.Ludo_DTB_Row@)">
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateCommentOnColumn(Ludo.DTB.Ludo_DTB_Table@,Ludo.DTB.Ludo_DTB_Column@)">
 	<summary>
  Method to create a comment on column
  </summary>
 	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<param name="oRow">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
 	<returns>String, our comment</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateCommentOnTable(Ludo.DTB.Ludo_DTB_Table@)">
@@ -3382,6 +4209,18 @@ Ludo
  Method to throw the load file action
  </summary>
 	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Conception.saveSchema">
+	<summary>
+ Method to save the schema
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Conception.saveAsSchema">
+	<summary>
+ Method to save the schema as a new name
+ </summary>
+	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Conception.BTN_Files_Click(System.Object,System.EventArgs)">
 	<summary>
@@ -4168,7 +5007,7 @@ Ludo
 </summary>
 </member><member name="E:LAY_LUDO_DTB_Column_editor.eDelete">
 	<summary>
- Our event to delete the Colum
+ Our event to delete the Column
  </summary>
 	<remarks></remarks>
 </member><member name="F:LAY_LUDO_DTB_Column_editor.oColumn">
@@ -4198,25 +5037,19 @@ Ludo
  </summary>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:LAY_LUDO_DTB_Column_editor.init(Ludo.DTB.Ludo_DTB_Row@)">
+</member><member name="M:LAY_LUDO_DTB_Column_editor.init(Ludo.DTB.Ludo_DTB_Column@)">
 	<summary>
  Method to initialize the Layout
  </summary>
 	<param name="oCol">Ludo.DTB.Ludo_DTB_Row, our Column</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:LAY_LUDO_DTB_Column_editor.setColumn(Ludo.DTB.Ludo_DTB_Row@)">
+</member><member name="M:LAY_LUDO_DTB_Column_editor.setColumn(Ludo.DTB.Ludo_DTB_Column@)">
 	<summary>
  Method to set our column
  </summary>
 	<param name="oCol">Ludo.DTB.Ludo_DTB_Row, our Column</param>
 	<returns>Boolean, true if done</returns>
-	<remarks></remarks>
-</member><member name="M:LAY_LUDO_DTB_Column_editor.security">
-	<summary>
- Function to check if the element referrenced are allowed
- </summary>
-	<returns>True if correct</returns>
 	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Column_editor.getLudo_DTB_Column">
 	<summary>
@@ -4224,20 +5057,14 @@ Ludo
  </summary>
 	<returns>Ludo.DTB.Ludo_DTB_Row, our column element to proceed</returns>
 	<remarks></remarks>
-</member><member name="M:LAY_LUDO_DTB_Column_editor.saveToColumn">
-	<summary>
- Method to save the column
- </summary>
-	<returns>Boolean, True if done</returns>
-	<remarks></remarks>
-</member><member name="M:LAY_LUDO_DTB_Column_editor.viewToObj(Ludo.DTB.Ludo_DTB_Row)">
+</member><member name="M:LAY_LUDO_DTB_Column_editor.viewToObj(Ludo.DTB.Ludo_DTB_Column)">
 	<summary>
  Method to set the field element from the view to the Ludo.DTB.Ludo_DTB_Column
  </summary>
 	<param name="oCol">Ludo.DTB.Ludo_DTB_Row, our Column</param>
 	<returns>Boolean, True if done</returns>
 	<remarks></remarks>
-</member><member name="M:LAY_LUDO_DTB_Column_editor.objToView(Ludo.DTB.Ludo_DTB_Row)">
+</member><member name="M:LAY_LUDO_DTB_Column_editor.objToView(Ludo.DTB.Ludo_DTB_Column)">
 	<summary>
  Method to fill our view field with our column obj
  </summary>
@@ -4250,9 +5077,42 @@ Ludo
  </summary>
 	<returns>Boolean, True if done</returns>
 	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Column_editor.checkValidity">
+	<summary>
+ Method to check the constraint of a column in a table
+ </summary>
+	<returns>Boolean, true if ok</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Column_editor.saveColum">
+	<summary>
+ Method to save the column
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
 </member><member name="M:LAY_LUDO_DTB_Column_editor.BTN_Delete_Click(System.Object,System.EventArgs)">
 	<summary>
  Handler to manage the delete event
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks>This Handler calls the public overridable method raiseeDeleteEvent()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Column_editor.OPT_Check_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage manual check
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks>This Handler calls the public overridable method checkValidity()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Column_editor.OPT_Clone_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the clonage of this column
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">EventArg, the argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Column_editor.OPT_Delete_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the delete from the ContextMenu
  </summary>
 	<param name="sender">Object, the sender of the event</param>
 	<param name="e">EventArg, the argument</param>
@@ -4262,7 +5122,7 @@ Ludo
  Default builder
  </summary>
 	<remarks></remarks>
-</member><member name="M:LAY_LUDO_DTB_Column_editor.#ctor(Ludo.DTB.Ludo_DTB_Row@)">
+</member><member name="M:LAY_LUDO_DTB_Column_editor.#ctor(Ludo.DTB.Ludo_DTB_Column@)">
 	<summary>
  Builder with parameters
  </summary>
