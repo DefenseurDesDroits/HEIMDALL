@@ -176,6 +176,7 @@ h1{
 	min-width : 85%;
 	height: 100%;
 	position: absolute;
+	overflow-y: scroll;
 }
 
 #LAY_Content{

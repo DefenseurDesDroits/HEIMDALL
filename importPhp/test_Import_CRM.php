@@ -28,10 +28,41 @@ function createContactType($oCon){
 ///[FUNCTION][createCivilites]Function to create the civilities
 function createCivilites($oCon){
     //query
-    //$sQuery = "INSERT INTO xxx.contact_types(id_contact_types, nom) VALUES (?, ?);";
     $sQuery = "INSERT INTO xxx.civilites(nom, abr) VALUES ('Not Dev', ':o');\r\n";
-    $sQuery .= "INSERT INTO xxx.civilites(nom, abr) VALUES ('Monsieur', 'Mr');";
+    $sQuery .= "INSERT INTO xxx.civilites(nom, abr) VALUES ('Monsieur', 'Mr');\r\n";
     $sQuery .= "INSERT INTO xxx.civilites(nom, abr) VALUES ('Madame', 'Mme');";
+
+    //open
+    $oCon->open();
+
+    //do da job
+    $oCon->insertRequest($sQuery, null);
+
+    //close
+    $oCon->close();
+}
+
+///[FUNCTION][createCivilites]Function to create the accreditations
+function createAccreditations($oCon){
+    //query
+    $sQuery = "INSERT INTO xxx.accreditations(nom, niveau) VALUES ( 'Default', 0);\r\n";
+    $sQuery .= "INSERT INTO xxx.accreditations(nom, niveau) VALUES ( 'Level one', 0);\r\n";
+    $sQuery .= "INSERT INTO xxx.accreditations(nom, niveau) VALUES ( 'Plume', 0);";
+
+    //open
+    $oCon->open();
+
+    //do da job
+    $oCon->insertRequest($sQuery, null);
+
+    //close
+    $oCon->close();
+}
+
+///[FUNCTION][createCivilites]Function to create the organisations types
+function createOrganisationType($oCon){
+    //query
+    $sQuery = "INSERT INTO xxx.organisation_types(nom)  VALUES ('Default');\r\n";
 
     //open
     $oCon->open();
@@ -101,7 +132,7 @@ function createContacts($oXXX, $oCRM){
 
         echo json_encode($ary_[$nLine]);
         //create the queries
-        $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 0, current_timestamp);\r\n";
+        $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
         $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
         $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($ary_[$nLine]["prenom"]) .", ". Quotes($ary_[$nLine]["nom"]) .", 1, null, 1);\r\n";
 
@@ -144,6 +175,8 @@ function doTransfert(){
         //do  it
         createContactType($oXXX);
         createCivilites($oXXX);
+        createAccreditations($oXXX);
+        createOrganisationType($oXXX);
     }
 
     createContacts($oXXX, $oCRM);

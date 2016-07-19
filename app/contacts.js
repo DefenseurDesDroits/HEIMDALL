@@ -11,7 +11,7 @@ function contactDoQuery(){
     var oElement = document.getElementById("SAI_search_Query");
 
     //Ya ya ya !
-    alert("It's working bro ! or sis ... :)" );
+    //alert("It's working bro ! or sis ... :)" );//just stop it !!!
 
     //Our request object
     var oReq = new XMLHttpRequest();

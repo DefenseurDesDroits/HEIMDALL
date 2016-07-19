@@ -12,9 +12,11 @@ function searchQuery($Args){
     $sQuery = "";
     //our contact
     $oContact = new Contacts();
+    //result array 
+    $ary_ = array();
 
     //recreate the query
-    $sQuery = "SELECT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
+    $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
 
     //add the link between column s and foreign Key
     $sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
@@ -22,11 +24,20 @@ function searchQuery($Args){
     //argument ?
     if($Args["Method"] == "Like" && $Args["Value"] != ""){
         //add the LIKE condition
-        $sQuery .= " AND xxx.Contacts." . $Args["Name"] . " LIKE " . Quotes($Args["Value"] . "%");
+        //$sQuery .= " AND xxx.Contacts." . $Args["Name"] . " LIKE " . Quotes($Args["Value"] . "%");
+        $sQuery .= " AND (xxx.Contacts.nom ILIKE " . Quotes($Args["Value"] . "%");
+        $sQuery .= " OR xxx.Contacts.prenom ILIKE " . Quotes($Args["Value"] . "%") . " )";
     }
 
     //return something to the JS dude !!
-    echo $sQuery;
+    //echo $sQuery;
+
+    //get the array (so ugly way bro !!!)
+    $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", str_replace(".", "", str_replace( explode(", ", $oContact->getTable()) , "", $oContact->getColumns()))), null);
+
+    //push it to the view !!!
+    //echo $sQuery . "\r\n" . json_encode($ary_);
+    echo json_encode($ary_);
 
     //Happy End
     return True;
