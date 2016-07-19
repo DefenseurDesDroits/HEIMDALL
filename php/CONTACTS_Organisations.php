@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 02:38:35
+//Generated on : 2016-07-19 11:07:27
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -26,8 +26,8 @@ class Organisations extends Contacts{
 			//"nId_Organisations" => 0 //inherited from => Contacts.Contacts,
 			///[MEMBER][integer][nId_Organisation_Type]Clef étrangère sur la table Organistion_Types. Type de l'organisation
 			"nId_Organisation_Type" => 0,
-			///[MEMBER][string][sNom]Nom de l'organisation
-			"sNom" => ""
+			///[MEMBER][string][sAcronyme]New Rows Created with Ludo Library
+			"sAcronyme" => ""
 		);
 		//get the legacy
 		$this->members += $OrganisationsmemberSet;	}
@@ -49,11 +49,11 @@ class Organisations extends Contacts{
 		return $this->members["nId_Organisation_Type"];
 	}
 
-	///[METHOD][getNom]Method to get the Nom
-	///[RETURNS]The Nom
-	public function getNom(){
+	///[METHOD][getacronyme]Method to get the acronyme
+	///[RETURNS]The acronyme
+	public function getacronyme(){
 		//Return the member
-		return $this->members["sNom"];
+		return $this->members["sAcronyme"];
 	}
 
 
@@ -85,17 +85,17 @@ class Organisations extends Contacts{
 		return false;
 	}
 
-	///[METHOD][setNom]Method to set the Nom
-	///[PARAMETER][string][$sValue]Our new value for Nom
+	///[METHOD][setacronyme]Method to set the acronyme
+	///[PARAMETER][string][$sValue]Our new value for acronyme
 	///[RETURNS]Boolean true if done 
-	public function setNom($sValue){
+	public function setacronyme($sValue){
 		//security on null guy !!!
 		if($sValue == null)
 			return false;
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->members["sNom"] = substr($sValue, 0, 256);
+			 $this->members["sAcronyme"] = substr($sValue, 0, 16);
 			//Happy end
 			return true;
 		}
@@ -113,8 +113,8 @@ class Organisations extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Nom";
-		return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Nom";
+			return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.acronyme";
+		return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.acronyme";
 	}
 
 
@@ -124,7 +124,7 @@ class Organisations extends Contacts{
 		return array(
 			"nId_Organisations" => "Id_Organisations", 
 			"nId_Organisation_Type" => "Id_Organisation_Type", 
-			"sNom" => "Nom"
+			"sAcronyme" => "acronyme"
 );
 	}
 
@@ -221,7 +221,7 @@ class Organisations extends Contacts{
 		
 		$sValues .= Quotes( $this->getId_Organisations());
 		$sValues .= ", " . Quotes( $this->getId_Organisation_Type());
-		$sValues .= ", " . Quotes( $this->getNom());
+		$sValues .= ", " . Quotes( $this->getacronyme());
 		
 		//return the get value chain !
 		return $sValues;
@@ -247,7 +247,7 @@ class Organisations extends Contacts{
 		//build the set
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  $this->getTable() . "." . "Id_Organisation_Type  = " . Quotes($this->getId_Organisation_Type());
-		$Query .= ", " .  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  $this->getTable() . "." . "acronyme  = " . Quotes($this->getacronyme());
 		//build the condition
 		$Query .= "WHERE " . $this->getConditions();
 		//Return the query !!!

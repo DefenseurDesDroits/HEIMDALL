@@ -1,7 +1,7 @@
 -- #####################################
--- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.6
+-- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.7
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 01/07/2016 00:00:00
+-- Automatique generation made on 19/07/2016 00:00:00
 -- #####################################
 
 
@@ -159,7 +159,7 @@ COMMENT ON COLUMN xxx.Civilites.Abr IS 'Abréviation';
 CREATE TABLE IF NOT EXISTS xxx.Contacts (
 	-- Identité de la table contact, héritée de celle noeuds	Id_Contacts integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) ON DELETE CASCADE NOT NULL,
 	-- Prénom du contact	Prenom varchar(32)  NOT NULL,
-	-- Nom du contact	Nom varchar(32)  NOT NULL,
+	-- Nom du contact	Nom varchar(256)  NOT NULL,
 	-- Clef étrangère sur la table civilité pour noter le contact	Id_Civilites integer REFERENCES xxx.Civilites (Id_Civilites) ON DELETE CASCADE NULL,
 	-- Clef étrangère sur les titres pour noter le titre du contact	Id_Titres integer REFERENCES xxx.Titres (Id_Titres) ON DELETE CASCADE NULL,
 	-- Clef étrangère sur le contact pour obtenir le type du contact	Id_Contact_Types integer REFERENCES xxx.Contact_Types (Id_Contact_Types) ON DELETE CASCADE NOT NULL
@@ -200,7 +200,7 @@ CREATE TABLE IF NOT EXISTS xxx.Pays (
 	-- Code alpha du pays en 2 caractères	Alpha2 varchar(8)  NOT NULL,
 	-- Code alpha du pays en 3 caractères	Alpha3 varchar(8)  NOT NULL,
 	-- Nom du pays	Nom varchar(64) UNIQUE NOT NULL,
-	-- Liste des langues du pays	Id_Langues_Json json NOT NULL
+	-- Liste des langues du pays	Id_Langues_Json varchar   NOT NULL
 );
 COMMENT ON TABLE xxx.Pays IS 'Tables des pays';
 COMMENT ON COLUMN xxx.Pays.Id_Pays IS 'Identifiant de la table';
@@ -293,12 +293,12 @@ COMMENT ON COLUMN xxx.Organisation_Types.Nom IS 'Nom du type d''organisation';
 CREATE TABLE IF NOT EXISTS xxx.Organisations (
 	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE NOT NULL,
 	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer REFERENCES xxx.Organisation_Types (Id_Organisation_Types) ON DELETE CASCADE NOT NULL,
-	-- Nom de l'organisation	Nom varchar(256)  NOT NULL
+	-- New Rows Created with Ludo Library	Acronyme varchar(16)  NOT NULL
 );
 COMMENT ON TABLE xxx.Organisations IS 'Table des organisations. héritant de celle des contacts';
 COMMENT ON COLUMN xxx.Organisations.Id_Organisations IS 'Identifiant hérité de la table Contacts';
 COMMENT ON COLUMN xxx.Organisations.Id_Organisation_Type IS 'Clef étrangère sur la table Organistion_Types. Type de l''organisation';
-COMMENT ON COLUMN xxx.Organisations.Nom IS 'Nom de l''organisation';
+COMMENT ON COLUMN xxx.Organisations.acronyme IS 'New Rows Created with Ludo Library';
 
 
 -- ++++++++++++++++++++++++++++++++++++
@@ -310,7 +310,7 @@ COMMENT ON COLUMN xxx.Organisations.Nom IS 'Nom de l''organisation';
 CREATE TABLE IF NOT EXISTS xxx.Users (
 	-- Identifiant de la table hérité de la table contact	Id_Users integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
 	-- Pseudo de l'utilisateur	Pseudo varchar(32) UNIQUE NOT NULL,
-	-- Json des différantes accréditations	Id_Accreditations_Exp_Json json NOT NULL
+	-- Json des différantes accréditations	Id_Accreditations_Exp_Json varchar   NOT NULL
 );
 COMMENT ON TABLE xxx.Users IS 'Table des utilisateurs, héritant de celle des contacts';
 COMMENT ON COLUMN xxx.Users.Id_Users IS 'Identifiant de la table hérité de la table contact';
@@ -345,7 +345,7 @@ COMMENT ON COLUMN xxx.Notifications.Id_Destinataire IS 'Clef étrangère sur la 
 
 CREATE TABLE IF NOT EXISTS xxx.Groups (
 	-- Identifiant de la table Groups. Clef étrangère sur la table contact	Id_Groups integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
-	-- Json, liste des utilisateurs	UGrp_Json json NOT NULL,
+	-- Json, liste des utilisateurs	UGrp_Json varchar   NOT NULL,
 	-- Ce groupe héberge t'il des fichiers ?	Fichiers bit  NOT NULL
 );
 COMMENT ON TABLE xxx.Groups IS 'Table des groups héritant de la table Contacts';

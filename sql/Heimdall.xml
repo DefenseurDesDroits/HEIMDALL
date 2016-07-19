@@ -183,7 +183,7 @@
               </DefaultValue>
               <Comment>Prénom du contact</Comment>
             </Row>
-            <Row name="sNom" deploy_name="Nom" key="" foreign="" type="s32" isnullable="False">
+            <Row name="sNom" deploy_name="Nom" key="" foreign="" type="s256" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Nom du contact</Comment>
@@ -383,10 +383,10 @@
               </DefaultValue>
               <Comment>Clef étrangère sur la table Organistion_Types. Type de l'organisation</Comment>
             </Row>
-            <Row name="sNom" deploy_name="Nom" key="" foreign="" type="s256" isnullable="False">
+            <Row name="sAcronyme" deploy_name="Acronyme" key="" foreign="" type="s16" isnullable="False">
               <DefaultValue>
               </DefaultValue>
-              <Comment>Nom de l'organisation</Comment>
+              <Comment>New Rows Created with Ludo Library</Comment>
             </Row>
           </Rows>
           <Comment>Table des organisations. héritant de celle des contacts</Comment>

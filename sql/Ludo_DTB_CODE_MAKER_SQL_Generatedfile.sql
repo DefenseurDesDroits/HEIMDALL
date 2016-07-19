@@ -1,7 +1,7 @@
 -- #####################################
--- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.6
+-- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.7
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 01/07/2016 00:00:00
+-- Automatique generation made on 19/07/2016 00:00:00
 -- #####################################
 
 
@@ -159,7 +159,7 @@ COMMENT ON COLUMN xxx.Civilites.Abr IS 'Abréviation';
 CREATE TABLE IF NOT EXISTS xxx.Contacts (
 	-- Identité de la table contact, héritée de celle noeuds	Id_Contacts integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) ON DELETE CASCADE NOT NULL,
 	-- Prénom du contact	Prenom varchar(32)  NOT NULL,
-	-- Nom du contact	Nom varchar(32)  NOT NULL,
+	-- Nom du contact	Nom varchar(256)  NOT NULL,
 	-- Clef étrangère sur la table civilité pour noter le contact	Id_Civilites integer REFERENCES xxx.Civilites (Id_Civilites) ON DELETE CASCADE NULL,
 	-- Clef étrangère sur les titres pour noter le titre du contact	Id_Titres integer REFERENCES xxx.Titres (Id_Titres) ON DELETE CASCADE NULL,
 	-- Clef étrangère sur le contact pour obtenir le type du contact	Id_Contact_Types integer REFERENCES xxx.Contact_Types (Id_Contact_Types) ON DELETE CASCADE NOT NULL
@@ -293,12 +293,12 @@ COMMENT ON COLUMN xxx.Organisation_Types.Nom IS 'Nom du type d''organisation';
 CREATE TABLE IF NOT EXISTS xxx.Organisations (
 	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE NOT NULL,
 	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer REFERENCES xxx.Organisation_Types (Id_Organisation_Types) ON DELETE CASCADE NOT NULL,
-	-- Nom de l'organisation	Nom varchar(256)  NOT NULL
+	-- New Rows Created with Ludo Library	acronyme varchar(16)  NOT NULL
 );
 COMMENT ON TABLE xxx.Organisations IS 'Table des organisations. héritant de celle des contacts';
 COMMENT ON COLUMN xxx.Organisations.Id_Organisations IS 'Identifiant hérité de la table Contacts';
 COMMENT ON COLUMN xxx.Organisations.Id_Organisation_Type IS 'Clef étrangère sur la table Organistion_Types. Type de l''organisation';
-COMMENT ON COLUMN xxx.Organisations.Nom IS 'Nom de l''organisation';
+COMMENT ON COLUMN xxx.Organisations.acronyme IS 'New Rows Created with Ludo Library';
 
 
 -- ++++++++++++++++++++++++++++++++++++

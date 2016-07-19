@@ -11,6 +11,26 @@
         <Imports />
       </Info>
       <Tables>
+        <Table name="Accreditations" deploy_name="Accreditations" inherit="" isview="False">
+          <Rows>
+            <Row name="nId_Accreditations" deploy_name="Id_Accreditations" key="primary" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Identifiant de la table des accrédiations</Comment>
+            </Row>
+            <Row name="sNom" deploy_name="Nom" key="unique" foreign="" type="s32" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Nom de l'accrédiation</Comment>
+            </Row>
+            <Row name="nNiveau" deploy_name="Niveau" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Niveau de l'accréditation</Comment>
+            </Row>
+          </Rows>
+          <Comment>Table des accréditations sur les items</Comment>
+        </Table>
         <Table name="Item_Types" deploy_name="Item_Types" inherit="" isview="False">
           <Rows>
             <Row name="nId_item_types" deploy_name="Id_item_types" key="primary" foreign="" type="n" isnullable="False">
@@ -38,7 +58,7 @@
               </DefaultValue>
               <Comment>Groupe possedant l'item</Comment>
             </Row>
-            <Row name="nId_Accreditations_Item" deploy_name="Id_Accreditations_Item" key="foreign" foreign="Contacts.Accreditations.nId_Accreditations" type="n" isnullable="False">
+            <Row name="nId_Accreditations_Item" deploy_name="Id_Accreditations_Item" key="foreign" foreign="Contacts.Accreditations.nId_Accreditations" type="n" isnullable="True">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef étrangère sur le niveau d'accreditation</Comment>
@@ -163,7 +183,7 @@
               </DefaultValue>
               <Comment>Prénom du contact</Comment>
             </Row>
-            <Row name="sNom" deploy_name="Nom" key="" foreign="" type="s32" isnullable="False">
+            <Row name="sNom" deploy_name="Nom" key="" foreign="" type="s256" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Nom du contact</Comment>
@@ -336,26 +356,6 @@
           </Rows>
           <Comment>Table des adresses. Hérité de la classe item.</Comment>
         </Table>
-        <Table name="Accreditations" deploy_name="Accreditations" inherit="" isview="False">
-          <Rows>
-            <Row name="nId_Accreditations" deploy_name="Id_Accreditations" key="primary" foreign="" type="n" isnullable="False">
-              <DefaultValue>
-              </DefaultValue>
-              <Comment>Identifiant de la table des accrédiations</Comment>
-            </Row>
-            <Row name="sNom" deploy_name="Nom" key="unique" foreign="" type="s32" isnullable="False">
-              <DefaultValue>
-              </DefaultValue>
-              <Comment>Nom de l'accrédiation</Comment>
-            </Row>
-            <Row name="nNiveau" deploy_name="Niveau" key="" foreign="" type="n" isnullable="False">
-              <DefaultValue>
-              </DefaultValue>
-              <Comment>Niveau de l'accréditation</Comment>
-            </Row>
-          </Rows>
-          <Comment>Table des accréditations sur les items</Comment>
-        </Table>
         <Table name="Organisation_Types" deploy_name="Organisation_Types" inherit="" isview="False">
           <Rows>
             <Row name="nId_Organisation_Types" deploy_name="Id_Organisation_Types" key="primary" foreign="" type="n" isnullable="False">
@@ -383,10 +383,10 @@
               </DefaultValue>
               <Comment>Clef étrangère sur la table Organistion_Types. Type de l'organisation</Comment>
             </Row>
-            <Row name="sNom" deploy_name="Nom" key="" foreign="" type="s256" isnullable="False">
+            <Row name="sAcronyme" deploy_name="Acronyme" key="" foreign="" type="s16" isnullable="False">
               <DefaultValue>
               </DefaultValue>
-              <Comment>Nom de l'organisation</Comment>
+              <Comment>New Rows Created with Ludo Library</Comment>
             </Row>
           </Rows>
           <Comment>Table des organisations. héritant de celle des contacts</Comment>
