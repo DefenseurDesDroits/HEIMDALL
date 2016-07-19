@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 02:38:35
+//Generated on : 2016-07-19 05:26:31
 //Filename : Contacts_Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -118,13 +118,13 @@ class Groups extends Contacts{
 
 
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
-	///[RETURNS][array]array, our columns correspondancein an array 
+	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
 		return array(
-			"nId_Groups" => "Id_Groups", 
-			"jsonUGrp_Json" => "UGrp_Json", 
-			"bFichiers" => "Fichiers"
-);
+			"nId_Groups" => "xxx.Groups.Id_Groups", 
+			"jsonUGrp_Json" => "xxx.Groups.UGrp_Json", 
+			"bFichiers" => "xxx.Groups.Fichiers"
+) + parent::getCorrespondanceArray();
 	}
 
 
@@ -158,21 +158,21 @@ class Groups extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function loadFromJson($sJson, $bFromQuery = false){
 		//Our Json object
-		$jsonSet = json_decode($sJson);
+		$jsonSet = (array) json_decode($sJson);
 		//Our Corresponding set
 		$bindSet = $this->getCorrespondanceArray();
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
-				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
-				$this->members[$key] = $jsonSet[$bindSet[$key]];
+				$this->members[$key] = $jsonSet[$key];
 			};
 		}
 		//Return the job !
@@ -190,11 +190,11 @@ class Groups extends Contacts{
 		$ary_o = null;
 		
 		//open first
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//do the select request
-		$ary_o = $oConnection->selectRequest($sQuery, explode(", ", $this->getColumns()), $oAgent);
+		$ary_o = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", $this->getColumns()), $oAgent);
 		//Close now !!! It's not Jurassic Park here !!!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//now have we something ?
 		if(count($ary_o) <= 0)
@@ -271,11 +271,11 @@ class Groups extends Contacts{
 		
 		//Use the connection object in : "php/connection.php"
 		//open it
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//do the job;
-		$oConnection->deleteRequest($sQuery, $oAgent);
+		$GLOBALS["oConnection"]->deleteRequest($sQuery, $oAgent);
 		//don't be a douche : close it !!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
 		return true;
@@ -296,11 +296,11 @@ class Groups extends Contacts{
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//Do da Update/Insert ( the updateRequest and the insertRequest are basiclly the same ...)
-		$oConnection->updateRequest($sQuery, $oAgent);
+		$GLOBALS["oConnection"]->updateRequest($sQuery, $oAgent);
 		//Close it !!! For Goddess Sake !!!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
 		return $this->loadFromConnection($session, $url, $oAgent);

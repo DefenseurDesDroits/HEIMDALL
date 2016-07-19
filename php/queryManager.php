@@ -29,6 +29,11 @@ function searchQuery($Args){
         $sQuery .= " OR xxx.Contacts.prenom ILIKE " . Quotes($Args["Value"] . "%") . " )";
     }
 
+    /*$oContact->setId_Contacts(1);
+    $oContact->loadFromConnection(null);
+    echo $oContact->exportToJson();
+    return true;*/
+
     //return something to the JS dude !!
     //echo $sQuery;
 

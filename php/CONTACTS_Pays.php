@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-13 02:38:35
+//Generated on : 2016-07-19 05:26:31
 //Filename : Contacts_Pays.php
 //Description : Tables des pays
 
@@ -206,15 +206,15 @@ class Pays{
 
 
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
-	///[RETURNS][array]array, our columns correspondancein an array 
+	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
 		return array(
-			"nId_Pays" => "Id_Pays", 
-			"sCode" => "Code", 
-			"sAlpha2" => "Alpha2", 
-			"sAlpha3" => "Alpha3", 
-			"sNom" => "Nom", 
-			"jsonId_Langues_Json" => "Id_Langues_Json"
+			"nId_Pays" => "xxx.Pays.Id_Pays", 
+			"sCode" => "xxx.Pays.Code", 
+			"sAlpha2" => "xxx.Pays.Alpha2", 
+			"sAlpha3" => "xxx.Pays.Alpha3", 
+			"sNom" => "xxx.Pays.Nom", 
+			"jsonId_Langues_Json" => "xxx.Pays.Id_Langues_Json"
 );
 	}
 
@@ -249,21 +249,21 @@ class Pays{
 	///[RETURNS]boolean, true if done
 	public function loadFromJson($sJson, $bFromQuery = false){
 		//Our Json object
-		$jsonSet = json_decode($sJson);
+		$jsonSet = (array) json_decode($sJson);
 		//Our Corresponding set
 		$bindSet = $this->getCorrespondanceArray();
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
-				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
-				$this->members[$key] = $jsonSet[$bindSet[$key]];
+				$this->members[$key] = $jsonSet[$key];
 			};
 		}
 		//Return the job !
@@ -281,11 +281,11 @@ class Pays{
 		$ary_o = null;
 		
 		//open first
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//do the select request
-		$ary_o = $oConnection->selectRequest($sQuery, explode(", ", $this->getColumns()), $oAgent);
+		$ary_o = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", $this->getColumns()), $oAgent);
 		//Close now !!! It's not Jurassic Park here !!!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//now have we something ?
 		if(count($ary_o) <= 0)
@@ -367,11 +367,11 @@ class Pays{
 		
 		//Use the connection object in : "php/connection.php"
 		//open it
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//do the job;
-		$oConnection->deleteRequest($sQuery, $oAgent);
+		$GLOBALS["oConnection"]->deleteRequest($sQuery, $oAgent);
 		//don't be a douche : close it !!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
 		return true;
@@ -392,11 +392,11 @@ class Pays{
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//Do da Update/Insert ( the updateRequest and the insertRequest are basiclly the same ...)
-		$oConnection->updateRequest($sQuery, $oAgent);
+		$GLOBALS["oConnection"]->updateRequest($sQuery, $oAgent);
 		//Close it !!! For Goddess Sake !!!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
 		return $this->loadFromConnection($session, $url, $oAgent);

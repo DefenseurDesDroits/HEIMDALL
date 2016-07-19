@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-19 11:07:27
+//Generated on : 2016-07-19 05:26:31
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -26,7 +26,7 @@ class Organisations extends Contacts{
 			//"nId_Organisations" => 0 //inherited from => Contacts.Contacts,
 			///[MEMBER][integer][nId_Organisation_Type]Clef étrangère sur la table Organistion_Types. Type de l'organisation
 			"nId_Organisation_Type" => 0,
-			///[MEMBER][string][sAcronyme]New Rows Created with Ludo Library
+			///[MEMBER][string][sAcronyme]New Columns Created with Ludo Library
 			"sAcronyme" => ""
 		);
 		//get the legacy
@@ -38,7 +38,7 @@ class Organisations extends Contacts{
 	///[METHOD][getId_Organisations]Method to get the Id_Organisations
 	///[RETURNS]The Id_Organisations
 	public function getId_Organisations(){
-		//[ERROR]The column Contacts.Organisations.nId_Organisations has an inheritance : Contacts.Contacts WITHOUT any linked row !!!
+		//[ERROR]The column Contacts.Organisations.nId_Organisations has an inheritance : Contacts.Contacts WITHOUT any linked Column !!!
 		return $this->members["nId_Organisations"];
 	}
 
@@ -49,9 +49,9 @@ class Organisations extends Contacts{
 		return $this->members["nId_Organisation_Type"];
 	}
 
-	///[METHOD][getacronyme]Method to get the acronyme
-	///[RETURNS]The acronyme
-	public function getacronyme(){
+	///[METHOD][getAcronyme]Method to get the Acronyme
+	///[RETURNS]The Acronyme
+	public function getAcronyme(){
 		//Return the member
 		return $this->members["sAcronyme"];
 	}
@@ -85,10 +85,10 @@ class Organisations extends Contacts{
 		return false;
 	}
 
-	///[METHOD][setacronyme]Method to set the acronyme
-	///[PARAMETER][string][$sValue]Our new value for acronyme
+	///[METHOD][setAcronyme]Method to set the Acronyme
+	///[PARAMETER][string][$sValue]Our new value for Acronyme
 	///[RETURNS]Boolean true if done 
-	public function setacronyme($sValue){
+	public function setAcronyme($sValue){
 		//security on null guy !!!
 		if($sValue == null)
 			return false;
@@ -113,19 +113,19 @@ class Organisations extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.acronyme";
-		return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.acronyme";
+			return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Acronyme";
+		return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Acronyme";
 	}
 
 
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
-	///[RETURNS][array]array, our columns correspondancein an array 
+	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
 		return array(
-			"nId_Organisations" => "Id_Organisations", 
-			"nId_Organisation_Type" => "Id_Organisation_Type", 
-			"sAcronyme" => "acronyme"
-);
+			"nId_Organisations" => "xxx.Organisations.Id_Organisations", 
+			"nId_Organisation_Type" => "xxx.Organisations.Id_Organisation_Type", 
+			"sAcronyme" => "xxx.Organisations.Acronyme"
+) + parent::getCorrespondanceArray();
 	}
 
 
@@ -159,21 +159,21 @@ class Organisations extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function loadFromJson($sJson, $bFromQuery = false){
 		//Our Json object
-		$jsonSet = json_decode($sJson);
+		$jsonSet = (array) json_decode($sJson);
 		//Our Corresponding set
 		$bindSet = $this->getCorrespondanceArray();
 		//If we want add Prefixe.Table
 		if($bFromQuery){
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
-				$this->members[$key] = $jsonSet[$this->getTable() . $bindSet[$key]];
+				$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
-				$this->members[$key] = $jsonSet[$bindSet[$key]];
+				$this->members[$key] = $jsonSet[$key];
 			};
 		}
 		//Return the job !
@@ -191,11 +191,11 @@ class Organisations extends Contacts{
 		$ary_o = null;
 		
 		//open first
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//do the select request
-		$ary_o = $oConnection->selectRequest($sQuery, explode(", ", $this->getColumns()), $oAgent);
+		$ary_o = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", $this->getColumns()), $oAgent);
 		//Close now !!! It's not Jurassic Park here !!!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//now have we something ?
 		if(count($ary_o) <= 0)
@@ -221,7 +221,7 @@ class Organisations extends Contacts{
 		
 		$sValues .= Quotes( $this->getId_Organisations());
 		$sValues .= ", " . Quotes( $this->getId_Organisation_Type());
-		$sValues .= ", " . Quotes( $this->getacronyme());
+		$sValues .= ", " . Quotes( $this->getAcronyme());
 		
 		//return the get value chain !
 		return $sValues;
@@ -247,7 +247,7 @@ class Organisations extends Contacts{
 		//build the set
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  $this->getTable() . "." . "Id_Organisation_Type  = " . Quotes($this->getId_Organisation_Type());
-		$Query .= ", " .  $this->getTable() . "." . "acronyme  = " . Quotes($this->getacronyme());
+		$Query .= ", " .  $this->getTable() . "." . "Acronyme  = " . Quotes($this->getAcronyme());
 		//build the condition
 		$Query .= "WHERE " . $this->getConditions();
 		//Return the query !!!
@@ -272,11 +272,11 @@ class Organisations extends Contacts{
 		
 		//Use the connection object in : "php/connection.php"
 		//open it
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//do the job;
-		$oConnection->deleteRequest($sQuery, $oAgent);
+		$GLOBALS["oConnection"]->deleteRequest($sQuery, $oAgent);
 		//don't be a douche : close it !!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
 		return true;
@@ -297,11 +297,11 @@ class Organisations extends Contacts{
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
-		$oConnection->open();
+		$GLOBALS["oConnection"]->open();
 		//Do da Update/Insert ( the updateRequest and the insertRequest are basiclly the same ...)
-		$oConnection->updateRequest($sQuery, $oAgent);
+		$GLOBALS["oConnection"]->updateRequest($sQuery, $oAgent);
 		//Close it !!! For Goddess Sake !!!
-		$oConnection->close();
+		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
 		return $this->loadFromConnection($session, $url, $oAgent);
