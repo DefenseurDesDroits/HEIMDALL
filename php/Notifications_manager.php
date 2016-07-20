@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-19 05:26:31
+//Generated on : 2016-07-20 04:38:57
 //Filename : Notifications_manager.php
 //Description : Tables des notifications utilisateurs
 
@@ -61,13 +61,68 @@ function NotificationsdeleteFromID($nID){
 	return false;
 };
 
+///[FUNCTION][NotificationsgetAllInstance]Function to save the an object from it's Json expression
+///[RETURNS]array of element
+function NotificationsgetAllInstance(){
+	//Our object declaration
+	$oNotifications = new Notifications();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oNotifications->getColumns() . "\r\n" . "FROM " . $oNotifications->getTable() ;
+	//Link Condition
+	$sLinks = $oNotifications->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	/* Don't forget to override to use $oAgent !!! */
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oNotifications->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	/* So ... we got the array !!! !!! */
+	/* Create the result array !!! !!! */
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oNotifications = new Notifications();
+		//load the data
+		$oNotifications->loadFromJson(json_encode($ary_[$nLine]), true);
+		//add the data
+		$ary_Result[$nLine] = $oNotifications->exportToJson();
+		//Next
+		$nLine++;
+	}
+	
+	//Returns
+	return json_encode($ary_Result);
+};
+
 ///[FUNCTION][NotificationsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
 function NotificationsManager(){
 	//Our object's id declaration
 	$nID = $_POST["Id"];
 	//Our json
-	$sJson = $_POST["Data"];
+	if(array_key_exists("Data", $_POST))
+		$sJson = $_POST["Data"];
+	else
+		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
 	
@@ -80,6 +135,9 @@ function NotificationsManager(){
 			break;
 		case "DELETE" :
 			echo NotificationsdeleteFromID($nId);
+			break;
+		case "LIST" :
+			echo NotificationsgetAllInstance();
 			break;
 		default :
 			break;

@@ -3,6 +3,9 @@
 //put your include
 include_once("CONTACTS_Contacts.php");
 
+//define const 
+const QUERY_METHOD_LIKE = "Like";
+
 /// <reference path="CONTACTS_Contacts.php" />
 
 ///[FUNCTION][searchQuery]Function to search the contact
@@ -12,14 +15,22 @@ function searchQuery($Args){
     $sQuery = "";
     //our contact
     $oContact = new Contacts();
-    //result array 
+    //result query array 
     $ary_ = array();
+    //result array 
+    $ary_Obj = array();
+
+    //our count
+    $nCount = 0;
+    //our iterrator
+    $nLine = 0;
 
     //recreate the query
     $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
 
     //add the link between column s and foreign Key
-    $sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
+    //$sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
+    $sQuery .= "WHERE " . $oContact->getLinkConditions(true);
 
     //argument ?
     if($Args["Method"] == "Like" && $Args["Value"] != ""){
@@ -38,11 +49,26 @@ function searchQuery($Args){
     //echo $sQuery;
 
     //get the array (so ugly way bro !!!)
-    $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", str_replace(".", "", str_replace( explode(", ", $oContact->getTable()) , "", $oContact->getColumns()))), null);
+    $GLOBALS["oConnection"]->open();
+    //$ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", str_replace(".", "", str_replace( explode(", ", $oContact->getTable()) , "", $oContact->getColumns()))), null);
+    $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", $oContact->getColumns()), null);
+    $GLOBALS["oConnection"]->close();
+
+    //get the count
+    $nCount = count($ary_);
+    //start the loop
+    while($nLine < $nCount){
+
+        //do it
+        $oContact = new Contacts();
+        $oContact->loadFromJson(json_encode($ary_[$nLine]), true);
+        $ary_Obj[$nLine] = json_decode($oContact->exportToJson());
+        //Next
+        $nLine++;
+    }
 
     //push it to the view !!!
-    //echo $sQuery . "\r\n" . json_encode($ary_);
-    echo json_encode($ary_);
+    echo json_encode($ary_Obj);
 
     //Happy End
     return True;

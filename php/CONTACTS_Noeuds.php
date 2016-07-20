@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-19 05:26:31
+//Generated on : 2016-07-20 04:38:57
 //Filename : Contacts_Noeuds.php
 //Description : Table pour gérer les noeuds
 
@@ -111,10 +111,24 @@ class Noeuds extends Items{
 	}
 
 
+	///[METHOD][getLinkConditions]Method to get the conditions to link with parent table 
+	///[PRAMETER][boolean][$bAll]Parameter to obtain parents Link conditions
+	///[RETURNS][string]string, our conditions 
+	public function getLinkConditions($bAll = false){
+		//get the parent link condition
+		$sParentCondition = parent::getLinkConditions();
+		//test the parent condition
+		if($sParentCondition != "" && $bAll)
+			return $sParentCondition ." \r\nAND xxx.Items.Id_Items =  xxx.Noeuds.Id_Noeuds";
+		else
+			return " xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds";
+	}
+
+
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND xxx.Noeuds.Id_Noeuds = " . Quotes($this->getId_Noeuds());
+		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Noeuds.Id_Noeuds = " . Quotes($this->getId_Noeuds());
 	}
 
 
@@ -138,14 +152,16 @@ class Noeuds extends Items{
 		if($bFromQuery){
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
-				$this->members[$key] = $jsonSet[$bindSet[$key]];
+				if(array_key_exists($bindSet[$key], $jsonSet))
+					$this->members[$key] = $jsonSet[$bindSet[$key]];
 			};
 		}
 		else
 		{
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
-				$this->members[$key] = $jsonSet[$key];
+				if(array_key_exists($key, $jsonSet))
+					$this->members[$key] = $jsonSet[$key];
 			};
 		}
 		//Return the job !
