@@ -104,7 +104,7 @@ function Contact_TypesgetAllInstance(){
 		//load the data
 		$oContact_Types->loadFromJson(json_encode($ary_[$nLine]), true);
 		//add the data
-		$ary_Result[$nLine] = $oContact_Types->exportToJson();
+		$ary_Result[$nLine] = json_decode($oContact_Types->exportToJson());
 		//Next
 		$nLine++;
 	}

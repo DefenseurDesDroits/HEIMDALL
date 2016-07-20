@@ -71,13 +71,25 @@ function contactdiv(oContact, bPaire){
     var sType = "";
     //our name
     var sName = "";
+    //our type name 
+    var sTypeName = ""
     //our organisation
     var sOrga = "Orga/Type";
     //our function 
     var sFunction = "Fonction/APE";
 
+    //type position
+    var nPosition = 0;
+
     //fill sType
-    sType = oContact.getId_Contact_Types();
+    nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Contact_Types, "nId_Contact_Types", oContact.getId_Contact_Types());
+    if(nPosition != POTOURS_FIND_NOTFOUND){
+        //to load the image
+        sTypeName = Heimdall.members.products.contacts.Contact_Types[nPosition].getNom();
+        sType = "<img src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\"/>";
+    }
+    else
+        sType = "Type not found (aryL :" + Heimdall.members.products.contacts.Contact_Types.length + ")";
 
     //the name
     if(oContact.getPrenom() == "")
