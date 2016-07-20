@@ -6,6 +6,17 @@
 
 /// <reference path="contacts.js" />
 
+///[Class][Heimdall]Our Heimdall global object
+var Heimdall = {
+    flags :  {
+        waitData : true
+    },
+    members : {
+        products : {}
+    },
+    methods : {}
+};
+
 ///[FUNCTION][init]Function to init all the products
 function init(){
 
