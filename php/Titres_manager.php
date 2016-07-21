@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Titres_manager.php
 //Description : Tables des titres des contacts
 
@@ -102,9 +102,9 @@ function TitresgetAllInstance(){
 		//create a new instance
 		$oTitres = new Titres();
 		//load the data
-		$oTitres->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oTitres->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oTitres->exportToJson();
+		$ary_Result[$nLine] = $oTitres->exportToArray();
 		//Next
 		$nLine++;
 	}

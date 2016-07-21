@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Users_manager.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -102,9 +102,9 @@ function UsersgetAllInstance(){
 		//create a new instance
 		$oUsers = new Users();
 		//load the data
-		$oUsers->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oUsers->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oUsers->exportToJson();
+		$ary_Result[$nLine] = $oUsers->exportToArray();
 		//Next
 		$nLine++;
 	}

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Contact_Types_manager.php
 //Description : Table des types de contact
 
@@ -102,9 +102,9 @@ function Contact_TypesgetAllInstance(){
 		//create a new instance
 		$oContact_Types = new Contact_Types();
 		//load the data
-		$oContact_Types->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oContact_Types->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = json_decode($oContact_Types->exportToJson());
+		$ary_Result[$nLine] = $oContact_Types->exportToArray();
 		//Next
 		$nLine++;
 	}

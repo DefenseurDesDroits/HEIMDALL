@@ -63,6 +63,49 @@ function loadStaticsContactsData(){
     return true;
 }
 
+function contactDivHeader(){
+    //our code
+    var sCode = "";
+    //our type
+    var sType = "";
+    //our name
+    var sName = "Nom";
+    //our type name 
+    var sTypeName = "contact_types"
+    //our organisation
+    var sOrga = "Orga/Type";
+    //our function 
+    var sFunction = "Fonction/APE";
+
+    //type position
+    var nPosition = 0;
+
+    //fill sType
+    sType = "<img src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\"/>";
+
+    //master div
+    sCode += "<div class=\"inlineContact heim_Block impaire\">";
+
+    sCode += "\t" + "<div class=\"inlineContact_Contact heim_Inline_Block\">";
+
+    sCode += "\t" + "\t" + "<div class=\"inlineContact_Contact_Type heim_Inline_Block\">" + sType + "</div>";
+    sCode += "\t" + "\t" + "<div class=\"inlineContact_Contact_Name heim_Inline_Block\">" + sName+ "</div>";
+
+    sCode += "\t" + "</div>";
+
+    sCode += "\t" + "<div class=\"inlineContact_Organisation heim_Inline_Block\">";
+
+    sCode += "\t" + "\t" + "<div class=\"inlineContact_Organisation_Organisation heim_Inline_Block\">" + sOrga + "</div>";
+    sCode += "\t" + "\t" + "<div class=\"inlineContact_Organisation_Fonction heim_Inline_Block\">" + sFunction + "</div>";
+
+    sCode += "\t" + "</div>";
+
+    sCode += "</div>";
+
+    //return the code
+    return sCode;
+}
+
 function contactdiv(oContact, bPaire){
 
     //our code
@@ -98,7 +141,10 @@ function contactdiv(oContact, bPaire){
         sName = oContact.getPrenom() + " " + oContact.getNom();
 
     //master div
-    sCode += "<div class=\"inlineContact heim_Block\">";
+    if(bPaire)
+        sCode += "<div class=\"inlineContact heim_Block paire\">";
+    else
+        sCode += "<div class=\"inlineContact heim_Block impaire\">";
 
     sCode += "\t" + "<div class=\"inlineContact_Contact heim_Inline_Block\">";
 
@@ -153,7 +199,7 @@ function contactDoQuery(){
             //get the count 
             nCount = ary_Json.length;
             //reset
-            oElement.innerHTML = "";
+            oElement.innerHTML = contactDivHeader();
             //to the loop machine
             while(nLine < nCount){
 
@@ -161,14 +207,18 @@ function contactDoQuery(){
                 oContact = new Contacts();
                 oContact.loadFromJson(JSON.stringify(ary_Json[nLine]));
                 //add it!!!
-                oElement.innerHTML += contactdiv(oContact, false); 
-
+                //console.log((nLine % 2 == 0));
+                oElement.innerHTML += contactdiv(oContact, (nLine % 2 == 0)); 
                 //next
                 nLine++;
             }
 
         }
     };
+
+    //informe
+    document.getElementById("PNL_List").innerHTML = "Préparation de la requête en cours";
+
     //prepare the query*********************
     //check the open
     oReq.open("POST", "php/queryManager.php", true);

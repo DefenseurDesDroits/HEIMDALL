@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Item_Types_manager.php
 //Description : Table des types d'items
 
@@ -102,9 +102,9 @@ function Item_TypesgetAllInstance(){
 		//create a new instance
 		$oItem_Types = new Item_Types();
 		//load the data
-		$oItem_Types->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oItem_Types->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oItem_Types->exportToJson();
+		$ary_Result[$nLine] = $oItem_Types->exportToArray();
 		//Next
 		$nLine++;
 	}

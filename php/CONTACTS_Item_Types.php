@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Contacts_Item_Types.php
 //Description : Table des types d'items
 
@@ -86,7 +86,7 @@ class Item_Types{
 
 
 	///[SECTION][WORKSHOP]################################################
-	///[REMARK]this the section we custumize
+	///[REMARK]this is the section we custumize
 
 	///[METHOD][getColumns]Method to get the list of the column in a string 
 	///[PARAMETER][boolean][$bId = true]boolean, write the column Id (primary key) or not? 
@@ -140,6 +140,36 @@ class Item_Types{
 	}
 
 
+	///[METHOD][loadFromArray]Method to set the object fields from an array
+	///[PARAMETER][string][$ary_]Our array with the correct fields
+	///[PARAMETER][boolean][$bFromQuery]Our boolean to know if corresponding array is usefull
+	///[RETURNS]boolean, true if done
+	public function loadFromArray($ary_, $bFromQuery = false){
+		//Our Corresponding set
+		$bindSet = array();
+		//If we want add Prefixe.Table
+		if($bFromQuery){
+			//get Corresponding set
+			$bindSet = $this->getCorrespondanceArray();
+			//Start a beautifull loop
+			foreach($this->members as $key => $value){
+				if(array_key_exists($bindSet[$key], $ary_))
+					$this->members[$key] = $ary_[$bindSet[$key]];
+			};
+		}
+		else
+		{
+			//Start a beautifull loop
+			foreach($this->members as $key => $value){
+				if(array_key_exists($key, $ary_))
+					$this->members[$key] = $ary_[$key];
+			};
+		}
+		//Return the job !
+		return true;
+	}
+
+
 	///[METHOD][loadFromJson]Method to set the object fields from a json
 	///[PARAMETER][string][$sJson]Our string with Json encoding
 	///[PARAMETER][boolean][$bFromQuery]Our boolean 
@@ -147,26 +177,8 @@ class Item_Types{
 	public function loadFromJson($sJson, $bFromQuery = false){
 		//Our Json object
 		$jsonSet = (array) json_decode($sJson);
-		//Our Corresponding set
-		$bindSet = $this->getCorrespondanceArray();
-		//If we want add Prefixe.Table
-		if($bFromQuery){
-			//Start a beautifull loop
-			foreach($this->members as $key => $value){
-				if(array_key_exists($bindSet[$key], $jsonSet))
-					$this->members[$key] = $jsonSet[$bindSet[$key]];
-			};
-		}
-		else
-		{
-			//Start a beautifull loop
-			foreach($this->members as $key => $value){
-				if(array_key_exists($key, $jsonSet))
-					$this->members[$key] = $jsonSet[$key];
-			};
-		}
 		//Return the job !
-		return true;
+		return $this->loadFromArray($jsonSet, $bFromQuery);
 	}
 
 
@@ -190,7 +202,17 @@ class Item_Types{
 		if(count($ary_o) <= 0)
 			return false;
 		//Return the job !
-		return $this->loadFromJson( json_encode($ary_o[0]), true);
+		return $this->loadFromArray($ary_o[0], true);
+	}
+
+
+	///[METHOD][exportToArray]Method to export as an array the member value
+	///[RETURNS]array, our array of value
+	public function exportToArray(){
+		//our copy
+		$ary_ = $this->members;
+		//Return the copy !
+		return $ary_;
 	}
 
 

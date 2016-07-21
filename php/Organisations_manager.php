@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Organisations_manager.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -102,9 +102,9 @@ function OrganisationsgetAllInstance(){
 		//create a new instance
 		$oOrganisations = new Organisations();
 		//load the data
-		$oOrganisations->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oOrganisations->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oOrganisations->exportToJson();
+		$ary_Result[$nLine] = $oOrganisations->exportToArray();
 		//Next
 		$nLine++;
 	}

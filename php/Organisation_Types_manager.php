@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Organisation_Types_manager.php
 //Description : Tables des différants type d'organisations possibles
 
@@ -102,9 +102,9 @@ function Organisation_TypesgetAllInstance(){
 		//create a new instance
 		$oOrganisation_Types = new Organisation_Types();
 		//load the data
-		$oOrganisation_Types->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oOrganisation_Types->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oOrganisation_Types->exportToJson();
+		$ary_Result[$nLine] = $oOrganisation_Types->exportToArray();
 		//Next
 		$nLine++;
 	}

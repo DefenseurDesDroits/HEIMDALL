@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Groups_manager.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -102,9 +102,9 @@ function GroupsgetAllInstance(){
 		//create a new instance
 		$oGroups = new Groups();
 		//load the data
-		$oGroups->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oGroups->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oGroups->exportToJson();
+		$ary_Result[$nLine] = $oGroups->exportToArray();
 		//Next
 		$nLine++;
 	}

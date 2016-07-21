@@ -61,8 +61,8 @@ function searchQuery($Args){
 
         //do it
         $oContact = new Contacts();
-        $oContact->loadFromJson(json_encode($ary_[$nLine]), true);
-        $ary_Obj[$nLine] = json_decode($oContact->exportToJson());
+        $oContact->loadFromArray($ary_[$nLine], true);
+        $ary_Obj[$nLine] = $oContact->exportToArray();
         //Next
         $nLine++;
     }

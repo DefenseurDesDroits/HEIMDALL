@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Noeuds_manager.php
 //Description : Table pour gérer les noeuds
 
@@ -102,9 +102,9 @@ function NoeudsgetAllInstance(){
 		//create a new instance
 		$oNoeuds = new Noeuds();
 		//load the data
-		$oNoeuds->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oNoeuds->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oNoeuds->exportToJson();
+		$ary_Result[$nLine] = $oNoeuds->exportToArray();
 		//Next
 		$nLine++;
 	}

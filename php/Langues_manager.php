@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Langues_manager.php
 //Description : Tables des langues
 
@@ -102,9 +102,9 @@ function LanguesgetAllInstance(){
 		//create a new instance
 		$oLangues = new Langues();
 		//load the data
-		$oLangues->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oLangues->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oLangues->exportToJson();
+		$ary_Result[$nLine] = $oLangues->exportToArray();
 		//Next
 		$nLine++;
 	}

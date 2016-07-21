@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Notifications_manager.php
 //Description : Tables des notifications utilisateurs
 
@@ -102,9 +102,9 @@ function NotificationsgetAllInstance(){
 		//create a new instance
 		$oNotifications = new Notifications();
 		//load the data
-		$oNotifications->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oNotifications->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oNotifications->exportToJson();
+		$ary_Result[$nLine] = $oNotifications->exportToArray();
 		//Next
 		$nLine++;
 	}

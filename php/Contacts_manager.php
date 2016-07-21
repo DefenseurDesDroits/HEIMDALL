@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Contacts_manager.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
@@ -102,9 +102,9 @@ function ContactsgetAllInstance(){
 		//create a new instance
 		$oContacts = new Contacts();
 		//load the data
-		$oContacts->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oContacts->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oContacts->exportToJson();
+		$ary_Result[$nLine] = $oContacts->exportToArray();
 		//Next
 		$nLine++;
 	}

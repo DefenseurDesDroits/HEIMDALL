@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Items_manager.php
 //Description : Table de tous les items avec des droits
 
@@ -102,9 +102,9 @@ function ItemsgetAllInstance(){
 		//create a new instance
 		$oItems = new Items();
 		//load the data
-		$oItems->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oItems->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oItems->exportToJson();
+		$ary_Result[$nLine] = $oItems->exportToArray();
 		//Next
 		$nLine++;
 	}

@@ -95,7 +95,28 @@ h1{
 	font-size: 2.75em;
 }
 
+.inlineContact{
+	border-width: 2;
+	border-color : #3498DB;
+}
 
+.inlineContact_Contact{
+	width : 50%;
+}
+
+.inlineContact_Organisation{
+	width : 40%;
+}
+
+.paire{
+	background-color: #3498DB;
+	color : #ECF0F1;
+}
+
+.impaire{
+	background-color: #ECF0F1;
+	color : #3498DB;
+}
 
 /*ITEMS******************************/
 

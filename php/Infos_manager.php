@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Infos_manager.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -102,9 +102,9 @@ function InfosgetAllInstance(){
 		//create a new instance
 		$oInfos = new Infos();
 		//load the data
-		$oInfos->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oInfos->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oInfos->exportToJson();
+		$ary_Result[$nLine] = $oInfos->exportToArray();
 		//Next
 		$nLine++;
 	}

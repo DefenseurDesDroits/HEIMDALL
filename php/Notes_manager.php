@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Notes_manager.php
 //Description : Table des notes sur les items
 
@@ -102,9 +102,9 @@ function NotesgetAllInstance(){
 		//create a new instance
 		$oNotes = new Notes();
 		//load the data
-		$oNotes->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oNotes->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oNotes->exportToJson();
+		$ary_Result[$nLine] = $oNotes->exportToArray();
 		//Next
 		$nLine++;
 	}

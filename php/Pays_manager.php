@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Pays_manager.php
 //Description : Tables des pays
 
@@ -102,9 +102,9 @@ function PaysgetAllInstance(){
 		//create a new instance
 		$oPays = new Pays();
 		//load the data
-		$oPays->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oPays->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oPays->exportToJson();
+		$ary_Result[$nLine] = $oPays->exportToArray();
 		//Next
 		$nLine++;
 	}

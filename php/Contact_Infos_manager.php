@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Contact_Infos_manager.php
 //Description : Table des informations liées au contact
 
@@ -102,9 +102,9 @@ function Contact_InfosgetAllInstance(){
 		//create a new instance
 		$oContact_Infos = new Contact_Infos();
 		//load the data
-		$oContact_Infos->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oContact_Infos->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oContact_Infos->exportToJson();
+		$ary_Result[$nLine] = $oContact_Infos->exportToArray();
 		//Next
 		$nLine++;
 	}

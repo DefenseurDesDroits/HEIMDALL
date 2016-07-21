@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-20 04:38:57
+//Generated on : 2016-07-21 10:11:52
 //Filename : Civilites_manager.php
 //Description : Table des civilités des contacts
 
@@ -102,9 +102,9 @@ function CivilitesgetAllInstance(){
 		//create a new instance
 		$oCivilites = new Civilites();
 		//load the data
-		$oCivilites->loadFromJson(json_encode($ary_[$nLine]), true);
+		$oCivilites->loadFromArray($ary_[$nLine], true);
 		//add the data
-		$ary_Result[$nLine] = $oCivilites->exportToJson();
+		$ary_Result[$nLine] = $oCivilites->exportToArray();
 		//Next
 		$nLine++;
 	}
