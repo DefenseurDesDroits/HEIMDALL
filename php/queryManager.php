@@ -8,6 +8,46 @@ const QUERY_METHOD_LIKE = "Like";
 
 /// <reference path="CONTACTS_Contacts.php" />
 
+function createCondition($ary_Column, $sOperator, $sStr, $ary_CorrespondanceSet = null){
+
+    //our code 
+    $sCode = "";
+
+    //our count
+    $nCount = 0;
+    //our iterrator
+    $nLine = 0;
+
+    //no correspondance, easyr way
+    if($ary_CorrespondanceSet == null){
+        $nCount = count($ary_Column);
+        while ($nLine < $nCount) {
+            if($sCode != "")
+                $sCode .= " OR ";
+            $sCode .= $ary_Column[$nLine] . " " . $sOperator . " " . Quotes($sStr);
+            //next
+            $nLine++;
+        }
+    }
+    else{
+        $nCount = count($ary_Column);
+        while ($nLine < $nCount) {
+            //check the existance of the key
+            if(array_key_exists($ary_Column[$nLine], $ary_CorrespondanceSet)){
+                if($sCode != "")
+                    $sCode .= " OR ";
+                $sCode .= $ary_CorrespondanceSet[$ary_Column[$nLine]] . " " . $sOperator . " " . Quotes($sStr);
+            }
+            //next
+            $nLine++;
+        }
+    }
+
+    
+
+    return "(" . $sCode . ")";
+}
+
 ///[FUNCTION][searchQuery]Function to search the contact
 function searchQuery($Args){
 
@@ -19,11 +59,21 @@ function searchQuery($Args){
     $ary_ = array();
     //result array 
     $ary_Obj = array();
+    //one arg
+    $ary_Arg = array();
+
+    //Position dude
+    $nPosition = 0;
+    //the method dude
+    $sMethod = "";
 
     //our count
     $nCount = 0;
     //our iterrator
     $nLine = 0;
+
+    //coreespondance set 
+    $ary_Corres = $oContact->getCorrespondanceArray();
 
     //recreate the query
     $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
@@ -32,14 +82,49 @@ function searchQuery($Args){
     //$sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
     $sQuery .= "WHERE " . $oContact->getLinkConditions(true);
 
-    //argument ?
-    if($Args["Method"] == "Like" && $Args["Value"] != ""){
-        //add the LIKE condition
-        //$sQuery .= " AND xxx.Contacts." . $Args["Name"] . " LIKE " . Quotes($Args["Value"] . "%");
-        $sQuery .= " AND (xxx.Contacts.nom ILIKE " . Quotes($Args["Value"] . "%");
-        $sQuery .= " OR xxx.Contacts.prenom ILIKE " . Quotes($Args["Value"] . "%") . " )";
-    }
+    //get the count
+    $nCount = count($Args);
+    //reinit the iterrator
+    $nLine = 0;
+    //loop
+    while($nLine < $nCount){
+        //do job !!!
+        $ary_Arg = (array) $Args[$nLine];
+        //don't waste your time if nothing
+        if($ary_Arg["Value"] != ""){
 
+            //get the method
+            $sMethod = $ary_Arg["Method"];
+            //identify the Method
+            $nPosition = strpos($sMethod, "COND_");
+            if($nPosition === false)
+                $nPosition = 0;
+            else{
+                //get the sub method
+                $sMethod = str_replace("COND_", "", $sMethod);
+                //Select dude
+                switch ($sMethod) {
+                    case 'LIKE_SW'://Starts with !!! (and not Star Wars you baka !!!)
+                        $sQuery .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", $ary_Arg["Value"] . "%", $ary_Corres );
+                        break;
+                    case 'LIKE_EW'://Ends with !!!
+                        $sQuery .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", "%" . $ary_Arg["Value"], $ary_Corres );
+                        break;
+                    case 'LIKE_C'://Contains !!!
+                        $sQuery .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", "%" . $ary_Arg["Value"] . "%", $ary_Corres );
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+
+        }
+        
+        //next
+        $nLine++;
+    }
+    
     /*$oContact->setId_Contacts(1);
     $oContact->loadFromConnection(null);
     echo $oContact->exportToJson();
@@ -56,6 +141,8 @@ function searchQuery($Args){
 
     //get the count
     $nCount = count($ary_);
+    //reinit the iterrator
+    $nLine = 0;
     //start the loop
     while($nLine < $nCount){
 

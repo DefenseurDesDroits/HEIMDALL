@@ -99,6 +99,9 @@ h1{
 	border-width: 2;
 	border-color : #3498DB;
 }
+.inlineContact:hover{
+	cursor : pointer;
+}
 
 .inlineContact_Contact{
 	width : 50%;
@@ -106,6 +109,10 @@ h1{
 
 .inlineContact_Organisation{
 	width : 40%;
+}
+
+.inlineContact_Organisation_Organisation{
+	width : 50%;
 }
 
 .paire{
