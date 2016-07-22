@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-21 10:11:52
+//Generated on : 2016-07-22 02:19:04
 //Filename : Contacts_Contacts.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
 
 //include to dtb connection
-include "Contacts_Noeuds.php";
+include "CONTACTS_Noeuds.php";
 
 ///[CLASS][Contacts]Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 ///[AUTHOR]Ludo

@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-21 10:11:52
+//Generated on : 2016-07-22 02:19:04
 //Filename : Pays_manager.php
 //Description : Tables des pays
 
 
 //include to dtb connection
-include "Contacts_Pays.php";
+include "CONTACTS_Pays.php";
 
 ///[FUNCTION][PaysgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object

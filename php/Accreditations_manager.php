@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-21 10:11:52
+//Generated on : 2016-07-22 02:19:04
 //Filename : Accreditations_manager.php
 //Description : Table des accréditations sur les items
 
 
 //include to dtb connection
-include "Contacts_Accreditations.php";
+include "CONTACTS_Accreditations.php";
 
 ///[FUNCTION][AccreditationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object

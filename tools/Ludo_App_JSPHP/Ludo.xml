@@ -2980,10 +2980,330 @@ Ludo
  Layout to edit an attribut from a XML Element in a XML File
  </summary>
 	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_DATA_TYPE_Boolean">
+	<summary>
+ Constant to note the data type : boolean
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_DATA_TYPE_Integer">
+	<summary>
+ Constant to note the data type : integer
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_DATA_TYPE_Float">
+	<summary>
+ Constant to note the data type : float
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_DATA_TYPE_Double">
+	<summary>
+ Constant to note the data type : double
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_DATA_TYPE_DateTime">
+	<summary>
+ Constant to note the data type : datetime
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_DATA_TYPE_Long">
+	<summary>
+ Constant to note the data type : long
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_DATA_TYPE_String">
+	<summary>
+ Constant to note the data type : string
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_DATA_TYPE_Pointer">
+	<summary>
+ Constant to note the data type : pointer
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_KEY_TYPE_None">
+	<summary>
+ Constant to note the key type : none
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_KEY_TYPE_Primary">
+	<summary>
+ Constant to note the key type : primary (the primary key !)
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_KEY_TYPE_Unique">
+	<summary>
+ Constant to note the key type : unique
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_KEY_TYPE_Other">
+	<summary>
+ Constant to note the key type : other (not define !)
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_KEY_TYPE_Foreign">
+	<summary>
+ Constant to note the key type : froeign (the foreign key !!!)
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_ROOT">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the root node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_MODULES">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the modules node container name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_MODULE">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the module node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_INFO">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the info node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_NAME">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the name node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_AUTHOR">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the author node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_DT">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the la modif node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_COMMENT">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the comment node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_IMPORTS">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the imports node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_IMPORT">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : one import node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_TABLES">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the tables container node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_TABLE">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : a table
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_COLUMNS">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : the columns container node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_COLUMN">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : a column node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_TAG_DEFAULTVALUE">
+	<summary>
+ Constant to obtain the Tag in the schema xml file corresponding to : default value node name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_ID">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : the identity
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_VERSION">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : the version
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_NAME">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : the name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_DEP_NAME">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : the deployment name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_INHERIT">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : the inherit path
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_ISVIEW">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : know if the table is a view only
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_KEY">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : the key type
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_FOREIGN">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : the foreign key option
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_TYPE">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : the type
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_XML_ATT_NULLABLE">
+	<summary>
+ Constant to obtain the Attribut in the schema xml file corresponding to : learn if the Column is nullable or not !
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_C">
+	<summary>
+ Constant to obtain the code of the programming langage : C
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_CPP">
+	<summary>
+ Constant to obtain the code of the programming langage : C++
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_ASM">
+	<summary>
+ Constant to obtain the code of the programming langage : Assembler
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_VB">
+	<summary>
+ Constant to obtain the code of the programming langage : Visual Basic
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_C_SHARP">
+	<summary>
+ Constant to obtain the code of the programming langage : C#
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_JS">
+	<summary>
+ Constant to obtain the code of the programming langage : Javascript
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_SQL">
+	<summary>
+ Constant to obtain the code of the programming langage : SQL
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_PERL">
+	<summary>
+ Constant to obtain the code of the programming langage : Perl
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_PHP">
+	<summary>
+ Constant to obtain the code of the programming langage : Php
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_LANGUAGE_DEFAULT">
+	<summary>
+ Constant to obtain the code of the programming langage by default 
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_COLUMN_TYPE_DEFAULT">
+	<summary>
+ constant to get the default column type description
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_TABLE_TYPE_DEFAULT">
+	<summary>
+ constant to get the default table type description
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_MODULE_TYPE_DEFAULT">
+	<summary>
+ constant to get the default module type description
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_SCHEMA_TYPE_DEFAULT">
+	<summary>
+ constant to get the default schema type description
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_TREENODE_STR_MODULE">
+	<summary>
+ Constant for module the tree node 
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Consts_Schems.LUDO_DTB_TREENODE_STR_TABLE">
+	<summary>
+ Constant for table the tree node 
+ </summary>
+	<remarks></remarks>
 </member><member name="F:Ludo.DTB.Consts_Schems.DTB_DEFAULT_CREATION_FILENAME">
 	<summary>
  Our default creation file name
  </summary>
+	<remarks></remarks>
+</member><member name="T:Ludo.DTB.Consts_Schems">
+	<summary>
+ Class to regroup our Ludo.DTB constant
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.IsWellFormedDependancy(System.String)">
+	<summary>
+ Function to know if the dependancy is well writed :p
+ </summary>
+	<param name="sPath">string, dependancy path</param>
+	<returns>boolean, true if well formed</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.GetDependancyParts(System.String)">
+	<summary>
+ Function to obtain part from dependancy's parts
+ </summary>
+	<param name="sPath">string, dependancy path</param>
+	<returns>List(Of String), our list of path part</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getIndexFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Column}@,System.String)">
+	<summary>
+ Function to obtain an index from a name in a List of Columns
+ </summary>
+	<param name="lst_oColumns">List(Of Ludo.DTB.Ludo_DTB_Column), our columns</param>
+	<param name="sName">String, our column name</param>
+	<returns>integer, the index</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getColumnsFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Column}@,System.Int32)">
+	<summary>
+ Function to obtain a Column from a list of Columns with an index
+ </summary>
+	<param name="lst_oColumns">List(Of Ludo.DTB.Ludo_DTB_Column), our columns</param>
+	<param name="nIndex">integer, our column index</param>
+	<returns>Ludo.DTB.Ludo_DTB_Column, our column or null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getColumnsFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Column}@,System.String)">
+	<summary>
+ Function to obtain a Column from a list of Columns with a name
+ </summary>
+	<param name="lst_oColumns">List(Of Ludo.DTB.Ludo_DTB_Column), our columns</param>
+	<param name="sName">String, our column name</param>
+	<returns>Ludo.DTB.Ludo_DTB_Column, our column or null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getLstPath(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Column}@)">
+	<summary>
+ Function to obtain a list of path from a list of Columns
+ </summary>
+	<param name="lst_oColumns">List(Of Ludo.DTB.Ludo_DTB_Column), our columns</param>
+	<returns>List(Of String), our list of path (never null)</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo.DTB.Globals.getIndexFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Table}@,System.String)">
 	<summary>
@@ -2992,6 +3312,68 @@ Ludo
 	<param name="lst_oTable">List(Of Ludo.DTB.Ludo_DTB_Table), our list of table</param>
 	<param name="sName">string, the true name of the table seeked</param>
 	<returns>integer, position of lesser than zero</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getTableFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Table}@,System.Int32)">
+	<summary>
+ Function to obtain a table from a list of table with an index
+ </summary>
+	<param name="lst_oTable">List(Of Ludo.DTB.Ludo_DTB_Table), our list of table</param>
+	<param name="nIndex">integer, our index</param>
+	<returns>Ludo.DTB.Ludo_DTB_Table, our table or null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getTableFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Table}@,System.String)">
+	<summary>
+ Function to obtain a table from a list of table with a name
+ </summary>
+	<param name="lst_oTable">List(Of Ludo.DTB.Ludo_DTB_Table), our list of table</param>
+	<param name="sName">string, our table name</param>
+	<returns>Ludo.DTB.Ludo_DTB_Table, our table or null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getLstTableName(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Table}@)">
+	<summary>
+ Function to get a list of table name from a list of table
+ </summary>
+	<param name="lst_oTable">List(Of Ludo.DTB.Ludo_DTB_Table), our list of table</param>
+	<returns>list(Of String), our list of table name or null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getIndexFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Module}@,System.String)">
+	<summary>
+ Function to obtain an index from a name in a List of module
+ </summary>
+	<param name="lst_oModule">List(Of Ludo.DTB.Ludo_DTB_Module), our list of Module</param>
+	<param name="sName">string, our module name</param>
+	<returns>integer, our index</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getModuleFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Module}@,System.Int32)">
+	<summary>
+ Function to obtain a Module from a list of Module with an index
+ </summary>
+	<param name="lst_oModule">List(Of Ludo.DTB.Ludo_DTB_Module), our list of Module</param>
+	<param name="nIndex">integer, our index</param>
+	<returns>Ludo.DTB.Ludo_DTB_Module, our module or nothing</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getModuleFromLST(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Module}@,System.String)">
+	<summary>
+ Function to obtain a Module from a list of Module with a name
+ </summary>
+	<param name="lst_oModule">List(Of Ludo.DTB.Ludo_DTB_Module), our list of Module</param>
+	<param name="sName">string, our name</param>
+	<returns>Ludo.DTB.Ludo_DTB_Module, our module or nothing</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.getLstModuleName(System.Collections.Generic.List{Ludo.DTB.Ludo_DTB_Module}@)">
+	<summary>
+ Function to get a list of module name !
+ </summary>
+	<param name="lst_oModule">List(Of Ludo.DTB.Ludo_DTB_Module), our list of Module</param>
+	<returns>list(Of String), our list of module name or null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Globals.createComment(System.String,System.Int32)">
+	<summary>
+ Function to create lines of comment
+ </summary>
+	<param name="sTxt">string, our comment text</param>
+	<param name="nLanguage">intger, our Language</param>
+	<returns>string, our commented text</returns>
 	<remarks></remarks>
 </member><member name="F:Ludo.DTB.Ludo_DTB_Column.sTrueName">
 	<summary>
@@ -4005,6 +4387,73 @@ Ludo
  Class to describe a DTB Schema
  </summary>
 	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Ludo_DTB_CODE_MAKER.sPrefixe">
+	<summary>
+ Prefixe for generation
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.Ludo_DTB_CODE_MAKER.oSch">
+	<summary>
+ Our Schem
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER.getPrefixe">
+	<summary>
+ Method to get the prefixe
+ </summary>
+	<returns>string, our prefixe</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER.getDescription">
+	<summary>
+ Method to get the Description of the Codemaker Class
+ </summary>
+	<returns>string, our description</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER.getSchema">
+	<summary>
+ Method to get our Schema
+ </summary>
+	<returns>Ludo.DTB.Ludo_DTB_Schema, our schema</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER.setPrefixe(System.String)">
+	<summary>
+ Method to set the prefixe
+ </summary>
+	<param name="sStr">string, our new prefixe</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER.setSchema(Ludo.DTB.Ludo_DTB_Schema@)">
+	<summary>
+ Method to set our schema
+ </summary>
+	<param name="oSchema">Ludo.DTB.Ludo_DTB_Schema, our schema</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER.generate(System.String,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to generate the code from Schem
+ </summary>
+	<param name="sPath">string, our path</param>
+	<param name="PG_Modules">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for module indication</param>
+	<param name="LAB_Modules">[OPTIONAL] System.Windows.Forms.Label, Lab to named current module generated</param>
+	<param name="PG_Table">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for table indication in a module</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER.retro(System.Collections.Generic.List{System.String},System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@)">
+	<summary>
+ Method to generate schem from code
+ </summary>
+	<param name="lst_sFile">List(Of string), our file name for retro</param>
+	<param name="PG_Modules">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for module indication</param>
+	<param name="LAB_Modules">[OPTIONAL] System.Windows.Forms.Label, Lab to named current module generated</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER.ToString">
+	<summary>
+ To String overrides
+ </summary>
+	<returns>string, comment on the class generator</returns>
+	<remarks></remarks>
 </member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER">
 	<summary>
  Class you must use to create your own code maker
@@ -4051,11 +4500,52 @@ Ludo
 	<param name="oStream">System.IO.StreamWriter, our stream to write</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL.GenerateModule(Ludo.DTB.Ludo_DTB_Module@,System.IO.StreamWriter@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to generate a module
+ </summary>
+	<param name="oModule">Ludo.DTB.Ludo_DTB_Module, our module</param>
+	<param name="oStream">System.IO.StreamWriter, stream to write</param>
+	<param name="LAB_Modules">[OPTIONAL] System.Windows.Forms.Label, Lab to named current module generated</param>
+	<param name="PG_Table">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for table indication in a module</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL.generate(System.String,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to generate the code from Schem
+ </summary>
+	<param name="sPath">string, our path</param>
+	<param name="PG_Modules">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for module indication</param>
+	<param name="LAB_Modules">[OPTIONAL] System.Windows.Forms.Label, Lab to named current module generated</param>
+	<param name="PG_Table">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for table indication in a module</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>It's an override !!!</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL.ToString">
+	<summary>
+ To String override
+ </summary>
+	<returns>string, our tostring info</returns>
+	<remarks></remarks>
 </member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL">
 	<summary>
  Class to create your SQL Code
  </summary>
 	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_MySql.getDescription">
+	<summary>
+ Method to get the description
+ </summary>
+	<returns>string, our description</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_MySql.GenerateColumn(Ludo.DTB.Ludo_DTB_Column@,System.IO.StreamWriter@,System.Boolean)">
+	<summary>
+ Method to generate a Column
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="oStream">System.IO.StreamWriter, our file to write</param>
+	<param name="bNext">boolean, add the boolean flag or not</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>it's an override</remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_MySql.GenerateTable(Ludo.DTB.Ludo_DTB_Table@,System.IO.StreamWriter@)">
 	<summary>
  Method to generate the table
@@ -4063,16 +4553,64 @@ Ludo
 	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
 	<param name="oStream">System.IO.StreamWriter, our stream to write</param>
 	<returns>Boolean, true if done</returns>
+	<remarks>It's an override</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_MySql.ToString">
+	<summary>
+ To String override
+ </summary>
+	<returns>string, our tostring info</returns>
 	<remarks></remarks>
 </member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_MySql">
 	<summary>
  Class to create your SQL Code for MySql
  </summary>
 	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_SqlServer.getDescription">
+	<summary>
+ Method to get the description
+ </summary>
+	<returns>String, Description</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_SqlServer.GenerateColumn(Ludo.DTB.Ludo_DTB_Column@,System.IO.StreamWriter@,System.Boolean)">
+	<summary>
+ Method to generate a Column
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="oStream">System.IO.StreamWriter, our file to write</param>
+	<param name="bNext">boolean, add the boolean flag or not</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>It's an override</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_SqlServer.ToString">
+	<summary>
+ To String override
+ </summary>
+	<returns>string, our tostring info</returns>
+	<remarks></remarks>
 </member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_SqlServer">
 	<summary>
  Class to create your SQL Code for SqlServer
  </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_SqlServerCE.getDescription">
+	<summary>
+ Method to get the description
+ </summary>
+	<returns>String, Description</returns>
+	<remarks>It's an override</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_SqlServerCE.GenerateColumn(Ludo.DTB.Ludo_DTB_Column@,System.IO.StreamWriter@,System.Boolean)">
+	<summary>
+ Method to generate a Column
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="oStream">System.IO.StreamWriter, our file to write</param>
+	<param name="bNext">boolean, add the boolean flag or not</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>It's an override</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_SqlServerCE.ToString">
+	<summary>
+ To String override
+ </summary>
+	<returns>string, our tostring info</returns>
 	<remarks></remarks>
 </member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_SqlServerCE">
 	<summary>
@@ -4084,7 +4622,7 @@ Ludo
  Method to get the description
  </summary>
 	<returns>string, the description</returns>
-	<remarks>It's a description</remarks>
+	<remarks>It's an override</remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateColumn(Ludo.DTB.Ludo_DTB_Column@,System.IO.StreamWriter@,System.Boolean)">
 	<summary>
  Method to generate a Column
@@ -4093,7 +4631,7 @@ Ludo
 	<param name="oStream">System.IO.StreamWriter, our file to write</param>
 	<param name="bNext">boolean, add the boolean flag or not</param>
 	<returns>Boolean, true if done</returns>
-	<remarks>It's an overload</remarks>
+	<remarks>It's an override</remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateCommentOnColumn(Ludo.DTB.Ludo_DTB_Table@,Ludo.DTB.Ludo_DTB_Column@)">
 	<summary>
  Method to create a comment on column
@@ -4101,14 +4639,14 @@ Ludo
 	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
 	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
 	<returns>String, our comment</returns>
-	<remarks></remarks>
+	<remarks>Overridable</remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateCommentOnTable(Ludo.DTB.Ludo_DTB_Table@)">
 	<summary>
  Method to create a comment on table
  </summary>
 	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
 	<returns>String, our comment</returns>
-	<remarks></remarks>
+	<remarks>Overridable</remarks>
 </member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.GenerateTable(Ludo.DTB.Ludo_DTB_Table@,System.IO.StreamWriter@)">
 	<summary>
  Method to generate the table
@@ -4116,6 +4654,12 @@ Ludo
 	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
 	<param name="oStream">System.IO.StreamWriter, our stream to write</param>
 	<returns>Boolean, true if done</returns>
+	<remarks>It's an override</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE.ToString">
+	<summary>
+ To String override
+ </summary>
+	<returns>string, our tostring info</returns>
 	<remarks></remarks>
 </member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER_SQL_POSTGRE">
 	<summary>
@@ -4128,9 +4672,221 @@ Ludo
  </summary>
 	<returns>String, the description</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeMember(Ludo.DTB.Ludo_DTB_Column@,System.IO.StreamWriter@,System.Int32,System.String)">
+	<summary>
+ Method to write Members declaration
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column for the member</param>
+	<param name="oStream">System.IO.StreamWriter, our stream to write</param>
+	<param name="nLanguage">[OPTIONAL] integer, the language</param>
+	<param name="sInherit">[OPTIONAL] string, inherit path</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.createGet(Ludo.DTB.Ludo_DTB_Column@,System.Int32,System.String)">
+	<summary>
+ Method to generate Method get
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column for the member</param>
+	<param name="nLanguage">[OPTIONAL] integer, the language</param>
+	<param name="sInherit">[OPTIONAL] string, inherit path</param>
+	<returns>string, The code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.createSet(Ludo.DTB.Ludo_DTB_Column@,System.Int32,System.String)">
+	<summary>
+ Method to generate Method set
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column for the member</param>
+	<param name="nLanguage">[OPTIONAL] integer, the language</param>
+	<param name="sInherit">[OPTIONAL] string, inherit path</param>
+	<returns>string, The code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.write_Shared_ImportsCSV(Ludo.DTB.Ludo_DTB_Table@,System.Collections.Generic.List{System.String},System.Boolean)">
+	<summary>
+ Method to generate the public imports From CSV Shared Method
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="lst_s">lst_s As List(Of String)</param>
+	<param name="bOrigin">[OPTIONAL] boolean, mark the origin</param>
+	<returns>string, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeInsertSql(Ludo.DTB.Ludo_DTB_Table@,System.Collections.Generic.List{System.String},System.Boolean)">
+	<summary>
+ Method to generate amazing Insert sql
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="lst_s">lst_s As List(Of String)</param>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeInsert(System.Boolean)">
+	<summary>
+ Method to generate amazing Insert
+ </summary>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, the code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeUpdateSql(Ludo.DTB.Ludo_DTB_Table@,System.Collections.Generic.List{System.String},System.Boolean)">
+	<summary>
+ Method to generate amazing Update sql
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="lst_s">lst_s As List(Of String)</param>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeUpdate(System.Boolean)">
+	<summary>
+ Method to generate amazing Update
+ </summary>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, the code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeSelectSQL_Part_SELECT(Ludo.DTB.Ludo_DTB_Table@,System.Collections.Generic.List{System.String},System.Boolean)">
+	<summary>
+ Method to generate method to create The Select part of the Select Query
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="lst_s">lst_s As List(Of String)</param>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeSelectSQL_Part_FROM(Ludo.DTB.Ludo_DTB_Table@,System.Boolean)">
+	<summary>
+ Method to generate method to create The From part of the Select Query
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeSelectSQL(System.Boolean)">
+	<summary>
+ Method to generate amazing Select sql
+ </summary>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeLoad(Ludo.DTB.Ludo_DTB_Table@,System.Collections.Generic.List{System.String},System.Boolean)">
+	<summary>
+ Method to generate amazing Load
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="lst_s">lst_s As List(Of String)</param>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeSelect(System.Boolean)">
+	<summary>
+ Method to generate amazing Select
+ </summary>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, the code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeSave(System.Boolean)">
+	<summary>
+ Method to generate amazing save
+ </summary>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, the code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeAmazing(Ludo.DTB.Ludo_DTB_Table@,System.Collections.Generic.List{System.String},System.Boolean)">
+	<summary>
+ Method to generate amazing's method
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="lst_s">lst_s As List(Of String)</param>
+	<param name="bOrigin">[OPTIONAL]boolean, Overridable or Overrides ?</param>
+	<returns>string, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeClassDeclaration(Ludo.DTB.Ludo_DTB_Table@,System.IO.StreamWriter@,System.Int32,System.String)">
+	<summary>
+ Method to write class Declaration
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="oStream">System.IO.StreamWriter, our stream to write</param>
+	<param name="nLanguage">[OPTIONAL] integer, the language</param>
+	<param name="sInherit">[OPTIONAL] string, inherit path</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeIncludes(Ludo.DTB.Ludo_DTB_Table@,System.IO.StreamWriter@,System.Int32)">
+	<summary>
+ Method to write includes
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="oStream">System.IO.StreamWriter, our stream to write</param>
+	<param name="nLanguage">[OPTIONAL] integer, the language</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeCodeIntroduction(Ludo.DTB.Ludo_DTB_Table@,System.IO.StreamWriter@,System.Int32,System.String)">
+	<summary>
+ Method to write file code Introduction
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="oStream">System.IO.StreamWriter, our stream to write</param>
+	<param name="nLanguage">[OPTIONAL] integer, the language</param>
+	<param name="sFilename"></param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.writeLogHeader(System.IO.StreamWriter@,System.Int32)">
+	<summary>
+ Method to write the log header in a file
+ </summary>
+	<param name="oStream">System.IO.StreamWriter, our stream to write</param>
+	<param name="nLanguage">[OPTIONAL] integer, the language</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.generateTable(System.String,Ludo.DTB.Ludo_DTB_Table@,System.IO.StreamWriter@)">
+	<summary>
+ Method to generate the Table
+ </summary>
+	<param name="sPath">string, the path file</param>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="oLog">[OPTIONAL] System.IO.StreamWriter, log file</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.generateModule(System.String,Ludo.DTB.Ludo_DTB_Module@,System.IO.StreamWriter@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to generate the Module
+ </summary>
+	<param name="sPath">string, the path file</param>
+	<param name="oModule">Ludo.DTB.Ludo_DTB_Modul, our module to write</param>
+	<param name="oLog">[OPTIONAL] System.IO.StreamWriter, log file</param>
+	<param name="LAB_Modules">[OPTIONAL] System.Windows.Forms.Label, Lab to named current module generated</param>
+	<param name="PG_Table">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for table indication in a module</param>
+	<returns>boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.generate(System.String,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to generate the code from Schem
+ </summary>
+	<param name="sPath">string, our path</param>
+	<param name="PG_Modules">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for module indication</param>
+	<param name="LAB_Modules">[OPTIONAL] System.Windows.Forms.Label, Lab to named current module generated</param>
+	<param name="PG_Table">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for table indication in a module</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>It's an override !!!</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.retro(System.Collections.Generic.List{System.String},System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@)">
+	<summary>
+ Method to generate schem from code
+ </summary>
+	<param name="lst_sFile">List(Of string), our file name for retro</param>
+	<param name="PG_Modules">[OPTIONAL] System.Windows.Forms.ProgressBar, progress bar for module indication</param>
+	<param name="LAB_Modules">[OPTIONAL] System.Windows.Forms.Label, Lab to named current module generated</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>It's an override !!! And .. it's useless</remarks>
+</member><member name="M:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO.ToString">
+	<summary>
+ To String override
+ </summary>
+	<returns>string, our tostring info</returns>
+	<remarks></remarks>
 </member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER_VB_NET_LUDO">
 	<summary>
  Class to generate your code in VB NET for Our Ludo Library
+ </summary>
+	<remarks></remarks>
+</member><member name="T:Ludo.DTB.Ludo_DTB_CODE_MAKER_DOCX">
+	<summary>
+ Class to generate your doc in docx to better understood !
  </summary>
 	<remarks></remarks>
 </member><member name="T:Ludo.UP.Ludo_Up_Ops">

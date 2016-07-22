@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-21 10:11:52
+//Generated on : 2016-07-22 02:19:04
 //Filename : Contacts_Notes.php
 //Description : Table des notes sur les items
 
 
 //include to dtb connection
-include "Contacts_Items.php";
+include "CONTACTS_Items.php";
 
 ///[CLASS][Notes]Table des notes sur les items
 ///[AUTHOR]Ludo

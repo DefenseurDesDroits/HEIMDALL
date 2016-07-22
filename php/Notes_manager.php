@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-21 10:11:52
+//Generated on : 2016-07-22 02:19:04
 //Filename : Notes_manager.php
 //Description : Table des notes sur les items
 
 
 //include to dtb connection
-include "Contacts_Notes.php";
+include "CONTACTS_Notes.php";
 
 ///[FUNCTION][NotesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object

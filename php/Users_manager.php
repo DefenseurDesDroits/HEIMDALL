@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-21 10:11:52
+//Generated on : 2016-07-22 02:19:04
 //Filename : Users_manager.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
 
 //include to dtb connection
-include "Contacts_Users.php";
+include "CONTACTS_Users.php";
 
 ///[FUNCTION][UsersgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object

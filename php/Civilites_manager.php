@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-21 10:11:52
+//Generated on : 2016-07-22 02:19:04
 //Filename : Civilites_manager.php
 //Description : Table des civilités des contacts
 
 
 //include to dtb connection
-include "Contacts_Civilites.php";
+include "CONTACTS_Civilites.php";
 
 ///[FUNCTION][CivilitesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
