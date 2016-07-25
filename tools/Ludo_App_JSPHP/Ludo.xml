@@ -1575,6 +1575,38 @@ Ludo
 	<param name="nLimit">integer, limit of node level, 0 means limit less</param>
 	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo_Tools.RES_GetStringResource(System.Resources.ResourceManager@,System.String)">
+	<summary>
+ Function to load a string text from a resource
+ </summary>
+	<param name="oRM">System.Resources.ResourceManager, our ressource manager dude !</param>
+	<param name="sName">string, our ressource name</param>
+	<returns>string, our text</returns>
+	<remarks>this function spar you one line ... wao ... #Amazing #Irony</remarks>
+</member><member name="M:Ludo_Tools.RES_GetByteResource(System.Resources.ResourceManager@,System.String)">
+	<summary>
+ Function to load a Byte array from a resource
+ </summary>
+	<param name="oRM">System.Resources.ResourceManager, our ressource manager dude !</param>
+	<param name="sName">string, our ressource name</param>
+	<returns>byte[], our ressource binary</returns>
+	<remarks>this function spar you one line ... wao ... #Amazing #Irony</remarks>
+</member><member name="M:Ludo_Tools.RES_GetByteResource_AsString(System.Resources.ResourceManager@,System.String)">
+	<summary>
+ function to get a string text from a Byte array resource
+ </summary>
+	<param name="oRM">System.Resources.ResourceManager, our ressource manager dude !</param>
+	<param name="sName">string, our ressource name</param>
+	<returns>string, our text</returns>
+	<remarks>this function spar you one line ... wao ... #Amazing #Irony</remarks>
+</member><member name="M:Ludo_Tools.RES_GetMemStreamResource(System.Resources.ResourceManager@,System.String)">
+	<summary>
+ Function to get a MemoryStream from a resource
+ </summary>
+	<param name="oRM">System.Resources.ResourceManager, our ressource manager dude !</param>
+	<param name="sName">string, our ressource name</param>
+	<returns>System.IO.MemoryStream, our stream memory</returns>
+	<remarks>this function spar you one line ... wao ... #Amazing #Irony</remarks>
 </member><member name="T:Ludo_Tools">
 	<summary>
  Public module to provide globales functions
