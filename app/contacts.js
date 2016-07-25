@@ -15,6 +15,58 @@ const HEIMDALL_QUERY_METHOD_LIKE_Contains = "COND_LIKE_C";
 const HEIMDALL_LAY_QUERY_Filter = "LAY_Query_Filter_";
 const HEIMDALL_BTN_PLOTS_MORE_CONTACT = "BTN_More_Contacts";
 
+function loadStatics_Civilites(){
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //our object to convert
+            var oCivilites = null;
+            //our array of result
+            var ary_Json = JSON.parse(oReq.responseText);
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
+            //reset
+            Heimdall.members.products.contacts.Civilites = [];
+            //get the number of result
+            nCount = ary_Json.length;
+            //loop
+            while(nLine < nCount){
+
+                //realloc the variable
+                oCivilites = new Civilites();
+                //load it !
+                oCivilites.loadFromArray(ary_Json[nLine]);
+
+                //add it
+                Heimdall.members.products.contacts.Civilites.push(oCivilites);
+
+                //next
+                nLine++;
+            }
+
+            Heimdall.flags.waitData = false;
+        }
+    };
+    //prepare the query*********************
+    Heimdall.flags.waitData = true;
+    //check the open
+    oReq.open("POST", "php/Civilites_manager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
+    //Return the job !
+    return true;
+
+}
+
 function loadStatics_Contact_Types(){
 
     //Our request object
@@ -70,6 +122,7 @@ function loadStatics_Contact_Types(){
 function loadStaticsContactsData(){
 
     loadStatics_Contact_Types();
+    loadStatics_Civilites();
 
     return true;
 }
@@ -117,6 +170,10 @@ function contactDivHeader(){
     return sCode;
 }
 
+function contactClick(nLine){
+    alert(Heimdall.members.products.contacts.Contacts[nLine].getNom() + " " + Heimdall.members.products.contacts.Contacts[nLine].getPrenom());
+}
+
 function contactdiv(oContact, nLine){
 
     //our code
@@ -131,6 +188,8 @@ function contactdiv(oContact, nLine){
     var sOrga = "Orga/Type";
     //our function 
     var sFunction = "Fonction/APE";
+    //Civilites
+    var sCivilite = "";
 
     //type position
     var nPosition = 0;
@@ -147,17 +206,22 @@ function contactdiv(oContact, nLine){
     else
         sType = "Type not found (aryL :" + Heimdall.members.products.contacts.Contact_Types.length + ")";
 
+    //fill
+    // nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", oContact.getId_Civilites());
+    // if(nPosition != POTOURS_FIND_NOTFOUND)
+    //     sName = Heimdall.members.products.contacts.Civilites[nPosition].getAbr() + " ";
+
     //the name
     if(oContact.getPrenom() == "")
-        sName = oContact.getNom();
+        sName += oContact.getNom();
     else
-        sName = oContact.getPrenom() + " " + oContact.getNom();
+        sName += oContact.getPrenom() + " " + oContact.getNom();
 
     //master div
     if(bPaire)
-        sCode += "<div class=\"inlineContact heim_Block paire\">";
+        sCode += "<div class=\"inlineContact heim_Block paire\" onclick=\"contactClick(" + nLine + ")\">";
     else
-        sCode += "<div class=\"inlineContact heim_Block impaire\">";
+        sCode += "<div class=\"inlineContact heim_Block impaire\" onclick=\"contactClick(" + nLine + ")\">";
 
     sCode += "\t" + "<div class=\"inlineContact_Contact heim_Inline_Block\">";
 
