@@ -9,7 +9,8 @@
 ///[Class][Heimdall]Our Heimdall global object
 var Heimdall = {
     flags :  {
-        waitData : true
+        waitData : true,
+        debug : true
     },
     members : {
         products : {}

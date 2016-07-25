@@ -84,7 +84,7 @@ div.WIN_Main {
 }
 
 .BTN_{
-	
+	cursor : pointer;
 }
 
 .PNL_{
@@ -213,4 +213,12 @@ h1{
 	width: 100%;
 	height: 97%;
 	position : relative;
+}
+
+#BTN_More_Contacts{
+	background-color : #666;
+	color : #ECF0F1;
+	width: 100%;
+	height: 25px;
+	text-align: center;
 }

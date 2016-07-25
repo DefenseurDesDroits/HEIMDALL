@@ -7,11 +7,13 @@
 /// <reference path="../lib/CONTACTS_contact_Types.js" />
 
 const HEIMDALL_NUMBER_OF_FILTER_MAX = 4;
+const HEIMDALL_NUMBER_OF_CONTACTS_PLOTS = 25;
 const HEIMDALL_QUERY_METHOD_LIKE_StartsWith = "COND_LIKE_SW";
 const HEIMDALL_QUERY_METHOD_LIKE_EndsWith = "COND_LIKE_EW";
 const HEIMDALL_QUERY_METHOD_LIKE_Contains = "COND_LIKE_C";
 
 const HEIMDALL_LAY_QUERY_Filter = "LAY_Query_Filter_";
+const HEIMDALL_BTN_PLOTS_MORE_CONTACT = "BTN_More_Contacts";
 
 function loadStatics_Contact_Types(){
 
@@ -31,6 +33,8 @@ function loadStatics_Contact_Types(){
             //our iterrator
             var nLine = 0;
 
+            //reset
+            Heimdall.members.products.contacts.Contact_Types = [];
             //get the number of result
             nCount = ary_Json.length;
             //loop
@@ -39,7 +43,7 @@ function loadStatics_Contact_Types(){
                 //realloc the variable
                 oContact_Types = new Contact_Types();
                 //load it !
-                oContact_Types.loadFromJson(JSON.stringify(ary_Json[nLine]));
+                oContact_Types.loadFromArray(ary_Json[nLine]);
 
                 //add it
                 Heimdall.members.products.contacts.Contact_Types.push(oContact_Types);
@@ -113,7 +117,7 @@ function contactDivHeader(){
     return sCode;
 }
 
-function contactdiv(oContact, bPaire){
+function contactdiv(oContact, nLine){
 
     //our code
     var sCode = "";
@@ -130,6 +134,8 @@ function contactdiv(oContact, bPaire){
 
     //type position
     var nPosition = 0;
+    //paire or not ?
+    var bPaire = (nLine % 2 == 0);
 
     //fill sType
     nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Contact_Types, "nId_Contact_Types", oContact.getId_Contact_Types());
@@ -171,6 +177,104 @@ function contactdiv(oContact, bPaire){
 
     //return the code
     return sCode;
+}
+
+function plotMoreContact(nOffset, nLimit){
+    return plotContacts(Heimdall.members.products.contacts.Contacts, false, nOffset, nLimit);
+}
+
+function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
+
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug){
+        var xStartTime = Date.now();
+        var xEndTime = 0;
+        var xTime = 0;
+    }
+    ///[/DEBUG]
+
+    //our contact
+    var oContact = null;
+    //array of stuff
+    var ary_Json = [];
+    //our element list
+    var oElement = document.getElementById("PNL_List");
+    //our btn element
+    var oBTN_ = document.getElementById(HEIMDALL_BTN_PLOTS_MORE_CONTACT);
+    //our count
+    var nCount = 0;
+    //our count plots
+    var nCountPlot = 0;
+    //our iterator
+    var nLine = 0;
+
+    //More ?
+    var bMore = false;
+    
+    //get the nLine start
+    nLine = nOffset;
+    //get the count 
+    if(nLimit > 0){
+        nCount = ary_Contacts.length;
+        nCountPlot = Math.min( ary_Contacts.length, nOffset + nLimit);
+        if(nCount < ary_Contacts.length)
+            bMore = true;
+    }   
+    else{
+        nCount = ary_Contacts.length;
+        nCountPlot = ary_Contacts.length;
+    }
+        
+    //delete the BTN to add
+    if(oBTN_ != null)
+        oBTN_.remove();
+    //reset the graphical
+    if(nOffset == 0)
+        oElement.innerHTML = contactDivHeader();
+
+    //ary_Contacts var an array from JSON
+    if(bFromJson){
+        //reset the value
+        Heimdall.members.products.contacts.Contacts = [];
+        //to the loop machine
+        while(nLine < nCount){
+            //init
+            oContact = new Contacts();
+            //oContact.loadFromJson(JSON.stringify(ary_Json[nLine]));
+            oContact.loadFromArray(ary_Contacts[nLine]);
+            //add to the global list
+            Heimdall.members.products.contacts.Contacts.push(oContact);
+            //add it!!!
+            if(nLine < nCountPlot)
+                oElement.innerHTML += contactdiv(oContact, nLine); 
+            //next
+            nLine++;
+        }
+    }
+    else{
+        //to the loop machine
+        while(nLine < nCountPlot){
+            //seems faster isn't it ?
+            oElement.innerHTML += contactdiv(ary_Contacts[nLine], nLine); 
+            //next
+            nLine++;
+        }
+    }
+    
+    //add the BTN_
+    if(nCount != nCountPlot){
+        nOffset += HEIMDALL_NUMBER_OF_CONTACTS_PLOTS;
+        oElement.innerHTML += "<div id =\"" + HEIMDALL_BTN_PLOTS_MORE_CONTACT + "\" class=\"BTN_\" onclick=\"plotMoreContact(" + nOffset +", " + HEIMDALL_NUMBER_OF_CONTACTS_PLOTS + ")\">Voir " + HEIMDALL_NUMBER_OF_CONTACTS_PLOTS + " résultats de plus !</div>";
+    }
+
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug){
+        xEndTime = Date.now();
+        xTime = xEndTime - xStartTime;
+        oElement.innerHTML += "<div>Execution en " + xTime + " millisecondes ]:) Pour " + nLine + " Element(s)</div>";
+    }
+    ///[/DEBUG]
+
 }
 
 function deleteSelectionField(sFieldName){
@@ -316,43 +420,13 @@ function contactDoQuery(){
     var oReq = new XMLHttpRequest();
     //Define the function
     oReq.onreadystatechange = function(){
+
         //if everything is alright
         if(oReq.readyState == 4 && oReq.status == 200){
-            //our contact
-            var oContact = null;
-            //array of stuff
-            var ary_Json = [];
-            //our element
-            var oElement = document.getElementById("PNL_List");
-            //our count
-            var nCount = 0;
-            //our iterator
-            var nLine = 0;
-
-            //test
-            // oElement.innerHTML = oReq.responseText;
-            // return false;
-
-            //get the list object
-            ary_Json = JSON.parse(oReq.responseText);
-            //get the count 
-            nCount = ary_Json.length;
-            //reset
-            oElement.innerHTML = contactDivHeader();
-            //to the loop machine
-            while(nLine < nCount){
-
-                //init
-                oContact = new Contacts();
-                oContact.loadFromJson(JSON.stringify(ary_Json[nLine]));
-                //add it!!!
-                //console.log((nLine % 2 == 0));
-                oElement.innerHTML += contactdiv(oContact, (nLine % 2 == 0)); 
-                //next
-                nLine++;
-            }
-
+            //Plots !
+            plotContacts(JSON.parse(oReq.responseText), true, 0, HEIMDALL_NUMBER_OF_CONTACTS_PLOTS);
         }
+        
     };
 
     //inform
@@ -380,6 +454,7 @@ function init_contacts(){
     Heimdall.members.products["contacts"] = {};
     Heimdall.members.products.contacts["Contact_Types"] = [];
     Heimdall.members.products.contacts["Civilites"] = [];
+    Heimdall.members.products.contacts["Contacts"] = [];
 
     //init the loader of Civilities/Contact_types
     loadStaticsContactsData();

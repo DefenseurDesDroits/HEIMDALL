@@ -125,6 +125,8 @@ function searchQuery($Args){
         $nLine++;
     }
     
+    $sQuery .= "\r\n" . "ORDER BY xxx.contacts.nom";
+
     /*$oContact->setId_Contacts(1);
     $oContact->loadFromConnection(null);
     echo $oContact->exportToJson();
