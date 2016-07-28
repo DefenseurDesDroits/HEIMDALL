@@ -108,7 +108,7 @@ function createPays($oCon){
     $oCon->close();
 }
 
-///[FUNCTION][getContactAddressFromCRM]Function to create the pays
+///[FUNCTION][getContactAddressFromCRM]Function to get the address of the contct in the CRM
 function getContactAddressFromCRM($oCRM){
     //our query
     $sQuery = "";
@@ -252,6 +252,29 @@ function createContacts($oXXX, $oCRM){
 
 }
 
+///[FUNCTION][getOrganismAddressFromCRM]Function to get the address of organism in CRM
+function getOrganismAddressFromCRM($oCRM){
+    //our query
+    $sQuery = "";
+
+    //the query
+    $sQuery = "SELECT crm.Organismes.id as owner, crm.infos.id, crm.infos.adr1, crm.infos.adr2, crm.infos.adr3, crm.infos.cp, crm.infos.cedex, crm.infos.ville, crm.infos.pays_id, crm.infos.tel1, crm.infos.tel2,"; 
+    $sQuery .= "crm.infos.email1, crm.infos.email2, crm.infos.site" . "\r\n";
+    $sQuery .= "FROM crm.infos, crm.orga_info, crm.Organismes" . "\r\n";
+    $sQuery .= "WHERE crm.infos.id = crm.orga_info.info_id" . "\r\n";
+    $sQuery .= "AND crm.orga_info.orga_id = crm.Organismes.id" . "\r\n";
+
+    //open
+    $oCRM->open();
+    //the select query
+    $ary_ = $oCRM->selectRequest($sQuery, explode(", ", "owner, id, adr1, adr2, adr3, cp, cedex, ville, pays_id, tel1, tel2, email1, email2, site"), null);
+    //close
+    $oCRM->close();
+
+    //return the result
+    return $ary_;
+}
+
 ///[FUNCTION][createOrganisations]Function to create the contract type
 function createOrganisations($oXXX, $oCRM){
 
@@ -259,12 +282,25 @@ function createOrganisations($oXXX, $oCRM){
     $sQuery = "";
     //our number 
     $nID = 0;
+    //the id Orga 
+    $nIDContact = 0;
+    //the id of new contact info contact infos
+    $nIDLink = 0;
     //our count
     $nCount = 0;
     //our iterator
     $nLine = 0;
+    //our sub count
+    $nSubCount = 0;
+    //our sub iterrator
+    $nSubLine = 0;
     //our array 
     $ary_ = array();
+
+    //array to obtain contact info and info 
+    $ary_Addr = array();
+    //array to obtain the addr for a contact
+    $ary_AddrContact = array();
 
     //get the max ID (Worst Best Idea Ever !)*********************
     //the query
@@ -290,6 +326,9 @@ function createOrganisations($oXXX, $oCRM){
 
     // increment it !
     $nID++;
+
+    //get the adr 
+    $ary_Addr = getOrganismAddressFromCRM($oCRM);
 
     //get the contact from CRM*****************************
     //open it !
@@ -317,9 +356,40 @@ function createOrganisations($oXXX, $oCRM){
 
         //execute
         $oXXX->insertRequest($sQuery, null);
+        $nIDContact = $nID;
+        $nID++;
+
+        //get the address for a contact
+        $ary_AddrContact = GetLstInPotoursObjArray($ary_Addr, "owner", $nIDContact);
+        //get the sub count !
+        $nSubCount = count($ary_AddrContact);
+        //reset the sub iterrator
+        $nSubLine = 0;
+        echo "<br/>" . "Number of address : " . $nSubCount . "<br/>" . "#############"  . "<br/>";
+        while($nSubLine < $nSubCount){
+            
+            //add the contact info
+            $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
+            $sQuery .= "INSERT INTO xxx.contact_infos(id_contact_infos, id_contacts, fonction, id_langues)VALUES (" . $nID . ", " . $nIDContact . ", " . "''" . ", 1);";
+            
+            //execute
+            $oXXX->insertRequest($sQuery, null);
+            $nIDLink = $nID;
+            $nID++;
+
+            //do the query !
+            $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
+            $sQuery .= "INSERT INTO xxx.infos(id_infos, adr1, adr2, adr3, cp, cedex, ville, telephone1, courriel1, telephone2, courriel2, site, id_pays, id_contact_infos) VALUES (" . $nID .", " . Quotes($ary_AddrContact[$nSubLine]["adr1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["adr2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["adr3"]) . ", " . $ary_AddrContact[$nSubLine]["cp"] . ", " . Quotes($ary_AddrContact[$nSubLine]["cedex"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["ville"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["tel1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["email1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["tel2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["email2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["site"]) . ", 1, " . $nIDLink .");\r\n";
+
+            //execute
+            $oXXX->insertRequest($sQuery, null);
+            $nIDLink = $nID;
+            $nID++;
+            //next
+            $nSubLine++;
+        }
 
         //next
-        $nID++;
         $nLine++;
     }
     //close
