@@ -386,6 +386,7 @@ function createSelectionField(sNext){
     sCode += "\t" + "<select id=\"COMBO_Column_" + sNext + "\">" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"sNom\">Nom</option>" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"sPrenom\">Prénom</option>" + "\r\n";
+    sCode += "\t" + "\t" +"<option value=\"sAPEFonction\">Ape/Fonction</option>" + "\r\n";
     sCode += "\t" + "</select>" + "\r\n";
     sCode += "\t" + "<select id=\"COMBO_COND_" + sNext + "\">" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_StartsWith + "\">Commence Par</option>" + "\r\n";

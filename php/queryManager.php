@@ -74,6 +74,8 @@ function searchQuery($Args){
 
     //coreespondance set 
     $ary_Corres = $oContact->getCorrespondanceArray();
+    //push for the fun !
+    $ary_Corres += [ "sAPEFonction" => "xxx.contact_infos.fonction" ];
 
     //recreate the query
     //$sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
