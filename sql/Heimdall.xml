@@ -208,7 +208,7 @@
         </Table>
         <Table name="Langues" deploy_name="Langues" inherit="" isview="False">
           <Columns>
-            <Column name="nId_Langues" deploy_name="Id_Langues" key="primary" foreign="" type="l" isnullable="False">
+            <Column name="nId_Langues" deploy_name="Id_Langues" key="primary" foreign="" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Identité de la table</Comment>

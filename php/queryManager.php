@@ -76,7 +76,10 @@ function searchQuery($Args){
     $ary_Corres = $oContact->getCorrespondanceArray();
 
     //recreate the query
-    $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
+    //$sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
+    $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . ", xxx.contact_infos.fonction" . "\r\n" ;
+    $sQuery .= "FROM " . $oContact->getTable() . "\r\n"  ;
+    $sQuery .= "LEFT OUTER JOIN xxx.contact_infos ON xxx.contact_infos.id_contacts = xxx.contacts.id_contacts" . "\r\n"  ;
 
     //add the link between column s and foreign Key
     //$sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
@@ -138,7 +141,8 @@ function searchQuery($Args){
     //get the array (so ugly way bro !!!)
     $GLOBALS["oConnection"]->open();
     //$ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", str_replace(".", "", str_replace( explode(", ", $oContact->getTable()) , "", $oContact->getColumns()))), null);
-    $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", $oContact->getColumns()), null);
+    //$ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", $oContact->getColumns()), null);
+    $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", ($oContact->getColumns() . ", fonction") ), null);
     $GLOBALS["oConnection"]->close();
 
     //get the count
@@ -152,6 +156,8 @@ function searchQuery($Args){
         $oContact = new Contacts();
         $oContact->loadFromArray($ary_[$nLine], true);
         $ary_Obj[$nLine] = $oContact->exportToArray();
+        //add function for information
+        $ary_Obj[$nLine]["fonction"] = $ary_[$nLine]["fonction"];
         //Next
         $nLine++;
     }

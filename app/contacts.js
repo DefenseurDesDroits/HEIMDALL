@@ -217,6 +217,18 @@ function contactdiv(oContact, nLine){
     else
         sName += oContact.getPrenom() + " " + oContact.getNom();
 
+    //if the function is not null
+    if(oContact.members["fonction"] != null)
+        sFunction = oContact.members["fonction"];
+    else
+        sFunction = "- - -";
+
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug){
+        console.log("contactdiv, contact fonction : " + oContact.members["fonction"]);
+    }
+    ///[/DEBUG]   
+
     //master div
     if(bPaire)
         sCode += "<div class=\"inlineContact heim_Block paire\" onclick=\"contactClick(" + nLine + ")\">";
@@ -306,6 +318,16 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
             oContact = new Contacts();
             //oContact.loadFromJson(JSON.stringify(ary_Json[nLine]));
             oContact.loadFromArray(ary_Contacts[nLine]);
+            //add fonction in memory ]:)
+            oContact.members["fonction"] = ary_Contacts[nLine]["fonction"];
+
+             ///[DEBUG]Operaion time !!!
+            if(Heimdall.flags.debug){
+                console.log("plotContacts, contact fonction : " + ary_Contacts[nLine]["fonction"]);
+                console.log("plotContacts, contact fonction : " + JSON.stringify( ary_Contacts[nLine] ) );
+            }
+            ///[/DEBUG]   
+
             //add to the global list
             Heimdall.members.products.contacts.Contacts.push(oContact);
             //add it!!!

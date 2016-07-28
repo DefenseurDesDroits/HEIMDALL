@@ -1,7 +1,7 @@
 -- #####################################
--- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.7
+-- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.8
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 19/07/2016 00:00:00
+-- Automatique generation made on 28/07/2016 00:00:00
 -- #####################################
 
 
@@ -180,7 +180,7 @@ COMMENT ON COLUMN xxx.Contacts.Id_Contact_Types IS 'Clef étrangère sur le cont
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Langues (
-	-- Identité de la table	Id_Langues bigint PRIMARY KEY NOT NULL,
+	-- Identité de la table	Id_Langues serial PRIMARY KEY NOT NULL,
 	-- Nom du pays	Nom varchar(64) UNIQUE NOT NULL
 );
 COMMENT ON TABLE xxx.Langues IS 'Tables des langues';
@@ -293,12 +293,12 @@ COMMENT ON COLUMN xxx.Organisation_Types.Nom IS 'Nom du type d''organisation';
 CREATE TABLE IF NOT EXISTS xxx.Organisations (
 	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE NOT NULL,
 	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer REFERENCES xxx.Organisation_Types (Id_Organisation_Types) ON DELETE CASCADE NOT NULL,
-	-- New Rows Created with Ludo Library	acronyme varchar(16)  NOT NULL
+	-- New Columns Created with Ludo Library	Acronyme varchar(16)  NOT NULL
 );
 COMMENT ON TABLE xxx.Organisations IS 'Table des organisations. héritant de celle des contacts';
 COMMENT ON COLUMN xxx.Organisations.Id_Organisations IS 'Identifiant hérité de la table Contacts';
 COMMENT ON COLUMN xxx.Organisations.Id_Organisation_Type IS 'Clef étrangère sur la table Organistion_Types. Type de l''organisation';
-COMMENT ON COLUMN xxx.Organisations.acronyme IS 'New Rows Created with Ludo Library';
+COMMENT ON COLUMN xxx.Organisations.Acronyme IS 'New Columns Created with Ludo Library';
 
 
 -- ++++++++++++++++++++++++++++++++++++
