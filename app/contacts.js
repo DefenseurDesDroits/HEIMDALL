@@ -254,8 +254,7 @@ function contactLAYDiv(nLine){
     //loop
     while(nIt < nCount){
         //add option
-        //sCode += "\t" + "\t" +"<option id=\"OPT_Civilites_" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() +"\" value=\"_" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() + "\">" + Heimdall.members.products.contacts.Civilites[nIt].getNom() + "</option>" + "\r\n";
-        sCode += "\t" + "\t" +"<option value=\"_" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() + "\">" + Heimdall.members.products.contacts.Civilites[nIt].getNom() + "</option>" + "\r\n";
+        sCode += "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() + "\">" + Heimdall.members.products.contacts.Civilites[nIt].getNom() + "</option>" + "\r\n";
         //Next
         nIt++;
     }
@@ -341,6 +340,29 @@ function contactClick(nLine){
         if(oElement.innerHTML == ""){
             //create dude
             oElement.innerHTML = contactLAYDiv(nLine);
+
+            //create the stuff
+            COMBO_Civilite = document.getElementById("COMBO_Civilite_" + nLine);
+
+            if(COMBO_Civilite != null){
+                
+                ///[DEBUG]Operaion time !!!
+                if(Heimdall.flags.debug){
+                    console.log("contactClick, COMBO_ Founded for line " + nLine);
+                }
+                ///[/DEBUG]
+                
+                //fill
+                nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", Heimdall.members.products.contacts.Contacts[nLine].getId_Civilites());
+                if(nPosition != POTOURS_FIND_NOTFOUND){
+                    
+                    //Option created in the same order than stored
+                    //COMBO_Civilite.type = "select-multiple;"
+                    COMBO_Civilite.selectedIndex = nPosition;
+
+                }
+            }
+
         }
         // //don't be a silly idiot !
         // if(nElement >= 0){
@@ -349,27 +371,7 @@ function contactClick(nLine){
         // }
     }
 
-    //create the stuff
-    COMBO_Civilite = document.getElementById("COMBO_Civilite_" + nLine);
-
-    if(COMBO_Civilite != null){
-        
-        ///[DEBUG]Operaion time !!!
-        if(Heimdall.flags.debug){
-            console.log("contactClick, COMBO_ Founded for line " + nLine);
-        }
-        ///[/DEBUG]
-        
-        //fill
-        nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", Heimdall.members.products.contacts.Contacts[nLine].getId_Civilites());
-        if(nPosition != POTOURS_FIND_NOTFOUND){
-            
-            //Option created in the same order than stored
-            //COMBO_Civilite.type = "select-multiple;"
-            COMBO_Civilite.selectedIndex = nPosition;
-
-        }
-    }
+    
 }
 
 function contactdiv(oContact, nLine){
