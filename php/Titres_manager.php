@@ -67,7 +67,7 @@ function TitresgetAllInstance(){
 	//Our object declaration
 	$oTitres = new Titres();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oTitres->getColumns() . "\r\n" . "FROM " . $oTitres->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oTitres->getColumns() . "\r\n" . "FROM " . $oTitres->getTable() . "\r\n" . "ORDER BY xxx.titres.nom" ;
 	//Link Condition
 	$sLinks = $oTitres->getLinkConditions(true);
 	//The array we get

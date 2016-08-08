@@ -265,19 +265,19 @@ function contactLAYDiv(nLine){
 
     sCode += "\t" + "<br/>" + "\r\n";
 
-    // sCode += "\t" + "<select id=\"COMBO_Titres_" + nLine + "\">" + "\r\n";
-    // //get the count
-    // nCount = Heimdall.members.products.contacts.Titres.length;
-    // //init the iterator
-    // nIt = 0;
-    // //loop
-    // while(nIt < nCount){
-    //     //add option
-    //     sCode += "\t" + "\t" +"<option id=\"OPT_Titres_" + Heimdall.members.products.contacts.Titres[nIt].getId_Titres() +"\" value=\"_" + Heimdall.members.products.contacts.Titres[nIt].getId_Titres() + "\">" + Heimdall.members.products.contacts.Titres[nIt].getNom() + "</option>" + "\r\n";
-    //     //Next
-    //     nIt++;
-    // }
-    // sCode += "\t" + "</select>" + "\r\n";
+    sCode += "\t" + "<select id=\"COMBO_Titres_" + nLine + "\">" + "\r\n";
+    //get the count
+    nCount = Heimdall.members.products.contacts.Titres.length;
+    //init the iterator
+    nIt = 0;
+    //loop
+    while(nIt < nCount){
+        //add option
+        sCode += "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Titres[nIt].getId_Titres() + "\">" + Heimdall.members.products.contacts.Titres[nIt].getNom() + "</option>" + "\r\n";
+        //Next
+        nIt++;
+    }
+    sCode += "\t" + "</select>" + "\r\n";
 
     sCode += "</form>";
 
@@ -299,6 +299,8 @@ function contactClick(nLine){
     var oElement = null;
     //combo value element
     var COMBO_Civilite = null;
+    //combo title
+    var COMBO_Titres = null;
     //position of civilite
     var nPosition = 0;
     
@@ -355,11 +357,27 @@ function contactClick(nLine){
                 //fill
                 nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", Heimdall.members.products.contacts.Contacts[nLine].getId_Civilites());
                 if(nPosition != POTOURS_FIND_NOTFOUND){
-                    
                     //Option created in the same order than stored
-                    //COMBO_Civilite.type = "select-multiple;"
                     COMBO_Civilite.selectedIndex = nPosition;
+                }
+            }
 
+            //create the stuff
+            COMBO_Titres = document.getElementById("COMBO_Titres_" + nLine);
+
+            if(COMBO_Titres != null){
+                
+                ///[DEBUG]Operaion time !!!
+                if(Heimdall.flags.debug){
+                    console.log("contactClick, COMBO_ Founded for line " + nLine);
+                }
+                ///[/DEBUG]
+                
+                //fill
+                nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", Heimdall.members.products.contacts.Contacts[nLine].getId_Titres());
+                if(nPosition != POTOURS_FIND_NOTFOUND){
+                    //Option created in the same order than stored
+                    COMBO_Titres.selectedIndex = nPosition;
                 }
             }
 

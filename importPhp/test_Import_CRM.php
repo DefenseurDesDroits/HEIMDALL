@@ -131,6 +131,47 @@ function getContactAddressFromCRM($oCRM){
     return $ary_;
 }
 
+///[FUNCTION][createTitres]Function to create the titles from CRM DTB
+function createTitres($oXXX, $oCRM){
+
+    //our query
+    $sQuery = "";
+    //our array 
+    $ary_ = array();
+    //our count
+    $nCount = 0;
+    //our iterator
+    $nLine = 0;
+
+    //get the max ID (Worst Best Idea Ever !)*********************
+    //the query
+    $sQuery = "SELECT crm.titres.id, crm.titres.nom FROM crm.titres ORDER BY crm.titres.id";
+    //open
+    $oCRM->open();
+    //the select query
+    $ary_ = $oCRM->selectRequest($sQuery, ["id_titres", "nom"], null);
+    //close
+    $oCRM->close();
+
+    //get the count
+    $nCount = count($ary_);
+    //open
+    echo $oXXX->open();
+    while($nLine < $nCount){
+        //create the query
+        $sQuery = "INSERT INTO xxx.titres(nom, rang) VALUES (" . Quotes( $ary_[$nLine]["nom"]) . ", 0)";
+        //execute
+        $oXXX->insertRequest($sQuery, null);
+        //next
+        $nLine++;
+    }
+
+    //open
+    echo $oXXX->close();
+
+    return True;
+}
+
 ///[FUNCTION][createContacts]Function to create the contact
 function createContacts($oXXX, $oCRM){
 
@@ -207,7 +248,8 @@ function createContacts($oXXX, $oCRM){
         //create the queries
         $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
         $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
-        $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($ary_[$nLine]["prenom"]) .", ". Quotes($ary_[$nLine]["nom"]) .", 1, null, 1);\r\n";
+        //$sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($ary_[$nLine]["prenom"]) .", ". Quotes($ary_[$nLine]["nom"]) .", 1, null, 1);\r\n";
+        $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($ary_[$nLine]["prenom"]) .", ". Quotes($ary_[$nLine]["nom"]) .", 1, " . $ary_[$nLine]["titre_id"] . ", 1);\r\n";
 
         //execute
         $oXXX->insertRequest($sQuery, null);
@@ -430,6 +472,7 @@ function doTransfert(){
         createPays($oXXX);
     }
 
+    createTitres($oXXX, $oCRM);
     createContacts($oXXX, $oCRM);
     createOrganisations($oXXX, $oCRM);
 
