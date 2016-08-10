@@ -257,7 +257,8 @@ function createContacts($oXXX, $oCRM){
         $nID++;
 
         //get the address for a contact
-        $ary_AddrContact = GetLstInPotoursObjArray($ary_Addr, "owner", $nIDContact);
+        //$ary_AddrContact = GetLstInPotoursObjArray($ary_Addr, "owner", $nIDContact);
+        $ary_AddrContact = GetLstInPotoursObjArray($ary_Addr, "owner", $ary_[$nLine]["id"]);
         //get the sub count !
         $nSubCount = count($ary_AddrContact);
         //reset the sub iterrator

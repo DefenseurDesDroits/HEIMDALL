@@ -19,6 +19,7 @@ const HEIMDALL_LAY_QUERY_Filter_Container = "LAY_Container_Query_Filter_";
 const HEIMDALL_BTN_PLOTS_MORE_CONTACT = "BTN_More_Contacts";
 
 const HEIMDALL_LAY_CONTACT_EXTENDED_ID = "LAY_Contact_extension_";
+const HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID = "LAY_Contact_extension_address_";
 
 function loadStatics_Civilites(){
 
@@ -185,6 +186,144 @@ function loadStaticsContactsData(){
     return true;
 }
 
+function plotsAddress(oAdr){
+
+    //our code
+    var sCode = "";
+
+    //our Div You baka
+    sCode += "<div>" + "\r\n";
+    
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug){
+        console.log("plotsAddress, json : " + oAdr.exportToJson());
+    }
+    ///[/DEBUG]
+    
+    sCode += "\t" + "<div>Id : " + oAdr.getId_Infos() + "<div>" + "\r\n";
+
+    sCode += "\t" + "<form>" + "\r\n";
+
+    sCode += "\t" + '<input id="SAI_Adr1_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Adr1_' + oAdr.getId_Infos() + '" value="' + oAdr.getAdr1() + '"/>';
+    sCode += "\t" + '<input id="SAI_Adr2_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Adr2_' + oAdr.getId_Infos() + '" value="' + oAdr.getAdr2() + '"/>';
+    sCode += "\t" + '<input id="SAI_Adr2_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Adr3_' + oAdr.getId_Infos() + '" value="' + oAdr.getAdr3() + '"/>';
+
+    sCode += "\t" + "<br/>";
+    sCode += "\t" + "<span>CP</span>";
+    sCode += "\t" + '<input id="SAI_CP_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_CP_' + oAdr.getId_Infos() + '" value="' + oAdr.getCP() + '"/>';    
+
+    sCode += "\t" + "<br/>";
+    sCode += "\t" + "<span>Cedex</span>";
+    sCode += "\t" + '<input id="SAI_Cedex_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Cedex_' + oAdr.getId_Infos() + '" value="' + oAdr.getCedex() + '"/>';
+
+    sCode += "\t" + "<br/>";
+    sCode += "\t" + "<span>Ville</span>";
+    sCode += "\t" + '<input id="SAI_Ville_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Ville_' + oAdr.getId_Infos() + '" value="' + oAdr.getVille() + '"/>';
+    sCode += "\t" + "<span>Pays</span>";
+    sCode += "\t" + '<div>Waiting for a combo box</div>';
+
+    sCode += "\t" + "<br/>";
+    sCode += "\t" + "<span>Site</span>";
+    sCode += "\t" + '<input id="SAI_Site_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Site_' + oAdr.getId_Infos() + '" value="' + oAdr.getSite() + '"/>';
+    sCode += "\t" + "<br/>";
+
+    sCode += "\t" + "<br/>";
+    
+    sCode += "\t" + '<div>Adresse 1</div>'
+    sCode += "\t" + "<span>Téléphone 1 </span>";
+    sCode += "\t" + '<input id="SAI_Tel1_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Tel1_' + oAdr.getId_Infos() + '" value="' + oAdr.getTelephone1() + '"/>';
+    sCode += "\t" + "<span>Courriel 1 </span>";
+    sCode += "\t" + '<input id="SAI_Courriel1_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Courriel1_' + oAdr.getId_Infos() + '" value="' + oAdr.getCourriel1() + '"/>';
+
+    sCode += "\t" + '<div>Adresse 2</div>'
+    sCode += "\t" + "<span>Téléphone 2 </span>";
+    sCode += "\t" + '<input id="SAI_Tel2_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Tel2_' + oAdr.getId_Infos() + '" value="' + oAdr.getTelephone2() + '"/>';
+    sCode += "\t" + "<span>Courriel 2 </span>";
+    sCode += "\t" + '<input id="SAI_Courriel2_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Courriel2_' + oAdr.getId_Infos() + '" value="' + oAdr.getCourriel2() + '"/>';
+
+    sCode += "\t" + "</form>" + "\r\n";
+
+    sCode += "</div>";
+
+    return sCode;
+}
+
+function plotsAddresses(ary_Adr, nLine){
+
+    //our element for Address
+    var oElement = document.getElementById(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + nLine);
+    //our code
+    var sCode = "";
+    //our count 
+    var nCount = 0;
+    //our iterrator
+    var nLine = 0;
+    //our address object 
+    var oAdr = 0;    
+
+    //get the count
+    nCount = ary_Adr.length;
+
+    while(nLine < nCount){
+        oAdr = new Infos();
+        oAdr.loadFromArray(ary_Adr[nLine]);
+        sCode += plotsAddress(oAdr);
+        //Next
+        nLine++;
+    }
+
+    //yeah do da job !!!
+    oElement.innerHTML = sCode;
+}
+
+function contactAddresses(nLine){
+
+    //our element for Address
+    var oElement = document.getElementById(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + nLine);
+
+    oElement.innerHTML = "Adresse en cours de chargement !";
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //Plots !
+
+            ///[DEBUG]Operaion time !!!
+            if(Heimdall.flags.debug){
+                console.log("contactAddresses, response text : " + "\r\n" + "\t" + oReq.responseText);
+            }
+            ///[/DEBUG]
+
+            plotsAddresses(JSON.parse(oReq.responseText), nLine);
+        }
+        
+    };
+
+    //oReq.responseText
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug){
+        console.log("contactAddresses, idlinks : " + "\r\n" + "\t" + Heimdall.members.products.contacts.Contacts[nLine].members["IdLinks"]);
+    }
+    ///[/DEBUG]
+
+    //inform
+    oElement.innerHTML = "Préparation de la requête en cours !";
+
+    //prepare the query*********************
+    //check the open
+    oReq.open("POST", "php/Contact_Infos_Links_Infos_manager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=" + Heimdall.members.products.contacts.Contacts[nLine].members["IdLinks"] + "&Session=" + "" + "&Action=LIST"); 
+    //Return the job !
+    return true;
+
+}
+
 function contactDivHeader(){
     //our code
     var sCode = "";
@@ -280,6 +419,7 @@ function contactLAYDiv(nLine){
     sCode += "\t" + "</select>" + "\r\n";
 
     sCode += "</form>";
+    sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + nLine + "\">---</div>";
 
     //return the code
     return sCode;
@@ -380,6 +520,9 @@ function contactClick(nLine){
                     COMBO_Titres.selectedIndex = nPosition;
                 }
             }
+
+            //Obtain Address
+            contactAddresses(nLine);
 
         }
         // //don't be a silly idiot !
@@ -540,11 +683,18 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
             oContact.loadFromArray(ary_Contacts[nLine]);
             //add fonction in memory ]:)
             oContact.members["fonction"] = ary_Contacts[nLine]["fonction"];
+            //add the contact info
+            if(ary_Contacts[nLine]["IdLinks"] === undefined)   
+                oContact.members["IdLinks"] = 0;
+            else
+                oContact.members["IdLinks"] = ary_Contacts[nLine]["IdLinks"];
 
              ///[DEBUG]Operaion time !!!
             if(Heimdall.flags.debug){
                 console.log("plotContacts, contact fonction : " + ary_Contacts[nLine]["fonction"]);
-                console.log("plotContacts, contact fonction : " + JSON.stringify( ary_Contacts[nLine] ) );
+                console.log("plotContacts, ary IdLinks : " + ary_Contacts[nLine]["IdLinks"]);
+                console.log("plotContacts, contact IdLinks : " + oContact.members["IdLinks"]);
+                console.log("plotContacts, JSON : " + JSON.stringify( ary_Contacts[nLine] ) );
             }
             ///[/DEBUG]   
 
