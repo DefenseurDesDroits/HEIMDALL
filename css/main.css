@@ -87,6 +87,25 @@ div.WIN_Main {
 	cursor : pointer;
 }
 
+.BTN_Fiche{
+	background-color: #33e3e3;
+	width : 100px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: center;
+	border-style: double;
+	border-color: #3353ff;
+	border-width: 1px;
+}
+
+.LAY_{
+	cursor : default;
+}
+
+.LAY_Extension{
+	width : 100%;
+}
+
 .PNL_{
 	background-color: #00FF00
 }
@@ -123,10 +142,6 @@ h1{
 .impaire{
 	background-color: #ECF0F1;
 	color : #3498DB;
-}
-
-.LAY_Extension{
-	width : 100%;
 }
 
 /*ITEMS******************************/

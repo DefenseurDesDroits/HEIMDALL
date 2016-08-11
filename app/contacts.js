@@ -197,12 +197,11 @@ function plotsAddress(oAdr){
     ///[DEBUG]Operaion time !!!
     if(Heimdall.flags.debug){
         console.log("plotsAddress, json : " + oAdr.exportToJson());
+        sCode += "\t" + "<div>Adresse ID : " + oAdr.getId_Infos() + "<div>" + "\r\n";
     }
     ///[/DEBUG]
-    
-    sCode += "\t" + "<div>Id : " + oAdr.getId_Infos() + "<div>" + "\r\n";
 
-    sCode += "\t" + "<form>" + "\r\n";
+    sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
     sCode += "\t" + '<input id="SAI_Adr1_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Adr1_' + oAdr.getId_Infos() + '" value="' + oAdr.getAdr1() + '"/>';
     sCode += "\t" + '<input id="SAI_Adr2_' + oAdr.getId_Infos() + '" class="SAI_" type="text" name="SAI_Adr2_' + oAdr.getId_Infos() + '" value="' + oAdr.getAdr2() + '"/>';
@@ -368,7 +367,56 @@ function contactDivHeader(){
 }
 
 function contactLAYDIVSave(nLine){
-    alert("NotDevYet");
+    
+    //get the contact 
+    var oContact = Heimdall.members.products.contacts.Contacts[nLine];
+    //element 
+    var oElement = null;
+
+    // 
+
+    oElement = document.getElementById("COMBO_Civilite_" + nLine);
+    if(oElement != null)
+        oContact.setId_Civilites(parseInt(Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites()));
+
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug && oElement != null){
+        console.log("COMBO_Civilite value : "  + oElement.selectedIndex);
+        console.log("COMBO_Civilite ID : "  + Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites());
+    }
+    ///[/DEBUG]
+
+    oElement = document.getElementById("SAI_Nom_" + nLine);
+    if(oElement != null)
+        oContact.setNom(oElement.value);
+
+    oElement = document.getElementById("SAI_Prenom_" + nLine);
+    if(oElement != null)
+        oContact.setPrenom(oElement.value);
+
+    oElement = document.getElementById("COMBO_Titres_" + nLine);
+    if(oElement != null)
+        oContact.setId_Titres(parseInt(Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres()));
+
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug && oElement != null){
+        console.log("COMBO_Titres value : "  + oElement.selectedIndex);
+        console.log("COMBO_Titres ID : "  + Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres());
+    }
+    ///[/DEBUG]
+
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug){
+        console.log("contactLAYDIVSave, json : " + "\r\n" + oContact.exportToJson());
+    }
+    ///[/DEBUG]
+
+    //yeah ...
+    alert("Save NotDevYet : " + nLine);
+}
+
+function contactLAYDIVDelete(nLine){
+    alert("Delete NotDevYet : " + nLine);
 }
 
 function contactLAYDiv(nLine){
@@ -383,7 +431,7 @@ function contactLAYDiv(nLine){
     var nPosition = 0;
 
     //sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
-    sCode += "<form>" + "\r\n";
+    sCode += "<form class=\"LAY_\">" + "\r\n";
 
     sCode += "\t" + "<select id=\"COMBO_Civilite_" + nLine + "\">" + "\r\n";
     //get the count
@@ -402,7 +450,7 @@ function contactLAYDiv(nLine){
     sCode += '\t\t<input id="SAI_Nom_' + nLine + '" class="SAI_" type="text" name="SAI_Nom_' + nLine + '" value="' + Heimdall.members.products.contacts.Contacts[nLine].getNom() + '"/>';
     sCode += '\t\t<input id="SAI_Prenom_' + nLine + '" class="SAI_" type="text" name="SAI_Prenom_' + nLine + '" value="' + Heimdall.members.products.contacts.Contacts[nLine].getPrenom() + '"/>';
 
-    sCode += "\t" + "<br/>" + "\r\n";
+    //sCode += "\t" + "<br/>" + "\r\n";
 
     sCode += "\t" + "<select id=\"COMBO_Titres_" + nLine + "\">" + "\r\n";
     //get the count
@@ -417,6 +465,9 @@ function contactLAYDiv(nLine){
         nIt++;
     }
     sCode += "\t" + "</select>" + "\r\n";
+
+    sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"contactLAYDIVSave(" + nLine + ")\">Sauvegarder</div>" + "\r\n";
+    sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"contactLAYDIVDelete(" + nLine + ")\">Supprimer</div>" + "\r\n";
 
     sCode += "</form>";
     sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + nLine + "\">---</div>";
@@ -525,11 +576,6 @@ function contactClick(nLine){
             contactAddresses(nLine);
 
         }
-        // //don't be a silly idiot !
-        // if(nElement >= 0){
-        //     if(oExt[nElement].id != oElement.id)
-        //     oElement.className += " LAY_Extension";
-        // }
     }
 
     
@@ -578,6 +624,12 @@ function contactdiv(oContact, nLine){
     else
         sName += oContact.getPrenom() + " " + oContact.getNom();
 
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug){
+        sName += " ( ID : " + oContact.getId_Contacts() + ")";
+    }
+    ///[/DEBUG]   
+
     //if the function is not null
     if(oContact.members["fonction"] != null)
         sFunction = oContact.members["fonction"];
@@ -610,7 +662,7 @@ function contactdiv(oContact, nLine){
 
     sCode += "\t" + "</div>";
 
-    sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ID + nLine + "\" class=\"heim_Block  LAY_Extension\" ></div>";
+    sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ID + nLine + "\" class=\"heim_Block LAY_Extension\" ></div>";
 
     sCode += "</div>";
 
