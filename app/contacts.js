@@ -21,6 +21,8 @@ const HEIMDALL_BTN_PLOTS_MORE_CONTACT = "BTN_More_Contacts";
 const HEIMDALL_LAY_CONTACT_EXTENDED_ID = "LAY_Contact_extension_";
 const HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID = "LAY_Contact_extension_address_";
 
+///[FUNCTION][loadStatics_Civilites]Function to load all the civilities from the DTB
+///[RETURNS][Boolean]True if done
 function loadStatics_Civilites(){
 
     //Our request object
@@ -73,6 +75,8 @@ function loadStatics_Civilites(){
 
 }
 
+///[FUNCTION][loadStatics_Titres]Function to load all the Titles from the DTB
+///[RETURNS][Boolean]True if done
 function loadStatics_Titres(){
 
     //Our request object
@@ -125,6 +129,8 @@ function loadStatics_Titres(){
 
 }
 
+///[FUNCTION][loadStatics_Contact_Types]Function to load all the Contacts types from the DTB
+///[RETURNS][Boolean]True if done
 function loadStatics_Contact_Types(){
 
     //Our request object
@@ -177,6 +183,8 @@ function loadStatics_Contact_Types(){
 
 }
 
+///[FUNCTION][loadStaticsContactsData]Function to load all the Contacts data from the DTB
+///[RETURNS][Boolean]True if done
 function loadStaticsContactsData(){
 
     loadStatics_Contact_Types();
@@ -186,6 +194,9 @@ function loadStaticsContactsData(){
     return true;
 }
 
+///[FUNCTION][plotsAddress]Function to plots an address
+///[PARAMETER][address][oAdr]The object we want plots
+///[RETURNS][String]HTML Code of the element
 function plotsAddress(oAdr){
 
     //our code
@@ -247,6 +258,10 @@ function plotsAddress(oAdr){
     return sCode;
 }
 
+///[FUNCTION][plotsAddress]Function to plots an address
+///[PARAMETER][array of address][ary_Adr]The object we want plots
+///[PARAMETER][integer][nLine]Line of the contact
+///[RETURNS][String]HTML Code of the element
 function plotsAddresses(ary_Adr, nLine){
 
     //our element for Address
@@ -256,25 +271,28 @@ function plotsAddresses(ary_Adr, nLine){
     //our count 
     var nCount = 0;
     //our iterrator
-    var nLine = 0;
+    var nIt = 0;
     //our address object 
     var oAdr = 0;    
 
     //get the count
     nCount = ary_Adr.length;
 
-    while(nLine < nCount){
+    while(nIt < nCount){
         oAdr = new Infos();
-        oAdr.loadFromArray(ary_Adr[nLine]);
+        oAdr.loadFromArray(ary_Adr[nIt]);
         sCode += plotsAddress(oAdr);
         //Next
-        nLine++;
+        nIt++;
     }
 
     //yeah do da job !!!
     oElement.innerHTML = sCode;
 }
 
+///[FUNCTION][contactAddresses]Function to load and plots address of contacts
+///[PARAMETER][integer][nLine]Line of the contact
+///[RETURNS][Boolean]True if done
 function contactAddresses(nLine){
 
     //our element for Address
@@ -323,6 +341,8 @@ function contactAddresses(nLine){
 
 }
 
+///[FUNCTION][contactDivHeader]Function to plot the contact header
+///[RETURNS][String]HTML Code of the element
 function contactDivHeader(){
     //our code
     var sCode = "";
@@ -366,6 +386,9 @@ function contactDivHeader(){
     return sCode;
 }
 
+///[FUNCTION][contactLAYDIVSave]Function to save the change in a contact
+///[PARAMETER][integer][nLine]Line of the contact
+///[RETURNS][Boolean]True if done
 function contactLAYDIVSave(nLine){
     
     //get the contact 
@@ -412,13 +435,21 @@ function contactLAYDIVSave(nLine){
     ///[/DEBUG]
 
     //yeah ...
-    alert("Save NotDevYet : " + nLine);
+    //alert("Save NotDevYet : " + nLine);
+
+    return oContact.save("", "");
 }
 
+///[FUNCTION][contactLAYDIVDelete]Function to delete the change in a contact
+///[PARAMETER][integer][nLine]Line of the contact
+///[RETURNS][Boolean]True if done
 function contactLAYDIVDelete(nLine){
     alert("Delete NotDevYet : " + nLine);
 }
 
+///[FUNCTION][contactLAYDiv]Function to plot a contact
+///[PARAMETER][integer][nLine]Line of the contact
+///[RETURNS][String]HTML Code of the element
 function contactLAYDiv(nLine){
     //our code
     var sCode = "";
@@ -476,6 +507,8 @@ function contactLAYDiv(nLine){
     return sCode;
 }
 
+///[FUNCTION][contactClick]Function on click of a contact
+///[PARAMETER][integer][nLine]Line of the contact
 function contactClick(nLine){
 
     //Extended elements we must close
@@ -581,6 +614,10 @@ function contactClick(nLine){
     
 }
 
+///[FUNCTION][contactLAYDiv]Function to plot a contact inline
+///[PARAMETER][Contacts][oContact]Our contact we plots
+///[PARAMETER][integer][nLine]Line of the contact
+///[RETURNS][String]HTML Code of the element
 function contactdiv(oContact, nLine){
 
     //our code
@@ -670,10 +707,20 @@ function contactdiv(oContact, nLine){
     return sCode;
 }
 
+///[FUNCTION][plotMoreContact]Function to plot line of contacts
+///[PARAMETER][integer][nOffset]Our start line
+///[PARAMETER][integer][nLimit]integer to determine the last print line
+///[RETURNS][Boolean]True if done
 function plotMoreContact(nOffset, nLimit){
     return plotContacts(Heimdall.members.products.contacts.Contacts, false, nOffset, nLimit);
 }
 
+///[FUNCTION][plotMoreContact]Function to plot line of contacts
+///[PARAMETER][array of contacts][ary_Contacts]Our array with contact to plots
+///[PARAMETER][boolean][bFromJson]Load form Json ?
+///[PARAMETER][integer][nOffset]Our start line
+///[PARAMETER][integer][nLimit]integer to determine the last print line
+///[RETURNS][Boolean]True if done
 function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
 
     ///[DEBUG]Operaion time !!!
@@ -785,6 +832,9 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
 
 }
 
+///[FUNCTION][deleteSelectionField]Function to delete a Field of selection
+///[PARAMETER][String][sFieldName]Field name to delete
+///[RETURNS][Boolean]True if done
 function deleteSelectionField(sFieldName){
     
     //get our element 
@@ -818,6 +868,9 @@ function deleteSelectionField(sFieldName){
     return true;
 }
 
+///[FUNCTION][createSelectionField]Function to plot line of contacts
+///[PARAMETER][String][sNext]Next field name
+///[RETURNS][Boolean]True if done
 function createSelectionField(sNext){
     //our code
     var sCode = "";
@@ -844,6 +897,8 @@ function createSelectionField(sNext){
     return sCode;
 }
 
+///[FUNCTION][addSelectionField]Function to plot line of contacts
+///[RETURNS][Boolean]True if done
 function addSelectionField(){
 
     //get container element 
@@ -884,6 +939,8 @@ function addSelectionField(){
     return true;
 }
 
+///[FUNCTION][addSelectionField]Function to plot line of contacts
+///[RETURNS][Array of Arguments]Array of arguments
 function createArgs(){
 
     //get the content layout
@@ -936,6 +993,7 @@ function createArgs(){
 }
 
 ///[FUNCTION][contactDoQuery]Function to manage the research
+///[RETURNS][Boolean]True if done
 function contactDoQuery(){
 
     //get the content layout
@@ -971,6 +1029,7 @@ function contactDoQuery(){
 }
 
 ///[FUNCTION][init_contacts]Function to init the contact part
+///[RETURNS][Boolean]True if done
 function init_contacts(){
     
     //our code
