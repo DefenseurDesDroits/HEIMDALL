@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Notes_manager.php
 //Description : Table des notes sur les items
 
@@ -42,7 +42,7 @@ function NotessaveFromJson($jsonObj){
 	$oNotes->save(null);
 	
 	//Return the present states
-	return $oNotesgetFromID( $oNotes->getId_Notes() );
+	return NotesgetFromID( $oNotes->getId_Notes() );
 };
 
 ///[FUNCTION][NotesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function NotesgetAllInstance(){
 	//Our object declaration
 	$oNotes = new Notes();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oNotes->getColumns() . "\r\n" . "FROM " . $oNotes->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oNotes->getColumns() . "\r\n" . "FROM " . $oNotes->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oNotes->getLinkConditions(true);
 	//The array we get

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Pays_manager.php
 //Description : Tables des pays
 
@@ -42,7 +42,7 @@ function PayssaveFromJson($jsonObj){
 	$oPays->save(null);
 	
 	//Return the present states
-	return $oPaysgetFromID( $oPays->getId_Pays() );
+	return PaysgetFromID( $oPays->getId_Pays() );
 };
 
 ///[FUNCTION][PaysdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function PaysgetAllInstance(){
 	//Our object declaration
 	$oPays = new Pays();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oPays->getColumns() . "\r\n" . "FROM " . $oPays->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oPays->getColumns() . "\r\n" . "FROM " . $oPays->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oPays->getLinkConditions(true);
 	//The array we get

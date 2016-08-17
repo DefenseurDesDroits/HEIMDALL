@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Pays.php
 //Description : Tables des pays
 
@@ -367,16 +367,16 @@ class Pays{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Pays" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Code  = " . Quotes($this->getCode());
-		$Query .= ", " .  $this->getTable() . "." . "Alpha2  = " . Quotes($this->getAlpha2());
-		$Query .= ", " .  $this->getTable() . "." . "Alpha3  = " . Quotes($this->getAlpha3());
-		$Query .= ", " .  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Langues_Json  = " . Quotes($this->getId_Langues_Json());
+		$Query .=  "Code  = " . Quotes($this->getCode());
+		$Query .= ", " .  "Alpha2  = " . Quotes($this->getAlpha2());
+		$Query .= ", " .  "Alpha3  = " . Quotes($this->getAlpha3());
+		$Query .= ", " .  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "Id_Langues_Json  = " . Quotes($this->getId_Langues_Json());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Pays = " . Quotes($this->getId_Pays());
 		//Return the query !!!
 		return $Query;
 	}
@@ -431,7 +431,7 @@ class Pays{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Contact_Infos.php
 //Description : Table des informations liées au contact
 
@@ -309,14 +309,14 @@ class Contact_Infos extends Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Contact_Infos" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Id_Contacts  = " . Quotes($this->getId_Contacts());
-		$Query .= ", " .  $this->getTable() . "." . "Fonction  = " . Quotes($this->getFonction());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Langues  = " . Quotes($this->getId_Langues());
+		$Query .=  "Id_Contacts  = " . Quotes($this->getId_Contacts());
+		$Query .= ", " .  "Fonction  = " . Quotes($this->getFonction());
+		$Query .= ", " .  "Id_Langues  = " . Quotes($this->getId_Langues());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Contact_Infos = " . Quotes($this->getId_Contact_Infos());
 		//Return the query !!!
 		return $Query;
 	}
@@ -371,7 +371,7 @@ class Contact_Infos extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

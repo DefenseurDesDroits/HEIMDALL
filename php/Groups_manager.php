@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Groups_manager.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -42,7 +42,7 @@ function GroupssaveFromJson($jsonObj){
 	$oGroups->save(null);
 	
 	//Return the present states
-	return $oGroupsgetFromID( $oGroups->getId_Groups() );
+	return GroupsgetFromID( $oGroups->getId_Groups() );
 };
 
 ///[FUNCTION][GroupsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function GroupsgetAllInstance(){
 	//Our object declaration
 	$oGroups = new Groups();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oGroups->getColumns() . "\r\n" . "FROM " . $oGroups->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oGroups->getColumns() . "\r\n" . "FROM " . $oGroups->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oGroups->getLinkConditions(true);
 	//The array we get

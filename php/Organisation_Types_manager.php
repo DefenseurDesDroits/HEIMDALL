@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Organisation_Types_manager.php
 //Description : Tables des différants type d'organisations possibles
 
@@ -42,7 +42,7 @@ function Organisation_TypessaveFromJson($jsonObj){
 	$oOrganisation_Types->save(null);
 	
 	//Return the present states
-	return $oOrganisation_TypesgetFromID( $oOrganisation_Types->getId_Organisation_Types() );
+	return Organisation_TypesgetFromID( $oOrganisation_Types->getId_Organisation_Types() );
 };
 
 ///[FUNCTION][Organisation_TypesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function Organisation_TypesgetAllInstance(){
 	//Our object declaration
 	$oOrganisation_Types = new Organisation_Types();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oOrganisation_Types->getColumns() . "\r\n" . "FROM " . $oOrganisation_Types->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oOrganisation_Types->getColumns() . "\r\n" . "FROM " . $oOrganisation_Types->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oOrganisation_Types->getLinkConditions(true);
 	//The array we get

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Notifications_manager.php
 //Description : Tables des notifications utilisateurs
 
@@ -42,7 +42,7 @@ function NotificationssaveFromJson($jsonObj){
 	$oNotifications->save(null);
 	
 	//Return the present states
-	return $oNotificationsgetFromID( $oNotifications->getId_Notifications() );
+	return NotificationsgetFromID( $oNotifications->getId_Notifications() );
 };
 
 ///[FUNCTION][NotificationsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function NotificationsgetAllInstance(){
 	//Our object declaration
 	$oNotifications = new Notifications();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oNotifications->getColumns() . "\r\n" . "FROM " . $oNotifications->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oNotifications->getColumns() . "\r\n" . "FROM " . $oNotifications->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oNotifications->getLinkConditions(true);
 	//The array we get

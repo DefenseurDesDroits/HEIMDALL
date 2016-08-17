@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Noeuds.php
 //Description : Table pour gérer les noeuds
 
@@ -252,12 +252,12 @@ class Noeuds extends Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Noeuds" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Id_Noeuds_Parent  = " . Quotes($this->getId_Noeuds_Parent());
+		$Query .=  "Id_Noeuds_Parent  = " . Quotes($this->getId_Noeuds_Parent());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Noeuds = " . Quotes($this->getId_Noeuds());
 		//Return the query !!!
 		return $Query;
 	}
@@ -312,7 +312,7 @@ class Noeuds extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

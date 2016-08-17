@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Notifications.php
 //Description : Tables des notifications utilisateurs
 
@@ -308,14 +308,14 @@ class Notifications{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Notifications" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Msg  = " . Quotes($this->getMsg());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Auteur  = " . Quotes($this->getId_Auteur());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Destinataire  = " . Quotes($this->getId_Destinataire());
+		$Query .=  "Msg  = " . Quotes($this->getMsg());
+		$Query .= ", " .  "Id_Auteur  = " . Quotes($this->getId_Auteur());
+		$Query .= ", " .  "Id_Destinataire  = " . Quotes($this->getId_Destinataire());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Notifications = " . Quotes($this->getId_Notifications());
 		//Return the query !!!
 		return $Query;
 	}
@@ -370,7 +370,7 @@ class Notifications{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

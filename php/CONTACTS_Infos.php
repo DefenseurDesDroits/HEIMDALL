@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Infos.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -599,24 +599,24 @@ class Infos extends Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Infos" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Adr1  = " . Quotes($this->getAdr1());
-		$Query .= ", " .  $this->getTable() . "." . "Adr2  = " . Quotes($this->getAdr2());
-		$Query .= ", " .  $this->getTable() . "." . "Adr3  = " . Quotes($this->getAdr3());
-		$Query .= ", " .  $this->getTable() . "." . "CP  = " . Quotes($this->getCP());
-		$Query .= ", " .  $this->getTable() . "." . "Cedex  = " . Quotes($this->getCedex());
-		$Query .= ", " .  $this->getTable() . "." . "Ville  = " . Quotes($this->getVille());
-		$Query .= ", " .  $this->getTable() . "." . "Telephone1  = " . Quotes($this->getTelephone1());
-		$Query .= ", " .  $this->getTable() . "." . "Courriel1  = " . Quotes($this->getCourriel1());
-		$Query .= ", " .  $this->getTable() . "." . "Telephone2  = " . Quotes($this->getTelephone2());
-		$Query .= ", " .  $this->getTable() . "." . "Courriel2  = " . Quotes($this->getCourriel2());
-		$Query .= ", " .  $this->getTable() . "." . "Site  = " . Quotes($this->getSite());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Pays  = " . Quotes($this->getId_Pays());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Contact_Infos  = " . Quotes($this->getId_Contact_Infos());
+		$Query .=  "Adr1  = " . Quotes($this->getAdr1());
+		$Query .= ", " .  "Adr2  = " . Quotes($this->getAdr2());
+		$Query .= ", " .  "Adr3  = " . Quotes($this->getAdr3());
+		$Query .= ", " .  "CP  = " . Quotes($this->getCP());
+		$Query .= ", " .  "Cedex  = " . Quotes($this->getCedex());
+		$Query .= ", " .  "Ville  = " . Quotes($this->getVille());
+		$Query .= ", " .  "Telephone1  = " . Quotes($this->getTelephone1());
+		$Query .= ", " .  "Courriel1  = " . Quotes($this->getCourriel1());
+		$Query .= ", " .  "Telephone2  = " . Quotes($this->getTelephone2());
+		$Query .= ", " .  "Courriel2  = " . Quotes($this->getCourriel2());
+		$Query .= ", " .  "Site  = " . Quotes($this->getSite());
+		$Query .= ", " .  "Id_Pays  = " . Quotes($this->getId_Pays());
+		$Query .= ", " .  "Id_Contact_Infos  = " . Quotes($this->getId_Contact_Infos());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Infos = " . Quotes($this->getId_Infos());
 		//Return the query !!!
 		return $Query;
 	}
@@ -671,7 +671,7 @@ class Infos extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

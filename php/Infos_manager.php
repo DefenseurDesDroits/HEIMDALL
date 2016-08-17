@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Infos_manager.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -42,7 +42,7 @@ function InfossaveFromJson($jsonObj){
 	$oInfos->save(null);
 	
 	//Return the present states
-	return $oInfosgetFromID( $oInfos->getId_Infos() );
+	return InfosgetFromID( $oInfos->getId_Infos() );
 };
 
 ///[FUNCTION][InfosdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function InfosgetAllInstance(){
 	//Our object declaration
 	$oInfos = new Infos();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oInfos->getColumns() . "\r\n" . "FROM " . $oInfos->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oInfos->getColumns() . "\r\n" . "FROM " . $oInfos->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oInfos->getLinkConditions(true);
 	//The array we get

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Langues.php
 //Description : Tables des langues
 
@@ -49,15 +49,15 @@ class Langues{
 	///[SECTION][SETTERS]#################################################
 
 	///[METHOD][setId_Langues]Method to set the Id_Langues
-	///[PARAMETER][integer][$lValue]Our new value for Id_Langues
+	///[PARAMETER][integer][$nValue]Our new value for Id_Langues
 	///[RETURNS]Boolean true if done 
-	public function setId_Langues($lValue){
+	public function setId_Langues($nValue){
 		//security on null guy !!!
-		if($lValue == null)
+		if($nValue == null)
 			return false;
 		//security on type guy !!!
-		if(getType($lValue) == 'integer'){
-			 $this->members["nId_Langues"] = $lValue;
+		if(getType($nValue) == 'integer'){
+			 $this->members["nId_Langues"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -252,12 +252,12 @@ class Langues{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Langues" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
+		$Query .=  "Nom  = " . Quotes($this->getNom());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Langues = " . Quotes($this->getId_Langues());
 		//Return the query !!!
 		return $Query;
 	}
@@ -312,7 +312,7 @@ class Langues{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

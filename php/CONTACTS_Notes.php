@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Notes.php
 //Description : Table des notes sur les items
 
@@ -338,15 +338,15 @@ class Notes extends Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Notes" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Titre  = " . Quotes($this->getTitre());
-		$Query .= ", " .  $this->getTable() . "." . "Urgente  = " . Quotes($this->getUrgente());
-		$Query .= ", " .  $this->getTable() . "." . "Texte  = " . Quotes($this->getTexte());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Items_Linked  = " . Quotes($this->getId_Items_Linked());
+		$Query .=  "Titre  = " . Quotes($this->getTitre());
+		$Query .= ", " .  "Urgente  = " . Quotes($this->getUrgente());
+		$Query .= ", " .  "Texte  = " . Quotes($this->getTexte());
+		$Query .= ", " .  "Id_Items_Linked  = " . Quotes($this->getId_Items_Linked());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Notes = " . Quotes($this->getId_Notes());
 		//Return the query !!!
 		return $Query;
 	}
@@ -401,7 +401,7 @@ class Notes extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

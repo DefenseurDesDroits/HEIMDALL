@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Civilites_manager.php
 //Description : Table des civilités des contacts
 
@@ -42,7 +42,7 @@ function CivilitessaveFromJson($jsonObj){
 	$oCivilites->save(null);
 	
 	//Return the present states
-	return $oCivilitesgetFromID( $oCivilites->getId_Civilites() );
+	return CivilitesgetFromID( $oCivilites->getId_Civilites() );
 };
 
 ///[FUNCTION][CivilitesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function CivilitesgetAllInstance(){
 	//Our object declaration
 	$oCivilites = new Civilites();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oCivilites->getColumns() . "\r\n" . "FROM " . $oCivilites->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oCivilites->getColumns() . "\r\n" . "FROM " . $oCivilites->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oCivilites->getLinkConditions(true);
 	//The array we get

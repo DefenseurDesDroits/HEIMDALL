@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Titres.php
 //Description : Tables des titres des contacts
 
@@ -280,13 +280,13 @@ class Titres{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Titres" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
-		$Query .= ", " .  $this->getTable() . "." . "Rang  = " . Quotes($this->getRang());
+		$Query .=  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "Rang  = " . Quotes($this->getRang());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Titres = " . Quotes($this->getId_Titres());
 		//Return the query !!!
 		return $Query;
 	}
@@ -341,7 +341,7 @@ class Titres{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

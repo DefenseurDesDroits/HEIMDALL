@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -280,13 +280,13 @@ class Groups extends Contacts{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Groups" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "UGrp_Json  = " . Quotes($this->getUGrp_Json());
-		$Query .= ", " .  $this->getTable() . "." . "Fichiers  = " . Quotes($this->getFichiers());
+		$Query .=  "UGrp_Json  = " . Quotes($this->getUGrp_Json());
+		$Query .= ", " .  "Fichiers  = " . Quotes($this->getFichiers());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Groups = " . Quotes($this->getId_Groups());
 		//Return the query !!!
 		return $Query;
 	}
@@ -341,7 +341,7 @@ class Groups extends Contacts{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

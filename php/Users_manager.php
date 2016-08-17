@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Users_manager.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -42,7 +42,7 @@ function UserssaveFromJson($jsonObj){
 	$oUsers->save(null);
 	
 	//Return the present states
-	return $oUsersgetFromID( $oUsers->getId_Users() );
+	return UsersgetFromID( $oUsers->getId_Users() );
 };
 
 ///[FUNCTION][UsersdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function UsersgetAllInstance(){
 	//Our object declaration
 	$oUsers = new Users();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oUsers->getColumns() . "\r\n" . "FROM " . $oUsers->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oUsers->getColumns() . "\r\n" . "FROM " . $oUsers->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oUsers->getLinkConditions(true);
 	//The array we get

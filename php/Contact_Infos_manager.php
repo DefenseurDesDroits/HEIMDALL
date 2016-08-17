@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contact_Infos_manager.php
 //Description : Table des informations liées au contact
 
@@ -42,7 +42,7 @@ function Contact_InfossaveFromJson($jsonObj){
 	$oContact_Infos->save(null);
 	
 	//Return the present states
-	return $oContact_InfosgetFromID( $oContact_Infos->getId_Contact_Infos() );
+	return Contact_InfosgetFromID( $oContact_Infos->getId_Contact_Infos() );
 };
 
 ///[FUNCTION][Contact_InfosdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function Contact_InfosgetAllInstance(){
 	//Our object declaration
 	$oContact_Infos = new Contact_Infos();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oContact_Infos->getColumns() . "\r\n" . "FROM " . $oContact_Infos->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oContact_Infos->getColumns() . "\r\n" . "FROM " . $oContact_Infos->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oContact_Infos->getLinkConditions(true);
 	//The array we get

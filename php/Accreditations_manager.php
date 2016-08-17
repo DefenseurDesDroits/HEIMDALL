@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Accreditations_manager.php
 //Description : Table des accréditations sur les items
 
@@ -42,7 +42,7 @@ function AccreditationssaveFromJson($jsonObj){
 	$oAccreditations->save(null);
 	
 	//Return the present states
-	return $oAccreditationsgetFromID( $oAccreditations->getId_Accreditations() );
+	return AccreditationsgetFromID( $oAccreditations->getId_Accreditations() );
 };
 
 ///[FUNCTION][AccreditationsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function AccreditationsgetAllInstance(){
 	//Our object declaration
 	$oAccreditations = new Accreditations();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oAccreditations->getColumns() . "\r\n" . "FROM " . $oAccreditations->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oAccreditations->getColumns() . "\r\n" . "FROM " . $oAccreditations->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oAccreditations->getLinkConditions(true);
 	//The array we get

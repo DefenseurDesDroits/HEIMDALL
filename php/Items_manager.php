@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Items_manager.php
 //Description : Table de tous les items avec des droits
 
@@ -42,7 +42,7 @@ function ItemssaveFromJson($jsonObj){
 	$oItems->save(null);
 	
 	//Return the present states
-	return $oItemsgetFromID( $oItems->getId_Items() );
+	return ItemsgetFromID( $oItems->getId_Items() );
 };
 
 ///[FUNCTION][ItemsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function ItemsgetAllInstance(){
 	//Our object declaration
 	$oItems = new Items();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oItems->getColumns() . "\r\n" . "FROM " . $oItems->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oItems->getColumns() . "\r\n" . "FROM " . $oItems->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oItems->getLinkConditions(true);
 	//The array we get

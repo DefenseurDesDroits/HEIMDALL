@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Accreditations.php
 //Description : Table des accréditations sur les items
 
@@ -280,13 +280,13 @@ class Accreditations{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Accreditations" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
-		$Query .= ", " .  $this->getTable() . "." . "Niveau  = " . Quotes($this->getNiveau());
+		$Query .=  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "Niveau  = " . Quotes($this->getNiveau());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Accreditations = " . Quotes($this->getId_Accreditations());
 		//Return the query !!!
 		return $Query;
 	}
@@ -341,7 +341,7 @@ class Accreditations{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

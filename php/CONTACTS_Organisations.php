@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -270,13 +270,13 @@ class Organisations extends Contacts{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Organisations" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Id_Organisation_Type  = " . Quotes($this->getId_Organisation_Type());
-		$Query .= ", " .  $this->getTable() . "." . "Acronyme  = " . Quotes($this->getAcronyme());
+		$Query .=  "Id_Organisation_Type  = " . Quotes($this->getId_Organisation_Type());
+		$Query .= ", " .  "Acronyme  = " . Quotes($this->getAcronyme());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Organisations = " . Quotes($this->getId_Organisations());
 		//Return the query !!!
 		return $Query;
 	}
@@ -331,7 +331,7 @@ class Organisations extends Contacts{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

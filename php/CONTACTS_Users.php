@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Users.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -281,13 +281,13 @@ class Users extends Contacts{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Users" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Pseudo  = " . Quotes($this->getPseudo());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Accreditations_Exp_Json  = " . Quotes($this->getId_Accreditations_Exp_Json());
+		$Query .=  "Pseudo  = " . Quotes($this->getPseudo());
+		$Query .= ", " .  "Id_Accreditations_Exp_Json  = " . Quotes($this->getId_Accreditations_Exp_Json());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Users = " . Quotes($this->getId_Users());
 		//Return the query !!!
 		return $Query;
 	}
@@ -342,7 +342,7 @@ class Users extends Contacts{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

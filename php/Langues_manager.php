@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Langues_manager.php
 //Description : Tables des langues
 
@@ -42,7 +42,7 @@ function LanguessaveFromJson($jsonObj){
 	$oLangues->save(null);
 	
 	//Return the present states
-	return $oLanguesgetFromID( $oLangues->getId_Langues() );
+	return LanguesgetFromID( $oLangues->getId_Langues() );
 };
 
 ///[FUNCTION][LanguesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function LanguesgetAllInstance(){
 	//Our object declaration
 	$oLangues = new Langues();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oLangues->getColumns() . "\r\n" . "FROM " . $oLangues->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oLangues->getColumns() . "\r\n" . "FROM " . $oLangues->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oLangues->getLinkConditions(true);
 	//The array we get

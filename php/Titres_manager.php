@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Titres_manager.php
 //Description : Tables des titres des contacts
 
@@ -42,7 +42,7 @@ function TitressaveFromJson($jsonObj){
 	$oTitres->save(null);
 	
 	//Return the present states
-	return $oTitresgetFromID( $oTitres->getId_Titres() );
+	return TitresgetFromID( $oTitres->getId_Titres() );
 };
 
 ///[FUNCTION][TitresdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function TitresgetAllInstance(){
 	//Our object declaration
 	$oTitres = new Titres();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oTitres->getColumns() . "\r\n" . "FROM " . $oTitres->getTable() . "\r\n" . "ORDER BY xxx.titres.nom" ;
+	$sQuery = "SELECT DISTINCT " . $oTitres->getColumns() . "\r\n" . "FROM " . $oTitres->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oTitres->getLinkConditions(true);
 	//The array we get

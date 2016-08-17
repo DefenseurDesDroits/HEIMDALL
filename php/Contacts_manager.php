@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_manager.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
@@ -42,7 +42,7 @@ function ContactssaveFromJson($jsonObj){
 	$oContacts->save(null);
 	
 	//Return the present states
-	return $oContactsgetFromID( $oContacts->getId_Contacts() );
+	return ContactsgetFromID( $oContacts->getId_Contacts() );
 };
 
 ///[FUNCTION][ContactsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function ContactsgetAllInstance(){
 	//Our object declaration
 	$oContacts = new Contacts();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oContacts->getColumns() . "\r\n" . "FROM " . $oContacts->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oContacts->getColumns() . "\r\n" . "FROM " . $oContacts->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oContacts->getLinkConditions(true);
 	//The array we get

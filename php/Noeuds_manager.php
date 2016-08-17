@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Noeuds_manager.php
 //Description : Table pour gérer les noeuds
 
@@ -42,7 +42,7 @@ function NoeudssaveFromJson($jsonObj){
 	$oNoeuds->save(null);
 	
 	//Return the present states
-	return $oNoeudsgetFromID( $oNoeuds->getId_Noeuds() );
+	return NoeudsgetFromID( $oNoeuds->getId_Noeuds() );
 };
 
 ///[FUNCTION][NoeudsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function NoeudsgetAllInstance(){
 	//Our object declaration
 	$oNoeuds = new Noeuds();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oNoeuds->getColumns() . "\r\n" . "FROM " . $oNoeuds->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oNoeuds->getColumns() . "\r\n" . "FROM " . $oNoeuds->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oNoeuds->getLinkConditions(true);
 	//The array we get

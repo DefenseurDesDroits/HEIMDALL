@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contact_Types_manager.php
 //Description : Table des types de contact
 
@@ -42,7 +42,7 @@ function Contact_TypessaveFromJson($jsonObj){
 	$oContact_Types->save(null);
 	
 	//Return the present states
-	return $oContact_TypesgetFromID( $oContact_Types->getId_Contact_Types() );
+	return Contact_TypesgetFromID( $oContact_Types->getId_Contact_Types() );
 };
 
 ///[FUNCTION][Contact_TypesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function Contact_TypesgetAllInstance(){
 	//Our object declaration
 	$oContact_Types = new Contact_Types();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oContact_Types->getColumns() . "\r\n" . "FROM " . $oContact_Types->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oContact_Types->getColumns() . "\r\n" . "FROM " . $oContact_Types->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oContact_Types->getLinkConditions(true);
 	//The array we get

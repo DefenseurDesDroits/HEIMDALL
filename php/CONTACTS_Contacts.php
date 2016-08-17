@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Contacts.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
@@ -366,16 +366,16 @@ class Contacts extends Noeuds{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Contacts" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Prenom  = " . Quotes($this->getPrenom());
-		$Query .= ", " .  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Civilites  = " . Quotes($this->getId_Civilites());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Titres  = " . Quotes($this->getId_Titres());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Contact_Types  = " . Quotes($this->getId_Contact_Types());
+		$Query .=  "Prenom  = " . Quotes($this->getPrenom());
+		$Query .= ", " .  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "Id_Civilites  = " . Quotes($this->getId_Civilites());
+		$Query .= ", " .  "Id_Titres  = " . Quotes($this->getId_Titres());
+		$Query .= ", " .  "Id_Contact_Types  = " . Quotes($this->getId_Contact_Types());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Contacts = " . Quotes($this->getId_Contacts());
 		//Return the query !!!
 		return $Query;
 	}
@@ -430,7 +430,7 @@ class Contacts extends Noeuds{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 

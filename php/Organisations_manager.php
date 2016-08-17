@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Organisations_manager.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -42,7 +42,7 @@ function OrganisationssaveFromJson($jsonObj){
 	$oOrganisations->save(null);
 	
 	//Return the present states
-	return $oOrganisationsgetFromID( $oOrganisations->getId_Organisations() );
+	return OrganisationsgetFromID( $oOrganisations->getId_Organisations() );
 };
 
 ///[FUNCTION][OrganisationsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function OrganisationsgetAllInstance(){
 	//Our object declaration
 	$oOrganisations = new Organisations();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oOrganisations->getColumns() . "\r\n" . "FROM " . $oOrganisations->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oOrganisations->getColumns() . "\r\n" . "FROM " . $oOrganisations->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oOrganisations->getLinkConditions(true);
 	//The array we get

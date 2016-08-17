@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Item_Types_manager.php
 //Description : Table des types d'items
 
@@ -42,7 +42,7 @@ function Item_TypessaveFromJson($jsonObj){
 	$oItem_Types->save(null);
 	
 	//Return the present states
-	return $oItem_TypesgetFromID( $oItem_Types->getId_item_types() );
+	return Item_TypesgetFromID( $oItem_Types->getId_item_types() );
 };
 
 ///[FUNCTION][Item_TypesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +67,7 @@ function Item_TypesgetAllInstance(){
 	//Our object declaration
 	$oItem_Types = new Item_Types();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oItem_Types->getColumns() . "\r\n" . "FROM " . $oItem_Types->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oItem_Types->getColumns() . "\r\n" . "FROM " . $oItem_Types->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oItem_Types->getLinkConditions(true);
 	//The array we get

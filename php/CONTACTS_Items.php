@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-17 02:48:28
 //Filename : Contacts_Items.php
 //Description : Table de tous les items avec des droits
 
@@ -307,14 +307,14 @@ class Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Items" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Id_groups_owner  = " . Quotes($this->getId_groups_owner());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Accreditations_Item  = " . Quotes($this->getId_Accreditations_Item());
-		$Query .= ", " .  $this->getTable() . "." . "Modifie  = " . Quotes($this->getModifie());
+		$Query .=  "Id_groups_owner  = " . Quotes($this->getId_groups_owner());
+		$Query .= ", " .  "Id_Accreditations_Item  = " . Quotes($this->getId_Accreditations_Item());
+		$Query .= ", " .  "Modifie  = " . Quotes($this->getModifie());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Items = " . Quotes($this->getId_Items());
 		//Return the query !!!
 		return $Query;
 	}
@@ -369,7 +369,7 @@ class Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return $this->loadFromConnection($oAgent);
 	}
 
 
