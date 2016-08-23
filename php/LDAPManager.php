@@ -15,6 +15,12 @@ CONST HEIMDALL_LDAP_ConnectionCase_ERROR = -1;
 CONST HEIMDALL_LDAP_ConnectionCase_ERROR_INSTANCE = -2;
 CONST HEIMDALL_LDAP_ConnectionCase_ALL = 7;
 
+//Const for connection 
+
+CONST HEIMDALL_LDAP_Connection_SEVER_ADR = "192.168.1.16";
+//CONST HEIMDALL_LDAP_Connection_DOMAIN = "DC=AC,DC=local";
+CONST HEIMDALL_LDAP_Connection_DOMAIN = "OU=DDD,DC=AC,DC=local";
+
 ///[FUNCTION][UsersgetAllInstance]Function to obtain all the Users intance with a pseudo !
 ///[PARAMETER][string][$sUsr]our user login
 ///[RETURNS]array of element
@@ -39,9 +45,9 @@ function UsersgetAllInstanceWith($sUsr){
 		$sQuery .= "WHERE " . $sLinks;
 	
     if($sLinks != "")
-        $sQuery .= "\r\n" . "AND";
+        $sQuery .= "\r\n" . "AND ";
     else
-        $sQuery .= "WHERE "
+        $sQuery .= "WHERE ";
 
     //on user dude
     $sQuery .= "xxx.users.pseudo =  " . Quotes($sUsr);
@@ -220,10 +226,12 @@ function connectionRedirect($sUser, $sPwd){
     $oLdap = null;
 
     //get the users 
-    $ary_User = UsersgetAllInstanceWith($sUsr);
+    $ary_User = UsersgetAllInstanceWith($sUser);
 
     //get the count
     $nCount = count($ary_User);
+
+
 
     //check guy !
     if($nCount  == 0)
@@ -234,11 +242,11 @@ function connectionRedirect($sUser, $sPwd){
         $nValue -= HEIMDALL_LDAP_ConnectionCase_LdapNope;
 
     //check the Ldap connection 
-    if($nValue == HEIMDALL_LDAP_ConnectionCase_LdapHeimdall + HEIMDALL_LDAP_ConnectionCase_NopeHeimdall){
+    if($nValue | HEIMDALL_LDAP_ConnectionCase_LdapHeimdall || $nValue | HEIMDALL_LDAP_ConnectionCase_NopeHeimdall){
 
         try {
 		    //init the ldap connection 
-            $oLdap = new adLDAP();
+            $oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
         }
         catch (adLDAPException $e) {
             echo $e; 
@@ -246,18 +254,22 @@ function connectionRedirect($sUser, $sPwd){
             return HEIMDALL_LDAP_ConnectionCase_ERROR_INSTANCE;   
         }
 
+        $oLdap->setDomainControllers([HEIMDALL_LDAP_Connection_SEVER_ADR]);
+        //$oLdap->setAccountSuffix("\linagora");
+
         //authenticate the user
-		if ($oLdap->authenticate($sUsr, $sPwd)){
+		if ($oLdap->authenticate($sUser, $sPwd)){
 			//establish your session and redirect
 			session_start();
-			$_SESSION["username"] = $sUsr;
-            $_SESSION["userinfo"] = $oLdap->user()->info($sUsr);
+			$_SESSION["username"] = $sUser;
+            $_SESSION["userinfo"] = $oLdap->user()->info($sUser);
 			//$redir = "Location: https://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/menu.php";
 			//header($redir);
 			//exit;
+            $nValue = HEIMDALL_LDAP_ConnectionCase_LdapHeimdall;
 		}
         else
-            $nValue -= HEIMDALL_LDAP_ConnectionCase_LdapHeimdall;
+            $nValue ^= HEIMDALL_LDAP_ConnectionCase_LdapHeimdall;
     }
 
     //return the value
@@ -270,44 +282,48 @@ function connectionRedirect($sUser, $sPwd){
 ///[RETURNS]array of element
 function connectionLDAP($sUser, $sPwd){
 
-    //count loop
-    $nLine = 0;
-    //our value
-    $nValue = 0;
+    //our ldap object
+    $oLdap = null;
+    //our returned value
+    $ary_result = ["Status" => "",
+                        "Error" => "",
+                        "User" => "",
+                        "UserInfo" => "" ];
 
-    while($nLine < 3){
-
-        //our next value
-        $nValue = connectionRedirect($sUser, $sPwd);
-
-        //in function of case 
-        switch($nValue){
-            case HEIMDALL_LDAP_ConnectionCase_NopeNope:
-                //not here
-                return false;
-                break;
-            case HEIMDALL_LDAP_ConnectionCase_LdapNope:
-                //create the user and it's group
-                break;
-            case HEIMDALL_LDAP_ConnectionCase_NopeHeimdall :
-                //no more valid user 
-                return false;
-                break;
-            case HEIMDALL_LDAP_ConnectionCase_LdapHeimdall:
-                //connected !
-                //echo connection information
-                return true;
-                break;
-            default :
-                return false;
-                break;
-        }
-
-        //next
-        $nLine += 1;
+    try {
+        //init the ldap connection 
+        $oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
+    }
+    catch (adLDAPException $e) {
+        //echo $e; 
+        $ary_result["Status"] = "LDAP_Failed";
+        $ary_result["Error"] = $e;
+        //exit();
+        return $ary_result;   
     }
 
-    return false;
+    $oLdap->setDomainControllers([HEIMDALL_LDAP_Connection_SEVER_ADR]);
+    //$oLdap->setAccountSuffix("linagora");
+    //$oLdap->connect();
+
+    //authenticate the user
+    if ($oLdap->authenticate($sUser, $sPwd)){
+        //establish your session and redirect
+        session_start();
+        $_SESSION["username"] = $sUser;
+        $_SESSION["userinfo"] = $oLdap->user()->info($sUser);
+        $ary_result["Status"] = "LDAP_Connection_OK";
+        $ary_result["User"] = $sUser;
+        $ary_result["UserInfo"] = $oLdap->user()->info($sUser);
+    }
+    else{
+        $ary_result["Status"] = "LDAP_Connection_KO";
+        $ary_result["User"] = $sUser;
+    }
+
+    
+
+    return $ary_result;
 }
 
 ///[FUNCTION][LDAPManager]Function to manage the call to connection from the client
@@ -318,7 +334,14 @@ function LDAPManager(){
     //our password 
     $sPwd = "";//get it from $_POST
 
-    connectionLDAP($sUser, $sPwd);
+    if(array_key_exists("User", $_POST))
+        $sUser = $_POST["User"];
+    if(array_key_exists("Pwd", $_POST))
+        $sPwd = $_POST["Pwd"];
+
+    //echo $sUser . " : " . $sPwd;
+
+    echo json_encode(connectionLDAP($sUser, $sPwd));
 
 }
 

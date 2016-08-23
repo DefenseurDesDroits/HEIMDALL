@@ -879,17 +879,17 @@ function createSelectionField(sNext){
     sCode += "<div id=\"" + sNext + "\" class=\"" + HEIMDALL_LAY_QUERY_Filter +"\">" + "\r\n";
     //sCode += "<form id=\"" + sNext + "\" class=\"" + HEIMDALL_LAY_QUERY_Filter +"\">" + "\r\n";
     sCode += "\t" + "<button id=\"BTN_DEL_" + sNext + "\" class=\"BTN_ heim_Inline_Block\" type=\"button\" onclick=\"deleteSelectionField('" + sNext + "')\">-</button>" + "\r\n";
-    sCode += "\t" + "<select id=\"COMBO_Column_" + sNext + "\">" + "\r\n";
+    sCode += "\t" + "<select id=\"COMBO_Column_" + sNext + "\" onkeyup=\"contactKeySearch(event)\">" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"sNom\">Nom</option>" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"sPrenom\">Prénom</option>" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"sAPEFonction\">Ape/Fonction</option>" + "\r\n";
     sCode += "\t" + "</select>" + "\r\n";
-    sCode += "\t" + "<select id=\"COMBO_COND_" + sNext + "\">" + "\r\n";
+    sCode += "\t" + "<select id=\"COMBO_COND_" + sNext + "\" onkeyup=\"contactKeySearch(event)\">" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_StartsWith + "\">Commence Par</option>" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_EndsWith +"\">Termine Par</option>" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_Contains +"\">Contient</option>" + "\r\n";
     sCode += "\t" + "</select>" + "\r\n";
-    sCode += "\t" + '<input id="SAI_Value_' + sNext + '" class="SAI_" type="text" name="SAI_search_Query" value=""/>';
+    sCode += "\t" + '<input id="SAI_Value_' + sNext + '" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="contactKeySearch(event)"/>';
     //sCode += "\t" + "<div class=\"heim_Inline_Block\">" + sNext + "</div>" + "\r\n";
     sCode += "</div>";
     //sCode += "</form>";
@@ -1028,6 +1028,14 @@ function contactDoQuery(){
     return true;
 }
 
+function contactKeySearch(event){
+    //notDevYet();
+    //alert(event.keyCode);
+
+    if(event.keyCode == 13)
+        contactDoQuery();
+}
+
 ///[FUNCTION][init_contacts]Function to init the contact part
 ///[RETURNS][Boolean]True if done
 function init_contacts(){
@@ -1062,7 +1070,7 @@ function init_contacts(){
         sCode += '<br/>\r\n';
         sCode += '\t<div id="LAY_Query" class="LAY_ heim_Right heim_Block">';
 
-        sCode += '\t\t<input id="SAI_search_Query" class="SAI_" type="text" name="SAI_search_Query" value=""/>';
+        sCode += '\t\t<input id="SAI_search_Query" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="contactKeySearch(event)"/>';
 		sCode += '\t\t<button id="BTN_Search_Query" class="BTN_" type="button" onclick="contactDoQuery()">Q</button>';
         
         sCode += '\t</div>\r\n';
