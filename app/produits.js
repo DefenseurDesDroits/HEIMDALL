@@ -29,7 +29,7 @@ var Heimdall = {
             sCode += "<form class=\"LAY_\">" + "\r\n";
             sCode += "\t" + '<input id="SAI_User" class="SAI_" type="text" name="SAI_User" value="User"/>' + "\r\n";
             sCode += "<br/>" + "\r\n";
-            sCode += "\t" + '<input id="SAI_Pwd" class="SAI_" type="text" name="SAI_Pwd" value="Pwd"/>' + "\r\n";
+            sCode += "\t" + '<input id="SAI_Pwd" class="SAI_" type="password" name="SAI_Pwd" value="Pwd"/>' + "\r\n";
             sCode += "</form>" + "\r\n";
             sCode += "\t" + "<div class=\"BTN_ \" onclick=\"Heimdall.methods.submitConnection()\">Valider</div>" + "\r\n";
 
@@ -46,8 +46,59 @@ var Heimdall = {
         },
         responseConnection : function(sText){
             
+            //get the array
+            var ary_Response = null;
+            //get the element
+            var oElement = null
+            //get the msgBox
+            var oBox = null; //oBox and not XBox :p
+            //our user name 
+            var sName = "";
+
+            //close the connection form
             Heimdall.members.connectionWindow.dispose();
-            MsgBox(sText);
+            
+            //get the array
+            ary_Response = JSON.parse(sText);
+
+            //analyse the response 
+            switch (ary_Response["Status"]) {
+                case "LDAP_Failed":
+                    //overview that stop all
+                    new Overview("Nope", 250, 150, "#AE4242", 0.75);
+                    //get the element to plot  the blocking text
+                    oElement = document.getElementById("Nope");
+                    if(oElement != null)
+                        oElement.innerHTML = "Connection impossible pour l'instant, recommencer ultérieurement !!!";
+                    break;
+                case "LDAP_Connection_KO":
+                    
+                    oBox = new MsgBox("Utilisateur inconnu ou password erroné !");
+                    oBox.onDisposed = Heimdall.methods.connection;
+
+                    break;
+                case "LDAP_Connection_OK":
+                    //init the contact
+                    init_contacts();
+
+                    //get the name
+                    //sName = ary_Response["UserInfo"][0]["displayname"][0];
+                    sName = ary_Response["UserInfo_displayname"];
+
+                    //says Hi !!!
+                    MsgBox("Bonjour " + sName);
+
+                    //get element to change the name
+                    oElement = document.getElementById("LAB_User");
+                    if(oElement)
+                        oElement.innerHTML = sName;
+                    
+                    break;
+                default:
+                    alert("FATAL ERROR");
+                    break;
+            }
+
             //notDevYet();
         },
         submitConnection : function(){
@@ -102,12 +153,7 @@ var Heimdall = {
 ///[FUNCTION][init]Function to init all the products
 function init(){
 
-    //init the contact
-    init_contacts();
-
     //create the connection overview
-    //new Overview("Nah", 800, 600, "#e3e3e3", 0.5);
-    //notDevYet();
     Heimdall.methods.connection();
 
 }

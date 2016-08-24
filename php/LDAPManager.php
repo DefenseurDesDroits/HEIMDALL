@@ -18,8 +18,8 @@ CONST HEIMDALL_LDAP_ConnectionCase_ALL = 7;
 //Const for connection 
 
 CONST HEIMDALL_LDAP_Connection_SEVER_ADR = "192.168.1.16";
-//CONST HEIMDALL_LDAP_Connection_DOMAIN = "DC=AC,DC=local";
-CONST HEIMDALL_LDAP_Connection_DOMAIN = "OU=DDD,DC=AC,DC=local";
+CONST HEIMDALL_LDAP_Connection_DOMAIN = "DC=AC,DC=local";
+//CONST HEIMDALL_LDAP_Connection_DOMAIN = "OU=DDD,DC=AC,DC=local";
 
 ///[FUNCTION][UsersgetAllInstance]Function to obtain all the Users intance with a pseudo !
 ///[PARAMETER][string][$sUsr]our user login
@@ -190,7 +190,7 @@ function createUser($oXXX, $sUser){
         return -1;
     }
 
-    echo json_encode($ary_);
+    //echo json_encode($ary_);
 
     //get the max ID
     $nID = intval($ary_[0]["max"]);
@@ -200,6 +200,8 @@ function createUser($oXXX, $sUser){
     $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", '', ". Quotes($ary_[$nLine]["nom"]) .", 1, null, 2);\r\n";
     $sQuery .= "INSERT INTO xxx.users(id_users, pseudo, id_accreditations_exp_json) VALUES (" . $nID . ", " . Quotes($sUser) . ", '');";
     
+    //open
+    $oXXX->open();
     //execute
     $oXXX->insertRequest($sQuery, null);
     $nIDContact = $nID;
@@ -210,89 +212,38 @@ function createUser($oXXX, $sUser){
     return $nIDContact;
 }
 
-///[FUNCTION][connectionRedirect]Function to determine which case we are
-///[PARAMETER][string][$sUsr]our user login
-///[PARAMETER][string][$sPwd]our user password
-///[RETURNS]array of element
-function connectionRedirect($sUser, $sPwd){
-
-    //returned value
-    $nValue = HEIMDALL_LDAP_ConnectionCase_ALL;
-    //our array of user corresponding to the user name !!!
-    $ary_User = array();
-    //number of result
-    $nCount = 0;
-    //our ldap object
-    $oLdap = null;
-
-    //get the users 
-    $ary_User = UsersgetAllInstanceWith($sUser);
-
-    //get the count
-    $nCount = count($ary_User);
-
-
-
-    //check guy !
-    if($nCount  == 0)
-        $nValue -= (HEIMDALL_LDAP_ConnectionCase_LdapHeimdall + HEIMDALL_LDAP_ConnectionCase_NopeHeimdall);
-    elseif($nCount > 1) //Nah ! Impossible
-        $nValue = HEIMDALL_LDAP_ConnectionCase_ERROR;
-    else
-        $nValue -= HEIMDALL_LDAP_ConnectionCase_LdapNope;
-
-    //check the Ldap connection 
-    if($nValue | HEIMDALL_LDAP_ConnectionCase_LdapHeimdall || $nValue | HEIMDALL_LDAP_ConnectionCase_NopeHeimdall){
-
-        try {
-		    //init the ldap connection 
-            $oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
-        }
-        catch (adLDAPException $e) {
-            echo $e; 
-            //exit();
-            return HEIMDALL_LDAP_ConnectionCase_ERROR_INSTANCE;   
-        }
-
-        $oLdap->setDomainControllers([HEIMDALL_LDAP_Connection_SEVER_ADR]);
-        //$oLdap->setAccountSuffix("\linagora");
-
-        //authenticate the user
-		if ($oLdap->authenticate($sUser, $sPwd)){
-			//establish your session and redirect
-			session_start();
-			$_SESSION["username"] = $sUser;
-            $_SESSION["userinfo"] = $oLdap->user()->info($sUser);
-			//$redir = "Location: https://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/menu.php";
-			//header($redir);
-			//exit;
-            $nValue = HEIMDALL_LDAP_ConnectionCase_LdapHeimdall;
-		}
-        else
-            $nValue ^= HEIMDALL_LDAP_ConnectionCase_LdapHeimdall;
-    }
-
-    //return the value
-    return $nValue;
-}
-
 ///[FUNCTION][connectionLDAP]Function to connect user to LDAP
 ///[PARAMETER][string][$sUsr]our user login
 ///[PARAMETER][string][$sPwd]our user password
 ///[RETURNS]array of element
 function connectionLDAP($sUser, $sPwd){
 
+    //our count
+    $nCount = 0;
+    //our iterrator
+    $nLine = 0;
+
     //our ldap object
     $oLdap = null;
+    //our infos
+    $oInfos = null;
     //our returned value
     $ary_result = ["Status" => "",
                         "Error" => "",
                         "User" => "",
-                        "UserInfo" => "" ];
+                        "UserInfo" => "",
+                        "MemberOf" => array() ];
+    //our option array 
+    $ary_Options = ["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN,
+                    'domain_controllers' => array(HEIMDALL_LDAP_Connection_SEVER_ADR),
+                    //'account_suffix' => ""];
+                    //'account_suffix' => "@ac.local"];
+                    'account_suffix' => "@ac.local"];
 
     try {
         //init the ldap connection 
-        $oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
+        //$oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
+        $oLdap = new adLDAP($ary_Options);
     }
     catch (adLDAPException $e) {
         //echo $e; 
@@ -302,26 +253,45 @@ function connectionLDAP($sUser, $sPwd){
         return $ary_result;   
     }
 
-    $oLdap->setDomainControllers([HEIMDALL_LDAP_Connection_SEVER_ADR]);
-    //$oLdap->setAccountSuffix("linagora");
-    //$oLdap->connect();
-
     //authenticate the user
-    if ($oLdap->authenticate($sUser, $sPwd)){
-        //establish your session and redirect
+    if ($oLdap->authenticate($sUser, $sPwd, true)){
+        
+        $oInfos = $oLdap->user()->info($sUser);
+        //establish your session
         session_start();
         $_SESSION["username"] = $sUser;
-        $_SESSION["userinfo"] = $oLdap->user()->info($sUser);
+        $_SESSION["userinfo"] = $oInfos;
         $ary_result["Status"] = "LDAP_Connection_OK";
         $ary_result["User"] = $sUser;
-        $ary_result["UserInfo"] = $oLdap->user()->info($sUser);
+        //$ary_result["UserInfo"] = var_dump($oInfos);
+        //$ary_result["UserInfo"] = $oInfos;
+        $ary_result["UserInfo_displayname"] = $oInfos[0]["displayname"][0];
+
+        //$nCount = count($oInfos[0]["memberof"]);
+
+        //Create a parameter count ?
+        //NOT GENIUS !!!
+        //-_-#
+        $nCount = $oInfos[0]["memberof"]["count"];
+        while($nLine < $nCount){
+            //add the 
+            $ary_result["MemberOf"][$nLine] = $oInfos[0]["memberof"][$nLine];
+            //next
+            $nLine++;
+        }
+
+        //so we are connected !!!
+        //Are we in the DTB ?
+        if( count(UsersgetAllInstanceWith($sUser)) <= 0){
+            // createUser($GLOBALS["oConnection"], $sUser);
+            // return connectionLDAP($sUser, $sPwd);
+        }
+
     }
     else{
         $ary_result["Status"] = "LDAP_Connection_KO";
         $ary_result["User"] = $sUser;
     }
-
-    
 
     return $ary_result;
 }
