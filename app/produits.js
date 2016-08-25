@@ -85,6 +85,9 @@ var Heimdall = {
                     //sName = ary_Response["UserInfo"][0]["displayname"][0];
                     sName = ary_Response["UserInfo_displayname"];
 
+                    if(ary_Response["Comment"] != "")
+                        sName += "<br/>" + ary_Response["Comment"];
+
                     //says Hi !!!
                     MsgBox("Bonjour " + sName);
 

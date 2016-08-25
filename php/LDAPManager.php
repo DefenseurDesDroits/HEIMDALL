@@ -173,15 +173,19 @@ function createUser($oXXX, $sUser){
     //array to obtain the addr for a contact
     $ary_AddrContact = array();
 
+    //[Line]
+
     //get the max ID (Worst Best Idea Ever !)*********************
     //the query
     $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
     //open
     $oXXX->open();
     //the select query
-    $ary_ = $oCRM->selectRequest($sQuery, ["max"], null);
+    $ary_ = $oXXX->selectRequest($sQuery, ["max"], null);
     //close
     $oXXX->close();
+
+    //[Line]
 
     //echo json_encode($ary_);
 
@@ -190,22 +194,27 @@ function createUser($oXXX, $sUser){
         return -1;
     }
 
+    //[Line]
     //echo json_encode($ary_);
 
     //get the max ID
     $nID = intval($ary_[0]["max"]);
+    $nID++;
+    $nIDContact = $nID;
+
+    //[Line]
 
     $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
     $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
-    $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", '', ". Quotes($ary_[$nLine]["nom"]) .", 1, null, 2);\r\n";
+    $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", '', ". Quotes($sUser) .", 1, null, 2);\r\n";
     $sQuery .= "INSERT INTO xxx.users(id_users, pseudo, id_accreditations_exp_json) VALUES (" . $nID . ", " . Quotes($sUser) . ", '');";
-    
+
+    //[Line]
+
     //open
     $oXXX->open();
     //execute
     $oXXX->insertRequest($sQuery, null);
-    $nIDContact = $nID;
-    $nID++;
     $oXXX->close();
 
     //return the ID
@@ -230,6 +239,7 @@ function connectionLDAP($sUser, $sPwd){
     //our returned value
     $ary_result = ["Status" => "",
                         "Error" => "",
+                        "Comment" => "",
                         "User" => "",
                         "UserInfo" => "",
                         "MemberOf" => array() ];
@@ -239,6 +249,8 @@ function connectionLDAP($sUser, $sPwd){
                     //'account_suffix' => ""];
                     //'account_suffix' => "@ac.local"];
                     'account_suffix' => "@ac.local"];
+
+    $oXXX = $GLOBALS["oConnection"];
 
     try {
         //init the ldap connection 
@@ -285,6 +297,10 @@ function connectionLDAP($sUser, $sPwd){
         if( count(UsersgetAllInstanceWith($sUser)) <= 0){
             // createUser($GLOBALS["oConnection"], $sUser);
             // return connectionLDAP($sUser, $sPwd);
+            //echo var_dump($GLOBALS["oConnection"]);
+            $ary_result["Comment"] = "User added to Heimdall : ";
+            $ary_result["Comment"] .= "<br/> User Id : " . createUser($oXXX, $sUser);
+            //$ary_result["Comment"] .= "<br/> :o : " . var_dump($GLOBALS["oConnection"]);
         }
 
     }
