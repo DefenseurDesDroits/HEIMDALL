@@ -149,6 +149,18 @@ var Heimdall = {
             oReq.send("User=" + sUser + "&Pwd=" + sPwd); 
             //Return the job !
             return true;
+        },
+        addElement : function(){
+
+            var sCode = "";
+
+            for(var sProduct in Heimdall.members.products){
+                sCode += Heimdall.members.products[sProduct].addMenu("WIN_Add");
+            }
+
+            //to the box !!!
+            MsgBox(sCode);
+
         }
     }
 };

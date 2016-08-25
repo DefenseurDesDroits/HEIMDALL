@@ -294,12 +294,12 @@ function connectionLDAP($sUser, $sPwd){
 
         //so we are connected !!!
         //Are we in the DTB ?
-        if( count(UsersgetAllInstanceWith($sUser)) <= 0){
+        if( count(UsersgetAllInstanceWith(strtoupper($sUser))) <= 0){
             // createUser($GLOBALS["oConnection"], $sUser);
             // return connectionLDAP($sUser, $sPwd);
             //echo var_dump($GLOBALS["oConnection"]);
             $ary_result["Comment"] = "User added to Heimdall : ";
-            $ary_result["Comment"] .= "<br/> User Id : " . createUser($oXXX, $sUser);
+            $ary_result["Comment"] .= "<br/> User Id : " . createUser($oXXX, strtoupper($sUser));
             //$ary_result["Comment"] .= "<br/> :o : " . var_dump($GLOBALS["oConnection"]);
         }
 

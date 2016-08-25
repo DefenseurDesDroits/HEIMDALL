@@ -21,6 +21,8 @@ const HEIMDALL_BTN_PLOTS_MORE_CONTACT = "BTN_More_Contacts";
 const HEIMDALL_LAY_CONTACT_EXTENDED_ID = "LAY_Contact_extension_";
 const HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID = "LAY_Contact_extension_address_";
 
+var WIN_Contacts = null;
+
 ///[FUNCTION][loadStatics_Civilites]Function to load all the civilities from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStatics_Civilites(){
@@ -428,16 +430,13 @@ function contactLAYDIVSave(nLine){
     }
     ///[/DEBUG]
 
-    ///[DEBUG]Operaion time !!!
+    ///[DEBUG]Operation time !!!
     if(Heimdall.flags.debug){
         console.log("contactLAYDIVSave, json : " + "\r\n" + oContact.exportToJson());
     }
     ///[/DEBUG]
 
-    //yeah ...
-    //alert("Save NotDevYet : " + nLine);
-
-    return oContact.save("", "");
+    return oContact.save("", ".");
 }
 
 ///[FUNCTION][contactLAYDIVDelete]Function to delete the change in a contact
@@ -450,7 +449,7 @@ function contactLAYDIVDelete(nLine){
 ///[FUNCTION][contactLAYDiv]Function to plot a contact
 ///[PARAMETER][integer][nLine]Line of the contact
 ///[RETURNS][String]HTML Code of the element
-function contactLAYDiv(nLine){
+function contactLAYDiv(sIdPart, nLine){
     //our code
     var sCode = "";
     //our civilities part ----
@@ -464,7 +463,7 @@ function contactLAYDiv(nLine){
     //sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
     sCode += "<form class=\"LAY_\">" + "\r\n";
 
-    sCode += "\t" + "<select id=\"COMBO_Civilite_" + nLine + "\">" + "\r\n";
+    sCode += "\t" + "<select id=\"COMBO_Civilite_" + sIdPart + "\">" + "\r\n";
     //get the count
     nCount = Heimdall.members.products.contacts.Civilites.length;
     //init the iterator
@@ -478,12 +477,12 @@ function contactLAYDiv(nLine){
     }
     sCode += "\t" + "</select>" + "\r\n";
 
-    sCode += '\t\t<input id="SAI_Nom_' + nLine + '" class="SAI_" type="text" name="SAI_Nom_' + nLine + '" value="' + Heimdall.members.products.contacts.Contacts[nLine].getNom() + '"/>';
-    sCode += '\t\t<input id="SAI_Prenom_' + nLine + '" class="SAI_" type="text" name="SAI_Prenom_' + nLine + '" value="' + Heimdall.members.products.contacts.Contacts[nLine].getPrenom() + '"/>';
+    sCode += '\t\t<input id="SAI_Nom_' + sIdPart + '" class="SAI_" type="text" name="SAI_Nom_' + nLine + '" value="' + Heimdall.members.products.contacts.Contacts[nLine].getNom() + '"/>';
+    sCode += '\t\t<input id="SAI_Prenom_' + sIdPart + '" class="SAI_" type="text" name="SAI_Prenom_' + nLine + '" value="' + Heimdall.members.products.contacts.Contacts[nLine].getPrenom() + '"/>';
 
     //sCode += "\t" + "<br/>" + "\r\n";
 
-    sCode += "\t" + "<select id=\"COMBO_Titres_" + nLine + "\">" + "\r\n";
+    sCode += "\t" + "<select id=\"COMBO_Titres_" + sIdPart + "\">" + "\r\n";
     //get the count
     nCount = Heimdall.members.products.contacts.Titres.length;
     //init the iterator
@@ -505,6 +504,45 @@ function contactLAYDiv(nLine){
 
     //return the code
     return sCode;
+}
+
+function contactLAYDivFill(sIdPart, oContact){
+
+    //our position
+    var nPosition = 0;
+    //our element to do everything
+    var oElement = null;
+
+    if(oContact == null)
+        return false;
+
+    oElement = document.getElementById("COMBO_Civilite_" + sIdPart);
+    if(oElement != null){
+        nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", oContact.getId_Civilites());
+        if(nPosition != POTOURS_FIND_NOTFOUND){
+            //Option created in the same order than stored
+            oElement.selectedIndex = nPosition;
+        }
+    }
+        
+    oElement = document.getElementById("SAI_Nom_" + sIdPart);
+    if(oElement != null)
+        oElement.value = oContact.getNom();
+
+    oElement = document.getElementById("SAI_Prenom_" + sIdPart);
+    if(oElement != null)
+        oElement.value = oContact.getPrenom();
+
+    oElement = document.getElementById("COMBO_Titres_" + sIdPart);
+    if(oElement != null){
+        nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", oContact.getId_Titres());
+        if(nPosition != POTOURS_FIND_NOTFOUND){
+            //Option created in the same order than stored
+            oElement.selectedIndex = nPosition;
+        }
+    }
+
+    return true;
 }
 
 ///[FUNCTION][contactClick]Function on click of a contact
@@ -565,45 +603,47 @@ function contactClick(nLine){
     if(oElement != null){
         if(oElement.innerHTML == ""){
             //create dude
-            oElement.innerHTML = contactLAYDiv(nLine);
+            oElement.innerHTML = contactLAYDiv(nLine, nLine);
 
-            //create the stuff
-            COMBO_Civilite = document.getElementById("COMBO_Civilite_" + nLine);
+            contactLAYDivFill(nLine, Heimdall.members.products.contacts.Contacts[nLine]);
 
-            if(COMBO_Civilite != null){
-                
-                ///[DEBUG]Operaion time !!!
-                if(Heimdall.flags.debug){
-                    console.log("contactClick, COMBO_ Founded for line " + nLine);
-                }
-                ///[/DEBUG]
-                
-                //fill
-                nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", Heimdall.members.products.contacts.Contacts[nLine].getId_Civilites());
-                if(nPosition != POTOURS_FIND_NOTFOUND){
-                    //Option created in the same order than stored
-                    COMBO_Civilite.selectedIndex = nPosition;
-                }
-            }
+            // //create the stuff
+            // COMBO_Civilite = document.getElementById("COMBO_Civilite_" + nLine);
 
-            //create the stuff
-            COMBO_Titres = document.getElementById("COMBO_Titres_" + nLine);
+            // if(COMBO_Civilite != null){
+                
+            //     ///[DEBUG]Operaion time !!!
+            //     if(Heimdall.flags.debug){
+            //         console.log("contactClick, COMBO_ Founded for line " + nLine);
+            //     }
+            //     ///[/DEBUG]
+                
+            //     //fill
+            //     nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", Heimdall.members.products.contacts.Contacts[nLine].getId_Civilites());
+            //     if(nPosition != POTOURS_FIND_NOTFOUND){
+            //         //Option created in the same order than stored
+            //         COMBO_Civilite.selectedIndex = nPosition;
+            //     }
+            // }
 
-            if(COMBO_Titres != null){
+            // //create the stuff
+            // COMBO_Titres = document.getElementById("COMBO_Titres_" + nLine);
+
+            // if(COMBO_Titres != null){
                 
-                ///[DEBUG]Operaion time !!!
-                if(Heimdall.flags.debug){
-                    console.log("contactClick, COMBO_ Founded for line " + nLine);
-                }
-                ///[/DEBUG]
+            //     ///[DEBUG]Operaion time !!!
+            //     if(Heimdall.flags.debug){
+            //         console.log("contactClick, COMBO_ Founded for line " + nLine);
+            //     }
+            //     ///[/DEBUG]
                 
-                //fill
-                nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", Heimdall.members.products.contacts.Contacts[nLine].getId_Titres());
-                if(nPosition != POTOURS_FIND_NOTFOUND){
-                    //Option created in the same order than stored
-                    COMBO_Titres.selectedIndex = nPosition;
-                }
-            }
+            //     //fill
+            //     nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", Heimdall.members.products.contacts.Contacts[nLine].getId_Titres());
+            //     if(nPosition != POTOURS_FIND_NOTFOUND){
+            //         //Option created in the same order than stored
+            //         COMBO_Titres.selectedIndex = nPosition;
+            //     }
+            // }
 
             //Obtain Address
             contactAddresses(nLine);
@@ -1036,6 +1076,47 @@ function contactKeySearch(event){
         contactDoQuery();
 }
 
+function contactWinContact(oContact){
+
+    //our line
+    var nLine = 0;
+    //our element to get the text zone
+    var oElement = null;
+
+    if(oContact == null){
+        oContact = new Contacts();
+        nLine = Heimdall.members.products.contacts.Contacts.length;
+        Heimdall.members.products.contacts.Contacts.push(oContact);
+    }
+        
+    //create the win form
+    WIN_Contacts = new  Overview("WIN_Contacts", 640, 480, "#6669A3", 0.5);
+
+    //get the element to fill it
+    oElement = document.getElementById("WIN_Contacts");
+    if(oElement != null){
+        oElement.innerHTML = contactLAYDiv("Solo", nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+    }
+
+    contactLAYDivFill("Solo", oContact);
+
+}
+
+function contactsAddMenu(sDivID){
+    
+    //our code
+    var sCode = "";
+
+    sCode += "<div>" + "\r\n";
+
+    sCode += "\t" + "<div>Contacts</div>" + "\r\n";
+    sCode += "\t" + "<div id=\"BTN_Add_Contact\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();contactWinContact(null);\">Ajouter un contact</div>" + "\r\n";
+
+    sCode += "</div>" + "\r\n";
+
+    return sCode;
+}
+
 ///[FUNCTION][init_contacts]Function to init the contact part
 ///[RETURNS][Boolean]True if done
 function init_contacts(){
@@ -1056,6 +1137,8 @@ function init_contacts(){
     Heimdall.members.products.contacts["Civilites"] = [];
     Heimdall.members.products.contacts["Titres"] = [];
     Heimdall.members.products.contacts["Contacts"] = [];
+
+    Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
 
     //init the loader of Civilities/Contact_types
     loadStaticsContactsData();
