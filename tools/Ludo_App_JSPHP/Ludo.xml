@@ -362,54 +362,6 @@ Ludo
  Layout to create or modify a DTB table
  </summary>
 	<remarks></remarks>
-</member><member name="F:DataGridViewDateTxtCell.bChangeFormat">
-	<summary>
- Property to change the value if it's differant to an dd/mm/yyyy String
- </summary>
-	<remarks></remarks>
-</member><member name="T:DataGridViewDateTxtCell">
-	<summary>
- Cell for our Progress bar
- </summary>
-	<remarks></remarks>
-</member><member name="F:DataGridViewDateCell.bChangeFormat">
-	<summary>
- Property to change the value if it's differant to an dd/mm/yyyy String
- </summary>
-	<remarks></remarks>
-</member><member name="M:DataGridViewDateCell.GetFormattedValue(System.Object,System.Int32,System.Windows.Forms.DataGridViewCellStyle@,System.ComponentModel.TypeConverter,System.ComponentModel.TypeConverter,System.Windows.Forms.DataGridViewDataErrorContexts)">
-	<summary>
- Method required to make the Progress Cell consistent with the default Image Cell. 
- </summary>
-	<param name="value"></param>
-	<param name="rowIndex"></param>
-	<param name="cellStyle"></param>
-	<param name="valueTypeConverter"></param>
-	<param name="formattedValueTypeConverter"></param>
-	<param name="context"></param>
-	<returns></returns>
-	<remarks>The default Image Cell assumes an Image as a value, although the value of the Progress Cell is an Integer.</remarks>
-</member><member name="M:DataGridViewDateCell.Paint(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Int32,System.Windows.Forms.DataGridViewElementStates,System.Object,System.Object,System.String,System.Windows.Forms.DataGridViewCellStyle,System.Windows.Forms.DataGridViewAdvancedBorderStyle,System.Windows.Forms.DataGridViewPaintParts)">
-	<summary>
- Paint Method
- </summary>
-	<param name="g"></param>
-	<param name="clipBounds"></param>
-	<param name="cellBounds"></param>
-	<param name="rowIndex"></param>
-	<param name="cellState"></param>
-	<param name="value"></param>
-	<param name="formattedValue"></param>
-	<param name="errorText"></param>
-	<param name="cellStyle"></param>
-	<param name="advancedBorderStyle"></param>
-	<param name="paintParts"></param>
-	<remarks></remarks>
-</member><member name="T:DataGridViewDateCell">
-	<summary>
- Cell for our Date bar
- </summary>
-	<remarks></remarks>
 </member><member name="M:Ludo_Tools.LUDO_VERSION">
 	<summary>
  Function to get the Ludo Library Version
@@ -478,6 +430,14 @@ Ludo
 	<param name="nMax">Integer, Value max</param>
 	<returns>Boolean, return true if PG is not nothing</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo_Tools.PGZero(Ludo.CTRL.Ludo_ProgressBar@,System.Int32)">
+	<summary>
+ Function to set the value of a progress Bar to Zero
+ </summary>
+	<param name="PG_Progress_Bar">Ludo.CTRL.Ludo_ProgressBar, PG we want to set the value</param>
+	<param name="nMax">Integer, Value max</param>
+	<returns>Boolean, return true if PG is not nothing</returns>
+	<remarks></remarks>
 </member><member name="M:Ludo_Tools.PGZero(System.Windows.Forms.ToolStripProgressBar@,System.Int32)">
 	<summary>
  Function to set the value of a progress Bar to Zero, in a tool
@@ -502,6 +462,14 @@ Ludo
 	<param name="nStep">Integer, Step to increase</param>
 	<returns>Boolean, return true if PG is not nothing</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo_Tools.PGPlus(Ludo.CTRL.Ludo_ProgressBar@,System.Int32)">
+	<summary>
+ Function to increment the progress Bar
+ </summary>
+	<param name="PG_Progress_Bar">Ludo.CTRL.Ludo_ProgressBar, PG we want to increase the value</param>
+	<param name="nStep">Integer, Step to increase</param>
+	<returns>Boolean, return true if PG is not nothing</returns>
+	<remarks></remarks>
 </member><member name="M:Ludo_Tools.PGPlus(System.Windows.Forms.ToolStripProgressBar@,System.Int32)">
 	<summary>
  Function to increment the progress Bar, in a tool
@@ -518,17 +486,39 @@ Ludo
 	<param name="nStep">Integer, Step to increase</param>
 	<returns>Boolean, return true if PG is not nothing</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo_Tools.PGPerformStep(System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to Perform step on Progress Bar
+ </summary>
+	<param name="PG_">ProgressBar, PG we want to PerformSet</param>
+	<returns>Boolean, return true if PG is not null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.PGPerformStep(Ludo.CTRL.Ludo_ProgressBar@)">
+	<summary>
+ Method to Perform step on Progress Bar
+ </summary>
+	<param name="PG_">Ludo.CTRL.ProgressBar, PG we want to PerformSet</param>
+	<returns>Boolean, return true if PG is not null</returns>
+	<remarks></remarks>
 </member><member name="M:Ludo_Tools.PGSet(System.Windows.Forms.ProgressBar@,System.Int32)">
 	<summary>
- Function to increment the progress Bar
+ Function to set with a value the progress Bar
  </summary>
 	<param name="PG_Progress_Bar">ProgressBar, PG we want to set the value</param>
 	<param name="nStep">Integer, value wanted</param>
 	<returns>Boolean, return true if PG is not nothing</returns>
 	<remarks></remarks>
+</member><member name="M:Ludo_Tools.PGSet(Ludo.CTRL.Ludo_ProgressBar@,System.Int32)">
+	<summary>
+ Function to set with a value the progress Bar
+ </summary>
+	<param name="PG_Progress_Bar">ProgressBar, PG we want to set the value</param>
+	<param name="nStep">Integer, value wanted</param>
+	<returns>Boolean, return true if PG is not null</returns>
+	<remarks></remarks>
 </member><member name="M:Ludo_Tools.PGSet(System.Windows.Forms.ToolStripProgressBar@,System.Int32)">
 	<summary>
- Function to increment the progress Bar, in a tool
+ Function to set with a value the progress Bar, in a tool
  </summary>
 	<param name="PG_Progress_Bar">System.Windows.Forms.ToolStripProgressBar, PG we want to set the value</param>
 	<param name="nStep">Integer, wanted value</param>
@@ -536,7 +526,7 @@ Ludo
 	<remarks></remarks>
 </member><member name="M:Ludo_Tools.PGSet(DataGridViewProgressCell@,System.Int32)">
 	<summary>
- Function to increment the progress Bar, in a cell
+ Function to set with a value the progress Bar, in a cell
  </summary>
 	<param name="PG_Progress_Bar">DataGridViewProgressCell, PG we want to set the value</param>
 	<param name="nStep">Integer, Step to increase</param>
@@ -558,6 +548,14 @@ Ludo
 	<param name="sMsg">String, the Message</param>
 	<returns>Boolean, True if plot, false in case of nothing</returns>
 	<remarks>Do Update on owner</remarks>
+</member><member name="M:Ludo_Tools.LABMsg(Ludo.CTRL.Ludo_ProgressBar@,System.String)">
+	<summary>
+ Function to pass a Message in a Label if it exists
+ </summary>
+	<param name="PG_Msg">Ludo.CTRL.Ludo_ProgressBar, to print our Msg</param>
+	<param name="sMsg">String, the Message</param>
+	<returns>Boolean, True if plot, false in case of nothing</returns>
+	<remarks>Do Update on PG</remarks>
 </member><member name="M:Ludo_Tools.NewUniqueSecondName(System.String)">
 	<summary>
  Function to obtain a unique name with second precision
@@ -1792,6 +1790,92 @@ Ludo
  Module for our Gobals functions
  </summary>
 	<remarks></remarks>
+</member><member name="F:DataGridViewProgressCell.bText">
+	<summary>
+ Must we plot the text ?
+ </summary>
+	<remarks></remarks>
+</member><member name="F:DataGridViewProgressCell.nMin">
+	<summary>
+ Minimum Value
+ </summary>
+	<remarks></remarks>
+</member><member name="F:DataGridViewProgressCell.nMax">
+	<summary>
+ Maximun Value
+ </summary>
+	<remarks></remarks>
+</member><member name="F:DataGridViewProgressCell.nColorP">
+	<summary>
+ Color if value Positive
+ </summary>
+	<remarks></remarks>
+</member><member name="F:DataGridViewProgressCell.nColorN">
+	<summary>
+ Color if value Negative
+ </summary>
+	<remarks></remarks>
+</member><member name="P:DataGridViewProgressCell.PositiveColor">
+	<summary>
+ Color in case of positive value
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:DataGridViewProgressCell.NegativeColor">
+	<summary>
+ Color in case of negative value
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:DataGridViewProgressCell.Minimum">
+	<summary>
+ Minimum value of the progress cell
+ </summary>
+	<value>Integer</value>
+	<returns>Integer</returns>
+	<remarks></remarks>
+</member><member name="P:DataGridViewProgressCell.Maximum">
+	<summary>
+ Maximum value of the progress cell
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:DataGridViewProgressCell.GetFormattedValue(System.Object,System.Int32,System.Windows.Forms.DataGridViewCellStyle@,System.ComponentModel.TypeConverter,System.ComponentModel.TypeConverter,System.Windows.Forms.DataGridViewDataErrorContexts)">
+	<summary>
+ Method required to make the Progress Cell consistent with the default Image Cell. 
+ </summary>
+	<param name="value"></param>
+	<param name="rowIndex"></param>
+	<param name="cellStyle"></param>
+	<param name="valueTypeConverter"></param>
+	<param name="formattedValueTypeConverter"></param>
+	<param name="context"></param>
+	<returns></returns>
+	<remarks>The default Image Cell assumes an Image as a value, although the value of the Progress Cell is an Integer.</remarks>
+</member><member name="M:DataGridViewProgressCell.Paint(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Int32,System.Windows.Forms.DataGridViewElementStates,System.Object,System.Object,System.String,System.Windows.Forms.DataGridViewCellStyle,System.Windows.Forms.DataGridViewAdvancedBorderStyle,System.Windows.Forms.DataGridViewPaintParts)">
+	<summary>
+ Paint Method
+ </summary>
+	<param name="g"></param>
+	<param name="clipBounds"></param>
+	<param name="cellBounds"></param>
+	<param name="rowIndex"></param>
+	<param name="cellState"></param>
+	<param name="value"></param>
+	<param name="formattedValue"></param>
+	<param name="errorText"></param>
+	<param name="cellStyle"></param>
+	<param name="advancedBorderStyle"></param>
+	<param name="paintParts"></param>
+	<remarks></remarks>
+</member><member name="T:DataGridViewProgressCell">
+	<summary>
+ Cell for our Progress bar
+ </summary>
+	<remarks></remarks>
 </member><member name="F:LAY_LUDO_DTB_Query.sFilename">
 	<summary>
  Our filename
@@ -1906,6 +1990,179 @@ Ludo
 	<summary>
  Layout to execute query
  </summary>
+	<remarks></remarks>
+</member><member name="E:LUDO_CTRL.Click">
+	<summary>
+ our click event
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LUDO_CTRL.keyUp">
+	<summary>
+ Our Event overwrite KeyUp
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LUDO_CTRL.KeyDown">
+	<summary>
+ Our Event overwrite KeyDown
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LUDO_CTRL.KeyPress">
+	<summary>
+ Our Event overwrite KeyPress
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL.getSystemWindowsFormsLabel">
+	<summary>
+ Method to get the original Text object
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL.raiseEvent_Click(System.EventArgs)">
+	<summary>
+ Method to raise a click event in the class
+ </summary>
+	<param name="e">EventArgs, our event</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL.raiseEvent_KeyUp(System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Method to raise a keyUp event in the class
+ </summary>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL.raiseEvent_KeyDown(System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Method to raise a keyDown event in the class
+ </summary>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL.raiseEvent_KeyPress(System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Method to raise a keyPress event in the class
+ </summary>
+	<param name="e">System.Windows.Forms.KeyPressEventArgs, our event</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL.LabelText">
+	<summary>
+ Property to set the label text
+ </summary>
+	<value>string, our label text</value>
+	<returns>string, our label text</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL.Font">
+	<summary>
+ Property to manage the font of the Textbox
+ </summary>
+	<value>Font, our new font</value>
+	<returns>Font, our font</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL.LabelFont">
+	<summary>
+ Property to manage the font of the label
+ </summary>
+	<value>Font, our new font</value>
+	<returns>Font, our font</returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL.#ctor">
+	<summary>
+ Builder
+ </summary>
+	<remarks></remarks>
+</member><member name="T:LUDO_CTRL">
+	<summary>
+ Ludo control, our layout to have a base of field with lab
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_TXT.getSystemWindowsFormsTextBox">
+	<summary>
+ Method to get the original Text object
+ </summary>
+	<returns>System.Windows.Forms.TextBox</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_TXT.Text">
+	<summary>
+ Property to set the text
+ </summary>
+	<value>String, our value !</value>
+	<returns>String, our text</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_TXT.Font">
+	<summary>
+ Property to manage the font of the Textbox
+ </summary>
+	<value>Font, our new font</value>
+	<returns>Font, our font</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_TXT.Enabled">
+	<summary>
+ Property to managed the enableness
+ </summary>
+	<value>boolean, the value</value>
+	<returns>Boolean, is enabled or not !!!</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_TXT.Multiline">
+	<summary>
+ Property to manage the multiline
+ </summary>
+	<value>Boolean, multiline</value>
+	<returns>Boolean, is multi line</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_TXT.ReadOnly">
+	<summary>
+ Property to manage the read only stuff
+ </summary>
+	<value>Boolean, our new state</value>
+	<returns>Boolean, true if read only</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_TXT.ScrollBar">
+	<summary>
+ Property to manage the scrollbar in the Text field
+ </summary>
+	<value>System.Windows.Forms.ScrollBars, our new scroll type</value>
+	<returns>System.Windows.Forms.ScrollBars, our scroll used</returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_TXT.HANDLER_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_TXT.HANDLER_KeyUp(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_TXT.HANDLER_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyDown
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_TXT.HANDLER_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Handler to manage the keyPress
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_TXT.#ctor">
+	<summary>
+ Builder
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_TXT.#ctor(System.String,System.String)">
+	<summary>
+ Builder with start value
+ </summary>
+	<param name="sLabelText">string, text of the label</param>
+	<param name="sValue">string, text to begin</param>
 	<remarks></remarks>
 </member><member name="F:LAY_LUDO_DTB_Module_editor.oModule">
 	<summary>
@@ -2062,149 +2319,83 @@ Ludo
  Layout to create or modify a DTB module
  </summary>
 	<remarks></remarks>
-</member><member name="M:LUDO_CTRL_SAI.getSystemWindowsFormsTextBox">
+</member><member name="M:LUDO_CTRL_DTP.getSystemWindowsFormsDateTimePicker">
 	<summary>
  Method to get the original Text object
  </summary>
-	<returns></returns>
+	<returns>System.Windows.Forms.DateTimePicker, our date time picker</returns>
 	<remarks></remarks>
-</member><member name="P:LUDO_CTRL_SAI.Text">
+</member><member name="M:LUDO_CTRL_DTP.toYYYYMMDD">
 	<summary>
- Property to set the text
+ Method to get the date as a specific formt : Year on 4 Digit + Month on 2 Digit + Day on 2 Digit
  </summary>
-	<value>String, our value !</value>
-	<returns>String, our text</returns>
+	<returns>String, our formated date !</returns>
 	<remarks></remarks>
-</member><member name="P:LUDO_CTRL_SAI.LabelText">
+</member><member name="P:LUDO_CTRL_DTP.Value">
 	<summary>
- Property to set the label text
+ Property to manage the value of the DateTimePicker
  </summary>
-	<value>string, our label text</value>
-	<returns>string, our label text</returns>
+	<value>Date, our new date</value>
+	<returns>Date, the current one</returns>
 	<remarks></remarks>
-</member><member name="P:LUDO_CTRL_SAI.Font">
+</member><member name="P:LUDO_CTRL_DTP.Text">
 	<summary>
- Property to manage the font of the Textbox
+ Property to manage the Text property
  </summary>
-	<value>Font, our new font</value>
-	<returns>Font, our font</returns>
+	<value>String, our text value</value>
+	<returns>String, our text value</returns>
 	<remarks></remarks>
-</member><member name="P:LUDO_CTRL_SAI.LabelFont">
-	<summary>
- Property to manage the font of the label
- </summary>
-	<value>Font, our new font</value>
-	<returns>Font, our font</returns>
-	<remarks></remarks>
-</member><member name="P:LUDO_CTRL_SAI.Enabled">
+</member><member name="P:LUDO_CTRL_DTP.Enabled">
 	<summary>
  Property to 
  </summary>
 	<value>boolean, the value</value>
 	<returns>Bollean, is enabled or not !!!</returns>
 	<remarks></remarks>
-</member><member name="M:LUDO_CTRL_SAI.#ctor">
+</member><member name="M:LUDO_CTRL_DTP.HANDLER_Click(System.Object,System.EventArgs)">
 	<summary>
- Builder
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_DTP.HANDLER_KeyUp(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_DTP.HANDLER_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyDown
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_DTP.HANDLER_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Handler to manage the keyPress
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_DTP.InitializeComponent">
+	<summary>
+ Override of InitializeComponent
  </summary>
 	<remarks></remarks>
-</member><member name="M:LUDO_CTRL_SAI.#ctor(System.String,System.String)">
+</member><member name="M:LUDO_CTRL_DTP.#ctor">
 	<summary>
- Builder with start value
+ Our default builder
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_DTP.#ctor(System.String,System.DateTime@)">
+	<summary>
+ Builder with date
  </summary>
 	<param name="sLabelText">string, text of the label</param>
-	<param name="sValue">string, text to begin</param>
-	<remarks></remarks>
-</member><member name="T:LUDO_CTRL_SAI">
-	<summary>
- Control to shaw Lab and SAI
- </summary>
-	<remarks></remarks>
-</member><member name="F:DataGridViewProgressCell.bText">
-	<summary>
- Must we plot the text ?
- </summary>
-	<remarks></remarks>
-</member><member name="F:DataGridViewProgressCell.nMin">
-	<summary>
- Minimum Value
- </summary>
-	<remarks></remarks>
-</member><member name="F:DataGridViewProgressCell.nMax">
-	<summary>
- Maximun Value
- </summary>
-	<remarks></remarks>
-</member><member name="F:DataGridViewProgressCell.nColorP">
-	<summary>
- Color if value Positive
- </summary>
-	<remarks></remarks>
-</member><member name="F:DataGridViewProgressCell.nColorN">
-	<summary>
- Color if value Negative
- </summary>
-	<remarks></remarks>
-</member><member name="P:DataGridViewProgressCell.PositiveColor">
-	<summary>
- Color in case of positive value
- </summary>
-	<value></value>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="P:DataGridViewProgressCell.NegativeColor">
-	<summary>
- Color in case of negative value
- </summary>
-	<value></value>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="P:DataGridViewProgressCell.Minimum">
-	<summary>
- Minimum value of the progress cell
- </summary>
-	<value>Integer</value>
-	<returns>Integer</returns>
-	<remarks></remarks>
-</member><member name="P:DataGridViewProgressCell.Maximum">
-	<summary>
- Maximum value of the progress cell
- </summary>
-	<value></value>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:DataGridViewProgressCell.GetFormattedValue(System.Object,System.Int32,System.Windows.Forms.DataGridViewCellStyle@,System.ComponentModel.TypeConverter,System.ComponentModel.TypeConverter,System.Windows.Forms.DataGridViewDataErrorContexts)">
-	<summary>
- Method required to make the Progress Cell consistent with the default Image Cell. 
- </summary>
-	<param name="value"></param>
-	<param name="rowIndex"></param>
-	<param name="cellStyle"></param>
-	<param name="valueTypeConverter"></param>
-	<param name="formattedValueTypeConverter"></param>
-	<param name="context"></param>
-	<returns></returns>
-	<remarks>The default Image Cell assumes an Image as a value, although the value of the Progress Cell is an Integer.</remarks>
-</member><member name="M:DataGridViewProgressCell.Paint(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Int32,System.Windows.Forms.DataGridViewElementStates,System.Object,System.Object,System.String,System.Windows.Forms.DataGridViewCellStyle,System.Windows.Forms.DataGridViewAdvancedBorderStyle,System.Windows.Forms.DataGridViewPaintParts)">
-	<summary>
- Paint Method
- </summary>
-	<param name="g"></param>
-	<param name="clipBounds"></param>
-	<param name="cellBounds"></param>
-	<param name="rowIndex"></param>
-	<param name="cellState"></param>
-	<param name="value"></param>
-	<param name="formattedValue"></param>
-	<param name="errorText"></param>
-	<param name="cellStyle"></param>
-	<param name="advancedBorderStyle"></param>
-	<param name="paintParts"></param>
-	<remarks></remarks>
-</member><member name="T:DataGridViewProgressCell">
-	<summary>
- Cell for our Progress bar
- </summary>
+	<param name="dtDate">Date, starting date</param>
 	<remarks></remarks>
 </member><member name="F:LAY_XML_Analyzer.xmlDocument">
 	<summary>
@@ -2782,6 +2973,228 @@ Ludo
  Windows to manage a xml File
  </summary>
 	<remarks></remarks>
+</member><member name="T:Ludo.INI.Consts">
+	<summary>
+ Module to manage the ini const
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Fcts.IsStrIniGood(System.String)">
+	<summary>
+ Function to see if str is good for ini
+ </summary>
+	<param name="sStr">String, our string to check</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Fcts.WriteIniComment(System.IO.StreamWriter@,System.String)">
+	<summary>
+ Function to Write Comment :)
+ </summary>
+	<param name="oWriter">System.IO.StreamWriter, the stream to write</param>
+	<param name="sComment">String, the comment</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Fcts.IniRead(System.String,System.String,System.String,System.String)">
+	<summary>
+ Function to read in a ini file without use the class
+ </summary>
+	<param name="sFileName">String, the file name</param>
+	<param name="sSection">String, the section</param>
+	<param name="sKey">String, the Key</param>
+	<param name="sDefaultValue">String, the default value</param>
+	<returns>String, the seeked value</returns>
+	<remarks>This function creates a Ludo_Ini and calls the method iniRead</remarks>
+</member><member name="M:Ludo.INI.Fcts.IniRead_Integer(System.String,System.String,System.String,System.Int32)">
+	<summary>
+ Function to read in a ini file as integer without use the class
+ </summary>
+	<param name="sFileName">String, the file name</param>
+	<param name="sSection">String, the section</param>
+	<param name="sKey">String, the Key</param>
+	<param name="nDefaultValue">Integer, the default value</param>
+	<returns>Integer, the seeked value</returns>
+	<remarks>this function calls IniRead and Integer.TryParse</remarks>
+</member><member name="M:Ludo.INI.Fcts.IniWrite(System.String,System.String,System.String,System.String,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Function to read in a ini file without use the class
+ </summary>
+	<param name="sFileName">String, the file name</param>
+	<param name="sSection">String, the section</param>
+	<param name="sKey">String, the Key</param>
+	<param name="sValue">string, the value</param>
+	<param name="PG_Ini">[OPTIONAL] ProgressBar, show the save ... useless</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="T:Ludo.INI.Fcts">
+	<summary>
+ Module to manage the easy function of INIT
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.INI.Ludo_Ini.lst_oSections">
+	<summary>
+ List of the section :o
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.INI.Ludo_Ini.sComment">
+	<summary>
+ our comment :p
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.setComment(System.String)">
+	<summary>
+ Method to set the comment
+ </summary>
+	<param name="sStr">string, our comment</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.setValue(System.String,System.String,System.String)">
+	<summary>
+ Method to set a Value in a key, in a section
+ </summary>
+	<param name="sSection">String, the section</param>
+	<param name="sKey">String, the Key</param>
+	<param name="sValue">string, the value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.getComment">
+	<summary>
+ Method to get the comment
+ </summary>
+	<returns>String, our comment</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.getNumberOfSections">
+	<summary>
+ Method to obtain the number of section
+ </summary>
+	<returns>integer, our number of sections</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.getNumberOfKeys">
+	<summary>
+ Method to obtain the number of Keys
+ </summary>
+	<returns>integer, number of keys</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.getSections">
+	<summary>
+ Method to get the list of section Name :p
+ </summary>
+	<returns>List (Of string), our section names</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.hasSection(System.String)">
+	<summary>
+ Method to know if the Ini has a section with this Name :p
+ </summary>
+	<param name="sStr">string, section name</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.getValue(System.String,System.String)">
+	<summary>
+ Method to get a Value in a key, in a section
+ </summary>
+	<param name="sSection">String, the section</param>
+	<param name="sKey">String, the Key</param>
+	<returns>STring, the value</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.Load(System.String)">
+	<summary>
+ Method to load an Ini file
+ </summary>
+	<param name="sFileName">String, the filename</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.Save(System.String,System.Windows.Forms.ProgressBar@)">
+	<summary>
+ Method to Save our Ini File
+ </summary>
+	<param name="sFileName">String, the file name</param>
+	<param name="PG_Progress">[OPTIONAL] ProgressBar, show the progrss ?</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.Add(Ludo.INI.Ludo_Section@)">
+	<summary>
+ Method to add a section
+ </summary>
+	<param name="oSection">Ludo.INI.Ludo_Section, our section</param>
+	<returns>boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.Add(System.String@)">
+	<summary>
+ Method to add a section with its name :p
+ </summary>
+	<param name="sStr">String, section name</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>this method calls add with Ludo.INI.Ludo_Section parameters</remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.delete(System.String)">
+	<summary>
+ Method to delete a section from its name
+ </summary>
+	<param name="sSection">String, our section name</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.AddKey(System.String,Ludo.INI.Ludo_Ini_Key_Value@)">
+	<summary>
+ Method to add into a section a Keys from object to a section
+ </summary>
+	<param name="sSection">String, our section name</param>
+	<param name="oKV">Ludo.INI.Ludo_Ini_Key_Value, key-value to add</param>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.AddKey(System.String,System.String,System.String)">
+	<summary>
+ Method to add to a section a Keys from Strings
+ </summary>
+	<param name="sSection">String, our section</param>
+	<param name="sKey">String, the Key</param>
+	<param name="sValue">String, the Value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the method AddKey with Ludo.INI.Ludo_INI_Key_Value</remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.deleteKey(System.String,System.String)">
+	<summary>
+ Method to delete a Key From aSection
+ </summary>
+	<param name="sSection">String, our section</param>
+	<param name="sKey">String, our key</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.iniWrite(System.String,System.String,System.String)">
+	<summary>
+ Method to set a Value in a key, in a section
+ if Section don't exists, create it
+ if Key don't exits, create it
+ if Value equals empty string, delete Keys, and if Section become empty, section too
+ </summary>
+	<param name="sSection">String, the section</param>
+	<param name="sKey">String, the Key</param>
+	<param name="sValue">String, the Value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.iniRead(System.String,System.String,System.String)">
+	<summary>
+ Method to get a Value in a key, in a section
+ if Section don't exists, return default value
+ if Key don't exits, return default value
+ if Value equals empty string, return default value
+ </summary>
+	<param name="sSection">String, our section</param>
+	<param name="sKey">String, the Key</param>
+	<param name="sValue">String, the Value</param>
+	<returns>String, the value</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.#ctor">
+	<summary>
+ Default builder
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.INI.Ludo_Ini.#ctor(System.String)">
+	<summary>
+ Builder with load function
+ </summary>
+	<param name="sFileName">String, our Filename</param>
+	<remarks>This builder calls the method load</remarks>
+</member><member name="T:Ludo.INI.Ludo_Ini">
+	<summary>
+ Class to manage INI Files
+ </summary>
+	<remarks>Windows init files</remarks>
 </member><member name="F:Ludo.DTB.Ludo_DTB_CODE_MAKER.sPrefixe">
 	<summary>
  Prefixe for generation
@@ -3868,20 +4281,22 @@ Ludo
 	<param name="lst_sCtrl">List(Of String), our list of </param>
 	<returns>Ludo.DTB.GUI.Ludo_DTB_GUI_Size, our size anyway</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnEditionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position)">
+</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnEditionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position,System.String)">
 	<summary>
  Method to write column Edition Code
  </summary>
 	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
 	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
 	<returns>string, the code</returns>
 	<remarks>Not implemented, override it !!!</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnEditionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position)">
+</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnEditionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position,System.String)">
 	<summary>
  Method to write column Edition Design
  </summary>
 	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
 	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
 	<returns>string, the code</returns>
 	<remarks>Not implemented, override it !!!</remarks>
 </member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeLayEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
@@ -5898,6 +6313,298 @@ Ludo
  Class to do the Update
  </summary>
 	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_LIST.getSystemWindowsFormsListBox">
+	<summary>
+ Method to get the original List box object
+ </summary>
+	<returns>System.Windows.Forms.ListBox</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.Text">
+	<summary>
+ Property to set the text
+ </summary>
+	<value>String, our value !</value>
+	<returns>String, our text</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.Font">
+	<summary>
+ Property to manage the font of the Textbox
+ </summary>
+	<value>Font, our new font</value>
+	<returns>Font, our font</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.Enabled">
+	<summary>
+ Property to managed the enableness
+ </summary>
+	<value>boolean, the value</value>
+	<returns>Boolean, is enabled or not !!!</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.ScrollAlwaysVisible">
+	<summary>
+ Property to manage the scrollbar in the List field
+ </summary>
+	<value>System.Windows.Forms.ScrollBars, our new scroll type</value>
+	<returns>System.Windows.Forms.ScrollBars, our scroll used</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.SelectionMode">
+	<summary>
+ Property tp manage the selection
+ </summary>
+	<value>System.Windows.Forms.SelectionMode(integer in fact), our new mode</value>
+	<returns>System.Windows.Forms.SelectionMode(integer in fact), get the mode</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.SelectedIndex">
+	<summary>
+ Property to select an index
+ </summary>
+	<value>Integer, the new index</value>
+	<returns>Integer, our index</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.SelectedIndices">
+	<summary>
+ Property to manage the selected indices
+ </summary>
+	<returns>System.Windows.Forms.ListBox.SelectedIndexCollection, list of selected value</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.SelectedItem">
+	<summary>
+ Property to select the item 
+ </summary>
+	<value>Object, our new selected item</value>
+	<returns>Object, our selected object</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.SelectedItems">
+	<summary>
+ Property to manage the selected Item
+ </summary>
+	<returns>System.Windows.Forms.ListBox.SelectedObjectCollection, our list of selected item</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.SelectedKeyValues">
+	<summary>
+ Property to manage the selected keyvalue
+ </summary>
+	<returns>List(Of KeyValue), our list of selected Key value</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.SelectedValue">
+	<summary>
+ Property to manage the selected value
+ </summary>
+	<value>Object, our new selected value</value>
+	<returns>Object, our selected value</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.DataSource">
+	<summary>
+ Property to manage the data source
+ </summary>
+	<value>Object, our new data source</value>
+	<returns>Object, our data source</returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_LIST.HANDLER_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_LIST.HANDLER_KeyUp(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_LIST.HANDLER_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyDown
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_LIST.HANDLER_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Handler to manage the keyPress
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_LIST.#ctor">
+	<summary>
+ Builder
+ </summary>
+	<remarks></remarks>
+</member><member name="T:LUDO_CTRL_LIST">
+	<summary>
+ Layout to have a List field with lab
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.nMaximum">
+	<summary>
+ Our maximum value
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.nMinimum">
+	<summary>
+ Our minimum value
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.nStep">
+	<summary>
+ Our step to progress
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.nValue">
+	<summary>
+ Our value
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.bVerbose">
+	<summary>
+ Did we want some text ?
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.bPercent">
+	<summary>
+ Our progression is texted in Percent our in brut ?
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.sOperationText">
+	<summary>
+ Text of the progression
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.sText">
+	<summary>
+ Message to plots
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.nPositiveColor">
+	<summary>
+ The Positive color
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.CTRL.Ludo_ProgressBar.nNegativeColor">
+	<summary>
+ The Negative Color
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.Increment(System.Int32)">
+	<summary>
+ Method to increment the value of the Prog
+ </summary>
+	<param name="value">Integer, value</param>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.PerformStep">
+	<summary>
+ Method to perform step
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.writeStatusRatio">
+	<summary>
+ Method to write Status with the ration form : Y/X
+ </summary>
+	<returns>String, our Text</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.writeStatusPercent">
+	<summary>
+ Method to write the Status with Percent form : XXX%
+ </summary>
+	<returns>String, our Text</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.writeStatus">
+	<summary>
+ Method to write the Status
+ </summary>
+	<returns>String, our Text</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.drawBase(System.Drawing.Graphics@)">
+	<summary>
+ Method to draw the base of the base of the Control
+ </summary>
+	<param name="g">System.Drawing.Graphics, our graphic to draw</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.drawText(System.Drawing.Graphics@)">
+	<summary>
+ Method to draw the text after thebase
+ </summary>
+	<param name="g">System.Drawing.Graphics, graphic used to draw</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.drawElement">
+	<summary>
+ Method to draw our element
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.CTRL.Ludo_ProgressBar.Verbose">
+	<summary>
+ Property to manage verbosity
+ </summary>
+	<value>boolean, our new verbosity</value>
+	<returns>Boolean, our verbosity</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.CTRL.Ludo_ProgressBar.Percent">
+	<summary>
+ Property to manage if the text of progression is in percent or not
+ </summary>
+	<value>boolean, our new value</value>
+	<returns>Boolean, our value</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.CTRL.Ludo_ProgressBar.OperationText">
+	<summary>
+ Property to manage the message text during progression
+ </summary>
+	<value>String, our new text</value>
+	<returns>String, our text</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.CTRL.Ludo_ProgressBar.Maximum">
+	<summary>
+ Property to manage the maximum value of the PG
+ </summary>
+	<value>integer, our new maximum</value>
+	<returns>Integer, our maximum</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.CTRL.Ludo_ProgressBar.Minimum">
+	<summary>
+ Property to manage the minimum value of the PG
+ </summary>
+	<value>Integer, our new minimum</value>
+	<returns>Integer, minimum</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.CTRL.Ludo_ProgressBar.Step">
+	<summary>
+ Property to manage the step part
+ </summary>
+	<value>Integer, our new step value</value>
+	<returns>Integer, our step value</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.CTRL.Ludo_ProgressBar.Value">
+	<summary>
+ Property to manage the value of the Progress Bar
+ </summary>
+	<value>Integer, our new value</value>
+	<returns>Integer, our value</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.CTRL.Ludo_ProgressBar.Text">
+	<summary>
+ Property as string
+ </summary>
+	<value>String, our new text</value>
+	<returns>String, our text</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.CTRL.Ludo_ProgressBar.#ctor">
+	<summary>
+ Our defalut builder
+ </summary>
+	<remarks></remarks>
+</member><member name="T:Ludo.CTRL.Ludo_ProgressBar">
+	<summary>
+ COntrol class to manage the Progress bar with text
+ </summary>
+	<remarks></remarks>
 </member><member name="F:LAY_LUDO_DTB_Conception.oSch">
 	<summary>
  Our schema
@@ -7394,6 +8101,133 @@ Ludo
 	<summary>
   Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
 </summary>
+</member><member name="M:LUDO_CTRL_SAI.getSystemWindowsFormsTextBox">
+	<summary>
+ Method to get the original Text object
+ </summary>
+	<returns>System.Windows.Forms.TextBox</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_SAI.Text">
+	<summary>
+ Property to set the text
+ </summary>
+	<value>String, our value !</value>
+	<returns>String, our text</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_SAI.Font">
+	<summary>
+ Property to manage the font of the Textbox
+ </summary>
+	<value>Font, our new font</value>
+	<returns>Font, our font</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_SAI.Enabled">
+	<summary>
+ Property to managed the enableness
+ </summary>
+	<value>boolean, the value</value>
+	<returns>Boolean, is enabled or not !!!</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_SAI.ReadOnly">
+	<summary>
+ Property to manage the read only stuff
+ </summary>
+	<value>Boolean, our new state</value>
+	<returns>Boolean, true if read only</returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_SAI.HANDLER_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_SAI.HANDLER_KeyUp(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_SAI.HANDLER_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyDown
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_SAI.HANDLER_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Handler to manage the keyPress
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_SAI.#ctor">
+	<summary>
+ Builder
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_SAI.#ctor(System.String,System.String)">
+	<summary>
+ Builder with start value
+ </summary>
+	<param name="sLabelText">string, text of the label</param>
+	<param name="sValue">string, text to begin</param>
+	<remarks></remarks>
+</member><member name="T:LUDO_CTRL_SAI">
+	<summary>
+ Control to shaw Lab and SAI
+ </summary>
+	<remarks></remarks>
+</member><member name="F:DataGridViewDateTxtCell.bChangeFormat">
+	<summary>
+ Property to change the value if it's differant to an dd/mm/yyyy String
+ </summary>
+	<remarks></remarks>
+</member><member name="T:DataGridViewDateTxtCell">
+	<summary>
+ Cell for our Progress bar
+ </summary>
+	<remarks></remarks>
+</member><member name="F:DataGridViewDateCell.bChangeFormat">
+	<summary>
+ Property to change the value if it's differant to an dd/mm/yyyy String
+ </summary>
+	<remarks></remarks>
+</member><member name="M:DataGridViewDateCell.GetFormattedValue(System.Object,System.Int32,System.Windows.Forms.DataGridViewCellStyle@,System.ComponentModel.TypeConverter,System.ComponentModel.TypeConverter,System.Windows.Forms.DataGridViewDataErrorContexts)">
+	<summary>
+ Method required to make the Progress Cell consistent with the default Image Cell. 
+ </summary>
+	<param name="value"></param>
+	<param name="rowIndex"></param>
+	<param name="cellStyle"></param>
+	<param name="valueTypeConverter"></param>
+	<param name="formattedValueTypeConverter"></param>
+	<param name="context"></param>
+	<returns></returns>
+	<remarks>The default Image Cell assumes an Image as a value, although the value of the Progress Cell is an Integer.</remarks>
+</member><member name="M:DataGridViewDateCell.Paint(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Rectangle,System.Int32,System.Windows.Forms.DataGridViewElementStates,System.Object,System.Object,System.String,System.Windows.Forms.DataGridViewCellStyle,System.Windows.Forms.DataGridViewAdvancedBorderStyle,System.Windows.Forms.DataGridViewPaintParts)">
+	<summary>
+ Paint Method
+ </summary>
+	<param name="g"></param>
+	<param name="clipBounds"></param>
+	<param name="cellBounds"></param>
+	<param name="rowIndex"></param>
+	<param name="cellState"></param>
+	<param name="value"></param>
+	<param name="formattedValue"></param>
+	<param name="errorText"></param>
+	<param name="cellStyle"></param>
+	<param name="advancedBorderStyle"></param>
+	<param name="paintParts"></param>
+	<remarks></remarks>
+</member><member name="T:DataGridViewDateCell">
+	<summary>
+ Cell for our Date bar
+ </summary>
+	<remarks></remarks>
 </member><member name="E:LAY_LUDO_DTB_Column_editor.eDelete">
 	<summary>
  Our event to delete the Column
@@ -7520,6 +8354,101 @@ Ludo
 </member><member name="T:LAY_LUDO_DTB_Column_editor">
 	<summary>
  Layout to create or modify a Column schema
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_COMBO.getSystemWindowsFormsComboBox">
+	<summary>
+ Method to get the original Combo box object
+ </summary>
+	<returns>System.Windows.Forms.ComboBox</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.Text">
+	<summary>
+ Property to set the text
+ </summary>
+	<value>String, our value !</value>
+	<returns>String, our text</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.Font">
+	<summary>
+ Property to manage the font of the Textbox
+ </summary>
+	<value>Font, our new font</value>
+	<returns>Font, our font</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.Enabled">
+	<summary>
+ Property to managed the enableness
+ </summary>
+	<value>boolean, the value</value>
+	<returns>Boolean, is enabled or not !!!</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.SelectedIndex">
+	<summary>
+ Property to select an index
+ </summary>
+	<value>Integer, the new index</value>
+	<returns>Integer, our index</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.SelectedItem">
+	<summary>
+ Property to select the item 
+ </summary>
+	<value>Object, our new selected item</value>
+	<returns>Object, our selected object</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.SelectedValue">
+	<summary>
+ Property to manage the selected value
+ </summary>
+	<value>Object, our new selected value</value>
+	<returns>Object, our selected value</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.selectedText">
+	<summary>
+ Property to manage  the selected text
+ </summary>
+	<value>String, our new selected text</value>
+	<returns>String, our selected tex</returns>
+	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.DataSource">
+	<summary>
+ Property to manage the data source
+ </summary>
+	<value>Object, our new data source</value>
+	<returns>Object, our data source</returns>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_COMBO.HANDLER_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_COMBO.HANDLER_KeyUp(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyUp
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_COMBO.HANDLER_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the keyDown
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_COMBO.HANDLER_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+	<summary>
+ Handler to manage the keyPress
+ </summary>
+	<param name="sender">Object, the sender of the event</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event arg</param>
+	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_COMBO.#ctor">
+	<summary>
+ Builder
  </summary>
 	<remarks></remarks>
 </member><member name="F:WIN_LUDO_DTB_CreateCompactDTB.bModeCreation">
