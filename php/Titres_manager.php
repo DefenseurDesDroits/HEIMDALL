@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Titres_manager.php
 //Description : Tables des titres des contacts
 
@@ -31,15 +31,16 @@ function TitresgetFromID($nId){
 
 ///[FUNCTION][TitressaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function TitressaveFromJson($jsonObj){
+function TitressaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oTitres = new Titres();
 	
 	//Load from Json !
 	$oTitres->loadFromJson($jsonObj);
 	//save the changes
-	$oTitres->save(null);
+	$oTitres->save($oAgent);
 	
 	//Return the present states
 	return TitresgetFromID( $oTitres->getId_Titres() );
@@ -125,13 +126,15 @@ function TitresManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo TitresgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo TitressaveFromJson($sJson);
+			echo TitressaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo TitresdeleteFromID($nId);

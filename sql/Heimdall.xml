@@ -68,6 +68,10 @@
               </DefaultValue>
               <Comment>date de dernière modification</Comment>
             </Column>
+            <Column name="nId_Creator" deploy_name="Id_Creator" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>0</DefaultValue>
+              <Comment>Id sur l'item créateur de cet item</Comment>
+            </Column>
           </Columns>
           <Comment>Table de tous les items avec des droits</Comment>
         </Table>

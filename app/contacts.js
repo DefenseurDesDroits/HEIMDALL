@@ -436,7 +436,11 @@ function contactLAYDIVSave(nLine){
     }
     ///[/DEBUG]
 
-    return oContact.save("", ".");
+    //will change !!!
+    if(oContact.getId_Accreditations_Item() == 0)
+        oContact.setId_Accreditations_Item(1);
+
+    return oContact.save(Heimdall.members.user["UserId"], ".");
 }
 
 ///[FUNCTION][contactLAYDIVDelete]Function to delete the change in a contact

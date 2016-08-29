@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Langues.php
 //Description : Tables des langues
 
@@ -95,6 +95,13 @@ class Langues{
 		if( $bId)
 			return "xxx.Langues.Id_Langues, xxx.Langues.Nom";
 		return "xxx.Langues.Nom";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom";
 	}
 
 
@@ -240,8 +247,7 @@ class Langues{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Langues" . " (" . Langues::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Langues::getValues() . " )";
 	}
 
 
@@ -267,7 +273,7 @@ class Langues{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Langues" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -299,9 +305,9 @@ class Langues{
 		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Langues() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Langues::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Langues::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -312,7 +318,7 @@ class Langues{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Langues::loadFromConnection($oAgent);
 	}
 
 

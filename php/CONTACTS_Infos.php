@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Infos.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -414,6 +414,13 @@ class Infos extends Items{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Infos, Adr1, Adr2, Adr3, CP, Cedex, Ville, Telephone1, Courriel1, Telephone2, Courriel2, Site, Id_Pays, Id_Contact_Infos";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -587,8 +594,7 @@ class Infos extends Items{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Infos" . " (" . Infos::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Infos::getValues() . " )";
 	}
 
 
@@ -626,7 +632,7 @@ class Infos extends Items{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Infos" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -656,11 +662,13 @@ class Infos extends Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($this->getId_Infos() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Infos::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Infos::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -671,7 +679,7 @@ class Infos extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Infos::loadFromConnection($oAgent);
 	}
 
 

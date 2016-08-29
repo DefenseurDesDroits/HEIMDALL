@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Organisations_manager.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -31,15 +31,16 @@ function OrganisationsgetFromID($nId){
 
 ///[FUNCTION][OrganisationssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function OrganisationssaveFromJson($jsonObj){
+function OrganisationssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oOrganisations = new Organisations();
 	
 	//Load from Json !
 	$oOrganisations->loadFromJson($jsonObj);
 	//save the changes
-	$oOrganisations->save(null);
+	$oOrganisations->save($oAgent);
 	
 	//Return the present states
 	return OrganisationsgetFromID( $oOrganisations->getId_Organisations() );
@@ -125,13 +126,15 @@ function OrganisationsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo OrganisationsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo OrganisationssaveFromJson($sJson);
+			echo OrganisationssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo OrganisationsdeleteFromID($nId);

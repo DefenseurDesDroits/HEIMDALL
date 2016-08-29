@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Notes.php
 //Description : Table des notes sur les items
 
@@ -171,6 +171,13 @@ class Notes extends Items{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Notes, Titre, Urgente, Texte, Id_Items_Linked";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -326,8 +333,7 @@ class Notes extends Items{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Notes" . " (" . Notes::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Notes::getValues() . " )";
 	}
 
 
@@ -356,7 +362,7 @@ class Notes extends Items{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Notes" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -386,11 +392,13 @@ class Notes extends Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($this->getId_Notes() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Notes::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Notes::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -401,7 +409,7 @@ class Notes extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Notes::loadFromConnection($oAgent);
 	}
 
 

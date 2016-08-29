@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Organisation_Types_manager.php
 //Description : Tables des différants type d'organisations possibles
 
@@ -31,15 +31,16 @@ function Organisation_TypesgetFromID($nId){
 
 ///[FUNCTION][Organisation_TypessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function Organisation_TypessaveFromJson($jsonObj){
+function Organisation_TypessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oOrganisation_Types = new Organisation_Types();
 	
 	//Load from Json !
 	$oOrganisation_Types->loadFromJson($jsonObj);
 	//save the changes
-	$oOrganisation_Types->save(null);
+	$oOrganisation_Types->save($oAgent);
 	
 	//Return the present states
 	return Organisation_TypesgetFromID( $oOrganisation_Types->getId_Organisation_Types() );
@@ -125,13 +126,15 @@ function Organisation_TypesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo Organisation_TypesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo Organisation_TypessaveFromJson($sJson);
+			echo Organisation_TypessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo Organisation_TypesdeleteFromID($nId);

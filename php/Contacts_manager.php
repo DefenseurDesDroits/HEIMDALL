@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_manager.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
@@ -31,15 +31,16 @@ function ContactsgetFromID($nId){
 
 ///[FUNCTION][ContactssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function ContactssaveFromJson($jsonObj){
+function ContactssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oContacts = new Contacts();
 	
 	//Load from Json !
 	$oContacts->loadFromJson($jsonObj);
 	//save the changes
-	$oContacts->save(null);
+	$oContacts->save($oAgent);
 	
 	//Return the present states
 	return ContactsgetFromID( $oContacts->getId_Contacts() );
@@ -125,13 +126,15 @@ function ContactsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo ContactsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo ContactssaveFromJson($sJson);
+			echo ContactssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo ContactsdeleteFromID($nId);

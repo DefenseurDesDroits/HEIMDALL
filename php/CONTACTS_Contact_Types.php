@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Contact_Types.php
 //Description : Table des types de contact
 
@@ -95,6 +95,13 @@ class Contact_Types{
 		if( $bId)
 			return "xxx.Contact_Types.Id_Contact_Types, xxx.Contact_Types.Nom";
 		return "xxx.Contact_Types.Nom";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom";
 	}
 
 
@@ -240,8 +247,7 @@ class Contact_Types{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Contact_Types" . " (" . Contact_Types::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Contact_Types::getValues() . " )";
 	}
 
 
@@ -267,7 +273,7 @@ class Contact_Types{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Contact_Types" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -299,9 +305,9 @@ class Contact_Types{
 		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Contact_Types() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Contact_Types::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Contact_Types::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -312,7 +318,7 @@ class Contact_Types{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Contact_Types::loadFromConnection($oAgent);
 	}
 
 

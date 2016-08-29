@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Groups_manager.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -31,15 +31,16 @@ function GroupsgetFromID($nId){
 
 ///[FUNCTION][GroupssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function GroupssaveFromJson($jsonObj){
+function GroupssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oGroups = new Groups();
 	
 	//Load from Json !
 	$oGroups->loadFromJson($jsonObj);
 	//save the changes
-	$oGroups->save(null);
+	$oGroups->save($oAgent);
 	
 	//Return the present states
 	return GroupsgetFromID( $oGroups->getId_Groups() );
@@ -125,13 +126,15 @@ function GroupsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo GroupsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo GroupssaveFromJson($sJson);
+			echo GroupssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo GroupsdeleteFromID($nId);

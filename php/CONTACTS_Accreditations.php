@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Accreditations.php
 //Description : Table des accréditations sur les items
 
@@ -121,6 +121,13 @@ class Accreditations{
 		if( $bId)
 			return "xxx.Accreditations.Id_Accreditations, xxx.Accreditations.Nom, xxx.Accreditations.Niveau";
 		return "xxx.Accreditations.Nom, xxx.Accreditations.Niveau";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom, Niveau";
 	}
 
 
@@ -268,8 +275,7 @@ class Accreditations{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Accreditations" . " (" . Accreditations::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Accreditations::getValues() . " )";
 	}
 
 
@@ -296,7 +302,7 @@ class Accreditations{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Accreditations" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -328,9 +334,9 @@ class Accreditations{
 		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Accreditations() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Accreditations::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Accreditations::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -341,7 +347,7 @@ class Accreditations{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Accreditations::loadFromConnection($oAgent);
 	}
 
 

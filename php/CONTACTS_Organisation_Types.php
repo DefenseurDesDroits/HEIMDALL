@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Organisation_Types.php
 //Description : Tables des différants type d'organisations possibles
 
@@ -95,6 +95,13 @@ class Organisation_Types{
 		if( $bId)
 			return "xxx.Organisation_Types.Id_Organisation_Types, xxx.Organisation_Types.Nom";
 		return "xxx.Organisation_Types.Nom";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom";
 	}
 
 
@@ -240,8 +247,7 @@ class Organisation_Types{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Organisation_Types" . " (" . Organisation_Types::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Organisation_Types::getValues() . " )";
 	}
 
 
@@ -267,7 +273,7 @@ class Organisation_Types{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Organisation_Types" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -299,9 +305,9 @@ class Organisation_Types{
 		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Organisation_Types() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Organisation_Types::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Organisation_Types::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -312,7 +318,7 @@ class Organisation_Types{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Organisation_Types::loadFromConnection($oAgent);
 	}
 
 

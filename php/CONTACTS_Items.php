@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 09:20:31
 //Filename : Contacts_Items.php
 //Description : Table de tous les items avec des droits
 
@@ -22,7 +22,9 @@ class Items{
 		///[MEMBER][integer][nId_Accreditations_Item]Clef étrangère sur le niveau d'accreditation
 		"nId_Accreditations_Item" => 0,
 		///[MEMBER][string "yyyymmdd"][dtModifie]date de dernière modification
-		"dtModifie" => ""
+		"dtModifie" => "",
+		///[MEMBER][integer][nId_Creator]Id sur l'item créateur de cet item
+		"nId_Creator" => 0
 	);
 	///[SECTION][Builders]#################################################
 
@@ -60,6 +62,13 @@ class Items{
 	public function getModifie(){
 		//Return the member
 		return $this->members["dtModifie"];
+	}
+
+	///[METHOD][getId_Creator]Method to get the Id_Creator
+	///[RETURNS]The Id_Creator
+	public function getId_Creator(){
+		//Return the member
+		return $this->members["nId_Creator"];
 	}
 
 
@@ -134,6 +143,23 @@ class Items{
 		return false;
 	}
 
+	///[METHOD][setId_Creator]Method to set the Id_Creator
+	///[PARAMETER][integer][$nValue]Our new value for Id_Creator
+	///[RETURNS]Boolean true if done 
+	public function setId_Creator($nValue){
+		//security on null guy !!!
+		if($nValue == null)
+			return false;
+		//security on type guy !!!
+		if(getType($nValue) == 'integer'){
+			 $this->members["nId_Creator"] = $nValue;
+			//Happy end
+			return true;
+		}
+		//Don't fool me next Time !!!
+		return false;
+	}
+
 
 
 	///[SECTION][WORKSHOP]################################################
@@ -144,10 +170,15 @@ class Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie";
-		return "xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie";
+			return "xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator";
+		return "xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator";
 	}
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return " Id_groups_owner, Id_Accreditations_Item, Modifie, Id_Creator";
+	}
 
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
@@ -156,8 +187,8 @@ class Items{
 			"nId_Items" => "xxx.Items.Id_Items", 
 			"nId_groups_owner" => "xxx.Items.Id_groups_owner", 
 			"nId_Accreditations_Item" => "xxx.Items.Id_Accreditations_Item", 
-			"dtModifie" => "xxx.Items.Modifie"
-);
+			"dtModifie" => "xxx.Items.Modifie", 
+			"nId_Creator" => "xxx.Items.Id_Creator");
 	}
 
 
@@ -285,20 +316,25 @@ class Items{
 		
 		$sValues .= Quotes( $this->getId_groups_owner());
 		$sValues .= ", " . Quotes( $this->getId_Accreditations_Item());
-		$sValues .= ", " . Quotes( $this->getModifie());
+		// if($this->getModifie() != "")
+		// 	$sValues .= ", " . Quotes( $this->getModifie());
+		// else
+			$sValues .= ", current_timestamp";
+		$sValues .= ", " . Quotes( $this->getId_Creator());
 		
 		//return the get value chain !
 		return $sValues;
 	}
 
-
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
 		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		//return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		//return "INSERT INTO xxx.Items (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		//return "INSERT INTO xxx.Items (" . $this->getInsertColumns() . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO xxx.Items (" . Items::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Items::getValues() . " )";
 	}
-
 
 	///[METHOD][getUpdateQuery]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
@@ -312,7 +348,9 @@ class Items{
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "Id_groups_owner  = " . Quotes($this->getId_groups_owner());
 		$Query .= ", " .  "Id_Accreditations_Item  = " . Quotes($this->getId_Accreditations_Item());
-		$Query .= ", " .  "Modifie  = " . Quotes($this->getModifie());
+		$Query .= ", " .  "Modifie  = current_timestamp";
+		//$Query .= ", " .  "Modifie  = " . Quotes($this->getModifie());
+		$Query .= ", " .  "Id_Creator  = " . Quotes($this->getId_Creator());
 		//build the condition
 		$Query .= "WHERE Id_Items = " . Quotes($this->getId_Items());
 		//Return the query !!!
@@ -355,10 +393,13 @@ class Items{
 		//Our query
 		$sQuery = "";
 		//Get the query !!!
-		if($this->getId_Items() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($this->getId_Items() == 0){
+			$this->setId_Creator(intval($oAgent));
+			$sQuery = Items::getInsertQuery();
+			//echo $sQuery;
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Items::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -368,8 +409,23 @@ class Items{
 		//Close it !!! For Goddess Sake !!!
 		$GLOBALS["oConnection"]->close();
 		
+		//get the last query
+
+		if($this->getId_Items() == 0){
+			//the query
+			$sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items WHERE Id_Creator = " . Quotes($oAgent);
+			//open
+			$GLOBALS["oConnection"]->open();
+			//the select query
+			$ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, ["max"], null);
+			//close
+			$GLOBALS["oConnection"]->close();
+
+			$this->setId_Items(intval( $ary_[0]["max"]));
+		}
+
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Items::loadFromConnection($oAgent);
 	}
 
 

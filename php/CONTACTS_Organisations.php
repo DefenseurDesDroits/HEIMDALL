@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -115,6 +115,13 @@ class Organisations extends Contacts{
 		if( $bId)
 			return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Acronyme";
 		return parent::getColumns($bId) . ", xxx.Organisations.Id_Organisations, xxx.Organisations.Id_Organisation_Type, xxx.Organisations.Acronyme";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Organisations, Id_Organisation_Type, Acronyme";
 	}
 
 
@@ -258,8 +265,7 @@ class Organisations extends Contacts{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Organisations" . " (" . Organisations::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Organisations::getValues() . " )";
 	}
 
 
@@ -286,7 +292,7 @@ class Organisations extends Contacts{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Organisations" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -316,11 +322,13 @@ class Organisations extends Contacts{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($this->getId_Organisations() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Organisations::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Organisations::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -331,7 +339,7 @@ class Organisations extends Contacts{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Organisations::loadFromConnection($oAgent);
 	}
 
 

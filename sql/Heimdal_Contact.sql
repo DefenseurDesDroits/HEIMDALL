@@ -1,7 +1,7 @@
 -- #####################################
 -- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.8
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 28/07/2016 00:00:00
+-- Automatique generation made on 29/08/2016 00:00:00
 -- #####################################
 
 
@@ -56,13 +56,15 @@ CREATE TABLE IF NOT EXISTS xxx.Items (
 	-- Identité de la table	Id_Items serial PRIMARY KEY NOT NULL,
 	-- Groupe possedant l'item	Id_groups_owner integer  NOT NULL,
 	-- Clef étrangère sur le niveau d'accreditation	Id_Accreditations_Item integer REFERENCES xxx.Accreditations (Id_Accreditations) ON DELETE CASCADE NULL,
-	-- date de dernière modification	Modifie timestamp  NOT NULL
+	-- date de dernière modification	Modifie timestamp  NOT NULL,
+	-- Id sur l'item créateur de cet item	Id_Creator integer  NOT NULL DEFAULT 0
 );
 COMMENT ON TABLE xxx.Items IS 'Table de tous les items avec des droits';
 COMMENT ON COLUMN xxx.Items.Id_Items IS 'Identité de la table';
 COMMENT ON COLUMN xxx.Items.Id_groups_owner IS 'Groupe possedant l''item';
 COMMENT ON COLUMN xxx.Items.Id_Accreditations_Item IS 'Clef étrangère sur le niveau d''accreditation';
 COMMENT ON COLUMN xxx.Items.Modifie IS 'date de dernière modification';
+COMMENT ON COLUMN xxx.Items.Id_Creator IS 'Id sur l''item créateur de cet item';
 
 
 -- ++++++++++++++++++++++++++++++++++++

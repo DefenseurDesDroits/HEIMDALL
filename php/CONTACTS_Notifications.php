@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Notifications.php
 //Description : Tables des notifications utilisateurs
 
@@ -147,6 +147,13 @@ class Notifications{
 		if( $bId)
 			return "xxx.Notifications.Id_Notifications, xxx.Notifications.Msg, xxx.Notifications.Id_Auteur, xxx.Notifications.Id_Destinataire";
 		return "xxx.Notifications.Msg, xxx.Notifications.Id_Auteur, xxx.Notifications.Id_Destinataire";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Msg, Id_Auteur, Id_Destinataire";
 	}
 
 
@@ -296,8 +303,7 @@ class Notifications{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Notifications" . " (" . Notifications::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Notifications::getValues() . " )";
 	}
 
 
@@ -325,7 +331,7 @@ class Notifications{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Notifications" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -357,9 +363,9 @@ class Notifications{
 		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Notifications() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Notifications::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Notifications::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -370,7 +376,7 @@ class Notifications{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Notifications::loadFromConnection($oAgent);
 	}
 
 

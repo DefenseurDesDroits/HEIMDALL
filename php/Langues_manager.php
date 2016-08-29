@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Langues_manager.php
 //Description : Tables des langues
 
@@ -31,15 +31,16 @@ function LanguesgetFromID($nId){
 
 ///[FUNCTION][LanguessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function LanguessaveFromJson($jsonObj){
+function LanguessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oLangues = new Langues();
 	
 	//Load from Json !
 	$oLangues->loadFromJson($jsonObj);
 	//save the changes
-	$oLangues->save(null);
+	$oLangues->save($oAgent);
 	
 	//Return the present states
 	return LanguesgetFromID( $oLangues->getId_Langues() );
@@ -125,13 +126,15 @@ function LanguesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo LanguesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo LanguessaveFromJson($sJson);
+			echo LanguessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo LanguesdeleteFromID($nId);

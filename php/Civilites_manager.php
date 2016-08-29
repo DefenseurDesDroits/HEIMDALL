@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Civilites_manager.php
 //Description : Table des civilités des contacts
 
@@ -31,15 +31,16 @@ function CivilitesgetFromID($nId){
 
 ///[FUNCTION][CivilitessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function CivilitessaveFromJson($jsonObj){
+function CivilitessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oCivilites = new Civilites();
 	
 	//Load from Json !
 	$oCivilites->loadFromJson($jsonObj);
 	//save the changes
-	$oCivilites->save(null);
+	$oCivilites->save($oAgent);
 	
 	//Return the present states
 	return CivilitesgetFromID( $oCivilites->getId_Civilites() );
@@ -125,13 +126,15 @@ function CivilitesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo CivilitesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo CivilitessaveFromJson($sJson);
+			echo CivilitessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo CivilitesdeleteFromID($nId);

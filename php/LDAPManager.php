@@ -239,6 +239,7 @@ function connectionLDAP($sUser, $sPwd){
     //our returned value
     $ary_result = ["Status" => "",
                         "Error" => "",
+                        "UserId" => "",
                         "Comment" => "",
                         "User" => "",
                         "UserInfo" => "",
@@ -251,6 +252,9 @@ function connectionLDAP($sUser, $sPwd){
                     'account_suffix' => "@ac.local"];
 
     $oXXX = $GLOBALS["oConnection"];
+
+    //all users 
+    $ary_Users = null;
 
     try {
         //init the ldap connection 
@@ -294,13 +298,18 @@ function connectionLDAP($sUser, $sPwd){
 
         //so we are connected !!!
         //Are we in the DTB ?
-        if( count(UsersgetAllInstanceWith(strtoupper($sUser))) <= 0){
+        $ary_Users = UsersgetAllInstanceWith(strtoupper($sUser));
+        if( count($ary_Users) <= 0){
             // createUser($GLOBALS["oConnection"], $sUser);
             // return connectionLDAP($sUser, $sPwd);
             //echo var_dump($GLOBALS["oConnection"]);
+            $ary_result["UserId"] = createUser($oXXX, strtoupper($sUser));
             $ary_result["Comment"] = "User added to Heimdall : ";
-            $ary_result["Comment"] .= "<br/> User Id : " . createUser($oXXX, strtoupper($sUser));
+            $ary_result["Comment"] .= "<br/> User Id : " . $ary_result["UserId"];
             //$ary_result["Comment"] .= "<br/> :o : " . var_dump($GLOBALS["oConnection"]);
+        }
+        else{
+            $ary_result["UserId"] = $ary_Users[0]->getId_Users();
         }
 
     }

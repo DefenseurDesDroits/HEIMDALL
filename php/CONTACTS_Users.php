@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Users.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -115,6 +115,13 @@ class Users extends Contacts{
 		if( $bId)
 			return parent::getColumns($bId) . ", xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json";
 		return parent::getColumns($bId) . ", xxx.Users.Id_Users, xxx.Users.Pseudo, xxx.Users.Id_Accreditations_Exp_Json";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Users, Pseudo, Id_Accreditations_Exp_Json";
 	}
 
 
@@ -269,8 +276,7 @@ class Users extends Contacts{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Users" . " (" . Users::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Users::getValues() . " )";
 	}
 
 
@@ -297,7 +303,7 @@ class Users extends Contacts{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Users" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -327,11 +333,13 @@ class Users extends Contacts{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($this->getId_Users() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Users::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Users::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -342,7 +350,7 @@ class Users extends Contacts{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Users::loadFromConnection($oAgent);
 	}
 
 

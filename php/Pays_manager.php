@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Pays_manager.php
 //Description : Tables des pays
 
@@ -31,15 +31,16 @@ function PaysgetFromID($nId){
 
 ///[FUNCTION][PayssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function PayssaveFromJson($jsonObj){
+function PayssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oPays = new Pays();
 	
 	//Load from Json !
 	$oPays->loadFromJson($jsonObj);
 	//save the changes
-	$oPays->save(null);
+	$oPays->save($oAgent);
 	
 	//Return the present states
 	return PaysgetFromID( $oPays->getId_Pays() );
@@ -125,13 +126,15 @@ function PaysManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo PaysgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo PayssaveFromJson($sJson);
+			echo PayssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo PaysdeleteFromID($nId);

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Notes_manager.php
 //Description : Table des notes sur les items
 
@@ -31,15 +31,16 @@ function NotesgetFromID($nId){
 
 ///[FUNCTION][NotessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function NotessaveFromJson($jsonObj){
+function NotessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oNotes = new Notes();
 	
 	//Load from Json !
 	$oNotes->loadFromJson($jsonObj);
 	//save the changes
-	$oNotes->save(null);
+	$oNotes->save($oAgent);
 	
 	//Return the present states
 	return NotesgetFromID( $oNotes->getId_Notes() );
@@ -125,13 +126,15 @@ function NotesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo NotesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo NotessaveFromJson($sJson);
+			echo NotessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo NotesdeleteFromID($nId);

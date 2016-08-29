@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Items_manager.php
 //Description : Table de tous les items avec des droits
 
@@ -31,15 +31,16 @@ function ItemsgetFromID($nId){
 
 ///[FUNCTION][ItemssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function ItemssaveFromJson($jsonObj){
+function ItemssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oItems = new Items();
 	
 	//Load from Json !
 	$oItems->loadFromJson($jsonObj);
 	//save the changes
-	$oItems->save(null);
+	$oItems->save($oAgent);
 	
 	//Return the present states
 	return ItemsgetFromID( $oItems->getId_Items() );
@@ -125,13 +126,15 @@ function ItemsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo ItemsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo ItemssaveFromJson($sJson);
+			echo ItemssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo ItemsdeleteFromID($nId);

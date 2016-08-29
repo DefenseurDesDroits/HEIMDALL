@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Noeuds.php
 //Description : Table pour gérer les noeuds
 
@@ -88,6 +88,13 @@ class Noeuds extends Items{
 		if( $bId)
 			return parent::getColumns($bId) . ", xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent";
 		return parent::getColumns($bId) . ", xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Noeuds, Id_Noeuds_Parent";
 	}
 
 
@@ -230,7 +237,12 @@ class Noeuds extends Items{
 		$sValues = "";
 		
 		$sValues .= Quotes( $this->getId_Noeuds());
-		$sValues .= ", " . Quotes( $this->getId_Noeuds_Parent());
+
+		//autoscratch !!!
+		if($this->getId_Noeuds_Parent() == 0 || $this->getId_Noeuds_Parent() == "0")
+			$sValues .= ", " . Quotes( $this->getId_Noeuds());
+		else
+			$sValues .= ", " . Quotes( $this->getId_Noeuds_Parent());
 		
 		//return the get value chain !
 		return $sValues;
@@ -240,8 +252,7 @@ class Noeuds extends Items{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Noeuds" . " (" . Noeuds::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Noeuds::getValues() . " )";
 	}
 
 
@@ -267,7 +278,7 @@ class Noeuds extends Items{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Noeuds" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -297,11 +308,13 @@ class Noeuds extends Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($this->getId_Noeuds() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Noeuds::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Noeuds::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -312,7 +325,7 @@ class Noeuds extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Noeuds::loadFromConnection($oAgent);
 	}
 
 

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Notifications_manager.php
 //Description : Tables des notifications utilisateurs
 
@@ -31,15 +31,16 @@ function NotificationsgetFromID($nId){
 
 ///[FUNCTION][NotificationssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function NotificationssaveFromJson($jsonObj){
+function NotificationssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oNotifications = new Notifications();
 	
 	//Load from Json !
 	$oNotifications->loadFromJson($jsonObj);
 	//save the changes
-	$oNotifications->save(null);
+	$oNotifications->save($oAgent);
 	
 	//Return the present states
 	return NotificationsgetFromID( $oNotifications->getId_Notifications() );
@@ -125,13 +126,15 @@ function NotificationsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo NotificationsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo NotificationssaveFromJson($sJson);
+			echo NotificationssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo NotificationsdeleteFromID($nId);

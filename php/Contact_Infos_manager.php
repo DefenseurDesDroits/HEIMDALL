@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contact_Infos_manager.php
 //Description : Table des informations liées au contact
 
@@ -31,15 +31,16 @@ function Contact_InfosgetFromID($nId){
 
 ///[FUNCTION][Contact_InfossaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function Contact_InfossaveFromJson($jsonObj){
+function Contact_InfossaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oContact_Infos = new Contact_Infos();
 	
 	//Load from Json !
 	$oContact_Infos->loadFromJson($jsonObj);
 	//save the changes
-	$oContact_Infos->save(null);
+	$oContact_Infos->save($oAgent);
 	
 	//Return the present states
 	return Contact_InfosgetFromID( $oContact_Infos->getId_Contact_Infos() );
@@ -125,13 +126,15 @@ function Contact_InfosManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo Contact_InfosgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo Contact_InfossaveFromJson($sJson);
+			echo Contact_InfossaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo Contact_InfosdeleteFromID($nId);

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Contact_Infos.php
 //Description : Table des informations liées au contact
 
@@ -141,6 +141,13 @@ class Contact_Infos extends Items{
 		if( $bId)
 			return parent::getColumns($bId) . ", xxx.Contact_Infos.Id_Contact_Infos, xxx.Contact_Infos.Id_Contacts, xxx.Contact_Infos.Fonction, xxx.Contact_Infos.Id_Langues";
 		return parent::getColumns($bId) . ", xxx.Contact_Infos.Id_Contact_Infos, xxx.Contact_Infos.Id_Contacts, xxx.Contact_Infos.Fonction, xxx.Contact_Infos.Id_Langues";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Contact_Infos, Id_Contacts, Fonction, Id_Langues";
 	}
 
 
@@ -297,8 +304,7 @@ class Contact_Infos extends Items{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Contact_Infos" . " (" . Contact_Infos::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Contact_Infos::getValues() . " )";
 	}
 
 
@@ -326,7 +332,7 @@ class Contact_Infos extends Items{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Contact_Infos" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -356,11 +362,13 @@ class Contact_Infos extends Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($this->getId_Contact_Infos() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Contact_Infos::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Contact_Infos::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -371,7 +379,7 @@ class Contact_Infos extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Contact_Infos::loadFromConnection($oAgent);
 	}
 
 

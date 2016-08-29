@@ -14,6 +14,7 @@ var Heimdall = {
     },
     members : {
         products : {},
+        user : {},
         connectionWindow : null
     },
     methods : {
@@ -80,6 +81,8 @@ var Heimdall = {
                 case "LDAP_Connection_OK":
                     //init the contact
                     init_contacts();
+
+                    Heimdall.members.user = ary_Response;
 
                     //get the name
                     //sName = ary_Response["UserInfo"][0]["displayname"][0];

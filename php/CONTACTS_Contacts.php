@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Contacts.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
@@ -197,6 +197,13 @@ class Contacts extends Noeuds{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Contacts, Prenom, Nom, Id_Civilites, Id_Titres, Id_Contact_Types";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -354,8 +361,7 @@ class Contacts extends Noeuds{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Contacts" . " (" . Contacts::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Contacts::getValues() . " )";
 	}
 
 
@@ -385,7 +391,7 @@ class Contacts extends Noeuds{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Contacts" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -415,11 +421,13 @@ class Contacts extends Noeuds{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($this->getId_Contacts() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Contacts::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Contacts::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -430,7 +438,7 @@ class Contacts extends Noeuds{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Contacts::loadFromConnection($oAgent);
 	}
 
 

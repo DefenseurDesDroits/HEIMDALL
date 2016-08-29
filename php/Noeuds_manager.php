@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Noeuds_manager.php
 //Description : Table pour gérer les noeuds
 
@@ -31,15 +31,16 @@ function NoeudsgetFromID($nId){
 
 ///[FUNCTION][NoeudssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function NoeudssaveFromJson($jsonObj){
+function NoeudssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oNoeuds = new Noeuds();
 	
 	//Load from Json !
 	$oNoeuds->loadFromJson($jsonObj);
 	//save the changes
-	$oNoeuds->save(null);
+	$oNoeuds->save($oAgent);
 	
 	//Return the present states
 	return NoeudsgetFromID( $oNoeuds->getId_Noeuds() );
@@ -125,13 +126,15 @@ function NoeudsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo NoeudsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo NoeudssaveFromJson($sJson);
+			echo NoeudssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo NoeudsdeleteFromID($nId);

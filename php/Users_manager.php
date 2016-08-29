@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Users_manager.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -31,15 +31,16 @@ function UsersgetFromID($nId){
 
 ///[FUNCTION][UserssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function UserssaveFromJson($jsonObj){
+function UserssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oUsers = new Users();
 	
 	//Load from Json !
 	$oUsers->loadFromJson($jsonObj);
 	//save the changes
-	$oUsers->save(null);
+	$oUsers->save($oAgent);
 	
 	//Return the present states
 	return UsersgetFromID( $oUsers->getId_Users() );
@@ -125,13 +126,15 @@ function UsersManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo UsersgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo UserssaveFromJson($sJson);
+			echo UserssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo UsersdeleteFromID($nId);

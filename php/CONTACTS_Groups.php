@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -114,6 +114,13 @@ class Groups extends Contacts{
 		if( $bId)
 			return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
 		return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Groups, UGrp_Json, Fichiers";
 	}
 
 
@@ -268,8 +275,7 @@ class Groups extends Contacts{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Groups" . " (" . Groups::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Groups::getValues() . " )";
 	}
 
 
@@ -296,7 +302,7 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Groups" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -326,11 +332,13 @@ class Groups extends Contacts{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($this->getId_Groups() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Groups::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Groups::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -341,7 +349,7 @@ class Groups extends Contacts{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Groups::loadFromConnection($oAgent);
 	}
 
 

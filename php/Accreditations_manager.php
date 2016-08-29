@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Accreditations_manager.php
 //Description : Table des accréditations sur les items
 
@@ -31,15 +31,16 @@ function AccreditationsgetFromID($nId){
 
 ///[FUNCTION][AccreditationssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function AccreditationssaveFromJson($jsonObj){
+function AccreditationssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oAccreditations = new Accreditations();
 	
 	//Load from Json !
 	$oAccreditations->loadFromJson($jsonObj);
 	//save the changes
-	$oAccreditations->save(null);
+	$oAccreditations->save($oAgent);
 	
 	//Return the present states
 	return AccreditationsgetFromID( $oAccreditations->getId_Accreditations() );
@@ -125,13 +126,15 @@ function AccreditationsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo AccreditationsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo AccreditationssaveFromJson($sJson);
+			echo AccreditationssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo AccreditationsdeleteFromID($nId);

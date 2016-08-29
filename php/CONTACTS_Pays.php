@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contacts_Pays.php
 //Description : Tables des pays
 
@@ -205,6 +205,13 @@ class Pays{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Code, Alpha2, Alpha3, Nom, Id_Langues_Json";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -355,8 +362,7 @@ class Pays{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Pays" . " (" . Pays::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Pays::getValues() . " )";
 	}
 
 
@@ -386,7 +392,7 @@ class Pays{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Pays" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -418,9 +424,9 @@ class Pays{
 		$sQuery = "";
 		//Get the query !!!
 		if($this->getId_Pays() == 0)
-			$sQuery = $this->getInsertQuery();
+			$sQuery = Pays::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Pays::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -431,7 +437,7 @@ class Pays{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($oAgent);
+		return Pays::loadFromConnection($oAgent);
 	}
 
 

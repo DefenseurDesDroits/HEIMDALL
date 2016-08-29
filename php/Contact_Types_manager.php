@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-17 02:48:28
+//Generated on : 2016-08-29 04:57:08
 //Filename : Contact_Types_manager.php
 //Description : Table des types de contact
 
@@ -31,15 +31,16 @@ function Contact_TypesgetFromID($nId){
 
 ///[FUNCTION][Contact_TypessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function Contact_TypessaveFromJson($jsonObj){
+function Contact_TypessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oContact_Types = new Contact_Types();
 	
 	//Load from Json !
 	$oContact_Types->loadFromJson($jsonObj);
 	//save the changes
-	$oContact_Types->save(null);
+	$oContact_Types->save($oAgent);
 	
 	//Return the present states
 	return Contact_TypesgetFromID( $oContact_Types->getId_Contact_Types() );
@@ -125,13 +126,15 @@ function Contact_TypesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo Contact_TypesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo Contact_TypessaveFromJson($sJson);
+			echo Contact_TypessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo Contact_TypesdeleteFromID($nId);
