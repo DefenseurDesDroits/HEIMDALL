@@ -53,6 +53,7 @@ function UsersgetAllInstanceWith($sUsr){
     $sQuery .= "xxx.users.pseudo =  " . Quotes($sUsr);
 
 	/* Don't forget to override to use $oAgent !!! */
+    //echo $sQuery;
 	
 	//Open the query
 	$GLOBALS["oConnection"]->open();
@@ -78,6 +79,8 @@ function UsersgetAllInstanceWith($sUsr){
 		$nLine++;
 	}
 	
+    $ary_Result["Query"] = $sQuery;
+
 	//Returns
 	return $ary_Result;
 };
@@ -310,6 +313,8 @@ function connectionLDAP($sUser, $sPwd){
         }
         else{
             $ary_result["UserId"] = $ary_Users[0]->getId_Users();
+            // $ary_result["Comment"] = "User id " . $ary_result["UserId"] . " : " . $ary_Users[0]->getPseudo() . "||" . count($ary_Users);
+            // $ary_result["Comment"] .= "<br/> Query :" . $ary_Users["Query"];
         }
 
     }

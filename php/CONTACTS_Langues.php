@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Langues.php
 //Description : Tables des langues
 
@@ -143,7 +143,7 @@ class Langues{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Langues::getColumns() . "\r\n" . "FROM " . Langues::getTable() . "\r\n" . "WHERE " . Langues::getConditions();
 	}
 
 
@@ -194,7 +194,7 @@ class Langues{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Langues::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -303,9 +303,13 @@ class Langues{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Langues();
 		//Get the query !!!
-		if($this->getId_Langues() == 0)
+		if($nId == 0)
+		{
 			$sQuery = Langues::getInsertQuery();
+		}
 		else
 			$sQuery = Langues::getUpdateQuery();
 		

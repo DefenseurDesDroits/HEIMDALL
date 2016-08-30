@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Users.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
@@ -151,7 +151,7 @@ class Users extends Contacts{
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
 		//get the parent link condition
-		$sParentCondition = parent::getLinkConditions();
+		$sParentCondition = parent::getLinkConditions($bAll);
 		//test the parent condition
 		if($sParentCondition != "" && $bAll)
 			return $sParentCondition ." \r\nAND xxx.Contacts.Id_Contacts =  xxx.Users.Id_Users";
@@ -163,14 +163,14 @@ class Users extends Contacts{
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Users.Id_Users = " . Quotes($this->getId_Users());
+		return parent::getConditions() . " \r\nAND " . Users::getLinkConditions() . " \r\nAND xxx.Users.Id_Users = " . Quotes($this->getId_Users());
 	}
 
 
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Users::getColumns() . "\r\n" . "FROM " . Users::getTable() . "\r\n" . "WHERE " . Users::getConditions();
 	}
 
 
@@ -221,7 +221,7 @@ class Users extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Users::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -333,11 +333,15 @@ class Users extends Contacts{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
-		//Call the parent method
-		parent::save($oAgent);
+		//Our ID
+		$nId = $this->getId_Users();
 		//Get the query !!!
-		if($this->getId_Users() == 0)
+		if($nId == 0)
+		{
+			//Call the parent method
+			parent::save($oAgent);
 			$sQuery = Users::getInsertQuery();
+		}
 		else
 			$sQuery = Users::getUpdateQuery();
 		

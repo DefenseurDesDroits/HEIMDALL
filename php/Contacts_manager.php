@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_manager.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 

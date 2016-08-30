@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -152,14 +152,14 @@ class Organisations extends Contacts{
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Organisations.Id_Organisations = " . Quotes($this->getId_Organisations());
+		return parent::getConditions() . " \r\nAND " . Organisations::getLinkConditions() . " \r\nAND xxx.Organisations.Id_Organisations = " . Quotes($this->getId_Organisations());
 	}
 
 
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Organisations::getColumns() . "\r\n" . "FROM " . Organisations::getTable() . "\r\n" . "WHERE " . Organisations::getConditions();
 	}
 
 
@@ -210,7 +210,7 @@ class Organisations extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Organisations::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -322,11 +322,15 @@ class Organisations extends Contacts{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
-		//Call the parent method
-		parent::save($oAgent);
+		//Our ID
+		$nId = $this->getId_Organisations();
 		//Get the query !!!
-		if($this->getId_Organisations() == 0)
+		if($nId == 0)
+		{
+			//Call the parent method
+			parent::save($oAgent);
 			$sQuery = Organisations::getInsertQuery();
+		}
 		else
 			$sQuery = Organisations::getUpdateQuery();
 		

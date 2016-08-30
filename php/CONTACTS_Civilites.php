@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Civilites.php
 //Description : Table des civilités des contacts
 
@@ -171,7 +171,7 @@ class Civilites{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Civilites::getColumns() . "\r\n" . "FROM " . Civilites::getTable() . "\r\n" . "WHERE " . Civilites::getConditions();
 	}
 
 
@@ -222,7 +222,7 @@ class Civilites{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Civilites::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -333,9 +333,13 @@ class Civilites{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Civilites();
 		//Get the query !!!
-		if($this->getId_Civilites() == 0)
+		if($nId == 0)
+		{
 			$sQuery = Civilites::getInsertQuery();
+		}
 		else
 			$sQuery = Civilites::getUpdateQuery();
 		

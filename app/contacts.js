@@ -433,6 +433,7 @@ function contactLAYDIVSave(nLine){
     ///[DEBUG]Operation time !!!
     if(Heimdall.flags.debug){
         console.log("contactLAYDIVSave, json : " + "\r\n" + oContact.exportToJson());
+        console.log("user id : " + Heimdall.members.user["UserId"]);
     }
     ///[/DEBUG]
 
@@ -500,8 +501,10 @@ function contactLAYDiv(sIdPart, nLine){
     }
     sCode += "\t" + "</select>" + "\r\n";
 
-    sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"contactLAYDIVSave(" + nLine + ")\">Sauvegarder</div>" + "\r\n";
-    sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"contactLAYDIVDelete(" + nLine + ")\">Supprimer</div>" + "\r\n";
+    sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"contactLAYDIVSave(" + sIdPart + ")\">Sauvegarder</div>" + "\r\n";
+    //sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"contactLAYDIVSave(" + nLine + ")\">Sauvegarder</div>" + "\r\n";
+    sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"contactLAYDIVDelete(" + sIdPart + ")\">Supprimer</div>" + "\r\n";
+    //sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"contactLAYDIVDelete(" + nLine + ")\">Supprimer</div>" + "\r\n";
 
     sCode += "</form>";
     sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + nLine + "\">---</div>";
@@ -610,44 +613,6 @@ function contactClick(nLine){
             oElement.innerHTML = contactLAYDiv(nLine, nLine);
 
             contactLAYDivFill(nLine, Heimdall.members.products.contacts.Contacts[nLine]);
-
-            // //create the stuff
-            // COMBO_Civilite = document.getElementById("COMBO_Civilite_" + nLine);
-
-            // if(COMBO_Civilite != null){
-                
-            //     ///[DEBUG]Operaion time !!!
-            //     if(Heimdall.flags.debug){
-            //         console.log("contactClick, COMBO_ Founded for line " + nLine);
-            //     }
-            //     ///[/DEBUG]
-                
-            //     //fill
-            //     nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", Heimdall.members.products.contacts.Contacts[nLine].getId_Civilites());
-            //     if(nPosition != POTOURS_FIND_NOTFOUND){
-            //         //Option created in the same order than stored
-            //         COMBO_Civilite.selectedIndex = nPosition;
-            //     }
-            // }
-
-            // //create the stuff
-            // COMBO_Titres = document.getElementById("COMBO_Titres_" + nLine);
-
-            // if(COMBO_Titres != null){
-                
-            //     ///[DEBUG]Operaion time !!!
-            //     if(Heimdall.flags.debug){
-            //         console.log("contactClick, COMBO_ Founded for line " + nLine);
-            //     }
-            //     ///[/DEBUG]
-                
-            //     //fill
-            //     nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", Heimdall.members.products.contacts.Contacts[nLine].getId_Titres());
-            //     if(nPosition != POTOURS_FIND_NOTFOUND){
-            //         //Option created in the same order than stored
-            //         COMBO_Titres.selectedIndex = nPosition;
-            //     }
-            // }
 
             //Obtain Address
             contactAddresses(nLine);
@@ -1089,6 +1054,7 @@ function contactWinContact(oContact){
 
     if(oContact == null){
         oContact = new Contacts();
+        oContact.setId_Contact_Types(1);//set to the type contact !!!
         nLine = Heimdall.members.products.contacts.Contacts.length;
         Heimdall.members.products.contacts.Contacts.push(oContact);
     }
@@ -1099,10 +1065,11 @@ function contactWinContact(oContact){
     //get the element to fill it
     oElement = document.getElementById("WIN_Contacts");
     if(oElement != null){
-        oElement.innerHTML = contactLAYDiv("Solo", nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+        oElement.innerHTML = contactLAYDiv(nLine, nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+        //oElement.innerHTML = contactLAYDiv("Solo", nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
     }
 
-    contactLAYDivFill("Solo", oContact);
+    contactLAYDivFill(nLine, oContact);
 
 }
 

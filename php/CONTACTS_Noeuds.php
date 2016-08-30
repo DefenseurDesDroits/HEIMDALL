@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 09:37:29
 //Filename : Contacts_Noeuds.php
 //Description : Table pour gérer les noeuds
 
@@ -123,7 +123,7 @@ class Noeuds extends Items{
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
 		//get the parent link condition
-		$sParentCondition = parent::getLinkConditions();
+		$sParentCondition = parent::getLinkConditions($bAll);
 		//test the parent condition
 		if($sParentCondition != "" && $bAll)
 			return $sParentCondition ." \r\nAND xxx.Items.Id_Items =  xxx.Noeuds.Id_Noeuds";
@@ -135,7 +135,7 @@ class Noeuds extends Items{
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Noeuds.Id_Noeuds = " . Quotes($this->getId_Noeuds());
+		return parent::getConditions() . " \r\nAND " . Noeuds::getLinkConditions() . " \r\nAND xxx.Noeuds.Id_Noeuds = " . Quotes($this->getId_Noeuds());
 	}
 
 
@@ -193,7 +193,8 @@ class Noeuds extends Items{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Noeuds::getSelectQuery();
+		//$sQuery = $this->getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -237,9 +238,7 @@ class Noeuds extends Items{
 		$sValues = "";
 		
 		$sValues .= Quotes( $this->getId_Noeuds());
-
-		//autoscratch !!!
-		if($this->getId_Noeuds_Parent() == 0 || $this->getId_Noeuds_Parent() == "0")
+		if($this->getId_Noeuds_Parent() == 0)
 			$sValues .= ", " . Quotes( $this->getId_Noeuds());
 		else
 			$sValues .= ", " . Quotes( $this->getId_Noeuds_Parent());
@@ -308,10 +307,12 @@ class Noeuds extends Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Noeuds();
 		//Call the parent method
 		parent::save($oAgent);
 		//Get the query !!!
-		if($this->getId_Noeuds() == 0)
+		if($nId == 0)
 			$sQuery = Noeuds::getInsertQuery();
 		else
 			$sQuery = Noeuds::getUpdateQuery();

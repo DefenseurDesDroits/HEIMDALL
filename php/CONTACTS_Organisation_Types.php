@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Organisation_Types.php
 //Description : Tables des différants type d'organisations possibles
 
@@ -143,7 +143,7 @@ class Organisation_Types{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Organisation_Types::getColumns() . "\r\n" . "FROM " . Organisation_Types::getTable() . "\r\n" . "WHERE " . Organisation_Types::getConditions();
 	}
 
 
@@ -194,7 +194,7 @@ class Organisation_Types{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Organisation_Types::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -303,9 +303,13 @@ class Organisation_Types{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Organisation_Types();
 		//Get the query !!!
-		if($this->getId_Organisation_Types() == 0)
+		if($nId == 0)
+		{
 			$sQuery = Organisation_Types::getInsertQuery();
+		}
 		else
 			$sQuery = Organisation_Types::getUpdateQuery();
 		

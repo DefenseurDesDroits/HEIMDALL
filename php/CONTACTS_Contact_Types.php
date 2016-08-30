@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Contact_Types.php
 //Description : Table des types de contact
 
@@ -143,7 +143,7 @@ class Contact_Types{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Contact_Types::getColumns() . "\r\n" . "FROM " . Contact_Types::getTable() . "\r\n" . "WHERE " . Contact_Types::getConditions();
 	}
 
 
@@ -194,7 +194,7 @@ class Contact_Types{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Contact_Types::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -303,9 +303,13 @@ class Contact_Types{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Contact_Types();
 		//Get the query !!!
-		if($this->getId_Contact_Types() == 0)
+		if($nId == 0)
+		{
 			$sQuery = Contact_Types::getInsertQuery();
+		}
 		else
 			$sQuery = Contact_Types::getUpdateQuery();
 		

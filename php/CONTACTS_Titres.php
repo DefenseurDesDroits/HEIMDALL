@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Titres.php
 //Description : Tables des titres des contacts
 
@@ -170,7 +170,7 @@ class Titres{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Titres::getColumns() . "\r\n" . "FROM " . Titres::getTable() . "\r\n" . "WHERE " . Titres::getConditions();
 	}
 
 
@@ -221,7 +221,7 @@ class Titres{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Titres::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -332,9 +332,13 @@ class Titres{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Titres();
 		//Get the query !!!
-		if($this->getId_Titres() == 0)
+		if($nId == 0)
+		{
 			$sQuery = Titres::getInsertQuery();
+		}
 		else
 			$sQuery = Titres::getUpdateQuery();
 		

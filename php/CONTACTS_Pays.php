@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Pays.php
 //Description : Tables des pays
 
@@ -254,7 +254,7 @@ class Pays{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Pays::getColumns() . "\r\n" . "FROM " . Pays::getTable() . "\r\n" . "WHERE " . Pays::getConditions();
 	}
 
 
@@ -305,7 +305,7 @@ class Pays{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Pays::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -422,9 +422,13 @@ class Pays{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Pays();
 		//Get the query !!!
-		if($this->getId_Pays() == 0)
+		if($nId == 0)
+		{
 			$sQuery = Pays::getInsertQuery();
+		}
 		else
 			$sQuery = Pays::getUpdateQuery();
 		

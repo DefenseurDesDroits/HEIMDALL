@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Notifications.php
 //Description : Tables des notifications utilisateurs
 
@@ -197,7 +197,7 @@ class Notifications{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Notifications::getColumns() . "\r\n" . "FROM " . Notifications::getTable() . "\r\n" . "WHERE " . Notifications::getConditions();
 	}
 
 
@@ -248,7 +248,7 @@ class Notifications{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Notifications::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -361,9 +361,13 @@ class Notifications{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Notifications();
 		//Get the query !!!
-		if($this->getId_Notifications() == 0)
+		if($nId == 0)
+		{
 			$sQuery = Notifications::getInsertQuery();
+		}
 		else
 			$sQuery = Notifications::getUpdateQuery();
 		

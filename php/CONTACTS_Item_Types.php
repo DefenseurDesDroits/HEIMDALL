@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-29 04:57:08
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Item_Types.php
 //Description : Table des types d'items
 
@@ -143,7 +143,7 @@ class Item_Types{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Item_Types::getColumns() . "\r\n" . "FROM " . Item_Types::getTable() . "\r\n" . "WHERE " . Item_Types::getConditions();
 	}
 
 
@@ -194,7 +194,7 @@ class Item_Types{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Item_Types::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -303,9 +303,13 @@ class Item_Types{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_item_types();
 		//Get the query !!!
-		if($this->getId_item_types() == 0)
+		if($nId == 0)
+		{
 			$sQuery = Item_Types::getInsertQuery();
+		}
 		else
 			$sQuery = Item_Types::getUpdateQuery();
 		
