@@ -35,7 +35,7 @@ var Heimdall = {
             sCode += "\t" + "<div class=\"BTN_ \" onclick=\"Heimdall.methods.submitConnection()\">Valider</div>" + "\r\n";
 
             //
-            Heimdall.members.connectionWindow = new Overview("WIN_connection", 800, 600, "#e3e3e3", 0.5);
+            Heimdall.members.connectionWindow = new Overview("WIN_connection", 200, 100, "#e3e3e3", 0.5);
 
             //get the element
             oElement = document.getElementById("WIN_connection");

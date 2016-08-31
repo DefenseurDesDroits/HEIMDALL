@@ -39,11 +39,12 @@ var ary_Waiting = [
 	"img/loading/Rot_08.png"
 ];
 
-///[METHOD][main]Our reset function ]:)
+///[METHOD][reset]Our reset function ]:)
 function reset(){
 	window.location.assign(window.location.href);
 }
 
+///[METHOD][main_Loading]Our function to create a loadind overview until waiting the end of loading
 function main_Loading(){
 
 	//create the win
@@ -63,42 +64,31 @@ function main_Loading(){
 
 }
 
-function main_Lib_Init(){
-	//Entertain us !!!
-	main_Loading();
-	//load the lib
-	Potours_loadScriptFiles(ary_sFileLib, main_App);
-}
-
+///[METHOD][main_Init]Our function to start the app
 function main_Init(){
-
+	//stop beacuase all the lib are loaded
 	oSliderLoader.stop();
-
+	//close and distroy this window !!!
 	oWinLoader.dispose();
-
+	//inti dude !!!
 	eval("init();");
 }
 
+///[METHOD][main_App]Our function to load the products
 function main_App(){
 	Potours_loadScriptFiles(["app/contacts.js", "app/produits.js"], main_Init);
+}
+
+///[METHOD][main_Lib_Init]Our function to load the lib js files
+function main_Lib_Init(){
+	//Entertain us !!!
+	main_Loading();
+	//load the lib !!!
+	Potours_loadScriptFiles(ary_sFileLib, main_App);
 }
 
 ///[METHOD][main]Our main function
 function main(){
 	//test of load lib
 	Potours_init_lib(main_Lib_Init);
-	//Potours_init_lib();
-	
-	// console.log("Nah");
-
-	// Potours_loadScriptFiles(["app/contacts.js", "app/produits.js"]);
-
-	//To your job
-	//setTimeout(function(){ console.log("Nope");eval("init();"); }, 3000);
-	// setTimeout(function(){ console.log("Nope");init(); }, 3000);
-	
-	//eval("init();");
-
-
-	//init();
 };

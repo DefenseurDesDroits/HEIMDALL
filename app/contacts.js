@@ -302,6 +302,11 @@ function contactAddresses(nLine){
 
     oElement.innerHTML = "Adresse en cours de chargement !";
 
+    if(Heimdall.members.products.contacts.Contacts[nLine].members["IdLinks"] == null){
+        oElement.innerHTML = "Pas d'adresse !";
+        return false;
+    }
+
     //Our request object
     var oReq = new XMLHttpRequest();
     //Define the function

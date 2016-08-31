@@ -79,7 +79,7 @@ function UsersgetAllInstanceWith($sUsr){
 		$nLine++;
 	}
 	
-    $ary_Result["Query"] = $sQuery;
+    //$ary_Result["Query"] = $sQuery;
 
 	//Returns
 	return $ary_Result;
