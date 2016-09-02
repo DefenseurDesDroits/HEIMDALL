@@ -4,6 +4,10 @@
 include "CONTACTS_Users.php";
 //include the class and create a connection
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP.php");
+//include the class JWT
+include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/JWT.php");
+
+use Firebase\JWT\JWT;
 
 //const for choose the right path 
 
@@ -209,7 +213,7 @@ function createUser($oXXX, $sUser){
 
     $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
     $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
-    $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", '', ". Quotes($sUser) .", 1, null, 2);\r\n";
+    $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", '', ". Quotes($sUser) .", 1, null, 1);\r\n";
     $sQuery .= "INSERT INTO xxx.users(id_users, pseudo, id_accreditations_exp_json) VALUES (" . $nID . ", " . Quotes($sUser) . ", '');";
 
     //[Line]
@@ -235,6 +239,9 @@ function connectionLDAP($sUser, $sPwd){
     //our iterrator
     $nLine = 0;
 
+    //our token 
+    $token = array("membo" => "Jango");
+
     //our ldap object
     $oLdap = null;
     //our infos
@@ -246,6 +253,7 @@ function connectionLDAP($sUser, $sPwd){
                         "Comment" => "",
                         "User" => "",
                         "UserInfo" => "",
+                        "Token" => "",
                         "MemberOf" => array() ];
     //our option array 
     $ary_Options = ["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN,
@@ -309,6 +317,7 @@ function connectionLDAP($sUser, $sPwd){
             $ary_result["UserId"] = createUser($oXXX, strtoupper($sUser));
             $ary_result["Comment"] = "User added to Heimdall : ";
             $ary_result["Comment"] .= "<br/> User Id : " . $ary_result["UserId"];
+            //$ary_result["Token"] .= JWT::encode($token, "key");
             //$ary_result["Comment"] .= "<br/> :o : " . var_dump($GLOBALS["oConnection"]);
         }
         else{
@@ -316,7 +325,7 @@ function connectionLDAP($sUser, $sPwd){
             // $ary_result["Comment"] = "User id " . $ary_result["UserId"] . " : " . $ary_Users[0]->getPseudo() . "||" . count($ary_Users);
             // $ary_result["Comment"] .= "<br/> Query :" . $ary_Users["Query"];
         }
-
+        $ary_result["Token"] = JWT::encode($token, "key");
     }
     else{
         $ary_result["Status"] = "LDAP_Connection_KO";

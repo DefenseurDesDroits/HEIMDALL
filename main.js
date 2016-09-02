@@ -70,7 +70,21 @@ function main_Init(){
 	oSliderLoader.stop();
 	//close and distroy this window !!!
 	oWinLoader.dispose();
-	//inti dude !!!
+
+	//Heimdall once a life ?
+	if(window.sessionStorage.getItem("Heimdall") == "North God"){
+		//All ready a connexion ?
+		if(window.sessionStorage.getItem("Connexion") != "" ){
+			/*init with connexion */
+			//eval("init(\"" + window.sessionStorage.getItem("Connexion") + "\");");
+		}
+	}
+	else{
+		//init dude !!!
+		//eval("init(\"\");");
+	}
+
+	//init dude !!!
 	eval("init();");
 }
 
