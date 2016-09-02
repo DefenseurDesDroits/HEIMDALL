@@ -57,7 +57,8 @@ var Heimdall = {
             var sName = "";
 
             //close the connection form
-            Heimdall.members.connectionWindow.dispose();
+            if(Heimdall.members.connectionWindow != null)
+                Heimdall.members.connectionWindow.dispose();
             
             //get the array
             ary_Response = JSON.parse(sText);
@@ -72,6 +73,9 @@ var Heimdall = {
                     if(oElement != null)
                         oElement.innerHTML = "Connection impossible pour l'instant, recommencer ultérieurement !!!";
                     break;
+                case "LDAP_Connection_KO_No_User":
+                    Heimdall.methods.connection();
+                    break;
                 case "LDAP_Connection_KO":
                     
                     oBox = new MsgBox("Utilisateur inconnu ou password erroné !");
@@ -82,7 +86,10 @@ var Heimdall = {
                     //init the contact
                     init_contacts();
 
+                    //get the response array
                     Heimdall.members.user = ary_Response;
+                    //stock loacly
+                    localStorage.setItem("Token", Heimdall.members.user["Token"])
 
                     //get the name
                     //sName = ary_Response["UserInfo"][0]["displayname"][0];
@@ -153,6 +160,51 @@ var Heimdall = {
             //Return the job !
             return true;
         },
+        submitConnectionToken : function(){
+            
+            //Our request object
+            var oReq = new XMLHttpRequest();
+
+            //element to obtain the values
+            var oElement = null;
+
+            //
+            var sCode = "";
+
+            //the user login
+            var sToken = localStorage.getItem("Token");
+
+            //Define the function
+            oReq.onreadystatechange = function(){
+                //if everything is alright
+                if(oReq.readyState == 4 && oReq.status == 200){
+                    Heimdall.methods.responseConnection(oReq.responseText);
+                }
+            };
+
+            //Warning*******************************
+
+            sCode += "<div>Essai de récupération de session ...</div>";
+
+            //create the window
+            Heimdall.members.connectionWindow = new Overview("WIN_connection", 200, 100, "#e3e3e3", 0.5);
+
+            //get the element
+            oElement = document.getElementById("WIN_connection");
+
+            if(oElement != null){
+                oElement.innerHTML = sCode;
+            }
+
+            //prepare the query*********************
+            //check the open
+            oReq.open("POST", "php/LDAPManager.php", true);
+            //set the request header
+            oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+            oReq.send("Token=" + sToken); 
+            //Return the job !
+            return true;
+        },
         addElement : function(){
 
             var sCode = "";
@@ -161,17 +213,61 @@ var Heimdall = {
                 sCode += Heimdall.members.products[sProduct].addMenu("WIN_Add");
             }
 
+            //show the token
+            sCode += Heimdall.debug.methods.addMenuShowToken();
+
             //to the box !!!
             MsgBox(sCode);
 
+        },
+    },
+    debug : {
+        methods : {
+            addMenuShowToken : function(){
+                //our code
+                var sCode = "";
+
+                sCode += "<div>" + "\r\n";
+
+                sCode += "\t" + "<div>Contacts</div>" + "\r\n";
+                sCode += "\t" + "<div id=\"BTN_Debug_showToken\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();Heimdall.debug.methods.showToken();\">Show the Token</div>" + "\r\n";
+
+                sCode += "</div>" + "\r\n";
+
+                return sCode;
+            },
+            showToken : function(){
+                    MsgBox(Heimdall.members.user["Token"]);
+                }
+            }
         }
-    }
 };
 
 ///[FUNCTION][init]Function to init all the products
 function init(){
 
-    //create the connection overview
-    Heimdall.methods.connection();
+    //localStorage.getItem("Token");
+
+    //Heimdall once a life ?
+	if(window.sessionStorage.getItem("Heimdall") == "North God"){
+		//All ready a connexion ?
+		if(window.sessionStorage.getItem("Connexion") != "" ){
+			/*init with connexion */
+			//eval("init(\"" + window.sessionStorage.getItem("Connexion") + "\");");
+		}
+	}
+	else{
+		//init dude !!!
+		//eval("init(\"\");");
+	}
+
+    if(localStorage.getItem("Token") != ""){
+        //auto connection
+        Heimdall.methods.submitConnectionToken();
+    }
+    else{
+        //create the connection overview
+        Heimdall.methods.connection();
+    }
 
 }
