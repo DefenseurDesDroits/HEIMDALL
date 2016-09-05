@@ -5,6 +5,9 @@ include "CONTACTS_Users.php";
 //include the class and create a connection
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP.php");
 //include the class JWT
+include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/BeforeValidException.php");
+include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/ExpiredException.php");
+include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/SignatureInvalidException.php");
 include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/JWT.php");
 
 use Firebase\JWT\JWT;

@@ -72,7 +72,7 @@ function main_Init(){
 	oWinLoader.dispose();
 
 	//init dude !!!
-	eval("init();");
+	init_Produits();
 }
 
 ///[METHOD][main_App]Our function to load the products

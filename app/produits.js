@@ -220,6 +220,46 @@ var Heimdall = {
             MsgBox(sCode);
 
         },
+        userManager : function(){
+            //our code
+            var sCode = "";
+
+            sCode += "<div>" + "\r\n";
+
+            sCode += "\t" + "<div id=\"BTN_Dectonnection\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();Heimdall.methods.disconnect();\">Deconnection</div>" + "\r\n";
+
+            sCode += "</div>" + "\r\n";
+
+            //to the box !!!
+            MsgBox(sCode);
+        },
+        disconnect : function(){
+
+            ///[DEBUG]Operaion time !!!
+            if(Heimdall.flags.debug){
+                console.log("Disconnect sequence : ");
+            }
+            ///[/DEBUG]
+
+            //reset the token by force !!!
+            localStorage.setItem("Token", "");
+            //reconnection !!!
+
+            ///[DEBUG]Operaion time !!!
+            if(Heimdall.flags.debug){
+                console.log("Call to init ! ");
+            }
+            ///[/DEBUG]
+
+            //init it you baka
+            init_Produits();
+
+            ///[DEBUG]Operaion time !!!
+            if(Heimdall.flags.debug){
+                console.log("\t" + "Call done ! ");
+            }
+            ///[/DEBUG]
+        }
     },
     debug : {
         methods : {
@@ -244,30 +284,34 @@ var Heimdall = {
 };
 
 ///[FUNCTION][init]Function to init all the products
-function init(){
+function init_Produits(){
+//function init(){
 
-    //localStorage.getItem("Token");
-
-    //Heimdall once a life ?
-	if(window.sessionStorage.getItem("Heimdall") == "North God"){
-		//All ready a connexion ?
-		if(window.sessionStorage.getItem("Connexion") != "" ){
-			/*init with connexion */
-			//eval("init(\"" + window.sessionStorage.getItem("Connexion") + "\");");
-		}
-	}
-	else{
-		//init dude !!!
-		//eval("init(\"\");");
-	}
+    ///[DEBUG]Operaion time !!!
+    if(Heimdall.flags.debug){
+        console.log("Init sequence : ");
+    }
+    ///[/DEBUG]
 
     if(localStorage.getItem("Token") != ""){
         //auto connection
         Heimdall.methods.submitConnectionToken();
+
+        ///[DEBUG]Operaion time !!!
+        if(Heimdall.flags.debug){
+            console.log("\t" + "Token detected : " + localStorage.getItem("Token"));
+        }
+        ///[/DEBUG]
     }
     else{
         //create the connection overview
         Heimdall.methods.connection();
+
+        ///[DEBUG]Operaion time !!!
+        if(Heimdall.flags.debug){
+            console.log("\t" + "No Token detected !!! ");
+        }
+        ///[/DEBUG]
     }
 
 }
