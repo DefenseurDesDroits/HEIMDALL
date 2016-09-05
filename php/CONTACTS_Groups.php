@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-05 02:04:57
 //Filename : Contacts_Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -27,7 +27,9 @@ class Groups extends Contacts{
 			///[MEMBER][string][jsonUGrp_Json]Json, liste des utilisateurs
 			"jsonUGrp_Json" => "",
 			///[MEMBER][boolean][bFichiers]Ce groupe héberge t'il des fichiers ?
-			"bFichiers" => false
+			"bFichiers" => false,
+			///[MEMBER][string][sNom]Nom unique du group
+			"sNom" => ""
 		);
 		//get the legacy
 		$this->members += $GroupsmemberSet;	}
@@ -54,6 +56,13 @@ class Groups extends Contacts{
 	public function getFichiers(){
 		//Return the member
 		return $this->members["bFichiers"];
+	}
+
+	///[METHOD][getNom]Method to get the Nom
+	///[RETURNS]The Nom
+	public function getNom(){
+		//Return the member
+		return $this->members["sNom"];
 	}
 
 
@@ -102,6 +111,24 @@ class Groups extends Contacts{
 		return false;
 	}
 
+	///[METHOD][setNom]Method to set the Nom
+	///[PARAMETER][string][$sValue]Our new value for Nom
+	///[RETURNS]Boolean true if done 
+	public function setNom($sValue){
+		//security on null guy !!!
+		if($sValue == null)
+			return false;
+		//security on type guy !!!
+		if(getType($sValue) == 'string'){
+			//Never trust the FRONT !!!
+			 $this->members["sNom"] = substr($sValue, 0, 64);
+			//Happy end
+			return true;
+		}
+		//Don't fool me next Time !!!
+		return false;
+	}
+
 
 
 	///[SECTION][WORKSHOP]################################################
@@ -112,15 +139,15 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
-		return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
+			return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.Nom";
+		return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.Nom";
 	}
 
 
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return "Id_Groups, UGrp_Json, Fichiers";
+		return "Id_Groups, UGrp_Json, Fichiers, Nom";
 	}
 
 
@@ -130,7 +157,8 @@ class Groups extends Contacts{
 		return array(
 			"nId_Groups" => "xxx.Groups.Id_Groups", 
 			"jsonUGrp_Json" => "xxx.Groups.UGrp_Json", 
-			"bFichiers" => "xxx.Groups.Fichiers"
+			"bFichiers" => "xxx.Groups.Fichiers", 
+			"sNom" => "xxx.Groups.Nom"
 ) + parent::getCorrespondanceArray();
 	}
 
@@ -266,6 +294,7 @@ class Groups extends Contacts{
 		$sValues .= Quotes( $this->getId_Groups());
 		$sValues .= ", " . Quotes( $this->getUGrp_Json());
 		$sValues .= ", " . Quotes( $this->getFichiers());
+		$sValues .= ", " . Quotes( $this->getNom());
 		
 		//return the get value chain !
 		return $sValues;
@@ -291,6 +320,7 @@ class Groups extends Contacts{
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "UGrp_Json  = " . Quotes($this->getUGrp_Json());
 		$Query .= ", " .  "Fichiers  = " . Quotes($this->getFichiers());
+		$Query .= ", " .  "Nom  = " . Quotes($this->getNom());
 		//build the condition
 		$Query .= "WHERE Id_Groups = " . Quotes($this->getId_Groups());
 		//Return the query !!!

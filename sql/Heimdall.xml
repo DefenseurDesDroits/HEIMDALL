@@ -457,6 +457,11 @@
               </DefaultValue>
               <Comment>Ce groupe héberge t'il des fichiers ?</Comment>
             </Column>
+            <Column name="sNom" deploy_name="Nom" key="unique" foreign="" type="s64" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Nom unique du group</Comment>
+            </Column>
           </Columns>
           <Comment>Table des groups héritant de la table Contacts</Comment>
         </Table>

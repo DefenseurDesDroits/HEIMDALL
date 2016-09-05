@@ -1,7 +1,7 @@
 -- #####################################
 -- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.8
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 29/08/2016 00:00:00
+-- Automatique generation made on 05/09/2016 00:00:00
 -- #####################################
 
 
@@ -348,12 +348,14 @@ COMMENT ON COLUMN xxx.Notifications.Id_Destinataire IS 'Clef étrangère sur la 
 CREATE TABLE IF NOT EXISTS xxx.Groups (
 	-- Identifiant de la table Groups. Clef étrangère sur la table contact	Id_Groups integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
 	-- Json, liste des utilisateurs	UGrp_Json varchar   NOT NULL,
-	-- Ce groupe héberge t'il des fichiers ?	Fichiers bit  NOT NULL
+	-- Ce groupe héberge t'il des fichiers ?	Fichiers bit  NOT NULL,
+	-- Nom unique du group	Nom varchar(64) UNIQUE NOT NULL
 );
 COMMENT ON TABLE xxx.Groups IS 'Table des groups héritant de la table Contacts';
 COMMENT ON COLUMN xxx.Groups.Id_Groups IS 'Identifiant de la table Groups. Clef étrangère sur la table contact';
 COMMENT ON COLUMN xxx.Groups.UGrp_Json IS 'Json, liste des utilisateurs';
 COMMENT ON COLUMN xxx.Groups.Fichiers IS 'Ce groupe héberge t''il des fichiers ?';
+COMMENT ON COLUMN xxx.Groups.Nom IS 'Nom unique du group';
 
 
 

@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.0.2";
+const MAIN_VERSION = "0.0.3";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! */
@@ -87,7 +87,7 @@ function main_Lib_Init(){
 	//Entertain us !!!
 	main_Loading();
 	//load the lib !!!
-	Potours_loadScriptFiles(ary_sFileLib, main_App);
+	Potours_loadScriptFiles(ary_sFileLib, main_App, MAIN_VERSION);
 }
 
 ///[METHOD][main]Our main function

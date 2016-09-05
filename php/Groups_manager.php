@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-05 02:04:57
 //Filename : Groups_manager.php
 //Description : Table des groups héritant de la table Contacts
 

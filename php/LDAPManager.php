@@ -96,7 +96,18 @@ function UsersgetAllInstanceWith($sUsr){
 
 	//Returns
 	return $ary_Result;
-};
+}
+
+/*function GroupsgetAllInstanceWith($sName){
+
+}
+
+function attachToGroup($nIdUser, $ary_Group){
+
+
+
+    return false;
+}*/
 
 //create group
 function createGroup($oXXX, $sGrp){
@@ -162,7 +173,10 @@ function createGroup($oXXX, $sGrp){
     return $nIDContact;
 }
 
-//create the token 
+///[FUNCTION][UsersgetAllInstance]Function to obtain all the Users intance with a pseudo !
+///[PARAMETER][integer][$nId]our user id
+///[PARAMETER][integer][$nCount]our count of id
+///[RETURNS]string, our token
 function createToken($nId, $nCount = HEIMDALL_LDAP_JWT_MAX_PASS){
 
     //our new date
@@ -181,6 +195,9 @@ function createToken($nId, $nCount = HEIMDALL_LDAP_JWT_MAX_PASS){
     return JWT::encode($oToken, HEIMDALL_LDAP_JWT_Key);
 }
 
+///[FUNCTION][UsersgetAllInstance]Function to obtain all the Users intance with a pseudo !
+///[PARAMETER][string][$sToken]our token
+///[RETURNS]array, Token field if valid
 function checkToken($sToken){
 
     //our result
@@ -357,6 +374,11 @@ function connectionLDAP($sUser, $sPwd){
             $nLine++;
         }
 
+        //can't be used because of the ERROR =>
+        //Warning: preg_replace(): The /e modifier is no longer supported, use preg_replace_callback instead
+        //really ... thanks guy !!!
+        //$ary_result["MemberOf"] = $oLdap->user()->groups($sUser);
+
         //so we are connected !!!
         //Are we in the DTB ?
         $ary_Users = UsersgetAllInstanceWith(strtoupper($sUser));
@@ -369,6 +391,8 @@ function connectionLDAP($sUser, $sPwd){
                 $sName = $ary_PersonaIdentity[0];
                 $sFirstname = str_replace($sName . " ", "",  $ary_result["UserInfo_displayname"]); 
             }
+
+            //attach to trhe groups
 
             //creation part
             $ary_result["UserId"] = createUser($oXXX, strtoupper($sUser), $sName, $sFirstname);
