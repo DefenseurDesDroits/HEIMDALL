@@ -4,6 +4,8 @@
 //Filename : main.js
 //Description : Main file of our main app
 
+const MAIN_VERSION = "0.0.2";
+
 var ary_sFileLib = [
 	/*CONTACT LIB !!! */
 	"lib/CONTACTS_Accreditations.js",
@@ -77,7 +79,7 @@ function main_Init(){
 
 ///[METHOD][main_App]Our function to load the products
 function main_App(){
-	Potours_loadScriptFiles(["app/contacts.js", "app/produits.js"], main_Init);
+	Potours_loadScriptFiles(["app/contacts.js", "app/produits.js"], main_Init, MAIN_VERSION);
 }
 
 ///[METHOD][main_Lib_Init]Our function to load the lib js files
