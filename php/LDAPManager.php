@@ -1,7 +1,8 @@
 <?PHP
 
 //include to dtb connection
-include "CONTACTS_Users.php";
+include_once "CONTACTS_Users.php";
+include_once "Groups_manager_2.php";
 //include the class and create a connection
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP.php");
 //include the class JWT
@@ -27,6 +28,8 @@ CONST HEIMDALL_LDAP_ConnectionCase_ALL = 7;
 CONST HEIMDALL_LDAP_Connection_SEVER_ADR = "192.168.1.16";
 CONST HEIMDALL_LDAP_Connection_DOMAIN = "DC=AC,DC=local";
 //CONST HEIMDALL_LDAP_Connection_DOMAIN = "OU=DDD,DC=AC,DC=local";
+
+CONST HEIMDALL_LDAP_Create_Group = true;
 
 //the key 
 CONST HEIMDALL_LDAP_JWT_Key = "Ragnarok";
@@ -98,79 +101,192 @@ function UsersgetAllInstanceWith($sUsr){
 	return $ary_Result;
 }
 
-/*function GroupsgetAllInstanceWith($sName){
+function GroupsgetAllInstanceWith($sName){
+    //Our object declaration
+	$oGroups = new Groups();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oGroups->getColumns() . "\r\n" . "FROM " . $oGroups->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oGroups->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	// if($sLinks != "")
+	// 	$sQuery .= "WHERE " . $sLinks;
+	
+    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.Nom ILIKE " . Quotes($sName) ;
+    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.Nom = " . Quotes($sName) ;
 
+	/* Don't forget to override to use $oAgent !!! */
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oGroups->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	/* So ... we got the array !!! !!! */
+	/* Create the result array !!! !!! */
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oGroups = new Groups();
+		//load the data
+		$oGroups->loadFromArray($ary_[$nLine], true);
+		//add the data
+		$ary_Result[$nLine] = $oGroups;
+		//$ary_Result[$nLine] = $oGroups->exportToArray();
+		//Next
+		$nLine++;
+	}
+	
+	//Returns
+	return $ary_Result;
 }
 
-function attachToGroup($nIdUser, $ary_Group){
-
-
-
-    return false;
-}*/
-
 //create group
-function createGroup($oXXX, $sGrp){
+function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
 
-    //our query
-    $sQuery = "";
-    //our number 
-    $nID = 0;
-    //the id Orga 
-    $nIDContact = 0;
-    //the id of new contact info contact infos
-    $nIDLink = 0;
-    //our count
+    //our group 
+    $oGrp = new Groups();
+    //$oGrp = null;
+
+    //set the parent !!!
+    $oGrp->setId_Noeuds_Parent(intval($nIdUser));
+    //$oGrp->setId_Noeuds_Parent(intval($nIdParent));
+    $oGrp->setId_Accreditations_Item(1);
+    $oGrp->setId_Civilites(1);
+    $oGrp->setId_Titres(1);
+    $oGrp->setId_Contact_Types(1);
+
+    //set the name 
+    $oGrp->setNom($sGrp);
+
+    //create the Groups
+    $oGrp->save($nIdUser);
+
+    if($nIdParent != 0)
+        $oGrp->setId_Noeuds_Parent(intval($nIdParent));
+    else
+        $oGrp->setId_Noeuds_Parent($oGrp->getId_Items());
+
+    //save it o yeah !!!!
+    $oGrp->save($nIdUser);
+
+    //if got children ???
+    //find them !!!
+    //if exist : cool
+    //else : create them !!!
+
+    //return the groups
+    return $oGrp;
+}
+
+function attachToGroup($nIdUser, $sGroup, $oLDAP, $bCreate = HEIMDALL_LDAP_Create_Group){
+
+    //array to get the existing
+    $ary_Groups = null;
+
+    //our group instance
+    $oGrp = null;
+
+    //Json
+    $sJson = "";
+    //element
+    $sElement = "";
+
+    //our count 
     $nCount = 0;
-    //our iterator
+    //our iterrator
     $nLine = 0;
-    //our sub count
-    $nSubCount = 0;
-    //our sub iterrator
-    $nSubLine = 0;
-    //our array 
-    $ary_ = array();
 
-    //array to obtain contact info and info 
-    $ary_Addr = array();
-    //array to obtain the addr for a contact
-    $ary_AddrContact = array();
-
-    //get the max ID (Worst Best Idea Ever !)*********************
-    //the query
-    $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
-    //open
-    $oXXX->open();
-    //the select query
-    $ary_ = $oCRM->selectRequest($sQuery, ["max"], null);
-    //close
-    $oXXX->close();
-
-    //echo json_encode($ary_);
-
-    //is there any contact type ?
-    if(count($ary_) == 0 || array_key_exists("ERROR", $ary_[0])){
+    if(trim($sGroup) == "")
         return -1;
+
+    $ary_Groups = GroupsgetAllInstanceWith($sGroup);
+
+    $nCount = count($ary_Groups);
+
+    if($nCount == 0 && !$bCreate)
+        return -1;
+
+    if($nCount == 0){
+        $oGrp = createGroup($GLOBALS["oConnection"], $sGroup, $oLDAP, $nIdUser);
+    }
+    else{
+        $oGrp = $ary_Groups[0];
     }
 
-    echo json_encode($ary_);
+    if($oGrp == null)
+        return -1;
 
-    //get the max ID
-    $nID = intval($ary_[0]["max"]);
+    //get the array of member
 
-    $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-    $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
-    $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", '', ". Quotes($ary_[$nLine]["nom"]) .", 1, null, 2);\r\n";
-    $sQuery .= "INSERT INTO xxx.groups(id_groups, ugrp_json, fichiers) VALUES (" . $nID . ", '', true);";
-    
-    //execute
-    $oXXX->insertRequest($sQuery, null);
-    $nIDContact = $nID;
-    $nID++;
-    $oXXX->close();
+    //get the json 
+    $sJson = $oGrp->getUGrp_Json();
 
-    //return the ID
-    return $nIDContact;
+    if($sJson == "" || $sJson == "{}")
+        $sJson = "{[]}";
+
+    //add user if not already present !!! (UID|TIme)
+    if(strpos($sJson, "{\"uid\":\"" . $nIdUser . "\"") == false ){
+        
+        $sElement = "{\"uid\":\"" . $nIdUser . "\",\"until\":\"\"}]}";
+        
+        if($sJson != "{[]}")
+            $sElement = "," + $sElement;
+
+        $sJson = str_replace( "]}", $sElement, $sJson );
+
+        $oGrp->setUGrp_Json($sJson);
+        
+        //set the name 
+        // $oGrp->setNom($sGroup);
+
+        // $oGrp->setId_Accreditations_Item(1);
+        // $oGrp->setId_Civilites(1);
+        // $oGrp->setId_Titres(1);
+        // $oGrp->setId_Contact_Types(1);
+
+        $oGrp->save($nIdUser);
+    }
+
+    return 1;
+}
+
+function attachToGroups($nIdUser, $ary_Group, $oLDAP){
+
+    //our count 
+    $nCount = 0;
+    //our iterrator
+    $nLine = 0;
+
+    //our result
+    $nResult = 0;
+
+    $nCount = count($ary_Group);
+    while($nLine < $nCount){
+
+        //do da job Steve !!!
+        $nResult += attachToGroup($nIdUser, $ary_Group[$nLine], $oLDAP);
+
+        //next
+        $nLine++;
+    }
+
+    //yop !!!
+    return $nResult > -1;
 }
 
 ///[FUNCTION][UsersgetAllInstance]Function to obtain all the Users intance with a pseudo !
@@ -302,6 +418,8 @@ function connectionLDAP($sUser, $sPwd){
     $sFirstname = "";
     //the name
     $sName = "";
+    //Group name 
+    $sGroup = "";
     //ary
     $ary_PersonaIdentity = array();
 
@@ -368,8 +486,16 @@ function connectionLDAP($sUser, $sPwd){
         //-_-#
         $nCount = $oInfos[0]["memberof"]["count"];
         while($nLine < $nCount){
-            //add the 
-            $ary_result["MemberOf"][$nLine] = $oInfos[0]["memberof"][$nLine];
+            //get the member of information
+            $sGroup = $oInfos[0]["memberof"][$nLine];
+            //explode the stuff
+            $sGroup = (explode( ",", $sGroup))[0];
+            //get out the CN= part
+            $sGroup = str_replace("CN=", "", $sGroup);
+            //add the groups
+            //echo $sGroup;
+            $ary_result["MemberOf"][$nLine] = $sGroup;
+            //$ary_result["MemberOf"][$nLine] = $oInfos[0]["memberof"][$nLine];
             //next
             $nLine++;
         }
@@ -392,13 +518,16 @@ function connectionLDAP($sUser, $sPwd){
                 $sFirstname = str_replace($sName . " ", "",  $ary_result["UserInfo_displayname"]); 
             }
 
-            //attach to trhe groups
-
             //creation part
             $ary_result["UserId"] = createUser($oXXX, strtoupper($sUser), $sName, $sFirstname);
             $ary_result["Comment"] = "User added to Heimdall : ";
             $ary_result["Comment"] .= "<br/> User Id : " . $ary_result["UserId"];
             $ary_result["UserInfo_displayname"] = $sFirstname . " " . $sName;
+            
+            //attach to the groups
+            attachToGroups($ary_result["UserId"], $ary_result["MemberOf"], $oLdap);
+
+            $ary_Users = UsersgetAllInstanceWith(strtoupper($sUser));
         }
         else{
             $ary_result["UserId"] = $ary_Users[0]->getId_Users();

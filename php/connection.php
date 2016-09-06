@@ -11,7 +11,7 @@
 //include the default DTB
 //include "Potours_Connection.php";
 //include the postGre Sql DTB
-include "Potours_Connection_PGSQL.php";
+include_once "Potours_Connection_PGSQL.php";
 
 //Create the connection object************************
 

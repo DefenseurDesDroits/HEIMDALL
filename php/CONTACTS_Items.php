@@ -7,7 +7,7 @@
 
 
 //include to dtb connection
-include "connection.php";
+include_once "connection.php";
 
 ///[CLASS][Items]Table de tous les items avec des droits
 ///[AUTHOR]Ludo

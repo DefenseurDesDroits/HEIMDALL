@@ -7,7 +7,7 @@
 
 
 //include to dtb connection
-include "CONTACTS_Items.php";
+include_once "CONTACTS_Items.php";
 
 ///[CLASS][Noeuds]Table pour gérer les noeuds
 ///[AUTHOR]Ludo

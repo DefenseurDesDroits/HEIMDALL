@@ -7,7 +7,7 @@
 
 
 //include to dtb connection
-include "CONTACTS_Contacts.php";
+include_once "CONTACTS_Contacts.php";
 
 ///[CLASS][Groups]Table des groups héritant de la table Contacts
 ///[AUTHOR]Ludo
@@ -25,7 +25,8 @@ class Groups extends Contacts{
 			// ///[MEMBER][integer][nId_Groups]Identifiant de la table Groups. Clef étrangère sur la table contact
 			//"nId_Groups" => 0 //inherited from => Contacts.Contacts.nId_Contacts,
 			///[MEMBER][string][jsonUGrp_Json]Json, liste des utilisateurs
-			"jsonUGrp_Json" => "",
+			"jsonUGrp_Json" => "{}",
+			//"jsonUGrp_Json" => "",
 			///[MEMBER][boolean][bFichiers]Ce groupe héberge t'il des fichiers ?
 			"bFichiers" => false,
 			///[MEMBER][string][sNom]Nom unique du group
@@ -293,7 +294,12 @@ class Groups extends Contacts{
 		
 		$sValues .= Quotes( $this->getId_Groups());
 		$sValues .= ", " . Quotes( $this->getUGrp_Json());
-		$sValues .= ", " . Quotes( $this->getFichiers());
+		if($this->getFichiers())
+			$sValues .= ", TRUE";
+		else
+			$sValues .= ", FALSE";
+		//$sValues .= ", " . $this->getFichiers();
+		//$sValues .= ", " . Quotes( $this->getFichiers());
 		$sValues .= ", " . Quotes( $this->getNom());
 		
 		//return the get value chain !
@@ -319,7 +325,12 @@ class Groups extends Contacts{
 		//build the set
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "UGrp_Json  = " . Quotes($this->getUGrp_Json());
-		$Query .= ", " .  "Fichiers  = " . Quotes($this->getFichiers());
+		if($this->getFichiers())
+			$Query .= ", " .  "Fichiers  = TRUE";
+		else
+			$Query .= ", " .  "Fichiers  = FALSE";
+		//$Query .= ", " .  "Fichiers  = " . $this->getFichiers();
+		//$Query .= ", " .  "Fichiers  = " . Quotes($this->getFichiers());
 		$Query .= ", " .  "Nom  = " . Quotes($this->getNom());
 		//build the condition
 		$Query .= "WHERE Id_Groups = " . Quotes($this->getId_Groups());

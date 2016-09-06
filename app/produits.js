@@ -213,8 +213,12 @@ var Heimdall = {
                 sCode += Heimdall.members.products[sProduct].addMenu("WIN_Add");
             }
 
-            //show the token
-            sCode += Heimdall.debug.methods.addMenuShowToken();
+            ///[DEBUG]Operaion time !!!
+            if(Heimdall.flags.debug){
+                //show the token
+                sCode += Heimdall.debug.methods.addMenuShowToken();
+            }
+            ///[/DEBUG]
 
             //to the box !!!
             MsgBox(sCode);
@@ -285,7 +289,6 @@ var Heimdall = {
 
 ///[FUNCTION][init]Function to init all the products
 function init_Produits(){
-//function init(){
 
     ///[DEBUG]Operaion time !!!
     if(Heimdall.flags.debug){

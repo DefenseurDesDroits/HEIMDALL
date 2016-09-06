@@ -7,7 +7,7 @@
 
 
 //include to dtb connection
-include "CONTACTS_Noeuds.php";
+include_once "CONTACTS_Noeuds.php";
 
 ///[CLASS][Contacts]Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 ///[AUTHOR]Ludo
