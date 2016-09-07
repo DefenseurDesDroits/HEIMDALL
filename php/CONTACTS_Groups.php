@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-05 02:04:57
+//Generated on : 2016-09-07 11:51:46
 //Filename : Contacts_Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -25,12 +25,11 @@ class Groups extends Contacts{
 			// ///[MEMBER][integer][nId_Groups]Identifiant de la table Groups. Clef étrangère sur la table contact
 			//"nId_Groups" => 0 //inherited from => Contacts.Contacts.nId_Contacts,
 			///[MEMBER][string][jsonUGrp_Json]Json, liste des utilisateurs
-			"jsonUGrp_Json" => "{}",
-			//"jsonUGrp_Json" => "",
+			"jsonUGrp_Json" => "",
 			///[MEMBER][boolean][bFichiers]Ce groupe héberge t'il des fichiers ?
 			"bFichiers" => false,
-			///[MEMBER][string][sNom]Nom unique du group
-			"sNom" => ""
+			///[MEMBER][string][sNomGroupe]Nom unique du group
+			"sNomGroupe" => ""
 		);
 		//get the legacy
 		$this->members += $GroupsmemberSet;	}
@@ -59,11 +58,11 @@ class Groups extends Contacts{
 		return $this->members["bFichiers"];
 	}
 
-	///[METHOD][getNom]Method to get the Nom
-	///[RETURNS]The Nom
-	public function getNom(){
+	///[METHOD][getNomGroupe]Method to get the NomGroupe
+	///[RETURNS]The NomGroupe
+	public function getNomGroupe(){
 		//Return the member
-		return $this->members["sNom"];
+		return $this->members["sNomGroupe"];
 	}
 
 
@@ -112,17 +111,17 @@ class Groups extends Contacts{
 		return false;
 	}
 
-	///[METHOD][setNom]Method to set the Nom
-	///[PARAMETER][string][$sValue]Our new value for Nom
+	///[METHOD][setNomGroupe]Method to set the NomGroupe
+	///[PARAMETER][string][$sValue]Our new value for NomGroupe
 	///[RETURNS]Boolean true if done 
-	public function setNom($sValue){
+	public function setNomGroupe($sValue){
 		//security on null guy !!!
 		if($sValue == null)
 			return false;
 		//security on type guy !!!
 		if(getType($sValue) == 'string'){
 			//Never trust the FRONT !!!
-			 $this->members["sNom"] = substr($sValue, 0, 64);
+			 $this->members["sNomGroupe"] = substr($sValue, 0, 64);
 			//Happy end
 			return true;
 		}
@@ -140,15 +139,15 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.Nom";
-		return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.Nom";
+			return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe";
+		return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe";
 	}
 
 
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return "Id_Groups, UGrp_Json, Fichiers, Nom";
+		return "Id_Groups, UGrp_Json, Fichiers, NomGroupe";
 	}
 
 
@@ -159,7 +158,7 @@ class Groups extends Contacts{
 			"nId_Groups" => "xxx.Groups.Id_Groups", 
 			"jsonUGrp_Json" => "xxx.Groups.UGrp_Json", 
 			"bFichiers" => "xxx.Groups.Fichiers", 
-			"sNom" => "xxx.Groups.Nom"
+			"sNomGroupe" => "xxx.Groups.NomGroupe"
 ) + parent::getCorrespondanceArray();
 	}
 
@@ -295,12 +294,11 @@ class Groups extends Contacts{
 		$sValues .= Quotes( $this->getId_Groups());
 		$sValues .= ", " . Quotes( $this->getUGrp_Json());
 		if($this->getFichiers())
-			$sValues .= ", TRUE";
+			$sValues .= ", true";
 		else
-			$sValues .= ", FALSE";
-		//$sValues .= ", " . $this->getFichiers();
+			$sValues .= ", false";
 		//$sValues .= ", " . Quotes( $this->getFichiers());
-		$sValues .= ", " . Quotes( $this->getNom());
+		$sValues .= ", " . Quotes( $this->getNomGroupe());
 		
 		//return the get value chain !
 		return $sValues;
@@ -326,12 +324,11 @@ class Groups extends Contacts{
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "UGrp_Json  = " . Quotes($this->getUGrp_Json());
 		if($this->getFichiers())
-			$Query .= ", " .  "Fichiers  = TRUE";
+			$Query .= ", Fichiers  = true";
 		else
-			$Query .= ", " .  "Fichiers  = FALSE";
-		//$Query .= ", " .  "Fichiers  = " . $this->getFichiers();
+			$Query .= ", Fichiers  = false";
 		//$Query .= ", " .  "Fichiers  = " . Quotes($this->getFichiers());
-		$Query .= ", " .  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "NomGroupe  = " . Quotes($this->getNomGroupe());
 		//build the condition
 		$Query .= "WHERE Id_Groups = " . Quotes($this->getId_Groups());
 		//Return the query !!!

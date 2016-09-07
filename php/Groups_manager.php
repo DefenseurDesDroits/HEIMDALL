@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-05 02:04:57
+//Generated on : 2016-09-07 11:51:46
 //Filename : Groups_manager.php
 //Description : Table des groups héritant de la table Contacts
 
 
 //include to dtb connection
-include "CONTACTS_Groups.php";
+include_once "CONTACTS_Groups.php";
 
 ///[FUNCTION][GroupsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object

@@ -13,6 +13,8 @@ include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/JWT.php");
 
 use Firebase\JWT\JWT;
 
+CONST HEIMDALL_LDAP_Debug = true;
+
 //const for choose the right path 
 
 CONST HEIMDALL_LDAP_ConnectionCase_NopeNope = 0;
@@ -121,11 +123,14 @@ function GroupsgetAllInstanceWith($sName){
 	// if($sLinks != "")
 	// 	$sQuery .= "WHERE " . $sLinks;
 	
-    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.Nom ILIKE " . Quotes($sName) ;
-    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.Nom = " . Quotes($sName) ;
+    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) ;
 
 	/* Don't forget to override to use $oAgent !!! */
 	
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@GroupsgetAllInstanceWith.log", "\r\n\r\n[New Call]\r\n" . $sQuery,  FILE_APPEND );
+
 	//Open the query
 	$GLOBALS["oConnection"]->open();
 	//Get the array
@@ -151,6 +156,10 @@ function GroupsgetAllInstanceWith($sName){
 		$nLine++;
 	}
 	
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@GroupsgetAllInstanceWith.log", "\r\n[Results]\r\n" . $nCount . " line(s) found !!!",  FILE_APPEND );
+
 	//Returns
 	return $ary_Result;
 }
@@ -171,7 +180,7 @@ function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
     $oGrp->setId_Contact_Types(1);
 
     //set the name 
-    $oGrp->setNom($sGrp);
+    $oGrp->setNomGroupe($sGrp);
 
     //create the Groups
     $oGrp->save($nIdUser);
@@ -211,30 +220,66 @@ function attachToGroup($nIdUser, $sGroup, $oLDAP, $bCreate = HEIMDALL_LDAP_Creat
     //our iterrator
     $nLine = 0;
 
-    if(trim($sGroup) == "")
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\r\n\r\n[New Call]\r\n",  FILE_APPEND );
+
+    //no null group name
+    if(trim($sGroup) == "" || $sGroup == null)
         return -1;
 
-    $ary_Groups = GroupsgetAllInstanceWith($sGroup);
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Group name not null : " . $sGroup ."\r\n",  FILE_APPEND );
 
+    //search if the group already exists
+    $ary_Groups = GroupsgetAllInstanceWith($sGroup);
+    //get a clue
     $nCount = count($ary_Groups);
 
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Groups with this name in DTB : " . $nCount ."\r\n",  FILE_APPEND );
+
+    //The group don't exit and we are not allowed to create it !!!
     if($nCount == 0 && !$bCreate)
         return -1;
 
+    //creation case
     if($nCount == 0){
+
+        //debugging, the desperate way
+        if(HEIMDALL_LDAP_Debug)
+            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Creation " ."\r\n",  FILE_APPEND );
+
+        //create the group
         $oGrp = createGroup($GLOBALS["oConnection"], $sGroup, $oLDAP, $nIdUser);
     }
-    else{
+    else{//Obtantion case
+        
+        //debugging, the desperate way
+        if(HEIMDALL_LDAP_Debug)
+            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Obtention " ."\r\n",  FILE_APPEND );
+
+        //attach
         $oGrp = $ary_Groups[0];
     }
 
     if($oGrp == null)
         return -1;
 
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Status : " . $oGrp->getNomGroupe() . "\r\n",  FILE_APPEND );
+
     //get the array of member
 
     //get the json 
     $sJson = $oGrp->getUGrp_Json();
+
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Json : " . $oGrp->getUGrp_Json() . "\r\n",  FILE_APPEND );
 
     if($sJson == "" || $sJson == "{}")
         $sJson = "{[]}";
@@ -245,7 +290,7 @@ function attachToGroup($nIdUser, $sGroup, $oLDAP, $bCreate = HEIMDALL_LDAP_Creat
         $sElement = "{\"uid\":\"" . $nIdUser . "\",\"until\":\"\"}]}";
         
         if($sJson != "{[]}")
-            $sElement = "," + $sElement;
+            $sElement = "," . $sElement;
 
         $sJson = str_replace( "]}", $sElement, $sJson );
 
@@ -259,7 +304,15 @@ function attachToGroup($nIdUser, $sGroup, $oLDAP, $bCreate = HEIMDALL_LDAP_Creat
         // $oGrp->setId_Titres(1);
         // $oGrp->setId_Contact_Types(1);
 
+        if(HEIMDALL_LDAP_Debug)
+            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> New Json : " . $oGrp->getUGrp_Json() . "\r\n",  FILE_APPEND );
+
+        //save
         $oGrp->save($nIdUser);
+    }
+    else{
+        if(HEIMDALL_LDAP_Debug)
+            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Already in !!!" . "\r\n",  FILE_APPEND );
     }
 
     return 1;

@@ -457,7 +457,7 @@
               </DefaultValue>
               <Comment>Ce groupe héberge t'il des fichiers ?</Comment>
             </Column>
-            <Column name="sNom" deploy_name="Nom" key="unique" foreign="" type="s64" isnullable="False">
+            <Column name="sNomGroupe" deploy_name="NomGroupe" key="unique" foreign="" type="s64" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Nom unique du group</Comment>
