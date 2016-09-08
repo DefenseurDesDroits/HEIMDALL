@@ -1321,3 +1321,1767 @@
 	=> Status : Utilisa. du domaine
 	=> Json : {[{"uid":"919","until":""}]}
 	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Service communication
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Service communication
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Appel à témoignanges-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Appel à témoignanges-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-W7SHARE-COM-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-W7SHARE-COM-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-COMM DDD-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-COMM DDD-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : PORTAIL-DOCUMENTAIRE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : PORTAIL-DOCUMENTAIRE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INFOCOM
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INFOCOM
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l'égalité-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Promotion de l'égalité-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Réformes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Réformes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Mutuelles étudiantes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Mutuelles étudiantes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Plateforme racisme-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Plateforme racisme-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Sports et discriminations-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Sports et discriminations-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Etudes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Etudes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Documentation-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Documentation-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_RES_SALLE_DIRECTION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_RES_SALLE_DIRECTION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SALLE_CABINET
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SALLE_CABINET
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_RES_SALLE_REUNION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_RES_SALLE_REUNION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SALLE_REUNION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SALLE_REUNION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Rapport-Activité-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Rapport-Activité-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_TOUTLEMONDE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_TOUTLEMONDE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Evenementiel-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Evenementiel-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Communication-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Communication-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-International-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-International-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : AGORA
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : AGORA
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Tous les utilisateurs avec archives
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Tous les utilisateurs avec archives
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : IMPRESSION-COPIEUR-COULEUR
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : IMPRESSION-COPIEUR-COULEUR
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : COM
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : COM
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_DGMSP
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_DGMSP
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_ADMIN
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_ADMIN
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SERVICE_PRESSE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SERVICE_PRESSE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Utilisa. du domaine
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Utilisa. du domaine
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Rapport Enfance 2016-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Rapport Enfance 2016-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : PORTAIL-DOCUMENTAIRE
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : PORTAIL-DOCUMENTAIRE
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l'égalité-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Promotion de l'égalité-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Réformes-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Réformes-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Etudes-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Etudes-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-BD-Promotion des droits fondamentaux-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-BD-Promotion des droits fondamentaux-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Base documentaire
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Base documentaire
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Documentation-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Documentation-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Groupes-Travail-DDD-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Groupes-Travail-DDD-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_TOUTLEMONDE
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : INT_TOUTLEMONDE
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Défenseur des enfants-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Défenseur des enfants-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Collèges-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Collèges-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Communication-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Communication-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-International-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-International-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Protection des droits - Affaires judiciaires-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Protection des droits - Affaires judiciaires-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Tous les utilisateurs avec archives
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Tous les utilisateurs avec archives
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Utilisa. du domaine
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Utilisa. du domaine
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Service communication
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Service communication
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Appel à témoignanges-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Appel à témoignanges-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-W7SHARE-COM-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-W7SHARE-COM-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-COMM DDD-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-COMM DDD-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : PORTAIL-DOCUMENTAIRE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : PORTAIL-DOCUMENTAIRE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INFOCOM
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INFOCOM
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l'égalité-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Promotion de l'égalité-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Réformes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Réformes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Mutuelles étudiantes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Mutuelles étudiantes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Plateforme racisme-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Plateforme racisme-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Sports et discriminations-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Sports et discriminations-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Etudes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Etudes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Documentation-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Documentation-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_RES_SALLE_DIRECTION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_RES_SALLE_DIRECTION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SALLE_CABINET
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SALLE_CABINET
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_RES_SALLE_REUNION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_RES_SALLE_REUNION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SALLE_REUNION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SALLE_REUNION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Rapport-Activité-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Rapport-Activité-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_TOUTLEMONDE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_TOUTLEMONDE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Evenementiel-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Evenementiel-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Communication-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Communication-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-International-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-International-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : AGORA
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : AGORA
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Tous les utilisateurs avec archives
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Tous les utilisateurs avec archives
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : IMPRESSION-COPIEUR-COULEUR
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : IMPRESSION-COPIEUR-COULEUR
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : COM
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : COM
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_DGMSP
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_DGMSP
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_ADMIN
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_ADMIN
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SERVICE_PRESSE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SERVICE_PRESSE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Utilisa. du domaine
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Utilisa. du domaine
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Rapport Enfance 2016-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Rapport Enfance 2016-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : PORTAIL-DOCUMENTAIRE
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : PORTAIL-DOCUMENTAIRE
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l'égalité-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Promotion de l'égalité-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Réformes-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Réformes-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Etudes-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Etudes-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-BD-Promotion des droits fondamentaux-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-BD-Promotion des droits fondamentaux-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Base documentaire
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Base documentaire
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Documentation-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Documentation-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Groupes-Travail-DDD-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Groupes-Travail-DDD-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_TOUTLEMONDE
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : INT_TOUTLEMONDE
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Défenseur des enfants-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Défenseur des enfants-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Collèges-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Collèges-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Communication-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Communication-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-International-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-International-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Protection des droits - Affaires judiciaires-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Protection des droits - Affaires judiciaires-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Tous les utilisateurs avec archives
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Tous les utilisateurs avec archives
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Utilisa. du domaine
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Utilisa. du domaine
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Service communication
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Service communication
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Appel à témoignanges-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Appel à témoignanges-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-W7SHARE-COM-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-W7SHARE-COM-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-COMM DDD-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-COMM DDD-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : PORTAIL-DOCUMENTAIRE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : PORTAIL-DOCUMENTAIRE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INFOCOM
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INFOCOM
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l'égalité-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Promotion de l'égalité-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Réformes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Réformes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Mutuelles étudiantes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Mutuelles étudiantes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Plateforme racisme-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Plateforme racisme-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Sports et discriminations-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Sports et discriminations-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Etudes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Etudes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Documentation-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Documentation-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_RES_SALLE_DIRECTION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_RES_SALLE_DIRECTION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SALLE_CABINET
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SALLE_CABINET
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_RES_SALLE_REUNION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_RES_SALLE_REUNION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SALLE_REUNION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SALLE_REUNION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Rapport-Activité-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Rapport-Activité-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_TOUTLEMONDE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_TOUTLEMONDE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Evenementiel-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Evenementiel-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Communication-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Communication-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-International-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-International-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : AGORA
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : AGORA
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Tous les utilisateurs avec archives
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Tous les utilisateurs avec archives
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : IMPRESSION-COPIEUR-COULEUR
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : IMPRESSION-COPIEUR-COULEUR
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : COM
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : COM
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_DGMSP
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_DGMSP
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_ADMIN
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_ADMIN
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SERVICE_PRESSE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SERVICE_PRESSE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Utilisa. du domaine
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Utilisa. du domaine
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Rapport Enfance 2016-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Rapport Enfance 2016-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : PORTAIL-DOCUMENTAIRE
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : PORTAIL-DOCUMENTAIRE
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l'égalité-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Promotion de l'égalité-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Réformes-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Réformes-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Etudes-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Etudes-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-BD-Promotion des droits fondamentaux-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-BD-Promotion des droits fondamentaux-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Base documentaire
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Base documentaire
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Documentation-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Documentation-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Groupes-Travail-DDD-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Groupes-Travail-DDD-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_TOUTLEMONDE
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : INT_TOUTLEMONDE
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Défenseur des enfants-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Défenseur des enfants-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Collèges-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Collèges-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Communication-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Communication-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-International-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-International-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Protection des droits - Affaires judiciaires-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Protection des droits - Affaires judiciaires-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Tous les utilisateurs avec archives
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Tous les utilisateurs avec archives
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Utilisa. du domaine
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Utilisa. du domaine
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Service communication
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Service communication
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Appel à témoignanges-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Appel à témoignanges-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-W7SHARE-COM-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-W7SHARE-COM-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-COMM DDD-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-COMM DDD-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : PORTAIL-DOCUMENTAIRE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : PORTAIL-DOCUMENTAIRE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INFOCOM
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INFOCOM
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l'égalité-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Promotion de l'égalité-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Réformes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Réformes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Mutuelles étudiantes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Mutuelles étudiantes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Plateforme racisme-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Plateforme racisme-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Sports et discriminations-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Sports et discriminations-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Etudes-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Etudes-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Documentation-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Documentation-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_RES_SALLE_DIRECTION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_RES_SALLE_DIRECTION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SALLE_CABINET
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SALLE_CABINET
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_RES_SALLE_REUNION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_RES_SALLE_REUNION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SALLE_REUNION
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SALLE_REUNION
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Rapport-Activité-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Rapport-Activité-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_TOUTLEMONDE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_TOUTLEMONDE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Evenementiel-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Evenementiel-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Communication-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Communication-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-International-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-International-M
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : AGORA
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : AGORA
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Tous les utilisateurs avec archives
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Tous les utilisateurs avec archives
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : IMPRESSION-COPIEUR-COULEUR
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : IMPRESSION-COPIEUR-COULEUR
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : COM
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : COM
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_DGMSP
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_DGMSP
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_ADMIN
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_ADMIN
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_SERVICE_PRESSE
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : INT_SERVICE_PRESSE
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Utilisa. du domaine
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Utilisa. du domaine
+	=> Json : 
+	=> New Json : {[{"uid":"919","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-PT-Rapport Enfance 2016-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-PT-Rapport Enfance 2016-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : PORTAIL-DOCUMENTAIRE
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : PORTAIL-DOCUMENTAIRE
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l'égalité-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Promotion de l'égalité-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Réformes-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Réformes-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Promotion de l’égalité et de l’accès aux droits-L
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Etudes-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Etudes-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-BD-Promotion des droits fondamentaux-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-BD-Promotion des droits fondamentaux-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Base documentaire
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Base documentaire
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Documentation-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Documentation-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Groupes-Travail-DDD-M
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Groupes-Travail-DDD-M
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : INT_TOUTLEMONDE
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : INT_TOUTLEMONDE
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Défenseur des enfants-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Défenseur des enfants-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Collèges-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Collèges-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Communication-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-Communication-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-International-M
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : GG-International-M
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : GG-Protection des droits - Affaires judiciaires-L
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : GG-Protection des droits - Affaires judiciaires-L
+	=> Json : 
+	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Tous les utilisateurs avec archives
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Tous les utilisateurs avec archives
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Utilisa. du domaine
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Utilisa. du domaine
+	=> Json : {[{"uid":"919","until":""}]}
+	=> New Json : {[{"uid":"919","until":""},{"uid":"951","until":""}]}

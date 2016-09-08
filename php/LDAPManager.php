@@ -4,7 +4,8 @@
 include_once "CONTACTS_Users.php";
 include_once "Groups_manager_2.php";
 //include the class and create a connection
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP.php");
+//include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Adldap.php");
+include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_4.0.3/adLDAP.php");
 //include the class JWT
 include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/BeforeValidException.php");
 include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/ExpiredException.php");
@@ -13,7 +14,9 @@ include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/JWT.php");
 
 use Firebase\JWT\JWT;
 
-CONST HEIMDALL_LDAP_Debug = true;
+//Debug const
+CONST HEIMDALL_LDAP_Debug = false;
+//CONST HEIMDALL_LDAP_Debug = true;
 
 //const for choose the right path 
 
@@ -169,7 +172,16 @@ function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
 
     //our group 
     $oGrp = new Groups();
-    //$oGrp = null;
+    //Ldap group buddie !!!
+    $oLDAPGrp = null;
+    //
+    $ary_Groups = array();
+
+    //
+    $nCount = 0;
+
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\r\n\r\n[New Call]\r\n",  FILE_APPEND );
 
     //set the parent !!!
     $oGrp->setId_Noeuds_Parent(intval($nIdUser));
@@ -177,26 +189,58 @@ function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
     $oGrp->setId_Accreditations_Item(1);
     $oGrp->setId_Civilites(1);
     $oGrp->setId_Titres(1);
-    $oGrp->setId_Contact_Types(1);
+    $oGrp->setId_Contact_Types(4);
+    $oGrp->setId_Creator(intval($oGrp->getId_Items()));
 
     //set the name 
+    $oGrp->setNom($sGrp);
     $oGrp->setNomGroupe($sGrp);
 
     //create the Groups
     $oGrp->save($nIdUser);
 
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Group created : " . $sGrp . "\r\n",  FILE_APPEND );
+
+        //parent :)
     if($nIdParent != 0)
         $oGrp->setId_Noeuds_Parent(intval($nIdParent));
     else
-        $oGrp->setId_Noeuds_Parent($oGrp->getId_Items());
+        $oGrp->setId_Noeuds_Parent(intval($oGrp->getId_Items()));
+
+    //set the group owner ... itself Yeah \m/
+    $oGrp->setId_groups_owner(intval($oGrp->getId_Items()));
 
     //save it o yeah !!!!
     $oGrp->save($nIdUser);
+
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Owner and parent set " . "\r\n",  FILE_APPEND );
 
     //if got children ???
     //find them !!!
     //if exist : cool
     //else : create them !!!
+
+    try {
+        //get the Groups  
+        $oLDAPGrp = $oLDAP->group();
+
+        //get the informations !!!
+        //$ary_Groups = $oLDAPGrp->info($sGrp);
+
+        // //get the groups
+        // $ary_Groups = $oLDAP->group()->inGroup($sGrp);
+        // //
+        // $nCount = count($ary_Groups);
+        // //
+        // if(HEIMDALL_LDAP_Debug)
+        //     file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Number of sub groups : " . $nCount . "\r\n",  FILE_APPEND );
+    }
+    catch (adLDAPException $e) {
+        if(HEIMDALL_LDAP_Debug)
+            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Exception : " . $e . "\r\n",  FILE_APPEND );
+    }
 
     //return the groups
     return $oGrp;
@@ -294,15 +338,8 @@ function attachToGroup($nIdUser, $sGroup, $oLDAP, $bCreate = HEIMDALL_LDAP_Creat
 
         $sJson = str_replace( "]}", $sElement, $sJson );
 
+        //Change the Json value
         $oGrp->setUGrp_Json($sJson);
-        
-        //set the name 
-        // $oGrp->setNom($sGroup);
-
-        // $oGrp->setId_Accreditations_Item(1);
-        // $oGrp->setId_Civilites(1);
-        // $oGrp->setId_Titres(1);
-        // $oGrp->setId_Contact_Types(1);
 
         if(HEIMDALL_LDAP_Debug)
             file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> New Json : " . $oGrp->getUGrp_Json() . "\r\n",  FILE_APPEND );
@@ -505,6 +542,7 @@ function connectionLDAP($sUser, $sPwd){
     try {
         //init the ldap connection 
         //$oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
+        //$oLdap = new Adldap($ary_Options);
         $oLdap = new adLDAP($ary_Options);
     }
     catch (adLDAPException $e) {

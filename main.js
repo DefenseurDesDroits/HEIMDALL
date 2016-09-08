@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.0.5";
+const MAIN_VERSION = "0.0.7";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! */
@@ -72,6 +72,8 @@ function main_Init(){
 	oSliderLoader.stop();
 	//close and distroy this window !!!
 	oWinLoader.dispose();
+	//set null
+	oWinLoader = null;
 
 	//init dude !!!
 	init_Produits();

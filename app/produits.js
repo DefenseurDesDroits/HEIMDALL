@@ -57,8 +57,20 @@ var Heimdall = {
             var sName = "";
 
             //close the connection form
-            if(Heimdall.members.connectionWindow != null)
+            if(Heimdall.members.connectionWindow != null){
                 Heimdall.members.connectionWindow.dispose();
+                Heimdall.members.connectionWindow = null;
+            }
+                
+            if(oWinLoader != null){
+                //stop beacuase all the lib are loaded
+	            oSliderLoader.stop();
+                //close and distroy this window !!!
+                oWinLoader.dispose();
+                //set null
+                oWinLoader = null;
+            }
+                
             
             //get the array
             ary_Response = JSON.parse(sText);
@@ -150,6 +162,14 @@ var Heimdall = {
             //set the sUser
             if(oElement != null)
                 sPwd = oElement.value;
+            
+            //close the connection form
+            if(Heimdall.members.connectionWindow != null){
+                Heimdall.members.connectionWindow.dispose();
+                Heimdall.members.connectionWindow = null;
+            }
+            //our splash screen
+            main_Loading();
 
             //prepare the query*********************
             //check the open
