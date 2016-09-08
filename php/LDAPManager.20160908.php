@@ -1,43 +1,11 @@
 <?PHP
 
-use adLDAP\adLDAP;
-
 //include to dtb connection
 include_once "CONTACTS_Users.php";
 include_once "Groups_manager_2.php";
 //include the class and create a connection
-
-//https://github.com/adldap/adLDAP
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Interfaces/ConnectionInterface.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Traits/LdapFunctionSupportTrait.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Connections/Ldap.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/AbstractObject.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/AccountControl.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Configuration.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Contact.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Folder.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Group.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Mailbox.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Paginator.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Schema.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/User.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Ldap/Entry.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Ldap/Schema.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AbstractAdldapBase.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AbstractAdldapQueryable.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapComputers.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapContacts.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapExchange.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapFolders.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapGroups.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapSearch.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapUsers.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapUtils.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Query/Builder.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Query/Operator.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Adldap.php");
-
-//include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_4.0.3/adLDAP.php");
+//include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Adldap.php");
+include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_4.0.3/adLDAP.php");
 //include the class JWT
 include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/BeforeValidException.php");
 include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/ExpiredException.php");
@@ -259,7 +227,7 @@ function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
         $oLDAPGrp = $oLDAP->group();
 
         //get the informations !!!
-        $ary_Groups = $oLDAPGrp->info($sGrp);
+        //$ary_Groups = $oLDAPGrp->info($sGrp);
 
         // //get the groups
         // $ary_Groups = $oLDAP->group()->inGroup($sGrp);
@@ -574,11 +542,10 @@ function connectionLDAP($sUser, $sPwd){
     try {
         //init the ldap connection 
         //$oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
-        $oLdap = new Adldap($ary_Options);
-        //$oLdap = new adLDAP($ary_Options);
+        //$oLdap = new Adldap($ary_Options);
+        $oLdap = new adLDAP($ary_Options);
     }
-    catch (AdldapException $e) {
-    //catch (adLDAPException $e) {
+    catch (adLDAPException $e) {
         //echo $e; 
         $ary_result["Status"] = "LDAP_Failed";
         $ary_result["Error"] = $e;
@@ -603,31 +570,31 @@ function connectionLDAP($sUser, $sPwd){
         $_SESSION["userinfo"] = $oInfos;
         $ary_result["Status"] = "LDAP_Connection_OK";
         $ary_result["User"] = $sUser;
-        //$ary_result["UserInfo_displayname"] = $oInfos[0]["displayname"][0];
+        $ary_result["UserInfo_displayname"] = $oInfos[0]["displayname"][0];
 
         //Create a parameter count ?
         //NOT GENIUS !!!
         //-_-#
-        // $nCount = $oInfos[0]["memberof"]["count"];
-        // while($nLine < $nCount){
-        //     //get the member of information
-        //     $sGroup = $oInfos[0]["memberof"][$nLine];
-        //     //explode the stuff
-        //     $sGroup = (explode( ",", $sGroup))[0];
-        //     //get out the CN= part
-        //     $sGroup = str_replace("CN=", "", $sGroup);
-        //     //add the groups
-        //     //echo $sGroup;
-        //     $ary_result["MemberOf"][$nLine] = $sGroup;
-        //     //$ary_result["MemberOf"][$nLine] = $oInfos[0]["memberof"][$nLine];
-        //     //next
-        //     $nLine++;
-        // }
+        $nCount = $oInfos[0]["memberof"]["count"];
+        while($nLine < $nCount){
+            //get the member of information
+            $sGroup = $oInfos[0]["memberof"][$nLine];
+            //explode the stuff
+            $sGroup = (explode( ",", $sGroup))[0];
+            //get out the CN= part
+            $sGroup = str_replace("CN=", "", $sGroup);
+            //add the groups
+            //echo $sGroup;
+            $ary_result["MemberOf"][$nLine] = $sGroup;
+            //$ary_result["MemberOf"][$nLine] = $oInfos[0]["memberof"][$nLine];
+            //next
+            $nLine++;
+        }
 
         //can't be used because of the ERROR =>
         //Warning: preg_replace(): The /e modifier is no longer supported, use preg_replace_callback instead
         //really ... thanks guy !!!
-        $ary_result["MemberOf"] = $oLdap->user()->groups($sUser);
+        //$ary_result["MemberOf"] = $oLdap->user()->groups($sUser);
 
         //so we are connected !!!
         //Are we in the DTB ?
@@ -635,12 +602,12 @@ function connectionLDAP($sUser, $sPwd){
         if( count($ary_Users) <= 0){
             //get name part
             $sName = $sUser;
-            // $ary_PersonaIdentity = explode(" ", $ary_result["UserInfo_displayname"]);
-            // //if we have more than 1 element
-            // if(count($ary_PersonaIdentity) > 1){
-            //     $sName = $ary_PersonaIdentity[0];
-            //     $sFirstname = str_replace($sName . " ", "",  $ary_result["UserInfo_displayname"]); 
-            // }
+            $ary_PersonaIdentity = explode(" ", $ary_result["UserInfo_displayname"]);
+            //if we have more than 1 element
+            if(count($ary_PersonaIdentity) > 1){
+                $sName = $ary_PersonaIdentity[0];
+                $sFirstname = str_replace($sName . " ", "",  $ary_result["UserInfo_displayname"]); 
+            }
 
             //creation part
             $ary_result["UserId"] = createUser($oXXX, strtoupper($sUser), $sName, $sFirstname);

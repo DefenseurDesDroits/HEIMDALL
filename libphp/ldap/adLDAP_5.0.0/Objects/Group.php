@@ -28,7 +28,7 @@ class Group extends AbstractObject
      *
      * @throws AdldapException
      */
-    public function validateRequired()
+    public function validateRequired($only = [])
     {
         parent::validateRequired();
 
