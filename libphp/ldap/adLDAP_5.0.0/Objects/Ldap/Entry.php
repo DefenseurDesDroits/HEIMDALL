@@ -49,7 +49,7 @@ class Entry extends AbstractObject
                         $data = [];
 
                         for ($i = 0; $i <= $attributes[$key]['count']; $i++) {
-                            //MagnusMoi Fix
+                            //@MagnusMoi Fix
 							if(array_key_exists($i, $attributes[$key]))
 								$data[] = $attributes[$key][$i];
 							//$data[] = $attributes[$key][$i];

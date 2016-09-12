@@ -3,6 +3,8 @@
 //include the connection
 include_once("../php/connection.php");
 include_once("../php/Potours_Legacy.php");
+include_once("../php/Potours_Data.php");
+include_once("../php/Groups_manager_2.php");
 //include("../php/connection.php");
 //include_once("../php/Potours_Connection_PGSQL.php");
 
@@ -172,6 +174,219 @@ function createTitres($oXXX, $oCRM){
     echo $oXXX->close();
 
     return True;
+}
+
+function GroupsgetAllInstanceWith($sName){
+    //Our object declaration
+	$oGroups = new Groups();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oGroups->getColumns() . "\r\n" . "FROM " . $oGroups->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oGroups->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	// if($sLinks != "")
+	// 	$sQuery .= "WHERE " . $sLinks;
+	
+    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) ;
+
+	/* Don't forget to override to use $oAgent !!! */
+	
+    //debugging, the desperate way
+    // if(HEIMDALL_LDAP_Debug)
+    //     file_put_contents(dirname(__FILE__) . "/../logs/test_Import_CRM@GroupsgetAllInstanceWith.log", "\r\n\r\n[New Call]\r\n" . $sQuery,  FILE_APPEND );
+
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oGroups->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	/* So ... we got the array !!! !!! */
+	/* Create the result array !!! !!! */
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oGroups = new Groups();
+		//load the data
+		$oGroups->loadFromArray($ary_[$nLine], true);
+		//add the data
+		$ary_Result[$nLine] = $oGroups;
+		//$ary_Result[$nLine] = $oGroups->exportToArray();
+		//Next
+		$nLine++;
+	}
+	
+    //debugging, the desperate way
+    // if(HEIMDALL_LDAP_Debug)
+    //     file_put_contents(dirname(__FILE__) . "/../logs/test_Import_CRM@GroupsgetAllInstanceWith.log", "\r\n[Results]\r\n" . $nCount . " line(s) found !!!",  FILE_APPEND );
+
+	//Returns
+	return $ary_Result;
+}
+
+function createGroups($oXXX, $sCSV){
+
+    //our count of line
+    $nCount = 0;
+    //our iterator for line 
+    $nLine = 0;
+    //Our count for cell
+    $nSize = 0;
+    //our iterrator for cells
+    $nCell = 0;
+    
+    //group name 
+    $sGrp = "";
+    //Pärent name 
+    $sParent = "";
+
+    //our group 
+    $oGrp = new Groups();
+    //Previous group 
+    $oPrevious = new Groups();
+    //previous Parent
+    $oParent = new Groups();
+
+    //array of already existing Groups
+    $ary_Groups = null;
+
+    //our CSV File
+    $oCSV = new Potours_Data();
+
+    //load the file 
+    $oCSV->loadCSV($sCSV, ";");
+
+    //lines and columns
+    $nCount = $oCSV->getLineCount();
+    //columns
+    $nSize = $oCSV->getColumnCount();
+
+    echo("Nombre de colonnes : " . $nSize . "| Nombre de lignes : " . $nCount ) ;
+
+    //for all line
+    while($nLine < $nCount){
+
+        //new group !!!
+        $oGrp = new Groups();
+
+        //for each line 
+        $nCell = $nSize - 1;
+        while($nCell > -1){
+            //does we have a group name 
+            $sGrp = utf8_encode ($oCSV->getCell($nCell, $nLine, ""));
+            //$sGrp = $oCSV->getCell($nCell, $nLine, "");
+            if($sGrp != ""){
+
+                //search in old grp made !!!
+                $ary_Groups = GroupsgetAllInstanceWith($sGrp);
+
+                //not already here 
+                if(count($ary_Groups) <= 0){
+
+                    //set all
+                    $oGrp->setId_Noeuds_Parent(1);
+                    $oGrp->setId_Accreditations_Item(1);
+                    $oGrp->setId_Civilites(1);
+                    $oGrp->setId_Titres(1);
+                    $oGrp->setId_Contact_Types(4);
+                    $oGrp->setId_Creator(1);
+                    //set the name 
+                    $oGrp->setNom($sGrp);
+                    $oGrp->setNomGroupe($sGrp);
+                    //create the Groups
+                    $oGrp->save(1);
+
+                    //get the parent name 
+                    $sParent = utf8_encode ($oCSV->getCell($nCell - 1, $nLine, ""));
+                    //$sParent = $oCSV->getCell($nCell - 1, $nLine, "");
+                    //we got a parent 
+                    if($sParent != ""){
+
+                        //is the parent the previous ?
+                        if($sParent == $oPrevious->getNomGroupe() ){
+                            //the parent is the previous
+                            $oGrp->setId_Noeuds_Parent(intval($oPrevious->getId_Items()));
+                            //previous became parent !!!
+                            $oParent = $oPrevious;
+                        }
+                        elseif( $sParent == $oParent->getNomGroupe() ){ //The parent is the parent !!!
+                            //the parent is the previous
+                            $oGrp->setId_Noeuds_Parent(intval($oParent->getId_Items()));
+                        }
+                        else{
+                            //own parent
+                            $oGrp->setId_Noeuds_Parent(intval($oGrp->getId_Items()));
+                        }
+                        //load previous !!!
+                        $oPrevious = $oGrp;
+                    }
+                    else{ //No parent
+                        //own parent
+                        $oGrp->setId_Noeuds_Parent(intval($oGrp->getId_Items()));
+                    }
+
+                    //own creator 
+                    $oGrp->setId_Creator(intval($oGrp->getId_Items()));
+                    //set the group owner ... itself Yeah \m/
+                    $oGrp->setId_groups_owner(intval($oGrp->getId_Items()));
+
+                    //save it again !!!
+                    $oGrp->save($oGrp->getId_Items());                    
+
+                }
+
+                $nCell = -41;
+            }
+
+            //next
+            $nCell--;
+        }
+
+        //Next
+        $nLine++;
+    }
+
+    // //set the parent !!!
+    // $oGrp->setId_Noeuds_Parent(intval($nIdUser));
+    // //$oGrp->setId_Noeuds_Parent(intval($nIdParent));
+    // $oGrp->setId_Accreditations_Item(1);
+    // $oGrp->setId_Civilites(1);
+    // $oGrp->setId_Titres(1);
+    // $oGrp->setId_Contact_Types(4);
+
+    // //set the name 
+    // $oGrp->setNom($sGrp);
+    // $oGrp->setNomGroupe($sGrp);
+
+    // //create the Groups
+    // $oGrp->save($nIdUser);
+
+    // $oGrp->setId_Creator(intval($oGrp->getId_Items()));
+
+    // //parent :)
+    // if($nIdParent != 0)
+    //     $oGrp->setId_Noeuds_Parent(intval($nIdParent));
+    // else
+    //     $oGrp->setId_Noeuds_Parent(intval($oGrp->getId_Items()));
+
+    // //set the group owner ... itself Yeah \m/
+    // $oGrp->setId_groups_owner(intval($oGrp->getId_Items()));
+
+    // //save it o yeah !!!!
+    // $oGrp->save($nIdUser);
 }
 
 ///[FUNCTION][createContacts]Function to create the contact
@@ -478,6 +693,7 @@ function doTransfert(){
     createTitres($oXXX, $oCRM);
     createContacts($oXXX, $oCRM);
     createOrganisations($oXXX, $oCRM);
+    createGroups($oXXX, "../csv/Organigramme.csv");
 
 }
 

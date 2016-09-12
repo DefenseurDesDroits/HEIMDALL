@@ -4229,3 +4229,2263 @@ AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
 AND xxx.Groups.NomGroupe ILIKE 'Utilisa. du domaine'
 [Results]
 1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Service communication'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Appel \C3\A0 t\C3\A9moignanges-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-W7SHARE-COM-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-COMM DDD-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'PORTAIL-DOCUMENTAIRE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INFOCOM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l''\C3\A9galit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-R\C3\A9formes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l\E2\80\99\C3\A9galit\C3\A9 et de l\E2\80\99acc\C3\A8s aux droits-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Mutuelles \C3\A9tudiantes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Plateforme racisme-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Sports et discriminations-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Etudes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Documentation-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_DIRECTION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_CABINET'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Rapport-Activit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_TOUTLEMONDE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Evenementiel-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Communication-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-International-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'AGORA'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Tous les utilisateurs avec archives'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'IMPRESSION-COPIEUR-COULEUR'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'COM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_DGMSP'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_ADMIN'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SERVICE_PRESSE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Service communication'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Appel \C3\A0 t\C3\A9moignanges-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-W7SHARE-COM-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-COMM DDD-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'PORTAIL-DOCUMENTAIRE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INFOCOM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l''\C3\A9galit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-R\C3\A9formes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l\E2\80\99\C3\A9galit\C3\A9 et de l\E2\80\99acc\C3\A8s aux droits-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Mutuelles \C3\A9tudiantes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Plateforme racisme-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Sports et discriminations-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Etudes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Documentation-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_DIRECTION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_CABINET'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Rapport-Activit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_TOUTLEMONDE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Evenementiel-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Communication-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-International-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'AGORA'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Tous les utilisateurs avec archives'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'IMPRESSION-COPIEUR-COULEUR'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'COM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_DGMSP'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_ADMIN'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SERVICE_PRESSE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Rapport Enfance 2016-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'PORTAIL-DOCUMENTAIRE'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l''\C3\A9galit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-R\C3\A9formes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l\E2\80\99\C3\A9galit\C3\A9 et de l\E2\80\99acc\C3\A8s aux droits-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Etudes-M'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-BD-Promotion des droits fondamentaux-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Base documentaire'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Documentation-M'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Groupes-Travail-DDD-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_TOUTLEMONDE'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-D\C3\A9fenseur des enfants-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Coll\C3\A8ges-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Communication-M'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-International-M'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Protection des droits - Affaires judiciaires-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Tous les utilisateurs avec archives'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Service communication'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Appel \C3\A0 t\C3\A9moignanges-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-W7SHARE-COM-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-COMM DDD-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'PORTAIL-DOCUMENTAIRE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INFOCOM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l''\C3\A9galit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-R\C3\A9formes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l\E2\80\99\C3\A9galit\C3\A9 et de l\E2\80\99acc\C3\A8s aux droits-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Mutuelles \C3\A9tudiantes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Plateforme racisme-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Sports et discriminations-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Etudes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Documentation-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_DIRECTION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_CABINET'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Rapport-Activit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_TOUTLEMONDE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Evenementiel-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Communication-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-International-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'AGORA'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Tous les utilisateurs avec archives'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'IMPRESSION-COPIEUR-COULEUR'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'COM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_DGMSP'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_ADMIN'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SERVICE_PRESSE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Service communication'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Appel \C3\A0 t\C3\A9moignanges-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-W7SHARE-COM-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-COMM DDD-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'PORTAIL-DOCUMENTAIRE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INFOCOM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l''\C3\A9galit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-R\C3\A9formes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l\E2\80\99\C3\A9galit\C3\A9 et de l\E2\80\99acc\C3\A8s aux droits-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Mutuelles \C3\A9tudiantes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Plateforme racisme-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Sports et discriminations-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Etudes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Documentation-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_DIRECTION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_CABINET'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Rapport-Activit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_TOUTLEMONDE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Evenementiel-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Communication-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-International-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'AGORA'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Tous les utilisateurs avec archives'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'IMPRESSION-COPIEUR-COULEUR'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'COM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_DGMSP'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_ADMIN'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SERVICE_PRESSE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Service communication'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Appel \C3\A0 t\C3\A9moignanges-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-W7SHARE-COM-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-COMM DDD-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'PORTAIL-DOCUMENTAIRE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INFOCOM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l''\C3\A9galit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-R\C3\A9formes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l\E2\80\99\C3\A9galit\C3\A9 et de l\E2\80\99acc\C3\A8s aux droits-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Mutuelles \C3\A9tudiantes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Plateforme racisme-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Sports et discriminations-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Etudes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Documentation-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_DIRECTION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_CABINET'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Rapport-Activit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_TOUTLEMONDE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Evenementiel-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Communication-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-International-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'AGORA'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Tous les utilisateurs avec archives'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'IMPRESSION-COPIEUR-COULEUR'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'COM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_DGMSP'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_ADMIN'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SERVICE_PRESSE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Service communication'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Appel \C3\A0 t\C3\A9moignanges-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-W7SHARE-COM-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-COMM DDD-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'PORTAIL-DOCUMENTAIRE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INFOCOM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l''\C3\A9galit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-R\C3\A9formes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Promotion de l\E2\80\99\C3\A9galit\C3\A9 et de l\E2\80\99acc\C3\A8s aux droits-L'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Mutuelles \C3\A9tudiantes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Plateforme racisme-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Sports et discriminations-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Etudes-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Documentation-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_DIRECTION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_CABINET'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_RES_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SALLE_REUNION'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-PT-Rapport-Activit\C3\A9-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_TOUTLEMONDE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Evenementiel-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-Communication-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'GG-International-M'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'AGORA'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Tous les utilisateurs avec archives'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'IMPRESSION-COPIEUR-COULEUR'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'COM'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_DGMSP'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_ADMIN'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'INT_SERVICE_PRESSE'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Gouvernance'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Cabinet'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Service Presse'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Défense et Promotion des droits de l''enfant'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Déontologie dans le domaine de la sécurité'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Lutte contre les discriminations et la promotion de l''égalité'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Médiation avec les services publics'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Secrétariat général'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Direction Promotion de l''Égalité et de l''Accès au Droits'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Unité Accès aux droits et discriminations'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Unité Communication et formation'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Unité Relations institutionnelles et réformes'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Direction protection des droits - Affaires judiciaires'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Défense des droits de l''enfant'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Déontologie de la sécurité'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle emploi, biens et services privés'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Justice et libertés'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Santé'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Direction Protection des droits - Affaires publiques'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Droits fondamentaux des étrangers'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Fonction publique'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Protection sociale et solidarité'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Services Publics'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Direction Recevabilité, Oreintation, Accès aux droits'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Direction Réseau Territorial'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Services administration générale'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Finances et affaires générales'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Informatique'
+[Results]
+0 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Pôle Ressources humaines'
+[Results]
+0 line(s) found !!!

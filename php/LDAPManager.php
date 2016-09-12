@@ -47,8 +47,8 @@ include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/JWT.php");
 use Firebase\JWT\JWT;
 
 //Debug const
-CONST HEIMDALL_LDAP_Debug = false;
-//CONST HEIMDALL_LDAP_Debug = true;
+//CONST HEIMDALL_LDAP_Debug = false;
+CONST HEIMDALL_LDAP_Debug = true;
 
 //const for choose the right path 
 
@@ -208,11 +208,14 @@ function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
     $oLDAPGrp = null;
     //
     $ary_Groups = array();
+    //
+    $oInfos = array();
 
     //
     $nCount = 0;
 
     if(HEIMDALL_LDAP_Debug)
+        //file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\r\n\r\n[New Call]\r\n" );
         file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\r\n\r\n[New Call]\r\n",  FILE_APPEND );
 
     //set the parent !!!
@@ -234,7 +237,7 @@ function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
     if(HEIMDALL_LDAP_Debug)
         file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Group created : " . $sGrp . "\r\n",  FILE_APPEND );
 
-        //parent :)
+    //parent :)
     if($nIdParent != 0)
         $oGrp->setId_Noeuds_Parent(intval($nIdParent));
     else
@@ -259,7 +262,15 @@ function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
         $oLDAPGrp = $oLDAP->group();
 
         //get the informations !!!
-        $ary_Groups = $oLDAPGrp->info($sGrp);
+        $oInfos = $oLDAPGrp->info($sGrp);
+
+        if(HEIMDALL_LDAP_Debug)
+            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", print_r($oInfos, TRUE) . "\r\n",  FILE_APPEND );
+
+        $ary_Groups = $oLDAPGrp->recursiveGroups($sGrp);
+
+        if(HEIMDALL_LDAP_Debug)
+            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", print_r($ary_Groups, TRUE) . "\r\n",  FILE_APPEND );
 
         // //get the groups
         // $ary_Groups = $oLDAP->group()->inGroup($sGrp);
@@ -571,6 +582,10 @@ function connectionLDAP($sUser, $sPwd){
     //all users 
     $ary_Users = null;
 
+    //debugging, the desperate way :D
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@connectionLDAP.log", "\r\n\r\n[New Call]\r\n" );
+
     try {
         //init the ldap connection 
         //$oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
@@ -603,30 +618,12 @@ function connectionLDAP($sUser, $sPwd){
         $_SESSION["userinfo"] = $oInfos;
         $ary_result["Status"] = "LDAP_Connection_OK";
         $ary_result["User"] = $sUser;
-        //$ary_result["UserInfo_displayname"] = $oInfos[0]["displayname"][0];
 
-        //Create a parameter count ?
-        //NOT GENIUS !!!
-        //-_-#
-        // $nCount = $oInfos[0]["memberof"]["count"];
-        // while($nLine < $nCount){
-        //     //get the member of information
-        //     $sGroup = $oInfos[0]["memberof"][$nLine];
-        //     //explode the stuff
-        //     $sGroup = (explode( ",", $sGroup))[0];
-        //     //get out the CN= part
-        //     $sGroup = str_replace("CN=", "", $sGroup);
-        //     //add the groups
-        //     //echo $sGroup;
-        //     $ary_result["MemberOf"][$nLine] = $sGroup;
-        //     //$ary_result["MemberOf"][$nLine] = $oInfos[0]["memberof"][$nLine];
-        //     //next
-        //     $nLine++;
-        // }
+        //debugging, the desperate way :D
+        if(HEIMDALL_LDAP_Debug)
+            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@connectionLDAP.log", print_r($oInfos, TRUE) . "\r\n",  FILE_APPEND );
 
-        //can't be used because of the ERROR =>
-        //Warning: preg_replace(): The /e modifier is no longer supported, use preg_replace_callback instead
-        //really ... thanks guy !!!
+        //get the users groups
         $ary_result["MemberOf"] = $oLdap->user()->groups($sUser);
 
         //so we are connected !!!
@@ -635,12 +632,12 @@ function connectionLDAP($sUser, $sPwd){
         if( count($ary_Users) <= 0){
             //get name part
             $sName = $sUser;
-            // $ary_PersonaIdentity = explode(" ", $ary_result["UserInfo_displayname"]);
-            // //if we have more than 1 element
-            // if(count($ary_PersonaIdentity) > 1){
-            //     $sName = $ary_PersonaIdentity[0];
-            //     $sFirstname = str_replace($sName . " ", "",  $ary_result["UserInfo_displayname"]); 
-            // }
+            $ary_PersonaIdentity = explode(" ", $oInfos["displayname"]);
+            //if we have more than 1 element
+            if(count($ary_PersonaIdentity) > 1){
+                $sName = $ary_PersonaIdentity[0];
+                $sFirstname = str_replace($sName . " ", "",  $oInfos["displayname"]); 
+            }
 
             //creation part
             $ary_result["UserId"] = createUser($oXXX, strtoupper($sUser), $sName, $sFirstname);
@@ -668,7 +665,9 @@ function connectionLDAP($sUser, $sPwd){
     return $ary_result;
 }
 
-//Hidden connection YOLO !!!
+///[FUNCTION][connectionLDAPToken]Function to connect user to LDAP from a token
+///[PARAMETER][string][$sToken]our token
+///[RETURNS]array of element
 function connectionLDAPToken($sToken){
 
     //our result object
