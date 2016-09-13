@@ -274,7 +274,7 @@ function createGroups($oXXX, $sCSV){
     //columns
     $nSize = $oCSV->getColumnCount();
 
-    echo("Nombre de colonnes : " . $nSize . "| Nombre de lignes : " . $nCount ) ;
+    echo("<br/>" . "Nombre de colonnes : " . $nSize . "| Nombre de lignes : " . $nCount ) ;
 
     //for all line
     while($nLine < $nCount){
@@ -346,6 +346,8 @@ function createGroups($oXXX, $sCSV){
                     //save it again !!!
                     $oGrp->save($oGrp->getId_Items());                    
 
+                    //created
+                    echo("<br/>" . "Group ajouté : " . $oGrp->getNomGroupe() );
                 }
 
                 $nCell = -41;

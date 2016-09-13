@@ -66,6 +66,7 @@ CONST HEIMDALL_LDAP_Connection_SEVER_ADR = "192.168.1.16";
 CONST HEIMDALL_LDAP_Connection_DOMAIN = "DC=AC,DC=local";
 //CONST HEIMDALL_LDAP_Connection_DOMAIN = "OU=DDD,DC=AC,DC=local";
 
+//CONST HEIMDALL_LDAP_Create_Group = false;
 CONST HEIMDALL_LDAP_Create_Group = true;
 
 //the key 
@@ -412,7 +413,8 @@ function attachToGroups($nIdUser, $ary_Group, $oLDAP){
     while($nLine < $nCount){
 
         //do da job Steve !!!
-        $nResult += attachToGroup($nIdUser, $ary_Group[$nLine], $oLDAP);
+        if($ary_Group[$nLine] != "")
+            $nResult += attachToGroup($nIdUser, $ary_Group[$nLine], $oLDAP);
 
         //next
         $nLine++;
@@ -461,79 +463,165 @@ function checkToken($sToken){
     return (array)$oResult;
 }
 
+// //create user 
+// function createUser($oXXX, $sUser, $sName, $sFirstname){
+
+//     //our query
+//     $sQuery = "";
+//     //our number 
+//     $nID = 0;
+//     //the id Orga 
+//     $nIDContact = 0;
+//     //the id of new contact info contact infos
+//     $nIDLink = 0;
+//     //our count
+//     $nCount = 0;
+//     //our iterator
+//     $nLine = 0;
+//     //our sub count
+//     $nSubCount = 0;
+//     //our sub iterrator
+//     $nSubLine = 0;
+//     //our array 
+//     $ary_ = array();
+
+//     //array to obtain contact info and info 
+//     $ary_Addr = array();
+//     //array to obtain the addr for a contact
+//     $ary_AddrContact = array();
+
+//     //[Line]
+
+//     //get the max ID (Worst Best Idea Ever !)*********************
+//     //the query
+//     $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
+//     //open
+//     $oXXX->open();
+//     //the select query
+//     $ary_ = $oXXX->selectRequest($sQuery, ["max"], null);
+//     //close
+//     $oXXX->close();
+
+//     //[Line]
+
+//     //echo json_encode($ary_);
+
+//     //is there any contact type ?
+//     if(count($ary_) == 0 || array_key_exists("ERROR", $ary_[0])){
+//         return -1;
+//     }
+
+//     //[Line]
+//     //echo json_encode($ary_);
+
+//     //get the max ID
+//     $nID = intval($ary_[0]["max"]);
+//     $nID++;
+//     $nIDContact = $nID;
+
+//     //[Line]
+
+//     $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
+//     $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
+//     $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($sFirstname) .", ". Quotes($sName) .", 1, null, 3);\r\n";
+//     $sQuery .= "INSERT INTO xxx.users(id_users, pseudo, id_accreditations_exp_json) VALUES (" . $nID . ", " . Quotes($sUser) . ", '');";
+
+//     //[Line]
+
+//     //open
+//     $oXXX->open();
+//     //execute
+//     $oXXX->insertRequest($sQuery, null);
+//     $oXXX->close();
+
+//     //return the ID
+//     return $nIDContact;
+// }
+
 //create user 
-function createUser($oXXX, $sUser, $sName, $sFirstname){
+function createUser($sUser, $sName, $sFirstname, $nIdCreator = 0, $nIdGroup = 0, $oLDAP = null, $sSupervisorFieldName = ""){
 
-    //our query
-    $sQuery = "";
-    //our number 
-    $nID = 0;
-    //the id Orga 
-    $nIDContact = 0;
-    //the id of new contact info contact infos
-    $nIDLink = 0;
-    //our count
-    $nCount = 0;
-    //our iterator
-    $nLine = 0;
-    //our sub count
-    $nSubCount = 0;
-    //our sub iterrator
-    $nSubLine = 0;
-    //our array 
-    $ary_ = array();
+    //our new user 
+    $oUsr = new Users();
 
-    //array to obtain contact info and info 
-    $ary_Addr = array();
-    //array to obtain the addr for a contact
-    $ary_AddrContact = array();
+    //Parent Id
+    $nIdParent = 0;
 
-    //[Line]
+    //our supervisors !
+    $ary_Sup = [];
 
-    //get the max ID (Worst Best Idea Ever !)*********************
-    //the query
-    $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
-    //open
-    $oXXX->open();
-    //the select query
-    $ary_ = $oXXX->selectRequest($sQuery, ["max"], null);
-    //close
-    $oXXX->close();
+    //our  infos
+    $oInfos = null;
 
-    //[Line]
+    //Supervisor login
+    $sLogin = "";
 
-    //echo json_encode($ary_);
+    //our user set
+    $oUsr->setId_Noeuds_Parent(1);
+    $oUsr->setId_Accreditations_Item(1);
+    $oUsr->setId_Civilites(1);
+    $oUsr->setId_Titres(1);
+    $oUsr->setId_Contact_Types(3);
+    $oUsr->setId_Creator($nIdCreator);
+    $oUsr->setId_groups_owner(intval($nIdGroup));
+    //set the name 
+    $oUsr->setNom($sName);
+    $oUsr->setPrenom($sFirstname);
+    $oUsr->setPseudo(strtoupper($sUser));
+    //create the Groups
+    $oUsr->save($nIdCreator);
 
-    //is there any contact type ?
-    if(count($ary_) == 0 || array_key_exists("ERROR", $ary_[0])){
-        return -1;
+    //Default parent
+    $nIdParent = intval($oUsr->getId_Items());
+
+    //if supervisor mentioned
+    if($sSupervisorFieldName != ""){
+        if($oLDAP != null){
+
+            //get the infos
+            $oInfos = $oLDAP->user()->info($sUser);
+            
+            //Superior ?
+            if(array_key_exists($sSupervisorFieldName, $oInfos)){
+                //
+                $sLogin = $oInfos[$sSupervisorFieldName];
+
+                //have we a superior ?
+                if($sLogin != ""){
+
+                    //
+                    $ary_Sup = UsersgetAllInstanceWith(strtoupper($sLogin));
+
+                    //if supervisor exists in DTB
+                    if(count($ary_Sup) == 1){
+                        $nIdParent = intval($ary_Sup[0]->getId_Items());
+                    }
+                    else{
+                        //get the infos
+                        $oInfos = $oLDAP->user()->info($sLogin);
+                        //
+                        if(is_array($oInfos)){
+                            if(array_key_exists("givenname", $oInfos) && array_key_exists("sn", $oInfos))
+                                $nIdParent = createUser(strtoupper($sLogin), $oInfos["sn"], $oInfos["givenname"], intval($oUsr->getId_Items()), $nIdGroup, $oLDAP, $sSupervisorFieldName);
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+
     }
 
-    //[Line]
-    //echo json_encode($ary_);
+    //
+    $oUsr->setId_Noeuds_Parent($nIdParent);
 
-    //get the max ID
-    $nID = intval($ary_[0]["max"]);
-    $nID++;
-    $nIDContact = $nID;
-
-    //[Line]
-
-    $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-    $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
-    $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($sFirstname) .", ". Quotes($sName) .", 1, null, 3);\r\n";
-    $sQuery .= "INSERT INTO xxx.users(id_users, pseudo, id_accreditations_exp_json) VALUES (" . $nID . ", " . Quotes($sUser) . ", '');";
-
-    //[Line]
-
-    //open
-    $oXXX->open();
-    //execute
-    $oXXX->insertRequest($sQuery, null);
-    $oXXX->close();
+    $oUsr->save($nIdCreator);
 
     //return the ID
-    return $nIDContact;
+    return intval($oUsr->getId_Items());
 }
 
 ///[FUNCTION][connectionLDAP]Function to connect user to LDAP
@@ -639,14 +727,18 @@ function connectionLDAP($sUser, $sPwd){
                 $sFirstname = str_replace($sName . " ", "",  $oInfos["displayname"]); 
             }
 
+            //createUser($sUser, $sName, $sFirstname, $nIdCreator = 0, $nIdGroup = 0, $oLDAP = null, $sSupervisorFieldName = "")
+
             //creation part
-            $ary_result["UserId"] = createUser($oXXX, strtoupper($sUser), $sName, $sFirstname);
+            $ary_result["UserId"] = createUser(strtoupper($sUser), $sName, $sFirstname, 0, 0, $oLdap, "homephone");
+            //$ary_result["UserId"] = createUser($oXXX, strtoupper($sUser), $sName, $sFirstname);
             $ary_result["Comment"] = "User added to Heimdall : ";
             $ary_result["Comment"] .= "<br/> User Id : " . $ary_result["UserId"];
             $ary_result["UserInfo_displayname"] = $sFirstname . " " . $sName;
             
             //attach to the groups
-            attachToGroups($ary_result["UserId"], $ary_result["MemberOf"], $oLdap);
+            //attachToGroups($ary_result["UserId"], [utf8_encode($oInfos["company"]), utf8_encode($oInfos["department"])], $oLdap);
+            //attachToGroups($ary_result["UserId"], $ary_result["MemberOf"], $oLdap);
 
             $ary_Users = UsersgetAllInstanceWith(strtoupper($sUser));
         }
@@ -656,6 +748,9 @@ function connectionLDAP($sUser, $sPwd){
         }
         $ary_result["Token"] = createToken($ary_result["UserId"]);
         $ary_result["UserObj"] = $ary_Users[0]->exportToArray();
+
+        attachToGroups($ary_result["UserId"], [$oInfos["company"], $oInfos["department"]], $oLdap);
+        //attachToGroups($ary_result["UserId"], [utf8_encode($oInfos["company"]), utf8_encode($oInfos["department"])], $oLdap);
     }
     else{
         $ary_result["Status"] = "LDAP_Connection_KO";
