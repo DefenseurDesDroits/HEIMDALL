@@ -805,7 +805,15 @@ Ludo
  Function to set a COMBO From a List of String
  </summary>
 	<param name="lst_sStrs">List (Of String), list of the String to set the combo</param>
-	<param name="COMBO_List">COMBO, we want set</param>
+	<param name="COMBO_List">Combo_Box, we want set</param>
+	<returns>Boolean, True if done, false if null</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.lst_StrToCOMBO(System.Collections.Generic.List{System.String},LUDO_CTRL_COMBO@)">
+	<summary>
+ Function to set a COMBO From a List of String
+ </summary>
+	<param name="lst_sStrs">List (Of String), list of the String to set the combo</param>
+	<param name="COMBO_List">LUDO_CTRL_COMBO, we want set</param>
 	<returns>Boolean, True if done, false if null</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo_Tools.lst_ObjToLst_KeyValue(System.Collections.Generic.List{System.Object}@)">
@@ -833,7 +841,15 @@ Ludo
 	<summary>
  Function to select an item in a combo from a string name option
  </summary>
-	<param name="COMBO_Target">COMBO, Combo we want Selecte an element</param>
+	<param name="COMBO_Target">ComboBox, Combo we want Select an element from</param>
+	<param name="sStr">String, Str we want select in the Combo</param>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.COMBO_SelectItemFromStr(LUDO_CTRL_COMBO@,System.String)">
+	<summary>
+ Function to select an item in a combo from a string name option
+ </summary>
+	<param name="COMBO_Target">LUDO_CTRL_COMBO, Combo we want Select an element from</param>
 	<param name="sStr">String, Str we want select in the Combo</param>
 	<returns>Boolean, True if done</returns>
 	<remarks></remarks>
@@ -841,11 +857,27 @@ Ludo
 	<summary>
  Function to select an item in a combo from an integer value option
  </summary>
-	<param name="COMBO_Target">COMBO, Combo where we want select a line</param>
+	<param name="COMBO_Target">ComboBox, Combo where we want select a line</param>
+	<param name="nValue">Integer, value of the keyvalue line we want select</param>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.COMBO_SelectItemFromInt(LUDO_CTRL_COMBO@,System.Int32)">
+	<summary>
+ Function to select an item in a combo from an integer value option
+ </summary>
+	<param name="COMBO_Target">LUDO_CTRL_COMBO, Combo where we want select a line</param>
 	<param name="nValue">Integer, value of the keyvalue line we want select</param>
 	<returns>Boolean, True if done</returns>
 	<remarks></remarks>
 </member><member name="M:Ludo_Tools.LIST_SelectItemFromInt(System.Windows.Forms.ListBox@,System.Int32)">
+	<summary>
+ Function to select an item in a listBox from an integer value option
+ </summary>
+	<param name="LIST_Target">ListBox, List box we want set a select</param>
+	<param name="nValue">Integer, Value in the Key Value we want</param>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo_Tools.LIST_SelectItemFromInt(LUDO_CTRL_LIST@,System.Int32)">
 	<summary>
  Function to select an item in a listBox from an integer value option
  </summary>
@@ -2331,6 +2363,13 @@ Ludo
  </summary>
 	<returns>String, our formated date !</returns>
 	<remarks></remarks>
+</member><member name="M:LUDO_CTRL_DTP.fromYYYYMMDD(System.String)">
+	<summary>
+ Method to load date from a string formated in yyyyMMdd !
+ </summary>
+	<param name="sDate">string, our date</param>
+	<returns>Boolean, true if date loaded, false if not (then LUDO_Now() called !)</returns>
+	<remarks></remarks>
 </member><member name="P:LUDO_CTRL_DTP.Value">
 	<summary>
  Property to manage the value of the DateTimePicker
@@ -2396,6 +2435,11 @@ Ludo
  </summary>
 	<param name="sLabelText">string, text of the label</param>
 	<param name="dtDate">Date, starting date</param>
+	<remarks></remarks>
+</member><member name="T:LUDO_CTRL_DTP">
+	<summary>
+ Layout to have a Date Time Picker field with label
+ </summary>
 	<remarks></remarks>
 </member><member name="F:LAY_XML_Analyzer.xmlDocument">
 	<summary>
@@ -6400,6 +6444,13 @@ Ludo
 	<value>Object, our new data source</value>
 	<returns>Object, our data source</returns>
 	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_LIST.Items">
+	<summary>
+ Property to manage the Item of the List
+ </summary>
+	<value>System.Windows.Forms.ListBox.ObjectCollection, our list of object</value>
+	<returns>System.Windows.Forms.ListBox.ObjectCollection, our list of object</returns>
+	<remarks></remarks>
 </member><member name="M:LUDO_CTRL_LIST.HANDLER_Click(System.Object,System.EventArgs)">
 	<summary>
  Handler to manage the keyUp
@@ -6435,7 +6486,7 @@ Ludo
 	<remarks></remarks>
 </member><member name="T:LUDO_CTRL_LIST">
 	<summary>
- Layout to have a List field with lab
+ Layout to have a List field with label
  </summary>
 	<remarks></remarks>
 </member><member name="F:Ludo.CTRL.Ludo_ProgressBar.nMaximum">
@@ -6602,7 +6653,7 @@ Ludo
 	<remarks></remarks>
 </member><member name="T:Ludo.CTRL.Ludo_ProgressBar">
 	<summary>
- COntrol class to manage the Progress bar with text
+ Control class to manage the Progress bar with text
  </summary>
 	<remarks></remarks>
 </member><member name="F:LAY_LUDO_DTB_Conception.oSch">
@@ -8177,7 +8228,7 @@ Ludo
 	<remarks></remarks>
 </member><member name="T:LUDO_CTRL_SAI">
 	<summary>
- Control to shaw Lab and SAI
+ Layout to have a TextBox field with label
  </summary>
 	<remarks></remarks>
 </member><member name="F:DataGridViewDateTxtCell.bChangeFormat">
@@ -8418,6 +8469,12 @@ Ludo
 	<value>Object, our new data source</value>
 	<returns>Object, our data source</returns>
 	<remarks></remarks>
+</member><member name="P:LUDO_CTRL_COMBO.Items">
+	<summary>
+ Property to manage the Items
+ </summary>
+	<returns>System.Windows.Forms.ComboBox.ObjectCollection, the items</returns>
+	<remarks></remarks>
 </member><member name="M:LUDO_CTRL_COMBO.HANDLER_Click(System.Object,System.EventArgs)">
 	<summary>
  Handler to manage the keyUp
@@ -8449,6 +8506,11 @@ Ludo
 </member><member name="M:LUDO_CTRL_COMBO.#ctor">
 	<summary>
  Builder
+ </summary>
+	<remarks></remarks>
+</member><member name="T:LUDO_CTRL_COMBO">
+	<summary>
+ Layout to have a Combo field with label
  </summary>
 	<remarks></remarks>
 </member><member name="F:WIN_LUDO_DTB_CreateCompactDTB.bModeCreation">
