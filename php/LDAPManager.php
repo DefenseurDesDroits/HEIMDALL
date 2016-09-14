@@ -159,7 +159,9 @@ function GroupsgetAllInstanceWith($sName){
 	// if($sLinks != "")
 	// 	$sQuery .= "WHERE " . $sLinks;
 	
-    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) ;
+    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) . "" ;
+    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND unaccent(xxx.Groups.NomGroupe) ILIKE unaccent(" . Quotes($sName) . ")" ;
+    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) ;
 
 	/* Don't forget to override to use $oAgent !!! */
 	

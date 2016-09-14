@@ -5182,3 +5182,111 @@
 	=> Status : Accès aux droits et discrimination
 	=> Json : 
 	=> New Json : {[{"uid":"952","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Promotion de l'égalité et de l'accès aux droits
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Promotion de l'égalité et de l'accès aux droits
+	=> Json : 
+	=> New Json : {[{"uid":"948","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Communication et formation
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Communication et formation
+	=> Json : 
+	=> New Json : {[{"uid":"948","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Promotion de l'égalité et de l'accès aux droits
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Promotion de l'égalité et de l'accès aux droits
+	=> Json : {[{"uid":"948","until":""},{"uid":"952","until":""}]}
+	=> Already in !!!
+
+
+[New Call]
+	=> Group name not null : Accès aux droits et discrimination
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Accès aux droits et discrimination
+	=> Json : {[{"uid":"952","until":""}]}
+	=> Already in !!!
+
+
+[New Call]
+	=> Group name not null : Promotion de l'égalité et de l'accès aux droits
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Promotion de l'égalité et de l'accès aux droits
+	=> Json : 
+	=> New Json : {[{"uid":"948","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Communication et formation
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Communication et formation
+	=> Json : 
+	=> New Json : {[{"uid":"948","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Promotion de l'égalité et de l'accès aux droits
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Promotion de l'égalité et de l'accès aux droits
+	=> Json : {[{"uid":"948","until":""}]}
+	=> New Json : {[{"uid":"948","until":""},{"uid":"952","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Accès aux droits et discrimination
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Accès aux droits et discrimination
+	=> Json : 
+	=> New Json : {[{"uid":"952","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Promotion de l'égalité et de l'accès aux droits
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Promotion de l'égalité et de l'accès aux droits
+	=> Json : 
+	=> New Json : {[{"uid":"948","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Communication et formation
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Communication et formation
+	=> Json : 
+	=> New Json : {[{"uid":"948","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Promotion de l'égalité et de l'accès aux droits
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Promotion de l'égalité et de l'accès aux droits
+	=> Json : {[{"uid":"948","until":""}]}
+	=> New Json : {[{"uid":"948","until":""},{"uid":"952","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Accès aux droits et discrimination
+	=> Groups with this name in DTB : 0
+	=> Creation 
+	=> Status : Accès aux droits et discrimination
+	=> Json : 
+	=> New Json : {[{"uid":"952","until":""}]}
