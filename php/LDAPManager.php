@@ -202,6 +202,70 @@ function GroupsgetAllInstanceWith($sName){
 	return $ary_Result;
 }
 
+function GroupsgetAllInstanceWithMember($sName){
+    //Our object declaration
+	$oGroups = new Groups();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oGroups->getColumns() . "\r\n" . "FROM " . $oGroups->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oGroups->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	// if($sLinks != "")
+	// 	$sQuery .= "WHERE " . $sLinks;
+	
+    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) . "" ;
+    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND upper(unaccent(xxx.Groups.NomGroupe)) ILIKE upper(unaccent(" . Quotes($sName) . "))" ;
+    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND unaccent(xxx.Groups.NomGroupe) ILIKE unaccent(" . Quotes($sName) . ")" ;
+    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) ;
+
+	/* Don't forget to override to use $oAgent !!! */
+	
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@GroupsgetAllInstanceWith.log", "\r\n\r\n[New Call]\r\n" . $sQuery,  FILE_APPEND );
+
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oGroups->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	/* So ... we got the array !!! !!! */
+	/* Create the result array !!! !!! */
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oGroups = new Groups();
+		//load the data
+		$oGroups->loadFromArray($ary_[$nLine], true);
+		//add the data
+		$ary_Result[$nLine] = $oGroups;
+		//$ary_Result[$nLine] = $oGroups->exportToArray();
+		//Next
+		$nLine++;
+	}
+	
+    //debugging, the desperate way
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@GroupsgetAllInstanceWith.log", "\r\n[Results]\r\n" . $nCount . " line(s) found !!!",  FILE_APPEND );
+
+	//Returns
+	return $ary_Result;
+}
+
 //create group
 function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
 
@@ -753,6 +817,9 @@ function connectionLDAP($sUser, $sPwd){
 
         attachToGroups($ary_result["UserId"], [$oInfos["company"], $oInfos["department"]], $oLdap);
         //attachToGroups($ary_result["UserId"], [utf8_encode($oInfos["company"]), utf8_encode($oInfos["department"])], $oLdap);
+
+        //add the groups !!!
+
     }
     else{
         $ary_result["Status"] = "LDAP_Connection_KO";

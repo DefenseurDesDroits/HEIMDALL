@@ -422,11 +422,11 @@ function createContacts($oXXX, $oCRM){
     //the query
     $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
     //open
-    $oCRM->open();
+    $oXXX->open();
     //the select query
-    $ary_ = $oCRM->selectRequest($sQuery, ["max"], null);
+    $ary_ = $oXXX->selectRequest($sQuery, ["max"], null);
     //close
-    $oCRM->close();
+    $oXXX->close();
 
     //echo json_encode($ary_);
 
@@ -568,11 +568,11 @@ function createOrganisations($oXXX, $oCRM){
     //the query
     $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
     //open
-    $oCRM->open();
+    $oXXX->open();
     //the select query
-    $ary_ = $oCRM->selectRequest($sQuery, ["max"], null);
+    $ary_ = $oXXX->selectRequest($sQuery, ["max"], null);
     //close
-    $oCRM->close();
+    $oXXX->close();
 
     //echo json_encode($ary_);
 
@@ -665,7 +665,8 @@ function doTransfert(){
     //crm connection
     $oCRM = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
     //xxx connection
-    $oXXX = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
+    $oXXX = new Potours_Connection_PGSQL("192.168.1.184", "heimdalldb", "heimdall", "T0RLVQM3+663");
+    //$oXXX = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
 
     //our array for our results 
     $ary_ = array();

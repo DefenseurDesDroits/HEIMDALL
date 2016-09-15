@@ -185,6 +185,60 @@ function loadStatics_Contact_Types(){
 
 }
 
+///[FUNCTION][loadStatics_Contact_Types]Function to load all the Contacts types from the DTB
+///[RETURNS][Boolean]True if done
+function loadStatics_Groups(){
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //our object to convert
+            var oGroups = null;
+            //our array of result
+            var ary_Json = JSON.parse(oReq.responseText);
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
+            //reset
+            Heimdall.members.products.contacts.Groups = [];
+            //get the number of result
+            nCount = ary_Json.length;
+            //loop
+            while(nLine < nCount){
+
+                //realloc the variable
+                oGroups = new Groups();
+                //load it !
+                oGroups.loadFromArray(ary_Json[nLine]);
+
+                //add it
+                Heimdall.members.products.contacts.Groups.push(oGroups);
+
+                //next
+                nLine++;
+            }
+
+            Heimdall.flags.waitData = false;
+        }
+    };
+    //prepare the query*********************
+    Heimdall.flags.waitData = true;
+    //check the open
+    oReq.open("POST", "php/Groups_manager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
+    //Return the job !
+    return true;
+
+}
+
 ///[FUNCTION][loadStaticsContactsData]Function to load all the Contacts data from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStaticsContactsData(){
@@ -192,6 +246,7 @@ function loadStaticsContactsData(){
     loadStatics_Contact_Types();
     loadStatics_Civilites();
     loadStatics_Titres();
+    loadStatics_Groups();
 
     return true;
 }
@@ -1113,6 +1168,7 @@ function init_contacts(){
     Heimdall.members.products.contacts["Civilites"] = [];
     Heimdall.members.products.contacts["Titres"] = [];
     Heimdall.members.products.contacts["Contacts"] = [];
+    Heimdall.members.products.contacts["Groups"] = [];
 
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
 

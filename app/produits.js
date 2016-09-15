@@ -118,6 +118,9 @@ var Heimdall = {
                     if(oElement)
                         oElement.innerHTML = sName;
                     
+                    //get the groups
+                    
+
                     break;
                 default:
                     alert("FATAL ERROR");

@@ -65,6 +65,9 @@ class Potours_Data{
                 //do the loop
                 while($nCell < $nCount){
 
+                    $data[$nCell] = str_replace("\r", "", $data[$nCell]);
+                    $data[$nCell] = str_replace("\n", "", $data[$nCell]);
+
                     //first line for header
                     if($nLine == 0){
                         if($bHeader)
