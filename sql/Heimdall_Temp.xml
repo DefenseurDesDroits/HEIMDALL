@@ -465,6 +465,51 @@
           </Columns>
           <Comment>Table des groups héritant de la table Contacts</Comment>
         </Table>
+        <Table name="Logs" deploy_name="Logs" inherit="" isview="False">
+          <Columns>
+            <Column name="nId_Logs" deploy_name="Id_Logs" key="primary" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef primaire de la table de login.</Comment>
+            </Column>
+            <Column name="nId_Items" deploy_name="Id_Items" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Identifiant de l'objet modifié, cette clef n'est pas étrangère pour ne pas supprimer l'état des objets supprimés.</Comment>
+            </Column>
+            <Column name="sCreation" deploy_name="Creation" key="" foreign="" type="s16" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Date de création du log.</Comment>
+            </Column>
+            <Column name="nId_Creator" deploy_name="Id_Creator" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Créateur du Log. Cette clef n'est pas étrangère pour ne pas supprimer l'état des objets supprimés.</Comment>
+            </Column>
+            <Column name="sValidation" deploy_name="Validation" key="" foreign="" type="s16" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Date de validation</Comment>
+            </Column>
+            <Column name="nId_Validator" deploy_name="Id_Validator" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Validateur de cette modification</Comment>
+            </Column>
+            <Column name="sValeur" deploy_name="Valeur" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Json, dernière valeur d'item</Comment>
+            </Column>
+            <Column name="bSuppression" deploy_name="Suppression" key="" foreign="" type="b" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>L'objet est il en attente de suppression (ou supprimé si Suppression == True And sValidation != '')</Comment>
+            </Column>
+          </Columns>
+          <Comment>Table pour enregistrer tous les changements de valeur d'item.</Comment>
+        </Table>
       </Tables>
     </Module>
   </Modules>

@@ -358,5 +358,32 @@ COMMENT ON COLUMN xxx.Groups.Fichiers IS 'Ce groupe héberge t''il des fichiers 
 COMMENT ON COLUMN xxx.Groups.NomGroupe IS 'Nom unique du group';
 
 
+-- ++++++++++++++++++++++++++++++++++++
+-- Table Logs
+-- Description :
+-- 	Table pour enregistrer tous les changements de valeur d'item.
+-- ++++++++++++++++++++++++++++++++++++
+
+CREATE TABLE IF NOT EXISTS xxx.Logs (
+	-- Clef primaire de la table de login.	Id_Logs serial PRIMARY KEY NOT NULL,
+	-- Identifiant de l'objet modifié, cette clef n'est pas étrangère pour ne pas supprimer l'état des objets supprimés.	Id_Items integer  NOT NULL,
+	-- Date de création du log.	Creation varchar(16)  NOT NULL,
+	-- Créateur du Log. Cette clef n'est pas étrangère pour ne pas supprimer l'état des objets supprimés.	Id_Creator integer  NOT NULL,
+	-- Date de validation	Validation varchar(16)  NOT NULL,
+	-- Validateur de cette modification	Id_Validator integer  NOT NULL,
+	-- Json, dernière valeur d'item	Valeur varchar(1024)  NOT NULL,
+	-- L'objet est il en attente de suppression (ou supprimé si Suppression == True And sValidation != '')	Suppression boolean  NOT NULL
+);
+COMMENT ON TABLE xxx.Logs IS 'Table pour enregistrer tous les changements de valeur d''item.';
+COMMENT ON COLUMN xxx.Logs.Id_Logs IS 'Clef primaire de la table de login.';
+COMMENT ON COLUMN xxx.Logs.Id_Items IS 'Identifiant de l''objet modifié, cette clef n''est pas étrangère pour ne pas supprimer l''état des objets supprimés.';
+COMMENT ON COLUMN xxx.Logs.Creation IS 'Date de création du log.';
+COMMENT ON COLUMN xxx.Logs.Id_Creator IS 'Créateur du Log. Cette clef n''est pas étrangère pour ne pas supprimer l''état des objets supprimés.';
+COMMENT ON COLUMN xxx.Logs.Validation IS 'Date de validation';
+COMMENT ON COLUMN xxx.Logs.Id_Validator IS 'Validateur de cette modification';
+COMMENT ON COLUMN xxx.Logs.Valeur IS 'Json, dernière valeur d''item';
+COMMENT ON COLUMN xxx.Logs.Suppression IS 'L''objet est il en attente de suppression (ou supprimé si Suppression == True And sValidation != '''')';
+
+
 
 

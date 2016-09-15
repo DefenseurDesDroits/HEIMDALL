@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.0.7";
+const MAIN_VERSION = "0.0.8";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! */
@@ -18,6 +18,7 @@ var ary_sFileLib = [
 	"lib/CONTACTS_Civilites.js",
 	"lib/CONTACTS_Contacts.js",
 	"lib/CONTACTS_Langues.js",
+	"lib/CONTACTS_Logs.js",
 	"lib/CONTACTS_Pays.js",
 	"lib/CONTACTS_Contact_Infos.js",
 	"lib/CONTACTS_Infos.js",
