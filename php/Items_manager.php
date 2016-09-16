@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-16 09:59:51
 //Filename : Items_manager.php
 //Description : Table de tous les items avec des droits
 
 
 //include to dtb connection
-include "CONTACTS_Items.php";
+include_once "CONTACTS_Items.php";
 
 ///[FUNCTION][ItemsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object

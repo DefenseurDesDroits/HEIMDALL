@@ -53,10 +53,10 @@
               </DefaultValue>
               <Comment>Identité de la table</Comment>
             </Column>
-            <Column name="nId_groups_owner" deploy_name="Id_groups_owner" key="" foreign="" type="n" isnullable="False">
+            <Column name="sId_groups_json" deploy_name="Id_groups_json" key="" foreign="" type="s1024" isnullable="False">
               <DefaultValue>
               </DefaultValue>
-              <Comment>Groupe possedant l'item</Comment>
+              <Comment>Groupes possedant l'item</Comment>
             </Column>
             <Column name="nId_Accreditations_Item" deploy_name="Id_Accreditations_Item" key="foreign" foreign="Contacts.Accreditations.nId_Accreditations" type="n" isnullable="True">
               <DefaultValue>
@@ -71,6 +71,11 @@
             <Column name="nId_Creator" deploy_name="Id_Creator" key="" foreign="" type="n" isnullable="False">
               <DefaultValue>0</DefaultValue>
               <Comment>Id sur l'item créateur de cet item</Comment>
+            </Column>
+            <Column name="sId_users_json" deploy_name="Id_users_json" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Users allowed to acces to the object</Comment>
             </Column>
           </Columns>
           <Comment>Table de tous les items avec des droits</Comment>
@@ -377,7 +382,7 @@
         </Table>
         <Table name="Organisations" deploy_name="Organisations" inherit="Contacts.Contacts" isview="False">
           <Columns>
-            <Column name="nId_Organisations" deploy_name="Id_Organisations" key="unique" foreign="Contacts.Contacts" type="n" isnullable="False">
+            <Column name="nId_Organisations" deploy_name="Id_Organisations" key="unique" foreign="Contacts.Contacts.nId_Contacts" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Identifiant hérité de la table Contacts</Comment>
@@ -500,7 +505,7 @@
             <Column name="sValeur" deploy_name="Valeur" key="" foreign="" type="s1024" isnullable="False">
               <DefaultValue>
               </DefaultValue>
-              <Comment>Json, dernière valeur d'item </Comment>
+              <Comment>Json, dernière valeur d'item</Comment>
             </Column>
             <Column name="bSuppression" deploy_name="Suppression" key="" foreign="" type="b" isnullable="False">
               <DefaultValue>

@@ -7,7 +7,7 @@
 
 
 //include to dtb connection
-include "CONTACTS_Items.php";
+include_once "CONTACTS_Items.php";
 
 ///[CLASS][Infos]Table des adresses. Hérité de la classe item.
 ///[AUTHOR]Ludo

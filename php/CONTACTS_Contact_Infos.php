@@ -7,7 +7,7 @@
 
 
 //include to dtb connection
-include "CONTACTS_Items.php";
+include_once "CONTACTS_Items.php";
 
 ///[CLASS][Contact_Infos]Table des informations liées au contact
 ///[AUTHOR]Ludo

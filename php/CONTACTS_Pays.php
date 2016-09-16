@@ -7,7 +7,7 @@
 
 
 //include to dtb connection
-include "connection.php";
+include_once "connection.php";
 
 ///[CLASS][Pays]Tables des pays
 ///[AUTHOR]Ludo

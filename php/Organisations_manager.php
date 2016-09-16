@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-16 12:05:35
 //Filename : Organisations_manager.php
 //Description : Table des organisations. héritant de celle des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Organisations.php";
+include_once "CONTACTS_Organisations.php";
 
 ///[FUNCTION][OrganisationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object

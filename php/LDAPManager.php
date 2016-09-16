@@ -529,81 +529,6 @@ function checkToken($sToken){
     return (array)$oResult;
 }
 
-// //create user 
-// function createUser($oXXX, $sUser, $sName, $sFirstname){
-
-//     //our query
-//     $sQuery = "";
-//     //our number 
-//     $nID = 0;
-//     //the id Orga 
-//     $nIDContact = 0;
-//     //the id of new contact info contact infos
-//     $nIDLink = 0;
-//     //our count
-//     $nCount = 0;
-//     //our iterator
-//     $nLine = 0;
-//     //our sub count
-//     $nSubCount = 0;
-//     //our sub iterrator
-//     $nSubLine = 0;
-//     //our array 
-//     $ary_ = array();
-
-//     //array to obtain contact info and info 
-//     $ary_Addr = array();
-//     //array to obtain the addr for a contact
-//     $ary_AddrContact = array();
-
-//     //[Line]
-
-//     //get the max ID (Worst Best Idea Ever !)*********************
-//     //the query
-//     $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
-//     //open
-//     $oXXX->open();
-//     //the select query
-//     $ary_ = $oXXX->selectRequest($sQuery, ["max"], null);
-//     //close
-//     $oXXX->close();
-
-//     //[Line]
-
-//     //echo json_encode($ary_);
-
-//     //is there any contact type ?
-//     if(count($ary_) == 0 || array_key_exists("ERROR", $ary_[0])){
-//         return -1;
-//     }
-
-//     //[Line]
-//     //echo json_encode($ary_);
-
-//     //get the max ID
-//     $nID = intval($ary_[0]["max"]);
-//     $nID++;
-//     $nIDContact = $nID;
-
-//     //[Line]
-
-//     $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-//     $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
-//     $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($sFirstname) .", ". Quotes($sName) .", 1, null, 3);\r\n";
-//     $sQuery .= "INSERT INTO xxx.users(id_users, pseudo, id_accreditations_exp_json) VALUES (" . $nID . ", " . Quotes($sUser) . ", '');";
-
-//     //[Line]
-
-//     //open
-//     $oXXX->open();
-//     //execute
-//     $oXXX->insertRequest($sQuery, null);
-//     $oXXX->close();
-
-//     //return the ID
-//     return $nIDContact;
-// }
-
 //create user 
 function createUser($sUser, $sName, $sFirstname, $nIdCreator = 0, $nIdGroup = 0, $oLDAP = null, $sSupervisorFieldName = ""){
 
@@ -629,7 +554,9 @@ function createUser($sUser, $sName, $sFirstname, $nIdCreator = 0, $nIdGroup = 0,
     $oUsr->setId_Titres(1);
     $oUsr->setId_Contact_Types(3);
     $oUsr->setId_Creator($nIdCreator);
-    $oUsr->setId_groups_owner(intval($nIdGroup));
+    if($nIdGroup != 0)
+        $oUsr->setId_groups_json( "{{\"grp\":\"" + $nIdGroup + "\", \"until\":\"\"}}");
+    //$oUsr->setId_groups_owner(intval($nIdGroup));
     //set the name 
     $oUsr->setNom($sName);
     $oUsr->setPrenom($sFirstname);

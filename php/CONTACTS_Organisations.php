@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-16 12:05:35
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Contacts.php";
+include_once "CONTACTS_Contacts.php";
 
 ///[CLASS][Organisations]Table des organisations. héritant de celle des contacts
 ///[AUTHOR]Ludo
@@ -23,7 +23,7 @@ class Organisations extends Contacts{
 		$OrganisationsmemberSet = array(		
 
 			// ///[MEMBER][integer][nId_Organisations]Identifiant hérité de la table Contacts
-			//"nId_Organisations" => 0 //inherited from => Contacts.Contacts,
+			//"nId_Organisations" => 0 //inherited from => Contacts.Contacts.nId_Contacts,
 			///[MEMBER][integer][nId_Organisation_Type]Clef étrangère sur la table Organistion_Types. Type de l'organisation
 			"nId_Organisation_Type" => 0,
 			///[MEMBER][string][sAcronyme]New Columns Created with Ludo Library
@@ -38,8 +38,8 @@ class Organisations extends Contacts{
 	///[METHOD][getId_Organisations]Method to get the Id_Organisations
 	///[RETURNS]The Id_Organisations
 	public function getId_Organisations(){
-		//[ERROR]The column Contacts.Organisations.nId_Organisations has an inheritance : Contacts.Contacts WITHOUT any linked Column !!!
-		return $this->members["nId_Organisations"];
+		//Return the getter in inheritage
+		return $this->getId_Contacts();
 	}
 
 	///[METHOD][getId_Organisation_Type]Method to get the Id_Organisation_Type
@@ -64,8 +64,8 @@ class Organisations extends Contacts{
 	///[PARAMETER][integer][$nValue]Our new value for Id_Organisations
 	///[RETURNS]Boolean true if done 
 	public function setId_Organisations($nValue){
-		//[ERROR]Return the member
-		return false;
+		//Return the member
+		return $this->setId_Contacts($nValue);
 	}
 
 	///[METHOD][setId_Organisation_Type]Method to set the Id_Organisation_Type
@@ -146,7 +146,18 @@ class Organisations extends Contacts{
 	}
 
 
-	///[ERROR]getLinkConditions, no PARENT key column detected
+	///[METHOD][getLinkConditions]Method to get the conditions to link with parent table 
+	///[PRAMETER][boolean][$bAll]Parameter to obtain parents Link conditions
+	///[RETURNS][string]string, our conditions 
+	public function getLinkConditions($bAll = false){
+		//get the parent link condition
+		$sParentCondition = parent::getLinkConditions($bAll);
+		//test the parent condition
+		if($sParentCondition != "" && $bAll)
+			return $sParentCondition ." \r\nAND xxx.Contacts.Id_Contacts =  xxx.Organisations.Id_Organisations";
+		else
+			return " xxx.Contacts.Id_Contacts = xxx.Organisations.Id_Organisations";
+	}
 
 
 	///[METHOD][getConditions]Method to get the conditions 

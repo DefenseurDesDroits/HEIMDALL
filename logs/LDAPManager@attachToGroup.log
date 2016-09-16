@@ -5488,3 +5488,21 @@
 	=> Status : Accès aux droits et discrimination
 	=> Json : 
 	=> New Json : {[{"uid":"951","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Promotion de l'égalité et de l'accès aux droits
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Promotion de l'Égalité et de l'Accès aux Droits
+	=> Json : 
+	=> New Json : {[{"uid":"948","until":""}]}
+
+
+[New Call]
+	=> Group name not null : Communication et formation
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Communication et formation
+	=> Json : 
+	=> New Json : {[{"uid":"948","until":""}]}
