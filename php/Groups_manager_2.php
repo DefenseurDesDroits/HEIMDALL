@@ -62,8 +62,67 @@ function GroupsgetAllChildrenOf($nIdParent){
 	
 	//Returns
 	return $ary_Result;
-	//return json_encode($ary_Result);
 };
+
+function groupsOfItem($nIdItem){
+
+	return null;
+}
+
+function groupsOfUser($nIdUser){
+
+	//Our object declaration
+	$oGroups = new Groups();
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+
+	//Our sub count
+	$nSubCount = 0;
+	//
+	$nSubLine = 0;
+	
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oGroups->getColumns() . "\r\n" . "FROM " . $oGroups->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oGroups->getLinkConditions(true);
+
+	$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND UGrp_Json ILIKE " . Quotes("%" . "\"uid\":\"" . $nIdUser . "\"" . "%");
+
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oGroups->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oGroups = new Groups();
+		//load the data
+		$oGroups->loadFromArray($ary_[$nLine], true);
+
+		//think to manage the group !!!
+
+		//add the data
+		//$ary_Result[$nLine] = $oGroups;
+		$ary_Result[$nLine] = $oGroups->exportToArray();
+
+
+		//Next
+		$nLine++;
+	}
+
+	return $ary_Result;
+}
 
 ///[FUNCTION][GroupsManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
@@ -83,7 +142,6 @@ function GroupsManager2(){
 	switch($sAction){
         case "CHILDREN" :
 			echo json_encode(GroupsgetAllChildrenOf($nId));
-			//echo GroupsgetAllChildrenOf($nId);
 			break;
 		default :
 			break;

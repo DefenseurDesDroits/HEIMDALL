@@ -11,6 +11,10 @@ include_once "Groups_manager_2.php";
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Interfaces/ConnectionInterface.php");
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Traits/LdapFunctionSupportTrait.php");
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Connections/Ldap.php");
+include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Exceptions/AdldapException.php");
+include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Exceptions/InvalidQueryOperator.php");
+include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Exceptions/PasswordPolicyException.php");
+include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Exceptions/WrongPasswordException.php");
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/AbstractObject.php");
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/AccountControl.php");
 include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Configuration.php");
@@ -669,16 +673,12 @@ function connectionLDAP($sUser, $sPwd){
 
     try {
         //init the ldap connection 
-        //$oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
         $oLdap = new Adldap($ary_Options);
-        //$oLdap = new adLDAP($ary_Options);
     }
     catch (AdldapException $e) {
-    //catch (adLDAPException $e) {
         //echo $e; 
         $ary_result["Status"] = "LDAP_Failed";
         $ary_result["Error"] = $e;
-        //exit();
         return $ary_result;   
     }
 
@@ -720,19 +720,12 @@ function connectionLDAP($sUser, $sPwd){
                 $sFirstname = str_replace($sName . " ", "",  $oInfos["displayname"]); 
             }
 
-            //createUser($sUser, $sName, $sFirstname, $nIdCreator = 0, $nIdGroup = 0, $oLDAP = null, $sSupervisorFieldName = "")
-
             //creation part
             $ary_result["UserId"] = createUser(strtoupper($sUser), $sName, $sFirstname, 0, 0, $oLdap, "homephone");
-            //$ary_result["UserId"] = createUser($oXXX, strtoupper($sUser), $sName, $sFirstname);
             $ary_result["Comment"] = "User added to Heimdall : ";
             $ary_result["Comment"] .= "<br/> User Id : " . $ary_result["UserId"];
             $ary_result["UserInfo_displayname"] = $sFirstname . " " . $sName;
             
-            //attach to the groups
-            //attachToGroups($ary_result["UserId"], [utf8_encode($oInfos["company"]), utf8_encode($oInfos["department"])], $oLdap);
-            //attachToGroups($ary_result["UserId"], $ary_result["MemberOf"], $oLdap);
-
             $ary_Users = UsersgetAllInstanceWith(strtoupper($sUser));
         }
         else{
@@ -742,11 +735,11 @@ function connectionLDAP($sUser, $sPwd){
         $ary_result["Token"] = createToken($ary_result["UserId"]);
         $ary_result["UserObj"] = $ary_Users[0]->exportToArray();
 
-        attachToGroups($ary_result["UserId"], [$oInfos["company"], $oInfos["department"]], $oLdap);
-        //attachToGroups($ary_result["UserId"], [utf8_encode($oInfos["company"]), utf8_encode($oInfos["department"])], $oLdap);
-
         //add the groups !!!
+        attachToGroups($ary_result["UserId"], [$oInfos["company"], $oInfos["department"]], $oLdap);
 
+        //get the groups 
+        $ary_result["MemberOf"] = groupsOfUser($ary_result["UserId"]);
     }
     else{
         $ary_result["Status"] = "LDAP_Connection_KO";
@@ -796,6 +789,9 @@ function connectionLDAPToken($sToken){
     $ary_result["UserInfo_displayname"] = $oUsers->getPrenom() . " " . $oUsers->getNom();
     $ary_result["Token"] = createToken($ary_result["UserId"], intval($oToken["pogs"] ) - 1);
     $ary_result["UserObj"] = $oUsers->exportToArray();
+
+    //get the groups 
+    $ary_result["MemberOf"] = groupsOfUser($ary_result["UserId"]);
 
     return $ary_result;
 }

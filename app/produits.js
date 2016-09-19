@@ -56,6 +56,14 @@ var Heimdall = {
             //our user name 
             var sName = "";
 
+            //a group 
+            var oGroup = null;
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
             //close the connection form
             if(Heimdall.members.connectionWindow != null){
                 Heimdall.members.connectionWindow.dispose();
@@ -119,7 +127,18 @@ var Heimdall = {
                         oElement.innerHTML = sName;
                     
                     //get the groups
-                    
+                    nCount = Heimdall.members.user["MemberOf"].length;
+                    nLine = 0;
+                    while(nLine < nCount){
+                        //New group
+                        oGroup = new Groups();
+                        //load it
+                        oGroup.loadFromArray(Heimdall.members.user["MemberOf"][nLine]);
+                        //rewrite
+                        Heimdall.members.user["MemberOf"][nLine] = oGroup;
+                        //next
+                        nLine++;
+                    }
 
                     break;
                 default:
@@ -238,8 +257,10 @@ var Heimdall = {
 
             ///[DEBUG]Operaion time !!!
             if(Heimdall.flags.debug){
+                sCode += "\t" + "<div>Debug</div>" + "\r\n";
                 //show the token
                 sCode += Heimdall.debug.methods.addMenuShowToken();
+                sCode += Heimdall.debug.methods.addMenuShowGroups();
             }
             ///[/DEBUG]
 
@@ -296,7 +317,7 @@ var Heimdall = {
 
                 sCode += "<div>" + "\r\n";
 
-                sCode += "\t" + "<div>Contacts</div>" + "\r\n";
+                //sCode += "\t" + "<div>Token</div>" + "\r\n";
                 sCode += "\t" + "<div id=\"BTN_Debug_showToken\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();Heimdall.debug.methods.showToken();\">Show the Token</div>" + "\r\n";
 
                 sCode += "</div>" + "\r\n";
@@ -305,9 +326,44 @@ var Heimdall = {
             },
             showToken : function(){
                     MsgBox(Heimdall.members.user["Token"]);
+            },
+            addMenuShowGroups : function(){
+                //our code
+                var sCode = "";
+
+                sCode += "<div>" + "\r\n";
+
+                //sCode += "\t" + "<div>Groups</div>" + "\r\n";
+                sCode += "\t" + "<div id=\"BTN_Debug_showGroups\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();Heimdall.debug.methods.showGroups();\">Show the Groups</div>" + "\r\n";
+
+                sCode += "</div>" + "\r\n";
+
+                return sCode;
+            },
+            showGroups : function(){
+
+                //our count
+                var nCount = 0;
+                //our iterrator
+                var nLine = 0;
+
+                //our code 
+                var sCode = "";
+
+                //get the groups
+                nCount = Heimdall.members.user["MemberOf"].length;
+                nLine = 0;
+                while(nLine < nCount){
+                    //rewrite
+                    sCode += Heimdall.members.user["MemberOf"][nLine].exportToJson() + "<br/>";
+                    //next
+                    nLine++;
                 }
+
+                MsgBox(sCode);
             }
         }
+    }
 };
 
 ///[FUNCTION][init]Function to init all the products

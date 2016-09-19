@@ -447,10 +447,6 @@ function createContacts($oXXX, $oCRM){
 
         echo json_encode($ary_[$nLine]);
         //create the queries
-        // $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-        // $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
-        // $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($ary_[$nLine]["prenom"]) .", ". Quotes($ary_[$nLine]["nom"]) .", 1, " . $ary_[$nLine]["titre_id"] . ", 1);\r\n";
-
         $oContacts = new Contacts();
 
         $oContacts->setId_Accreditations_Item(1);//all level
@@ -463,7 +459,6 @@ function createContacts($oXXX, $oCRM){
         $oContacts->setPrenom($ary_[$nLine]["prenom"]);
 
         //execute
-        //$oXXX->insertRequest($sQuery, null);
         $nIDContact = $nID;
         $nID++;
         $oContacts->save(1);
@@ -480,9 +475,6 @@ function createContacts($oXXX, $oCRM){
         while($nSubLine < $nSubCount){
             
             //add the contact info
-            // $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-            // $sQuery .= "INSERT INTO xxx.contact_infos(id_contact_infos, id_contacts, fonction, id_langues)VALUES (" . $nID . ", " . $nIDContact . ", " . Quotes($ary_AddrContact[$nSubLine]["fonction"]) . ", 1);";
-            
             $oContact_Infos = new Contact_Infos();
 
             $oContact_Infos->setId_Accreditations_Item(1);//all level
@@ -491,15 +483,11 @@ function createContacts($oXXX, $oCRM){
             $oContact_Infos->setId_Langues(1);
 
             //execute
-            //$oXXX->insertRequest($sQuery, null);
             $nIDLink = $nID;
             $nID++;
             $oContact_Infos->save(intval($oContacts->getId_Contacts()));
 
             //do the query !
-            // $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-            // $sQuery .= "INSERT INTO xxx.infos(id_infos, adr1, adr2, adr3, cp, cedex, ville, telephone1, courriel1, telephone2, courriel2, site, id_pays, id_contact_infos) VALUES (" . $nID .", " . Quotes($ary_AddrContact[$nSubLine]["adr1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["adr2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["adr3"]) . ", " . $ary_AddrContact[$nSubLine]["cp"] . ", " . Quotes($ary_AddrContact[$nSubLine]["cedex"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["ville"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["tel1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["email1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["tel2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["email2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["site"]) . ", 1, " . $nIDLink .");\r\n";
-
             $oInfos = new Infos();
 
             $oInfos->setId_Accreditations_Item(1);//all level
@@ -518,7 +506,6 @@ function createContacts($oXXX, $oCRM){
             $oInfos->setId_Contact_Infos(intval($oContact_Infos->getId_Contact_Infos()));
 
             //execute
-            //$oXXX->insertRequest($sQuery, null);
             $nIDLink = $nID;
             $nID++;
             $oInfos->save(intval($oContacts->getId_Contacts()));
@@ -635,12 +622,7 @@ function createOrganisations($oXXX, $oCRM){
     while($nLine < $nCount){
 
         echo json_encode($ary_[$nLine]);
-        //create the queries
-        // $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-        // $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
-        // $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", '', ". Quotes($ary_[$nLine]["nom"]) .", 1, null, 2);\r\n";
-        // $sQuery .= "INSERT INTO xxx.organisations(id_organisations, id_organisation_type, acronyme) VALUES (" . $nID . ", 1, ". Quotes($ary_[$nLine]["acronyme"]) .");\r\n";
-
+        
         $oOrganisations = new Organisations();
 
         $oOrganisations->setId_Accreditations_Item(1);//all level
@@ -655,7 +637,6 @@ function createOrganisations($oXXX, $oCRM){
         $oOrganisations->setAcronyme($ary_[$nLine]["acronyme"]);
 
         //execute
-        //$oXXX->insertRequest($sQuery, null);
         $nIDContact = $nID;
         $nID++;
         $oOrganisations->save(1);
@@ -670,9 +651,7 @@ function createOrganisations($oXXX, $oCRM){
         while($nSubLine < $nSubCount){
             
             //add the contact info
-            // $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-            // $sQuery .= "INSERT INTO xxx.contact_infos(id_contact_infos, id_contacts, fonction, id_langues)VALUES (" . $nID . ", " . $nIDContact . ", " . Quotes($ary_AddrContact[$nSubLine]["fonction"]) . ", 1);";
-            
+             
             $oContact_Infos = new Contact_Infos();
 
             $oContact_Infos->setId_Accreditations_Item(1);//all level
@@ -681,15 +660,11 @@ function createOrganisations($oXXX, $oCRM){
             $oContact_Infos->setId_Langues(1);
 
             //execute
-            //$oXXX->insertRequest($sQuery, null);
             $nIDLink = $nID;
             $nID++;
             $oContact_Infos->save(intval($oOrganisations->getId_Contacts()));
 
-            //do the query !
-            // $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
-            // $sQuery .= "INSERT INTO xxx.infos(id_infos, adr1, adr2, adr3, cp, cedex, ville, telephone1, courriel1, telephone2, courriel2, site, id_pays, id_contact_infos) VALUES (" . $nID .", " . Quotes($ary_AddrContact[$nSubLine]["adr1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["adr2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["adr3"]) . ", " . $ary_AddrContact[$nSubLine]["cp"] . ", " . Quotes($ary_AddrContact[$nSubLine]["cedex"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["ville"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["tel1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["email1"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["tel2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["email2"]) . ", " . Quotes($ary_AddrContact[$nSubLine]["site"]) . ", 1, " . $nIDLink .");\r\n";
-
+            //import info
             $oInfos = new Infos();
 
             $oInfos->setId_Accreditations_Item(1);//all level
@@ -708,7 +683,6 @@ function createOrganisations($oXXX, $oCRM){
             $oInfos->setId_Contact_Infos(intval($oContact_Infos->getId_Contact_Infos()));
 
             //execute
-            //$oXXX->insertRequest($sQuery, null);
             $nIDLink = $nID;
             $nID++;
             $oInfos->save(intval($oOrganisations->getId_Contacts()));

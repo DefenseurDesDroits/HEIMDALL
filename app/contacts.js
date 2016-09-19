@@ -246,7 +246,7 @@ function loadStaticsContactsData(){
     loadStatics_Contact_Types();
     loadStatics_Civilites();
     loadStatics_Titres();
-    loadStatics_Groups();
+    //loadStatics_Groups();//do you want security troubles ? O_o
 
     return true;
 }
