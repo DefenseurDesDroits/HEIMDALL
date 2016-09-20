@@ -55,8 +55,8 @@ function createCivilites($oCon){
 function createAccreditations($oCon){
     //query
     $sQuery = "INSERT INTO xxx.accreditations(nom, niveau) VALUES ( 'Tous', 0);\r\n";
-    $sQuery .= "INSERT INTO xxx.accreditations(nom, niveau) VALUES ( 'Groups', 1);\r\n";
-    $sQuery .= "INSERT INTO xxx.accreditations(nom, niveau) VALUES ( 'Confidentiel', 2);";
+    $sQuery .= "INSERT INTO xxx.accreditations(nom, niveau) VALUES ( 'Groupes', 1);\r\n";
+    $sQuery .= "INSERT INTO xxx.accreditations(nom, niveau) VALUES ( 'Users', 2);";
 
     //open
     $oCon->open();

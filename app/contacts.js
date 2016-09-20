@@ -131,6 +131,60 @@ function loadStatics_Titres(){
 
 }
 
+///[FUNCTION][loadStatics_Titres]Function to load all the Titles from the DTB
+///[RETURNS][Boolean]True if done
+function loadStatics_Accreditations(){
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //our object to convert
+            var oAccreditations = null;
+            //our array of result
+            var ary_Json = JSON.parse(oReq.responseText);
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
+            //reset
+            Heimdall.members.products.contacts.Accreditations = [];
+            //get the number of result
+            nCount = ary_Json.length;
+            //loop
+            while(nLine < nCount){
+
+                //realloc the variable
+                oAccreditations = new Accreditations();
+                //load it !
+                oAccreditations.loadFromArray(ary_Json[nLine]);
+
+                //add it
+                Heimdall.members.products.contacts.Accreditations.push(oAccreditations);
+
+                //next
+                nLine++;
+            }
+
+            Heimdall.flags.waitData = false;
+        }
+    };
+    //prepare the query*********************
+    Heimdall.flags.waitData = true;
+    //check the open
+    oReq.open("POST", "php/Accreditations_manager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
+    //Return the job !
+    return true;
+
+}
+
 ///[FUNCTION][loadStatics_Contact_Types]Function to load all the Contacts types from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStatics_Contact_Types(){
@@ -246,6 +300,7 @@ function loadStaticsContactsData(){
     loadStatics_Contact_Types();
     loadStatics_Civilites();
     loadStatics_Titres();
+    loadStatics_Accreditations();
     //loadStatics_Groups();//do you want security troubles ? O_o
 
     return true;
@@ -524,6 +579,36 @@ function contactLAYDiv(sIdPart, nLine){
     var nIt = 0;
     //position of the civilite
     var nPosition = 0;
+
+    //accreditation 
+    var sAccreditation = "";
+    var sTypeName = "";
+
+    // //fill sType
+    // nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Contact_Types, "nId_Contact_Types", oContact.getId_Contact_Types());
+    // if(nPosition != POTOURS_FIND_NOTFOUND){
+    //     //to load the image
+    //     sTypeName = Heimdall.members.products.contacts.Contact_Types[nPosition].getNom();
+    //     sType = "<img src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\"/>";
+    // }
+    // else
+    //     sType = "Type not found (aryL :" + Heimdall.members.products.contacts.Contact_Types.length + ")";
+
+    //get the count
+    nCount = Heimdall.members.products.contacts.Accreditations.length;
+    //init the iterator
+    nIt = 0;
+    //loop 
+    while(nIt < nCount){
+        //
+        sTypeName = Heimdall.members.products.contacts.Accreditations[nIt].getNom();
+        //:o 
+        sAccreditation += "<img src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\"/>";
+        //next
+        nIt++;
+    }
+
+    sCode += "<div>" + sAccreditation + "</div>";
 
     //sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
     sCode += "<form class=\"LAY_\">" + "\r\n";
@@ -1169,6 +1254,8 @@ function init_contacts(){
     Heimdall.members.products.contacts["Titres"] = [];
     Heimdall.members.products.contacts["Contacts"] = [];
     Heimdall.members.products.contacts["Groups"] = [];
+    Heimdall.members.products.contacts["Accreditations"] = [];
+    //Accreditations
 
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
 
