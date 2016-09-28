@@ -6,7 +6,232 @@ Ludo
 </name>
 </assembly>
 <members>
-<member name="F:Ludo.Styles.Consts.LUDO_STYLES_NO_ANCHOR">
+<member name="F:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.sFileExtention">
+	<summary>
+ Our file extension name
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.getDescription">
+	<summary>
+ Method to get the description of the class
+ </summary>
+	<returns>string, our description</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignName(Ludo.DTB.Ludo_DTB_Column@)">
+	<summary>
+ Method to write the name of the control 
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignDeclaration(Ludo.DTB.Ludo_DTB_Column@)">
+	<summary>
+ Method to write the declaration of the control 
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignInitialization(Ludo.DTB.Ludo_DTB_Column@)">
+	<summary>
+ Method to write the initialization of the control linked to the Column
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
+	<summary>
+ Method to write column Edition Code
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
+	<summary>
+ Method to write column Edition Design
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Header(Ludo.DTB.Ludo_DTB_Table@,System.String,System.String)">
+	<summary>
+ Method to write the header of the code edition layout
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, table of the layout</param>
+	<param name="sFilename">String, filename of the layout</param>
+	<param name="sDescription">[OPTIONAL] String, our description</param>
+	<returns>String, the code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_ViewToObj(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to generate the view ToView Method
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">STring, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_ObjToView(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to generate the ObjToView Method
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">STring, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Init(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to generate the Init method
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">String, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Handlers(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to write the handler of the layout !!!
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">String, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Builders(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to write the builders
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">String, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ write lay Edition Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay Edition Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay_win Edition Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay_win Edition Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write win Edition Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write win Edition Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnSelectionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
+	<summary>
+ Method to write column Selection Code
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnSelectionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
+	<summary>
+ Method to write column Selection Design
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLaySelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ write lay Selection Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLaySelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay Selection Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinSelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay_win Selection Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinSelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay_win Selection Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinSelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write win Selection Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinSelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write win Selection Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeClass(Ludo.DTB.Ludo_DTB_Table@,System.String,System.Collections.Generic.List{System.String}@)">
+	<summary>
+ Method to write all element from a class
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sPath">string, our path</param>
+	<param name="lst_sFiles">list(of string), list of generated files</param>
+	<returns>boolean, true if done</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.ToString">
+	<summary>
+ Override of the toString method
+ </summary>
+	<returns>string, something fro nothing</returns>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.#ctor">
+	<summary>
+ The default builder
+ </summary>
+	<remarks></remarks>
+</member><member name="T:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO">
+	<summary>
+ Class to make the GUI 
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.Styles.Consts.LUDO_STYLES_NO_ANCHOR">
 	<summary>
  To disable the anchor style
  </summary>
@@ -1676,6 +1901,13 @@ Ludo
 </member><member name="T:Ludo.EVENTS.events.LUDO_EVENT_EXIT">
 	<summary>
  Event to quit
+ </summary>
+	<param name="sender">Object, sender of the event</param>
+	<param name="e">EventArgs, Argument of our signal</param>
+	<remarks></remarks>
+</member><member name="T:Ludo.EVENTS.events.LUDO_EVENT_ENTER">
+	<summary>
+ Event to signal a validation !
  </summary>
 	<param name="sender">Object, sender of the event</param>
 	<param name="e">EventArgs, Argument of our signal</param>
@@ -3741,6 +3973,16 @@ Ludo
  Class to generate your doc in docx to better understood !
  </summary>
 	<remarks></remarks>
+</member><member name="F:Ludo.DTB.GUI.Consts.LUDO_DTB_GUI_FOLDER_LAYOUTS">
+	<summary>
+ Const to manage the Folder of layout
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.GUI.Consts.LUDO_DTB_GUI_FOLDER_WINDOWS">
+	<summary>
+ Const to manage the folder of windows
+ </summary>
+	<remarks></remarks>
 </member><member name="F:Ludo.DTB.GUI.Consts.LUDO_DTB_GUI_CONTROL_SAI">
 	<summary>
  Const for one line text field
@@ -4036,92 +4278,6 @@ Ludo
  our module for const
  </summary>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.findIn(System.String,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
-	<summary>
- Function to find from its name a control type in a control type list
- </summary>
-	<param name="sName">string, our control name</param>
-	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of controls</param>
-	<returns>integer, the position or lesser than zero if not found</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.findIn(Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
-	<summary>
- Function to find a control type in a list of control type
- </summary>
-	<param name="oCtrl">Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type, our control</param>
-	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of control</param>
-	<returns>integer, the position or lesser than zero if not found</returns>
-	<remarks>This function calls the function findIn with string sName parameter</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.addIn(Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
-	<summary>
- Function to add a control type in a list if the control type name is not already taken
- </summary>
-	<param name="oCtrl">Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type, our control</param>
-	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of control type</param>
-	<returns>Boolean, true if done</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.addLstIn(System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
-	<summary>
- Function to add the controls type from a value list to atarget list of control type
- </summary>
-	<param name="lst_oValues">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our values we want add</param>
-	<param name="lst_oTarget">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), where we want add or repalce new control type</param>
-	<returns>
- integer, the number of value added.
- The function don't replace already existing control in lst_oTarget
- </returns>
-	<remarks>This function calls the function addIn for each item of lst_oValues</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.mergeIn(Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
-	<summary>
- Function to add or replace a control type in a control type list
- </summary>
-	<param name="oCtrl">Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type, the control type we want add or replace</param>
-	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of control type</param>
-	<returns>Boolean, true if done</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.mergeLst(System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
-	<summary>
- Function to merge the lists
- </summary>
-	<param name="lst_oValues">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our values we want add or replace</param>
-	<param name="lst_oTarget">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), where we want add or replace new control type</param>
-	<returns>boolean, true if done</returns>
-	<remarks>This function calls the function mergeIn for each elements of lst_oTarget</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.delIn(System.String,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
-	<summary>
- Function to delete a control type from its name in a control type list
- </summary>
-	<param name="sName">string, our control name</param>
-	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of controls</param>
-	<returns>Boolean, true if done</returns>
-	<remarks>This function calls the function findIn</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.createSize(System.Int32,System.Int32)">
-	<summary>
- Function to create Size
- </summary>
-	<param name="nWidth">integer, width</param>
-	<param name="nHeight">integer, height</param>
-	<returns>Ludo.DTB.GUI.Ludo_DTB_GUI_Size, our size</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.createPosition(System.Int32,System.Int32)">
-	<summary>
- Function to create Size
- </summary>
-	<param name="nX">integer, position x</param>
-	<param name="nY">integer, position y</param>
-	<returns>Ludo.DTB.GUI.Ludo_DTB_GUI_Position, our size</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.createDefaultRule">
-	<summary>
- Function to obtain the default rules
- </summary>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="T:Ludo.DTB.GUI.Ludo_GUI">
-	<summary>
- Our class for global Ludo.DTB.GUI functions
- </summary>
-	<remarks></remarks>
 </member><member name="F:Ludo.DTB.GUI.Ludo_DTB_GUI_Size.nWidth">
 	<summary>
  width
@@ -4205,6 +4361,98 @@ Ludo
 </member><member name="T:Ludo.DTB.GUI.Ludo_DTB_GUI_Generation_Rule">
 	<summary>
  Structure tha contains the generation rules
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.findIn(System.String,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
+	<summary>
+ Function to find from its name a control type in a control type list
+ </summary>
+	<param name="sName">string, our control name</param>
+	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of controls</param>
+	<returns>integer, the position or lesser than zero if not found</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.findIn(Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
+	<summary>
+ Function to find a control type in a list of control type
+ </summary>
+	<param name="oCtrl">Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type, our control</param>
+	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of control</param>
+	<returns>integer, the position or lesser than zero if not found</returns>
+	<remarks>This function calls the function findIn with string sName parameter</remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.addIn(Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
+	<summary>
+ Function to add a control type in a list if the control type name is not already taken
+ </summary>
+	<param name="oCtrl">Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type, our control</param>
+	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of control type</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.addLstIn(System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
+	<summary>
+ Function to add the controls type from a value list to atarget list of control type
+ </summary>
+	<param name="lst_oValues">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our values we want add</param>
+	<param name="lst_oTarget">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), where we want add or repalce new control type</param>
+	<returns>
+ integer, the number of value added.
+ The function don't replace already existing control in lst_oTarget
+ </returns>
+	<remarks>This function calls the function addIn for each item of lst_oValues</remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.mergeIn(Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
+	<summary>
+ Function to add or replace a control type in a control type list
+ </summary>
+	<param name="oCtrl">Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type, the control type we want add or replace</param>
+	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of control type</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.mergeLst(System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
+	<summary>
+ Function to merge the lists
+ </summary>
+	<param name="lst_oValues">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our values we want add or replace</param>
+	<param name="lst_oTarget">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), where we want add or replace new control type</param>
+	<returns>boolean, true if done</returns>
+	<remarks>This function calls the function mergeIn for each elements of lst_oTarget</remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.delIn(System.String,System.Collections.Generic.List{Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type}@)">
+	<summary>
+ Function to delete a control type from its name in a control type list
+ </summary>
+	<param name="sName">string, our control name</param>
+	<param name="lst_o">List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), our list of controls</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This function calls the function findIn</remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.createSize(System.Int32,System.Int32)">
+	<summary>
+ Function to create Size
+ </summary>
+	<param name="nWidth">integer, width</param>
+	<param name="nHeight">integer, height</param>
+	<returns>Ludo.DTB.GUI.Ludo_DTB_GUI_Size, our size</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.createPosition(System.Int32,System.Int32)">
+	<summary>
+ Function to create Size
+ </summary>
+	<param name="nX">integer, position x</param>
+	<param name="nY">integer, position y</param>
+	<returns>Ludo.DTB.GUI.Ludo_DTB_GUI_Position, our size</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.createDefaultControlList">
+	<summary>
+ Function to obtain all the default control type
+ </summary>
+	<returns>List(Of Ludo.DTB.GUI.Ludo_DTB_GUI_Control_type), </returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.Ludo_GUI.createDefaultRule">
+	<summary>
+ Function to obtain the default rules
+ </summary>
+	<returns>Ludo.DTB.GUI.Ludo_DTB_GUI_Generation_Rule, our default rule</returns>
+	<remarks></remarks>
+</member><member name="T:Ludo.DTB.GUI.Ludo_GUI">
+	<summary>
+ Our class for global Ludo.DTB.GUI functions
  </summary>
 	<remarks></remarks>
 </member><member name="F:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.stRules">
@@ -4325,7 +4573,7 @@ Ludo
 	<param name="lst_sCtrl">List(Of String), our list of </param>
 	<returns>Ludo.DTB.GUI.Ludo_DTB_GUI_Size, our size anyway</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnEditionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position,System.String)">
+</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnEditionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
 	<summary>
  Method to write column Edition Code
  </summary>
@@ -4334,7 +4582,7 @@ Ludo
 	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
 	<returns>string, the code</returns>
 	<remarks>Not implemented, override it !!!</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnEditionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position,System.String)">
+</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnEditionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
 	<summary>
  Method to write column Edition Design
  </summary>
@@ -4385,20 +4633,22 @@ Ludo
 	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
 	<returns>string, the code</returns>
 	<remarks>Not implemented, override it !!!</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnSelectionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position)">
+</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnSelectionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
 	<summary>
  Method to write column Selection Code
  </summary>
 	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
 	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
 	<returns>string, the code</returns>
 	<remarks>Not implemented, override it !!!</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnSelectionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position)">
+</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeColumnSelectionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
 	<summary>
  Method to write column Selection Design
  </summary>
 	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
 	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
 	<returns>string, the code</returns>
 	<remarks>Not implemented, override it !!!</remarks>
 </member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeLaySelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
@@ -4452,14 +4702,14 @@ Ludo
 	<param name="lst_sFiles">list(of string), list of generated files</param>
 	<returns>boolean, true if done</returns>
 	<remarks>It's empty, override it :p</remarks>
-</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeClasses(Ludo.DTB.Ludo_DTB_Module@,System.Windows.Forms.ProgressBar@,System.String,System.Collections.Generic.List{System.String}@)">
+</member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.writeClasses(Ludo.DTB.Ludo_DTB_Module@,System.String,System.Collections.Generic.List{System.String}@,System.Windows.Forms.ProgressBar@)">
 	<summary>
  Method to write the classes files
  </summary>
 	<param name="oModule">Ludo.DTB.Ludo_DTB_Module, our module</param>
-	<param name="PG_Table">System.Windows.Forms.ProgressBar, our progress bar</param>
 	<param name="sPath">string, our path</param>
 	<param name="lst_sFiles">list(of string), list of generated files</param>
+	<param name="PG_Table">[OPTIONAL]System.Windows.Forms.ProgressBar, our progress bar</param>
 	<returns>boolean, true if done</returns>
 	<remarks>It's empty, override it :p</remarks>
 </member><member name="M:Ludo.DTB.GUI.Ludo_DTB_GUI_CODE_MAKER.generate(System.String,System.Windows.Forms.ProgressBar@,System.Windows.Forms.Label@,System.Windows.Forms.ProgressBar@)">
