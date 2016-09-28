@@ -26,7 +26,8 @@ var ary_sFileLib = [
 	"lib/CONTACTS_Organisations.js",
 	"lib/CONTACTS_Users.js",
 	"lib/CONTACTS_Notifications.js",
-	"lib/CONTACTS_Groups.js"
+	"lib/CONTACTS_Groups.js",
+	"lay/LAY_Contacts.js"
 ];
 
 var oWinLoader = {};
