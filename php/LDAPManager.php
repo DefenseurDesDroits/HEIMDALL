@@ -1,47 +1,9 @@
 <?PHP
 
-use adLDAP\adLDAP;
-
 //include to dtb connection
-include_once "CONTACTS_Users.php";
-include_once "Groups_manager_2.php";
+include "CONTACTS_Users.php";
 //include the class and create a connection
-
-//https://github.com/adldap/adLDAP
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Interfaces/ConnectionInterface.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Traits/LdapFunctionSupportTrait.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Connections/Ldap.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Exceptions/AdldapException.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Exceptions/InvalidQueryOperator.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Exceptions/PasswordPolicyException.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Exceptions/WrongPasswordException.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/AbstractObject.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/AccountControl.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Configuration.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Contact.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Folder.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Group.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Mailbox.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Paginator.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Schema.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/User.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Ldap/Entry.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Objects/Ldap/Schema.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AbstractAdldapBase.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AbstractAdldapQueryable.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapComputers.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapContacts.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapExchange.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapFolders.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapGroups.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapSearch.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapUsers.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Classes/AdldapUtils.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Query/Builder.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Query/Operator.php");
-include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_5.0.0/Adldap.php");
-
-//include (dirname(__FILE__) . "/../libphp/ldap/adLDAP_4.0.3/adLDAP.php");
+include (dirname(__FILE__) . "/../libphp/ldap/adLDAP.php");
 //include the class JWT
 include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/BeforeValidException.php");
 include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/ExpiredException.php");
@@ -49,10 +11,6 @@ include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/SignatureInvalidExce
 include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/JWT.php");
 
 use Firebase\JWT\JWT;
-
-//Debug const
-//CONST HEIMDALL_LDAP_Debug = false;
-CONST HEIMDALL_LDAP_Debug = true;
 
 //const for choose the right path 
 
@@ -69,9 +27,6 @@ CONST HEIMDALL_LDAP_ConnectionCase_ALL = 7;
 CONST HEIMDALL_LDAP_Connection_SEVER_ADR = "192.168.1.16";
 CONST HEIMDALL_LDAP_Connection_DOMAIN = "DC=AC,DC=local";
 //CONST HEIMDALL_LDAP_Connection_DOMAIN = "OU=DDD,DC=AC,DC=local";
-
-//CONST HEIMDALL_LDAP_Create_Group = false;
-CONST HEIMDALL_LDAP_Create_Group = true;
 
 //the key 
 CONST HEIMDALL_LDAP_JWT_Key = "Ragnarok";
@@ -143,355 +98,79 @@ function UsersgetAllInstanceWith($sUsr){
 	return $ary_Result;
 }
 
-function GroupsgetAllInstanceWith($sName){
-    //Our object declaration
-	$oGroups = new Groups();
-	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oGroups->getColumns() . "\r\n" . "FROM " . $oGroups->getTable() . "\r\n";
-	//Link Condition
-	$sLinks = $oGroups->getLinkConditions(true);
-	//The array we get
-	$ary_ = array();
-	//The array we throw
-	$ary_Result = array();
-	//Our count
-	$nCount = 0;
-	//Our iterrator
-	$nLine = 0;
-	
-	//Add the link
-	// if($sLinks != "")
-	// 	$sQuery .= "WHERE " . $sLinks;
-	
-    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) . "" ;
-    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND unaccent(xxx.Groups.NomGroupe) ILIKE unaccent(" . Quotes($sName) . ")" ;
-    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) ;
+/*function GroupsgetAllInstanceWith($sName){
 
-	/* Don't forget to override to use $oAgent !!! */
-	
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@GroupsgetAllInstanceWith.log", "\r\n\r\n[New Call]\r\n" . $sQuery,  FILE_APPEND );
-
-	//Open the query
-	$GLOBALS["oConnection"]->open();
-	//Get the array
-	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oGroups->getColumns()), null);
-	//Close the query
-	$GLOBALS["oConnection"]->close();
-	
-	/* So ... we got the array !!! !!! */
-	/* Create the result array !!! !!! */
-	
-	//Get the loop
-	$nCount = count($ary_);
-	//Do the loop
-	while($nLine < $nCount){
-		//create a new instance
-		$oGroups = new Groups();
-		//load the data
-		$oGroups->loadFromArray($ary_[$nLine], true);
-		//add the data
-		$ary_Result[$nLine] = $oGroups;
-		//$ary_Result[$nLine] = $oGroups->exportToArray();
-		//Next
-		$nLine++;
-	}
-	
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@GroupsgetAllInstanceWith.log", "\r\n[Results]\r\n" . $nCount . " line(s) found !!!",  FILE_APPEND );
-
-	//Returns
-	return $ary_Result;
 }
 
-function GroupsgetAllInstanceWithMember($sName){
-    //Our object declaration
-	$oGroups = new Groups();
-	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oGroups->getColumns() . "\r\n" . "FROM " . $oGroups->getTable() . "\r\n";
-	//Link Condition
-	$sLinks = $oGroups->getLinkConditions(true);
-	//The array we get
-	$ary_ = array();
-	//The array we throw
-	$ary_Result = array();
-	//Our count
-	$nCount = 0;
-	//Our iterrator
-	$nLine = 0;
-	
-	//Add the link
-	// if($sLinks != "")
-	// 	$sQuery .= "WHERE " . $sLinks;
-	
-    $sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) . "" ;
-    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND upper(unaccent(xxx.Groups.NomGroupe)) ILIKE upper(unaccent(" . Quotes($sName) . "))" ;
-    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND unaccent(xxx.Groups.NomGroupe) ILIKE unaccent(" . Quotes($sName) . ")" ;
-    //$sQuery .= "WHERE " . $sLinks . "\r\n" . "AND xxx.Groups.NomGroupe ILIKE " . Quotes($sName) ;
+function attachToGroup($nIdUser, $ary_Group){
 
-	/* Don't forget to override to use $oAgent !!! */
-	
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@GroupsgetAllInstanceWith.log", "\r\n\r\n[New Call]\r\n" . $sQuery,  FILE_APPEND );
 
-	//Open the query
-	$GLOBALS["oConnection"]->open();
-	//Get the array
-	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oGroups->getColumns()), null);
-	//Close the query
-	$GLOBALS["oConnection"]->close();
-	
-	/* So ... we got the array !!! !!! */
-	/* Create the result array !!! !!! */
-	
-	//Get the loop
-	$nCount = count($ary_);
-	//Do the loop
-	while($nLine < $nCount){
-		//create a new instance
-		$oGroups = new Groups();
-		//load the data
-		$oGroups->loadFromArray($ary_[$nLine], true);
-		//add the data
-		$ary_Result[$nLine] = $oGroups;
-		//$ary_Result[$nLine] = $oGroups->exportToArray();
-		//Next
-		$nLine++;
-	}
-	
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@GroupsgetAllInstanceWith.log", "\r\n[Results]\r\n" . $nCount . " line(s) found !!!",  FILE_APPEND );
 
-	//Returns
-	return $ary_Result;
-}
+    return false;
+}*/
 
 //create group
-function createGroup($oXXX, $sGrp, $oLDAP, $nIdUser, $nIdParent = 0){
+function createGroup($oXXX, $sGrp){
 
-    //our group 
-    $oGrp = new Groups();
-    //Ldap group buddie !!!
-    $oLDAPGrp = null;
-    //
-    $ary_Groups = array();
-    //
-    $oInfos = array();
-
-    //
+    //our query
+    $sQuery = "";
+    //our number 
+    $nID = 0;
+    //the id Orga 
+    $nIDContact = 0;
+    //the id of new contact info contact infos
+    $nIDLink = 0;
+    //our count
     $nCount = 0;
-
-    if(HEIMDALL_LDAP_Debug)
-        //file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\r\n\r\n[New Call]\r\n" );
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\r\n\r\n[New Call]\r\n",  FILE_APPEND );
-
-    //set the parent !!!
-    $oGrp->setId_Noeuds_Parent(intval($nIdUser));
-    //$oGrp->setId_Noeuds_Parent(intval($nIdParent));
-    $oGrp->setId_Accreditations_Item(1);
-    $oGrp->setId_Civilites(1);
-    $oGrp->setId_Titres(1);
-    $oGrp->setId_Contact_Types(4);
-    $oGrp->setId_Creator(intval($oGrp->getId_Items()));
-
-    //set the name 
-    $oGrp->setNom($sGrp);
-    $oGrp->setNomGroupe($sGrp);
-
-    //create the Groups
-    $oGrp->save($nIdUser);
-
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Group created : " . $sGrp . "\r\n",  FILE_APPEND );
-
-    //parent :)
-    if($nIdParent != 0)
-        $oGrp->setId_Noeuds_Parent(intval($nIdParent));
-    else
-        $oGrp->setId_Noeuds_Parent(intval($oGrp->getId_Items()));
-
-    //set the group owner ... itself Yeah \m/
-    $oGrp->setId_groups_owner(intval($oGrp->getId_Items()));
-
-    //save it o yeah !!!!
-    $oGrp->save($nIdUser);
-
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Owner and parent set " . "\r\n",  FILE_APPEND );
-
-    //if got children ???
-    //find them !!!
-    //if exist : cool
-    //else : create them !!!
-
-    try {
-        //get the Groups  
-        $oLDAPGrp = $oLDAP->group();
-
-        //get the informations !!!
-        $oInfos = $oLDAPGrp->info($sGrp);
-
-        if(HEIMDALL_LDAP_Debug)
-            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", print_r($oInfos, TRUE) . "\r\n",  FILE_APPEND );
-
-        $ary_Groups = $oLDAPGrp->recursiveGroups($sGrp);
-
-        if(HEIMDALL_LDAP_Debug)
-            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", print_r($ary_Groups, TRUE) . "\r\n",  FILE_APPEND );
-
-        // //get the groups
-        // $ary_Groups = $oLDAP->group()->inGroup($sGrp);
-        // //
-        // $nCount = count($ary_Groups);
-        // //
-        // if(HEIMDALL_LDAP_Debug)
-        //     file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Number of sub groups : " . $nCount . "\r\n",  FILE_APPEND );
-    }
-    catch (adLDAPException $e) {
-        if(HEIMDALL_LDAP_Debug)
-            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@createGroup.log", "\t=> Exception : " . $e . "\r\n",  FILE_APPEND );
-    }
-
-    //return the groups
-    return $oGrp;
-}
-
-function attachToGroup($nIdUser, $sGroup, $oLDAP, $bCreate = HEIMDALL_LDAP_Create_Group){
-
-    //array to get the existing
-    $ary_Groups = null;
-
-    //our group instance
-    $oGrp = null;
-
-    //Json
-    $sJson = "";
-    //element
-    $sElement = "";
-
-    //our count 
-    $nCount = 0;
-    //our iterrator
+    //our iterator
     $nLine = 0;
+    //our sub count
+    $nSubCount = 0;
+    //our sub iterrator
+    $nSubLine = 0;
+    //our array 
+    $ary_ = array();
 
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\r\n\r\n[New Call]\r\n",  FILE_APPEND );
+    //array to obtain contact info and info 
+    $ary_Addr = array();
+    //array to obtain the addr for a contact
+    $ary_AddrContact = array();
 
-    //no null group name
-    if(trim($sGroup) == "" || $sGroup == null)
+    //get the max ID (Worst Best Idea Ever !)*********************
+    //the query
+    $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
+    //open
+    $oXXX->open();
+    //the select query
+    $ary_ = $oCRM->selectRequest($sQuery, ["max"], null);
+    //close
+    $oXXX->close();
+
+    //echo json_encode($ary_);
+
+    //is there any contact type ?
+    if(count($ary_) == 0 || array_key_exists("ERROR", $ary_[0])){
         return -1;
-
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Group name not null : " . $sGroup ."\r\n",  FILE_APPEND );
-
-    //search if the group already exists
-    $ary_Groups = GroupsgetAllInstanceWith($sGroup);
-    //get a clue
-    $nCount = count($ary_Groups);
-
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Groups with this name in DTB : " . $nCount ."\r\n",  FILE_APPEND );
-
-    //The group don't exit and we are not allowed to create it !!!
-    if($nCount == 0 && !$bCreate)
-        return -1;
-
-    //creation case
-    if($nCount == 0){
-
-        //debugging, the desperate way
-        if(HEIMDALL_LDAP_Debug)
-            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Creation " ."\r\n",  FILE_APPEND );
-
-        //create the group
-        $oGrp = createGroup($GLOBALS["oConnection"], $sGroup, $oLDAP, $nIdUser);
-    }
-    else{//Obtantion case
-        
-        //debugging, the desperate way
-        if(HEIMDALL_LDAP_Debug)
-            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Obtention " ."\r\n",  FILE_APPEND );
-
-        //attach
-        $oGrp = $ary_Groups[0];
     }
 
-    if($oGrp == null)
-        return -1;
+    echo json_encode($ary_);
 
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Status : " . $oGrp->getNomGroupe() . "\r\n",  FILE_APPEND );
+    //get the max ID
+    $nID = intval($ary_[0]["max"]);
 
-    //get the array of member
+    $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
+    $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
+    $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", '', ". Quotes($ary_[$nLine]["nom"]) .", 1, null, 2);\r\n";
+    $sQuery .= "INSERT INTO xxx.groups(id_groups, ugrp_json, fichiers) VALUES (" . $nID . ", '', true);";
+    
+    //execute
+    $oXXX->insertRequest($sQuery, null);
+    $nIDContact = $nID;
+    $nID++;
+    $oXXX->close();
 
-    //get the json 
-    $sJson = $oGrp->getUGrp_Json();
-
-    //debugging, the desperate way
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Json : " . $oGrp->getUGrp_Json() . "\r\n",  FILE_APPEND );
-
-    if($sJson == "" || $sJson == "{}")
-        $sJson = "{[]}";
-
-    //add user if not already present !!! (UID|TIme)
-    if(strpos($sJson, "{\"uid\":\"" . $nIdUser . "\"") == false ){
-        
-        $sElement = "{\"uid\":\"" . $nIdUser . "\",\"until\":\"\"}]}";
-        
-        if($sJson != "{[]}")
-            $sElement = "," . $sElement;
-
-        $sJson = str_replace( "]}", $sElement, $sJson );
-
-        //Change the Json value
-        $oGrp->setUGrp_Json($sJson);
-
-        if(HEIMDALL_LDAP_Debug)
-            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> New Json : " . $oGrp->getUGrp_Json() . "\r\n",  FILE_APPEND );
-
-        //save
-        $oGrp->save($nIdUser);
-    }
-    else{
-        if(HEIMDALL_LDAP_Debug)
-            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Already in !!!" . "\r\n",  FILE_APPEND );
-    }
-
-    return 1;
-}
-
-function attachToGroups($nIdUser, $ary_Group, $oLDAP){
-
-    //our count 
-    $nCount = 0;
-    //our iterrator
-    $nLine = 0;
-
-    //our result
-    $nResult = 0;
-
-    $nCount = count($ary_Group);
-    while($nLine < $nCount){
-
-        //do da job Steve !!!
-        if($ary_Group[$nLine] != "")
-            $nResult += attachToGroup($nIdUser, $ary_Group[$nLine], $oLDAP);
-
-        //next
-        $nLine++;
-    }
-
-    //yop !!!
-    return $nResult > -1;
+    //return the ID
+    return $nIDContact;
 }
 
 ///[FUNCTION][UsersgetAllInstance]Function to obtain all the Users intance with a pseudo !
@@ -534,91 +213,78 @@ function checkToken($sToken){
 }
 
 //create user 
-function createUser($sUser, $sName, $sFirstname, $nIdCreator = 0, $nIdGroup = 0, $oLDAP = null, $sSupervisorFieldName = ""){
+function createUser($oXXX, $sUser, $sName, $sFirstname){
 
-    //our new user 
-    $oUsr = new Users();
+    //our query
+    $sQuery = "";
+    //our number 
+    $nID = 0;
+    //the id Orga 
+    $nIDContact = 0;
+    //the id of new contact info contact infos
+    $nIDLink = 0;
+    //our count
+    $nCount = 0;
+    //our iterator
+    $nLine = 0;
+    //our sub count
+    $nSubCount = 0;
+    //our sub iterrator
+    $nSubLine = 0;
+    //our array 
+    $ary_ = array();
 
-    //Parent Id
-    $nIdParent = 0;
+    //array to obtain contact info and info 
+    $ary_Addr = array();
+    //array to obtain the addr for a contact
+    $ary_AddrContact = array();
 
-    //our supervisors !
-    $ary_Sup = [];
+    //[Line]
 
-    //our  infos
-    $oInfos = null;
+    //get the max ID (Worst Best Idea Ever !)*********************
+    //the query
+    $sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items";
+    //open
+    $oXXX->open();
+    //the select query
+    $ary_ = $oXXX->selectRequest($sQuery, ["max"], null);
+    //close
+    $oXXX->close();
 
-    //Supervisor login
-    $sLogin = "";
+    //[Line]
 
-    //our user set
-    $oUsr->setId_Noeuds_Parent(1);
-    $oUsr->setId_Accreditations_Item(1);
-    $oUsr->setId_Civilites(1);
-    $oUsr->setId_Titres(1);
-    $oUsr->setId_Contact_Types(3);
-    $oUsr->setId_Creator($nIdCreator);
-    if($nIdGroup != 0)
-        $oUsr->setId_groups_json( "{{\"grp\":\"" + $nIdGroup + "\", \"until\":\"\"}}");
-    //$oUsr->setId_groups_owner(intval($nIdGroup));
-    //set the name 
-    $oUsr->setNom($sName);
-    $oUsr->setPrenom($sFirstname);
-    $oUsr->setPseudo(strtoupper($sUser));
-    //create the Groups
-    $oUsr->save($nIdCreator);
+    //echo json_encode($ary_);
 
-    //Default parent
-    $nIdParent = intval($oUsr->getId_Items());
-
-    //if supervisor mentioned
-    if($sSupervisorFieldName != ""){
-        if($oLDAP != null){
-
-            //get the infos
-            $oInfos = $oLDAP->user()->info($sUser);
-            
-            //Superior ?
-            if(array_key_exists($sSupervisorFieldName, $oInfos)){
-                //
-                $sLogin = $oInfos[$sSupervisorFieldName];
-
-                //have we a superior ?
-                if($sLogin != ""){
-
-                    //
-                    $ary_Sup = UsersgetAllInstanceWith(strtoupper($sLogin));
-
-                    //if supervisor exists in DTB
-                    if(count($ary_Sup) == 1){
-                        $nIdParent = intval($ary_Sup[0]->getId_Items());
-                    }
-                    else{
-                        //get the infos
-                        $oInfos = $oLDAP->user()->info($sLogin);
-                        //
-                        if(is_array($oInfos)){
-                            if(array_key_exists("givenname", $oInfos) && array_key_exists("sn", $oInfos))
-                                $nIdParent = createUser(strtoupper($sLogin), $oInfos["sn"], $oInfos["givenname"], intval($oUsr->getId_Items()), $nIdGroup, $oLDAP, $sSupervisorFieldName);
-                        }
-                    }
-
-                }
-
-            }
-
-        }
-
-
+    //is there any contact type ?
+    if(count($ary_) == 0 || array_key_exists("ERROR", $ary_[0])){
+        return -1;
     }
 
-    //
-    $oUsr->setId_Noeuds_Parent($nIdParent);
+    //[Line]
+    //echo json_encode($ary_);
 
-    $oUsr->save($nIdCreator);
+    //get the max ID
+    $nID = intval($ary_[0]["max"]);
+    $nID++;
+    $nIDContact = $nID;
+
+    //[Line]
+
+    $sQuery = "INSERT INTO xxx.items(id_groups_owner, id_accreditations_item, modifie) VALUES (0, 1, current_timestamp);\r\n";
+    $sQuery .= "INSERT INTO xxx.noeuds(id_noeuds, id_noeuds_parent) VALUES (" . $nID . ", " . $nID . ");\r\n";
+    $sQuery .= "INSERT INTO xxx.contacts(id_contacts, prenom, nom, id_civilites, id_titres, id_contact_types) VALUES (" . $nID . ", ". Quotes($sFirstname) .", ". Quotes($sName) .", 1, null, 3);\r\n";
+    $sQuery .= "INSERT INTO xxx.users(id_users, pseudo, id_accreditations_exp_json) VALUES (" . $nID . ", " . Quotes($sUser) . ", '');";
+
+    //[Line]
+
+    //open
+    $oXXX->open();
+    //execute
+    $oXXX->insertRequest($sQuery, null);
+    $oXXX->close();
 
     //return the ID
-    return intval($oUsr->getId_Items());
+    return $nIDContact;
 }
 
 ///[FUNCTION][connectionLDAP]Function to connect user to LDAP
@@ -636,8 +302,6 @@ function connectionLDAP($sUser, $sPwd){
     $sFirstname = "";
     //the name
     $sName = "";
-    //Group name 
-    $sGroup = "";
     //ary
     $ary_PersonaIdentity = array();
 
@@ -667,18 +331,16 @@ function connectionLDAP($sUser, $sPwd){
     //all users 
     $ary_Users = null;
 
-    //debugging, the desperate way :D
-    if(HEIMDALL_LDAP_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@connectionLDAP.log", "\r\n\r\n[New Call]\r\n" );
-
     try {
         //init the ldap connection 
-        $oLdap = new Adldap($ary_Options);
+        //$oLdap = new adLDAP(["base_dn" => HEIMDALL_LDAP_Connection_DOMAIN]);
+        $oLdap = new adLDAP($ary_Options);
     }
-    catch (AdldapException $e) {
+    catch (adLDAPException $e) {
         //echo $e; 
         $ary_result["Status"] = "LDAP_Failed";
         $ary_result["Error"] = $e;
+        //exit();
         return $ary_result;   
     }
 
@@ -699,13 +361,23 @@ function connectionLDAP($sUser, $sPwd){
         $_SESSION["userinfo"] = $oInfos;
         $ary_result["Status"] = "LDAP_Connection_OK";
         $ary_result["User"] = $sUser;
+        $ary_result["UserInfo_displayname"] = $oInfos[0]["displayname"][0];
 
-        //debugging, the desperate way :D
-        if(HEIMDALL_LDAP_Debug)
-            file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@connectionLDAP.log", print_r($oInfos, TRUE) . "\r\n",  FILE_APPEND );
+        //Create a parameter count ?
+        //NOT GENIUS !!!
+        //-_-#
+        $nCount = $oInfos[0]["memberof"]["count"];
+        while($nLine < $nCount){
+            //add the 
+            $ary_result["MemberOf"][$nLine] = $oInfos[0]["memberof"][$nLine];
+            //next
+            $nLine++;
+        }
 
-        //get the users groups
-        $ary_result["MemberOf"] = $oLdap->user()->groups($sUser);
+        //can't be used because of the ERROR =>
+        //Warning: preg_replace(): The /e modifier is no longer supported, use preg_replace_callback instead
+        //really ... thanks guy !!!
+        //$ary_result["MemberOf"] = $oLdap->user()->groups($sUser);
 
         //so we are connected !!!
         //Are we in the DTB ?
@@ -713,20 +385,20 @@ function connectionLDAP($sUser, $sPwd){
         if( count($ary_Users) <= 0){
             //get name part
             $sName = $sUser;
-            $ary_PersonaIdentity = explode(" ", $oInfos["displayname"]);
+            $ary_PersonaIdentity = explode(" ", $ary_result["UserInfo_displayname"]);
             //if we have more than 1 element
             if(count($ary_PersonaIdentity) > 1){
                 $sName = $ary_PersonaIdentity[0];
-                $sFirstname = str_replace($sName . " ", "",  $oInfos["displayname"]); 
+                $sFirstname = str_replace($sName . " ", "",  $ary_result["UserInfo_displayname"]); 
             }
 
+            //attach to trhe groups
+
             //creation part
-            $ary_result["UserId"] = createUser(strtoupper($sUser), $sName, $sFirstname, 0, 0, $oLdap, "homephone");
+            $ary_result["UserId"] = createUser($oXXX, strtoupper($sUser), $sName, $sFirstname);
             $ary_result["Comment"] = "User added to Heimdall : ";
             $ary_result["Comment"] .= "<br/> User Id : " . $ary_result["UserId"];
             $ary_result["UserInfo_displayname"] = $sFirstname . " " . $sName;
-            
-            $ary_Users = UsersgetAllInstanceWith(strtoupper($sUser));
         }
         else{
             $ary_result["UserId"] = $ary_Users[0]->getId_Users();
@@ -734,12 +406,6 @@ function connectionLDAP($sUser, $sPwd){
         }
         $ary_result["Token"] = createToken($ary_result["UserId"]);
         $ary_result["UserObj"] = $ary_Users[0]->exportToArray();
-
-        //add the groups !!!
-        attachToGroups($ary_result["UserId"], [$oInfos["company"], $oInfos["department"]], $oLdap);
-
-        //get the groups 
-        $ary_result["MemberOf"] = groupsOfUser($ary_result["UserId"]);
     }
     else{
         $ary_result["Status"] = "LDAP_Connection_KO";
@@ -749,9 +415,7 @@ function connectionLDAP($sUser, $sPwd){
     return $ary_result;
 }
 
-///[FUNCTION][connectionLDAPToken]Function to connect user to LDAP from a token
-///[PARAMETER][string][$sToken]our token
-///[RETURNS]array of element
+//Hidden connection YOLO !!!
 function connectionLDAPToken($sToken){
 
     //our result object
@@ -789,9 +453,6 @@ function connectionLDAPToken($sToken){
     $ary_result["UserInfo_displayname"] = $oUsers->getPrenom() . " " . $oUsers->getNom();
     $ary_result["Token"] = createToken($ary_result["UserId"], intval($oToken["pogs"] ) - 1);
     $ary_result["UserObj"] = $oUsers->exportToArray();
-
-    //get the groups 
-    $ary_result["MemberOf"] = groupsOfUser($ary_result["UserId"]);
 
     return $ary_result;
 }

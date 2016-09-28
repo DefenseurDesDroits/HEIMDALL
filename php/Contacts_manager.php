@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_manager.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
 
 //include to dtb connection
-include "CONTACTS_Contacts.php";
+include_once "CONTACTS_Contacts.php";
 
 ///[FUNCTION][ContactsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function ContactsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oContacts->setId_Contacts($nId))
+	if($oContacts->setId_Contacts(intval($nId)))
 		$oContacts->loadFromConnection(null);
 	
 	//Get the Json

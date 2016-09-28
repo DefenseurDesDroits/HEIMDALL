@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Pays_manager.php
 //Description : Tables des pays
 
 
 //include to dtb connection
-include "CONTACTS_Pays.php";
+include_once "CONTACTS_Pays.php";
 
 ///[FUNCTION][PaysgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function PaysgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oPays->setId_Pays($nId))
+	if($oPays->setId_Pays(intval($nId)))
 		$oPays->loadFromConnection(null);
 	
 	//Get the Json

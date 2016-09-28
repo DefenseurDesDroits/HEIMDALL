@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Noeuds_manager.php
 //Description : Table pour gérer les noeuds
 
 
 //include to dtb connection
-include "CONTACTS_Noeuds.php";
+include_once "CONTACTS_Noeuds.php";
 
 ///[FUNCTION][NoeudsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function NoeudsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oNoeuds->setId_Noeuds($nId))
+	if($oNoeuds->setId_Noeuds(intval($nId)))
 		$oNoeuds->loadFromConnection(null);
 	
 	//Get the Json

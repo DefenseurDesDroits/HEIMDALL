@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_Organisation_Types.php
 //Description : Tables des différants type d'organisations possibles
 
 
 //include to dtb connection
-include "connection.php";
+include_once "connection.php";
 
 ///[CLASS][Organisation_Types]Tables des différants type d'organisations possibles
 ///[AUTHOR]Ludo
@@ -101,7 +101,7 @@ class Organisation_Types{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return ", Nom";
+		return "Nom";
 	}
 
 

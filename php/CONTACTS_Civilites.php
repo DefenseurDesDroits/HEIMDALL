@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_Civilites.php
 //Description : Table des civilités des contacts
 
 
 //include to dtb connection
-include "connection.php";
+include_once "connection.php";
 
 ///[CLASS][Civilites]Table des civilités des contacts
 ///[AUTHOR]Ludo
@@ -128,7 +128,7 @@ class Civilites{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return ", Nom, Abr";
+		return "Nom, Abr";
 	}
 
 

@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Accreditations_manager.php
 //Description : Table des accréditations sur les items
 
 
 //include to dtb connection
-include "CONTACTS_Accreditations.php";
+include_once "CONTACTS_Accreditations.php";
 
 ///[FUNCTION][AccreditationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function AccreditationsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oAccreditations->setId_Accreditations($nId))
+	if($oAccreditations->setId_Accreditations(intval($nId)))
 		$oAccreditations->loadFromConnection(null);
 	
 	//Get the Json

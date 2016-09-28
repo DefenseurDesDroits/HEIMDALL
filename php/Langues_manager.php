@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Langues_manager.php
 //Description : Tables des langues
 
 
 //include to dtb connection
-include "CONTACTS_Langues.php";
+include_once "CONTACTS_Langues.php";
 
 ///[FUNCTION][LanguesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function LanguesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oLangues->setId_Langues($nId))
+	if($oLangues->setId_Langues(intval($nId)))
 		$oLangues->loadFromConnection(null);
 	
 	//Get the Json

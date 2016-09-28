@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-16 12:05:35
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 

@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Titres_manager.php
 //Description : Tables des titres des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Titres.php";
+include_once "CONTACTS_Titres.php";
 
 ///[FUNCTION][TitresgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function TitresgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oTitres->setId_Titres($nId))
+	if($oTitres->setId_Titres(intval($nId)))
 		$oTitres->loadFromConnection(null);
 	
 	//Get the Json

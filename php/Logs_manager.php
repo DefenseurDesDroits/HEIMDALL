@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-14 04:56:47
+//Generated on : 2016-09-28 04:27:39
 //Filename : Logs_manager.php
 //Description : Table pour enregistrer tous les changements de valeur d'item.
 
@@ -19,7 +19,7 @@ function LogsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oLogs->setId_Logs($nId))
+	if($oLogs->setId_Logs(intval($nId)))
 		$oLogs->loadFromConnection(null);
 	
 	//Get the Json

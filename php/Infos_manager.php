@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Infos_manager.php
 //Description : Table des adresses. Hérité de la classe item.
 
 
 //include to dtb connection
-include "CONTACTS_Infos.php";
+include_once "CONTACTS_Infos.php";
 
 ///[FUNCTION][InfosgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function InfosgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oInfos->setId_Infos($nId))
+	if($oInfos->setId_Infos(intval($nId)))
 		$oInfos->loadFromConnection(null);
 	
 	//Get the Json

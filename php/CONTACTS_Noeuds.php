@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 09:37:29
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_Noeuds.php
 //Description : Table pour gérer les noeuds
 
@@ -142,7 +142,7 @@ class Noeuds extends Items{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Noeuds::getColumns() . "\r\n" . "FROM " . Noeuds::getTable() . "\r\n" . "WHERE " . Noeuds::getConditions();
 	}
 
 
@@ -194,7 +194,6 @@ class Noeuds extends Items{
 	public function loadFromConnection($oAgent){
 		//Our query
 		$sQuery = Noeuds::getSelectQuery();
-		//$sQuery = $this->getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -238,10 +237,7 @@ class Noeuds extends Items{
 		$sValues = "";
 		
 		$sValues .= Quotes( $this->getId_Noeuds());
-		if($this->getId_Noeuds_Parent() == 0)
-			$sValues .= ", " . Quotes( $this->getId_Noeuds());
-		else
-			$sValues .= ", " . Quotes( $this->getId_Noeuds_Parent());
+		$sValues .= ", " . Quotes( $this->getId_Noeuds_Parent());
 		
 		//return the get value chain !
 		return $sValues;
@@ -309,11 +305,13 @@ class Noeuds extends Items{
 		$sQuery = "";
 		//Our ID
 		$nId = $this->getId_Noeuds();
-		//Call the parent method
-		parent::save($oAgent);
 		//Get the query !!!
 		if($nId == 0)
+		{
+			//Call the parent method
+			parent::save($oAgent);
 			$sQuery = Noeuds::getInsertQuery();
+		}
 		else
 			$sQuery = Noeuds::getUpdateQuery();
 		

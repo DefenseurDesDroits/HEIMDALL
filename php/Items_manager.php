@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-16 09:59:51
+//Generated on : 2016-09-28 04:27:39
 //Filename : Items_manager.php
 //Description : Table de tous les items avec des droits
 
@@ -19,7 +19,7 @@ function ItemsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oItems->setId_Items($nId))
+	if($oItems->setId_Items(intval($nId)))
 		$oItems->loadFromConnection(null);
 	
 	//Get the Json

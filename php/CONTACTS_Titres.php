@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_Titres.php
 //Description : Tables des titres des contacts
 
 
 //include to dtb connection
-include "connection.php";
+include_once "connection.php";
 
 ///[CLASS][Titres]Tables des titres des contacts
 ///[AUTHOR]Ludo
@@ -127,7 +127,7 @@ class Titres{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return ", Nom, Rang";
+		return "Nom, Rang";
 	}
 
 

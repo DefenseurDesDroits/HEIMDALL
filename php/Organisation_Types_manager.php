@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Organisation_Types_manager.php
 //Description : Tables des différants type d'organisations possibles
 
 
 //include to dtb connection
-include "CONTACTS_Organisation_Types.php";
+include_once "CONTACTS_Organisation_Types.php";
 
 ///[FUNCTION][Organisation_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function Organisation_TypesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oOrganisation_Types->setId_Organisation_Types($nId))
+	if($oOrganisation_Types->setId_Organisation_Types(intval($nId)))
 		$oOrganisation_Types->loadFromConnection(null);
 	
 	//Get the Json

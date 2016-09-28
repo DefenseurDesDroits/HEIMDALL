@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Item_Types_manager.php
 //Description : Table des types d'items
 
 
 //include to dtb connection
-include "CONTACTS_Item_Types.php";
+include_once "CONTACTS_Item_Types.php";
 
 ///[FUNCTION][Item_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function Item_TypesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oItem_Types->setId_item_types($nId))
+	if($oItem_Types->setId_item_types(intval($nId)))
 		$oItem_Types->loadFromConnection(null);
 	
 	//Get the Json

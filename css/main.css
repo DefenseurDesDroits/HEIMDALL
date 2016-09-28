@@ -106,22 +106,6 @@ div.WIN_Main {
 	width : 100%;
 }
 
-LIST_Item{
-	background-color: #ECF0F1;
-	color: #3353ff;
-	border-color: #666;
-	border-style: solid;
-	border-top-width: 2px;
-}
-
-LIST_Item_Selected{
-	color: #ECF0F1;
-	background-color: #3353ff;
-	border-color: #666;
-	border-style: solid;
-	border-top-width: 2px;
-}
-
 .PNL_{
 	background-color: #00FF00
 }

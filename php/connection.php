@@ -9,20 +9,16 @@
 
 //Choose your include*********************************
 //include the default DTB
-//include "Potours_Connection.php";
+include "Potours_Connection.php";
 //include the postGre Sql DTB
-include_once "Potours_Connection_PGSQL.php";
+//include "Potours_Connection_PGSQL.php";
 
 //Create the connection object************************
 
 //default case
-//$oConnection = new Potours_Connection("ip", "dtb", "usr", "pwd");
+$oConnection = new Potours_Connection("ip", "dtb", "usr", "pwd");
 //default case
-//$oConnection = new Potours_Connection_PGSQL("192.168.1.183:5432", "crm", "infocom", "07_PVo-DT1G6");
-$oConnection = new Potours_Connection_PGSQL("127.0.0.1", "heimdalldb", "heimdall", "T0RLVQM3+663");
-//$oConnection = new Potours_Connection_PGSQL("192.168.1.184", "heimdalldb", "heimdall", "T0RLVQM3+663");
-//$oConnection = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
-//$oConnection->open();
+//$oConnection = new Potours_Connection_PGSQL("ip", "dtb", "usr", "pwd");
 
 //Quotes Function
 
@@ -31,9 +27,7 @@ $oConnection = new Potours_Connection_PGSQL("127.0.0.1", "heimdalldb", "heimdall
 ///[RETURNS]string, da job !!!
 function Quotes($sStr){
 	//return da escape string
-	return "'" . str_replace("'", "''", $sStr) . "'";
-	//return pg_escape_literal($GLOBALS["oConnection"]->getConnectionObject(), $sStr);
-	//return pg_escape_literal(null, $sStr);
+	return pg_escape_literal($sStr);
 }
 
 ?>

@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_Item_Types.php
 //Description : Table des types d'items
 
 
 //include to dtb connection
-include "connection.php";
+include_once "connection.php";
 
 ///[CLASS][Item_Types]Table des types d'items
 ///[AUTHOR]Ludo
@@ -101,7 +101,7 @@ class Item_Types{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return ", Nom";
+		return "Nom";
 	}
 
 

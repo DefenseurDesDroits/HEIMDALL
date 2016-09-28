@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_Users.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Contacts.php";
+include_once "CONTACTS_Contacts.php";
 
 ///[CLASS][Users]Table des utilisateurs, héritant de celle des contacts
 ///[AUTHOR]Ludo

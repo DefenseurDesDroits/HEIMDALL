@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Notes_manager.php
 //Description : Table des notes sur les items
 
 
 //include to dtb connection
-include "CONTACTS_Notes.php";
+include_once "CONTACTS_Notes.php";
 
 ///[FUNCTION][NotesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function NotesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oNotes->setId_Notes($nId))
+	if($oNotes->setId_Notes(intval($nId)))
 		$oNotes->loadFromConnection(null);
 	
 	//Get the Json

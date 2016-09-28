@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Users_manager.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Users.php";
+include_once "CONTACTS_Users.php";
 
 ///[FUNCTION][UsersgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function UsersgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oUsers->setId_Users($nId))
+	if($oUsers->setId_Users(intval($nId)))
 		$oUsers->loadFromConnection(null);
 	
 	//Get the Json

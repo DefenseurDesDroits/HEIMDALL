@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Notifications_manager.php
 //Description : Tables des notifications utilisateurs
 
 
 //include to dtb connection
-include "CONTACTS_Notifications.php";
+include_once "CONTACTS_Notifications.php";
 
 ///[FUNCTION][NotificationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function NotificationsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oNotifications->setId_Notifications($nId))
+	if($oNotifications->setId_Notifications(intval($nId)))
 		$oNotifications->loadFromConnection(null);
 	
 	//Get the Json

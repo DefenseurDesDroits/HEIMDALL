@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-08-30 11:54:32
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contact_Types_manager.php
 //Description : Table des types de contact
 
 
 //include to dtb connection
-include "CONTACTS_Contact_Types.php";
+include_once "CONTACTS_Contact_Types.php";
 
 ///[FUNCTION][Contact_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function Contact_TypesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oContact_Types->setId_Contact_Types($nId))
+	if($oContact_Types->setId_Contact_Types(intval($nId)))
 		$oContact_Types->loadFromConnection(null);
 	
 	//Get the Json

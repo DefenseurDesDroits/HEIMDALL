@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-14 04:56:47
+//Generated on : 2016-09-28 04:27:39
 //Filename : Contacts_Logs.php
 //Description : Table pour enregistrer tous les changements de valeur d'item.
 
@@ -259,7 +259,7 @@ class Logs{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return ", Id_Items, Creation, Id_Creator, Validation, Id_Validator, Valeur, Suppression";
+		return "Id_Items, Creation, Id_Creator, Validation, Id_Validator, Valeur, Suppression";
 	}
 
 

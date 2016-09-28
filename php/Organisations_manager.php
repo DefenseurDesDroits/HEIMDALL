@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-16 12:05:35
+//Generated on : 2016-09-28 04:27:39
 //Filename : Organisations_manager.php
 //Description : Table des organisations. héritant de celle des contacts
 
@@ -19,7 +19,7 @@ function OrganisationsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oOrganisations->setId_Organisations($nId))
+	if($oOrganisations->setId_Organisations(intval($nId)))
 		$oOrganisations->loadFromConnection(null);
 	
 	//Get the Json

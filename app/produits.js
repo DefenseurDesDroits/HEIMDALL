@@ -28,9 +28,9 @@ var Heimdall = {
             sCode += "";
 
             sCode += "<form class=\"LAY_\">" + "\r\n";
-            sCode += "\t" + '<input id="SAI_User" class="SAI_" type="text" name="SAI_User" value="User" onkeyup="Heimdall.methods.connectionKey(event)"/>' + "\r\n";
+            sCode += "\t" + '<input id="SAI_User" class="SAI_" type="text" name="SAI_User" value="User"/>' + "\r\n";
             sCode += "<br/>" + "\r\n";
-            sCode += "\t" + '<input id="SAI_Pwd" class="SAI_" type="password" name="SAI_Pwd" value="Pwd" onkeyup="Heimdall.methods.connectionKey(event)"/>' + "\r\n";
+            sCode += "\t" + '<input id="SAI_Pwd" class="SAI_" type="password" name="SAI_Pwd" value="Pwd"/>' + "\r\n";
             sCode += "</form>" + "\r\n";
             sCode += "\t" + "<div class=\"BTN_ \" onclick=\"Heimdall.methods.submitConnection()\">Valider</div>" + "\r\n";
 
@@ -45,10 +45,6 @@ var Heimdall = {
             }
 
         },
-        connectionKey : function(event){
-            if(event.keyCode == 13)
-                Heimdall.methods.submitConnection();
-        },
         responseConnection : function(sText){
             
             //get the array
@@ -60,29 +56,9 @@ var Heimdall = {
             //our user name 
             var sName = "";
 
-            //a group 
-            var oGroup = null;
-
-            //our count
-            var nCount = 0;
-            //our iterrator
-            var nLine = 0;
-
             //close the connection form
-            if(Heimdall.members.connectionWindow != null){
+            if(Heimdall.members.connectionWindow != null)
                 Heimdall.members.connectionWindow.dispose();
-                Heimdall.members.connectionWindow = null;
-            }
-                
-            if(oWinLoader != null){
-                //stop beacuase all the lib are loaded
-	            oSliderLoader.stop();
-                //close and distroy this window !!!
-                oWinLoader.dispose();
-                //set null
-                oWinLoader = null;
-            }
-                
             
             //get the array
             ary_Response = JSON.parse(sText);
@@ -130,20 +106,6 @@ var Heimdall = {
                     if(oElement)
                         oElement.innerHTML = sName;
                     
-                    //get the groups
-                    nCount = Heimdall.members.user["MemberOf"].length;
-                    nLine = 0;
-                    while(nLine < nCount){
-                        //New group
-                        oGroup = new Groups();
-                        //load it
-                        oGroup.loadFromArray(Heimdall.members.user["MemberOf"][nLine]);
-                        //rewrite
-                        Heimdall.members.user["MemberOf"][nLine] = oGroup;
-                        //next
-                        nLine++;
-                    }
-
                     break;
                 default:
                     alert("FATAL ERROR");
@@ -188,14 +150,6 @@ var Heimdall = {
             //set the sUser
             if(oElement != null)
                 sPwd = oElement.value;
-            
-            //close the connection form
-            if(Heimdall.members.connectionWindow != null){
-                Heimdall.members.connectionWindow.dispose();
-                Heimdall.members.connectionWindow = null;
-            }
-            //our splash screen
-            main_Loading();
 
             //prepare the query*********************
             //check the open
@@ -259,14 +213,8 @@ var Heimdall = {
                 sCode += Heimdall.members.products[sProduct].addMenu("WIN_Add");
             }
 
-            ///[DEBUG]Operaion time !!!
-            if(Heimdall.flags.debug){
-                sCode += "\t" + "<div>Debug</div>" + "\r\n";
-                //show the token
-                sCode += Heimdall.debug.methods.addMenuShowToken();
-                sCode += Heimdall.debug.methods.addMenuShowGroups();
-            }
-            ///[/DEBUG]
+            //show the token
+            sCode += Heimdall.debug.methods.addMenuShowToken();
 
             //to the box !!!
             MsgBox(sCode);
@@ -321,7 +269,7 @@ var Heimdall = {
 
                 sCode += "<div>" + "\r\n";
 
-                //sCode += "\t" + "<div>Token</div>" + "\r\n";
+                sCode += "\t" + "<div>Contacts</div>" + "\r\n";
                 sCode += "\t" + "<div id=\"BTN_Debug_showToken\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();Heimdall.debug.methods.showToken();\">Show the Token</div>" + "\r\n";
 
                 sCode += "</div>" + "\r\n";
@@ -330,48 +278,14 @@ var Heimdall = {
             },
             showToken : function(){
                     MsgBox(Heimdall.members.user["Token"]);
-            },
-            addMenuShowGroups : function(){
-                //our code
-                var sCode = "";
-
-                sCode += "<div>" + "\r\n";
-
-                //sCode += "\t" + "<div>Groups</div>" + "\r\n";
-                sCode += "\t" + "<div id=\"BTN_Debug_showGroups\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();Heimdall.debug.methods.showGroups();\">Show the Groups</div>" + "\r\n";
-
-                sCode += "</div>" + "\r\n";
-
-                return sCode;
-            },
-            showGroups : function(){
-
-                //our count
-                var nCount = 0;
-                //our iterrator
-                var nLine = 0;
-
-                //our code 
-                var sCode = "";
-
-                //get the groups
-                nCount = Heimdall.members.user["MemberOf"].length;
-                nLine = 0;
-                while(nLine < nCount){
-                    //rewrite
-                    sCode += Heimdall.members.user["MemberOf"][nLine].exportToJson() + "<br/>";
-                    //next
-                    nLine++;
                 }
-
-                MsgBox(sCode);
             }
         }
-    }
 };
 
 ///[FUNCTION][init]Function to init all the products
 function init_Produits(){
+//function init(){
 
     ///[DEBUG]Operaion time !!!
     if(Heimdall.flags.debug){

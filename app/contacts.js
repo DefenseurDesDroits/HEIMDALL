@@ -8,8 +8,6 @@
 /// <reference path="../lib/CONTACTS_Civilites.js" />
 /// <reference path="../lib/CONTACTS_Titres.js" />
 
-const HEIMDALL_AUTO_QUERY_SIZE = 2;
-
 const HEIMDALL_NUMBER_OF_FILTER_MAX = 4;
 const HEIMDALL_NUMBER_OF_CONTACTS_PLOTS = 25;
 const HEIMDALL_QUERY_METHOD_LIKE_StartsWith = "COND_LIKE_SW";
@@ -133,60 +131,6 @@ function loadStatics_Titres(){
 
 }
 
-///[FUNCTION][loadStatics_Titres]Function to load all the Titles from the DTB
-///[RETURNS][Boolean]True if done
-function loadStatics_Accreditations(){
-
-    //Our request object
-    var oReq = new XMLHttpRequest();
-    //Define the function
-    oReq.onreadystatechange = function(){
-        //if everything is alright
-        if(oReq.readyState == 4 && oReq.status == 200){
-            //our object to convert
-            var oAccreditations = null;
-            //our array of result
-            var ary_Json = JSON.parse(oReq.responseText);
-
-            //our count
-            var nCount = 0;
-            //our iterrator
-            var nLine = 0;
-
-            //reset
-            Heimdall.members.products.contacts.Accreditations = [];
-            //get the number of result
-            nCount = ary_Json.length;
-            //loop
-            while(nLine < nCount){
-
-                //realloc the variable
-                oAccreditations = new Accreditations();
-                //load it !
-                oAccreditations.loadFromArray(ary_Json[nLine]);
-
-                //add it
-                Heimdall.members.products.contacts.Accreditations.push(oAccreditations);
-
-                //next
-                nLine++;
-            }
-
-            Heimdall.flags.waitData = false;
-        }
-    };
-    //prepare the query*********************
-    Heimdall.flags.waitData = true;
-    //check the open
-    oReq.open("POST", "php/Accreditations_manager.php", true);
-    //set the request header
-    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
-    //Return the job !
-    return true;
-
-}
-
 ///[FUNCTION][loadStatics_Contact_Types]Function to load all the Contacts types from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStatics_Contact_Types(){
@@ -241,60 +185,6 @@ function loadStatics_Contact_Types(){
 
 }
 
-///[FUNCTION][loadStatics_Contact_Types]Function to load all the Contacts types from the DTB
-///[RETURNS][Boolean]True if done
-function loadStatics_Groups(){
-
-    //Our request object
-    var oReq = new XMLHttpRequest();
-    //Define the function
-    oReq.onreadystatechange = function(){
-        //if everything is alright
-        if(oReq.readyState == 4 && oReq.status == 200){
-            //our object to convert
-            var oGroups = null;
-            //our array of result
-            var ary_Json = JSON.parse(oReq.responseText);
-
-            //our count
-            var nCount = 0;
-            //our iterrator
-            var nLine = 0;
-
-            //reset
-            Heimdall.members.products.contacts.Groups = [];
-            //get the number of result
-            nCount = ary_Json.length;
-            //loop
-            while(nLine < nCount){
-
-                //realloc the variable
-                oGroups = new Groups();
-                //load it !
-                oGroups.loadFromArray(ary_Json[nLine]);
-
-                //add it
-                Heimdall.members.products.contacts.Groups.push(oGroups);
-
-                //next
-                nLine++;
-            }
-
-            Heimdall.flags.waitData = false;
-        }
-    };
-    //prepare the query*********************
-    Heimdall.flags.waitData = true;
-    //check the open
-    oReq.open("POST", "php/Groups_manager.php", true);
-    //set the request header
-    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
-    //Return the job !
-    return true;
-
-}
-
 ///[FUNCTION][loadStaticsContactsData]Function to load all the Contacts data from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStaticsContactsData(){
@@ -302,8 +192,6 @@ function loadStaticsContactsData(){
     loadStatics_Contact_Types();
     loadStatics_Civilites();
     loadStatics_Titres();
-    loadStatics_Accreditations();
-    //loadStatics_Groups();//do you want security troubles ? O_o
 
     return true;
 }
@@ -568,139 +456,6 @@ function contactLAYDIVDelete(nLine){
     alert("Delete NotDevYet : " + nLine);
 }
 
-function accreditationHTML_1(){
-    return "Tous";
-}
-
-function accreditationHTML_2(){
-    
-    //Heimdall.members.user["MemberOf"]
-    
-    //our code
-    var sCode = "";
-
-    //our count
-    var nCount = 0;
-    //our iterator
-    var nIt = 0;
-
-    if(Heimdall.members.user["MemberOf"] == null){
-        return "The current user has no groups : ERROR";
-    }
-
-    nCount = Heimdall.members.user["MemberOf"].length
-    nIt = 0;
-    while(nIt < nCount){
-        //
-        sCode += "<div class=\"\" onclick=\"notDevYet()\">" + Heimdall.members.user["MemberOf"][nIt].getNomGroupe() +  "</div>";
-        //Next
-        nIt++;
-    }
-
-    return sCode;
-}
-
-function accreditationHTML_3(){
-    
-    //our count
-    var nCount = 0;
-    //our iterator
-    var nIt = 0;
-    
-    return "Personel";
-}
-
-function accreditationLAYClick(nId){
-    
-    //our type name
-    var sTypeName = "";
-
-    //element 
-    var oElement = null;
-
-    //Accreditations ID
-    var nAccreditation = 0;
-
-    //our count
-    var nCount = 0;
-    //our iterator
-    var nIt = 0;
-    
-
-    //get the count
-    nCount = Heimdall.members.products.contacts.Accreditations.length;
-    //init the iterator
-    nIt = 0;
-    //Loop 
-    while(nIt < nCount){
-        //get Infos
-        sTypeName = Heimdall.members.products.contacts.Accreditations[nIt].getNom();
-        nAccreditation = Heimdall.members.products.contacts.Accreditations[nIt].getId_Accreditations();
-        //get element
-        oElement = document.getElementById("Accreditations_" + nAccreditation);
-        //the element exists ?
-        if(oElement != null){
-            oElement.src = "img/" + sTypeName + ".png";
-        }
-        //Next 
-        nIt++;
-    }
-
-    sTypeName = Heimdall.members.products.contacts.Accreditations[nId].getNom();
-    nAccreditation = Heimdall.members.products.contacts.Accreditations[nId].getId_Accreditations();
-
-    //get element
-    oElement = document.getElementById("Accreditations_" + nAccreditation);
-    //the element exists ?
-    if(oElement != null){
-        oElement.src = "img/" + sTypeName + "_Selected.png";
-    }
-
-    //get element
-    oElement = document.getElementById("Accreditations_Extension");
-    //the element exists ?
-    if(oElement != null){
-        oElement.innerHTML = eval("accreditationHTML_" + nAccreditation + "();");
-        //oElement.innerHTML = "Nah !!!";
-    }
-    //MsgBox("Accreditation : " + nId);
-}
-
-function accreditationsLAYDiv(){
-    //our code
-    var sCode = "";
-    //our type name
-    var sTypeName = "";
-    //Accreditations ID
-    var nAccreditation = 0;
-
-    //our count
-    var nCount = 0;
-    //our iterator
-    var nIt = 0;
-
-    //get the count
-    nCount = Heimdall.members.products.contacts.Accreditations.length;
-    //init the iterator
-    nIt = 0;
-    //loop 
-    while(nIt < nCount){
-        //get the value
-        sTypeName = Heimdall.members.products.contacts.Accreditations[nIt].getNom();
-        nAccreditation = Heimdall.members.products.contacts.Accreditations[nIt].getId_Accreditations();
-        //write them
-        sCode += "<img id=\"Accreditations_" + nAccreditation + "\" src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\" onclick=\"accreditationLAYClick(" + nIt + ")\"/>";
-        //sCode += "<img id=\"Accreditations_" + nAccreditation + "\" src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\" onclick=\"accreditationLAYClick(" + nAccreditation + ")\"/>";
-        //next
-        nIt++;
-    }
-
-    //extension div
-    sCode += "<div id=\"Accreditations_Extension\"></div>";
-
-    return sCode
-}
-
 ///[FUNCTION][contactLAYDiv]Function to plot a contact
 ///[PARAMETER][integer][nLine]Line of the contact
 ///[RETURNS][String]HTML Code of the element
@@ -714,8 +469,6 @@ function contactLAYDiv(sIdPart, nLine){
     var nIt = 0;
     //position of the civilite
     var nPosition = 0;
-
-    sCode += "<div>" + accreditationsLAYDiv() + "</div>";
 
     //sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
     sCode += "<form class=\"LAY_\">" + "\r\n";
@@ -1200,42 +953,6 @@ function addSelectionField(){
     return true;
 }
 
-///[FUNCTION][contactDoQuery]Function to manage the research for every case
-///[PARAMETER][String][sIdWaiting]our id to plots the query work
-///[PARAMETER][Pointer][ptrFunctionCreateArg]Function to create the argument of query (no parameter)
-///[PARAMETER][Pointer][ptrFunctionResponse]Function to analyse the responseText (one parameter string)
-///[RETURNS][Boolean]True if done
-function contactDoQueryComplete(sIdWaiting, ptrFunctionCreateArg, ptrFunctionResponse){
-    //get the content layout
-    var oElement = document.getElementById(sIdWaiting);
-
-    //Our request object
-    var oReq = new XMLHttpRequest();
-    //Define the function
-    oReq.onreadystatechange = function(){
-
-        //if everything is alright
-        if(oReq.readyState == 4 && oReq.status == 200){
-            //Response
-            ptrFunctionResponse(oReq.responseText);
-        }
-        
-    };
-
-    //inform
-    if(oElement != null)
-        oElement.innerHTML = "Préparation de la requête en cours";
-
-    //prepare the query*********************
-    //check the open
-    oReq.open("POST", "php/queryManager.php", true);
-    //set the request header
-    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-    oReq.send("Id=0&Session=" + "" + "&Action=contacts_contacts&Args=" + JSON.stringify(ptrFunctionCreateArg())); 
-    //Return the job !
-    return true;
-}
-
 ///[FUNCTION][addSelectionField]Function to plot line of contacts
 ///[RETURNS][Array of Arguments]Array of arguments
 function createArgs(){
@@ -1289,41 +1006,48 @@ function createArgs(){
     return ary_Result;
 }
 
-///[FUNCTION][contactDoQuery]Function to manage the research response from the server
-///[PARAMETER][String][sText]our response text to parse as Json
-function contactDoQueryResponse(sText){
-    //Plots !
-    plotContacts(JSON.parse(sText), true, 0, HEIMDALL_NUMBER_OF_CONTACTS_PLOTS);
-}
-
 ///[FUNCTION][contactDoQuery]Function to manage the research
 ///[RETURNS][Boolean]True if done
 function contactDoQuery(){
-    //call the generique function
-    contactDoQueryComplete("PNL_List", createArgs, contactDoQueryResponse);
-    //Call the specific :)
+
+    //get the content layout
+    var oElement = document.getElementById("PNL_List");
+
+    //Ya ya ya !
+    //alert("It's working bro ! or sis ... :)" );//just stop it !!!
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //Plots !
+            plotContacts(JSON.parse(oReq.responseText), true, 0, HEIMDALL_NUMBER_OF_CONTACTS_PLOTS);
+        }
+        
+    };
+
+    //inform
+    oElement.innerHTML = "Préparation de la requête en cours";
+
+    //prepare the query*********************
+    //check the open
+    oReq.open("POST", "php/queryManager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=0&Session=" + "" + "&Action=contacts_contacts&Args=" + JSON.stringify(createArgs())); 
+    //Return the job !
     return true;
 }
 
-///[FUNCTION][contactDoQuery]Function to manage te key stroke on enter to throw a research
-///[PARAMETER][event][event]our key event
 function contactKeySearch(event){
-    //ths SAI Value
-    var sValue = "";
-    //our element 
-    var oElement = null;
+    //notDevYet();
+    //alert(event.keyCode);
 
     if(event.keyCode == 13)
         contactDoQuery();
-
-    oElement = document.getElementById("SAI_search_Query");
-
-    if(oElement != null){
-        sValue = oElement.value;
-
-        if(sValue.length > HEIMDALL_AUTO_QUERY_SIZE)
-            contactDoQuery();
-    }
 }
 
 function contactWinContact(oContact){
@@ -1389,9 +1113,6 @@ function init_contacts(){
     Heimdall.members.products.contacts["Civilites"] = [];
     Heimdall.members.products.contacts["Titres"] = [];
     Heimdall.members.products.contacts["Contacts"] = [];
-    Heimdall.members.products.contacts["Groups"] = [];
-    Heimdall.members.products.contacts["Accreditations"] = [];
-    //Accreditations
 
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
 

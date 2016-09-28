@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-07 11:51:46
+//Generated on : 2016-09-28 04:27:39
 //Filename : Groups_manager.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -19,7 +19,7 @@ function GroupsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oGroups->setId_Groups($nId))
+	if($oGroups->setId_Groups(intval($nId)))
 		$oGroups->loadFromConnection(null);
 	
 	//Get the Json
