@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Contacts.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
@@ -261,10 +261,13 @@ class Contacts extends Noeuds{
 	///[PARAMETER][boolean][$bFromQuery]Our boolean to know if corresponding array is usefull
 	///[RETURNS]boolean, true if done
 	public function loadFromArray($ary_, $bFromQuery = false){
+    	
 		//Our Corresponding set
 		$bindSet = array();
 		//If we want add Prefixe.Table
 		if($bFromQuery){
+
+			
 			//get Corresponding set
 			$bindSet = $this->getCorrespondanceArray();
 			//Start a beautifull loop
@@ -272,15 +275,18 @@ class Contacts extends Noeuds{
 				if(array_key_exists($bindSet[$key], $ary_))
 					$this->members[$key] = $ary_[$bindSet[$key]];
 			};
+			
 		}
 		else
 		{
+			
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
 				if(array_key_exists($key, $ary_))
 					$this->members[$key] = $ary_[$key];
 			};
 		}
+
 		//Return the job !
 		return true;
 	}
@@ -306,7 +312,7 @@ class Contacts extends Noeuds{
 		$sQuery = Contacts::getSelectQuery();
 		//Our result object
 		$ary_o = null;
-		
+
 		//open first
 		$GLOBALS["oConnection"]->open();
 		//do the select request
@@ -317,6 +323,7 @@ class Contacts extends Noeuds{
 		//now have we something ?
 		if(count($ary_o) <= 0)
 			return false;
+
 		//Return the job !
 		return $this->loadFromArray($ary_o[0], true);
 	}

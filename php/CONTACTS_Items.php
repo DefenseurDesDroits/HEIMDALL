@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-09-16 09:59:51
 //Filename : Contacts_Items.php
 //Description : Table de tous les items avec des droits
 
@@ -206,7 +206,7 @@ class Items{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return "Id_groups_json, Id_Accreditations_Item, Modifie, Id_Creator, Id_users_json";
+		return " Id_groups_json, Id_Accreditations_Item, Modifie, Id_Creator, Id_users_json";
 	}
 
 
@@ -348,7 +348,8 @@ class Items{
 		
 		$sValues .= Quotes( $this->getId_groups_json());
 		$sValues .= ", " . Quotes( $this->getId_Accreditations_Item());
-		$sValues .= ", " . Quotes( $this->getModifie());
+		$sValues .= ", current_timestamp";
+		//$sValues .= ", " . Quotes( $this->getModifie());
 		$sValues .= ", " . Quotes( $this->getId_Creator());
 		$sValues .= ", " . Quotes( $this->getId_users_json());
 		
@@ -376,7 +377,8 @@ class Items{
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "Id_groups_json  = " . Quotes($this->getId_groups_json());
 		$Query .= ", " .  "Id_Accreditations_Item  = " . Quotes($this->getId_Accreditations_Item());
-		$Query .= ", " .  "Modifie  = " . Quotes($this->getModifie());
+		$Query .= ", " .  "Modifie  = current_timestamp";
+		//$Query .= ", " .  "Modifie  = " . Quotes($this->getModifie());
 		$Query .= ", " .  "Id_Creator  = " . Quotes($this->getId_Creator());
 		$Query .= ", " .  "Id_users_json  = " . Quotes($this->getId_users_json());
 		//build the condition
@@ -420,12 +422,11 @@ class Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
-		//Our ID
-		$nId = $this->getId_Items();
 		//Get the query !!!
-		if($nId == 0)
-		{
+		if($this->getId_Items() == 0){
+			$this->setId_Creator(intval($oAgent));
 			$sQuery = Items::getInsertQuery();
+			//echo $sQuery;
 		}
 		else
 			$sQuery = Items::getUpdateQuery();
@@ -438,6 +439,21 @@ class Items{
 		//Close it !!! For Goddess Sake !!!
 		$GLOBALS["oConnection"]->close();
 		
+		//get the last query
+
+		if($this->getId_Items() == 0){
+			//the query
+			$sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items WHERE Id_Creator = " . Quotes($oAgent);
+			//open
+			$GLOBALS["oConnection"]->open();
+			//the select query
+			$ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, ["max"], null);
+			//close
+			$GLOBALS["oConnection"]->close();
+
+			$this->setId_Items(intval( $ary_[0]["max"]));
+		}
+
 		//Return the job !
 		return Items::loadFromConnection($oAgent);
 	}

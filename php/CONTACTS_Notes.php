@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Notes.php
 //Description : Table des notes sur les items
 
 
 //include to dtb connection
-include_once "CONTACTS_Items.php";
+include "CONTACTS_Items.php";
 
 ///[CLASS][Notes]Table des notes sur les items
 ///[AUTHOR]Ludo
@@ -321,10 +321,7 @@ class Notes extends Items{
 		
 		$sValues .= Quotes( $this->getId_Notes());
 		$sValues .= ", " . Quotes( $this->getTitre());
-		if( $this->getUrgente()){
-			$sValues .= ", " . "TRUE";
-		else
-			$sValues .= ", " . "FALSE";
+		$sValues .= ", " . Quotes( $this->getUrgente());
 		$sValues .= ", " . Quotes( $this->getTexte());
 		$sValues .= ", " . Quotes( $this->getId_Items_Linked());
 		
@@ -351,10 +348,7 @@ class Notes extends Items{
 		//build the set
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "Titre  = " . Quotes($this->getTitre());
-		if( $this->getUrgente()){
-			$Query .= ", " .  "Urgente  = TRUE";
-		else
-			$Query .= ", " .  "Urgente  = FALSE";
+		$Query .= ", " .  "Urgente  = " . Quotes($this->getUrgente());
 		$Query .= ", " .  "Texte  = " . Quotes($this->getTexte());
 		$Query .= ", " .  "Id_Items_Linked  = " . Quotes($this->getId_Items_Linked());
 		//build the condition

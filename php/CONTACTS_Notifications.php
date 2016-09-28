@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Notifications.php
 //Description : Tables des notifications utilisateurs
 
 
 //include to dtb connection
-include_once "connection.php";
+include "connection.php";
 
 ///[CLASS][Notifications]Tables des notifications utilisateurs
 ///[AUTHOR]Ludo
@@ -153,7 +153,7 @@ class Notifications{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return "Msg, Id_Auteur, Id_Destinataire";
+		return ", Msg, Id_Auteur, Id_Destinataire";
 	}
 
 

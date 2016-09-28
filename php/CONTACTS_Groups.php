@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-09-07 11:51:46
 //Filename : Contacts_Groups.php
 //Description : Table des groups héritant de la table Contacts
 
@@ -293,10 +293,11 @@ class Groups extends Contacts{
 		
 		$sValues .= Quotes( $this->getId_Groups());
 		$sValues .= ", " . Quotes( $this->getUGrp_Json());
-		if( $this->getFichiers()){
-			$sValues .= ", " . "TRUE";
+		if($this->getFichiers())
+			$sValues .= ", true";
 		else
-			$sValues .= ", " . "FALSE";
+			$sValues .= ", false";
+		//$sValues .= ", " . Quotes( $this->getFichiers());
 		$sValues .= ", " . Quotes( $this->getNomGroupe());
 		
 		//return the get value chain !
@@ -322,10 +323,11 @@ class Groups extends Contacts{
 		//build the set
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "UGrp_Json  = " . Quotes($this->getUGrp_Json());
-		if( $this->getFichiers()){
-			$Query .= ", " .  "Fichiers  = TRUE";
+		if($this->getFichiers())
+			$Query .= ", Fichiers  = true";
 		else
-			$Query .= ", " .  "Fichiers  = FALSE";
+			$Query .= ", Fichiers  = false";
+		//$Query .= ", " .  "Fichiers  = " . Quotes($this->getFichiers());
 		$Query .= ", " .  "NomGroupe  = " . Quotes($this->getNomGroupe());
 		//build the condition
 		$Query .= "WHERE Id_Groups = " . Quotes($this->getId_Groups());

@@ -20,11 +20,11 @@ function SAVE_LAY_Contacts(sId){
 	//In ?
 	if(nPosition == POTOURS_FIND_NOTFOUND)
 		return false;
-	
+
 	//Update the object 
 	ARY_LAY_Contacts[nPosition].ViewToObject();
 	//get the Item
-	oItem = ARY_LAY_Contacts[nPosition].members.getObj();
+	oItem = ARY_LAY_Contacts[nPosition].getObj();
 
 	//Sad God Sake !!!
 	return oItem.save(Heimdall.members.user["UserId"], ".");
@@ -160,8 +160,8 @@ function LAY_Contacts(){
 		}
 		sCode += "\t" + "</select>" + "\r\n";
 
-		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Contacts.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + nLine + '" value=""/>';
-		sCode += '\t\t<input id="SAI_Prenom_' + oLAY_Contacts.getId() + '" class="SAI_" type="text" name="SAI_Prenom_' + nLine + '" value=""/>';
+		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Contacts.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Contacts.getId() + '" value=""/>';
+		sCode += '\t\t<input id="SAI_Prenom_' + oLAY_Contacts.getId() + '" class="SAI_" type="text" name="SAI_Prenom_' + oLAY_Contacts.getId() + '" value=""/>';
 
 		//sCode += "\t" + "<br/>" + "\r\n";
 
@@ -179,11 +179,11 @@ function LAY_Contacts(){
 		}
 		sCode += "\t" + "</select>" + "\r\n";
 
-		sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Contacts(" + oLAY_Contacts.getId() + ")\">Sauvegarder</div>" + "\r\n";
-		sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Contacts(" + oLAY_Contacts.getId() + ")\">Supprimer</div>" + "\r\n";
+		sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Contacts('" + oLAY_Contacts.getId() + "')\">Sauvegarder</div>" + "\r\n";
+		sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Contacts('" + oLAY_Contacts.getId() + "')\">Supprimer</div>" + "\r\n";
 
 		sCode += "</form>";
-		sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + nLine + "\">---</div>";
+		sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId() + "\">---</div>";
 		
 		sCode += "</div>";
 		
@@ -223,7 +223,7 @@ function LAY_Contacts(){
             return false;
         
         //the inner HTML add
-        oDivOwner.innerHtml += oLAY_Contacts.generateHTML();
+        oDivOwner.innerHTML += oLAY_Contacts.generateHTML();
 
         return oLAY_Contacts.attach();
     };
@@ -253,12 +253,20 @@ function LAY_Contacts(){
     this.myLAY_Contacts.deleteComponent = this.deleteComponent;
 
 	this.initializeLayout = function(sDivOwner, sDivId){
+		//get the position ]:)
+		var nPosition = 0;
 		//initialize the name and ID
 		oLAY_Contacts.setName(sDivId);
 		//Initialise component
 		if(oLAY_Contacts.initialyseComponent(sDivOwner)){
-			//add to the global array
-			ARY_LAY_Contacts.push(oLAY_Contacts);
+			//get the position
+			nPosition = findInPotoursObjLst(ARY_LAY_Contacts, "sName", sDivId);
+			if(nPosition == POTOURS_FIND_NOTFOUND)
+				//add to the global array
+				ARY_LAY_Contacts.push(oLAY_Contacts);
+			else
+				//change
+				ARY_LAY_Contacts[nPosition] = oLAY_Contacts;
 			//happy end
 			return true;
 		} 

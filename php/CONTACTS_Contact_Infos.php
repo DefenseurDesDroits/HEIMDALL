@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Contact_Infos.php
 //Description : Table des informations liées au contact
 

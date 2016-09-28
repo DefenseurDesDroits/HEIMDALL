@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Pays.php
 //Description : Tables des pays
 
@@ -208,7 +208,7 @@ class Pays{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return "Code, Alpha2, Alpha3, Nom, Id_Langues_Json";
+		return ", Code, Alpha2, Alpha3, Nom, Id_Langues_Json";
 	}
 
 

@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Accreditations.php
 //Description : Table des accréditations sur les items
 
 
 //include to dtb connection
-include_once "connection.php";
+include "connection.php";
 
 ///[CLASS][Accreditations]Table des accréditations sur les items
 ///[AUTHOR]Ludo
@@ -127,7 +127,7 @@ class Accreditations{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return "Nom, Niveau";
+		return ", Nom, Niveau";
 	}
 
 
