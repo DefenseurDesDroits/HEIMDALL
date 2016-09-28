@@ -77,6 +77,8 @@ function groupsOfUser($nIdUser){
 	$ary_ = array();
 	//The array we throw
 	$ary_Result = array();
+	//array of Id
+	$ary_nIds = array();
 	//Our count
 	$nCount = 0;
 	//Our iterrator

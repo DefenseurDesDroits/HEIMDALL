@@ -441,7 +441,7 @@ function createContacts($oXXX, $oCRM){
     //get the count
     $nCount = count($ary_);
     //open
-    echo $oXXX->open();
+    //echo $oXXX->open();
     //do the loop
     while($nLine < $nCount){
 
@@ -517,7 +517,7 @@ function createContacts($oXXX, $oCRM){
         $nLine++;
     }
     //close
-    echo $oXXX->close();
+    //echo $oXXX->close();
 
 }
 
@@ -704,7 +704,8 @@ function doTransfert(){
     //crm connection
     $oCRM = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
     //xxx connection
-    $oXXX = new Potours_Connection_PGSQL("192.168.1.184", "heimdalldb", "heimdall", "T0RLVQM3+663");
+    $oXXX = new Potours_Connection_PGSQL("127.0.0.1", "heimdalldb", "heimdall", "T0RLVQM3+663");
+    //$oXXX = new Potours_Connection_PGSQL("192.168.1.184", "heimdalldb", "heimdall", "T0RLVQM3+663");
     //$oXXX = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
 
     //our array for our results 

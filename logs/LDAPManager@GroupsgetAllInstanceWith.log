@@ -7489,3 +7489,243 @@ AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
 AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
 [Results]
 1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Promotion de l''égalité et de l''accès aux droits'
+[Results]
+1 line(s) found !!!
+
+[New Call]
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe
+FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Groups
+WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
+AND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups
+AND xxx.Groups.NomGroupe ILIKE 'Communication et formation'
+[Results]
+1 line(s) found !!!

@@ -28,9 +28,9 @@ var Heimdall = {
             sCode += "";
 
             sCode += "<form class=\"LAY_\">" + "\r\n";
-            sCode += "\t" + '<input id="SAI_User" class="SAI_" type="text" name="SAI_User" value="User"/>' + "\r\n";
+            sCode += "\t" + '<input id="SAI_User" class="SAI_" type="text" name="SAI_User" value="User" onkeyup="Heimdall.methods.connectionKey(event)"/>' + "\r\n";
             sCode += "<br/>" + "\r\n";
-            sCode += "\t" + '<input id="SAI_Pwd" class="SAI_" type="password" name="SAI_Pwd" value="Pwd"/>' + "\r\n";
+            sCode += "\t" + '<input id="SAI_Pwd" class="SAI_" type="password" name="SAI_Pwd" value="Pwd" onkeyup="Heimdall.methods.connectionKey(event)"/>' + "\r\n";
             sCode += "</form>" + "\r\n";
             sCode += "\t" + "<div class=\"BTN_ \" onclick=\"Heimdall.methods.submitConnection()\">Valider</div>" + "\r\n";
 
@@ -44,6 +44,10 @@ var Heimdall = {
                 oElement.innerHTML = sCode;
             }
 
+        },
+        connectionKey : function(event){
+            if(event.keyCode == 13)
+                Heimdall.methods.submitConnection();
         },
         responseConnection : function(sText){
             
