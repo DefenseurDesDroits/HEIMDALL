@@ -712,8 +712,14 @@ function LAY_Contacts_4(sDivOwner, oContacts){
 }
 
 function LAY_Contacts_3(sDivOwner, oContacts){
-    //default one !!!
-    LAY_Contacts_1(sDivOwner, oContacts);
+    //Edition Layout
+    var oLay = null;
+
+    oLay = new LAY_Users();
+
+    oLay.init(sDivOwner, "Users" +  oContacts.getId_Users(), oContacts);
+
+    oLay.ObjToView();
 }
 
 function LAY_Contacts_2(sDivOwner, oContacts){
@@ -1022,8 +1028,10 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
                     oContact = new Organisations();
                     oContact.loadFromArray(ary_Contacts[nLine]);
                     break;
+                case "3"://transform Contact as user
                 case 3://transform Contact as user
-                    
+                    oContact = new Users();
+                    oContact.loadFromArray(ary_Contacts[nLine]);
                     break;
                 case 4://transform Contact as Groups
                     
@@ -1323,6 +1331,43 @@ function contactKeySearch(event){
     }
 }
 
+function userWinContact(oContact){
+
+    //our line
+    var nLine = 0;
+    //our element to get the text zone
+    var oElement = null;
+
+    //Edition Layout
+    var oLay = null;
+
+    if(oContact == null){
+        oContact = new Users();
+        oContact.setId_Civilites(1);
+        oContact.setId_Titres(1);
+        oContact.setId_Accreditations_Item(1);
+        oContact.setId_Contact_Types(3);//set to the type contact !!!
+        // nLine = Heimdall.members.products.contacts.Contacts.length;
+        // Heimdall.members.products.contacts.Contacts.push(oContact);
+    }
+        
+    //create the win form
+    WIN_Contacts = new  Overview("WIN_Contacts", 640, 480, "#6669A3", 0.5);
+
+    oLay = new LAY_Users();
+
+    oLay.init("WIN_Contacts", "Users" + oContact.getId_Users(), oContact);
+
+    oLay.ObjToView();
+
+    //get the element to fill it
+    oElement = document.getElementById("WIN_Contacts");
+    if(oElement != null){
+        oElement.innerHTML += "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+    }
+
+}
+
 function organisationWinContact(oContact){
 
     //our line
@@ -1405,6 +1450,7 @@ function contactsAddMenu(sDivID){
     sCode += "\t" + "<div>Contacts</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Contact\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();contactWinContact(null);\">Ajouter un contact</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Organisation\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();organisationWinContact(null);\">Ajouter une organisation</div>" + "\r\n";
+    sCode += "\t" + "<div id=\"BTN_Add_Users\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();userWinContact(null);\">Ajouter un utilisateur</div>" + "\r\n";
 
     sCode += "</div>" + "\r\n";
 

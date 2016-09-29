@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.1.2";
+const MAIN_VERSION = "0.1.3";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! ###################################### */
@@ -30,7 +30,8 @@ var ary_sFileLib = [
 	"lib/CONTACTS_Groups.js",
 	/*CONTACT LAY !!! */
 	"lay/LAY_Contacts.js",
-	"lay/LAY_Organisations.js"
+	"lay/LAY_Organisations.js",
+	"lay/LAY_Users.js"
 ];
 
 var oWinLoader = {};

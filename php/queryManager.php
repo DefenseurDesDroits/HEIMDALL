@@ -3,6 +3,7 @@
 //put your include
 include_once("CONTACTS_Contacts.php");
 include_once("CONTACTS_Organisations.php");
+include_once("CONTACTS_Users.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
@@ -161,8 +162,11 @@ function searchQuery($Args){
                 $oContact->loadFromArray($ary_[$nLine], true);
                 $oContact->loadFromConnection("");
                 break;
+            case "3"://transform Contact as user
             case 3://transform Contact as user
-                
+                $oContact = new Users();
+                $oContact->loadFromArray($ary_[$nLine], true);
+                $oContact->loadFromConnection("");
                 break;
             case 4://transform Contact as Groups
                 

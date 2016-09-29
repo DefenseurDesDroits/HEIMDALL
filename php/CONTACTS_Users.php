@@ -7,7 +7,7 @@
 
 
 //include to dtb connection
-include "CONTACTS_Contacts.php";
+include_Once "CONTACTS_Contacts.php";
 
 ///[CLASS][Users]Table des utilisateurs, héritant de celle des contacts
 ///[AUTHOR]Ludo
