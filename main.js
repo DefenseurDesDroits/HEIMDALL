@@ -7,7 +7,8 @@
 const MAIN_VERSION = "0.1.2";
 
 var ary_sFileLib = [
-	/*CONTACT LIB !!! */
+	/*CONTACT LIB !!! ###################################### */
+	/*CONTACT OBJ !!! */
 	"lib/CONTACTS_Accreditations.js",
 	"lib/CONTACTS_Item_Types.js",
 	"lib/CONTACTS_Items.js",
@@ -27,7 +28,9 @@ var ary_sFileLib = [
 	"lib/CONTACTS_Users.js",
 	"lib/CONTACTS_Notifications.js",
 	"lib/CONTACTS_Groups.js",
-	"lay/LAY_Contacts.js"
+	/*CONTACT LAY !!! */
+	"lay/LAY_Contacts.js",
+	"lay/LAY_Organisations.js"
 ];
 
 var oWinLoader = {};

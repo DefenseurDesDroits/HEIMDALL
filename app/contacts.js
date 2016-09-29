@@ -9,6 +9,7 @@
 /// <reference path="../lib/CONTACTS_Titres.js" />
 
 /// <reference path="../lay/LAY_Contacts.js" />
+/// <reference path="../lay/LAY_Organisations.js" />
 
 const HEIMDALL_AUTO_QUERY_SIZE = 2;
 
@@ -243,7 +244,7 @@ function loadStatics_Contact_Types(){
 
 }
 
-///[FUNCTION][loadStatics_Contact_Types]Function to load all the Contacts types from the DTB
+///[FUNCTION][loadStatics_Groups]Function to load all the Groups from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStatics_Groups(){
 
@@ -297,6 +298,114 @@ function loadStatics_Groups(){
 
 }
 
+///[FUNCTION][loadStatics_Pays]Function to load all the Country from the DTB
+///[RETURNS][Boolean]True if done
+function loadStatics_Pays(){
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //our object to convert
+            var oPays = null;
+            //our array of result
+            var ary_Json = JSON.parse(oReq.responseText);
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
+            //reset
+            Heimdall.members.products.contacts.Pays = [];
+            //get the number of result
+            nCount = ary_Json.length;
+            //loop
+            while(nLine < nCount){
+
+                //realloc the variable
+                oPays = new Pays();
+                //load it !
+                oPays.loadFromArray(ary_Json[nLine]);
+
+                //add it
+                Heimdall.members.products.contacts.Pays.push(oPays);
+
+                //next
+                nLine++;
+            }
+
+            Heimdall.flags.waitData = false;
+        }
+    };
+    //prepare the query*********************
+    Heimdall.flags.waitData = true;
+    //check the open
+    oReq.open("POST", "php/Pays_manager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
+    //Return the job !
+    return true;
+
+}
+
+///[FUNCTION][loadStatics_Organisation_Types]Function to load all the kind of operations from the DTB
+///[RETURNS][Boolean]True if done
+function loadStatics_Organisation_Types(){
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //our object to convert
+            var oOrganisation_Types = null;
+            //our array of result
+            var ary_Json = JSON.parse(oReq.responseText);
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
+            //reset
+            Heimdall.members.products.contacts.Organisation_Types = [];
+            //get the number of result
+            nCount = ary_Json.length;
+            //loop
+            while(nLine < nCount){
+
+                //realloc the variable
+                oOrganisation_Types = new Organisation_Types();
+                //load it !
+                oOrganisation_Types.loadFromArray(ary_Json[nLine]);
+
+                //add it
+                Heimdall.members.products.contacts.Organisation_Types.push(oOrganisation_Types);
+
+                //next
+                nLine++;
+            }
+
+            Heimdall.flags.waitData = false;
+        }
+    };
+    //prepare the query*********************
+    Heimdall.flags.waitData = true;
+    //check the open
+    oReq.open("POST", "php/Organisation_Types_manager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
+    //Return the job !
+    return true;
+
+}
+
 ///[FUNCTION][loadStaticsContactsData]Function to load all the Contacts data from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStaticsContactsData(){
@@ -306,6 +415,8 @@ function loadStaticsContactsData(){
     loadStatics_Titres();
     loadStatics_Accreditations();
     //loadStatics_Groups();//do you want security troubles ? O_o
+    loadStatics_Pays();
+    loadStatics_Organisation_Types();
 
     return true;
 }
@@ -462,114 +573,6 @@ function contactAddresses(nLine){
 
 }
 
-///[FUNCTION][contactDivHeader]Function to plot the contact header
-///[RETURNS][String]HTML Code of the element
-function contactDivHeader(){
-    //our code
-    var sCode = "";
-    //our type
-    var sType = "";
-    //our name
-    var sName = "Nom";
-    //our type name 
-    var sTypeName = "contact_types"
-    //our organisation
-    var sOrga = "Orga/Type";
-    //our function 
-    var sFunction = "Fonction/APE";
-
-    //type position
-    var nPosition = 0;
-
-    //fill sType
-    sType = "<img src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\"/>";
-
-    //master div
-    sCode += "<div class=\"inlineContact heim_Block impaire\">";
-
-    sCode += "\t" + "<div class=\"inlineContact_Contact heim_Inline_Block\">";
-
-    sCode += "\t" + "\t" + "<div class=\"inlineContact_Contact_Type heim_Inline_Block\">" + sType + "</div>";
-    sCode += "\t" + "\t" + "<div class=\"inlineContact_Contact_Name heim_Inline_Block\">" + sName+ "</div>";
-
-    sCode += "\t" + "</div>";
-
-    sCode += "\t" + "<div class=\"inlineContact_Organisation heim_Inline_Block\">";
-
-    sCode += "\t" + "\t" + "<div class=\"inlineContact_Organisation_Organisation heim_Inline_Block\">" + sOrga + "</div>";
-    sCode += "\t" + "\t" + "<div class=\"inlineContact_Organisation_Fonction heim_Inline_Block\">" + sFunction + "</div>";
-
-    sCode += "\t" + "</div>";
-
-    sCode += "</div>";
-
-    //return the code
-    return sCode;
-}
-
-///[FUNCTION][contactLAYDIVSave]Function to save the change in a contact
-///[PARAMETER][integer][nLine]Line of the contact
-///[RETURNS][Boolean]True if done
-function contactLAYDIVSave(nLine){
-    
-    //get the contact 
-    var oContact = Heimdall.members.products.contacts.Contacts[nLine];
-    //element 
-    var oElement = null;
-
-    // 
-
-    oElement = document.getElementById("COMBO_Civilite_" + nLine);
-    if(oElement != null)
-        oContact.setId_Civilites(parseInt(Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites()));
-
-    ///[DEBUG]Operaion time !!!
-    if(Heimdall.flags.debug && oElement != null){
-        console.log("COMBO_Civilite value : "  + oElement.selectedIndex);
-        console.log("COMBO_Civilite ID : "  + Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites());
-    }
-    ///[/DEBUG]
-
-    oElement = document.getElementById("SAI_Nom_" + nLine);
-    if(oElement != null)
-        oContact.setNom(oElement.value);
-
-    oElement = document.getElementById("SAI_Prenom_" + nLine);
-    if(oElement != null)
-        oContact.setPrenom(oElement.value);
-
-    oElement = document.getElementById("COMBO_Titres_" + nLine);
-    if(oElement != null)
-        oContact.setId_Titres(parseInt(Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres()));
-
-    ///[DEBUG]Operaion time !!!
-    if(Heimdall.flags.debug && oElement != null){
-        console.log("COMBO_Titres value : "  + oElement.selectedIndex);
-        console.log("COMBO_Titres ID : "  + Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres());
-    }
-    ///[/DEBUG]
-
-    ///[DEBUG]Operation time !!!
-    if(Heimdall.flags.debug){
-        console.log("contactLAYDIVSave, json : " + "\r\n" + oContact.exportToJson());
-        console.log("user id : " + Heimdall.members.user["UserId"]);
-    }
-    ///[/DEBUG]
-
-    //will change !!!
-    if(oContact.getId_Accreditations_Item() == 0)
-        oContact.setId_Accreditations_Item(1);
-
-    return oContact.save(Heimdall.members.user["UserId"], ".");
-}
-
-///[FUNCTION][contactLAYDIVDelete]Function to delete the change in a contact
-///[PARAMETER][integer][nLine]Line of the contact
-///[RETURNS][Boolean]True if done
-function contactLAYDIVDelete(nLine){
-    alert("Delete NotDevYet : " + nLine);
-}
-
 function accreditationHTML_1(){
     return "Tous";
 }
@@ -703,107 +706,38 @@ function accreditationsLAYDiv(){
     return sCode
 }
 
-///[FUNCTION][contactLAYDiv]Function to plot a contact
-///[PARAMETER][integer][nLine]Line of the contact
-///[RETURNS][String]HTML Code of the element
-function contactLAYDiv(sIdPart, nLine){
-    //our code
-    var sCode = "";
-    //our civilities part ----
-    //our count
-    var nCount = 0;
-    //our iterator
-    var nIt = 0;
-    //position of the civilite
-    var nPosition = 0;
-
-    sCode += "<div>" + accreditationsLAYDiv() + "</div>";
-
-    //sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
-    sCode += "<form class=\"LAY_\">" + "\r\n";
-
-    sCode += "\t" + "<select id=\"COMBO_Civilite_" + sIdPart + "\">" + "\r\n";
-    //get the count
-    nCount = Heimdall.members.products.contacts.Civilites.length;
-    //init the iterator
-    nIt = 0;
-    //loop
-    while(nIt < nCount){
-        //add option
-        sCode += "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() + "\">" + Heimdall.members.products.contacts.Civilites[nIt].getNom() + "</option>" + "\r\n";
-        //Next
-        nIt++;
-    }
-    sCode += "\t" + "</select>" + "\r\n";
-
-    sCode += '\t\t<input id="SAI_Nom_' + sIdPart + '" class="SAI_" type="text" name="SAI_Nom_' + nLine + '" value="' + Heimdall.members.products.contacts.Contacts[nLine].getNom() + '"/>';
-    sCode += '\t\t<input id="SAI_Prenom_' + sIdPart + '" class="SAI_" type="text" name="SAI_Prenom_' + nLine + '" value="' + Heimdall.members.products.contacts.Contacts[nLine].getPrenom() + '"/>';
-
-    //sCode += "\t" + "<br/>" + "\r\n";
-
-    sCode += "\t" + "<select id=\"COMBO_Titres_" + sIdPart + "\">" + "\r\n";
-    //get the count
-    nCount = Heimdall.members.products.contacts.Titres.length;
-    //init the iterator
-    nIt = 0;
-    //loop
-    while(nIt < nCount){
-        //add option
-        sCode += "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Titres[nIt].getId_Titres() + "\">" + Heimdall.members.products.contacts.Titres[nIt].getNom() + "</option>" + "\r\n";
-        //Next
-        nIt++;
-    }
-    sCode += "\t" + "</select>" + "\r\n";
-
-    sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"contactLAYDIVSave(" + sIdPart + ")\">Sauvegarder</div>" + "\r\n";
-    //sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"contactLAYDIVSave(" + nLine + ")\">Sauvegarder</div>" + "\r\n";
-    sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"contactLAYDIVDelete(" + sIdPart + ")\">Supprimer</div>" + "\r\n";
-    //sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"contactLAYDIVDelete(" + nLine + ")\">Supprimer</div>" + "\r\n";
-
-    sCode += "</form>";
-    sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + nLine + "\">---</div>";
-
-    //return the code
-    return sCode;
+function LAY_Contacts_4(sDivOwner, oContacts){
+    //default one !!!
+    LAY_Contacts_1(sDivOwner, oContacts);
 }
 
-function contactLAYDivFill(sIdPart, oContact){
+function LAY_Contacts_3(sDivOwner, oContacts){
+    //default one !!!
+    LAY_Contacts_1(sDivOwner, oContacts);
+}
 
-    //our position
-    var nPosition = 0;
-    //our element to do everything
-    var oElement = null;
+function LAY_Contacts_2(sDivOwner, oContacts){
+    //Edition Layout
+    var oLay = null;
 
-    if(oContact == null)
-        return false;
+    oLay = new LAY_Organisations();
 
-    oElement = document.getElementById("COMBO_Civilite_" + sIdPart);
-    if(oElement != null){
-        nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", oContact.getId_Civilites());
-        if(nPosition != POTOURS_FIND_NOTFOUND){
-            //Option created in the same order than stored
-            oElement.selectedIndex = nPosition;
-        }
-    }
-        
-    oElement = document.getElementById("SAI_Nom_" + sIdPart);
-    if(oElement != null)
-        oElement.value = oContact.getNom();
+    oLay.init(sDivOwner, "Organisations" +  oContacts.getId_Organisations(), oContacts);
 
-    oElement = document.getElementById("SAI_Prenom_" + sIdPart);
-    if(oElement != null)
-        oElement.value = oContact.getPrenom();
+    oLay.ObjToView();
+}
 
-    oElement = document.getElementById("COMBO_Titres_" + sIdPart);
-    if(oElement != null){
-        nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", oContact.getId_Titres());
-        if(nPosition != POTOURS_FIND_NOTFOUND){
-            //Option created in the same order than stored
-            oElement.selectedIndex = nPosition;
-        }
-    }
+function LAY_Contacts_1(sDivOwner, oContacts){
 
-    return true;
+    //Edition Layout
+    var oLay = null;
+
+    oLay = new LAY_Contacts();
+
+    oLay.init(sDivOwner, "Contacts" +  oContacts.getId_Contacts(), oContacts);
+
+    oLay.ObjToView();
+
 }
 
 ///[FUNCTION][contactClick]Function on click of a contact
@@ -820,13 +754,7 @@ function contactClick(nLine){
     var nElement = -1;
     //our element to extend
     var oElement = null;
-    //combo value element
-    var COMBO_Civilite = null;
-    //combo title
-    var COMBO_Titres = null;
-    //position of civilite
-    var nPosition = 0;
-    
+
     //first : remove the extended !
     if(oExt != null){
         nCount = oExt.length;
@@ -863,21 +791,8 @@ function contactClick(nLine){
     oElement = document.getElementById(HEIMDALL_LAY_CONTACT_EXTENDED_ID + nLine);
     if(oElement != null){
         if(oElement.innerHTML == ""){
-            // //create dude
-            // oElement.innerHTML = contactLAYDiv(nLine, nLine);
 
-            // contactLAYDivFill(nLine, Heimdall.members.products.contacts.Contacts[nLine]);
-
-            // //Obtain Address
-            // contactAddresses(nLine);
-
-            var oLay = null;
-
-            oLay = new LAY_Contacts();
-
-            oLay.init(HEIMDALL_LAY_CONTACT_EXTENDED_ID + nLine, "Contacts" +  Heimdall.members.products.contacts.Contacts[nLine].getId_Contacts(), Heimdall.members.products.contacts.Contacts[nLine]);
-
-            oLay.ObjToView();
+            eval("LAY_Contacts_" + Heimdall.members.products.contacts.Contacts[nLine].getId_Contact_Types() + "(HEIMDALL_LAY_CONTACT_EXTENDED_ID + nLine, Heimdall.members.products.contacts.Contacts[nLine]);");
 
         }
     }
@@ -978,6 +893,51 @@ function contactdiv(oContact, nLine){
     return sCode;
 }
 
+///[FUNCTION][contactDivHeader]Function to plot the contact header
+///[RETURNS][String]HTML Code of the element
+function contactDivHeader(){
+    //our code
+    var sCode = "";
+    //our type
+    var sType = "";
+    //our name
+    var sName = "Nom";
+    //our type name 
+    var sTypeName = "contact_types"
+    //our organisation
+    var sOrga = "Orga/Type";
+    //our function 
+    var sFunction = "Fonction/APE";
+
+    //type position
+    var nPosition = 0;
+
+    //fill sType
+    sType = "<img src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\"/>";
+
+    //master div
+    sCode += "<div class=\"inlineContact heim_Block impaire\">";
+
+    sCode += "\t" + "<div class=\"inlineContact_Contact heim_Inline_Block\">";
+
+    sCode += "\t" + "\t" + "<div class=\"inlineContact_Contact_Type heim_Inline_Block\">" + sType + "</div>";
+    sCode += "\t" + "\t" + "<div class=\"inlineContact_Contact_Name heim_Inline_Block\">" + sName+ "</div>";
+
+    sCode += "\t" + "</div>";
+
+    sCode += "\t" + "<div class=\"inlineContact_Organisation heim_Inline_Block\">";
+
+    sCode += "\t" + "\t" + "<div class=\"inlineContact_Organisation_Organisation heim_Inline_Block\">" + sOrga + "</div>";
+    sCode += "\t" + "\t" + "<div class=\"inlineContact_Organisation_Fonction heim_Inline_Block\">" + sFunction + "</div>";
+
+    sCode += "\t" + "</div>";
+
+    sCode += "</div>";
+
+    //return the code
+    return sCode;
+}
+
 ///[FUNCTION][plotMoreContact]Function to plot line of contacts
 ///[PARAMETER][integer][nOffset]Our start line
 ///[PARAMETER][integer][nLimit]integer to determine the last print line
@@ -1049,8 +1009,29 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
         while(nLine < nCount){
             //init
             oContact = new Contacts();
-            //oContact.loadFromJson(JSON.stringify(ary_Json[nLine]));
+            //load it !
             oContact.loadFromArray(ary_Contacts[nLine]);
+
+            //what a case !!!
+            switch (oContact.getId_Contact_Types()) {
+                case 1://nothing to do :p
+                    
+                    break;
+                case "2"://transform Contact as organisation
+                case 2://transform Contact as organisation
+                    oContact = new Organisations();
+                    oContact.loadFromArray(ary_Contacts[nLine]);
+                    break;
+                case 3://transform Contact as user
+                    
+                    break;
+                case 4://transform Contact as Groups
+                    
+                    break;
+                default:
+                    break;
+            }
+
             //add fonction in memory ]:)
             oContact.members["fonction"] = ary_Contacts[nLine]["fonction"];
             //add the contact info
@@ -1068,11 +1049,13 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
             }
             ///[/DEBUG]   
 
-            //add to the global list
-            Heimdall.members.products.contacts.Contacts.push(oContact);
             //add it!!!
             if(nLine < nCountPlot)
                 oElement.innerHTML += contactdiv(oContact, nLine); 
+            
+            //add to the global list
+            Heimdall.members.products.contacts.Contacts.push(oContact);
+
             //next
             nLine++;
         }
@@ -1080,8 +1063,12 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
     else{
         //to the loop machine
         while(nLine < nCountPlot){
+
+            oContact = ary_Contacts[nLine];
+
             //seems faster isn't it ?
-            oElement.innerHTML += contactdiv(ary_Contacts[nLine], nLine); 
+            oElement.innerHTML += contactdiv(oContact, nLine); 
+            //oElement.innerHTML += contactdiv(ary_Contacts[nLine], nLine); 
             //next
             nLine++;
         }
@@ -1343,24 +1330,40 @@ function contactWinContact(oContact){
     //our element to get the text zone
     var oElement = null;
 
+    //Edition Layout
+    var oLay = null;
+
     if(oContact == null){
         oContact = new Contacts();
+        oContact.setId_Accreditations_Item(1);
         oContact.setId_Contact_Types(1);//set to the type contact !!!
-        nLine = Heimdall.members.products.contacts.Contacts.length;
-        Heimdall.members.products.contacts.Contacts.push(oContact);
+        // nLine = Heimdall.members.products.contacts.Contacts.length;
+        // Heimdall.members.products.contacts.Contacts.push(oContact);
     }
         
     //create the win form
     WIN_Contacts = new  Overview("WIN_Contacts", 640, 480, "#6669A3", 0.5);
 
+    oLay = new LAY_Contacts();
+
+    oLay.init("WIN_Contacts", "Contacts" + oContact.getId_Contacts(), oContact);
+
+    oLay.ObjToView();
+
     //get the element to fill it
     oElement = document.getElementById("WIN_Contacts");
     if(oElement != null){
-        oElement.innerHTML = contactLAYDiv(nLine, nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
-        //oElement.innerHTML = contactLAYDiv("Solo", nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+        oElement.innerHTML += "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
     }
 
-    contactLAYDivFill(nLine, oContact);
+    // //get the element to fill it
+    // oElement = document.getElementById("WIN_Contacts");
+    // if(oElement != null){
+    //     oElement.innerHTML = contactLAYDiv(nLine, nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+    //     //oElement.innerHTML = contactLAYDiv("Solo", nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+    // }
+
+    // contactLAYDivFill(nLine, oContact);
 
 }
 
@@ -1402,7 +1405,7 @@ function init_contacts(){
     Heimdall.members.products.contacts["Groups"] = [];
     Heimdall.members.products.contacts["Accreditations"] = [];
     Heimdall.members.products.contacts["Pays"] = [];
-    //Accreditations
+    Heimdall.members.products.contacts["Organisation_Types"] = [];
 
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
 

@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-09-29 12:49:04
 //Filename : Infos_manager.php
 //Description : Table des adresses. Hérité de la classe item.
 
@@ -118,7 +118,7 @@ function InfosgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function InfosManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];

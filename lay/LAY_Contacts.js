@@ -28,7 +28,6 @@ function SAVE_LAY_Contacts(sId){
 
 	//Sad God Sake !!!
 	return oItem.save(Heimdall.members.user["UserId"], ".");
-
 }
 
 //DELETE_LAY_Contacts
@@ -83,13 +82,15 @@ function LAY_Contacts(){
     };
     this.myLAY_Contacts.getName = this.getName;
 	
-	///[METHOD]Method to get our control name
-	///[RETURNS]string, our control name
+	///[METHOD]Method to get our control Id
+	///[RETURNS]string, our control Id
     this.getId = function(){
         return oLAY_Contacts.members.sName;
     };
     this.myLAY_Contacts.getId = this.getId;
 
+	///[METHOD]Method to get our object
+	///[RETURNS]string, our Object
 	this.getObj = function(){
 		return oLAY_Contacts.members.oObj;
 	};
@@ -99,7 +100,7 @@ function LAY_Contacts(){
 	
 	///[METHOD]Method to get our control Name
     ///[PARAMETER][string][sValue]string, our new control Name
-	///[RETURNS]string, our control namz
+	///[RETURNS]string, our control name
     this.setName = function(sValue){
         if(sValue == null)
             return false;
@@ -111,7 +112,9 @@ function LAY_Contacts(){
     };
 	this.myLAY_Contacts.setName = this.setName;
 	
-
+	///[METHOD]Method to get our Object
+    ///[PARAMETER][string][sValue]string, our new Object
+	///[RETURNS]boolean, true if done
 	this.setObj = function(oItem){
 		//security
 		if(oItem == null)
@@ -141,12 +144,12 @@ function LAY_Contacts(){
 		sCode += "<div id=\"" + oLAY_Contacts.getId() + "\">";
 		
 		//sCode += "<div >" + accreditationsLAYDiv() + "</div>";
-		sCode += "<div id=\"LAY_Accreditation_" + oLAY_Contacts.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Contacts.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
 
 		//sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
-		sCode += "<form class=\"LAY_\">" + "\r\n";
+		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
-		sCode += "\t" + "<select id=\"COMBO_Civilite_" + oLAY_Contacts.getId() + "\">" + "\r\n";
+		sCode += "\t" + "\t" + "<select id=\"COMBO_Civilite_" + oLAY_Contacts.getId() + "\">" + "\r\n";
 		//get the count
 		nCount = Heimdall.members.products.contacts.Civilites.length;
 		//init the iterator
@@ -154,18 +157,18 @@ function LAY_Contacts(){
 		//loop
 		while(nIt < nCount){
 			//add option
-			sCode += "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() + "\">" + Heimdall.members.products.contacts.Civilites[nIt].getNom() + "</option>" + "\r\n";
+			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() + "\">" + Heimdall.members.products.contacts.Civilites[nIt].getNom() + "</option>" + "\r\n";
 			//Next
 			nIt++;
 		}
-		sCode += "\t" + "</select>" + "\r\n";
+		sCode += "\t" + "\t" + "</select>" + "\r\n";
 
 		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Contacts.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Contacts.getId() + '" value=""/>';
 		sCode += '\t\t<input id="SAI_Prenom_' + oLAY_Contacts.getId() + '" class="SAI_" type="text" name="SAI_Prenom_' + oLAY_Contacts.getId() + '" value=""/>';
 
 		//sCode += "\t" + "<br/>" + "\r\n";
 
-		sCode += "\t" + "<select id=\"COMBO_Titres_" + oLAY_Contacts.getId() + "\">" + "\r\n";
+		sCode += "\t" + "\t" + "<select id=\"COMBO_Titres_" + oLAY_Contacts.getId() + "\">" + "\r\n";
 		//get the count
 		nCount = Heimdall.members.products.contacts.Titres.length;
 		//init the iterator
@@ -173,17 +176,17 @@ function LAY_Contacts(){
 		//loop
 		while(nIt < nCount){
 			//add option
-			sCode += "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Titres[nIt].getId_Titres() + "\">" + Heimdall.members.products.contacts.Titres[nIt].getNom() + "</option>" + "\r\n";
+			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Titres[nIt].getId_Titres() + "\">" + Heimdall.members.products.contacts.Titres[nIt].getNom() + "</option>" + "\r\n";
 			//Next
 			nIt++;
 		}
-		sCode += "\t" + "</select>" + "\r\n";
+		sCode += "\t" + "\t" + "</select>" + "\r\n";
 
-		sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Contacts('" + oLAY_Contacts.getId() + "')\">Sauvegarder</div>" + "\r\n";
-		sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Contacts('" + oLAY_Contacts.getId() + "')\">Supprimer</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Contacts('" + oLAY_Contacts.getId() + "')\">Sauvegarder</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Contacts('" + oLAY_Contacts.getId() + "')\">Supprimer</div>" + "\r\n";
 
-		sCode += "</form>";
-		sCode += "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId() + "\">---</div>";
+		sCode += "\t" + "</form>";
+		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId() + "\">---</div>";
 		
 		sCode += "</div>";
 		
@@ -210,7 +213,7 @@ function LAY_Contacts(){
     this.myLAY_Contacts.attach = this.attach;
 
     ///[METHOD]Method to initialize the control
-    ///[PARAMETER][string][sDivOwner]string, our div Id
+    ///[PARAMETER][string][sDivOwner]string, our owner div Id
 	///[RETURNS]boolean, true if done
     this.initialyseComponent = function(sDivOwner){
 
@@ -252,6 +255,10 @@ function LAY_Contacts(){
     };
     this.myLAY_Contacts.deleteComponent = this.deleteComponent;
 
+	///[METHOD]Method to initialize the layout
+    ///[PARAMETER][string][sDivOwner]string, our oxner div Id
+    ///[PARAMETER][string][sDivId]string, our div Id
+	///[RETURNS]boolean, true if done
 	this.initializeLayout = function(sDivOwner, sDivId){
 		//get the position ]:)
 		var nPosition = 0;
@@ -276,6 +283,8 @@ function LAY_Contacts(){
 	};
 	this.myLAY_Contacts.initializeLayout = this.initializeLayout;
 	
+	///[METHOD]Method to delete the layout
+	///[RETURNS]boolean, true if done
 	this.deleteLayout = function(){
 		//position 
 		var nPosition = 0;
@@ -296,7 +305,10 @@ function LAY_Contacts(){
 		//sad but true ! \m/
 		return false;
 	}
+	this.myLAY_Contacts.deleteLayout = this.deleteLayout;
 
+	///[METHOD]Method to plots the data of the object
+	///[RETURNS]boolean, true if done
 	this.ObjToView = function(){
 		//our position
 		var nPosition = 0;
@@ -337,6 +349,8 @@ function LAY_Contacts(){
 	};
 	this.myLAY_Contacts.ObjToView = this.ObjToView;
 	
+	///[METHOD]Method to the view data into the object
+	///[RETURNS]boolean, true if done
 	this.ViewToObject = function(){
 		//get the contact 
 		var oContact = oLAY_Contacts.members.oObj;
@@ -386,7 +400,11 @@ function LAY_Contacts(){
 	};
 	this.myLAY_Contacts.ViewToObject = this.ViewToObject;
 	
-	//init
+	///[METHOD]Method to initialize the layout
+    ///[PARAMETER][string][sDivOwner]string, our oxner div Id
+    ///[PARAMETER][string][sDivId]string, our div Id
+    ///[PARAMETER][string][sDivId]string, our div Id
+	///[RETURNS]boolean, true if done
 	this.init = function(sDivOwner, sDivId, oItem){
 		oLAY_Contacts.setObj(oItem);
 		return oLAY_Contacts.initializeLayout(sDivOwner, sDivId);

@@ -72,6 +72,8 @@ function createAccreditations($oCon){
 function createOrganisationType($oCon){
     //query
     $sQuery = "INSERT INTO xxx.organisation_types(nom)  VALUES ('Default');\r\n";
+    $sQuery = "INSERT INTO xxx.organisation_types(nom)  VALUES ('Cours');\r\n";
+    $sQuery = "INSERT INTO xxx.organisation_types(nom)  VALUES ('Tribunal');\r\n";
 
     //open
     $oCon->open();

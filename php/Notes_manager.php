@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-09-29 12:49:04
 //Filename : Notes_manager.php
 //Description : Table des notes sur les items
 
@@ -118,7 +118,7 @@ function NotesgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function NotesManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];

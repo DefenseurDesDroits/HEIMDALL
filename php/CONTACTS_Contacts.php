@@ -266,8 +266,6 @@ class Contacts extends Noeuds{
 		$bindSet = array();
 		//If we want add Prefixe.Table
 		if($bFromQuery){
-
-			
 			//get Corresponding set
 			$bindSet = $this->getCorrespondanceArray();
 			//Start a beautifull loop
@@ -279,7 +277,6 @@ class Contacts extends Noeuds{
 		}
 		else
 		{
-			
 			//Start a beautifull loop
 			foreach($this->members as $key => $value){
 				if(array_key_exists($key, $ary_))

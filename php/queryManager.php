@@ -2,6 +2,7 @@
 
 //put your include
 include_once("CONTACTS_Contacts.php");
+include_once("CONTACTS_Organisations.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
@@ -132,18 +133,8 @@ function searchQuery($Args){
     
     $sQuery .= "\r\n" . "ORDER BY xxx.contacts.nom";
 
-    /*$oContact->setId_Contacts(1);
-    $oContact->loadFromConnection(null);
-    echo $oContact->exportToJson();
-    return true;*/
-
-    //return something to the JS dude !!
-    //echo $sQuery;
-
     //get the array (so ugly way bro !!!)
     $GLOBALS["oConnection"]->open();
-    //$ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", str_replace(".", "", str_replace( explode(", ", $oContact->getTable()) , "", $oContact->getColumns()))), null);
-    //$ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", $oContact->getColumns()), null);
     $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", ($oContact->getColumns() . ", fonction, IdLinks") ), null);
     $GLOBALS["oConnection"]->close();
 
@@ -157,6 +148,29 @@ function searchQuery($Args){
         //do it
         $oContact = new Contacts();
         $oContact->loadFromArray($ary_[$nLine], true);
+
+        //check out the type !!!
+        switch ($oContact->getId_Contact_Types()) {
+            case "1"://nothing to do :p
+            case 1://nothing to do :p
+                
+                break;
+            case "2"://transform Contact as organisation
+            case 2://transform Contact as organisation
+                $oContact = new Organisations();
+                $oContact->loadFromArray($ary_[$nLine], true);
+                $oContact->loadFromConnection("");
+                break;
+            case 3://transform Contact as user
+                
+                break;
+            case 4://transform Contact as Groups
+                
+                break;
+            default:
+                break;
+        }
+
         $ary_Obj[$nLine] = $oContact->exportToArray();
         //add function for information
         $ary_Obj[$nLine]["fonction"] = $ary_[$nLine]["fonction"];

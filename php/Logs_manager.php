@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-09-28 04:27:39
+//Generated on : 2016-09-29 12:49:04
 //Filename : Logs_manager.php
 //Description : Table pour enregistrer tous les changements de valeur d'item.
 
@@ -118,7 +118,7 @@ function LogsgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function LogsManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
