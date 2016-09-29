@@ -334,7 +334,7 @@ function LAY_Organisations(){
 
 		oElement = document.getElementById("SAI_Nom_" + oLAY_Organisations.getId());
 		if(oElement != null)
-			oContact.setNom(oElement.value);
+			oOrganisations.setNom(oElement.value);
 		
 		//Parano !
 		oLAY_Organisations.members.oObj = oOrganisations;

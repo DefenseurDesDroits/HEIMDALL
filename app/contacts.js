@@ -1323,6 +1323,43 @@ function contactKeySearch(event){
     }
 }
 
+function organisationWinContact(oContact){
+
+    //our line
+    var nLine = 0;
+    //our element to get the text zone
+    var oElement = null;
+
+    //Edition Layout
+    var oLay = null;
+
+    if(oContact == null){
+        oContact = new Organisations();
+        oContact.setId_Civilites(1);
+        oContact.setId_Titres(1);
+        oContact.setId_Accreditations_Item(1);
+        oContact.setId_Contact_Types(2);//set to the type contact !!!
+        // nLine = Heimdall.members.products.contacts.Contacts.length;
+        // Heimdall.members.products.contacts.Contacts.push(oContact);
+    }
+        
+    //create the win form
+    WIN_Contacts = new  Overview("WIN_Contacts", 640, 480, "#6669A3", 0.5);
+
+    oLay = new LAY_Organisations();
+
+    oLay.init("WIN_Contacts", "Organisations" + oContact.getId_Contacts(), oContact);
+
+    oLay.ObjToView();
+
+    //get the element to fill it
+    oElement = document.getElementById("WIN_Contacts");
+    if(oElement != null){
+        oElement.innerHTML += "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+    }
+
+}
+
 function contactWinContact(oContact){
 
     //our line
@@ -1356,15 +1393,6 @@ function contactWinContact(oContact){
         oElement.innerHTML += "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
     }
 
-    // //get the element to fill it
-    // oElement = document.getElementById("WIN_Contacts");
-    // if(oElement != null){
-    //     oElement.innerHTML = contactLAYDiv(nLine, nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
-    //     //oElement.innerHTML = contactLAYDiv("Solo", nLine) + "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
-    // }
-
-    // contactLAYDivFill(nLine, oContact);
-
 }
 
 function contactsAddMenu(sDivID){
@@ -1376,6 +1404,7 @@ function contactsAddMenu(sDivID){
 
     sCode += "\t" + "<div>Contacts</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Contact\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();contactWinContact(null);\">Ajouter un contact</div>" + "\r\n";
+    sCode += "\t" + "<div id=\"BTN_Add_Organisation\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();organisationWinContact(null);\">Ajouter une organisation</div>" + "\r\n";
 
     sCode += "</div>" + "\r\n";
 
