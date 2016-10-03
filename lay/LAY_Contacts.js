@@ -147,7 +147,8 @@ function LAY_Contacts(){
 		oLAY_Contacts.members.oObj = oItem;
 		//Happy end 
 		return true
-	}
+	};
+	this.myLAY_Contacts.setObj = this.setObj;
 
 	///[SECTION]WORKSHOP##############################################
 	

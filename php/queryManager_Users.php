@@ -7,6 +7,7 @@ include_once("CONTACTS_Users.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
+Const HEIMDALL_QM_USER_Debug = true;
 
 /// <reference path="CONTACTS_Contacts.php" />
 
@@ -72,6 +73,10 @@ function searchQuery($Args){
     //our iterrator
     $nLine = 0;
 
+    //debugging, the desperate way
+    if(HEIMDALL_QM_USER_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Users@searchQuery.log", "DEBUG !!!\r\n" );
+
     //coreespondance set 
     $ary_Corres = $oContact->getCorrespondanceArray();
     //push for the fun !
@@ -117,7 +122,11 @@ function searchQuery($Args){
                         break;
                     case 'IN_LIST':
                         $ary_Obj = (array) $ary_Arg["Names"];
-                        $sQuery .= " AND " . $ary_Obj[0] . " IN (" . $ary_Arg["Value"] . ")";
+                        $sQuery .= " AND " . $ary_Obj[0] . " IN(" . $ary_Arg["Value"] . ")";
+                        break;
+                    case 'NIN_LIST':
+                        $ary_Obj = (array) $ary_Arg["Names"];
+                        $sQuery .= " AND " . $ary_Obj[0] . " NOT IN(" . $ary_Arg["Value"] . ")";
                         break;
                     default:
                         # code...
@@ -151,13 +160,15 @@ function searchQuery($Args){
         //do it
         $oContact = new Users();
         $oContact->loadFromArray($ary_[$nLine], true);
-
-
         $ary_Obj[$nLine] = $oContact->exportToArray();
         
         //Next
         $nLine++;
     }
+
+    //debugging, the desperate way
+    if(HEIMDALL_QM_USER_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Users@searchQuery.log", "The Query : \r\n " . $sQuery . "\r\n",  FILE_APPEND );
 
     //push it to the view !!!
     echo json_encode($ary_Obj);

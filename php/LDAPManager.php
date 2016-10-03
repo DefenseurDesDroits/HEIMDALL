@@ -439,18 +439,23 @@ function attachToGroup($nIdUser, $sGroup, $oLDAP, $bCreate = HEIMDALL_LDAP_Creat
     if(HEIMDALL_LDAP_Debug)
         file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@attachToGroup.log", "\t=> Json : " . $oGrp->getUGrp_Json() . "\r\n",  FILE_APPEND );
 
-    if($sJson == "" || $sJson == "{}")
-        $sJson = "{[]}";
+    if($sJson == "")
+        $sJson = "[]";
+    // if($sJson == "" || $sJson == "{}")
+    //     $sJson = "{[]}";
 
     //add user if not already present !!! (UID|TIme)
     if(strpos($sJson, "{\"uid\":\"" . $nIdUser . "\"") == false ){
         
-        $sElement = "{\"uid\":\"" . $nIdUser . "\",\"until\":\"\"}]}";
+        $sElement = "{\"uid\":\"" . $nIdUser . "\",\"until\":\"\"}]";
+        //$sElement = "{\"uid\":\"" . $nIdUser . "\",\"until\":\"\"}]}";
         
-        if($sJson != "{[]}")
+        if($sJson != "[]")
+        //if($sJson != "{[]}")
             $sElement = "," . $sElement;
 
-        $sJson = str_replace( "]}", $sElement, $sJson );
+        $sJson = str_replace( "]", $sElement, $sJson );
+        //$sJson = str_replace( "]}", $sElement, $sJson );
 
         //Change the Json value
         $oGrp->setUGrp_Json($sJson);

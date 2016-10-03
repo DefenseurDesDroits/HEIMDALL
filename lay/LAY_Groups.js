@@ -4,6 +4,7 @@
 /// <reference path="../lib/CONTACTS_Contacts.js" />
 /// <reference path="../lib/CONTACTS_Civilites.js" />
 /// <reference path="../lib/CONTACTS_Titres.js" />
+/// <reference path="../lib/Potours_List.js" />
 /// <reference path="../lib/Potours_Legacy.js" />
 
 //our gloabal instance object 
@@ -56,6 +57,25 @@ function DELETE_LAY_Groups(sId){
 	return true;
 }
 
+function SEARCH_USERS_LAY_Groups(sId){
+	//our position
+	var nPosition = 0;
+	//our item
+	var oItem = null;
+
+	//get the position
+	nPosition = findInPotoursObjLst(ARY_LAY_Groups, "sName", sId);
+	//In ?
+	if(nPosition == POTOURS_FIND_NOTFOUND)
+		return false;
+
+	//Update the object 
+	ARY_LAY_Groups[nPosition].searchFutureUsers();
+
+	//Sad God Sake !!!
+	return true;
+}
+
 function LAY_Groups(){
 
 	//our super
@@ -71,6 +91,10 @@ function LAY_Groups(){
         ///[MEMBER][string][element]The dom element
         oDiv : null
     };
+
+	//our LIST
+	this.LIST_Users = new Potours_List();
+	this.LIST_Futures_Users = new Potours_List();
 
 	///[SECTION]Property##############################################
 	
@@ -155,7 +179,14 @@ function LAY_Groups(){
 		
 		sCode += "\t" + "</form>";
 		
-		sCode += "\t" + "<div id=\"LAY_Members_" + + oLAY_Groups.getId() + "\">---</div>";
+		sCode += "\t" + "<div id=\"LAY_Members_" + oLAY_Groups.getId() + "\"></div>";
+		sCode += "\t" + "\t" + "<div id=\"LAB_Current_Members_" + oLAY_Groups.getId() + "\">Membres actuels</div>";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Current_Members_" + oLAY_Groups.getId() + "\"></div>";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Resarch_Members_" + oLAY_Groups.getId() + "\">Recherche de membres</div>";
+		sCode += "\t" + "\t" + '<input id="SAI_Pseudo_' + oLAY_Groups.getId() + '" class="SAI_" type="text" name="SAI_Pseudo_' + oLAY_Groups.getId() + '" value=""/>';
+		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SEARCH_USERS_LAY_Groups('" + oLAY_Groups.getId() + "')\">Q</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Futures_Users_" + oLAY_Groups.getId() + "\"></div>";
+		sCode += "\t" + "</div>";
 		
 		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Groups.getId() + "\">---</div>";
 		
@@ -245,6 +276,8 @@ function LAY_Groups(){
 			else
 				//change
 				ARY_LAY_Groups[nPosition] = oLAY_Groups;
+
+			oLAY_Groups.loadUsers();
 			//happy end
 			return true;
 		} 
@@ -326,6 +359,253 @@ function LAY_Groups(){
 	this.init = function(sDivOwner, sDivId, oItem){
 		oLAY_Groups.setObj(oItem);
 		return oLAY_Groups.initializeLayout(sDivOwner, sDivId);
-	}
+	};
 	this.myLAY_Groups.init = this.init;
+
+	///SEPCIAL
+
+	this.loadUsers = function(){
+
+		//get the Organisations
+		var oGroups = oLAY_Groups.members.oObj;
+
+		//our count
+		var nCount = 0;
+		//our iterator
+		var nLine = 0;
+
+		//The code 
+		var sCode = "";
+
+		//our Json array 
+		var ary_oItems = [];
+
+		//a item 
+		var oItem = null;
+
+		//Our request object
+		var oReq = new XMLHttpRequest();
+
+		//have we an object ?
+		if(oGroups == null)
+			return false;
+
+		//have stuff to plot ?
+		if(oGroups.getUGrp_Json() == "")
+			return oLAY_Groups.responseUsers("");
+
+		//get the array
+		ary_oItems = JSON.parse(oGroups.getUGrp_Json());
+		//get the count
+		nCount = ary_oItems.length;
+		//start the loop
+		while(nLine < nCount){
+			//If done
+			if(sCode != "")
+				sCode += ", ";
+			//
+			sCode += ary_oItems[nLine]["uid"];
+			//Next
+			nLine++;
+		}
+
+		//have stuff to plot ?
+		if(sCode == "")
+			return oLAY_Groups.responseUsers("");
+
+		//Define the function
+		oReq.onreadystatechange = function(){
+
+			//if everything is alright
+			if(oReq.readyState == 4 && oReq.status == 200){
+				//Response
+				oLAY_Groups.responseUsers(oReq.responseText);
+			}
+			
+		};
+
+		//prepare the query*********************
+		//check the open
+		oReq.open("POST", "php/queryManager_Users.php", true);
+		//set the request header
+		oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+		oReq.send("Id=0&Session=" + "" + "&Action=contacts_users&Args=" + JSON.stringify([{Method : "COND_IN_LIST", Names : ["Id_Users"], Value : sCode} ]) ); 
+		//Return the job !
+		return true;
+	};
+
+	this.responseUsers = function(sText){
+		//our Groups
+		var oUser = null;
+
+		//our count
+		var nCount = 0;
+		//our iterator
+		var nLine = 0;
+
+		//our text to plots
+		var sTitle = "";
+
+		//array to plots
+		var ary_ = [];
+		//
+		var ary_Items = [];
+
+		if(sText == "")
+			return false;
+
+		//get the array
+		ary_ = JSON.parse(sText);
+		//
+		nCount = ary_.length;
+		//
+		while(nLine < nCount){
+			//New Groups
+			oUser = new Users();
+			//load 
+			oUser.loadFromArray(ary_[nLine]);
+			//do the text 
+			sTitle = oUser.getPseudo() + " (" + oUser.getPrenom() + " " + oUser.getNom() +  ")";
+			//add the item
+			ary_Items.push({Text : sTitle, Tag : oUser.getId_Users() });
+			//ary_Items.push({Text : oUser.getPseudo(), Tag : oUser.getId_Users() });
+			//Next
+			nLine++;
+		}
+
+		oLAY_Groups.LIST_Users.setItems(ary_Items);
+
+		oLAY_Groups.LIST_Users.init("LAY_Current_Members_" + oLAY_Groups.getId(), "GrpUsers");
+
+		return true;
+	};
+
+	this.searchFutureUsers = function(){
+		//get the Organisations
+		var oGroups = oLAY_Groups.members.oObj;
+
+		//our count
+		var nCount = 0;
+		//our iterator
+		var nLine = 0;
+
+		//The code 
+		var sCode = "";
+
+		//our Json array 
+		var ary_oItems = [];
+
+		//an item 
+		var oItem = null;
+
+		//an element 
+		var oElement = null;
+
+		//Our request object
+		var oReq = new XMLHttpRequest();
+
+		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Groups.getId());
+		if(oElement == null)
+			return false;
+
+		//have we an object ?
+		if(oGroups == null)
+			return false;
+
+		//have stuff to plot ?
+		if(oGroups.getUGrp_Json() == "")
+			return oLAY_Groups.responseUsers("");
+
+		//get the array
+		ary_oItems = JSON.parse(oGroups.getUGrp_Json());
+		//get the count
+		nCount = ary_oItems.length;
+		//start the loop
+		while(nLine < nCount){
+			//If done
+			if(sCode != "")
+				sCode += ", ";
+			//
+			sCode += ary_oItems[nLine]["uid"];
+			//Next
+			nLine++;
+		}
+
+		//have stuff to plot ?
+		if(sCode == "")
+			return oLAY_Groups.responseUsers("");
+
+		//Define the function
+		oReq.onreadystatechange = function(){
+
+			//if everything is alright
+			if(oReq.readyState == 4 && oReq.status == 200){
+				//Response
+				oLAY_Groups.responseFutureUsers(oReq.responseText);
+			}
+			
+		};
+
+		console.log("Element value : " + oElement.value);
+
+		//prepare the query*********************
+		//check the open
+		oReq.open("POST", "php/queryManager_Users.php", true);
+		//set the request header
+		oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+		oReq.send("Id=0&Session=" + "" + "&Action=contacts_users&Args=" + JSON.stringify([
+			{Method : "COND_NIN_LIST", Names : ["Id_Users"], Value : sCode},
+			{Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sNom", "sPrenom", "sPseudo"], Value : oElement.value} 
+		] ) ); 
+		//Return the job !
+		return true;
+	};
+
+	this.responseFutureUsers = function(sText){
+		//our Groups
+		var oUser = null;
+
+		//our count
+		var nCount = 0;
+		//our iterator
+		var nLine = 0;
+
+		//our text to plots
+		var sTitle = "";
+
+		//array to plots
+		var ary_ = [];
+		//
+		var ary_Items = [];
+
+		if(sText == "")
+			return false;
+
+		//get the array
+		ary_ = JSON.parse(sText);
+		//
+		nCount = ary_.length;
+		//
+		while(nLine < nCount){
+			//New Groups
+			oUser = new Users();
+			//load 
+			oUser.loadFromArray(ary_[nLine]);
+			//do the text 
+			sTitle = oUser.getPseudo() + " (" + oUser.getPrenom() + " " + oUser.getNom() +  ")";
+			//add the item
+			ary_Items.push({Text : sTitle, Tag : oUser.getId_Users() });
+			//ary_Items.push({Text : oUser.getPseudo(), Tag : oUser.getId_Users() });
+			//Next
+			nLine++;
+		}
+
+		oLAY_Groups.LIST_Futures_Users.deleteLayout();
+
+		oLAY_Groups.LIST_Futures_Users.setItems(ary_Items);
+
+		oLAY_Groups.LIST_Futures_Users.init("LAY_Futures_Users_" + oLAY_Groups.getId(), "GrpFuturesUsers");
+
+		return true;
+	};
 }
