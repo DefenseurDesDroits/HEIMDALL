@@ -4,7 +4,6 @@
 include_once("CONTACTS_Contacts.php");
 include_once("CONTACTS_Organisations.php");
 include_once("CONTACTS_Users.php");
-include_once("CONTACTS_Groups.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
@@ -46,8 +45,6 @@ function createCondition($ary_Column, $sOperator, $sStr, $ary_CorrespondanceSet 
         }
     }
 
-    
-
     return "(" . $sCode . ")";
 }
 
@@ -57,7 +54,7 @@ function searchQuery($Args){
     //Our query 
     $sQuery = "";
     //our contact
-    $oContact = new Contacts();
+    $oContact = new Users();
     //result query array 
     $ary_ = array();
     //result array 
@@ -78,16 +75,13 @@ function searchQuery($Args){
     //coreespondance set 
     $ary_Corres = $oContact->getCorrespondanceArray();
     //push for the fun !
-    $ary_Corres += [ "sAPEFonction" => "xxx.contact_infos.fonction" ];
+    //$ary_Corres += [ "sAPEFonction" => "xxx.contact_infos.fonction" ];
 
     //recreate the query
-    //$sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
-    $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . ", xxx.contact_infos.fonction, xxx.contact_infos.id_contact_infos" . "\r\n" ;
+    $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" ;
     $sQuery .= "FROM " . $oContact->getTable() . "\r\n"  ;
-    $sQuery .= "LEFT OUTER JOIN xxx.contact_infos ON xxx.contact_infos.id_contacts = xxx.contacts.id_contacts" . "\r\n"  ;
 
     //add the link between column s and foreign Key
-    //$sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
     $sQuery .= "WHERE " . $oContact->getLinkConditions(true);
 
     //get the count
@@ -121,6 +115,10 @@ function searchQuery($Args){
                     case 'LIKE_C'://Contains !!!
                         $sQuery .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", "%" . $ary_Arg["Value"] . "%", $ary_Corres );
                         break;
+                    case 'IN_LIST':
+                        $ary_Obj = (array) $ary_Arg["Names"];
+                        $sQuery .= " AND " . $ary_Obj[0] . " IN (" . $ary_Arg["Value"] . ")";
+                        break;
                     default:
                         # code...
                         break;
@@ -133,7 +131,8 @@ function searchQuery($Args){
         $nLine++;
     }
     
-    $sQuery .= "\r\n" . "ORDER BY xxx.contacts.nom";
+    $sQuery .= "\r\n" . "ORDER BY xxx.Users.pseudo";
+    //$sQuery .= "\r\n" . "ORDER BY xxx.contacts.nom";
 
     //get the array (so ugly way bro !!!)
     $GLOBALS["oConnection"]->open();
@@ -144,45 +143,18 @@ function searchQuery($Args){
     $nCount = count($ary_);
     //reinit the iterrator
     $nLine = 0;
+    //cool
+    $ary_Obj = array();
     //start the loop
     while($nLine < $nCount){
 
         //do it
-        $oContact = new Contacts();
+        $oContact = new Users();
         $oContact->loadFromArray($ary_[$nLine], true);
 
-        //check out the type !!!
-        switch ($oContact->getId_Contact_Types()) {
-            case "1"://nothing to do :p
-            case 1://nothing to do :p
-                
-                break;
-            case "2"://transform Contact as organisation
-            case 2://transform Contact as organisation
-                $oContact = new Organisations();
-                $oContact->loadFromArray($ary_[$nLine], true);
-                $oContact->loadFromConnection("");
-                break;
-            case "3"://transform Contact as user
-            case 3://transform Contact as user
-                $oContact = new Users();
-                $oContact->loadFromArray($ary_[$nLine], true);
-                $oContact->loadFromConnection("");
-                break;
-            case "4"://transform Contact as Groups
-			case 4://transform Contact as Groups
-                $oContact = new Groups();
-				$oContact->loadFromArray($ary_[$nLine], true);
-                $oContact->loadFromConnection("");
-                break;
-            default:
-                break;
-        }
 
         $ary_Obj[$nLine] = $oContact->exportToArray();
-        //add function for information
-        $ary_Obj[$nLine]["fonction"] = $ary_[$nLine]["fonction"];
-        $ary_Obj[$nLine]["IdLinks"] = $ary_[$nLine]["IdLinks"];
+        
         //Next
         $nLine++;
     }
@@ -204,7 +176,7 @@ function queryCenter(){
 
     //Action selector
     switch($Action){
-        case "contacts_contacts":
+        case "contacts_users":
             return searchQuery((array)json_decode($Arg));
         break;
     }

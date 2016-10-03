@@ -259,7 +259,7 @@ class Logs{
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return ", Id_Items, Creation, Id_Creator, Validation, Id_Validator, Valeur, Suppression";
+		return "Id_Items, Creation, Id_Creator, Validation, Id_Validator, Valeur, Suppression";
 	}
 
 
@@ -400,14 +400,26 @@ class Logs{
 	public function getValues(){
 		//Our values string
 		$sValues = "";
-		
+		//our creation time 
+		$sCreation = Quotes( $this->getCreation());
+		//our validation time 
+		$sValidation = Quotes( $this->getValidation());
+
+		//preset values 
+		if($this->getId_Items() == 0 || $this->getCreation() == "")
+			$sCreation = Quotes(date("Ymd_His"));
+		if($this->getId_Validator() != 0 && $this->getValidation() == "")
+			$sValidation = Quotes(date("Ymd_His"));
+
 		$sValues .= Quotes( $this->getId_Items());
-		$sValues .= ", " . Quotes( $this->getCreation());
+		$sValues .= ", " . $sCreation;
+		//$sValues .= ", " . Quotes( $this->getCreation());
 		$sValues .= ", " . Quotes( $this->getId_Creator());
-		$sValues .= ", " . Quotes( $this->getValidation());
+		$sValues .= ", " . $sValidation;
+		//$sValues .= ", " . Quotes( $this->getValidation());
 		$sValues .= ", " . Quotes( $this->getId_Validator());
 		$sValues .= ", " . Quotes( $this->getValeur());
-		if( $this->getSuppression()){
+		if( $this->getSuppression())
 			$sValues .= ", " . "TRUE";
 		else
 			$sValues .= ", " . "FALSE";
@@ -429,7 +441,12 @@ class Logs{
 	public function getUpdateQuery(){
 		//Our query
 		$Query = "";
-		
+		//our validation time 
+		$sValidation = Quotes( $this->getValidation());
+
+		if($this->getId_Validator() != 0 && $this->getValidation() == "")
+			$sValidation = Quotes(date("Ymd His"));
+
 		//Start the build
 		$Query .= "UPDATE " . "xxx.Logs" . "\r\n" ;
 		//build the set
@@ -437,10 +454,11 @@ class Logs{
 		$Query .=  "Id_Items  = " . Quotes($this->getId_Items());
 		$Query .= ", " .  "Creation  = " . Quotes($this->getCreation());
 		$Query .= ", " .  "Id_Creator  = " . Quotes($this->getId_Creator());
-		$Query .= ", " .  "Validation  = " . Quotes($this->getValidation());
+		$Query .= ", " .  "Validation  = " . $sValidation;
+		//$Query .= ", " .  "Validation  = " . Quotes($this->getValidation());
 		$Query .= ", " .  "Id_Validator  = " . Quotes($this->getId_Validator());
 		$Query .= ", " .  "Valeur  = " . Quotes($this->getValeur());
-		if( $this->getSuppression()){
+		if( $this->getSuppression())
 			$Query .= ", " .  "Suppression  = TRUE";
 		else
 			$Query .= ", " .  "Suppression  = FALSE";

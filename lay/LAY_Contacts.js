@@ -1,5 +1,5 @@
 
-
+/// <reference path="../lib/CONTACTS_Logs.js" />
 /// <reference path="../lib/CONTACTS_Contacts.js" />
 /// <reference path="../lib/CONTACTS_Civilites.js" />
 /// <reference path="../lib/CONTACTS_Titres.js" />
@@ -14,7 +14,12 @@ function SAVE_LAY_Contacts(sId){
 	var nPosition = 0;
 	//our item
 	var oItem = null;
-
+	//our result
+	var bResult = false;
+	
+	//our log object 
+	var oLogs = null;
+	
 	//get the position
 	nPosition = findInPotoursObjLst(ARY_LAY_Contacts, "sName", sId);
 	//In ?
@@ -25,9 +30,28 @@ function SAVE_LAY_Contacts(sId){
 	ARY_LAY_Contacts[nPosition].ViewToObject();
 	//get the Item
 	oItem = ARY_LAY_Contacts[nPosition].getObj();
-
+	
+	//save
+	bResult = oItem.save(Heimdall.members.user["UserId"], ".");
+	
+	//log it !!!
+	oLogs = new Logs();
+	//fill the logs !
+	oLogs.setId_Items(parseInt(oItem.getId_Contacts()));
+	//oLogs.setCreation("YYYYMMDD");
+	oLogs.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
+	//oLogs.setValidation("YYYYMMDD");
+	oLogs.setId_Validator(parseInt(Heimdall.members.user["UserId"]));
+	oLogs.setValeur(oItem.exportToJson());
+	oLogs.setSuppression(false);
+	//save the logs !!!
+	oLogs.save(Heimdall.members.user["UserId"], ".");
+	
+	//restu the result 
+	return bResult;
+	
 	//Sad God Sake !!!
-	return oItem.save(Heimdall.members.user["UserId"], ".");
+	//return oItem.save(Heimdall.members.user["UserId"], ".");
 }
 
 //DELETE_LAY_Contacts

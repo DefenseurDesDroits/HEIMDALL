@@ -31,7 +31,8 @@ var ary_sFileLib = [
 	/*CONTACT LAY !!! */
 	"lay/LAY_Contacts.js",
 	"lay/LAY_Organisations.js",
-	"lay/LAY_Users.js"
+	"lay/LAY_Users.js",
+	"lay/LAY_Groups.js"
 ];
 
 var oWinLoader = {};

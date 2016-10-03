@@ -707,8 +707,14 @@ function accreditationsLAYDiv(){
 }
 
 function LAY_Contacts_4(sDivOwner, oContacts){
-    //default one !!!
-    LAY_Contacts_1(sDivOwner, oContacts);
+    //Edition Layout
+    var oLay = null;
+
+    oLay = new LAY_Groups();
+
+    oLay.init(sDivOwner, "Groups" +  oContacts.getId_Groups(), oContacts);
+
+    oLay.ObjToView();
 }
 
 function LAY_Contacts_3(sDivOwner, oContacts){
@@ -1024,17 +1030,19 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
                     
                     break;
                 case "2"://transform Contact as organisation
-                case 2://transform Contact as organisation
+                case 2://transform Contact as organisation too
                     oContact = new Organisations();
                     oContact.loadFromArray(ary_Contacts[nLine]);
                     break;
                 case "3"://transform Contact as user
-                case 3://transform Contact as user
+                case 3://transform Contact as user too
                     oContact = new Users();
                     oContact.loadFromArray(ary_Contacts[nLine]);
                     break;
-                case 4://transform Contact as Groups
-                    
+                case "4"://transform Contact as Groups
+				case 4://transform Contact as Groups too
+                    oContact = new Groups();
+					oContact.loadFromArray(ary_Contacts[nLine]);
                     break;
                 default:
                     break;
