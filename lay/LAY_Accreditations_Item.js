@@ -57,6 +57,73 @@ function DELETE_LAY_Accreditations_Item(sId){
 	return true;
 }
 
+//SAVE_LAY_Accreditations_Item
+function CLICK_LAY_Accreditations_Item(sId, nClick){
+	//our position
+	var nPosition = 0;
+	//our item
+	var oItem = null;
+
+	//type of the click
+	var sType = "";
+	var sTypeName = "";
+
+	//element 
+    var oElement = null;
+
+	//get the position
+	nPosition = findInPotoursObjLst(ARY_LAY_Accreditations_Item, "sName", sId);
+	//In ?
+	if(nPosition == POTOURS_FIND_NOTFOUND)
+		return false;
+	
+	//
+	//console.log("CLICK_LAY_Accreditations_Item");
+
+	//get the count
+    nCount = Heimdall.members.products.contacts.Accreditations.length;
+    //init the iterator
+    nIt = 0;
+    //Loop 
+    while(nIt < nCount){
+        //get Infos
+        sTypeName = Heimdall.members.products.contacts.Accreditations[nIt].getNom();
+        nAccreditation = Heimdall.members.products.contacts.Accreditations[nIt].getId_Accreditations();
+        //get element
+        oElement = document.getElementById("IMG_Accreditations_" + sId + "_" + nAccreditation);
+        //the element exists ?
+        if(oElement != null){
+            oElement.src = "img/" + sTypeName + ".png";
+			//:o 
+			//console.log("CLICK_LAY_Accreditations_Item => Source : " + oElement.src);
+        }
+		//get the type
+		if(nClick == nAccreditation)
+			sType = sTypeName;
+        //Next 
+        nIt++;
+    }
+
+	//the element
+	oElement = document.getElementById(sId);
+
+	//get element
+    oElement = document.getElementById("IMG_Accreditations_" + sId + "_" + nClick);
+    //the element exists ?
+    if(oElement != null){
+        oElement.src = "img/" + sType + "_Selected.png";
+		//console.log("CLICK_LAY_Accreditations_Item => Click Source : " + oElement.src);
+    }
+
+	 //get element
+    oElement = document.getElementById("LAY_Accreditations_Items_Extension_" + sId );
+    //the element exists ?
+    if(oElement != null){
+        oElement.innerHTML = eval("accreditationHTML_" + nClick + "();");
+    }
+
+}
+
 function LAY_Accreditations_Item(){
 
 	//our super
@@ -139,13 +206,19 @@ function LAY_Accreditations_Item(){
     var sTypeName = "";
     //Accreditations ID
     var nAccreditation = 0;
+	//our id
+	var sId = "";
 
     //our count
     var nCount = 0;
     //our iterator
     var nIt = 0;
 
-	sCode += "<div id=\"Accreditations_Items_" + oLAY_Accreditations_Item.getId() + "\"></div>";
+	//fill the Id !
+	sId = oLAY_Accreditations_Item.getId();
+
+	//start the code
+	sCode += "<div id=\"LAY_Accreditations_Items_" + oLAY_Accreditations_Item.getId() + "\">";
 
     //get the count
     nCount = Heimdall.members.products.contacts.Accreditations.length;
@@ -157,13 +230,15 @@ function LAY_Accreditations_Item(){
         sTypeName = Heimdall.members.products.contacts.Accreditations[nIt].getNom();
         nAccreditation = Heimdall.members.products.contacts.Accreditations[nIt].getId_Accreditations();
         //write them
-        sCode += "<img id=\"Accreditations_" + nAccreditation + "\" src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\" onclick=\"accreditationLAYClick(" + nIt + ")\"/>";
+        sCode += "<img id=\"IMG_Accreditations_" + sId + "_" + nAccreditation + "\" src=\"img/" + sTypeName + ".png\" alt=\"" + sTypeName + "\" height=\"32\" width=\"32\" onclick=\"CLICK_LAY_Accreditations_Item('" + sId + "', " + nAccreditation + ")\"/>";
         //next
         nIt++;
     }
 
     //extension div
-    sCode += "<div id=\"Accreditations_Extension\"></div>";
+    sCode += "<div id=\"LAY_Accreditations_Items_Extension_" + sId + "\"></div>";
+
+	sCode += "</div>";
 
     return sCode;
     };
