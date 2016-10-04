@@ -703,7 +703,7 @@ function accreditationsLAYDiv(){
     //extension div
     sCode += "<div id=\"Accreditations_Extension\"></div>";
 
-    return sCode
+    return sCode;
 }
 
 function LAY_Contacts_4(sDivOwner, oContacts){
@@ -1339,6 +1339,43 @@ function contactKeySearch(event){
     }
 }
 
+function groupWinContact(oContact){
+
+    //our line
+    var nLine = 0;
+    //our element to get the text zone
+    var oElement = null;
+
+    //Edition Layout
+    var oLay = null;
+
+    if(oContact == null){
+        oContact = new Groups();
+        oContact.setId_Civilites(1);
+        oContact.setId_Titres(1);
+        oContact.setId_Accreditations_Item(1);
+        oContact.setId_Contact_Types(4);//set to the type contact !!!
+        // nLine = Heimdall.members.products.contacts.Contacts.length;
+        // Heimdall.members.products.contacts.Contacts.push(oContact);
+    }
+        
+    //create the win form
+    WIN_Contacts = new  Overview("WIN_Contacts", 640, 480, "#6669A3", 0.5);
+
+    oLay = new LAY_Groups();
+
+    oLay.init("WIN_Contacts", "Groups" + oContact.getId_Groups(), oContact);
+
+    oLay.ObjToView();
+
+    //get the element to fill it
+    oElement = document.getElementById("WIN_Contacts");
+    if(oElement != null){
+        oElement.innerHTML += "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+    }
+
+}
+
 function userWinContact(oContact){
 
     //our line
@@ -1459,6 +1496,7 @@ function contactsAddMenu(sDivID){
     sCode += "\t" + "<div id=\"BTN_Add_Contact\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();contactWinContact(null);\">Ajouter un contact</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Organisation\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();organisationWinContact(null);\">Ajouter une organisation</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Users\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();userWinContact(null);\">Ajouter un utilisateur</div>" + "\r\n";
+    sCode += "\t" + "<div id=\"BTN_Add_Groups\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();groupWinContact(null);\">Ajouter un group</div>" + "\r\n";
 
     sCode += "</div>" + "\r\n";
 

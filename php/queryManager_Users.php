@@ -123,11 +123,13 @@ function searchQuery($Args){
                         break;
                     case 'IN_LIST':
                         $ary_Obj = (array) $ary_Arg["Names"];
-                        $sQuery .= " AND " . $ary_Obj[0] . " IN(" . $ary_Arg["Value"] . ")";
+                        if($ary_Arg["Value"] != "")
+                            $sQuery .= " AND " . $ary_Obj[0] . " IN(" . $ary_Arg["Value"] . ")";
                         break;
                     case 'NIN_LIST':
                         $ary_Obj = (array) $ary_Arg["Names"];
-                        $sQuery .= " AND " . $ary_Obj[0] . " NOT IN(" . $ary_Arg["Value"] . ")";
+                        if($ary_Arg["Value"] != "")
+                            $sQuery .= " AND " . $ary_Obj[0] . " NOT IN(" . $ary_Arg["Value"] . ")";
                         break;
                     default:
                         # code...

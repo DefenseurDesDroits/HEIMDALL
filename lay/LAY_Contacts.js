@@ -95,6 +95,8 @@ function LAY_Contacts(){
         oDiv : null
     };
 
+	this.LAY_Rights = new LAY_Accreditations_Item();
+
 	///[SECTION]Property##############################################
 	
 	///[SECTION]Getters###############################################
@@ -169,7 +171,8 @@ function LAY_Contacts(){
 		sCode += "<div id=\"" + oLAY_Contacts.getId() + "\">";
 		
 		//sCode += "<div >" + accreditationsLAYDiv() + "</div>";
-		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Contacts.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Contacts.getId() + "\">" + "Droits" + "</div>";
+		// sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Contacts.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
 
 		//sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
@@ -299,6 +302,10 @@ function LAY_Contacts(){
 			else
 				//change
 				ARY_LAY_Contacts[nPosition] = oLAY_Contacts;
+			
+			//Accreditation !!!
+			oLAY_Contacts.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contacts.getId(), sDivId);
+			
 			//happy end
 			return true;
 		} 

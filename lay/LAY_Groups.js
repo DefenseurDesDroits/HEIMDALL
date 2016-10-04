@@ -239,7 +239,7 @@ function LAY_Groups(){
 
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
-		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Groups.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Groups.getId() + '" value=""/>';
+		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Groups.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Groups.getId() + '" size=\"50\" value=""/>';
 
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Groups('" + oLAY_Groups.getId() + "')\">Sauvegarder</div>" + "\r\n";
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Groups('" + oLAY_Groups.getId() + "')\">Supprimer</div>" + "\r\n";
@@ -608,27 +608,22 @@ function LAY_Groups(){
 			return false;
 
 		//have stuff to plot ?
-		if(oGroups.getUGrp_Json() == "")
-			return oLAY_Groups.responseUsers("");
-
-		//get the array
-		ary_oItems = JSON.parse(oGroups.getUGrp_Json());
-		//get the count
-		nCount = ary_oItems.length;
-		//start the loop
-		while(nLine < nCount){
-			//If done
-			if(sCode != "")
-				sCode += ", ";
-			//
-			sCode += ary_oItems[nLine]["uid"];
-			//Next
-			nLine++;
+		if(oGroups.getUGrp_Json() != ""){
+			//get the array
+			ary_oItems = JSON.parse(oGroups.getUGrp_Json());
+			//get the count
+			nCount = ary_oItems.length;
+			//start the loop
+			while(nLine < nCount){
+				//If done
+				if(sCode != "")
+					sCode += ", ";
+				//
+				sCode += ary_oItems[nLine]["uid"];
+				//Next
+				nLine++;
+			}
 		}
-
-		//have stuff to plot ?
-		if(sCode == "")
-			return oLAY_Groups.responseUsers("");
 
 		//Define the function
 		oReq.onreadystatechange = function(){
