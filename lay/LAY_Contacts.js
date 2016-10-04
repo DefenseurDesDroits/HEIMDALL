@@ -321,7 +321,7 @@ function LAY_Contacts(){
 			nPosition = findInPotoursObjLst(ARY_LAY_Contacts, "sName", oLAY_Contacts.getId());
 			//In ?
 			if(nPosition != POTOURS_FIND_NOTFOUND)
-				ARY_LAY_Contacts.slice(nPosition, nPosition + 1);
+				ARY_LAY_Contacts.splice(nPosition, 1);
 
 			//Happy "the blue dragon cat" End
 			return true;

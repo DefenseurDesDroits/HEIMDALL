@@ -7,7 +7,8 @@ include_once("CONTACTS_Users.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
-Const HEIMDALL_QM_USER_Debug = true;
+Const HEIMDALL_QM_USER_Debug = false;
+//Const HEIMDALL_QM_USER_Debug = true;
 
 /// <reference path="CONTACTS_Contacts.php" />
 

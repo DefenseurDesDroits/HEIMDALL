@@ -280,7 +280,7 @@ function LAY_Organisations(){
 			nPosition = findInPotoursObjLst(ARY_LAY_Organisations, "sName", oLAY_Organisations.getId());
 			//In ?
 			if(nPosition != POTOURS_FIND_NOTFOUND)
-				ARY_LAY_Organisations.slice(nPosition, nPosition + 1);
+				ARY_LAY_Organisations.splice(nPosition, 1);
 
 			//Happy "the blue dragon cat" End
 			return true;

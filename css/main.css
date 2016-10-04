@@ -106,7 +106,11 @@ div.WIN_Main {
 	width : 100%;
 }
 
-LIST_Item{
+.LIST_{
+	background-color: #A0D0FF;
+}
+
+.LIST_Item{
 	background-color: #ECF0F1;
 	color: #3353ff;
 	border-color: #666;
@@ -114,7 +118,7 @@ LIST_Item{
 	border-top-width: 2px;
 }
 
-LIST_Item_Selected{
+.LIST_Item_Selected{
 	color: #ECF0F1;
 	background-color: #3353ff;
 	border-color: #666;

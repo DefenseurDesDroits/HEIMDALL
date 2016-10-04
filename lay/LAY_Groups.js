@@ -94,7 +94,74 @@ function LAY_Groups(){
 
 	//our LIST
 	this.LIST_Users = new Potours_List();
+	this.LIST_Users.onDblClick = function(sTag){
+
+		//our position
+		var nPosition = 0;
+		//the array of the items
+		var ary_ = oLAY_Groups.LIST_Users.getItems();
+
+		//get the position
+		nPosition = findInObjLst(ary_, "Tag", sTag);
+
+		//In ?
+		if(nPosition == POTOURS_FIND_NOTFOUND)
+			return false;
+
+		if(!oLAY_Groups.LIST_Users.deleteLayout())
+			console.log("LIST_Users.onDblClick => What !!!");
+
+		ary_.splice(nPosition, 1);
+
+		if(!oLAY_Groups.LIST_Users.setItems(ary_))
+			console.log("LIST_Users.onDblClick => What 2 !!!");
+		
+		oLAY_Groups.LIST_Users.init("LAY_Current_Members_" + oLAY_Groups.getId(), "GrpUsers");
+
+		return true;
+	};
 	this.LIST_Futures_Users = new Potours_List();
+	this.LIST_Futures_Users.onDblClick = function(sTag){
+
+		//our position
+		var nPosition = 0;
+		//the array of the items
+		var ary_ = oLAY_Groups.LIST_Users.getItems();
+		var ary_F = oLAY_Groups.LIST_Futures_Users.getItems();
+
+		//get the position
+		nPosition = findInObjLst(ary_F, "Tag", sTag);
+
+		//In ?
+		if(nPosition == POTOURS_FIND_NOTFOUND)
+			return false;
+
+		//Crew section***********************************
+
+		if(!oLAY_Groups.LIST_Users.deleteLayout())
+			console.log("LIST_Futures_Users.onDblClick => What !!!");
+
+		//Add it to the member crew
+		ary_.push(ary_F[nPosition]);
+
+		if(!oLAY_Groups.LIST_Users.setItems(ary_))
+			console.log("LIST_Futures_Users.onDblClick => What 2 !!!");
+		
+		oLAY_Groups.LIST_Users.init("LAY_Current_Members_" + oLAY_Groups.getId(), "GrpUsers");
+		
+		//Others section**********************************
+
+		if(!oLAY_Groups.LIST_Futures_Users.deleteLayout())
+			console.log("LIST_Futures_Users.onDblClick => What !!!");
+
+		//remove it from the non member crew
+		ary_F.splice(nPosition, 1);
+
+		if(!oLAY_Groups.LIST_Futures_Users.setItems(ary_F))
+			console.log("LIST_Futures_Users.onDblClick => What 2 !!!");
+		
+		oLAY_Groups.LIST_Futures_Users.init("LAY_Futures_Users_" + oLAY_Groups.getId(), "GrpFuturesUsers");
+	};
 
 	///[SECTION]Property##############################################
 	
@@ -300,7 +367,7 @@ function LAY_Groups(){
 			nPosition = findInPotoursObjLst(ARY_LAY_Groups, "sName", oLAY_Groups.getId());
 			//In ?
 			if(nPosition != POTOURS_FIND_NOTFOUND)
-				ARY_LAY_Groups.slice(nPosition, nPosition + 1);
+				ARY_LAY_Groups.splice(nPosition, 1);
 
 			//Happy "the blue dragon cat" End
 			return true;
@@ -339,12 +406,34 @@ function LAY_Groups(){
 		//element 
 		var oElement = null;
 
+		//the array of the items
+		var ary_ = oLAY_Groups.LIST_Users.getItems();
+		//array of {uid, until}
+		var ary_Result = [];
+
+		//our count
+		var nCount = 0;
+		//our iterrator 
+		var nLine = 0;
+
 		oElement = document.getElementById("SAI_Nom_" + oLAY_Groups.getId());
 		if(oElement != null){
 			oGroups.setNom(oElement.value);
 			oGroups.setNomGroupe(oElement.value);
 		}
 		
+		//get the count 
+		nCount = ary_.length;
+		//start the loop 
+		while(nLine < nCount){
+			//
+			ary_Result.push({uid:ary_[nLine].Tag, until : ""});
+			//Next
+			nLine++;
+		}
+		//change the Json 
+		oGroups.setUGrp_Json(JSON.stringify(ary_Result));
+
 		//Parano !
 		oLAY_Groups.members.oObj = oGroups;
 		
@@ -363,6 +452,53 @@ function LAY_Groups(){
 	this.myLAY_Groups.init = this.init;
 
 	///SEPCIAL
+
+	this.responseList = function(LIST_, sText, sIDParent, sIdElement){
+		//our Groups
+		var oUser = null;
+
+		//our count
+		var nCount = 0;
+		//our iterator
+		var nLine = 0;
+
+		//our text to plots
+		var sTitle = "";
+
+		//array to plots
+		var ary_ = [];
+		//
+		var ary_Items = [];
+
+		if(sText == "")
+			return false;
+
+		//get the array
+		ary_ = JSON.parse(sText);
+		//
+		nCount = ary_.length;
+		//
+		while(nLine < nCount){
+			//New Groups
+			oUser = new Users();
+			//load 
+			oUser.loadFromArray(ary_[nLine]);
+			//do the text 
+			sTitle = oUser.getPseudo() + " (" + oUser.getPrenom() + " " + oUser.getNom() +  ")";
+			//add the item
+			ary_Items.push({Text : sTitle, Tag : oUser.getId_Users()});
+			//Next
+			nLine++;
+		}
+
+		LIST_.deleteLayout();
+
+		LIST_.setItems(ary_Items);
+
+		LIST_.init(sIDParent, sIdElement);
+
+		return true;
+	}
 
 	this.loadUsers = function(){
 
@@ -435,49 +571,8 @@ function LAY_Groups(){
 	};
 
 	this.responseUsers = function(sText){
-		//our Groups
-		var oUser = null;
-
-		//our count
-		var nCount = 0;
-		//our iterator
-		var nLine = 0;
-
-		//our text to plots
-		var sTitle = "";
-
-		//array to plots
-		var ary_ = [];
-		//
-		var ary_Items = [];
-
-		if(sText == "")
-			return false;
-
-		//get the array
-		ary_ = JSON.parse(sText);
-		//
-		nCount = ary_.length;
-		//
-		while(nLine < nCount){
-			//New Groups
-			oUser = new Users();
-			//load 
-			oUser.loadFromArray(ary_[nLine]);
-			//do the text 
-			sTitle = oUser.getPseudo() + " (" + oUser.getPrenom() + " " + oUser.getNom() +  ")";
-			//add the item
-			ary_Items.push({Text : sTitle, Tag : oUser.getId_Users() });
-			//ary_Items.push({Text : oUser.getPseudo(), Tag : oUser.getId_Users() });
-			//Next
-			nLine++;
-		}
-
-		oLAY_Groups.LIST_Users.setItems(ary_Items);
-
-		oLAY_Groups.LIST_Users.init("LAY_Current_Members_" + oLAY_Groups.getId(), "GrpUsers");
-
-		return true;
+		//call the common function
+		return oLAY_Groups.responseList(oLAY_Groups.LIST_Users, sText, "LAY_Current_Members_" + oLAY_Groups.getId(), "GrpUsers");
 	};
 
 	this.searchFutureUsers = function(){
@@ -562,50 +657,7 @@ function LAY_Groups(){
 	};
 
 	this.responseFutureUsers = function(sText){
-		//our Groups
-		var oUser = null;
-
-		//our count
-		var nCount = 0;
-		//our iterator
-		var nLine = 0;
-
-		//our text to plots
-		var sTitle = "";
-
-		//array to plots
-		var ary_ = [];
-		//
-		var ary_Items = [];
-
-		if(sText == "")
-			return false;
-
-		//get the array
-		ary_ = JSON.parse(sText);
-		//
-		nCount = ary_.length;
-		//
-		while(nLine < nCount){
-			//New Groups
-			oUser = new Users();
-			//load 
-			oUser.loadFromArray(ary_[nLine]);
-			//do the text 
-			sTitle = oUser.getPseudo() + " (" + oUser.getPrenom() + " " + oUser.getNom() +  ")";
-			//add the item
-			ary_Items.push({Text : sTitle, Tag : oUser.getId_Users() });
-			//ary_Items.push({Text : oUser.getPseudo(), Tag : oUser.getId_Users() });
-			//Next
-			nLine++;
-		}
-
-		oLAY_Groups.LIST_Futures_Users.deleteLayout();
-
-		oLAY_Groups.LIST_Futures_Users.setItems(ary_Items);
-
-		oLAY_Groups.LIST_Futures_Users.init("LAY_Futures_Users_" + oLAY_Groups.getId(), "GrpFuturesUsers");
-
-		return true;
+		//call the common function
+		return oLAY_Groups.responseList(oLAY_Groups.LIST_Futures_Users, sText, "LAY_Futures_Users_" + oLAY_Groups.getId(), "GrpFuturesUsers");
 	};
 }

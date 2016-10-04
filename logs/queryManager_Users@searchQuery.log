@@ -4,5 +4,5 @@ The Query :
 FROM xxx.Items, xxx.Noeuds, xxx.Contacts, xxx.Users
 WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
 AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts 
-AND xxx.Contacts.Id_Contacts =  xxx.Users.Id_Users AND Id_Users NOT IN(948) AND (xxx.Contacts.Nom ILIKE 'baj%' OR xxx.Contacts.Prenom ILIKE 'baj%' OR xxx.Users.Pseudo ILIKE 'baj%')
+AND xxx.Contacts.Id_Contacts =  xxx.Users.Id_Users AND Id_Users NOT IN(948, 949, 951)
 ORDER BY xxx.Users.pseudo

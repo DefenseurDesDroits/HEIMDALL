@@ -299,7 +299,7 @@ function LAY_Users(){
 			nPosition = findInPotoursObjLst(ARY_LAY_Users, "sName", oLAY_Users.getId());
 			//In ?
 			if(nPosition != POTOURS_FIND_NOTFOUND)
-				ARY_LAY_Users.slice(nPosition, nPosition + 1);
+				ARY_LAY_Users.splice(nPosition, 1);
 
 			//Happy "the blue dragon cat" End
 			return true;
