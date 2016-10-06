@@ -5,6 +5,7 @@
 /// <reference path="../lib/CONTACTS_Contacts.js" />
 /// <reference path="../lib/CONTACTS_Civilites.js" />
 /// <reference path="../lib/CONTACTS_Titres.js" />
+/// <reference path="../lib/Potours_LIST.js" />
 /// <reference path="../lib/Potours_Legacy.js" />
 
 //our gloabal instance object 
@@ -57,12 +58,392 @@ function DELETE_LAY_Accreditations_Item(sId){
 	return true;
 }
 
-//SAVE_LAY_Accreditations_Item
-function CLICK_LAY_Accreditations_Item(sId, nClick){
+function LAY_Accreditations_ItemHTML_1(sId){
+    return "Tout le monde, " + sId;
+}
+
+function LAY_Accreditations_ItemHTML_2(sId){
+    
+    //Heimdall.members.user["MemberOf"]
+    
+    //our code
+    var sCode = "";
+
+    //our count
+    var nCount = 0;
+    //our iterator
+    var nIt = 0;
+
+    if(Heimdall.members.user["MemberOf"] == null){
+        return "The current user has no groups : ERROR";
+    }
+
+    nCount = Heimdall.members.user["MemberOf"].length
+    nIt = 0;
+    while(nIt < nCount){
+        //
+        sCode += "<div class=\"\" onclick=\"notDevYet()\">" + Heimdall.members.user["MemberOf"][nIt].getNomGroupe() +  "</div>";
+        //Next
+        nIt++;
+    }
+
+    return sCode;
+}
+
+function LAY_Accreditations_ItemResponse(LIST_, sText, sIDParent, sIdElement){
+	//our Groups
+	var oUser = null;
+
+	//our count
+	var nCount = 0;
+	//our iterator
+	var nLine = 0;
+
+	//our text to plots
+	var sTitle = "";
+
+	//array to plots
+	var ary_ = [];
+	//
+	var ary_Items = [];
+
+	if(sText == "")
+		return false;
+
+	//get the array
+	ary_ = JSON.parse(sText);
+	//
+	nCount = ary_.length;
+	//
+	while(nLine < nCount){
+		//New Groups
+		oUser = new Users();
+		//load 
+		oUser.loadFromArray(ary_[nLine]);
+		//do the text 
+		sTitle = oUser.getPseudo() + " (" + oUser.getPrenom() + " " + oUser.getNom() +  ")";
+		//add the item
+		ary_Items.push({Text : sTitle, Tag : oUser.getId_Users()});
+		//Next
+		nLine++;
+	}
+
+	//delete the layout
+	LIST_.deleteLayout();
+	//change the array
+	LIST_.setItems(ary_Items);
+	//reinit !!!
+	LIST_.init(sIDParent, sIdElement);
+	//return da job !!!
+	return true;
+}
+
+function LAY_Accreditations_responseFutureUsers(LIST_, sText, sIDParent, sIdElement){
+	LAY_Accreditations_ItemResponse(LIST_, sText, sIDParent, sIdElement);
+}
+
+function LAY_Accreditations_searchFutureUsers(LIST_, ary_uid, sSAI_Id, sIDParent, sIdElement){
+
+	//our count
+	var nCount = 0;
+	//our iterator
+	var nLine = 0;
+
+	//The code 
+	var sCode = "";
+
+	//an item 
+	var oItem = null;
+
+	//an element 
+	var oElement = null;
+
+	//Our request object
+	var oReq = new XMLHttpRequest();
+
+	oElement = document.getElementById(sSAI_Id);
+	if(oElement == null)
+		return false;
+
+	//have stuff to plot ?
+	//get the count
+	nCount = ary_uid.length;
+	//start the loop
+	while(nLine < nCount){
+		//If done
+		if(sCode != "")
+			sCode += ", ";
+		//
+		sCode += ary_uid[nLine]["uid"];
+		//Next
+		nLine++;
+	}
+
+	//Define the function
+	oReq.onreadystatechange = function(){
+
+		//if everything is alright
+		if(oReq.readyState == 4 && oReq.status == 200){
+			//Response
+			LAY_Accreditations_responseFutureUsers(LIST_, oReq.responseText, sIDParent, sIdElement)
+		}
+		
+	};
+
+	console.log("Element value : " + oElement.value + " | From " + sSAI_Id);
+
+	//prepare the query*********************
+	//check the open
+	oReq.open("POST", "php/queryManager_Users.php", true);
+	//set the request header
+	oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+	oReq.send("Id=0&Session=" + "" + "&Action=contacts_users&Args=" + JSON.stringify([
+		{Method : "COND_NIN_LIST", Names : ["Id_Users"], Value : sCode},
+		{Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sNom", "sPrenom", "sPseudo"], Value : oElement.value} 
+	] ) ); 
+	//Return the job !
+	return true;
+}
+
+function LAY_Accreditations_searchFutureUsersId(sId){
 	//our position
 	var nPosition = 0;
 	//our item
 	var oItem = null;
+
+	//the array of the items
+	var ary_uid = [];
+
+	//our json
+	var sJson = "";
+
+	//get the position
+	nPosition = findInPotoursObjLst(ARY_LAY_Accreditations_Item, "sName", sId);
+	//In ?
+	if(nPosition == POTOURS_FIND_NOTFOUND)
+		return false;
+
+	//get the Item
+	oItem = ARY_LAY_Accreditations_Item[nPosition];
+
+	//
+	sJson = oItem.members.oObj.getId_users_json();
+	//Have we user
+	if(sJson != ""){
+		ary_uid = JSON.parse(sJson);
+	}
+
+	return LAY_Accreditations_searchFutureUsers(oItem.LIST_Out, ary_uid, "SAI_Pseudo_" + sId, "LAY_Item_Out_" + sId, "LIST_Item_Out_" + sId);
+}
+
+function LAY_Accreditations_ItemResponseUser(LIST_, sText, sIDParent, sIdElement){
+	LAY_Accreditations_ItemResponse(LIST_, sText, sIDParent, sIdElement);
+}
+
+function LAY_Accreditations_ItemLoadUser(LIST_, ary_uid, sIDParent, sIdElement){
+
+	//our count
+	var nCount = 0;
+	//our iterator
+	var nLine = 0;
+
+	//The code 
+	var sCode = "";
+
+	//our Json array 
+	var ary_oItems = ary_uid;
+
+	//a item 
+	var oItem = null;
+
+	//Our request object
+	var oReq = new XMLHttpRequest();
+
+	//have we an object ?
+	if(LIST_ == null)
+		return false;
+
+	//get the count
+	nCount = ary_oItems.length;
+	//start the loop
+	while(nLine < nCount){
+		//If done
+		if(sCode != "")
+			sCode += ", ";
+		//
+		sCode += ary_oItems[nLine]["uid"];
+		//Next
+		nLine++;
+	}
+
+	//have stuff to plot ?
+	if(sCode == "")
+		return LAY_Accreditations_ItemResponseUser(LIST_, "", sIDParent, sIdElement);
+
+	//Define the function
+	oReq.onreadystatechange = function(){
+
+		//if everything is alright
+		if(oReq.readyState == 4 && oReq.status == 200){
+			//Response
+			LAY_Accreditations_ItemResponseUser(LIST_, oReq.responseText, sIDParent, sIdElement);
+		}
+		
+	};
+
+	//prepare the query*********************
+	//check the open
+	oReq.open("POST", "php/queryManager_Users.php", true);
+	//set the request header
+	oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+	oReq.send("Id=0&Session=" + "" + "&Action=contacts_users&Args=" + JSON.stringify([{Method : "COND_IN_LIST", Names : ["Id_Users"], Value : sCode} ]) ); 
+	//Return the job !
+	return true;
+}
+
+function LAY_Accreditations_ItemHTML_3(sId){
+    
+	//our position
+	var nPosition = 0;
+	//our item
+	var oItem = null;
+
+    //our count
+    var nCount = 0;
+    //our iterator
+    var nIt = 0;
+    
+	//array of uid
+	var ary_uid = [];
+
+	//the json
+	var sJson = "";
+	//our code
+	var sCode = "";
+
+	//element 
+    var oElement = null;
+
+	//get the position
+	nPosition = findInPotoursObjLst(ARY_LAY_Accreditations_Item, "sName", sId);
+	//In ?
+	if(nPosition == POTOURS_FIND_NOTFOUND)
+		return false;
+
+	//get the Item
+	oItem = ARY_LAY_Accreditations_Item[nPosition];
+
+	//element 
+	oElement = document.getElementById("LAY_Accreditations_Items_Extension_" + sId );
+
+	//add it to element
+	oElement.innerHTML = "";
+	sCode += "<div id=\"LAY_Item_In_" + sId + "\" ></div>" + "\r\n";
+
+	sCode += "<div id=\"LAY_Item_Search_" + sId + "\">" + "\r\n";
+
+	sCode += "\t" + '<input id="SAI_Pseudo_' + sId + '" class="SAI_" type="text" name="SAI_Pseudo_' + sId + '" value=""/>';
+	sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"LAY_Accreditations_searchFutureUsersId('" + sId + "');\">Q</div>" + "\r\n";
+
+	sCode += "</div>" + "\r\n";
+
+	sCode += "<div id=\"LAY_Item_Out_" + sId + "\" />";
+
+	oElement.innerHTML = sCode;
+
+	oItem.LIST_In = new Potours_List();
+	oItem.LIST_In.onDblClick = function(sTag){
+
+		//our position
+		var nPosition = 0;
+		//the array of the items
+		var ary_ = oItem.LIST_In.getItems();
+
+		//get the position
+		nPosition = findInObjLst(ary_, "Tag", sTag);
+
+		//In ?
+		if(nPosition == POTOURS_FIND_NOTFOUND)
+			return false;
+
+		if(!oItem.LIST_In.deleteLayout())
+			console.log("LAY_Accreditations_ItemHTML_3.onDblClick => What !!!");
+
+		ary_.splice(nPosition, 1);
+
+		if(!oItem.LIST_In.setItems(ary_))
+			console.log("LAY_Accreditations_ItemHTML_3.onDblClick => What 2 !!!");
+		
+		oItem.LIST_In.init("LAY_Item_In_" + sId, "LIST_Item_In_" + sId);
+
+		return true;
+	};
+
+	oItem.LIST_Out = new Potours_List();
+	oItem.LIST_Out.onDblClick = function(sTag){
+
+		//our position
+		var nPosition = 0;
+		//the array of the items
+		var ary_ = oItem.LIST_In.getItems();
+		var ary_F = oItem.LIST_Out.getItems();
+
+		//get the position
+		nPosition = findInObjLst(ary_F, "Tag", sTag);
+
+		//In ?
+		if(nPosition == POTOURS_FIND_NOTFOUND)
+			return false;
+
+		//Crew section***********************************
+
+		if(!oItem.LIST_In.deleteLayout())
+			console.log("oItem.LIST_Out.onDblClick => What !!!");
+
+		//Add it to the member crew
+		ary_.push(ary_F[nPosition]);
+
+		if(!oItem.LIST_In.setItems(ary_))
+			console.log("oItem.LIST_Out.onDblClick => What 2 !!!");
+		
+		oItem.LIST_In.init("LAY_Item_In_" + sId, "LIST_Item_In_" + sId);
+		
+		//Others section**********************************
+
+		if(!oItem.LIST_Out.deleteLayout())
+			console.log("oItem.LIST_Out.onDblClick => What !!!");
+
+		//remove it from the non member crew
+		ary_F.splice(nPosition, 1);
+
+		if(!oItem.LIST_Out.setItems(ary_F))
+			console.log("oItem.LIST_Out.onDblClick => What 2 !!!");
+		
+		oItem.LIST_Out.init("LAY_Item_Out_" + sId, "LIST_Item_Out_" + sId);
+	};
+
+	//
+	sJson = oItem.members.oObj.getId_users_json();
+	//Have we user
+	if(sJson != ""){
+		ary_uid = JSON.parse(sJson);
+	}
+
+	//go to the plots !!!
+	LAY_Accreditations_ItemLoadUser(oItem.LIST_In, ary_uid, "LAY_Item_In_" + sId , "LIST_Item_In_" + sId );
+	
+	//go to the plots !!!
+	// LAY_Accreditations_ItemLoadUser(oItem.LIST_Out, ary_uid, "LAY_Item_Out_" + sId , "LIST_Item_Out_" + sId );
+
+	//return the 
+    //alert( "Le droit Personel, " + sId);
+    //return "Le droit Personel, " + sId;
+}
+
+//CLICK_LAY_Accreditations_Item
+function CLICK_LAY_Accreditations_Item(sId, nClick){
+	//our position
+	var nPosition = 0;
 
 	//type of the click
 	var sType = "";
@@ -76,9 +457,6 @@ function CLICK_LAY_Accreditations_Item(sId, nClick){
 	//In ?
 	if(nPosition == POTOURS_FIND_NOTFOUND)
 		return false;
-	
-	//
-	//console.log("CLICK_LAY_Accreditations_Item");
 
 	//get the count
     nCount = Heimdall.members.products.contacts.Accreditations.length;
@@ -94,8 +472,6 @@ function CLICK_LAY_Accreditations_Item(sId, nClick){
         //the element exists ?
         if(oElement != null){
             oElement.src = "img/" + sTypeName + ".png";
-			//:o 
-			//console.log("CLICK_LAY_Accreditations_Item => Source : " + oElement.src);
         }
 		//get the type
 		if(nClick == nAccreditation)
@@ -112,14 +488,14 @@ function CLICK_LAY_Accreditations_Item(sId, nClick){
     //the element exists ?
     if(oElement != null){
         oElement.src = "img/" + sType + "_Selected.png";
-		//console.log("CLICK_LAY_Accreditations_Item => Click Source : " + oElement.src);
     }
 
 	 //get element
     oElement = document.getElementById("LAY_Accreditations_Items_Extension_" + sId );
     //the element exists ?
     if(oElement != null){
-        oElement.innerHTML = eval("accreditationHTML_" + nClick + "();");
+        eval("LAY_Accreditations_ItemHTML_" + nClick + "('" + sId + "');");
+        //oElement.innerHTML = eval("LAY_Accreditations_ItemHTML_" + nClick + "('" + sId + "');");
     }
 
 }
@@ -139,6 +515,11 @@ function LAY_Accreditations_Item(){
         ///[MEMBER][string][element]The dom element
         oDiv : null
     };
+
+	//
+	this.LIST_In = null;
+	//
+	this.LIST_Out = null;
 
 	///[SECTION]Property##############################################
 	

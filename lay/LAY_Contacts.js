@@ -303,6 +303,8 @@ function LAY_Contacts(){
 				//change
 				ARY_LAY_Contacts[nPosition] = oLAY_Contacts;
 			
+			//
+			oLAY_Contacts.LAY_Rights.setObj(oLAY_Contacts.getObj());
 			//Accreditation !!!
 			oLAY_Contacts.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contacts.getId(), sDivId);
 			
