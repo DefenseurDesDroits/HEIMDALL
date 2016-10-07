@@ -76,6 +76,25 @@ function SEARCH_USERS_LAY_Groups(sId){
 	return true;
 }
 
+function SEARCH_GRP_LAY_GroupsOut(sId){
+	//our position
+	var nPosition = 0;
+	//our item
+	var oItem = null;
+
+	//get the position
+	nPosition = findInPotoursObjLst(ARY_LAY_Groups, "sName", sId);
+	//In ?
+	if(nPosition == POTOURS_FIND_NOTFOUND)
+		return false;
+
+	//Update the object 
+	ARY_LAY_Groups[nPosition].loadGroupsOut();
+
+	//Sad God Sake !!!
+	return true;
+}
+
 function LAY_Groups(){
 
 	//our super
@@ -163,6 +182,80 @@ function LAY_Groups(){
 		oLAY_Groups.LIST_Futures_Users.init("LAY_Futures_Users_" + oLAY_Groups.getId(), "GrpFuturesUsers");
 	};
 
+	this.LIST_Groups_In = new Potours_List();
+	this.LIST_Groups_In.onDblClick = function(sTag){
+		//our position
+		var nPosition = 0;
+		//the array of the items
+		var ary_ = oLAY_Groups.LIST_Groups_In.getItems();
+
+		//get the position
+		nPosition = findInObjLst(ary_, "Tag", sTag);
+
+		//In ?
+		if(nPosition == POTOURS_FIND_NOTFOUND)
+			return false;
+
+		if(!oLAY_Groups.LIST_Groups_In.deleteLayout())
+			console.log("LIST_Groups_In.onDblClick => What !!!");
+
+		ary_.splice(nPosition, 1);
+
+		if(!oLAY_Groups.LIST_Groups_In.setItems(ary_))
+			console.log("LIST_Groups_In.onDblClick => What 2 !!!");
+		
+		oLAY_Groups.LIST_Groups_In.init("LAY_Groups_In_" + oLAY_Groups.getId(), "LIST_Groups_In_" + oLAY_Groups.getId());
+
+		return true;
+	};
+
+	this.LIST_Groups_Out = new Potours_List();
+	this.LIST_Groups_Out.onDblClick = function(sTag){
+
+		//our position
+		var nPosition = 0;
+		//the array of the items
+		var ary_ = oLAY_Groups.LIST_Groups_In.getItems();
+		var ary_F = oLAY_Groups.LIST_Groups_Out.getItems();
+
+		// //get the position
+		nPosition = findInObjLst(ary_F, "Tag", sTag);
+
+		// //In ?
+		if(nPosition == POTOURS_FIND_NOTFOUND)
+			return false;
+
+		//Crew section***********************************
+
+		if(!oLAY_Groups.LIST_Groups_In.deleteLayout())
+			console.log("LIST_Groups_Out.onDblClick => What !!!");
+
+		//Add it to the member crew
+		if(ary_.length == 0)
+			ary_.push(ary_F[nPosition]);
+		else
+			ary_[0] = ary_F[nPosition];
+		//ary_.push(ary_F[nPosition]);
+
+		if(!oLAY_Groups.LIST_Groups_In.setItems(ary_))
+			console.log("LIST_Groups_Out.onDblClick => What 2 !!!");
+		
+		oLAY_Groups.LIST_Groups_In.init("LAY_Groups_In_" + oLAY_Groups.getId(), "LIST_Groups_In_" + oLAY_Groups.getId());
+		
+		//Others section**********************************
+
+		if(!oLAY_Groups.LIST_Groups_Out.deleteLayout())
+			console.log("LIST_Groups_Out.onDblClick => What !!!");
+
+		//remove it from the non member crew
+		ary_F.splice(nPosition, 1);
+
+		if(!oLAY_Groups.LIST_Groups_Out.setItems(ary_F))
+			console.log("LIST_Groups_Out.onDblClick => What 2 !!!");
+		
+		oLAY_Groups.LIST_Groups_Out.init("LAY_Groups_Out_" + oLAY_Groups.getId(), "LIST_Groups_Out_" + oLAY_Groups.getId());
+	};
+
 	///[SECTION]Property##############################################
 	
 	///[SECTION]Getters###############################################
@@ -235,8 +328,10 @@ function LAY_Groups(){
 		
 		sCode += "<div id=\"" + oLAY_Groups.getId() + "\">";
 		
+		//acceditation
 		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Groups.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
-
+		
+		//Groups field
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
 		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Groups.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Groups.getId() + '" size=\"50\" value=""/>';
@@ -246,6 +341,17 @@ function LAY_Groups(){
 		
 		sCode += "\t" + "</form>";
 		
+		//Our Groups parent 
+		sCode += "\t" + "\t" + "<div id=\"LAB_Groups_In_" + oLAY_Groups.getId() + "\">Groupe Parent</div>";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Groups_In_" + oLAY_Groups.getId() + "\"></div>";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Resarch_Groups_" + oLAY_Groups.getId() + "\">Recherche de groupes</div>";
+		sCode += "\t" + "\t" + '<input id="SAI_Groupe_' + oLAY_Groups.getId() + '" class="SAI_" type="text" name="SAI_Groupe_' + oLAY_Groups.getId() + '" value=""/>';
+		//sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"notDevYet()\">Q</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SEARCH_GRP_LAY_GroupsOut('" + oLAY_Groups.getId() + "')\">Q</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Groups_Out_" + oLAY_Groups.getId() + "\"></div>";
+
+
+		//Our user search
 		sCode += "\t" + "<div id=\"LAY_Members_" + oLAY_Groups.getId() + "\"></div>";
 		sCode += "\t" + "\t" + "<div id=\"LAB_Current_Members_" + oLAY_Groups.getId() + "\">Membres actuels</div>";
 		sCode += "\t" + "\t" + "<div id=\"LAY_Current_Members_" + oLAY_Groups.getId() + "\"></div>";
@@ -344,7 +450,8 @@ function LAY_Groups(){
 				//change
 				ARY_LAY_Groups[nPosition] = oLAY_Groups;
 
-			oLAY_Groups.loadUsers();
+			// oLAY_Groups.loadUsers();
+			// oLAY_Groups.loadGroupsIn();
 			//happy end
 			return true;
 		} 
@@ -394,6 +501,9 @@ function LAY_Groups(){
 		if(oElement != null)
 			oElement.value = oLAY_Groups.members.oObj.getNomGroupe();
 
+		oLAY_Groups.loadUsers();
+		oLAY_Groups.loadGroupsIn();
+		
 		return true;
 	};
 	this.myLAY_Groups.ObjToView = this.ObjToView;
@@ -416,12 +526,16 @@ function LAY_Groups(){
 		//our iterrator 
 		var nLine = 0;
 
+		//Change the Name !!!*******************************************
+
 		oElement = document.getElementById("SAI_Nom_" + oLAY_Groups.getId());
 		if(oElement != null){
 			oGroups.setNom(oElement.value);
 			oGroups.setNomGroupe(oElement.value);
 		}
 		
+		//Change the Json !!!*******************************************
+
 		//get the count 
 		nCount = ary_.length;
 		//start the loop 
@@ -433,6 +547,16 @@ function LAY_Groups(){
 		}
 		//change the Json 
 		oGroups.setUGrp_Json(JSON.stringify(ary_Result));
+
+		//Change the parent !!!******************************************
+
+		//get the selected parent
+		ary_ = oLAY_Groups.LIST_Groups_In.getItems();
+		//check
+		if(ary_.length == 0)
+			oGroups.setId_Noeuds_Parent(parseInt(oGroups.getId_Noeuds()));
+		else
+			oGroups.setId_Noeuds_Parent(parseInt(ary_[0].Tag));
 
 		//Parano !
 		oLAY_Groups.members.oObj = oGroups;
@@ -654,5 +778,180 @@ function LAY_Groups(){
 	this.responseFutureUsers = function(sText){
 		//call the common function
 		return oLAY_Groups.responseList(oLAY_Groups.LIST_Futures_Users, sText, "LAY_Futures_Users_" + oLAY_Groups.getId(), "GrpFuturesUsers");
+	};
+
+	this.responseGroupsList = function(LIST_, sText, sIDParent, sIdElement){
+		//our Groups
+		var oGroups = null;
+
+		//our count
+		var nCount = 0;
+		//our iterator
+		var nLine = 0;
+
+		//our text to plots
+		var sTitle = "";
+
+		//array to plots
+		var ary_ = [];
+		//
+		var ary_Items = [];
+
+		if(sText == "")
+			return false;
+
+		//get the array
+		ary_ = JSON.parse(sText);
+		//
+		nCount = ary_.length;
+		//
+		while(nLine < nCount){
+			//New Groups
+			oGroups = new Groups();
+			//load 
+			oGroups.loadFromArray(ary_[nLine]);
+			//do the text 
+			sTitle = oGroups.getNomGroupe();
+			//add the item
+			ary_Items.push({Text : sTitle, Tag : oGroups.getId_Groups()});
+			//Next
+			nLine++;
+		}
+
+		LIST_.deleteLayout();
+
+		LIST_.setItems(ary_Items);
+
+		LIST_.init(sIDParent, sIdElement);
+
+		return true;
+	}
+
+	this.responseGroupsIn = function(sText){
+		//call the common function
+		return oLAY_Groups.responseGroupsList(oLAY_Groups.LIST_Groups_In, sText, "LAY_Groups_In_" + oLAY_Groups.getId(), "LIST_Groups_In_" + oLAY_Groups.getId());
+	};
+
+	this.loadGroupsIn = function(){
+		//get the Organisations
+		var oGroups = oLAY_Groups.members.oObj;
+
+		//our count
+		var nCount = 0;
+		//our iterator
+		var nLine = 0;
+
+		//The code 
+		var sCode = "";
+
+		//our Json array 
+		var ary_oItems = [];
+
+		//a item 
+		var oItem = null;
+
+		//Our request object
+		var oReq = new XMLHttpRequest();
+
+		//have we an object ?
+		if(oGroups == null)
+			return false;
+
+		//have stuff to plot ?
+		// if(oGroups.getUGrp_Json() == "")
+		// 	return oLAY_Groups.responseGroupsIn("");
+
+		//get the code
+		sCode = oGroups.getId_Noeuds_Parent();
+
+		//have stuff to plot ?
+		if(sCode == "")
+			return oLAY_Groups.responseGroupsIn("");
+
+		//Define the function
+		oReq.onreadystatechange = function(){
+
+			//if everything is alright
+			if(oReq.readyState == 4 && oReq.status == 200){
+				//Response
+				oLAY_Groups.responseGroupsIn(oReq.responseText);
+			}
+			
+		};
+
+		//prepare the query*********************
+		//check the open
+		oReq.open("POST", "php/queryManager_Groups.php", true);
+		//set the request header
+		oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+		oReq.send("Id=0&Session=" + "" + "&Action=contacts_groups&Args=" + JSON.stringify([{Method : "COND_IN_LIST", Names : ["Id_Groups"], Value : sCode} ]) ); 
+		//Return the job !
+		return true;
+	};
+
+	this.responseGroupsOut = function(sText){
+		//call the common function
+		return oLAY_Groups.responseGroupsList(oLAY_Groups.LIST_Groups_Out, sText, "LAY_Groups_Out_" + oLAY_Groups.getId(), "LIST_Groups_Out_" + oLAY_Groups.getId());
+	};
+
+	this.loadGroupsOut = function(){
+		//get the Organisations
+		var oGroups = oLAY_Groups.members.oObj;
+
+		//our count
+		var nCount = 0;
+		//our iterator
+		var nLine = 0;
+
+		//The code 
+		var sCode = "";
+
+		//our Json array 
+		var ary_oItems = [];
+
+		//an item 
+		var oItem = null;
+
+		//an element 
+		var oElement = null;
+
+		//Our request object
+		var oReq = new XMLHttpRequest();
+
+		oElement = document.getElementById("SAI_Groupe_" + oLAY_Groups.getId());
+		if(oElement == null)
+			return false;
+
+		//have we an object ?
+		if(oGroups == null)
+			return false;
+
+		//get the code
+		sCode = oGroups.getId_Noeuds_Parent();
+
+		//Define the function
+		oReq.onreadystatechange = function(){
+
+			//if everything is alright
+			if(oReq.readyState == 4 && oReq.status == 200){
+				//Response
+				oLAY_Groups.responseGroupsOut(oReq.responseText);
+			}
+			
+		};
+
+		console.log("Element value : " + oElement.value);
+
+		//prepare the query*********************
+		//check the open
+		oReq.open("POST", "php/queryManager_Groups.php", true);
+		//set the request header
+		oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+		oReq.send("Id=0&Session=" + "" + "&Action=contacts_groups&Args=" + JSON.stringify([
+			{Method : "COND_NIN_LIST", Names : ["Id_Groups"], Value : sCode},
+			{Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sNom", "sNomGroupe"], Value : oElement.value} 
+		] ) ); 
+		//Return the job !
+		return true;
 	};
 }
