@@ -5,9 +5,12 @@ include_once("CONTACTS_Contacts.php");
 include_once("CONTACTS_Organisations.php");
 include_once("CONTACTS_Users.php");
 include_once("CONTACTS_Groups.php");
+include_once("Groups_manager_2.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
+Const HEIMDALL_QM_Debug = false;
+//Const HEIMDALL_QM_Debug = true;
 
 /// <reference path="CONTACTS_Contacts.php" />
 
@@ -51,8 +54,56 @@ function createCondition($ary_Column, $sOperator, $sStr, $ary_CorrespondanceSet 
     return "(" . $sCode . ")";
 }
 
+function createRightsCondition($userId){
+
+    //our query
+    $sQuery = "";
+
+    //groups of the users
+    $ary_Groups = array();
+
+    //our group odj 
+    $oGrp = new Groups();
+
+    //count
+    $nCount = 0;
+    //iterator 
+    $nLine = 0;
+
+    //get the array !
+    $ary_Groups = groupsOfUser($userId);
+
+    //Start !
+    $sQuery .= "AND (" . "\r\n";
+    //it's open !!!'
+    $sQuery .= "\t" . "id_accreditations_item = 1 " . "\r\n";
+    //Creator part
+    $sQuery .= "\t" . "OR xxx.Items.id_creator = " . Quotes($userId) . "\r\n";
+    //User part 
+    $sQuery .= "\t" . "OR xxx.Items.id_users_json LIKE " . Quotes("%\"uid\":\"" . $userId . "\"%") . "\r\n";
+
+    //groups part
+    //get the count
+    $nCount = count($ary_Groups);
+    //the loop
+    while($nLine < $nCount){
+        //reset the obj
+        $oGrp = new Groups();
+        //get the obj
+        $oGrp->loadFromArray($ary_Groups[$nLine]);
+        //write the query !!!
+        $sQuery .= "\t" . "OR xxx.Items.id_groups_json LIKE " . Quotes("%\"gid\":\"" . $oGrp->getId_Items() . "\"%") . "\r\n";
+        //Next 
+        $nLine++;
+    }
+
+    $sQuery .= ")";
+
+    return $sQuery;
+}
+
 ///[FUNCTION][searchQuery]Function to search the contact
-function searchQuery($Args){
+function searchQuery($Args, $userId = 0){
 
     //Our query 
     $sQuery = "";
@@ -80,6 +131,10 @@ function searchQuery($Args){
     //push for the fun !
     $ary_Corres += [ "sAPEFonction" => "xxx.contact_infos.fonction" ];
 
+    //debugging, the desperate way
+    if(HEIMDALL_QM_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/queryManager@searchQuery.log", "DEBUG !!!\r\n" );
+
     //recreate the query
     //$sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
     $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . ", xxx.contact_infos.fonction, xxx.contact_infos.id_contact_infos" . "\r\n" ;
@@ -89,6 +144,14 @@ function searchQuery($Args){
     //add the link between column s and foreign Key
     //$sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
     $sQuery .= "WHERE " . $oContact->getLinkConditions(true);
+
+    //debugging, the desperate way
+    if(HEIMDALL_QM_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/queryManager@searchQuery.log", "The User Id : " . $userId . "\r\n",  FILE_APPEND );
+
+    //right part !!!
+    if($userId != 0)
+        $sQuery .= "\r\n" . createRightsCondition($userId);
 
     //get the count
     $nCount = count($Args);
@@ -187,6 +250,10 @@ function searchQuery($Args){
         $nLine++;
     }
 
+    //debugging, the desperate way
+    if(HEIMDALL_QM_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/queryManager@searchQuery.log", "The Query : \r\n " . $sQuery . "\r\n",  FILE_APPEND );
+
     //push it to the view !!!
     echo json_encode($ary_Obj);
 
@@ -202,10 +269,18 @@ function queryCenter(){
     //our argument
     $Arg = $_POST["Args"];
 
+    //our user id 
+    $userId = 0;
+
+    if(array_key_exists("Id", $_POST))
+        //$userId = intval( $_POST["Id"]);
+        $userId = $_POST["Id"];
+
+
     //Action selector
     switch($Action){
         case "contacts_contacts":
-            return searchQuery((array)json_decode($Arg));
+            return searchQuery((array)json_decode($Arg), $userId);
         break;
     }
 

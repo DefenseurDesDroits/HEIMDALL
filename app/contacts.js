@@ -1244,7 +1244,7 @@ function contactDoQueryComplete(sIdWaiting, ptrFunctionCreateArg, ptrFunctionRes
     oReq.open("POST", "php/queryManager.php", true);
     //set the request header
     oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-    oReq.send("Id=0&Session=" + "" + "&Action=contacts_contacts&Args=" + JSON.stringify(ptrFunctionCreateArg())); 
+    oReq.send("Id=" +Heimdall.members.user["UserId"] + "&Session=" + "" + "&Action=contacts_contacts&Args=" + JSON.stringify(ptrFunctionCreateArg())); 
     //Return the job !
     return true;
 }
