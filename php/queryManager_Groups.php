@@ -5,10 +5,12 @@ include_once("CONTACTS_Contacts.php");
 include_once("CONTACTS_Organisations.php");
 include_once("CONTACTS_Groups.php");
 
+//include_once("queryTools.php");
+
 //define const 
 const QUERY_METHOD_LIKE = "Like";
-Const HEIMDALL_QM_GROUPS_Debug = false;
-//Const HEIMDALL_QM_GROUPS_Debug = true;
+//Const HEIMDALL_QM_GROUPS_Debug = false;
+Const HEIMDALL_QM_GROUPS_Debug = true;
 
 /// <reference path="CONTACTS_Contacts.php" />
 

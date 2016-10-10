@@ -212,7 +212,7 @@ function LAY_Accreditations_searchGroupsOut(sId){
 	oItem = ARY_LAY_Accreditations_Item[nPosition];
 
 	//
-	sJson = oItem.members.oObj.getId_users_json();
+	sJson = oItem.members.oObj.getId_groups_json();
 	//Have we user
 	if(sJson != ""){
 		ary_uid = JSON.parse(sJson);
@@ -563,7 +563,7 @@ function LAY_Accreditations_searchFutureUsersId(sId){
 		ary_uid = JSON.parse(sJson);
 	}
 
-	return LAY_Accreditations_searchFutureUsers(oItem.LIST_Out, ary_uid, "SAI_Pseudo_" + sId, "LAY_Item_Out_" + sId, "LIST_Item_Out_" + sId);
+	return LAY_Accreditations_searchFutureUsers(oItem.LIST_Out, ary_uid, "SAI_Users_" + sId, "LAY_Item_Out_" + sId, "LIST_Item_Out_" + sId);
 }
 
 function LAY_Accreditations_ItemResponseUser(LIST_, sText, sIDParent, sIdElement){
@@ -672,7 +672,7 @@ function LAY_Accreditations_ItemHTML_3(sId){
 
 	sCode += "<div id=\"LAY_Item_Search_" + sId + "\">" + "\r\n";
 
-	sCode += "\t" + '<input id="SAI_Pseudo_' + sId + '" class="SAI_" type="text" name="SAI_Pseudo_' + sId + '" value=""/>';
+	sCode += "\t" + '<input id="SAI_Users_' + sId + '" class="SAI_" type="text" name="SAI_Users_' + sId + '" value=""/>';
 	sCode += "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"LAY_Accreditations_searchFutureUsersId('" + sId + "');\">Q</div>" + "\r\n";
 
 	sCode += "</div>" + "\r\n";
