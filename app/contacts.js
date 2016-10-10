@@ -28,6 +28,46 @@ const HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID = "LAY_Contact_extension_address_
 
 var WIN_Contacts = null;
 
+Heimdall_Contacts = {
+    //our menu to generated
+    generateMenuCode : function(){
+        return '<li class="OPT_ current">Contacts</li>';
+    },
+    //method to generate
+    generateHTML : function(){
+        //our code
+        var sCode = "";
+
+        //our code to make
+        sCode += '<div id="OPT_Contacts_General" class="OPT_ current">Général</div>';
+		sCode += '<div id="OPT_Contacts_Contacts" class="OPT_ others">Contacts</div>';
+		sCode += '<div id="OPT_Contacts_Users" class="OPT_ others">Users</div>';
+		sCode += '<div id="OPT_Contacts_Organisations" class="OPT_ others">Organisations</div>';
+		sCode += '<div id="OPT_Contacts_Groups" class="OPT_ others">Groupes</div>';
+
+        //our code
+        return sCode;
+    },
+    //sub product choose
+    onClick : function(sId){
+        return false;
+    },
+    //product choose
+    onProductClick : function(){
+        //the element 
+        var oElement = null;
+
+        //get the element
+        oElement = document.getElementById("OPT_Detail");
+
+        //change the HTML
+        oElement.innerHTML = Heimdall_Contacts.generateHTML();
+
+        //return the good
+        return true;
+    }
+};
+
 ///[FUNCTION][loadStatics_Civilites]Function to load all the civilities from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStatics_Civilites(){

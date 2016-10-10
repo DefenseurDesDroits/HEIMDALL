@@ -6,6 +6,29 @@
 
 /// <reference path="contacts.js" />
 
+Heimdall_Produits = {
+    //our menu to generated
+    generateMenuCode : function(){
+        return "";
+    },
+    //method to generate
+    generateHTML : function(){
+        //our code
+        var sCode = "";
+
+        //our code
+        return sCode;
+    },
+    //sub product choose
+    onClick : function(sId){
+        return false;
+    },
+    //product choose
+    onProductClick : function(){
+        return false;
+    }
+};
+
 ///[Class][Heimdall]Our Heimdall global object
 var Heimdall = {
     flags :  {
@@ -13,7 +36,8 @@ var Heimdall = {
         debug : true
     },
     members : {
-        products : {},
+        products : [Heimdall_Contacts],
+        //products : {},
         user : {},
         connectionWindow : null
     },
@@ -109,6 +133,8 @@ var Heimdall = {
                 case "LDAP_Connection_OK":
                     //init the contact
                     init_contacts();
+                    //create the product
+                    Heimdall_Contacts.onProductClick();
 
                     //get the response array
                     Heimdall.members.user = ary_Response;
@@ -278,7 +304,7 @@ var Heimdall = {
 
             sCode += "<div>" + "\r\n";
 
-            sCode += "\t" + "<div id=\"BTN_Dectonnection\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();Heimdall.methods.disconnect();\">Deconnection</div>" + "\r\n";
+            sCode += "\t" + "<div id=\"BTN_Deconnection\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();Heimdall.methods.disconnect();\">Deconnection</div>" + "\r\n";
 
             sCode += "</div>" + "\r\n";
 
@@ -372,6 +398,39 @@ var Heimdall = {
 
 ///[FUNCTION][init]Function to init all the products
 function init_Produits(){
+
+    //our count
+    var nCount = "";
+    //our iterator
+    var nLine = 0;
+
+    //our element
+    var oElement = null;
+
+    //the menu code
+    var sCode = "";
+
+    //get the element
+    oElement = document.getElementById("main_ul");
+
+    nCount = Heimdall.members.products.length;
+    while(nLine < nCount){
+
+        //add
+        sCode += Heimdall.members.products[nLine].generateMenuCode();
+
+        //next
+        nLine++;
+    }
+
+    //
+    sCode += '<li class="OPT_ others">Publications</li>';
+	sCode += '<li class="OPT_ others">Stock</li>';
+	sCode += '<li class="OPT_ others">Campagnes</li>';
+	sCode += '<!--<li class="OPT_ others">Recherche</li> -->';
+
+    //add the code
+    oElement.innerHTML = sCode;
 
     ///[DEBUG]Operaion time !!!
     if(Heimdall.flags.debug){
