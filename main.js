@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.1.5";
+const MAIN_VERSION = "0.1.6";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! ###################################### */
@@ -102,6 +102,13 @@ function main_Lib_Init(){
 
 ///[METHOD][main]Our main function
 function main(){
+	//Our element
+	var oElement = document.getElementById("OPT_bottom");
+
+	//Our version !
+	if(oElement != null)
+		oElement.innerHTML = "Version " + MAIN_VERSION;
+
 	//test of load lib
 	Potours_init_lib(main_Lib_Init);
 };

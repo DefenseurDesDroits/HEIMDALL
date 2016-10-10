@@ -73,6 +73,9 @@ function LAY_Users(){
         oDiv : null
     };
 
+	//our right !!!
+	this.LAY_Rights = new LAY_Accreditations_Item();
+
 	///[SECTION]Property##############################################
 	
 	///[SECTION]Getters###############################################
@@ -277,6 +280,12 @@ function LAY_Users(){
 			else
 				//change
 				ARY_LAY_Users[nPosition] = oLAY_Users;
+			
+			//set the object contact
+			oLAY_Users.LAY_Rights.setObj(oLAY_Users.getObj());
+			//Accreditation !!!
+			oLAY_Users.LAY_Rights.init("LAY_Accreditation_" + oLAY_Users.getId(), sDivId);
+			
 			//happy end
 			return true;
 		} 
@@ -405,6 +414,8 @@ function LAY_Users(){
 		}
 		///[/DEBUG]
 		
+		//The right !!!
+		oLAY_Users.LAY_Rights.ViewToObject();
 		//Parano !
 		oLAY_Users.members.oObj = oUsers;
 		

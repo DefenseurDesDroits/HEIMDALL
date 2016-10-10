@@ -256,6 +256,9 @@ function LAY_Groups(){
 		oLAY_Groups.LIST_Groups_Out.init("LAY_Groups_Out_" + oLAY_Groups.getId(), "LIST_Groups_Out_" + oLAY_Groups.getId());
 	};
 
+	//our right !!!
+	this.LAY_Rights = new LAY_Accreditations_Item();
+
 	///[SECTION]Property##############################################
 	
 	///[SECTION]Getters###############################################
@@ -450,8 +453,11 @@ function LAY_Groups(){
 				//change
 				ARY_LAY_Groups[nPosition] = oLAY_Groups;
 
-			// oLAY_Groups.loadUsers();
-			// oLAY_Groups.loadGroupsIn();
+			//set the object contact
+			oLAY_Groups.LAY_Rights.setObj(oLAY_Groups.getObj());
+			//Accreditation !!!
+			oLAY_Groups.LAY_Rights.init("LAY_Accreditation_" + oLAY_Groups.getId(), sDivId);
+			
 			//happy end
 			return true;
 		} 
@@ -557,7 +563,9 @@ function LAY_Groups(){
 			oGroups.setId_Noeuds_Parent(parseInt(oGroups.getId_Noeuds()));
 		else
 			oGroups.setId_Noeuds_Parent(parseInt(ary_[0].Tag));
-
+		
+		//The right !!!
+		oLAY_Groups.LAY_Rights.ViewToObject();
 		//Parano !
 		oLAY_Groups.members.oObj = oGroups;
 		

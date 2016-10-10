@@ -71,6 +71,9 @@ function LAY_Organisations(){
         ///[MEMBER][string][element]The dom element
         oDiv : null
     };
+	
+	//our right !!!
+	this.LAY_Rights = new LAY_Accreditations_Item();
 
 	///[SECTION]Property##############################################
 	
@@ -258,6 +261,12 @@ function LAY_Organisations(){
 			else
 				//change
 				ARY_LAY_Organisations[nPosition] = oLAY_Organisations;
+			
+			//set the object contact
+			oLAY_Organisations.LAY_Rights.setObj(oLAY_Organisations.getObj());
+			//Accreditation !!!
+			oLAY_Organisations.LAY_Rights.init("LAY_Accreditation_" + oLAY_Organisations.getId(), sDivId);
+			
 			//happy end
 			return true;
 		} 
@@ -336,6 +345,8 @@ function LAY_Organisations(){
 		if(oElement != null)
 			oOrganisations.setNom(oElement.value);
 		
+		//The right !!!
+		oLAY_Organisations.LAY_Rights.ViewToObject();
 		//Parano !
 		oLAY_Organisations.members.oObj = oOrganisations;
 		

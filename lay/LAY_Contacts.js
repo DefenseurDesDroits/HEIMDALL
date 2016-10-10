@@ -95,6 +95,7 @@ function LAY_Contacts(){
         oDiv : null
     };
 
+	//our right !!!
 	this.LAY_Rights = new LAY_Accreditations_Item();
 
 	///[SECTION]Property##############################################
@@ -172,9 +173,7 @@ function LAY_Contacts(){
 		
 		//sCode += "<div >" + accreditationsLAYDiv() + "</div>";
 		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Contacts.getId() + "\">" + "Droits" + "</div>";
-		// sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Contacts.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
 
-		//sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
 		sCode += "\t" + "\t" + "<select id=\"COMBO_Civilite_" + oLAY_Contacts.getId() + "\">" + "\r\n";
@@ -303,7 +302,7 @@ function LAY_Contacts(){
 				//change
 				ARY_LAY_Contacts[nPosition] = oLAY_Contacts;
 			
-			//
+			//set the object contact
 			oLAY_Contacts.LAY_Rights.setObj(oLAY_Contacts.getObj());
 			//Accreditation !!!
 			oLAY_Contacts.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contacts.getId(), sDivId);
@@ -428,6 +427,8 @@ function LAY_Contacts(){
 		}
 		///[/DEBUG]
 		
+		//The right !!!
+		oLAY_Contacts.LAY_Rights.ViewToObject();
 		//Parano !
 		oLAY_Contacts.members.oObj = oContact;
 		
