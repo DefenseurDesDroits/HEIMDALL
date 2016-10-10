@@ -1,54 +1,16 @@
 <?php //yeah
 
 //put your include
-include_once("CONTACTS_Contacts.php");
-include_once("CONTACTS_Organisations.php");
-include_once("CONTACTS_Users.php");
+// include_once("CONTACTS_Contacts.php");
+// include_once("CONTACTS_Organisations.php");
+// include_once("CONTACTS_Users.php");
+
+include_once("queryTools.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
 Const HEIMDALL_QM_USER_Debug = false;
 //Const HEIMDALL_QM_USER_Debug = true;
-
-/// <reference path="CONTACTS_Contacts.php" />
-
-function createCondition($ary_Column, $sOperator, $sStr, $ary_CorrespondanceSet = null){
-
-    //our code 
-    $sCode = "";
-
-    //our count
-    $nCount = 0;
-    //our iterrator
-    $nLine = 0;
-
-    //no correspondance, easyr way
-    if($ary_CorrespondanceSet == null){
-        $nCount = count($ary_Column);
-        while ($nLine < $nCount) {
-            if($sCode != "")
-                $sCode .= " OR ";
-            $sCode .= $ary_Column[$nLine] . " " . $sOperator . " " . Quotes($sStr);
-            //next
-            $nLine++;
-        }
-    }
-    else{
-        $nCount = count($ary_Column);
-        while ($nLine < $nCount) {
-            //check the existance of the key
-            if(array_key_exists($ary_Column[$nLine], $ary_CorrespondanceSet)){
-                if($sCode != "")
-                    $sCode .= " OR ";
-                $sCode .= $ary_CorrespondanceSet[$ary_Column[$nLine]] . " " . $sOperator . " " . Quotes($sStr);
-            }
-            //next
-            $nLine++;
-        }
-    }
-
-    return "(" . $sCode . ")";
-}
 
 ///[FUNCTION][searchQuery]Function to search the contact
 function searchQuery($Args){
