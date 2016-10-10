@@ -37,7 +37,7 @@ function SAVE_LAY_Contacts(sId){
 	//log it !!!
 	oLogs = new Logs();
 	//fill the logs !
-	oLogs.setId_Items(parseInt(oItem.getId_Contacts()));
+	oLogs.setId_Items(parseInt(oItem.getId_Items()));
 	//oLogs.setCreation("YYYYMMDD");
 	oLogs.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
 	//oLogs.setValidation("YYYYMMDD");
@@ -47,11 +47,8 @@ function SAVE_LAY_Contacts(sId){
 	//save the logs !!!
 	oLogs.save(Heimdall.members.user["UserId"], ".");
 	
-	//restu the result 
+	//Sad God Sake !!! 
 	return bResult;
-	
-	//Sad God Sake !!!
-	//return oItem.save(Heimdall.members.user["UserId"], ".");
 }
 
 //DELETE_LAY_Contacts

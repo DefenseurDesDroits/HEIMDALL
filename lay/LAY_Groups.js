@@ -16,6 +16,11 @@ function SAVE_LAY_Groups(sId){
 	var nPosition = 0;
 	//our item
 	var oItem = null;
+	//our result
+	var bResult = false;
+	
+	//our log object 
+	var oLogs = null;
 
 	//get the position
 	nPosition = findInPotoursObjLst(ARY_LAY_Groups, "sName", sId);
@@ -28,8 +33,24 @@ function SAVE_LAY_Groups(sId){
 	//get the Item
 	oItem = ARY_LAY_Groups[nPosition].getObj();
 
-	//Sad God Sake !!!
-	return oItem.save(Heimdall.members.user["UserId"], ".");
+	//save
+	bResult = oItem.save(Heimdall.members.user["UserId"], ".");
+	
+	//log it !!!
+	oLogs = new Logs();
+	//fill the logs !
+	oLogs.setId_Items(parseInt(oItem.getId_Items()));
+	//oLogs.setCreation("YYYYMMDD");
+	oLogs.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
+	//oLogs.setValidation("YYYYMMDD");
+	oLogs.setId_Validator(parseInt(Heimdall.members.user["UserId"]));
+	oLogs.setValeur(oItem.exportToJson());
+	oLogs.setSuppression(false);
+	//save the logs !!!
+	oLogs.save(Heimdall.members.user["UserId"], ".");
+	
+	//Sad God Sake !!! 
+	return bResult;
 }
 
 //DELETE_LAY_Groups
