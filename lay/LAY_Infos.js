@@ -169,52 +169,70 @@ function LAY_Infos(){
 		
 		sCode += "<div id=\"" + oLAY_Infos.getId() + "\">";
 		
-		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Infos.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
+		 ///[DEBUG]Operaion time !!!
+		if(Heimdall.flags.debug){
+			//console.log("LAY_Infos, json : " + oLAY_Infos.exportToJson());
+			sCode += "\t" + "<div id=\"LAB_Id_" + oLAY_Infos.getId() + "\"><div>" + "\r\n";
+			//sCode += "\t" + "<div id=\"LAB_Id_" + oLAY_Infos.getId() + "\">Adresse ID : " + oAdr.getId_Infos() + "<div>" + "\r\n";
+		}
+		///[/DEBUG]
+
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Infos.getId() + "\"></div>";
 
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
-		sCode += '\t\t<input id="SAI_Pseudo_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Pseudo_' + oLAY_Infos.getId() + '" value=""/>';
-		sCode += "<br\>";
+		sCode += "\t" + '<input id="SAI_Adr1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr2_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr3_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
 
-		sCode += "\t" + "\t" + "<select id=\"COMBO_Civilite_" + oLAY_Infos.getId() + "\">" + "\r\n";
-		//get the count
-		nCount = Heimdall.members.products.contacts.Civilites.length;
-		//init the iterator
-		nIt = 0;
-		//loop
-		while(nIt < nCount){
-			//add option
-			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() + "\">" + Heimdall.members.products.contacts.Civilites[nIt].getNom() + "</option>" + "\r\n";
-			//Next
-			nIt++;
-		}
-		sCode += "\t" + "\t" + "</select>" + "\r\n";
+		sCode += "\t" + "<br/>";
+		sCode += "\t" + "<span>CP</span>";
+		sCode += "\t" + '<input id="SAI_CP_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_CP_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';    
 
-		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Infos.getId() + '" value=""/>';
-		sCode += '\t\t<input id="SAI_Prenom_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Prenom_' + oLAY_Infos.getId() + '" value=""/>';
+		sCode += "\t" + "<br/>";
+		sCode += "\t" + "<span>Cedex</span>";
+		sCode += "\t" + '<input id="SAI_Cedex_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Cedex_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
 
-		//sCode += "\t" + "<br/>" + "\r\n";
-
-		sCode += "\t" + "\t" + "<select id=\"COMBO_Titres_" + oLAY_Infos.getId() + "\">" + "\r\n";
-		//get the count
-		nCount = Heimdall.members.products.contacts.Titres.length;
-		//init the iterator
-		nIt = 0;
-		//loop
-		while(nIt < nCount){
-			//add option
-			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Titres[nIt].getId_Titres() + "\">" + Heimdall.members.products.contacts.Titres[nIt].getNom() + "</option>" + "\r\n";
-			//Next
-			nIt++;
-		}
-		sCode += "\t" + "\t" + "</select>" + "\r\n";
-
-		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Infos('" + oLAY_Infos.getId() + "')\">Sauvegarder</div>" + "\r\n";
-		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Infos('" + oLAY_Infos.getId() + "')\">Supprimer</div>" + "\r\n";
-
-		sCode += "\t" + "</form>";
-		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Infos.getId() + "\">---</div>";
+		sCode += "\t" + "<br/>";
+		sCode += "\t" + "<span>Ville</span>";
+		sCode += "\t" + '<input id="SAI_Ville_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Ville_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
 		
+		sCode += "\t" + "<span>Pays</span>";
+		sCode += "\t" + "\t" + "<select id=\"COMBO_Pays_" + oLAY_Infos.getId() + "\">" + "\r\n";
+		//get the count
+		nCount = Heimdall.members.products.contacts.Pays.length;
+		//init the iterator
+		nIt = 0;
+		//loop
+		while(nIt < nCount){
+			//add option
+			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Pays[nIt].getId_Pays() + "\">" + Heimdall.members.products.contacts.Pays[nIt].getNom() + "</option>" + "\r\n";
+			//Next
+			nIt++;
+		}
+		sCode += "\t" + "\t" + "</select>" + "\r\n";
+
+		sCode += "\t" + "<br/>";
+		sCode += "\t" + "<span>Site</span>";
+		sCode += "\t" + '<input id="SAI_Site_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Site_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + "<br/>";
+
+		sCode += "\t" + "<br/>";
+		
+		sCode += "\t" + '<div>Adresse 1</div>'
+		sCode += "\t" + "<span>Téléphone 1 </span>";
+		sCode += "\t" + '<input id="SAI_Tel1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Tel1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + "<span>Courriel 1 </span>";
+		sCode += "\t" + '<input id="SAI_Courriel1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Courriel1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+
+		sCode += "\t" + '<div>Adresse 2</div>'
+		sCode += "\t" + "<span>Téléphone 2 </span>";
+		sCode += "\t" + '<input id="SAI_Tel2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Tel2_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + "<span>Courriel 2 </span>";
+		sCode += "\t" + '<input id="SAI_Courriel2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Courriel2_' + oLAY_Infos.getId() + '" value="' +"" + '"/>';
+
+		sCode += "\t" + "</form>" + "\r\n";
+
 		sCode += "</div>";
 		
 		//return the code
@@ -349,38 +367,73 @@ function LAY_Infos(){
 		var oElement = null;
 
 		if(oLAY_Infos.members.oObj == null)
-			oLAY_Infos.members.oObj = new Contacts();
+			oLAY_Infos.members.oObj = new Infos();
 			//return false;
 
-		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Infos.getId());
-		if(oElement != null)
-			oElement.value = oLAY_Infos.members.oObj.getPseudo();
+		 ///[DEBUG]Operaion time !!!
+		if(Heimdall.flags.debug){
+			oElement = document.getElementById("LAB_Id_" + oLAY_Infos.getId());
+			if(oElement != null)
+				oElement.innerHTML= oLAY_Infos.members.oObj.getPseudo();
+		}
+		///[/DEBUG]
 
-		oElement = document.getElementById("COMBO_Civilite_" + oLAY_Infos.getId());
+		//Adresse 1 to 3
+		oElement = document.getElementById("SAI_Adr1_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getAdr1();
+		oElement = document.getElementById("SAI_Adr2_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getAdr2();
+		oElement = document.getElementById("SAI_Adr3_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getAdr3();
+		
+		//CP
+		oElement = document.getElementById("SAI_CP_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getCP();
+
+		//Cedex
+		oElement = document.getElementById("SAI_Cedex_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getCedex();
+
+		//Ville
+		oElement = document.getElementById("SAI_Cedex_" + oLAY_Infos.getVIlle());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getVille();
+		
+		//our country
+		oElement = document.getElementById("COMBO_Pays_" + oLAY_Infos.getId());
 		if(oElement != null){
-			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", oLAY_Infos.members.oObj.getId_Civilites());
+			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Pays, "nId_Pays", oLAY_Infos.members.oObj.getId_Pays());
 			if(nPosition != POTOURS_FIND_NOTFOUND){
 				//Option created in the same order than stored
 				oElement.selectedIndex = nPosition;
 			}
 		}
-			
-		oElement = document.getElementById("SAI_Nom_" + oLAY_Infos.getId());
-		if(oElement != null)
-			oElement.value = oLAY_Infos.members.oObj.getNom();
 
-		oElement = document.getElementById("SAI_Prenom_" + oLAY_Infos.getId());
+		//Site
+		oElement = document.getElementById("SAI_Site_" + oLAY_Infos.getId());
 		if(oElement != null)
-			oElement.value = oLAY_Infos.members.oObj.getPrenom();
+			oElement.value = oLAY_Infos.members.oObj.getSite();
+		
+		//Adr1
+		oElement = document.getElementById("SAI_Tel1_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getTelephone1();
+		oElement = document.getElementById("SAI_Courriel1_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getCourriel1();
 
-		oElement = document.getElementById("COMBO_Titres_" + oLAY_Infos.getId());
-		if(oElement != null){
-			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", oLAY_Infos.members.oObj.getId_Titres());
-			if(nPosition != POTOURS_FIND_NOTFOUND){
-				//Option created in the same order than stored
-				oElement.selectedIndex = nPosition;
-			}
-		}
+		//Adr2
+		oElement = document.getElementById("SAI_Tel2_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getTelephone2();
+		oElement = document.getElementById("SAI_Courriel2_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Infos.members.oObj.getCourriel2();
 
 		return true;
 	};
@@ -394,46 +447,57 @@ function LAY_Infos(){
 		//element 
 		var oElement = null;
 
-		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Infos.getId());
+		//our adr 1 to 3
+		oElement = document.getElementById("SAI_Adr1_" + oLAY_Infos.getId());
 		if(oElement != null)
-			oInfos.setPseudo(oElement.value);
-
-		oElement = document.getElementById("COMBO_Civilite_" + oLAY_Infos.getId());
+			oInfos.setAdr1(oElement.value);
+		oElement = document.getElementById("SAI_Adr2_" + oLAY_Infos.getId());
 		if(oElement != null)
-			oInfos.setId_Civilites(parseInt(Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites()));
-
-		///[DEBUG]Operaion time !!!
-		if(Heimdall.flags.debug && oElement != null){
-			console.log("COMBO_Civilite value : "  + oElement.selectedIndex);
-			console.log("COMBO_Civilite ID : "  + Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites());
-		}
-		///[/DEBUG]
-
-		oElement = document.getElementById("SAI_Nom_" + oLAY_Infos.getId());
+			oInfos.setAdr2(oElement.value);
+		oElement = document.getElementById("SAI_Adr3_" + oLAY_Infos.getId());
 		if(oElement != null)
-			oInfos.setNom(oElement.value);
+			oInfos.setAdr3(oElement.value);
 
-		oElement = document.getElementById("SAI_Prenom_" + oLAY_Infos.getId());
+		//CP
+		oElement = document.getElementById("SAI_CP_" + oLAY_Infos.getId());
 		if(oElement != null)
-			oInfos.setPrenom(oElement.value);
+			oInfos.setCP(oElement.value);
 
-		oElement = document.getElementById("COMBO_Titres_" + oLAY_Infos.getId());
+		//Cedex
+		oElement = document.getElementById("SAI_Cedex_" + oLAY_Infos.getId());
 		if(oElement != null)
-			oInfos.setId_Titres(parseInt(Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres()));
+			oInfos.setCedex(oElement.value);
 
-		///[DEBUG]Operaion time !!!
-		if(Heimdall.flags.debug && oElement != null){
-			console.log("COMBO_Titres value : "  + oElement.selectedIndex);
-			console.log("COMBO_Titres ID : "  + Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres());
-		}
-		///[/DEBUG]
+		//Ville
+		oElement = document.getElementById("SAI_Ville_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oInfos.setVille(oElement.value);
+		
+		//Pays
+		oElement = document.getElementById("COMBO_Pays_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oInfos.setId_Pays(parseInt(Heimdall.members.products.contacts.Pays[oElement.selectedIndex].getId_Pays()));
+		
+		//Site
+		oElement = document.getElementById("SAI_Site_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oInfos.setSite(oElement.value);
 
-		///[DEBUG]Operation time !!!
-		if(Heimdall.flags.debug){
-			console.log("InfosLAYDIVSave, json : " + "\r\n" + oInfos.exportToJson());
-			console.log("user id : " + Heimdall.members.user["UserId"]);
-		}
-		///[/DEBUG]
+		//Adr 1
+		oElement = document.getElementById("SAI_Tel1_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oInfos.setTelephone1(oElement.value);
+		oElement = document.getElementById("SAI_Courriel1_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oInfos.setCourriel1(oElement.value);
+		
+		//Adr 2
+		oElement = document.getElementById("SAI_Tel2_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oInfos.setTelephone1(oElement.value);
+		oElement = document.getElementById("SAI_Courriel2_" + oLAY_Infos.getId());
+		if(oElement != null)
+			oInfos.setCourriel1(oElement.value);
 		
 		//The right !!!
 		oLAY_Infos.LAY_Rights.ViewToObject();

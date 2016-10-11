@@ -95,6 +95,9 @@ function LAY_Contacts(){
 	//our right !!!
 	this.LAY_Rights = new LAY_Accreditations_Item();
 
+	//Contact_Infos
+	this.LAY_Contact_Infos = new LAY_LIST_Contact_Infos();
+
 	///[SECTION]Property##############################################
 	
 	///[SECTION]Getters###############################################
@@ -304,6 +307,9 @@ function LAY_Contacts(){
 			//Accreditation !!!
 			oLAY_Contacts.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contacts.getId(), sDivId);
 			
+			//init the contact infos !
+			oLAY_Contacts.LAY_Contact_Infos.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId(), sDivId, oLAY_Contacts.getObj());
+
 			//happy end
 			return true;
 		} 
@@ -375,6 +381,8 @@ function LAY_Contacts(){
 			}
 		}
 
+		oLAY_Contacts.LAY_Contact_Infos.ObjToView();
+
 		return true;
 	};
 	this.myLAY_Contacts.ObjToView = this.ObjToView;
@@ -424,6 +432,8 @@ function LAY_Contacts(){
 		}
 		///[/DEBUG]
 		
+		oLAY_Contacts.LAY_Contact_Infos.ViewToObject();
+
 		//The right !!!
 		oLAY_Contacts.LAY_Rights.ViewToObject();
 		//Parano !
@@ -443,4 +453,3 @@ function LAY_Contacts(){
 	}
 	this.myLAY_Contacts.init = this.init;
 }
-

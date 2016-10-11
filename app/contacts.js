@@ -446,6 +446,60 @@ function loadStatics_Organisation_Types(){
 
 }
 
+///[FUNCTION][loadStatics_Langues]Function to load all the kind of operations from the DTB
+///[RETURNS][Boolean]True if done
+function loadStatics_Langues(){
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //our object to convert
+            var oLangues = null;
+            //our array of result
+            var ary_Json = JSON.parse(oReq.responseText);
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
+            //reset
+            Heimdall.members.products.contacts.Langues = [];
+            //get the number of result
+            nCount = ary_Json.length;
+            //loop
+            while(nLine < nCount){
+
+                //realloc the variable
+                oLangues = new Langues();
+                //load it !
+                oLangues.loadFromArray(ary_Json[nLine]);
+
+                //add it
+                Heimdall.members.products.contacts.Langues.push(oLangues);
+
+                //next
+                nLine++;
+            }
+
+            Heimdall.flags.waitData = false;
+        }
+    };
+    //prepare the query*********************
+    Heimdall.flags.waitData = true;
+    //check the open
+    oReq.open("POST", "php/Langues_manager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
+    //Return the job !
+    return true;
+
+}
+
 ///[FUNCTION][loadStaticsContactsData]Function to load all the Contacts data from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStaticsContactsData(){
@@ -456,6 +510,7 @@ function loadStaticsContactsData(){
     loadStatics_Accreditations();
     //loadStatics_Groups();//do you want security troubles ? O_o
     loadStatics_Pays();
+    loadStatics_Langues();
     loadStatics_Organisation_Types();
 
     return true;
@@ -1567,6 +1622,7 @@ function init_contacts(){
     Heimdall.members.products.contacts["Accreditations"] = [];
     Heimdall.members.products.contacts["Pays"] = [];
     Heimdall.members.products.contacts["Organisation_Types"] = [];
+    Heimdall.members.products.contacts["Langues"] = [];
 
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
 
