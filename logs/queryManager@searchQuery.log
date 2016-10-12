@@ -13,5 +13,5 @@ AND (
 	OR xxx.Items.id_groups_json LIKE '%"gid":"953"%'
 	OR xxx.Items.id_groups_json LIKE '%"gid":"928"%'
 	OR xxx.Items.id_groups_json LIKE '%"gid":"927"%'
-) AND (xxx.Contacts.Nom ILIKE 'baj%' OR xxx.Contacts.Prenom ILIKE 'baj%')
+) AND (xxx.Contacts.Nom ILIKE 'fer%' OR xxx.Contacts.Prenom ILIKE 'fer%')
 ORDER BY xxx.contacts.nom

@@ -337,6 +337,8 @@ function LAY_Contact_Infos(){
 		oElement = document.getElementById("SAI_Fonction_" + oLAY_Contact_Infos.getId());
 		if(oElement != null)
 			oElement.value = oLAY_Contact_Infos.members.oObj.getFonction();
+		// else
+		// 	console.log("Fonction null !");
 
 		oElement = document.getElementById("COMBO_Langues_" + oLAY_Contact_Infos.getId());
 		if(oElement != null){
@@ -363,7 +365,7 @@ function LAY_Contact_Infos(){
 
 		oElement = document.getElementById("SAI_Fonction_" + oLAY_Contact_Infos.getId());
 		if(oElement != null)
-			oContact_Infos.setPseudo(oElement.value);
+			oContact_Infos.setFonction(oElement.value);
 
 		oElement = document.getElementById("COMBO_Langues_" + oLAY_Contact_Infos.getId());
 		if(oElement != null)

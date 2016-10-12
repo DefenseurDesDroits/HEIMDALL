@@ -213,7 +213,7 @@ function LAY_Contacts(){
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Contacts('" + oLAY_Contacts.getId() + "')\">Supprimer</div>" + "\r\n";
 
 		sCode += "\t" + "</form>";
-		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId() + "\">---</div>";
+		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId() + "\"></div>";
 		
 		sCode += "</div>";
 		
@@ -307,8 +307,10 @@ function LAY_Contacts(){
 			//Accreditation !!!
 			oLAY_Contacts.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contacts.getId(), sDivId);
 			
+			//event listener !!
+			window.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.subComponentLoaded);
 			//init the contact infos !
-			oLAY_Contacts.LAY_Contact_Infos.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId(), sDivId, oLAY_Contacts.getObj());
+			oLAY_Contacts.LAY_Contact_Infos.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId(), "CIS_" + sDivId, oLAY_Contacts.getObj());
 
 			//happy end
 			return true;
@@ -443,7 +445,7 @@ function LAY_Contacts(){
 	this.myLAY_Contacts.ViewToObject = this.ViewToObject;
 	
 	///[METHOD]Method to initialize the layout
-    ///[PARAMETER][string][sDivOwner]string, our oxner div Id
+    ///[PARAMETER][string][sDivOwner]string, our owner div Id
     ///[PARAMETER][string][sDivId]string, our div Id
     ///[PARAMETER][string][sDivId]string, our div Id
 	///[RETURNS]boolean, true if done
@@ -452,4 +454,21 @@ function LAY_Contacts(){
 		return oLAY_Contacts.initializeLayout(sDivOwner, sDivId);
 	}
 	this.myLAY_Contacts.init = this.init;
+
+	///[METHOD]Method to handle sub component loaded event
+	///[PARAMETER][event][e]event, our event
+	this.subComponentLoaded = function(e){
+
+		if(e != null){
+			if(e.detail.oObject != null){
+				if(e.detail.oObject.getName() == oLAY_Contacts.LAY_Contact_Infos.getName()){
+					//remove handler, cause we are no bad boys :)
+					window.removeEventListener(Heimdall.Events.loaded, oLAY_Contacts.subComponentLoaded);
+					//spread the message : No Mercy For the Rebels Troup StormTroopers !!!
+					oLAY_Contacts.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Contacts, null));
+				}
+			}
+		}
+	}
+	this.myLAY_Contacts.subComponentLoaded = this.subComponentLoaded;
 }

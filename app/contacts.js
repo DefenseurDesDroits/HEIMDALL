@@ -834,6 +834,19 @@ function LAY_Contacts_2(sDivOwner, oContacts){
     oLay.ObjToView();
 }
 
+function LAY_Contacts_1_LoadedHandler(e){
+    //get the Lay who throw it ]:)
+    var LAY_ = e.detail.oObject;
+
+    //security
+    if(LAY_ != null){
+        //plot !
+        LAY_.ObjToView();
+        //remove the eventlistener
+        LAY_.members.oDiv.removeEventListener(Heimdall.Events.loaded, LAY_Contacts_1_LoadedHandler);
+    }
+}
+
 function LAY_Contacts_1(sDivOwner, oContacts){
 
     //Edition Layout
@@ -843,8 +856,8 @@ function LAY_Contacts_1(sDivOwner, oContacts){
 
     oLay.init(sDivOwner, "Contacts" +  oContacts.getId_Contacts(), oContacts);
 
-    oLay.ObjToView();
-
+    //When it's load, plots !!!
+    oLay.members.oDiv.addEventListener(Heimdall.Events.loaded, LAY_Contacts_1_LoadedHandler);
 }
 
 ///[FUNCTION][contactClick]Function on click of a contact
@@ -1625,6 +1638,8 @@ function init_contacts(){
     Heimdall.members.products.contacts["Langues"] = [];
 
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
+    Heimdall.members.products.contacts["generateMenuCode"] = Heimdall_Contacts.generateMenuCode;
+
 
     //init the loader of Civilities/Contact_types
     loadStaticsContactsData();

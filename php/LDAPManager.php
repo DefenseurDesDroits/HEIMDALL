@@ -562,7 +562,7 @@ function createUser($sUser, $sName, $sFirstname, $nIdCreator = 0, $nIdGroup = 0,
     $oUsr->setId_Civilites(1);
     $oUsr->setId_Titres(1);
     $oUsr->setId_Contact_Types(3);
-    $oUsr->setId_Creator($nIdCreator);
+    $oUsr->setId_Creator(intval($nIdCreator));
     if($nIdGroup != 0)
         $oUsr->setId_groups_json( "{{\"grp\":\"" + $nIdGroup + "\", \"until\":\"\"}}");
     //$oUsr->setId_groups_owner(intval($nIdGroup));
@@ -619,6 +619,9 @@ function createUser($sUser, $sName, $sFirstname, $nIdCreator = 0, $nIdGroup = 0,
 
     //
     $oUsr->setId_Noeuds_Parent($nIdParent);
+    //I am my own creator !!!
+    if(intval($nIdCreator) == 0 || intval($oUsr->getId_Creator()) == 0)
+        $oUsr->setId_Creator(intval($oUsr->getId_Items()));
 
     $oUsr->save($nIdCreator);
 

@@ -6,6 +6,8 @@
 
 /// <reference path="contacts.js" />
 
+
+
 Heimdall_Produits = {
     //our menu to generated
     generateMenuCode : function(){
@@ -31,17 +33,23 @@ Heimdall_Produits = {
 
 ///[Class][Heimdall]Our Heimdall global object
 var Heimdall = {
+    Events : {
+        //Our event to says : Hi load complete !!!!
+        loaded : "Heimdall_Data_Loaded"
+    },
     flags :  {
         waitData : true,
         debug : true
     },
     members : {
-        products : [Heimdall_Contacts],
-        //products : {},
+        //products : [Heimdall_Contacts],
+        products : {},
         user : {},
         connectionWindow : null
     },
     methods : {
+        /* connection Part */
+
         connection : function(){
 
             //our code
@@ -337,6 +345,22 @@ var Heimdall = {
                 console.log("\t" + "Call done ! ");
             }
             ///[/DEBUG]
+        },
+
+        /* Events Part */
+
+        createEvent : function(sEvent, oThrower, oArg){
+            //null test !!!
+            if(sEvent == null)
+                return null;
+            if(oThrower == null)
+                return null;
+            if(oArg == null)
+                return new CustomEvent(sEvent, {'detail' :  { 'oObject': oThrower, "oArg" : null }});
+            return new CustomEvent(sEvent, {'detail' :  { 'oObject' : oThrower, "oArg" : oArg }});
+        },
+        createLoadedEvent : function(oThrower, oArg){
+            return Heimdall.methods.createEvent(Heimdall.Events.loaded, oThrower, oArg);
         }
     },
     debug : {

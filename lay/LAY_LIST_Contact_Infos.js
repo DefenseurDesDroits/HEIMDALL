@@ -187,7 +187,9 @@ function LAY_LIST_Contact_Infos(){
         //Menu
 		sCode += "\t" + "<div id=\"LAY_Menu_" + oLAY_LIST_Contact_Infos.getId() + "\">" + "\r\n";
         
-        sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"ADD_LAY_Contact_Infos('" + oLAY_LIST_Contact_Infos.getId() + "')\">Ajouter</div>" + "\r\n";
+        //Is the Item boss here new ?
+        if(oLAY_LIST_Contact_Infos.getObj().getId_Items() != 0 && oLAY_LIST_Contact_Infos.getObj().getId_Items() != "0")
+            sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"ADD_LAY_Contact_Infos('" + oLAY_LIST_Contact_Infos.getId() + "')\">Ajouter</div>" + "\r\n";
 		
         sCode += "\t" + "</div>" + "\r\n";        
 
@@ -349,10 +351,12 @@ function LAY_LIST_Contact_Infos(){
         //our iterator
         var nLine = 0;
 		
+        //get our count
+        nCount = oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.length;
         //Loop
         while(nLine < nCount){
             //
-            oLAY_LIST_Contact_Infos[nLine].ObjToView();
+            oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos[nLine].ObjToView();
             //Next
             nLine++;
         }
@@ -369,10 +373,12 @@ function LAY_LIST_Contact_Infos(){
         //our iterator
         var nLine = 0;
 		
+        //get our count
+        nCount = oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.length;
         //Loop
         while(nLine < nCount){
             //
-            oLAY_LIST_Contact_Infos[nLine].ViewToObject();
+            oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos[nLine].ViewToObject();
             //Next
             nLine++;
         }
@@ -405,9 +411,12 @@ function LAY_LIST_Contact_Infos(){
         //our new Lay to add
         var LAY_ = null;
 
+        //our event
+        var eventL = null;
+
         //clear
         oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos = [];
-
+        
         //get the loop
         nCount = ary_.length;
         //start the loop
@@ -418,6 +427,8 @@ function LAY_LIST_Contact_Infos(){
             LAY_ = new LAY_Contact_Infos();
             //Load
             oItem.loadFromArray(ary_[nLine]);
+            //our name you idiot !!!
+            LAY_.setName("CI_" + oItem.getId_Items());
             //our layout
             LAY_.setObj(oItem);
             //push
@@ -425,8 +436,14 @@ function LAY_LIST_Contact_Infos(){
             //Next
             nLine++;
         }
+        
         //happy end
-        return oLAY_LIST_Contact_Infos.initializeLayout(sDivOwner, sDivId);
+        oLAY_LIST_Contact_Infos.initializeLayout(sDivOwner, sDivId);
+
+        //to obtain the master's ObjToView
+        eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Contact_Infos, null);
+        //spread the word of our master and lord Cthulhu
+        window.dispatchEvent(eventL);
     };
     this.myLAY_LIST_Contact_Infos.responseList = this.responseList;
 
