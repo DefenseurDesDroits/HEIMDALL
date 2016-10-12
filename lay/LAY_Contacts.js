@@ -308,9 +308,11 @@ function LAY_Contacts(){
 			oLAY_Contacts.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contacts.getId(), sDivId);
 			
 			//event listener !!
-			window.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.subComponentLoaded);
+			//window.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.subComponentLoaded);
 			//init the contact infos !
 			oLAY_Contacts.LAY_Contact_Infos.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId(), "CIS_" + sDivId, oLAY_Contacts.getObj());
+			//event listener !!
+			oLAY_Contacts.LAY_Contact_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.subComponentLoaded);
 
 			//happy end
 			return true;
@@ -383,6 +385,9 @@ function LAY_Contacts(){
 			}
 		}
 
+		//logs
+		console.log("LAY_Contacts : ObjToView");
+
 		oLAY_Contacts.LAY_Contact_Infos.ObjToView();
 
 		return true;
@@ -433,7 +438,7 @@ function LAY_Contacts(){
 			console.log("user id : " + Heimdall.members.user["UserId"]);
 		}
 		///[/DEBUG]
-		
+
 		oLAY_Contacts.LAY_Contact_Infos.ViewToObject();
 
 		//The right !!!
@@ -463,8 +468,8 @@ function LAY_Contacts(){
 			if(e.detail.oObject != null){
 				if(e.detail.oObject.getName() == oLAY_Contacts.LAY_Contact_Infos.getName()){
 					//remove handler, cause we are no bad boys :)
-					window.removeEventListener(Heimdall.Events.loaded, oLAY_Contacts.subComponentLoaded);
-					//spread the message : No Mercy For the Rebels Troup StormTroopers !!!
+					oLAY_Contacts.LAY_Contact_Infos.members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_Contacts.subComponentLoaded);
+					//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
 					oLAY_Contacts.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Contacts, null));
 				}
 			}

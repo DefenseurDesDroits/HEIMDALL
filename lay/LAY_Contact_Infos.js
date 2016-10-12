@@ -97,6 +97,9 @@ function LAY_Contact_Infos(){
 	//our right !!!
 	this.LAY_Rights = new LAY_Accreditations_Item();
 
+	//our layout to manage the address
+	this.LIST_Infos = new LAY_LIST_Infos();
+
 	///[SECTION]Property##############################################
 	
 	///[SECTION]Getters###############################################
@@ -173,7 +176,7 @@ function LAY_Contact_Infos(){
 
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
-		sCode += '\t\t<input id="SAI_Fonction_' + oLAY_Contact_Infos.getId() + '" class="SAI_" type="text" name="SAI_Fonction_' + oLAY_Contact_Infos.getId() + '" value=""/>';
+		sCode += '\t\t<input id="SAI_Fonction_' + oLAY_Contact_Infos.getId() + '" class="SAI_" type="text" name="SAI_Fonction_' + oLAY_Contact_Infos.getId() + '" size=\"50\" value=""/>';
 		sCode += "<br\>";
 
 		sCode += "\t" + "\t" + "<select id=\"COMBO_Langues_" + oLAY_Contact_Infos.getId() + "\">" + "\r\n";
@@ -195,7 +198,7 @@ function LAY_Contact_Infos(){
 
 		sCode += "\t" + "</form>";
 
-		sCode += "\t" + "<div id=\"LAY_Contact_Infos_Adr_"  + oLAY_Contact_Infos.getId() + "\">---</div>";
+		sCode += "\t" + "<div id=\"LAY_Contact_Infos_Adr_"  + oLAY_Contact_Infos.getId() + "\"></div>";
 		
 		sCode += "</div>";
 		
@@ -271,6 +274,8 @@ function LAY_Contact_Infos(){
 	this.initializeLayout = function(sDivOwner, sDivId){
 		//get the position ]:)
 		var nPosition = 0;
+		//our event
+        //var eventL = null;
 		//initialize the name and ID
 		oLAY_Contact_Infos.setName(sDivId);
 		//Initialise component
@@ -289,6 +294,33 @@ function LAY_Contact_Infos(){
 			//Accreditation !!!
 			oLAY_Contact_Infos.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contact_Infos.getId(), sDivId);
 			
+			//init the contact infos !
+			oLAY_Contact_Infos.LIST_Infos.init("LAY_Contact_Infos_Adr_"  + oLAY_Contact_Infos.getId(), "Infos_" + sDivId, oLAY_Contact_Infos.getObj());
+			//event listener !!
+			oLAY_Contact_Infos.LIST_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contact_Infos.subComponentLoaded);
+
+			// setTimeout(function(){
+			// 	//oLAY_Contact_Infos.LIST_Infos.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contact_Infos.subComponentLoaded);
+			// }, 250);
+
+			// setTimeout( function(){
+			// 	//our event
+        	// 	var eventL = null;
+			// 	//to obtain the master's ObjToView
+            // 	eventL = Heimdall.methods.createLoadedEvent(oLAY_Contact_Infos, null);
+			// 	//send !!
+			// 	oLAY_Contact_Infos.members.oDiv.dispatchEvent(eventL);
+
+			// console.log("LAY_Contact_Infos emission ");
+			// }, 250 );
+
+			// //to obtain the master's ObjToView
+            // eventL = Heimdall.methods.createLoadedEvent(oLAY_Contact_Infos, null);
+			// //send !!
+			// oLAY_Contact_Infos.members.oDiv.dispatchEvent(eventL);
+
+			// console.log("LAY_Contact_Infos emission ");
+
 			//happy end
 			return true;
 		} 
@@ -349,7 +381,8 @@ function LAY_Contact_Infos(){
 			}
 		}
 
-        //
+        //for thr list
+		oLAY_Contact_Infos.LIST_Infos.ObjToView();
 
 		return true;
 	};
@@ -379,7 +412,7 @@ function LAY_Contact_Infos(){
 		///[/DEBUG]
 		
         //The infos
-
+		oLAY_Contact_Infos.LIST_Infos.ViewToObject();
 		//The right !!!
 		oLAY_Contact_Infos.LAY_Rights.ViewToObject();
 		//Parano !
@@ -398,5 +431,22 @@ function LAY_Contact_Infos(){
 		return oLAY_Contact_Infos.initializeLayout(sDivOwner, sDivId);
 	}
 	this.myLAY_Contact_Infos.init = this.init;
+
+	///[METHOD]Method to handle sub component loaded event
+	///[PARAMETER][event][e]event, our event
+	this.subComponentLoaded = function(e){
+
+		if(e != null){
+			if(e.detail.oObject != null){
+				if(e.detail.oObject.getName() == oLAY_Contact_Infos.LIST_Infos.getName()){
+					//remove handler, cause we are no bad boys :)
+					oLAY_Contact_Infos.LIST_Infos.members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_Contact_Infos.subComponentLoaded);
+					//spread the message : No Mercy For the Rebels Troup StormTroopers !!!
+					oLAY_Contact_Infos.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Contact_Infos, null));
+				}
+			}
+		}
+	}
+	this.myLAY_Contact_Infos.subComponentLoaded = this.subComponentLoaded;
 }
 

@@ -6,13 +6,15 @@
 //Filename : Contact_Infos_Links_Infos_manager.php
 //Description : Manage la relation entre Contact info et Infos
 
+include_once("queryTools.php");
+
 //include to dtb connection
 include_once("CONTACTS_Infos.php");
 
 ///[FUNCTION][InfosgetAllInstance]Function to get all the instance with : a contact info
 ///[PARAMETER][integer][$nId_Contact_Infos]the id contact infos we want to
 ///[RETURNS]array of element
-function InfosgetAllInstanceWith($nId_Contact_Infos){
+function InfosgetAllInstanceWith($nId_Contact_Infos, $userId = 0){
 	//Our object declaration
 	$oInfos = new Infos();
 	//Our select query
@@ -33,6 +35,13 @@ function InfosgetAllInstanceWith($nId_Contact_Infos){
 		$sQuery .= "WHERE " . $sLinks;
 	
     $sQuery .= "\r\n" . "AND xxx.infos.id_contact_infos = " . Quotes($nId_Contact_Infos);
+
+	//right part !!!
+    if($userId != 0)
+        $sQuery .= "\r\n" . createRightsCondition($userId);
+
+	if(false)
+        file_put_contents(dirname(__FILE__) . "/../logs/Contact_Infos_Links_Infos_manager@searchQuery.log", "DEBUG !!!\r\nQUERY :\r\n" . $sQuery );
 
 	/* Don't forget to override to use $oAgent !!! */
 	
@@ -67,8 +76,14 @@ function InfosgetAllInstanceWith($nId_Contact_Infos){
 ///[FUNCTION][InfosManager]Function to manage DAO from a AJAX call
 ///[RETURNS]boolean, true if done
 function LinksManager(){
-	//Our object's id declaration
-	$nID = $_POST["Id"];
+	//Our operator
+	$nId = $_POST["Id"];
+    //Our object's id declaration
+    $nId_Items = 0;
+
+	if(false)
+        file_put_contents(dirname(__FILE__) . "/../logs/Contact_Infos_Links_Infos_manager@LinksManager.log", "DEBUG !!!\r\nId :\r\n" . $nId );
+
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -76,10 +91,15 @@ function LinksManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
-	
+    //Our json
+	if(array_key_exists("Id_Item", $_POST))
+		$nId_Items = intval( $_POST["Id_Item"]);
+	else
+		$nId_Items = 0;
+
 	switch($sAction){
 		case "LIST" :
-			echo InfosgetAllInstanceWith($nID);
+			echo InfosgetAllInstanceWith($nId_Items,  $nId);
 			break;
 		default :
 			break;

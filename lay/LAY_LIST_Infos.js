@@ -1,14 +1,14 @@
 /// <reference path="../lib/CONTACTS_Logs.js" />
-/// <reference path="../lib/CONTACTS_Contact_Infos.js" />
+/// <reference path="../lib/CONTACTS_Infos.js" />
 /// <reference path="../lib/CONTACTS_Civilites.js" />
 /// <reference path="../lib/CONTACTS_Titres.js" />
 /// <reference path="../lib/Potours_Legacy.js" />
 
 //our gloabal instance object 
-var ARY_LAY_LIST_Contact_Infos = [];
+var ARY_LAY_LIST_Infos = [];
 
-//SAVE_LAY_LIST_Contact_Infos
-function SAVE_LAY_LIST_Contact_Infos(sId){
+//SAVE_LAY_LIST_Infos
+function SAVE_LAY_LIST_Infos(sId){
 	//our position
 	var nPosition = 0;
 	//our item
@@ -20,15 +20,15 @@ function SAVE_LAY_LIST_Contact_Infos(sId){
 	var oLogs = null;
 	
 	//get the position
-	nPosition = findInPotoursObjLst(ARY_LAY_LIST_Contact_Infos, "sName", sId);
+	nPosition = findInPotoursObjLst(ARY_LAY_LIST_Infos, "sName", sId);
 	//In ?
 	if(nPosition == POTOURS_FIND_NOTFOUND)
 		return false;
 
 	//Update the object 
-	ARY_LAY_LIST_Contact_Infos[nPosition].ViewToObject();
+	ARY_LAY_LIST_Infos[nPosition].ViewToObject();
 	//get the Item
-	oItem = ARY_LAY_LIST_Contact_Infos[nPosition].getObj();
+	oItem = ARY_LAY_LIST_Infos[nPosition].getObj();
 	
 	//save
 	bResult = oItem.save(Heimdall.members.user["UserId"], ".");
@@ -50,8 +50,8 @@ function SAVE_LAY_LIST_Contact_Infos(sId){
 	return bResult;
 }
 
-//ADD_LAY_LIST_Contact_Infos
-function ADD_LAY_Contact_Infos(sId){
+//ADD_LAY_LIST_Infos
+function ADD_LAY_Infos(sId){
 	//our position
 	var nPosition = 0;
 	//our item
@@ -62,19 +62,19 @@ function ADD_LAY_Contact_Infos(sId){
     var LIST_ = null;
 	
 	//get the position
-	nPosition = findInPotoursObjLst(ARY_LAY_LIST_Contact_Infos, "sName", sId);
+	nPosition = findInPotoursObjLst(ARY_LAY_LIST_Infos, "sName", sId);
 	//In ?
 	if(nPosition == POTOURS_FIND_NOTFOUND)
 		return false;
 
     //Get the List
-    LIST_ = ARY_LAY_LIST_Contact_Infos[nPosition];
+    LIST_ = ARY_LAY_LIST_Infos[nPosition];
 	//Update the object 
 	LIST_.ViewToObject();
 	//create the Item
-	oItem = new Contact_Infos();
+	oItem = new Infos();
 	//create the LAY_
-    LAY_ = new LAY_Contact_Infos();
+    LAY_ = new LAY_Infos();
 
     //Set item
     oItem.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
@@ -89,7 +89,7 @@ function ADD_LAY_Contact_Infos(sId){
     LAY_.init("LAY_LIST_" + sId, "LAY_Contacts_Infos", oItem);
 
     //add it !
-    LIST_.ary_LAY_Contact_Infos.push(LAY_);
+    LIST_.ary_LAY_Infos.push(LAY_);
 	
     //
     LIST_.ObjToView();
@@ -98,17 +98,17 @@ function ADD_LAY_Contact_Infos(sId){
 	return true;
 }
 
-function LAY_LIST_Contact_Infos(){
+function LAY_LIST_Infos(){
 
 	//our super
-    this.myLAY_LIST_Contact_Infos = {};
+    this.myLAY_LIST_Infos = {};
     //hack
-    var oLAY_LIST_Contact_Infos = this;
+    var oLAY_LIST_Infos = this;
 
     this.members = {
         ///[MEMBER][string][sName]The name of the control/ Id in HTML
         sName : "",
-		///[MEMBER][Contact_Infos][oObj]The Contact_Infos object
+		///[MEMBER][Infos][oObj]The Infos object
 		oObj : null,
         ///[MEMBER][string][element]The dom element
         oDiv : null
@@ -118,7 +118,7 @@ function LAY_LIST_Contact_Infos(){
 	//this.LAY_Rights = new LAY_Accreditations_Item();
 
     //the array of LAY_
-    this.ary_LAY_Contact_Infos = [];
+    this.ary_LAY_Infos = [];
 
 	///[SECTION]Property##############################################
 	
@@ -127,23 +127,23 @@ function LAY_LIST_Contact_Infos(){
 	///[METHOD]Method to get our control name
 	///[RETURNS]string, our control name
     this.getName = function(){
-        return oLAY_LIST_Contact_Infos.members.sName;
+        return oLAY_LIST_Infos.members.sName;
     };
-    this.myLAY_LIST_Contact_Infos.getName = this.getName;
+    this.myLAY_LIST_Infos.getName = this.getName;
 	
 	///[METHOD]Method to get our control Id
 	///[RETURNS]string, our control Id
     this.getId = function(){
-        return oLAY_LIST_Contact_Infos.members.sName;
+        return oLAY_LIST_Infos.members.sName;
     };
-    this.myLAY_LIST_Contact_Infos.getId = this.getId;
+    this.myLAY_LIST_Infos.getId = this.getId;
 
 	///[METHOD]Method to get our object
 	///[RETURNS]string, our Object
 	this.getObj = function(){
-		return oLAY_LIST_Contact_Infos.members.oObj;
+		return oLAY_LIST_Infos.members.oObj;
 	};
-	this.myLAY_LIST_Contact_Infos.getObj = this.getObj;
+	this.myLAY_LIST_Infos.getObj = this.getObj;
 
 	///[SECTION]Setters###############################################
 	
@@ -154,12 +154,12 @@ function LAY_LIST_Contact_Infos(){
         if(sValue == null)
             return false;
         if(typeof sValue === 'string'){
-            oLAY_LIST_Contact_Infos.members.sName = sValue;
+            oLAY_LIST_Infos.members.sName = sValue;
             return true;
         }
         return false;
     };
-	this.myLAY_LIST_Contact_Infos.setName = this.setName;
+	this.myLAY_LIST_Infos.setName = this.setName;
 	
 	///[METHOD]Method to get our Object
     ///[PARAMETER][string][sValue]string, our new Object
@@ -169,11 +169,11 @@ function LAY_LIST_Contact_Infos(){
 		if(oItem == null)
 			return false;
 		//Affectation
-		oLAY_LIST_Contact_Infos.members.oObj = oItem;
+		oLAY_LIST_Infos.members.oObj = oItem;
 		//Happy end 
 		return true
 	};
-	this.myLAY_LIST_Contact_Infos.setObj = this.setObj;
+	this.myLAY_LIST_Infos.setObj = this.setObj;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -185,19 +185,19 @@ function LAY_LIST_Contact_Infos(){
 		var sCode = "";
 		
         //our 
-		sCode += "<div id=\"" + oLAY_LIST_Contact_Infos.getId() + "\">";
+		sCode += "<div id=\"" + oLAY_LIST_Infos.getId() + "\">";
 		
         //Menu
-		sCode += "\t" + "<div id=\"LAY_Menu_" + oLAY_LIST_Contact_Infos.getId() + "\">" + "\r\n";
+		sCode += "\t" + "<div id=\"LAY_Menu_" + oLAY_LIST_Infos.getId() + "\">" + "\r\n";
         
         //Is the Item boss here new ?
-        if(oLAY_LIST_Contact_Infos.getObj().getId_Items() != 0 && oLAY_LIST_Contact_Infos.getObj().getId_Items() != "0")
-            sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"ADD_LAY_Contact_Infos('" + oLAY_LIST_Contact_Infos.getId() + "')\">Ajouter</div>" + "\r\n";
+        if(oLAY_LIST_Infos.getObj().getId_Items() != 0 && oLAY_LIST_Infos.getObj().getId_Items() != "0")
+            sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"ADD_LAY_Infos('" + oLAY_LIST_Infos.getId() + "')\">Ajouter</div>" + "\r\n";
 		
         sCode += "\t" + "</div>" + "\r\n";        
 
         //List des contacts infos
-        sCode += "\t" + "<div id=\"LAY_LIST_" + oLAY_LIST_Contact_Infos.getId() + "\">" + "\r\n";        
+        sCode += "\t" + "<div id=\"LAY_LIST_" + oLAY_LIST_Infos.getId() + "\">" + "\r\n";        
 		sCode += "\t" + "</div>" + "\r\n";  
 		
 		sCode += "</div>";
@@ -205,7 +205,7 @@ function LAY_LIST_Contact_Infos(){
 		//return the code
 		return sCode;
     };
-    this.myLAY_LIST_Contact_Infos.generateHTML = this.generateHTML;
+    this.myLAY_LIST_Infos.generateHTML = this.generateHTML;
 
     ///[METHOD]Method to attach the object
 	///[RETURNS]boolean, true if done
@@ -216,13 +216,13 @@ function LAY_LIST_Contact_Infos(){
         //our count
         var nCount = 0;
 
-        oLAY_LIST_Contact_Infos.members.oDiv = document.getElementById(oLAY_LIST_Contact_Infos.getId());
-        if(oLAY_LIST_Contact_Infos.members.oDiv == null)
+        oLAY_LIST_Infos.members.oDiv = document.getElementById(oLAY_LIST_Infos.getId());
+        if(oLAY_LIST_Infos.members.oDiv == null)
             return false;
 
         return true;
     };
-    this.myLAY_LIST_Contact_Infos.attach = this.attach;
+    this.myLAY_LIST_Infos.attach = this.attach;
 
     ///[METHOD]Method to initialize the control
     ///[PARAMETER][string][sDivOwner]string, our owner div Id
@@ -238,11 +238,11 @@ function LAY_LIST_Contact_Infos(){
             return false;
         
         //the inner HTML add
-        oDivOwner.innerHTML += oLAY_LIST_Contact_Infos.generateHTML();
+        oDivOwner.innerHTML += oLAY_LIST_Infos.generateHTML();
 
-        return oLAY_LIST_Contact_Infos.attach();
+        return oLAY_LIST_Infos.attach();
     };
-    this.myLAY_LIST_Contact_Infos.initialyseComponent = this.initialyseComponent;
+    this.myLAY_LIST_Infos.initialyseComponent = this.initialyseComponent;
 
     ///[METHOD]Method to delete the component
 	///[RETURNS]boolean, true if done
@@ -254,18 +254,18 @@ function LAY_LIST_Contact_Infos(){
         var nCount = 0;
 
         //if not attach
-        if(oLAY_LIST_Contact_Infos.members.oDiv == null)
+        if(oLAY_LIST_Infos.members.oDiv == null)
             return false;
 
         //remove from the parent node
-        oLAY_LIST_Contact_Infos.members.oDiv.parentNode.removeChild(oLAY_LIST_Contact_Infos.members.oDiv);
+        oLAY_LIST_Infos.members.oDiv.parentNode.removeChild(oLAY_LIST_Infos.members.oDiv);
         //nullify the div
-        oLAY_LIST_Contact_Infos.members.oDiv = null;
+        oLAY_LIST_Infos.members.oDiv = null;
 
         //Happy End
         return true;
     };
-    this.myLAY_LIST_Contact_Infos.deleteComponent = this.deleteComponent;
+    this.myLAY_LIST_Infos.deleteComponent = this.deleteComponent;
 
 	///[METHOD]Method to initialize the layout
     ///[PARAMETER][string][sDivOwner]string, our oxner div Id
@@ -285,36 +285,20 @@ function LAY_LIST_Contact_Infos(){
         var LAY_ = null;
 
 		//initialize the name and ID
-		oLAY_LIST_Contact_Infos.setName(sDivId);
+		oLAY_LIST_Infos.setName(sDivId);
 		//Initialise component
-		if(oLAY_LIST_Contact_Infos.initialyseComponent(sDivOwner)){
+		if(oLAY_LIST_Infos.initialyseComponent(sDivOwner)){
 			//get the position
-			nPosition = findInPotoursObjLst(ARY_LAY_LIST_Contact_Infos, "sName", sDivId);
+			nPosition = findInPotoursObjLst(ARY_LAY_LIST_Infos, "sName", sDivId);
 			if(nPosition == POTOURS_FIND_NOTFOUND)
 				//add to the global array
-				ARY_LAY_LIST_Contact_Infos.push(oLAY_LIST_Contact_Infos);
+				ARY_LAY_LIST_Infos.push(oLAY_LIST_Infos);
 			else
 				//change
-				ARY_LAY_LIST_Contact_Infos[nPosition] = oLAY_LIST_Contact_Infos;
-			
-            // //get the loop
-            // nCount = oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.length;
-            // //start the loop
-            // while(nLine < nCount){
-            //     //create the LAY_
-            //     LAY_ = oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos[nLine];
-            //     //get the item
-            //     oItem = LAY_.getObj();
-            //     //Load
-            //     LAY_.init("LAY_LIST_" + oLAY_LIST_Contact_Infos.getId(), "LAY_Contact_Infos_" + oItem.getId_Items(), oItem);
-            //     //push
-            //     oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.push(LAY_);
-            //     //Next
-            //     nLine++;
-            // }
+				ARY_LAY_LIST_Infos[nPosition] = oLAY_LIST_Infos;
 
             //Post
-            oLAY_LIST_Contact_Infos.postList(sDivOwner, sDivId);
+            oLAY_LIST_Infos.postList(sDivOwner, sDivId);
 
 			//happy end
 			return true;
@@ -323,7 +307,7 @@ function LAY_LIST_Contact_Infos(){
 		//sad
 		return false;
 	};
-	this.myLAY_LIST_Contact_Infos.initializeLayout = this.initializeLayout;
+	this.myLAY_LIST_Infos.initializeLayout = this.initializeLayout;
 	
 	///[METHOD]Method to delete the layout
 	///[RETURNS]boolean, true if done
@@ -331,14 +315,14 @@ function LAY_LIST_Contact_Infos(){
 		//position 
 		var nPosition = 0;
 
-		if(oLAY_LIST_Contact_Infos.deleteComponent()){
+		if(oLAY_LIST_Infos.deleteComponent()){
 			//remove from the array now !
 
 			//get the position
-			nPosition = findInPotoursObjLst(ARY_LAY_LIST_Contact_Infos, "sName", oLAY_LIST_Contact_Infos.getId());
+			nPosition = findInPotoursObjLst(ARY_LAY_LIST_Infos, "sName", oLAY_LIST_Infos.getId());
 			//In ?
 			if(nPosition != POTOURS_FIND_NOTFOUND)
-				ARY_LAY_LIST_Contact_Infos.splice(nPosition, 1);
+				ARY_LAY_LIST_Infos.splice(nPosition, 1);
 
 			//Happy "the blue dragon cat" End
 			return true;
@@ -347,7 +331,7 @@ function LAY_LIST_Contact_Infos(){
 		//sad but true ! \m/
 		return false;
 	}
-	this.myLAY_LIST_Contact_Infos.deleteLayout = this.deleteLayout;
+	this.myLAY_LIST_Infos.deleteLayout = this.deleteLayout;
 
 	///[METHOD]Method to plots the data of the object
 	///[RETURNS]boolean, true if done
@@ -358,18 +342,18 @@ function LAY_LIST_Contact_Infos(){
         var nLine = 0;
 		
         //get our count
-        nCount = oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.length;
+        nCount = oLAY_LIST_Infos.ary_LAY_Infos.length;
         //Loop
         while(nLine < nCount){
             //
-            oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos[nLine].ObjToView();
+            oLAY_LIST_Infos.ary_LAY_Infos[nLine].ObjToView();
             //Next
             nLine++;
         }
 
 		return true;
 	};
-	this.myLAY_LIST_Contact_Infos.ObjToView = this.ObjToView;
+	this.myLAY_LIST_Infos.ObjToView = this.ObjToView;
 	
 	///[METHOD]Method to the view data into the object
 	///[RETURNS]boolean, true if done
@@ -380,18 +364,18 @@ function LAY_LIST_Contact_Infos(){
         var nLine = 0;
 		
         //get our count
-        nCount = oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.length;
+        nCount = oLAY_LIST_Infos.ary_LAY_Infos.length;
         //Loop
         while(nLine < nCount){
             //
-            oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos[nLine].ViewToObject();
+            oLAY_LIST_Infos.ary_LAY_Infos[nLine].ViewToObject();
             //Next
             nLine++;
         }
 
 		return true;		
 	};
-	this.myLAY_LIST_Contact_Infos.ViewToObject = this.ViewToObject;
+	this.myLAY_LIST_Infos.ViewToObject = this.ViewToObject;
 	
 	///[METHOD]Method to initialize the layout
     ///[PARAMETER][string][sDivOwner]string, our oxner div Id
@@ -399,11 +383,10 @@ function LAY_LIST_Contact_Infos(){
     ///[PARAMETER][string][sDivId]string, our div Id
 	///[RETURNS]boolean, true if done
 	this.init = function(sDivOwner, sDivId, oItem){
-		oLAY_LIST_Contact_Infos.setObj(oItem);
-		//return oLAY_LIST_Contact_Infos.postList(sDivOwner, sDivId);
-		return oLAY_LIST_Contact_Infos.initializeLayout(sDivOwner, sDivId);
+		oLAY_LIST_Infos.setObj(oItem);
+		return oLAY_LIST_Infos.initializeLayout(sDivOwner, sDivId);
 	};
-	this.myLAY_LIST_Contact_Infos.init = this.init;
+	this.myLAY_LIST_Infos.init = this.init;
 
     this.responseList = function(sDivOwner, sDivId, ary_){
 
@@ -421,16 +404,16 @@ function LAY_LIST_Contact_Infos(){
         var eventL = null;
 
         //clear
-        oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos = [];
+        oLAY_LIST_Infos.ary_LAY_Infos = [];
         
         //get the loop
         nCount = ary_.length;
         //start the loop
         while(nLine < nCount){
             //create the Item
-            oItem = new Contact_Infos();
+            oItem = new Infos();
             //create the LAY_
-            LAY_ = new LAY_Contact_Infos();
+            LAY_ = new LAY_Infos();
             //Load
             oItem.loadFromArray(ary_[nLine]);
             //our name you idiot !!!
@@ -438,34 +421,25 @@ function LAY_LIST_Contact_Infos(){
             //our layout
             LAY_.setObj(oItem);
             //push
-            oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.push(LAY_);
+            oLAY_LIST_Infos.ary_LAY_Infos.push(LAY_);
 
-            LAY_.init("LAY_LIST_" + oLAY_LIST_Contact_Infos.getId(), "LAY_Contact_Infos_" + oItem.getId_Items(), oItem);
+            LAY_.init("LAY_LIST_" + oLAY_LIST_Infos.getId(), "LAY_Infos_" + oItem.getId_Items(), oItem);
 
-            LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Contact_Infos.subComponentLoaded);
-
-            console.log("LAY_LIST_Contact_Infos connect ");
-
-            //
-            // window.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Contact_Infos.subComponentLoaded);
+            LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Infos.subComponentLoaded);
 
             //Next
             nLine++;
         }
 
-        //happy end
-        //oLAY_LIST_Contact_Infos.initializeLayout(sDivOwner, sDivId);
-
         //if no result !!!
         if(nLine == 0){
             //to obtain the master's ObjToView
-            eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Contact_Infos, null);
+            eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Infos, null);
             //spread the word of our master and lord Cthulhu
-            oLAY_LIST_Contact_Infos.members.oDiv.dispatchEvent(eventL);
+            oLAY_LIST_Infos.members.oDiv.dispatchEvent(eventL);
         }
-        
     };
-    this.myLAY_LIST_Contact_Infos.responseList = this.responseList;
+    this.myLAY_LIST_Infos.responseList = this.responseList;
 
     this.postList = function(sDivOwner, sDivId){
 
@@ -477,22 +451,21 @@ function LAY_LIST_Contact_Infos(){
             //if everything is alright
             if(oReq.readyState == 4 && oReq.status == 200){
                 //Plots !
-
-                oLAY_LIST_Contact_Infos.responseList(sDivOwner, sDivId, JSON.parse(oReq.responseText));
+                oLAY_LIST_Infos.responseList(sDivOwner, sDivId, JSON.parse(oReq.responseText));
             }
             
         };
 
         //prepare the query*********************
         //check the open
-        oReq.open("POST", "php/Contact_Contacts_Links_Contact_Infos_manager.php", true);
+        oReq.open("POST", "php/Contact_Infos_Links_Infos_manager.php", true);
         //set the request header
         oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-        oReq.send("Id=" + parseInt(Heimdall.members.user["UserId"]) + "&Session=" + "" + "&Action=LIST&Id_Item=" + oLAY_LIST_Contact_Infos.getObj().getId_Items()); 
+        oReq.send("Id=" + parseInt(Heimdall.members.user["UserId"]) + "&Session=" + "" + "&Action=LIST&Id_Item=" + oLAY_LIST_Infos.getObj().getId_Items()); 
         //Return the job !
         return true;
     };
-    this.myLAY_LIST_Contact_Infos.postList = this.postList;
+    this.myLAY_LIST_Infos.postList = this.postList;
 
     ///[METHOD]Method to handle sub component loaded event
 	///[PARAMETER][event][e]event, our event
@@ -507,33 +480,27 @@ function LAY_LIST_Contact_Infos(){
 			if(e.detail.oObject != null){
                 //find 
                 //get the position
-                nPosition = findInPotoursObjLst(oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos, "sName", e.detail.oObject.getName());
+                nPosition = findInPotoursObjLst(oLAY_LIST_Infos.ary_LAY_Infos, "sName", e.detail.oObject.getName());
                 //In ?
                 if(nPosition == POTOURS_FIND_NOTFOUND)
                     return false;
 
-                console.log("LAY_LIST_Contact_Infos reception " + nPosition + "/" + oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.length);
+                console.log("LAY_LIST_Infos reception " + nPosition + "/" + oLAY_LIST_Infos.ary_LAY_Infos.length);
 
                 //remove handler, cause we are no bad boys :)
-				oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos[nPosition].members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_LIST_Contact_Infos.subComponentLoaded);
+				oLAY_LIST_Infos.ary_LAY_Infos[nPosition].members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_LIST_Infos.subComponentLoaded);
 
                 //if it's the last
-                if(nPosition == oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.length - 1){
+                if(nPosition == oLAY_LIST_Infos.ary_LAY_Infos.length - 1){
                     //to obtain the master's ObjToView
-                    eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Contact_Infos, null);
+                    eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Infos, null);
                     //spread the word of our master and lord Cthulhu
-                    oLAY_LIST_Contact_Infos.members.oDiv.dispatchEvent(eventL);
+                    oLAY_LIST_Infos.members.oDiv.dispatchEvent(eventL);
                 }                
 
-				// if(e.detail.oObject.getName() == oLAY_LIST_Contact_Infos.LIST_Infos.getName()){
-				// 	//remove handler, cause we are no bad boys :)
-				//     window.removeEventListener(Heimdall.Events.loaded, oLAY_LIST_Contact_Infos.subComponentLoaded);
-				// 	//spread the message : No Mercy For the Rebels Troup StormTroopers !!!
-				// 	oLAY_LIST_Contact_Infos.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_LIST_Contact_Infos, null));
-				// }
 			}
 		}
 	}
-	this.myLAY_LIST_Contact_Infos.subComponentLoaded = this.subComponentLoaded;
+	this.myLAY_LIST_Infos.subComponentLoaded = this.subComponentLoaded;
 }
 

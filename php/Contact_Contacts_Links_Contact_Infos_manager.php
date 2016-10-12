@@ -39,6 +39,8 @@ function InfosgetAllInstanceWith($nId_Contact, $userId = 0){
 	//right part !!!
     if($userId != 0)
         $sQuery .= "\r\n" . createRightsCondition($userId);
+
+	/* Don't forget to override to use $oAgent !!! */
 	
 	//Open the query
 	$GLOBALS["oConnection"]->open();

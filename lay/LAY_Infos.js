@@ -167,37 +167,35 @@ function LAY_Infos(){
 		//position of the civilite
 		var nPosition = 0;
 		
-		sCode += "<div id=\"" + oLAY_Infos.getId() + "\">";
+		sCode += "<div id=\"" + oLAY_Infos.getId() + "\">" + "\r\n";
 		
 		 ///[DEBUG]Operaion time !!!
 		if(Heimdall.flags.debug){
-			//console.log("LAY_Infos, json : " + oLAY_Infos.exportToJson());
-			sCode += "\t" + "<div id=\"LAB_Id_" + oLAY_Infos.getId() + "\"><div>" + "\r\n";
-			//sCode += "\t" + "<div id=\"LAB_Id_" + oLAY_Infos.getId() + "\">Adresse ID : " + oAdr.getId_Infos() + "<div>" + "\r\n";
+			sCode += "\t" + "<div id=\"LAB_Id_" + oLAY_Infos.getId() + "\"></div>" + "\r\n";
 		}
 		///[/DEBUG]
 
-		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Infos.getId() + "\"></div>";
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Infos.getId() + "\"></div>" + "\r\n";
 
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
-		sCode += "\t" + '<input id="SAI_Adr1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
-		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr2_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
-		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr3_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + '<input id="SAI_Adr1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
+		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr2_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
+		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr3_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
 
-		sCode += "\t" + "<br/>";
-		sCode += "\t" + "<span>CP</span>";
-		sCode += "\t" + '<input id="SAI_CP_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_CP_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';    
+		sCode += "\t" + "<br/>" + "\r\n";
+		sCode += "\t" + "<span>CP</span>" + "\r\n";
+		sCode += "\t" + '<input id="SAI_CP_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_CP_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";    
 
-		sCode += "\t" + "<br/>";
-		sCode += "\t" + "<span>Cedex</span>";
-		sCode += "\t" + '<input id="SAI_Cedex_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Cedex_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + "<br/>" + "\r\n";
+		sCode += "\t" + "<span>Cedex</span>" + "\r\n";
+		sCode += "\t" + '<input id="SAI_Cedex_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Cedex_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
 
-		sCode += "\t" + "<br/>";
-		sCode += "\t" + "<span>Ville</span>";
-		sCode += "\t" + '<input id="SAI_Ville_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Ville_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + "<br/>" + "\r\n";
+		sCode += "\t" + "<span>Ville</span>" + "\r\n";
+		sCode += "\t" + '<input id="SAI_Ville_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Ville_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
 		
-		sCode += "\t" + "<span>Pays</span>";
+		sCode += "\t" + "<span>Pays</span>" + "\r\n";
 		sCode += "\t" + "\t" + "<select id=\"COMBO_Pays_" + oLAY_Infos.getId() + "\">" + "\r\n";
 		//get the count
 		nCount = Heimdall.members.products.contacts.Pays.length;
@@ -212,29 +210,29 @@ function LAY_Infos(){
 		}
 		sCode += "\t" + "\t" + "</select>" + "\r\n";
 
-		sCode += "\t" + "<br/>";
-		sCode += "\t" + "<span>Site</span>";
-		sCode += "\t" + '<input id="SAI_Site_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Site_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + "<br/>" + "\r\n";
+		sCode += "\t" + "<span>Site</span>" + "\r\n";
+		sCode += "\t" + '<input id="SAI_Site_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Site_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
 		sCode += "\t" + "<br/>";
 
 		sCode += "\t" + "<br/>";
 		
-		sCode += "\t" + '<div>Adresse 1</div>'
-		sCode += "\t" + "<span>Téléphone 1 </span>";
-		sCode += "\t" + '<input id="SAI_Tel1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Tel1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
-		sCode += "\t" + "<span>Courriel 1 </span>";
-		sCode += "\t" + '<input id="SAI_Courriel1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Courriel1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
+		sCode += "\t" + '<div>Adresse 1</div>' + "\r\n";
+		sCode += "\t" + "<span>Téléphone 1 </span>" + "\r\n";
+		sCode += "\t" + '<input id="SAI_Tel1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Tel1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
+		sCode += "\t" + "<span>Courriel 1 </span>" + "\r\n";
+		sCode += "\t" + '<input id="SAI_Courriel1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Courriel1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
 
-		sCode += "\t" + '<div>Adresse 2</div>'
-		sCode += "\t" + "<span>Téléphone 2 </span>";
-		sCode += "\t" + '<input id="SAI_Tel2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Tel2_' + oLAY_Infos.getId() + '" value="' + "" + '"/>';
-		sCode += "\t" + "<span>Courriel 2 </span>";
-		sCode += "\t" + '<input id="SAI_Courriel2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Courriel2_' + oLAY_Infos.getId() + '" value="' +"" + '"/>';
+		sCode += "\t" + '<div>Adresse 2</div>' + "\r\n";
+		sCode += "\t" + "<span>Téléphone 2 </span>" + "\r\n";
+		sCode += "\t" + '<input id="SAI_Tel2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Tel2_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
+		sCode += "\t" + "<span>Courriel 2 </span>" + "\r\n";
+		sCode += "\t" + '<input id="SAI_Courriel2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Courriel2_' + oLAY_Infos.getId() + '" value="' +"" + '"/>' + "\r\n";
 
 		sCode += "\t" + "</form>" + "\r\n";
 
 		sCode += "</div>";
-		
+		console.log(sCode);
 		//return the code
 		return sCode;
     };
@@ -325,6 +323,9 @@ function LAY_Infos(){
 			//Accreditation !!!
 			oLAY_Infos.LAY_Rights.init("LAY_Accreditation_" + oLAY_Infos.getId(), sDivId);
 			
+			//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
+			oLAY_Infos.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Infos, null));
+
 			//happy end
 			return true;
 		} 
@@ -374,7 +375,7 @@ function LAY_Infos(){
 		if(Heimdall.flags.debug){
 			oElement = document.getElementById("LAB_Id_" + oLAY_Infos.getId());
 			if(oElement != null)
-				oElement.innerHTML= oLAY_Infos.members.oObj.getPseudo();
+				oElement.innerHTML= oLAY_Infos.members.oObj.getId_Items();
 		}
 		///[/DEBUG]
 
@@ -400,7 +401,7 @@ function LAY_Infos(){
 			oElement.value = oLAY_Infos.members.oObj.getCedex();
 
 		//Ville
-		oElement = document.getElementById("SAI_Cedex_" + oLAY_Infos.getVIlle());
+		oElement = document.getElementById("SAI_Ville_" + oLAY_Infos.getId());
 		if(oElement != null)
 			oElement.value = oLAY_Infos.members.oObj.getVille();
 		
@@ -434,7 +435,7 @@ function LAY_Infos(){
 		oElement = document.getElementById("SAI_Courriel2_" + oLAY_Infos.getId());
 		if(oElement != null)
 			oElement.value = oLAY_Infos.members.oObj.getCourriel2();
-
+		console.log("DONE !!!!! " + oLAY_Infos.members.oObj.exportToJson());
 		return true;
 	};
 	this.myLAY_Infos.ObjToView = this.ObjToView;
