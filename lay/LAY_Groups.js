@@ -128,8 +128,10 @@ function LAY_Groups(){
         sName : "",
 		///[MEMBER][Organisations][oObj]The Organisations object
 		oObj : null,
-        ///[MEMBER][string][element]The dom element
-        oDiv : null
+        ///[MEMBER][element][oDiv]The dom element
+        oDiv : null,
+		//[MEMBER][LAY][oParent]The parent Layout
+		oParent : null
     };
 
 	//our LIST
@@ -299,17 +301,24 @@ function LAY_Groups(){
     this.myLAY_Groups.getId = this.getId;
 
 	///[METHOD]Method to get our object
-	///[RETURNS]string, our Object
+	///[RETURNS]Object, our Object
 	this.getObj = function(){
 		return oLAY_Groups.members.oObj;
 	};
 	this.myLAY_Groups.getObj = this.getObj;
 
+	///[METHOD]Method to get our object
+	///[RETURNS]control, our Parent
+	this.getParent = function(){
+		return oLAY_Groups.members.oParent;
+	};
+	this.myLAY_Groups.getParent = this.getParent;
+
 	///[SECTION]Setters###############################################
 	
 	///[METHOD]Method to get our control Name
     ///[PARAMETER][string][sValue]string, our new control Name
-	///[RETURNS]string, our control name
+	///[RETURNS]boolean, true if done
     this.setName = function(sValue){
         if(sValue == null)
             return false;
@@ -333,6 +342,17 @@ function LAY_Groups(){
 		//Happy end 
 		return true
 	}
+
+	///[METHOD]Method to set our control parent
+    ///[PARAMETER][Control][LAY_)]LAY_), our parent
+	///[RETURNS]boolean, true if done
+	this.setParent = function(LAY_){
+		if(LAY_ == null)
+			return false;
+		oLAY_Groups.members.oParent = LAY_;
+		return true;
+    }
+    this.myLAY_Groups.setParent = this.setParent;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -406,6 +426,15 @@ function LAY_Groups(){
         oLAY_Groups.members.oDiv = document.getElementById(oLAY_Groups.getId());
         if(oLAY_Groups.members.oDiv == null)
             return false;
+
+		//the events you spread
+		if(oLAY_Groups.getParent() != null){
+			//a div ?
+			if(oLAY_Groups.getParent().members.oDiv != null){
+				//add the event listener
+				oLAY_Groups.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Groups.getParent().subComponentLoaded);
+			}
+		}
 
         return true;
     };

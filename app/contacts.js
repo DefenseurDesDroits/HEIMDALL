@@ -844,6 +844,8 @@ function LAY_Contacts_1_LoadedHandler(e){
         LAY_.ObjToView();
         //remove the eventlistener
         LAY_.members.oDiv.removeEventListener(Heimdall.Events.loaded, LAY_Contacts_1_LoadedHandler);
+        //
+        console.log("LAY_Contacts_1_LoadedHandler");
     }
 }
 

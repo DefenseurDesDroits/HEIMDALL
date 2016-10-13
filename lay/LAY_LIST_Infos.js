@@ -81,9 +81,9 @@ function ADD_LAY_Infos(sId){
     //Set accreditation all
     oItem.setId_Accreditations_Item(1);
     //set the fonction
-    oItem.setFonction("Fonction");
+    //oItem.setFonction("Fonction");
     //our contact object
-    oItem.setId_Contacts(parseInt(LIST_.getObj().getId_Items()));
+    oItem.setId_Contact_Infos(parseInt(LIST_.getObj().getId_Items()));
 
     //set the LAY 
     LAY_.init("LAY_LIST_" + sId, "LAY_Contacts_Infos", oItem);
@@ -110,8 +110,10 @@ function LAY_LIST_Infos(){
         sName : "",
 		///[MEMBER][Infos][oObj]The Infos object
 		oObj : null,
-        ///[MEMBER][string][element]The dom element
-        oDiv : null
+        ///[MEMBER][element][oDiv]The dom element
+        oDiv : null,
+		//[MEMBER][LAY][oParent]The parent Layout
+		oParent : null
     };
 
 	//our right !!!
@@ -145,11 +147,18 @@ function LAY_LIST_Infos(){
 	};
 	this.myLAY_LIST_Infos.getObj = this.getObj;
 
+    ///[METHOD]Method to get our object
+	///[RETURNS]control, our Parent
+	this.getParent = function(){
+		return oLAY_LIST_Infos.members.oParent;
+	};
+	this.myLAY_LIST_Infos.getParent = this.getParent;
+
 	///[SECTION]Setters###############################################
 	
 	///[METHOD]Method to get our control Name
     ///[PARAMETER][string][sValue]string, our new control Name
-	///[RETURNS]string, our control name
+	///[RETURNS]boolean, true if done
     this.setName = function(sValue){
         if(sValue == null)
             return false;
@@ -174,6 +183,17 @@ function LAY_LIST_Infos(){
 		return true
 	};
 	this.myLAY_LIST_Infos.setObj = this.setObj;
+
+    ///[METHOD]Method to set our control parent
+    ///[PARAMETER][Control][LAY_]LAY_, our parent
+	///[RETURNS]boolean, true if done
+	this.setParent = function(LAY_){
+		if(LAY_ == null)
+			return false;
+		oLAY_LIST_Infos.members.oParent = LAY_;
+		return true;
+    }
+    this.myLAY_LIST_Infos.setParent = this.setParent;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -219,6 +239,15 @@ function LAY_LIST_Infos(){
         oLAY_LIST_Infos.members.oDiv = document.getElementById(oLAY_LIST_Infos.getId());
         if(oLAY_LIST_Infos.members.oDiv == null)
             return false;
+        
+        //the events you spread
+		if(oLAY_LIST_Infos.getParent() != null){
+			//a div ?
+			if(oLAY_LIST_Infos.getParent().members.oDiv != null){
+				//add the event listener
+				oLAY_LIST_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Infos.getParent().subComponentLoaded);
+			}
+		}
 
         return true;
     };
@@ -423,9 +452,11 @@ function LAY_LIST_Infos(){
             //push
             oLAY_LIST_Infos.ary_LAY_Infos.push(LAY_);
 
+            //event listener !!
+			LAY_.setParent(oLAY_LIST_Infos);
             LAY_.init("LAY_LIST_" + oLAY_LIST_Infos.getId(), "LAY_Infos_" + oItem.getId_Items(), oItem);
 
-            LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Infos.subComponentLoaded);
+            //LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Infos.subComponentLoaded);
 
             //Next
             nLine++;

@@ -90,8 +90,10 @@ function LAY_Infos(){
         sName : "",
 		///[MEMBER][Contacts][oObj]The Contacts object
 		oObj : null,
-        ///[MEMBER][string][element]The dom element
-        oDiv : null
+        ///[MEMBER][element][oDiv]The dom element
+        oDiv : null,
+		//[MEMBER][LAY][oParent]The parent Layout
+		oParent : null
     };
 
 	//our right !!!
@@ -122,11 +124,18 @@ function LAY_Infos(){
 	};
 	this.myLAY_Infos.getObj = this.getObj;
 
+	///[METHOD]Method to get our object
+	///[RETURNS]control, our Parent
+	this.getParent = function(){
+		return oLAY_Infos.members.oParent;
+	};
+	this.myLAY_Infos.getParent = this.getParent;
+
 	///[SECTION]Setters###############################################
 	
 	///[METHOD]Method to get our control Name
     ///[PARAMETER][string][sValue]string, our new control Name
-	///[RETURNS]string, our control name
+	///[RETURNS]boolean, true if done
     this.setName = function(sValue){
         if(sValue == null)
             return false;
@@ -149,7 +158,19 @@ function LAY_Infos(){
 		oLAY_Infos.members.oObj = oItem;
 		//Happy end 
 		return true
-	}
+	};
+	this.myLAY_Infos.setObj = this.setObj;
+
+	///[METHOD]Method to set our control parent
+    ///[PARAMETER][Control][LAY_)]LAY_), our parent
+	///[RETURNS]boolean, true if done
+	this.setParent = function(LAY_){
+		if(LAY_ == null)
+			return false;
+		oLAY_Infos.members.oParent = LAY_;
+		return true;
+    }
+    this.myLAY_Infos.setParent = this.setParent;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -232,7 +253,7 @@ function LAY_Infos(){
 		sCode += "\t" + "</form>" + "\r\n";
 
 		sCode += "</div>";
-		console.log(sCode);
+		//console.log(sCode);
 		//return the code
 		return sCode;
     };
@@ -250,6 +271,15 @@ function LAY_Infos(){
         oLAY_Infos.members.oDiv = document.getElementById(oLAY_Infos.getId());
         if(oLAY_Infos.members.oDiv == null)
             return false;
+		
+		//the events you spread
+		if(oLAY_Infos.getParent() != null){
+			//a div ?
+			if(oLAY_Infos.getParent().members.oDiv != null){
+				//add the event listener
+				oLAY_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Infos.getParent().subComponentLoaded);
+			}
+		}
 
         return true;
     };
@@ -323,8 +353,15 @@ function LAY_Infos(){
 			//Accreditation !!!
 			oLAY_Infos.LAY_Rights.init("LAY_Accreditation_" + oLAY_Infos.getId(), sDivId);
 			
+			//write
+			console.log("Contact_Info" + oLAY_Infos.getId());
 			//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
 			oLAY_Infos.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Infos, null));
+
+			//
+			// setTimeout( function(){
+			// 	oLAY_Infos.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Infos, null));
+			// }, 50);
 
 			//happy end
 			return true;
@@ -518,5 +555,17 @@ function LAY_Infos(){
 		return oLAY_Infos.initializeLayout(sDivOwner, sDivId);
 	}
 	this.myLAY_Infos.init = this.init;
+
+	///[METHOD]Method to handle sub component loaded event
+	///[PARAMETER][event][e]event, our event
+	this.subComponentLoaded = function(e){
+
+		if(e != null){
+			if(e.detail.oObject != null){
+				/* Nah ! */
+			}
+		}
+	}
+	this.myLAY_Infos.subComponentLoaded = this.subComponentLoaded;
 }
 

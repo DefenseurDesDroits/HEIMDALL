@@ -90,8 +90,10 @@ function LAY_Contact_Infos(){
         sName : "",
 		///[MEMBER][Contacts][oObj]The Contacts object
 		oObj : null,
-        ///[MEMBER][string][element]The dom element
-        oDiv : null
+        ///[MEMBER][element][oDiv]The dom element
+        oDiv : null,
+		//[MEMBER][LAY][oParent]The parent Layout
+		oParent : null
     };
 
 	//our right !!!
@@ -119,11 +121,18 @@ function LAY_Contact_Infos(){
     this.myLAY_Contact_Infos.getId = this.getId;
 
 	///[METHOD]Method to get our object
-	///[RETURNS]string, our Object
+	///[RETURNS]object, our Object
 	this.getObj = function(){
 		return oLAY_Contact_Infos.members.oObj;
 	};
 	this.myLAY_Contact_Infos.getObj = this.getObj;
+
+	///[METHOD]Method to get our object
+	///[RETURNS]control, our Parent
+	this.getParent = function(){
+		return oLAY_Contact_Infos.members.oParent;
+	};
+	this.myLAY_Contact_Infos.getParent = this.getParent;
 
 	///[SECTION]Setters###############################################
 	
@@ -152,7 +161,19 @@ function LAY_Contact_Infos(){
 		oLAY_Contact_Infos.members.oObj = oItem;
 		//Happy end 
 		return true
-	}
+	};
+	this.myLAY_Contact_Infos.setName = this.setObj;
+
+	///[METHOD]Method to set our control parent
+    ///[PARAMETER][Control][LAY_)]LAY_), our parent
+	///[RETURNS]boolean, true if done
+	this.setParent = function(LAY_){
+		if(LAY_ == null)
+			return false;
+		oLAY_Contact_Infos.members.oParent = LAY_;
+		return true;
+    }
+    this.myLAY_Contact_Infos.setParent = this.setParent;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -219,6 +240,15 @@ function LAY_Contact_Infos(){
         oLAY_Contact_Infos.members.oDiv = document.getElementById(oLAY_Contact_Infos.getId());
         if(oLAY_Contact_Infos.members.oDiv == null)
             return false;
+		
+		//the events you spread
+		if(oLAY_Contact_Infos.getParent() != null){
+			//a div ?
+			if(oLAY_Contact_Infos.getParent().members.oDiv != null){
+				//add the event listener
+				oLAY_Contact_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contact_Infos.getParent().subComponentLoaded);
+			}
+		}
 
         return true;
     };
@@ -294,10 +324,12 @@ function LAY_Contact_Infos(){
 			//Accreditation !!!
 			oLAY_Contact_Infos.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contact_Infos.getId(), sDivId);
 			
+			//set the parent
+			oLAY_Contact_Infos.LIST_Infos.setParent(oLAY_Contact_Infos);
 			//init the contact infos !
 			oLAY_Contact_Infos.LIST_Infos.init("LAY_Contact_Infos_Adr_"  + oLAY_Contact_Infos.getId(), "Infos_" + sDivId, oLAY_Contact_Infos.getObj());
 			//event listener !!
-			oLAY_Contact_Infos.LIST_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contact_Infos.subComponentLoaded);
+			//oLAY_Contact_Infos.LIST_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contact_Infos.subComponentLoaded);
 
 			// setTimeout(function(){
 			// 	//oLAY_Contact_Infos.LIST_Infos.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contact_Infos.subComponentLoaded);

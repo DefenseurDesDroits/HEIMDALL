@@ -1,4 +1,3 @@
-
 /// <reference path="../lib/CONTACTS_Logs.js" />
 /// <reference path="../lib/CONTACTS_Contacts.js" />
 /// <reference path="../lib/CONTACTS_Civilites.js" />
@@ -88,8 +87,10 @@ function LAY_Contacts(){
         sName : "",
 		///[MEMBER][Contacts][oObj]The Contacts object
 		oObj : null,
-        ///[MEMBER][string][element]The dom element
-        oDiv : null
+        ///[MEMBER][element][oDiv]The dom element
+        oDiv : null,
+		//[MEMBER][LAY][oParent]The parent Layout
+		oParent : null
     };
 
 	//our right !!!
@@ -117,17 +118,24 @@ function LAY_Contacts(){
     this.myLAY_Contacts.getId = this.getId;
 
 	///[METHOD]Method to get our object
-	///[RETURNS]string, our Object
+	///[RETURNS]obkect, our Object
 	this.getObj = function(){
 		return oLAY_Contacts.members.oObj;
 	};
 	this.myLAY_Contacts.getObj = this.getObj;
 
+	///[METHOD]Method to get our object
+	///[RETURNS]control, our Parent
+	this.getParent = function(){
+		return oLAY_Contacts.members.oParent;
+	};
+	this.myLAY_Contacts.getParent = this.getParent;
+
 	///[SECTION]Setters###############################################
 	
 	///[METHOD]Method to get our control Name
     ///[PARAMETER][string][sValue]string, our new control Name
-	///[RETURNS]string, our control name
+	///[RETURNS]boolean, true if done
     this.setName = function(sValue){
         if(sValue == null)
             return false;
@@ -152,6 +160,17 @@ function LAY_Contacts(){
 		return true
 	};
 	this.myLAY_Contacts.setObj = this.setObj;
+
+	///[METHOD]Method to set our control parent
+    ///[PARAMETER][Control][LAY_]LAY_, our parent
+	///[RETURNS]boolean, true if done
+	this.setParent = function(LAY_){
+		if(LAY_ == null)
+			return false;
+		oLAY_Contacts.members.oParent = LAY_;
+		return true;
+    }
+    this.myLAY_Contacts.setParent = this.setParent;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -235,6 +254,15 @@ function LAY_Contacts(){
         if(oLAY_Contacts.members.oDiv == null)
             return false;
 
+		//the events you spread
+		if(oLAY_Contacts.getParent() != null){
+			//a div ?
+			if(oLAY_Contacts.getParent().members.oDiv != null){
+				//add the event listener
+				oLAY_Contacts.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.getParent().subComponentLoaded);
+			}
+		}
+
         return true;
     };
     this.myLAY_Contacts.attach = this.attach;
@@ -308,11 +336,11 @@ function LAY_Contacts(){
 			oLAY_Contacts.LAY_Rights.init("LAY_Accreditation_" + oLAY_Contacts.getId(), sDivId);
 			
 			//event listener !!
-			//window.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.subComponentLoaded);
+			oLAY_Contacts.LAY_Contact_Infos.setParent(oLAY_Contacts);
 			//init the contact infos !
 			oLAY_Contacts.LAY_Contact_Infos.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId(), "CIS_" + sDivId, oLAY_Contacts.getObj());
 			//event listener !!
-			oLAY_Contacts.LAY_Contact_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.subComponentLoaded);
+			//oLAY_Contacts.LAY_Contact_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.subComponentLoaded);
 
 			//happy end
 			return true;

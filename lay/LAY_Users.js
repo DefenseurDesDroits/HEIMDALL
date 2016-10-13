@@ -1,5 +1,3 @@
-
-
 /// <reference path="../lib/CONTACTS_Users.js" />
 
 /// <reference path="../lib/CONTACTS_Contacts.js" />
@@ -90,8 +88,10 @@ function LAY_Users(){
         sName : "",
 		///[MEMBER][Contacts][oObj]The Contacts object
 		oObj : null,
-        ///[MEMBER][string][element]The dom element
-        oDiv : null
+        ///[MEMBER][element][oDiv]The dom element
+        oDiv : null,
+		//[MEMBER][LAY][oParent]The parent Layout
+		oParent : null
     };
 
 	//our right !!!
@@ -122,11 +122,18 @@ function LAY_Users(){
 	};
 	this.myLAY_Users.getObj = this.getObj;
 
+	///[METHOD]Method to get our object
+	///[RETURNS]control, our Parent
+	this.getParent = function(){
+		return oLAY_Users.members.oParent;
+	};
+	this.myLAY_Users.getParent = this.getParent;
+
 	///[SECTION]Setters###############################################
 	
 	///[METHOD]Method to get our control Name
     ///[PARAMETER][string][sValue]string, our new control Name
-	///[RETURNS]string, our control name
+	///[RETURNS]boolean, true if done
     this.setName = function(sValue){
         if(sValue == null)
             return false;
@@ -149,7 +156,19 @@ function LAY_Users(){
 		oLAY_Users.members.oObj = oItem;
 		//Happy end 
 		return true
-	}
+	};
+	this.myLAY_Users.setObj = this.setObj;
+
+	///[METHOD]Method to set our control parent
+    ///[PARAMETER][Control][LAY_]LAY_, our parent
+	///[RETURNS]boolean, true if done
+	this.setParent = function(LAY_){
+		if(LAY_ == null)
+			return false;
+		oLAY_Users.members.oParent = LAY_;
+		return true;
+    }
+    this.myLAY_Users.setParent = this.setParent;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -234,6 +253,15 @@ function LAY_Users(){
         oLAY_Users.members.oDiv = document.getElementById(oLAY_Users.getId());
         if(oLAY_Users.members.oDiv == null)
             return false;
+		
+		//the events you spread
+		if(oLAY_Users.getParent() != null){
+			//a div ?
+			if(oLAY_Users.getParent().members.oDiv != null){
+				//add the event listener
+				oLAY_Users.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Users.getParent().subComponentLoaded);
+			}
+		}
 
         return true;
     };

@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.2.4";
+const MAIN_VERSION = "0.2.7";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! ###################################### */
