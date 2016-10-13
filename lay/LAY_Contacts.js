@@ -339,8 +339,6 @@ function LAY_Contacts(){
 			oLAY_Contacts.LAY_Contact_Infos.setParent(oLAY_Contacts);
 			//init the contact infos !
 			oLAY_Contacts.LAY_Contact_Infos.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Contacts.getId(), "CIS_" + sDivId, oLAY_Contacts.getObj());
-			//event listener !!
-			//oLAY_Contacts.LAY_Contact_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contacts.subComponentLoaded);
 
 			//happy end
 			return true;

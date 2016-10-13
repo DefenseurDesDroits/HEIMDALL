@@ -358,11 +358,6 @@ function LAY_Infos(){
 			//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
 			oLAY_Infos.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Infos, null));
 
-			//
-			// setTimeout( function(){
-			// 	oLAY_Infos.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Infos, null));
-			// }, 50);
-
 			//happy end
 			return true;
 		} 

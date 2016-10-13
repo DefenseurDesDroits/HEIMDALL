@@ -328,30 +328,6 @@ function LAY_Contact_Infos(){
 			oLAY_Contact_Infos.LIST_Infos.setParent(oLAY_Contact_Infos);
 			//init the contact infos !
 			oLAY_Contact_Infos.LIST_Infos.init("LAY_Contact_Infos_Adr_"  + oLAY_Contact_Infos.getId(), "Infos_" + sDivId, oLAY_Contact_Infos.getObj());
-			//event listener !!
-			//oLAY_Contact_Infos.LIST_Infos.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contact_Infos.subComponentLoaded);
-
-			// setTimeout(function(){
-			// 	//oLAY_Contact_Infos.LIST_Infos.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Contact_Infos.subComponentLoaded);
-			// }, 250);
-
-			// setTimeout( function(){
-			// 	//our event
-        	// 	var eventL = null;
-			// 	//to obtain the master's ObjToView
-            // 	eventL = Heimdall.methods.createLoadedEvent(oLAY_Contact_Infos, null);
-			// 	//send !!
-			// 	oLAY_Contact_Infos.members.oDiv.dispatchEvent(eventL);
-
-			// console.log("LAY_Contact_Infos emission ");
-			// }, 250 );
-
-			// //to obtain the master's ObjToView
-            // eventL = Heimdall.methods.createLoadedEvent(oLAY_Contact_Infos, null);
-			// //send !!
-			// oLAY_Contact_Infos.members.oDiv.dispatchEvent(eventL);
-
-			// console.log("LAY_Contact_Infos emission ");
 
 			//happy end
 			return true;

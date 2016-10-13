@@ -456,8 +456,6 @@ function LAY_LIST_Infos(){
 			LAY_.setParent(oLAY_LIST_Infos);
             LAY_.init("LAY_LIST_" + oLAY_LIST_Infos.getId(), "LAY_Infos_" + oItem.getId_Items(), oItem);
 
-            //LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Infos.subComponentLoaded);
-
             //Next
             nLine++;
         }

@@ -325,22 +325,6 @@ function LAY_LIST_Contact_Infos(){
 			else
 				//change
 				ARY_LAY_LIST_Contact_Infos[nPosition] = oLAY_LIST_Contact_Infos;
-			
-            // //get the loop
-            // nCount = oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.length;
-            // //start the loop
-            // while(nLine < nCount){
-            //     //create the LAY_
-            //     LAY_ = oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos[nLine];
-            //     //get the item
-            //     oItem = LAY_.getObj();
-            //     //Load
-            //     LAY_.init("LAY_LIST_" + oLAY_LIST_Contact_Infos.getId(), "LAY_Contact_Infos_" + oItem.getId_Items(), oItem);
-            //     //push
-            //     oLAY_LIST_Contact_Infos.ary_LAY_Contact_Infos.push(LAY_);
-            //     //Next
-            //     nLine++;
-            // }
 
             //Post
             oLAY_LIST_Contact_Infos.postList(sDivOwner, sDivId);
@@ -472,19 +456,9 @@ function LAY_LIST_Contact_Infos(){
             LAY_.setParent(oLAY_LIST_Contact_Infos);
             LAY_.init("LAY_LIST_" + oLAY_LIST_Contact_Infos.getId(), "LAY_Contact_Infos_" + oItem.getId_Items(), oItem);
 
-            //LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Contact_Infos.subComponentLoaded);
-
-            console.log("LAY_LIST_Contact_Infos connect ");
-
-            //
-            // window.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Contact_Infos.subComponentLoaded);
-
             //Next
             nLine++;
         }
-
-        //happy end
-        //oLAY_LIST_Contact_Infos.initializeLayout(sDivOwner, sDivId);
 
         //if no result !!!
         if(nLine == 0){
