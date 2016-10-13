@@ -198,11 +198,14 @@ function LAY_Infos(){
 
 		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Infos.getId() + "\"></div>" + "\r\n";
 
+		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Infos('" + oLAY_Infos.getId() + "')\">Sauvegarder</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Infos('" + oLAY_Infos.getId() + "')\">Supprimer</div>" + "\r\n";
+
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
 		sCode += "\t" + '<input id="SAI_Adr1_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr1_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
 		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr2_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
-		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr3_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
+		sCode += "\t" + '<input id="SAI_Adr3_' + oLAY_Infos.getId() + '" class="SAI_" type="text" name="SAI_Adr3_' + oLAY_Infos.getId() + '" value="' + "" + '"/>' + "\r\n";
 
 		sCode += "\t" + "<br/>" + "\r\n";
 		sCode += "\t" + "<span>CP</span>" + "\r\n";
@@ -527,10 +530,10 @@ function LAY_Infos(){
 		//Adr 2
 		oElement = document.getElementById("SAI_Tel2_" + oLAY_Infos.getId());
 		if(oElement != null)
-			oInfos.setTelephone1(oElement.value);
+			oInfos.setTelephone2(oElement.value);
 		oElement = document.getElementById("SAI_Courriel2_" + oLAY_Infos.getId());
 		if(oElement != null)
-			oInfos.setCourriel1(oElement.value);
+			oInfos.setCourriel2(oElement.value);
 		
 		//The right !!!
 		oLAY_Infos.LAY_Rights.ViewToObject();
