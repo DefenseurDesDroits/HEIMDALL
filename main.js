@@ -40,6 +40,13 @@ var ary_sFileLib = [
 	"lay/LAY_Infos.js"
 ];
 
+var ary_sApp = [
+	//COntact part !!
+	"app/contacts_users.js", 
+	"app/contacts.js", 
+	//The product stuff
+	"app/produits.js"];
+
 var oWinLoader = {};
 var oSliderLoader = {};
 var ary_Waiting = [
@@ -93,7 +100,8 @@ function main_Init(){
 
 ///[METHOD][main_App]Our function to load the products
 function main_App(){
-	Potours_loadScriptFiles(["app/contacts.js", "app/produits.js"], main_Init, MAIN_VERSION);
+	Potours_loadScriptFiles(ary_sApp, main_Init, MAIN_VERSION);
+	//Potours_loadScriptFiles(["app/contacts.js", "app/produits.js"], main_Init, MAIN_VERSION);
 }
 
 ///[METHOD][main_Lib_Init]Our function to load the lib js files

@@ -96,6 +96,9 @@ function LAY_Organisations(){
 	//our right !!!
 	this.LAY_Rights = new LAY_Accreditations_Item();
 
+	//Contact_Infos
+	this.LAY_Contact_Infos = new LAY_LIST_Contact_Infos();
+
 	///[SECTION]Property##############################################
 	
 	///[SECTION]Getters###############################################
@@ -187,10 +190,8 @@ function LAY_Organisations(){
 		
 		sCode += "<div id=\"" + oLAY_Organisations.getId() + "\">";
 		
-		//sCode += "<div >" + accreditationsLAYDiv() + "</div>";
-		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Organisations.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Organisations.getId() + "\">" +  "</div>";
 
-		//sCode += "<form action=\"contactLAYDIVSave(" +nLine + ")\">" + "\r\n";
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
 		sCode += "\t" + "\t" + "<select id=\"COMBO_Organisation_Types_" + oLAY_Organisations.getId() + "\">" + "\r\n";
@@ -213,7 +214,7 @@ function LAY_Organisations(){
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Organisations('" + oLAY_Organisations.getId() + "')\">Supprimer</div>" + "\r\n";
 
 		sCode += "\t" + "</form>";
-		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Organisations.getId() + "\">---</div>";
+		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Organisations.getId() + "\"></div>";
 		
 		sCode += "</div>";
 		
@@ -315,6 +316,11 @@ function LAY_Organisations(){
 			oLAY_Organisations.LAY_Rights.setObj(oLAY_Organisations.getObj());
 			//Accreditation !!!
 			oLAY_Organisations.LAY_Rights.init("LAY_Accreditation_" + oLAY_Organisations.getId(), sDivId);
+
+			//event listener !!
+			oLAY_Organisations.LAY_Contact_Infos.setParent(oLAY_Organisations);
+			//init the contact infos !
+			oLAY_Organisations.LAY_Contact_Infos.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Organisations.getId(), "CIS_" + sDivId, oLAY_Organisations.getObj());
 			
 			//happy end
 			return true;
@@ -374,6 +380,8 @@ function LAY_Organisations(){
 		if(oElement != null)
 			oElement.value = oLAY_Organisations.members.oObj.getNom();
 
+		oLAY_Organisations.LAY_Contact_Infos.ObjToView();
+
 		return true;
 	};
 	this.myLAY_Organisations.ObjToView = this.ObjToView;
@@ -394,6 +402,9 @@ function LAY_Organisations(){
 		if(oElement != null)
 			oOrganisations.setNom(oElement.value);
 		
+
+		oLAY_Organisations.LAY_Contact_Infos.ViewToObject();
+
 		//The right !!!
 		oLAY_Organisations.LAY_Rights.ViewToObject();
 		//Parano !
@@ -412,4 +423,21 @@ function LAY_Organisations(){
 		return oLAY_Organisations.initializeLayout(sDivOwner, sDivId);
 	}
 	this.myLAY_Organisations.init = this.init;
+
+	///[METHOD]Method to handle sub component loaded event
+	///[PARAMETER][event][e]event, our event
+	this.subComponentLoaded = function(e){
+
+		if(e != null){
+			if(e.detail.oObject != null){
+				if(e.detail.oObject.getName() == oLAY_Organisations.LAY_Contact_Infos.getName()){
+					//remove handler, cause we are no bad boys :)
+					oLAY_Organisations.LAY_Contact_Infos.members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_Organisations.subComponentLoaded);
+					//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
+					oLAY_Organisations.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Organisations, null));
+				}
+			}
+		}
+	}
+	this.myLAY_Organisations.subComponentLoaded = this.subComponentLoaded;
 }

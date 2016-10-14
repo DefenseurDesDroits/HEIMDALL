@@ -76,7 +76,9 @@ div.WIN_Main {
 }
 .OPT_.others:hover{
 	background-color: #389CDF;
-	color: #E8ECED;
+	/*color: #E8ECED;*/
+	color : #FF0000;
+	transition : color 2s;
 }
 .OPT_.current:hover{
 	color : #FF0000;

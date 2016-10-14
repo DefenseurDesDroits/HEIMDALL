@@ -29,6 +29,49 @@ const HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID = "LAY_Contact_extension_address_
 var WIN_Contacts = null;
 
 Heimdall_Contacts = {
+    menus : [
+        {id : "OPT_Contacts_General", onclick : "contactMenuCLICK();", text : "Général"},
+        {id : "OPT_Contacts_Contacts", onclick : "notDevYet();", text : "Contacts"},
+        {id : "OPT_Contacts_Users", onclick : "contactMenu_users_CLICK();", text : "Users"},
+        {id : "OPT_Contacts_Organisations", onclick : "notDevYet();", text : "Organisations"},
+        {id : "OPT_Contacts_Groups", onclick : "notDevYet();", text : "Groupes"}
+    ],
+    menuClassUpdate : function(sId){
+        //our count
+        var nCount = 0;
+        //our iterrator
+        var nLine = 0;
+
+        //the element
+        var oElement = null;
+
+        //get the count
+        nCount = Heimdall_Contacts.menus.length;
+        //loop
+        while(nLine < nCount){
+            //get the element
+            oElement = document.getElementById(Heimdall_Contacts.menus[nLine].id);
+            //we got it ?
+            if(oElement != null){
+                oElement.className = "OPT_ others";
+            }
+            //Next
+            nLine++;
+        }
+
+        //if Id is good
+        if(sId != null){
+            //the size matter
+            if(sId != ""){
+                //get the element
+                oElement = document.getElementById(sId);
+                //we got it ?
+                if(oElement != null){
+                    oElement.className = "OPT_ current";
+                }
+            }
+        }
+    },
     //our menu to generated
     generateMenuCode : function(){
         return '<li class="OPT_ current">Contacts</li>';
@@ -38,12 +81,20 @@ Heimdall_Contacts = {
         //our code
         var sCode = "";
 
-        //our code to make
-        sCode += '<div id="OPT_Contacts_General" class="OPT_ current">Général</div>';
-		sCode += '<div id="OPT_Contacts_Contacts" class="OPT_ others">Contacts</div>';
-		sCode += '<div id="OPT_Contacts_Users" class="OPT_ others">Users</div>';
-		sCode += '<div id="OPT_Contacts_Organisations" class="OPT_ others">Organisations</div>';
-		sCode += '<div id="OPT_Contacts_Groups" class="OPT_ others">Groupes</div>';
+        //our count
+        var nCount = 0;
+        //our iterrator
+        var nLine = 0;
+
+        //get the count
+        nCount = Heimdall_Contacts.menus.length;
+        //loop
+        while(nLine < nCount){
+            //create the code !!!
+            sCode += '<div id="' + Heimdall_Contacts.menus[nLine].id + '" class="OPT_ others" onclick="' + Heimdall_Contacts.menus[nLine].onclick + '">' + Heimdall_Contacts.menus[nLine].text + '</div>';
+            //Next
+            nLine++;
+        }
 
         //our code
         return sCode;
@@ -62,6 +113,9 @@ Heimdall_Contacts = {
 
         //change the HTML
         oElement.innerHTML = Heimdall_Contacts.generateHTML();
+
+        //
+        contactMenuCLICK();
 
         //return the good
         return true;
@@ -823,6 +877,10 @@ function LAY_Contacts_3(sDivOwner, oContacts){
     oLay.ObjToView();
 }
 
+function LAY_Contacts_2_LoadedHandler(e){
+    LAY_Contacts_1_LoadedHandler(e);
+}
+
 function LAY_Contacts_2(sDivOwner, oContacts){
     //Edition Layout
     var oLay = null;
@@ -831,7 +889,7 @@ function LAY_Contacts_2(sDivOwner, oContacts){
 
     oLay.init(sDivOwner, "Organisations" +  oContacts.getId_Organisations(), oContacts);
 
-    oLay.ObjToView();
+    oLay.members.oDiv.addEventListener(Heimdall.Events.loaded, LAY_Contacts_2_LoadedHandler);
 }
 
 function LAY_Contacts_1_LoadedHandler(e){
@@ -1143,6 +1201,7 @@ function plotContacts(ary_Contacts, bFromJson, nOffset, nLimit){
                 case 2://transform Contact as organisation too
                     oContact = new Organisations();
                     oContact.loadFromArray(ary_Contacts[nLine]);
+                    console.log("Organisations");
                     break;
                 case "3"://transform Contact as user
                 case 3://transform Contact as user too
@@ -1613,20 +1672,65 @@ function contactsAddMenu(sDivID){
     return sCode;
 }
 
-///[FUNCTION][init_contacts]Function to init the contact part
-///[RETURNS][Boolean]True if done
-function init_contacts(){
-    
+function contactMenuHTML(){
     //our code
     var sCode = "";
-    //get the content layout
-    var oElement = document.getElementById("LAY_Content");
 
     //our count
     var nCount = 0;
     //our iterator
     var nLine = 0;
 
+    //build da code !!!
+    sCode += '<div id="PNL_Research" class="PNL_ heim_Inline_Block">\r\n';
+
+    sCode += '\t<div id="LAY_Title" class="LAY_ heim_Block"><h1>RECHERCHE</h1></div>\r\n';
+    sCode += '<br/>\r\n';
+    sCode += '\t<div id="LAY_Query" class="LAY_ heim_Right heim_Block">';
+
+    sCode += '\t\t<input id="SAI_search_Query" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="contactKeySearch(event)"/>';
+    sCode += '\t\t<button id="BTN_Search_Query" class="BTN_" type="button" onclick="contactDoQuery()">Q</button>';
+    
+    sCode += '\t</div>\r\n';
+    sCode += '<br/>\r\n';
+    sCode += '<br/>\r\n';
+    
+    sCode += '\t<div id="LAY_Query_extended" class="LAY_ heim_Block">';
+
+    //find next number to add
+    nCount = HEIMDALL_NUMBER_OF_FILTER_MAX;
+    while(nLine < nCount){
+        sCode += "\t<div id=\"" + HEIMDALL_LAY_QUERY_Filter_Container + nLine + "\" class=\"" + HEIMDALL_LAY_QUERY_Filter_Container + "\"></div>\r\n";
+        //next
+        nLine++;
+    }
+
+    sCode += '\t<button id="BTN_Add_Query_Condition" class="BTN_" type="button" onclick="addSelectionField()">+</button>';
+
+    sCode += '\t</div>\r\n';
+    
+    sCode += '</div>\r\n';
+
+    sCode += '<div id="PNL_List" class="PNL_ heim_Inline_Block">NOpe</div>';
+
+    return sCode;
+}
+
+function contactMenuCLICK(){
+    //get the content layout
+    var oElement = document.getElementById("LAY_Content");
+
+    oElement.innerHTML = contactMenuHTML();
+
+    Heimdall_Contacts.menuClassUpdate("OPT_Contacts_General");
+
+    return true;
+}
+
+///[FUNCTION][init_contacts]Function to init the contact part
+///[RETURNS][Boolean]True if done
+function init_contacts(){
+    
     //init heimdall section
     Heimdall.members.products["contacts"] = {};
     Heimdall.members.products.contacts["Contact_Types"] = [];
@@ -1642,49 +1746,8 @@ function init_contacts(){
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
     Heimdall.members.products.contacts["generateMenuCode"] = Heimdall_Contacts.generateMenuCode;
 
-
     //init the loader of Civilities/Contact_types
     loadStaticsContactsData();
 
-    //if our 
-    if(oElement != null){
-
-        //build da code !!!
-        sCode += '<div id="PNL_Research" class="PNL_ heim_Inline_Block">\r\n';
-
-        sCode += '\t<div id="LAY_Title" class="LAY_ heim_Block"><h1>RECHERCHE</h1></div>\r\n';
-        sCode += '<br/>\r\n';
-        sCode += '\t<div id="LAY_Query" class="LAY_ heim_Right heim_Block">';
-
-        sCode += '\t\t<input id="SAI_search_Query" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="contactKeySearch(event)"/>';
-		sCode += '\t\t<button id="BTN_Search_Query" class="BTN_" type="button" onclick="contactDoQuery()">Q</button>';
-        
-        sCode += '\t</div>\r\n';
-        sCode += '<br/>\r\n';
-        sCode += '<br/>\r\n';
-        
-        sCode += '\t<div id="LAY_Query_extended" class="LAY_ heim_Block">';
-
-        //find next number to add
-        nCount = HEIMDALL_NUMBER_OF_FILTER_MAX;
-        while(nLine < nCount){
-            sCode += "\t<div id=\"" + HEIMDALL_LAY_QUERY_Filter_Container + nLine + "\" class=\"" + HEIMDALL_LAY_QUERY_Filter_Container + "\"></div>\r\n";
-            //next
-            nLine++;
-        }
-
-        sCode += '\t<button id="BTN_Add_Query_Condition" class="BTN_" type="button" onclick="addSelectionField()">+</button>';
-
-        sCode += '\t</div>\r\n';
-        
-        sCode += '</div>\r\n';
-
-        sCode += '<div id="PNL_List" class="PNL_ heim_Inline_Block">NOpe</div>';
-
-        oElement.innerHTML = sCode;
-
-        return true;
-    }
-
-    return false;
+    return contactMenuCLICK();
 }

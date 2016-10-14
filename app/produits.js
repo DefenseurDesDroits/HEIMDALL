@@ -43,7 +43,11 @@ var Heimdall = {
     },
     members : {
         //products : [Heimdall_Contacts],
-        products : {},
+        products : {
+            contacts : {
+                generateMenuCode : Heimdall_Contacts.generateMenuCode
+            }
+        },
         user : {},
         connectionWindow : null
     },
@@ -423,11 +427,6 @@ var Heimdall = {
 ///[FUNCTION][init]Function to init all the products
 function init_Produits(){
 
-    //our count
-    var nCount = "";
-    //our iterator
-    var nLine = 0;
-
     //our element
     var oElement = null;
 
@@ -437,14 +436,9 @@ function init_Produits(){
     //get the element
     oElement = document.getElementById("main_ul");
 
-    nCount = Heimdall.members.products.length;
-    while(nLine < nCount){
-
+    for(var sProduct in Heimdall.members.products){
         //add
-        sCode += Heimdall.members.products[nLine].generateMenuCode();
-
-        //next
-        nLine++;
+        sCode += Heimdall.members.products[sProduct].generateMenuCode();
     }
 
     //
