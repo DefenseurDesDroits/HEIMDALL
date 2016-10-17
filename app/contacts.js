@@ -1737,6 +1737,7 @@ function init_contacts(){
     Heimdall.members.products.contacts["Civilites"] = [];
     Heimdall.members.products.contacts["Titres"] = [];
     Heimdall.members.products.contacts["Contacts"] = [];
+    Heimdall.members.products.contacts["Users"] = [];
     Heimdall.members.products.contacts["Groups"] = [];
     Heimdall.members.products.contacts["Accreditations"] = [];
     Heimdall.members.products.contacts["Pays"] = [];
