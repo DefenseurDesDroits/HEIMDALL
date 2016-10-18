@@ -129,6 +129,28 @@ div.WIN_Main {
 	margin-left: 0px;
 	margin-bottom: 1px;
 }
+.OPT_Organisations{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Organisations:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
 
 .BTN_{
 	cursor : pointer;
