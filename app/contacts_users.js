@@ -311,8 +311,15 @@ function contact_usersDoQueryResponse(sText){
 
 ///[FUNCTION][contact_usersDoQuery]Function to exceute the research
 function contact_usersDoQuery(){
+    //our element
+    var oElement = null;
     //call the generique function
     contact_usersDoQueryComplete("LAY_List_User", contact_usersCreateArgs, contact_usersDoQueryResponse);
+    //get the PNL_
+    oElement = document.getElementById("PNL_Win");
+    //clear the layout
+    if(oElement != null)
+        oElement.innerHTML = "";
     //Call the specific :)
     return true;
 }
