@@ -85,6 +85,29 @@ div.WIN_Main {
 	transition : color 2s;
 }
 
+.OPT_Users{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Users:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+
 .BTN_{
 	cursor : pointer;
 }
@@ -242,6 +265,12 @@ h1{
 	background-color: #38AFEF;
 }
 #PNL_List{
+	min-width : 85%;
+	height: 100%;
+	position: absolute;
+	overflow-y: scroll;
+}
+#PNL_Win{
 	min-width : 85%;
 	height: 100%;
 	position: absolute;

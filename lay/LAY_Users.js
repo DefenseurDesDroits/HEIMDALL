@@ -188,7 +188,8 @@ function LAY_Users(){
 		
 		sCode += "<div id=\"" + oLAY_Users.getId() + "\">";
 		
-		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Users.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Users.getId() + "\">" + "</div>";
+		//sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Users.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
 
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
