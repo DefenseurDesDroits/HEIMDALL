@@ -34,7 +34,7 @@ Heimdall_Contacts = {
         {id : "OPT_Contacts_Contacts", onclick : "notDevYet();", text : "Contacts"},
         {id : "OPT_Contacts_Users", onclick : "contactMenu_users_CLICK();", text : "Users"},
         {id : "OPT_Contacts_Organisations", onclick : "notDevYet();", text : "Organisations"},
-        {id : "OPT_Contacts_Groups", onclick : "notDevYet();", text : "Groupes"}
+        {id : "OPT_Contacts_Groups", onclick : "contactMenu_groups_CLICK();", text : "Groupes"}
     ],
     menuClassUpdate : function(sId){
         //our count

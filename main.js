@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.3.0";
+const MAIN_VERSION = "0.3.1";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! ###################################### */
@@ -42,6 +42,7 @@ var ary_sFileLib = [
 
 var ary_sApp = [
 	//COntact part !!
+	"app/contacts_groups.js", 
 	"app/contacts_users.js", 
 	"app/contacts.js", 
 	//The product stuff

@@ -373,7 +373,7 @@ function LAY_Groups(){
 		sCode += "<div id=\"" + oLAY_Groups.getId() + "\">";
 		
 		//acceditation
-		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Groups.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Groups.getId() + "\">" + "</div>";
 		
 		//Groups field
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
