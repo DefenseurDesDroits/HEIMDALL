@@ -808,7 +808,7 @@ function connectionLDAPToken($sToken){
 function LDAPManager(){
 
     //our user 
-    $sUsr = "";//get it from $_POST
+    $sUser = "";//get it from $_POST
     //our password 
     $sPwd = "";//get it from $_POST
 
@@ -816,9 +816,11 @@ function LDAPManager(){
     $sToken = "";
 
     if(array_key_exists("User", $_POST))
-        $sUser = $_POST["User"];
+        $sUser = urldecode($_POST["User"]);
+        //$sUser = $_POST["User"];
     if(array_key_exists("Pwd", $_POST))
-        $sPwd = $_POST["Pwd"];
+        $sPwd = urldecode($_POST["Pwd"]);
+        //$sPwd = $_POST["Pwd"];
 
     if(array_key_exists("Token", $_POST))
         $sToken = $_POST["Token"];
