@@ -241,6 +241,23 @@ function contact_organisationsPlots(nStart, nLength){
     return true;
 }
 
+///[FUNCTION][contact_organisationsLoadedHandle]Function to load 
+///[PARAMETER][Event][e]The event
+function contact_organisationsLoadedHandle(e){
+    //get the Lay who throw it ]:)
+    var LAY_ = e.detail.oObject;
+
+    //security
+    if(LAY_ != null){
+        //plot !
+        LAY_.ObjToView();
+        //remove the eventlistener
+        LAY_.members.oDiv.removeEventListener(Heimdall.Events.loaded, contact_organisationsLoadedHandle);
+        //
+        console.log("contact_organisationsLoadedHandle");
+    }
+}
+
 ///[FUNCTION][contact_organisationsClick]Function to manage the click on the user menu
 ///[PARAMETER][Integer][nLine]The line of the user 
 function contact_organisationsClick(nLine){
@@ -263,8 +280,10 @@ function contact_organisationsClick(nLine){
             oContacts = Heimdall.members.products.contacts.Organisations[nLine];
             //init
             LAY_.init("PNL_Win", "Organisations" +  oContacts.getId_Organisations(), oContacts);
+            //When it's load, plots !!!
+            LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded, contact_contactsLoadedHandle);
             //plots
-            LAY_.ObjToView();
+            //LAY_.ObjToView();
         }
     }
 }

@@ -1,0 +1,11 @@
+{
+	"Users" : {
+		"Admin" : []
+	},
+	"Groups" : {
+		"Admin" : [],
+		"Campagnes" : [],
+		"Stocks" : [],
+		"Publications" : [],
+	}
+}

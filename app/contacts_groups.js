@@ -55,7 +55,7 @@ function contact_groupsDoQueryComplete(sIdWaiting, ptrFunctionCreateArg, ptrFunc
 
     //prepare the query*********************
     //check the open
-    oReq.open("POST", "php/queryManager_groups.php", true);
+    oReq.open("POST", "php/queryManager_Groups.php", true);
     //set the request header
     oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
     oReq.send("Id=" +Heimdall.members.user["UserId"] + "&Session=" + "" + "&Action=contacts_groups&Args=" + JSON.stringify(ptrFunctionCreateArg())); 

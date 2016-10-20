@@ -240,7 +240,7 @@ var Heimdall = {
             oReq.open("POST", "php/LDAPManager.php", true);
             //set the request header
             oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-            oReq.send("User=" + sUser + "&Pwd=" + sPwd); 
+            oReq.send(encodeURI("User=" + sUser + "&Pwd=" + sPwd)); 
             //Return the job !
             return true;
         },

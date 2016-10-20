@@ -861,7 +861,11 @@ function SAVE_LAY_Accreditations_Item_3(LAY_, oItem){
 	}
 
 	//Set the Item
-	oItem.setId_Accreditations_Item(3);
+	//Set the Item
+	if(ary_Result.length == 0)
+		oItem.setId_Accreditations_Item(1);
+	else
+		oItem.setId_Accreditations_Item(3);
 	oItem.setId_groups_json("");
 	oItem.setId_users_json(JSON.stringify(ary_Result));
 
@@ -901,7 +905,10 @@ function SAVE_LAY_Accreditations_Item_2(LAY_, oItem){
 	}
 
 	//Set the Item
-	oItem.setId_Accreditations_Item(2);
+	if(ary_Result.length == 0)
+		oItem.setId_Accreditations_Item(1);
+	else
+		oItem.setId_Accreditations_Item(2);
 	oItem.setId_groups_json(JSON.stringify(ary_Result));
 	oItem.setId_users_json("");
 
