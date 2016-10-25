@@ -1,17 +1,9 @@
 DEBUG !!!
-The User Id : 951
+The User Id : 0
 The Query : 
  SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types, xxx.contact_infos.fonction, xxx.contact_infos.id_contact_infos
 FROM xxx.Items, xxx.Noeuds, xxx.Contacts
 LEFT OUTER JOIN xxx.contact_infos ON xxx.contact_infos.id_contacts = xxx.contacts.id_contacts
 WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
-AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts
-AND (
-	id_accreditations_item = 1 
-	OR xxx.Items.id_creator = '951'
-	OR xxx.Items.id_users_json LIKE '%"uid":"951"%'
-	OR xxx.Items.id_groups_json LIKE '%"gid":"953"%'
-	OR xxx.Items.id_groups_json LIKE '%"gid":"928"%'
-	OR xxx.Items.id_groups_json LIKE '%"gid":"927"%'
-) AND (xxx.Contacts.Nom ILIKE 'fer%' OR xxx.Contacts.Prenom ILIKE 'fer%')
+AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts AND xxx.contacts.Id_Contacts IN(684, 704)
 ORDER BY xxx.contacts.nom

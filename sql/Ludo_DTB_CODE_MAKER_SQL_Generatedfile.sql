@@ -1,7 +1,7 @@
 -- #####################################
 -- Ludo_DTB_CODE_MAKER_SQL Version 0.4.6.0
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 16/09/2016 00:00:00
+-- Automatique generation made on 24/10/2016 00:00:00
 -- #####################################
 
 
@@ -295,7 +295,7 @@ COMMENT ON COLUMN xxx.Organisation_Types.Nom IS 'Nom du type d''organisation';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Organisations (
-	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE NOT NULL,
+	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
 	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer REFERENCES xxx.Organisation_Types (Id_Organisation_Types) ON DELETE CASCADE NOT NULL,
 	-- New Columns Created with Ludo Library	Acronyme varchar(16)  NOT NULL
 );
@@ -385,6 +385,27 @@ COMMENT ON COLUMN xxx.Logs.Validation IS 'Date de validation';
 COMMENT ON COLUMN xxx.Logs.Id_Validator IS 'Validateur de cette modification';
 COMMENT ON COLUMN xxx.Logs.Valeur IS 'Json, dernière valeur d''item';
 COMMENT ON COLUMN xxx.Logs.Suppression IS 'L''objet est il en attente de suppression (ou supprimé si Suppression == True And sValidation != '''')';
+
+
+-- ++++++++++++++++++++++++++++++++++++
+-- Table Segments
+-- Description :
+-- 	Table gérant les segments.
+-- ++++++++++++++++++++++++++++++++++++
+
+CREATE TABLE IF NOT EXISTS xxx.Segments (
+	-- Clef unique de la table hérité de Items	Id_Segments integer UNIQUE REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
+	-- Propriétaire du segment.	Id_Items_Owner integer REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
+	-- Liste des items du segment	Id_Items_Json varchar(1024)  NOT NULL,
+	-- Liste des paramêtres du segments.	Parametres varchar(1024)  NOT NULL,
+	-- Nom du segments	Nom varchar(64)  NOT NULL
+);
+COMMENT ON TABLE xxx.Segments IS 'Table gérant les segments.';
+COMMENT ON COLUMN xxx.Segments.Id_Segments IS 'Clef unique de la table hérité de Items';
+COMMENT ON COLUMN xxx.Segments.Id_Items_Owner IS 'Propriétaire du segment.';
+COMMENT ON COLUMN xxx.Segments.Id_Items_Json IS 'Liste des items du segment';
+COMMENT ON COLUMN xxx.Segments.Parametres IS 'Liste des paramêtres du segments.';
+COMMENT ON COLUMN xxx.Segments.Nom IS 'Nom du segments';
 
 
 

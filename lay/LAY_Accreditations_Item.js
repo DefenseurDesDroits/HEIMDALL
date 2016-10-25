@@ -1235,7 +1235,7 @@ function LAY_Accreditations_Item(){
 		var oElement = null;
 
 		//clear
-		console.clear();
+		//console.clear();
 
 		//save it !!!
 		SAVE_LAY_Accreditations_Item(oLAY_Accreditations_Item, oItem);

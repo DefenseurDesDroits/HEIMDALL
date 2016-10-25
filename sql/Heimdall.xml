@@ -515,6 +515,36 @@
           </Columns>
           <Comment>Table pour enregistrer tous les changements de valeur d'item.</Comment>
         </Table>
+        <Table name="Segments" deploy_name="Segments" inherit="Contacts.Items" isview="False">
+          <Columns>
+            <Column name="nId_Segments" deploy_name="Id_Segments" key="unique" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef unique de la table hérité de Items</Comment>
+            </Column>
+            <Column name="nId_Items_Owner" deploy_name="Id_Items_Owner" key="foreign" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Propriétaire du segment.</Comment>
+            </Column>
+            <Column name="nId_Items_Json" deploy_name="Id_Items_Json" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Liste des items du segment</Comment>
+            </Column>
+            <Column name="sParametres" deploy_name="Parametres" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Liste des paramêtres du segments.</Comment>
+            </Column>
+            <Column name="sNom" deploy_name="Nom" key="" foreign="" type="s64" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Nom du segments</Comment>
+            </Column>
+          </Columns>
+          <Comment>Table gérant les segments.</Comment>
+        </Table>
       </Tables>
     </Module>
   </Modules>

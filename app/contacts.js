@@ -34,7 +34,10 @@ Heimdall_Contacts = {
         {id : "OPT_Contacts_Contacts", onclick : "contactMenu_contacts_CLICK();", text : "Contacts"},
         {id : "OPT_Contacts_Users", onclick : "contactMenu_users_CLICK();", text : "Users"},
         {id : "OPT_Contacts_Organisations", onclick : "contactMenu_organisations_CLICK();", text : "Organisations"},
-        {id : "OPT_Contacts_Groups", onclick : "contactMenu_groups_CLICK();", text : "Groupes"}
+        {id : "OPT_Contacts_Groups", onclick : "contactMenu_groups_CLICK();", text : "Groupes"},
+        {id : "OPT_Contacts_Query", onclick : "notDevYet();", text : "Requêtes"},
+        {id : "OPT_Contacts_Segments", onclick : "contactMenu_segments_CLICK();", text : "Segments"}
+        //{id : "OPT_Contacts_Segments", onclick : "notDevYet();", text : "Segments"}
     ],
     menuClassUpdate : function(sId){
         //our count
@@ -1508,6 +1511,39 @@ function contactKeySearch(event){
     }
 }
 
+function segmentWinContact(oSegments){
+
+    //our line
+    var nLine = 0;
+    //our element to get the text zone
+    var oElement = null;
+
+    //Edition Layout
+    var oLay = null;
+
+    if(oSegments == null){
+        oSegments = new Segments();
+        oSegments.setId_Items_Owner(parseInt(Heimdall.members.user["UserId"]));
+        oSegments.setId_Accreditations_Item(1);
+    }
+        
+    //create the win form
+    WIN_Contacts = new  Overview("WIN_Contacts", 640, 480, "#6669A3", 0.5);
+
+    oLay = new LAY_Segments();
+
+    oLay.init("WIN_Contacts", "Segments" + oSegments.getId_Segments(), oSegments);
+
+    oLay.ObjToView();
+
+    //get the element to fill it
+    oElement = document.getElementById("WIN_Contacts");
+    if(oElement != null){
+        oElement.innerHTML += "<div id=\"BTN_Quit\" class=\"BTN_\" onclick=\"WIN_Contacts.dispose();\">Quitter</div>";
+    }
+
+}
+
 function groupWinContact(oContact){
 
     //our line
@@ -1666,6 +1702,8 @@ function contactsAddMenu(sDivID){
     sCode += "\t" + "<div id=\"BTN_Add_Organisation\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();organisationWinContact(null);\">Ajouter une organisation</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Users\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();userWinContact(null);\">Ajouter un utilisateur</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Groups\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();groupWinContact(null);\">Ajouter un group</div>" + "\r\n";
+    sCode += "\t" + "<div id=\"BTN_Add_\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();segmentWinContact(null);\">Ajouter un segment</div>" + "\r\n";
+    //sCode += "\t" + "<div id=\"BTN_Add_\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();notDevYet();\">Ajouter un segment</div>" + "\r\n";
 
     sCode += "</div>" + "\r\n";
 

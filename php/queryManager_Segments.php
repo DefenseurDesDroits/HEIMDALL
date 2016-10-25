@@ -3,24 +3,22 @@
 //put your include
 // include_once("CONTACTS_Contacts.php");
 // include_once("CONTACTS_Organisations.php");
-// include_once("CONTACTS_Users.php");
-// include_once("CONTACTS_Groups.php");
-// include_once("Groups_manager_2.php");
+include_once("CONTACTS_Segments.php");
 
 include_once("queryTools.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
-//Const HEIMDALL_QM_Debug = false;
-Const HEIMDALL_QM_Debug = true;
+Const HEIMDALL_QM_SEGMENTS_Debug = false;
+//Const HEIMDALL_QM_SEGMENTS_Debug = true;
 
 ///[FUNCTION][searchQuery]Function to search the contact
-function searchQuery($Args, $userId = 0){
+function searchQuery($Args){
 
     //Our query 
     $sQuery = "";
     //our contact
-    $oContact = new Contacts();
+    $oContact = new Segments();
     //result query array 
     $ary_ = array();
     //result array 
@@ -38,32 +36,19 @@ function searchQuery($Args, $userId = 0){
     //our iterrator
     $nLine = 0;
 
+    //debugging, the desperate way
+    if(HEIMDALL_QM_SEGMENTS_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Segments@searchQuery.log", "DEBUG !!!\r\n" );
+
     //coreespondance set 
     $ary_Corres = $oContact->getCorrespondanceArray();
-    //push for the fun !
-    $ary_Corres += [ "sAPEFonction" => "xxx.contact_infos.fonction" ];
-
-    //debugging, the desperate way
-    if(HEIMDALL_QM_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/queryManager@searchQuery.log", "DEBUG !!!\r\n" );
 
     //recreate the query
-    //$sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" . "FROM " . $oContact->getTable() . "\r\n"  ;
-    $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . ", xxx.contact_infos.fonction, xxx.contact_infos.id_contact_infos" . "\r\n" ;
+    $sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" ;
     $sQuery .= "FROM " . $oContact->getTable() . "\r\n"  ;
-    $sQuery .= "LEFT OUTER JOIN xxx.contact_infos ON xxx.contact_infos.id_contacts = xxx.contacts.id_contacts" . "\r\n"  ;
 
     //add the link between column s and foreign Key
-    //$sQuery .= "WHERE xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds AND xxx.Noeuds.Id_Noeuds = xxx.Contacts.Id_Contacts";
     $sQuery .= "WHERE " . $oContact->getLinkConditions(true);
-
-    //debugging, the desperate way
-    if(HEIMDALL_QM_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/queryManager@searchQuery.log", "The User Id : " . $userId . "\r\n",  FILE_APPEND );
-
-    //right part !!!
-    if($userId != 0)
-        $sQuery .= "\r\n" . createRightsCondition($userId);
 
     //get the count
     $nCount = count($Args);
@@ -118,7 +103,7 @@ function searchQuery($Args, $userId = 0){
         $nLine++;
     }
     
-    $sQuery .= "\r\n" . "ORDER BY xxx.contacts.nom";
+    $sQuery .= "\r\n" . "ORDER BY xxx.Segments.Nom";
 
     //get the array (so ugly way bro !!!)
     $GLOBALS["oConnection"]->open();
@@ -129,52 +114,23 @@ function searchQuery($Args, $userId = 0){
     $nCount = count($ary_);
     //reinit the iterrator
     $nLine = 0;
+    //cool
+    $ary_Obj = array();
     //start the loop
     while($nLine < $nCount){
 
         //do it
-        $oContact = new Contacts();
+        $oContact = new Segments();
         $oContact->loadFromArray($ary_[$nLine], true);
-
-        //check out the type !!!
-        switch ($oContact->getId_Contact_Types()) {
-            case "1"://nothing to do :p
-            case 1://nothing to do :p
-                
-                break;
-            case "2"://transform Contact as organisation
-            case 2://transform Contact as organisation
-                $oContact = new Organisations();
-                $oContact->loadFromArray($ary_[$nLine], true);
-                $oContact->loadFromConnection("");
-                break;
-            case "3"://transform Contact as user
-            case 3://transform Contact as user
-                $oContact = new Users();
-                $oContact->loadFromArray($ary_[$nLine], true);
-                $oContact->loadFromConnection("");
-                break;
-            case "4"://transform Contact as Groups
-			case 4://transform Contact as Groups
-                $oContact = new Groups();
-				$oContact->loadFromArray($ary_[$nLine], true);
-                $oContact->loadFromConnection("");
-                break;
-            default:
-                break;
-        }
-
         $ary_Obj[$nLine] = $oContact->exportToArray();
-        //add function for information
-        $ary_Obj[$nLine]["fonction"] = $ary_[$nLine]["fonction"];
-        $ary_Obj[$nLine]["IdLinks"] = $ary_[$nLine]["IdLinks"];
+        
         //Next
         $nLine++;
     }
 
     //debugging, the desperate way
-    if(HEIMDALL_QM_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/queryManager@searchQuery.log", "The Query : \r\n " . $sQuery . "\r\n",  FILE_APPEND );
+    if(HEIMDALL_QM_SEGMENTS_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Segments@searchQuery.log", "The Query : \r\n " . $sQuery . "\r\n",  FILE_APPEND );
 
     //push it to the view !!!
     echo json_encode($ary_Obj);
@@ -191,22 +147,14 @@ function queryCenter(){
     //our argument
     $Arg = $_POST["Args"];
 
-    //our user id 
-    $userId = 0;
-
-    if(array_key_exists("Id", $_POST))
-        //$userId = intval( $_POST["Id"]);
-        $userId = $_POST["Id"];
-
-
     //Action selector
     switch($Action){
-        case "contacts_contacts":
-            return searchQuery((array)json_decode($Arg), $userId);
+        case "contacts_segments":
+            return searchQuery((array)json_decode($Arg));
         break;
     }
 
-    //Is Star Wars Episode VII a good movie ?
+    //Does Star Wars Episode I exists ?
     return false;
 }
 

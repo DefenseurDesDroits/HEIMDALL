@@ -28,11 +28,13 @@ var ary_sFileLib = [
 	"lib/CONTACTS_Users.js",
 	"lib/CONTACTS_Notifications.js",
 	"lib/CONTACTS_Groups.js",
+	"lib/CONTACTS_Segments.js",
 	/*CONTACT LAY !!! */
 	"lay/LAY_Contacts.js",
 	"lay/LAY_Organisations.js",
 	"lay/LAY_Users.js",
 	"lay/LAY_Groups.js",
+	"lay/LAY_Segments.js",
 	"lay/LAY_Accreditations_Item.js",
 	"lay/LAY_Contact_Infos.js",
 	"lay/LAY_LIST_Contact_Infos.js",
@@ -46,6 +48,7 @@ var ary_sApp = [
 	"app/contacts_organisations.js", 
 	"app/contacts_contacts.js", 
 	"app/contacts_users.js", 
+	"app/contacts_segments.js", 
 	"app/contacts.js", 
 	//The product stuff
 	"app/produits.js"];
