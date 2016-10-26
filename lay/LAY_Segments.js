@@ -305,6 +305,10 @@ function LAY_Segments(){
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
 		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Segments.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Segments.getId() + '" size=\"50\" value=""/>';
+		sCode += "<br/>";
+		sCode += "PARAMETERS";
+		sCode += "<br/>";
+		sCode += '\t\t<textarea id="TXT_Parameters_' + oLAY_Segments.getId() + '" class="SAI_" type="text" name="TXT_Parameters_' + oLAY_Segments.getId() + '" cols=\"50\" value=""></textarea>';
 
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Segments('" + oLAY_Segments.getId() + "')\">Sauvegarder</div>" + "\r\n";
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Segments('" + oLAY_Segments.getId() + "')\">Supprimer</div>" + "\r\n";
@@ -471,6 +475,10 @@ function LAY_Segments(){
 		if(oElement != null)
 			oElement.value = oLAY_Segments.members.oObj.getNom();
 
+		oElement = document.getElementById("TXT_Parameters_" + oLAY_Segments.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Segments.members.oObj.getParametres();
+
 		oLAY_Segments.loadContacts();
 		
 		return true;
@@ -495,11 +503,32 @@ function LAY_Segments(){
 		//our iterrator 
 		var nLine = 0;
 
+		//our PARAMETERS
+		var sParameters = "";
+
 		//Change the Name !!!*******************************************
 
 		oElement = document.getElementById("SAI_Nom_" + oLAY_Segments.getId());
 		if(oElement != null){
 			oSegments.setNom(oElement.value);
+		}
+
+		oElement = document.getElementById("TXT_Parameters_" + oLAY_Segments.getId());
+		if(oElement != null){
+			//get the parmeters
+			sParameters = oElement.value;
+			if(sParameters == "")
+				sParameters = "{}";
+
+			//is the parameters all right ?
+			try {
+				JSON.parse(sParameters);
+			} catch (error) {
+				sParameters = "{}";
+			}
+
+			oSegments.setParametres(sParameters);
+			//oSegments.setParametres(oElement.value);
 		}
 		
 		//Change the Json !!!*******************************************
