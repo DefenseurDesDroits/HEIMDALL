@@ -49,6 +49,7 @@ var ary_sApp = [
 	"app/contacts_contacts.js", 
 	"app/contacts_users.js", 
 	"app/contacts_segments.js", 
+	"app/contacts_query.js", 
 	"app/contacts.js", 
 	//The product stuff
 	"app/produits.js"];
