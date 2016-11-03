@@ -557,6 +557,70 @@ function loadStatics_Langues(){
 
 }
 
+function loadStatics_Segments_Complete(ary_, sFilter){
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //our object to convert
+            var oSegments = null;
+            //our array of result
+            var ary_Json = JSON.parse(oReq.responseText);
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
+            //reset
+            Heimdall.members.products.contacts[ary_] = [];
+
+            //get the number of result
+            nCount = ary_Json.length;
+            //loop
+            while(nLine < nCount){
+
+                //realloc the variable
+                oSegments = new Segments();
+                //load it !
+                oSegments.loadFromArray(ary_Json[nLine]);
+
+                //add it
+                Heimdall.members.products.contacts[ary_].push(oSegments);
+
+                //next
+                nLine++;
+            }
+
+            Heimdall.flags.waitData = false;
+        }
+    };
+    //prepare the query*********************
+     //check the open
+    oReq.open("POST", "php/queryManager_Segments.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=" +Heimdall.members.user["UserId"] + "&Session=" + "" + "&Action=contacts_segments&Args=" + JSON.stringify([{Method : HEIMDALL_QUERY_METHOD_LIKE_Contains, Names : ["sParametres"], Value : sFilter}])); 
+    //Return the job !
+    return true;
+}
+
+function loadStatics_Segments_Nature(ary_, sNature){
+    return loadStatics_Segments_Complete(ary_, "\"Nature\":\"" + sNature + "\"");
+}
+
+function loadStatics_Segments_Tags(){
+    return loadStatics_Segments_Nature("Segments_Tags", "tags");
+}
+
+///[FUNCTION][loadStatics_Segements_Filtre]Function to load all the kind of operations from the DTB
+///[RETURNS][Boolean]True if done
+function loadStatics_Segments_Filtres(){
+    return loadStatics_Segments_Nature("Segments_Filtres", "filtres");
+}
+
 ///[FUNCTION][loadStaticsContactsData]Function to load all the Contacts data from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStaticsContactsData(){
@@ -569,6 +633,9 @@ function loadStaticsContactsData(){
     loadStatics_Pays();
     loadStatics_Langues();
     loadStatics_Organisation_Types();
+
+    loadStatics_Segments_Filtres();
+    loadStatics_Segments_Tags();
 
     return true;
 }
@@ -1781,6 +1848,9 @@ function init_contacts(){
     Heimdall.members.products.contacts["Pays"] = [];
     Heimdall.members.products.contacts["Organisation_Types"] = [];
     Heimdall.members.products.contacts["Langues"] = [];
+    Heimdall.members.products.contacts["Segments"] = [];
+    Heimdall.members.products.contacts["Segments_Filtres"] = [];
+    Heimdall.members.products.contacts["Segments_Tags"] = [];
 
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
     Heimdall.members.products.contacts["generateMenuCode"] = Heimdall_Contacts.generateMenuCode;
