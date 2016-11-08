@@ -17,7 +17,7 @@ function createCondition($ary_Column, $sOperator, $sStr, $ary_CorrespondanceSet 
     //our iterrator
     $nLine = 0;
 
-    //no correspondance, easyr way
+    //no correspondance, easy way
     if($ary_CorrespondanceSet == null){
         $nCount = count($ary_Column);
         while ($nLine < $nCount) {
@@ -41,8 +41,6 @@ function createCondition($ary_Column, $sOperator, $sStr, $ary_CorrespondanceSet 
             $nLine++;
         }
     }
-
-    
 
     return "(" . $sCode . ")";
 }

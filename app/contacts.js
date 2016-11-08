@@ -1851,6 +1851,7 @@ function init_contacts(){
     Heimdall.members.products.contacts["Segments"] = [];
     Heimdall.members.products.contacts["Segments_Filtres"] = [];
     Heimdall.members.products.contacts["Segments_Tags"] = [];
+    Heimdall.members.products.contacts["Segments_List"] = [];
 
     Heimdall.members.products.contacts["addMenu"] = contactsAddMenu;
     Heimdall.members.products.contacts["generateMenuCode"] = Heimdall_Contacts.generateMenuCode;
