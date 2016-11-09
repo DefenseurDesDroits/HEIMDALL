@@ -200,30 +200,6 @@ function contact_queryCreateArgs(){
     
     //segments section**********************************************
 
-    // //the sai_ always here field
-    // ary_Result.push({Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sNom"], Value : oElement.value});
-
-    ////find next number to add
-    // nCount = HEIMDALL_NUMBER_OF_FILTER_MAX;
-    // while(nLine < nCount){
-    //     //get the nod
-    //     sNext = HEIMDALL_LAY_QUERY_Filter + nLine;
-    //     oNext = document.getElementById(sNext);
-    //     //does the element exists
-    //     if(oNext != null){
-    //         //define the struct
-    //         struct_ = {Method : "", Names : [], Value : ""};
-    //         //fill the struct
-    //         struct_.Method = document.getElementById("COMBO_COND_" + sNext).value;
-    //         struct_.Names = [document.getElementById("COMBO_Column_" + sNext).value];
-    //         struct_.Value = document.getElementById("SAI_Value_" + sNext).value;
-    //         //push the result !
-    //         ary_Result.push(struct_);
-    //     }
-    //     //next
-    //     nLine++;
-    // }
-
     return ary_Result;
 }
 
@@ -444,6 +420,212 @@ function contact_queryDoQuery(){
     return true;
 }
 
+function contact_queryFilterManager(nLine){
+     //our element
+    var oElement = null;
+
+    //our value
+    var sValue = "";
+
+    //the segment
+    var oSegment = null
+
+    //array of element
+    var ary_ = [];
+    //our data
+    var ary_Data = [];
+
+    //check the segment
+    if(nLine >= 0 && nLine < Heimdall.members.products.contacts.Segments_Filtres.length)
+        oSegment = Heimdall.members.products.contacts.Segments_Filtres[nLine];
+    else
+        return false;
+    
+    //get the ary_
+    ary_ = JSON.parse(oSegment.getParametres());
+    ary_Data = ary_["Data"];
+
+    //get the element
+    oElement = document.getElementById("SAI_Contacts_Prenom");
+    //element present
+    if(oElement != null){
+        if(ary_Data["SAI_Contacts_Prenom"] != null)
+            oElement.value = ary_Data["SAI_Contacts_Prenom"];
+        else
+            oElement.value = "";
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Contacts_Nom");
+    //element present
+    if(oElement != null){
+        if(ary_Data["SAI_Contacts_Nom"] != null)
+            oElement.value = ary_Data["SAI_Contacts_Nom"];
+        else
+            oElement.value = "";
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Infos_Fonction");
+    //element present
+    if(oElement != null){
+        if(ary_Data["SAI_Infos_Fonction"] != null)
+            oElement.value = ary_Data["SAI_Infos_Fonction"];
+        else
+            oElement.value = "";
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Adr_Ville");
+    //element present
+    if(oElement != null){
+        if(ary_Data["SAI_Adr_Ville"] != null)
+            oElement.value = ary_Data["SAI_Adr_Ville"];
+        else
+            oElement.value = "";
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Adr_CP");
+    //element present
+    if(oElement != null){
+        if(ary_Data["SAI_Adr_CP"] != null)
+            oElement.value = ary_Data["SAI_Adr_CP"];
+        else
+            oElement.value = "";
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Adr_Tel");
+    //element present
+    if(oElement != null){
+        if(ary_Data["SAI_Adr_Tel"] != null)
+            oElement.value = ary_Data["SAI_Adr_Tel"];
+        else
+            oElement.value = "";
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Adr_Courriel");
+    //element present
+    if(oElement != null){
+        if(ary_Data["SAI_Adr_Courriel"] != null)
+            oElement.value = ary_Data["SAI_Adr_Courriel"];
+        else
+            oElement.value = "";
+    }
+
+    //next
+    return true;
+}
+
+function contact_querySaveFiltre(oSegments){
+
+    //our Json
+    var ary_Data = {};
+
+    //our Json object
+    var oJson = {};
+
+    //our JSON String
+
+    //segment test
+    if(oSegments == null)
+        return false;
+    
+    //do stuff
+
+    //get the ary_
+    ary_ = JSON.parse(oSegment.getParametres());
+    ary_Data = ary_["Data"];
+
+    //get the element
+    oElement = document.getElementById("SAI_Contacts_Prenom");
+    //element present
+    if(oElement != null){
+        ary_Data["SAI_Contacts_Prenom"] = oElement.value;
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Contacts_Nom");
+    //element present
+    if(oElement != null){
+        ary_Data["SAI_Contacts_Nom"] = oElement.value;
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Infos_Fonction");
+    //element present
+    if(oElement != null){
+        ary_Data["SAI_Infos_Fonction"] = oElement.value;
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Adr_Ville");
+    //element present
+    if(oElement != null){
+        ary_Data["SAI_Adr_Ville"] = oElement.value;
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Adr_CP");
+    //element present
+    if(oElement != null){
+        ary_Data["SAI_Adr_CP"] = oElement.value;
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Adr_Tel");
+    //element present
+    if(oElement != null){
+        ary_Data["SAI_Adr_Tel"] = oElement.value;
+    }
+
+    //get the element
+    oElement = document.getElementById("SAI_Adr_Courriel");
+    //element present
+    if(oElement != null){
+        ary_Data["SAI_Adr_Courriel"] = oElement.value;
+    }
+
+    //The object
+    oJson = { Nature : "filtres", Data : ary_Data};
+    //The string
+    sJson = JSON.stringify(oJson);
+
+    //set the Json
+    oSegments.setParametres(JSON);
+    //save
+    oSegments.save(Heimdall.members.user["UserId"], ".");
+
+    //right !
+    return true;
+}
+
+function contact_queryFilterCreator(){
+
+    //our new segments
+    var oSegments = new Segments();
+
+    //to cacth the name
+    var oElement = null;
+
+    oSegments = new Segments();
+    oSegments.setId_Items_Owner(parseInt(Heimdall.members.user["UserId"]));
+    oSegments.setId_Accreditations_Item(1);
+
+    //set the name !!!
+    oElement = document.getElementById("SAI_Segment_Nom");
+    //not null
+    if(oElement != null)
+        oSegments.setNom(oElement.value.trim());
+
+    //warning
+    contact_querySaveFiltre(oSegments);
+
+    //add to the list
+}
+
 ///[FUNCTION][contactMenu_query_HTML]Function to generate the HTML of the sub-menu
 function contactMenu_query_HTML(){
     //our code
@@ -459,42 +641,81 @@ function contactMenu_query_HTML(){
 
     sCode += '\t' + '<div id="LAY_Title" class="LAY_ heim_Block"><h1>Requêtes</h1></div>\r\n';
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:10%;height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
     
     sCode += '\t' + '\t' + '<div id="LAY_Query_extended" class="LAY_ heim_Block">';
     //add the filters
     sCode += '\t' + '\t' + '\t' + "<div class=\"LAB_\">Filtres</div>";
+
+    sCode += '\t' + '\t' + '\t' + "<form>";
     sCode += '\t' + '\t' + '\t' + "<div id=\"LAY_Content_Filtres\">";
     sCode += '\t' + '\t' + '\t' + '\t' + "<select id=\"COMBO_Filtre\">";
-    sCode += '\t' + '\t' + '\t' + '\t' + '\t' + "<option value=\"0\" \">Nouveau</option>";
+    sCode += '\t' + '\t' + '\t' + '\t' + '\t' + "<option value=\"-1\" \">Nouveau</option>";
     //get the count
     nCount = Heimdall.members.products.contacts.Segments_Filtres.length;
     nLine = 0;
     while(nLine < nCount){
         //add the line
-        sCode += '\t' + '\t' + '\t' + '\t' + '\t' + "<option value =\"" + Heimdall.members.products.contacts.Segments_Filtres[nLine].getId_Segments() + "\" \">" + Heimdall.members.products.contacts.Segments_Filtres[nLine].getNom() + "</option>";
+        sCode += '\t' + '\t' + '\t' + '\t' + '\t' + "<option onclick=\"contact_queryFilterManager(" + nLine + ");\" value =\"" + Heimdall.members.products.contacts.Segments_Filtres[nLine].getId_Segments() + "\" \">" + Heimdall.members.products.contacts.Segments_Filtres[nLine].getNom() + "</option>";
+        //sCode += '\t' + '\t' + '\t' + '\t' + '\t' + "<option value =\"" + Heimdall.members.products.contacts.Segments_Filtres[nLine].getId_Segments() + "\" \">" + Heimdall.members.products.contacts.Segments_Filtres[nLine].getNom() + "</option>";
         //Next
         nLine++;
     }
     sCode += '\t' + '\t' + '\t' + '\t' + "</select>";
     sCode += '\t' + '\t' + '\t' + "</div>";
     sCode += '\t' + '\t' + '<div id="BTN_Contacts_Query" class="BTN_" onclick="contact_queryDoQuery();">SEARCH</div>\r\n';
+    sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Segment_Nom\" type=\"text\" value=\"'Segments'\"></input> ";
+    sCode += '\t' + '\t' + '\t' + "</form>";
+
     sCode += '\t' + '\t' + '</div>\r\n';
     sCode += '\t' + "</div>";
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:28%;height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Contacts</div>";
     sCode += '\t' + '\t' + "<form>";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Contacts_Prenom\" type=\"text\" value=\"'prenom'\"></input> ";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Contacts_Nom\" type=\"text\" value=\"'nom'\"></input> ";
-    // sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Civilites\">";
-    // sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"\" \">Aucune</option>";
-    // sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"nah\" \">CIV Test</option>";
-    // sCode += '\t' + '\t' + '\t' + "</select>";
+    sCode += '\t' + '\t' + '\t' + "<br/>";
+    sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Civilites\" multiple size=\"3\">";
+    //get the count
+    nCount = Heimdall.members.products.contacts.Civilites.length;
+    nLine = 0;
+    while(nLine < nCount){
+        //add the option
+        sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"" + Heimdall.members.products.contacts.Civilites[nLine].getId_Civilites() + "\" >"+ Heimdall.members.products.contacts.Civilites[nLine].getNom() + "</option>";
+        //Next
+        nLine++;
+    }
+    sCode += '\t' + '\t' + '\t' + "</select>";
+    sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Titres\" multiple size=\"3\">";
+    //get the count
+    nCount = Heimdall.members.products.contacts.Titres.length;
+    nLine = 0;
+    while(nLine < nCount){
+        //add the option
+        sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"" + Heimdall.members.products.contacts.Titres[nLine].getId_Titres() + "\" >"+ Heimdall.members.products.contacts.Titres[nLine].getNom() + "</option>";
+        //Next
+        nLine++;
+    }
+    sCode += '\t' + '\t' + '\t' + "</select>";
+    sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Contact_Types\" multiple size=\"3\">";
+    //get the count
+    nCount = Heimdall.members.products.contacts.Contact_Types.length;
+    nLine = 0;
+    while(nLine < nCount){
+        //add the option
+        sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"" + Heimdall.members.products.contacts.Contact_Types[nLine].getId_Contact_Types() + "\" >"+ Heimdall.members.products.contacts.Contact_Types[nLine].getNom() + "</option>";
+        //Next
+        nLine++;
+    }
+    sCode += '\t' + '\t' + '\t' + "</select>";
     sCode += '\t' + '\t' + "</form>";
     sCode += '\t' + "</div>";
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:10%;height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Infos";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Infos\">";
     sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"0\">Sans les Infos</option>";
@@ -503,14 +724,23 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + "</div>";
     sCode += '\t' + '\t' + "<form>";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Infos_Fonction\" type=\"text\" value=\"'fonction'\"></input>";
-    // sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Langues\">";
-    // sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"\" \">Aucune</option>";
-    // sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"nah\" \">CIV Test</option>";
-    // sCode += '\t' + '\t' + '\t' +  "</select>";
+    sCode += '\t' + '\t' + '\t' + "<br/>";
+    sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Langues\" multiple size=\"3\">";
+     //get the count
+    nCount = Heimdall.members.products.contacts.Langues.length;
+    nLine = 0;
+    while(nLine < nCount){
+        //add the option
+        sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"" + Heimdall.members.products.contacts.Langues[nLine].getId_Langues() + "\" >"+ Heimdall.members.products.contacts.Langues[nLine].getNom() + "</option>";
+        //Next
+        nLine++;
+    }
+    sCode += '\t' + '\t' + '\t' +  "</select>";
     sCode += '\t' + '\t' + "</form>";
     sCode += '\t' + "</div>";
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:28%;height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Adresses";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Adresses\">";
     sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"0\">Sans les adresses</option>";
@@ -518,10 +748,21 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + '\t' +  "</select>";
     sCode += '\t' + '\t' + "</div>";
     sCode += '\t' + '\t' + "<form>";
-    sCode += '\t' + '\t' + "<input id=\"SAI_Adr_Ville\" type=\"text\" value=\"'ville'\"></input>";
-    sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_CP\" type=\"text\" value=\"'cp'\"></input>";
-    sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_Tel\" type=\"text\" value=\"'telephone'\"></input>";
-    sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_Courriel\" type=\"text\" value=\"'courriel'\"></input>";
+    sCode += '\t' + '\t' + "<input id=\"SAI_Adr_Ville\" type=\"text\" value=\"'ville'\" size=\"15\"></input>";
+    sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_CP\" type=\"text\" value=\"'cp'\" size=\"6\"></input>";
+    sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_Tel\" type=\"text\" value=\"'telephone'\" size=\"15\"></input>";
+    sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_Courriel\" type=\"text\" value=\"'courriel'\" size=\"15\"></input>";
+    sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Pays\" multiple size=\"3\">";
+     //get the count
+    nCount = Heimdall.members.products.contacts.Pays.length;
+    nLine = 0;
+    while(nLine < nCount){
+        //add the option
+        sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"" + Heimdall.members.products.contacts.Pays[nLine].getId_Pays() + "\" >"+ Heimdall.members.products.contacts.Pays[nLine].getNom() + "</option>";
+        //Next
+        nLine++;
+    }
+    sCode += '\t' + '\t' + '\t' +  "</select>";
     sCode += '\t' + '\t' + "</form>";
     sCode += '\t' + "</div>";
 
@@ -543,7 +784,6 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '<div id="LAY_Title"> Titres </div>';
     sCode += '\t' + '<div id="LAY_Rows_Elements"></div>';
     sCode += '</div>';
-    //sCode += '<div id="PNL_Win_Inline" class="PNL_ heim_Block"></div>';
 
     return sCode;
 }

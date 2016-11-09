@@ -2,29 +2,29 @@ DEBUG !!!
 The Array : 
  Array
 (
-    [xxx.Items.Id_Items] => 301
+    [xxx.Items.Id_Items] => 202
     [xxx.Items.Id_groups_json] => 
     [xxx.Items.Id_Accreditations_Item] => 1
-    [xxx.Items.Modifie] => 2016-10-25 09:14:28.278522
+    [xxx.Items.Modifie] => 2016-10-25 09:14:19.212522
     [xxx.Items.Id_Creator] => 1
     [xxx.Items.Id_users_json] => 
-    [xxx.Noeuds.Id_Noeuds] => 301
-    [xxx.Noeuds.Id_Noeuds_Parent] => 301
-    [xxx.Contacts.Id_Contacts] => 301
-    [xxx.Contacts.Prenom] => Soraya
-    [xxx.Contacts.Nom] => Ahras
+    [xxx.Noeuds.Id_Noeuds] => 202
+    [xxx.Noeuds.Id_Noeuds_Parent] => 202
+    [xxx.Contacts.Id_Contacts] => 202
+    [xxx.Contacts.Prenom] => Frédérique
+    [xxx.Contacts.Nom] => Martin-Ple
     [xxx.Contacts.Id_Civilites] => 1
     [xxx.Contacts.Id_Titres] => 1
     [xxx.Contacts.Id_Contact_Types] => 1
     [fonction] => Substitut Du Procureur
-    [adr1] => 10 Rue Du Palais
-    [adr2] => 
+    [adr1] => 3 Rue Saint-Jacques
+    [adr2] => CS 80402
     [adr3] => 
-    [cp] => 17028
-    [cedex] => CEDEX 1
-    [ville] => La Rochelle
+    [cp] => 28019
+    [cedex] => CEDEX 
+    [ville] => Chartres
     [tel1] => 
-    [courriel1] => soraya.ahras@justice.fr
+    [courriel1] => frederique.martin-ple@justice.fr
     [tel2] => 
     [courriel2] => 
     [site] => 
@@ -32,105 +32,6 @@ The Array :
 
 The Function : 
  Substitut Du Procureur
-The Array : 
- Array
-(
-    [xxx.Items.Id_Items] => 298
-    [xxx.Items.Id_groups_json] => 
-    [xxx.Items.Id_Accreditations_Item] => 1
-    [xxx.Items.Modifie] => 2016-10-25 09:14:28.002522
-    [xxx.Items.Id_Creator] => 1
-    [xxx.Items.Id_users_json] => 
-    [xxx.Noeuds.Id_Noeuds] => 298
-    [xxx.Noeuds.Id_Noeuds_Parent] => 298
-    [xxx.Contacts.Id_Contacts] => 298
-    [xxx.Contacts.Prenom] => Alexis
-    [xxx.Contacts.Nom] => Lecocq
-    [xxx.Contacts.Id_Civilites] => 1
-    [xxx.Contacts.Id_Titres] => 1
-    [xxx.Contacts.Id_Contact_Types] => 1
-    [fonction] => Substitut Du Procureur
-    [adr1] => 55 Boulevard Aristide Briand
-    [adr2] => 
-    [adr3] => BP 833
-    [cp] => 85021
-    [cedex] => CEDEX 
-    [ville] => La Roche Sur Yon
-    [tel1] => 
-    [courriel1] => alexis.lecocq@justice.fr
-    [tel2] => 
-    [courriel2] => 
-    [site] => 
-)
-
-The Function : 
- Substitut Du Procureur
-The Array : 
- Array
-(
-    [xxx.Items.Id_Items] => 304
-    [xxx.Items.Id_groups_json] => 
-    [xxx.Items.Id_Accreditations_Item] => 1
-    [xxx.Items.Modifie] => 2016-10-25 09:14:28.560522
-    [xxx.Items.Id_Creator] => 1
-    [xxx.Items.Id_users_json] => 
-    [xxx.Noeuds.Id_Noeuds] => 304
-    [xxx.Noeuds.Id_Noeuds_Parent] => 304
-    [xxx.Contacts.Id_Contacts] => 304
-    [xxx.Contacts.Prenom] => Baptiste
-    [xxx.Contacts.Nom] => Porcher
-    [xxx.Contacts.Id_Civilites] => 1
-    [xxx.Contacts.Id_Titres] => 1
-    [xxx.Contacts.Id_Contact_Types] => 1
-    [fonction] => Procureur De La République
-    [adr1] => Place Aubry
-    [adr2] => 
-    [adr3] => 
-    [cp] => 02001
-    [cedex] => CEDEX 
-    [ville] => Laon
-    [tel1] => 
-    [courriel1] => baptiste.porcher@justice.fr
-    [tel2] => 
-    [courriel2] => 
-    [site] => 
-)
-
-The Function : 
- Procureur De La République
-The Array : 
- Array
-(
-    [xxx.Items.Id_Items] => 307
-    [xxx.Items.Id_groups_json] => 
-    [xxx.Items.Id_Accreditations_Item] => 1
-    [xxx.Items.Modifie] => 2016-10-25 09:14:28.840522
-    [xxx.Items.Id_Creator] => 1
-    [xxx.Items.Id_users_json] => 
-    [xxx.Noeuds.Id_Noeuds] => 307
-    [xxx.Noeuds.Id_Noeuds_Parent] => 307
-    [xxx.Contacts.Id_Contacts] => 307
-    [xxx.Contacts.Prenom] => François
-    [xxx.Contacts.Nom] => Touret De Coucy
-    [xxx.Contacts.Id_Civilites] => 1
-    [xxx.Contacts.Id_Titres] => 1
-    [xxx.Contacts.Id_Contact_Types] => 1
-    [fonction] => Vice-Procureur
-    [adr1] => 13 Place Saint Tugal
-    [adr2] => 
-    [adr3] => BP 81515
-    [cp] => 53015
-    [cedex] => CEDEX 
-    [ville] => Laval
-    [tel1] => 
-    [courriel1] => françois.touret-de-coucy@justice.fr
-    [tel2] => 
-    [courriel2] => 
-    [site] => 
-)
-
-The Function : 
- Vice-Procureur
 The Query : 
  SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types
 , xxx.Contact_Infos.Fonction
@@ -141,6 +42,6 @@ FROM xxx.Items, xxx.Noeuds, xxx.Contacts
 WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
 AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts
 AND xxx.contacts.id_contact_types <> 0
-AND xxx.Contact_Infos.Id_Contacts = xxx.contacts.id_Contacts
-AND xxx.Contact_Infos.Id_Contact_Infos = xxx.Infos.id_Contact_Infos AND (xxx.Infos.Ville ILIKE 'La%')
-ORDER BY xxx.contacts.nom, xxx.contacts.prenom
+AND xxx.Contact_Infos.Id_Contacts = xxx.contacts.id_Contacts AND (xxx.Contact_Infos.Fonction ILIKE 'sub%')
+AND xxx.Contact_Infos.Id_Contact_Infos = xxx.Infos.id_Contact_Infos AND (xxx.Infos.CP ILIKE '28%')
+ORDER BY xxx.contacts.nom, xxx.contacts.prenom, xxx.Contact_Infos.Fonction
