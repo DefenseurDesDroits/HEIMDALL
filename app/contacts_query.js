@@ -390,7 +390,6 @@ function contact_queryDoQueryResponse(sText){
         //add other stuff ]:)
         oContact.members["sFonction"] = ary_[nLine]["sFonction"];
         oContact.members["sVille"] = ary_[nLine]["sVille"];
-        //console.log("WOW : " + ary_[nLine]["sFonction"]);
         //load
         oContact.loadFromArray(ary_[nLine]);
         //push to the global array
@@ -536,8 +535,12 @@ function contact_querySaveFiltre(oSegments){
     //do stuff
 
     //get the ary_
-    ary_ = JSON.parse(oSegment.getParametres());
-    ary_Data = ary_["Data"];
+    try {
+        ary_ = JSON.parse(oSegments.getParametres());
+        ary_Data = ary_["Data"];
+    } catch (error) {
+        ary_Data = {"nope" : ""};
+    }
 
     //get the element
     oElement = document.getElementById("SAI_Contacts_Prenom");
@@ -593,8 +596,9 @@ function contact_querySaveFiltre(oSegments){
     //The string
     sJson = JSON.stringify(oJson);
 
+    console.log("JSON : " + sJson);
     //set the Json
-    oSegments.setParametres(JSON);
+    oSegments.setParametres(sJson);
     //save
     oSegments.save(Heimdall.members.user["UserId"], ".");
 
@@ -605,7 +609,7 @@ function contact_querySaveFiltre(oSegments){
 function contact_queryFilterCreator(){
 
     //our new segments
-    var oSegments = new Segments();
+    var oSegments = null;
 
     //to cacth the name
     var oElement = null;
@@ -624,6 +628,47 @@ function contact_queryFilterCreator(){
     contact_querySaveFiltre(oSegments);
 
     //add to the list
+}
+
+function conctact_queryManageSaveFilter(){
+    //
+    var oElement = null;
+    //our line selected
+    var nLine = 0;
+
+    //get the element
+    oElement = document.getElementById("SAI_Segment_Nom");
+
+    //if the element is here
+    if(oElement != null){
+        //not null
+        if(oElement.value.trim() != "" && oElement.value.toUpperCase() != 'SEGMENTS'){
+            contact_queryFilterCreator();
+            console.log("conctact_queryManageSaveFilter => Creation!!!");
+        }
+        else{
+            //get the combo box 
+            oElement = document.getElementById("COMBO_Filtre");
+            //we have one
+            if(oElement != null){
+                //get the line
+                nLine = oElement.selectedIndex;
+                //console.log("conctact_queryManageSaveFilter => Combo : " + nLine);
+                //selected
+                if(nLine >= 0){
+                    //
+                    nLine = oElement.options[nLine].value;
+                    nLine = findInPotoursObjLst(Heimdall.members.products.contacts.Segments_Filtres, "nId_Items", nLine);
+                    //nLine = findInPotoursObjLst(Heimdall.members.products.contacts.Segments_Filtres, "nId_Contacts", nLine);
+                    //console.log("conctact_queryManageSaveFilter => Line step one : " + nLine);
+                    if(nLine >= 0){
+                        contact_querySaveFiltre(Heimdall.members.products.contacts.Segments_Filtres[nLine]);
+                        //console.log("conctact_queryManageSaveFilter => Line step two : " + nLine);
+                    }
+                }
+            }
+        }
+    }
 }
 
 ///[FUNCTION][contactMenu_query_HTML]Function to generate the HTML of the sub-menu
@@ -666,6 +711,7 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + '\t' + "</div>";
     sCode += '\t' + '\t' + '<div id="BTN_Contacts_Query" class="BTN_" onclick="contact_queryDoQuery();">SEARCH</div>\r\n';
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Segment_Nom\" type=\"text\" value=\"'Segments'\"></input> ";
+    sCode += '\t' + '\t' + '<div id="BTN_Segments_Save" class="BTN_" onclick="conctact_queryManageSaveFilter();">Save</div>\r\n';
     sCode += '\t' + '\t' + '\t' + "</form>";
 
     sCode += '\t' + '\t' + '</div>\r\n';

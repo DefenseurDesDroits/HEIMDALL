@@ -2,29 +2,161 @@ DEBUG !!!
 The Array : 
  Array
 (
-    [xxx.Items.Id_Items] => 202
+    [xxx.Items.Id_Items] => 361
     [xxx.Items.Id_groups_json] => 
     [xxx.Items.Id_Accreditations_Item] => 1
-    [xxx.Items.Modifie] => 2016-10-25 09:14:19.212522
+    [xxx.Items.Modifie] => 2016-10-25 09:14:33.717522
     [xxx.Items.Id_Creator] => 1
     [xxx.Items.Id_users_json] => 
-    [xxx.Noeuds.Id_Noeuds] => 202
-    [xxx.Noeuds.Id_Noeuds_Parent] => 202
-    [xxx.Contacts.Id_Contacts] => 202
-    [xxx.Contacts.Prenom] => Frédérique
-    [xxx.Contacts.Nom] => Martin-Ple
+    [xxx.Noeuds.Id_Noeuds] => 361
+    [xxx.Noeuds.Id_Noeuds_Parent] => 361
+    [xxx.Contacts.Id_Contacts] => 361
+    [xxx.Contacts.Prenom] => Morgane
+    [xxx.Contacts.Nom] => Bernard
     [xxx.Contacts.Id_Civilites] => 1
     [xxx.Contacts.Id_Titres] => 1
     [xxx.Contacts.Id_Contact_Types] => 1
     [fonction] => Substitut Du Procureur
-    [adr1] => 3 Rue Saint-Jacques
-    [adr2] => CS 80402
+    [adr1] => 2 Avenue Du Général Leclerc
+    [adr2] => 
     [adr3] => 
-    [cp] => 28019
+    [cp] => 77010
     [cedex] => CEDEX 
-    [ville] => Chartres
+    [ville] => Melun
     [tel1] => 
-    [courriel1] => frederique.martin-ple@justice.fr
+    [courriel1] => morgane.bernard@justice.fr
+    [tel2] => 
+    [courriel2] => 
+    [site] => 
+)
+
+The Function : 
+ Substitut Du Procureur
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 391
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:14:36.414522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 391
+    [xxx.Noeuds.Id_Noeuds_Parent] => 391
+    [xxx.Contacts.Id_Contacts] => 391
+    [xxx.Contacts.Prenom] => Manon
+    [xxx.Contacts.Nom] => Brignol
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 1
+    [fonction] => Substitut Général
+    [adr1] => 1 Rue Du Maréchal Foch
+    [adr2] => 
+    [adr3] => 
+    [cp] => 34023
+    [cedex] => CEDEX 1
+    [ville] => Montpellier
+    [tel1] => 
+    [courriel1] => manon.brignol@justice.fr
+    [tel2] => 
+    [courriel2] => 
+    [site] => 
+)
+
+The Function : 
+ Substitut Général
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 376
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:14:35.074522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 376
+    [xxx.Noeuds.Id_Noeuds_Parent] => 376
+    [xxx.Contacts.Id_Contacts] => 376
+    [xxx.Contacts.Prenom] => Céline
+    [xxx.Contacts.Nom] => Bucau
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 1
+    [fonction] => Substitut Du Procureur
+    [adr1] => 5 Avenue Du 8 Mai 1945
+    [adr2] => 
+    [adr3] => BP 315
+    [cp] => 40011
+    [cedex] => CEDEX 
+    [ville] => Mont De Marsan
+    [tel1] => 
+    [courriel1] => celine.bucau@justice.fr
+    [tel2] => 
+    [courriel2] => 
+    [site] => 
+)
+
+The Function : 
+ Substitut Du Procureur
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 367
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:14:34.233522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 367
+    [xxx.Noeuds.Id_Noeuds_Parent] => 367
+    [xxx.Contacts.Id_Contacts] => 367
+    [xxx.Contacts.Prenom] => Jean-Yves
+    [xxx.Contacts.Nom] => Goueffon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 1
+    [fonction] => Substitut Général  Avocat Général
+    [adr1] => 3 Rue Haute-Pierre
+    [adr2] => 
+    [adr3] => BP 41063
+    [cp] => 57036
+    [cedex] => CEDEX 1
+    [ville] => Metz
+    [tel1] => 
+    [courriel1] => jean-yves.goueffon@justice.fr
+    [tel2] => 
+    [courriel2] => 
+    [site] => 
+)
+
+The Function : 
+ Substitut Général  Avocat Général
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 379
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:14:35.359522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 379
+    [xxx.Noeuds.Id_Noeuds_Parent] => 379
+    [xxx.Contacts.Id_Contacts] => 379
+    [xxx.Contacts.Prenom] => Julia
+    [xxx.Contacts.Nom] => Salery
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 1
+    [fonction] => Substitut Du Procureur
+    [adr1] => 84 Rue Du Général Leclerc
+    [adr2] => 
+    [adr3] => 
+    [cp] => 45207
+    [cedex] => CEDEX 
+    [ville] => Montargis
+    [tel1] => 
+    [courriel1] => julia.salery@justice.fr
     [tel2] => 
     [courriel2] => 
     [site] => 
@@ -43,5 +175,5 @@ WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds
 AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts
 AND xxx.contacts.id_contact_types <> 0
 AND xxx.Contact_Infos.Id_Contacts = xxx.contacts.id_Contacts AND (xxx.Contact_Infos.Fonction ILIKE 'sub%')
-AND xxx.Contact_Infos.Id_Contact_Infos = xxx.Infos.id_Contact_Infos AND (xxx.Infos.CP ILIKE '28%')
+AND xxx.Contact_Infos.Id_Contact_Infos = xxx.Infos.id_Contact_Infos AND (xxx.Infos.Ville ILIKE 'M%')
 ORDER BY xxx.contacts.nom, xxx.contacts.prenom, xxx.Contact_Infos.Fonction
