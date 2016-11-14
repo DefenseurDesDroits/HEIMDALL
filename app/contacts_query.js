@@ -419,9 +419,74 @@ function contact_queryDoQuery(){
     return true;
 }
 
-function contact_queryFilterManager(nLine){
-     //our element
+function contact_queryLISTSelect(sLIST_ID, ary_, sAry_ID){
+    //our element
     var oElement = null;
+    //our option
+    var oOption = null;
+
+    //iterrator to save the 
+    var nIt = 0;
+    //our count
+    var nCount = 0;
+    
+    //load the List oh yeah !!!
+    oElement = document.getElementById(sLIST_ID);
+    if(oElement != null){
+        if(ary_[sAry_ID] != null){
+            nCount = oElement.options.length;
+            nIt = 0;
+            while(nIt < nCount){
+                //if selected add it dude !!!
+                oOption = oElement.options[nIt];
+                //find
+                if( findInArray(ary_[sAry_ID], oOption.value) != POTOURS_FIND_NOTFOUND) 
+                    oOption.selected = true;
+                else
+                    oOption.selected = false;
+                //next
+                nIt++;
+            }
+        }
+    }
+}
+
+function contact_queryLISTSave(sLIST_ID, ary_, sAry_ID){
+    //our element
+    var oElement = null;
+    //our option
+    var oOption = null;
+
+    //iterrator to save the 
+    var nIt = 0;
+    //our count
+    var nCount = 0;
+    
+    //save the List oh yeah !!!
+    oElement = document.getElementById(sLIST_ID);
+    if(oElement != null){
+        ary_[sAry_ID] = [];
+        nCount = oElement.options.length;
+        nLine = 0;
+        while(nLine < nCount){
+            //if selected add it dude !!!
+            oOption = oElement.options[nLine];
+            //if the option if selected :
+            if(oOption.selected){
+                //add the id
+                ary_[sAry_ID].push(oOption.value);
+            }
+            //next
+            nLine++;
+        }
+    }
+}
+
+function contact_queryFilterManager(nLine){
+    //our element
+    var oElement = null;
+    //our option
+    var oOption = null;
 
     //our value
     var sValue = "";
@@ -434,6 +499,11 @@ function contact_queryFilterManager(nLine){
     //our data
     var ary_Data = [];
 
+    //iterrator to save the 
+    var nIt = 0;
+    //our count
+    var nCount = 0;
+
     //check the segment
     if(nLine >= 0 && nLine < Heimdall.members.products.contacts.Segments_Filtres.length)
         oSegment = Heimdall.members.products.contacts.Segments_Filtres[nLine];
@@ -443,6 +513,8 @@ function contact_queryFilterManager(nLine){
     //get the ary_
     ary_ = JSON.parse(oSegment.getParametres());
     ary_Data = ary_["Data"];
+
+    //CONTACT PART #######################################################
 
     //get the element
     oElement = document.getElementById("SAI_Contacts_Prenom");
@@ -464,6 +536,23 @@ function contact_queryFilterManager(nLine){
             oElement.value = "";
     }
 
+    //load the List oh yeah !!!
+    contact_queryLISTSelect("COMBO_Civilites", ary_Data, "COMBO_Civilites");
+    //load the Titres
+    contact_queryLISTSelect("COMBO_Titres", ary_Data, "COMBO_Titres");
+    //load the contact type
+    contact_queryLISTSelect("COMBO_Contact_Types", ary_Data, "COMBO_Contact_Types");
+
+    //FUNCTION PART ######################################################
+
+    oElement = document.getElementById("COMBO_Infos");
+    if(oElement != null){
+        if(ary_Data["COMBO_Infos"] != null)
+            oElement.selectedIndex = ary_Data["COMBO_Infos"];
+        else
+            oElement.selectedIndex = 0;
+    }
+
     //get the element
     oElement = document.getElementById("SAI_Infos_Fonction");
     //element present
@@ -472,6 +561,19 @@ function contact_queryFilterManager(nLine){
             oElement.value = ary_Data["SAI_Infos_Fonction"];
         else
             oElement.value = "";
+    }
+
+    //load the languages
+    contact_queryLISTSelect("COMBO_Langues", ary_Data, "COMBO_Langues");
+
+    //ADRESSES PART ######################################################
+
+    oElement = document.getElementById("COMBO_Adresses");
+    if(oElement != null){
+        if(ary_Data["COMBO_Adresses"] != null)
+            oElement.selectedIndex = ary_Data["COMBO_Adresses"];
+        else
+            oElement.selectedIndex = 0;
     }
 
     //get the element
@@ -514,6 +616,11 @@ function contact_queryFilterManager(nLine){
             oElement.value = "";
     }
 
+    //save the country
+    contact_queryLISTSelect("COMBO_Pays", ary_Data, "COMBO_Pays");
+
+    //LOADING PART #######################################################
+
     //next
     return true;
 }
@@ -527,6 +634,17 @@ function contact_querySaveFiltre(oSegments){
     var oJson = {};
 
     //our JSON String
+    var sJson = "";
+
+    //iterrator to save the 
+    var nLine = 0;
+    //our count
+    var nCount = 0;
+
+    //our element
+    var oElement = null;
+    //our option
+    var oOption = null;
 
     //segment test
     if(oSegments == null)
@@ -542,6 +660,8 @@ function contact_querySaveFiltre(oSegments){
         ary_Data = {"nope" : ""};
     }
 
+    //CONTACT PART #######################################################
+
     //get the element
     oElement = document.getElementById("SAI_Contacts_Prenom");
     //element present
@@ -556,11 +676,37 @@ function contact_querySaveFiltre(oSegments){
         ary_Data["SAI_Contacts_Nom"] = oElement.value;
     }
 
+    //save the civilities
+    contact_queryLISTSave("COMBO_Civilites", ary_Data, "COMBO_Civilites");
+    //save the Titres
+    contact_queryLISTSave("COMBO_Titres", ary_Data, "COMBO_Titres");
+    //save the contact type
+    contact_queryLISTSave("COMBO_Contact_Types", ary_Data, "COMBO_Contact_Types");
+
+    //FUNCTION PART ######################################################
+
+    //save the List oh yeah !!!
+    oElement = document.getElementById("COMBO_Infos");
+    if(oElement != null){
+        ary_Data["COMBO_Infos"] = oElement.selectedIndex;
+    }
+
     //get the element
     oElement = document.getElementById("SAI_Infos_Fonction");
     //element present
     if(oElement != null){
         ary_Data["SAI_Infos_Fonction"] = oElement.value;
+    }
+
+    //save the languages
+    contact_queryLISTSave("COMBO_Langues", ary_Data, "COMBO_Langues");
+
+    //FUNCTION PART ######################################################
+
+    //save the List oh yeah !!!
+    oElement = document.getElementById("COMBO_Adresses");
+    if(oElement != null){
+        ary_Data["COMBO_Adresses"] = oElement.selectedIndex;
     }
 
     //get the element
@@ -590,6 +736,11 @@ function contact_querySaveFiltre(oSegments){
     if(oElement != null){
         ary_Data["SAI_Adr_Courriel"] = oElement.value;
     }
+
+    //save the country
+    contact_queryLISTSave("COMBO_Pays", ary_Data, "COMBO_Pays");
+
+    //SAVING PART ########################################################
 
     //The object
     oJson = { Nature : "filtres", Data : ary_Data};
@@ -642,7 +793,7 @@ function conctact_queryManageSaveFilter(){
     //if the element is here
     if(oElement != null){
         //not null
-        if(oElement.value.trim() != "" && oElement.value.toUpperCase() != 'SEGMENTS'){
+        if(oElement.value.trim() != "" && oElement.value.toUpperCase() != "'SEGMENTS'"){
             contact_queryFilterCreator();
             console.log("conctact_queryManageSaveFilter => Creation!!!");
         }
