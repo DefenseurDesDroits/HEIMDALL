@@ -12,8 +12,8 @@ include_once("CONTACTS_Infos.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
-Const HEIMDALL_QM_CONTACTS_SEGEMENT_Debug = false;
-//Const HEIMDALL_QM_CONTACTS_SEGEMENT_Debug = true;
+//Const HEIMDALL_QM_CONTACTS_SEGEMENT_Debug = false;
+Const HEIMDALL_QM_CONTACTS_SEGEMENT_Debug = true;
 
 ///[FUNCTION][searchQuery]Function to search the contact
 function searchQuery($Args){
@@ -164,6 +164,9 @@ function searchQuery($Args){
         //don't waste your time if nothing
         if($ary_Arg["Value"] != ""){
 
+            if(HEIMDALL_QM_CONTACTS_SEGEMENT_Debug)
+                file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Query@searchQuery.log", "The Method : " . $ary_Arg["Method"] . "\r\n" . "The Value : " . $ary_Arg["Value"] . "\r\n",  FILE_APPEND );
+
             //get the method
             $sMethod = $ary_Arg["Method"];
             //identify the Method
@@ -216,6 +219,10 @@ function searchQuery($Args){
     //create the query 
     $sQuery = $sSelection . $sFrom . $sWhere . $sOrder;
 
+    //debugging, the desperate way
+    if(HEIMDALL_QM_CONTACTS_SEGEMENT_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Query@searchQuery.log", "The Query : \r\n " . $sQuery . "\r\n",  FILE_APPEND );
+
     //get the array (so ugly way bro !!!)
     $GLOBALS["oConnection"]->open();
     $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", ($oContact->getColumns() . ", fonction, adr1, adr2, adr3, cp, cedex, ville, tel1, courriel1, tel2, courriel2, site") ), null);
@@ -247,18 +254,41 @@ function searchQuery($Args){
             ($ary_Obj[$nLine])["sFonction"] = $ary_[$nLine]["fonction"];
         else
             ($ary_Obj[$nLine])["sFonction"] = "";
-        if($bInfos)
+
+        if($bInfos){
+            ($ary_Obj[$nLine])["sAdr1"] = $ary_[$nLine]["adr1"];
+            ($ary_Obj[$nLine])["sAdr2"] = $ary_[$nLine]["adr2"];
+            ($ary_Obj[$nLine])["sAdr3"] = $ary_[$nLine]["adr3"];
+            ($ary_Obj[$nLine])["sCP"] = $ary_[$nLine]["cp"];
             ($ary_Obj[$nLine])["sVille"] = $ary_[$nLine]["ville"];
-        else
+            ($ary_Obj[$nLine])["sCedex"] = $ary_[$nLine]["cedex"];
+            ($ary_Obj[$nLine])["sTelephone1"] = $ary_[$nLine]["tel1"];
+            ($ary_Obj[$nLine])["sCourriel1"] = $ary_[$nLine]["courriel1"];
+            ($ary_Obj[$nLine])["sTelephone2"] = $ary_[$nLine]["tel2"];
+            ($ary_Obj[$nLine])["sCourriel2"] = $ary_[$nLine]["courriel2"];
+            ($ary_Obj[$nLine])["sSite"] = $ary_[$nLine]["site"];
+        } 
+        else{
+            ($ary_Obj[$nLine])["sAdr1"] = "";
+            ($ary_Obj[$nLine])["sAdr2"] = "";
+            ($ary_Obj[$nLine])["sAdr3"] = "";
+            ($ary_Obj[$nLine])["sCP"] = "";
             ($ary_Obj[$nLine])["sVille"] = "";
+            ($ary_Obj[$nLine])["sCedex"] = "";
+            ($ary_Obj[$nLine])["sTelephone1"] = "";
+            ($ary_Obj[$nLine])["sCourriel1"] = "";
+            ($ary_Obj[$nLine])["sTelephone2"] = "";
+            ($ary_Obj[$nLine])["sCourriel2"] = "";
+            ($ary_Obj[$nLine])["sSite"] = "";
+        }
         
         //Next
         $nLine++;
     }
 
-    //debugging, the desperate way
-    if(HEIMDALL_QM_CONTACTS_SEGEMENT_Debug)
-        file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Query@searchQuery.log", "The Query : \r\n " . $sQuery . "\r\n",  FILE_APPEND );
+    // //debugging, the desperate way
+    // if(HEIMDALL_QM_CONTACTS_SEGEMENT_Debug)
+    //     file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Query@searchQuery.log", "The Query : \r\n " . $sQuery . "\r\n",  FILE_APPEND );
 
     //push it to the view !!!
     echo json_encode($ary_Obj);

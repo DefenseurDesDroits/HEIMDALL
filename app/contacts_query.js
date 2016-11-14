@@ -61,6 +61,34 @@ function contact_queryDoQueryComplete(sIdWaiting, ptrFunctionCreateArg, ptrFunct
     return true;
 }
 
+function contact_queryArrayToList(ary_){
+    //our count
+    var nCount = 0;
+    //our iterrator
+    var nLine = 0;
+
+    //our list
+    var sList = "";
+
+    nCount = ary_.length;
+    nLine = 0;
+    //to optimize cycle !!!
+    if(nLine < nCount){
+        sList += ary_[nLine];
+        nLine++;
+    }
+    //loop
+    while(nLine < nCount){
+        //
+        sList += ", " + ary_[nLine];
+        //Next
+        nLine++;
+    }
+
+    //return the list
+    return sList;
+}
+
 ///[FUNCTION][contact_queryCreateArgs]Function to plot line of contacts
 ///[RETURNS][Array of Arguments]Array of arguments
 function contact_queryCreateArgs(){
@@ -85,6 +113,8 @@ function contact_queryCreateArgs(){
 
     //our resutl array 
     var ary_Result = [];
+    //temp array
+    var ary_ = [];
 
     //contacts section**********************************************
 
@@ -113,6 +143,39 @@ function contact_queryCreateArgs(){
         }
     }
 
+    //get the array
+    ary_ = [];
+    //get the element
+    contact_queryLISTSave("COMBO_Civilites", ary_, "COMBO_Civilites");
+    //get the string
+    sValue = contact_queryArrayToList(ary_["COMBO_Civilites"]);
+    //test
+    if(sValue != "" ){
+        ary_Result.push({Method : 'COND_IN_LIST', Names : ["Id_Civilites"], Value : sValue});
+    }
+
+    //get the array
+    ary_ = [];
+    //get the element
+    contact_queryLISTSave("COMBO_Titres", ary_, "COMBO_Titres");
+    //get the string
+    sValue = contact_queryArrayToList(ary_["COMBO_Titres"]);
+    //test
+    if(sValue != "" ){
+        ary_Result.push({Method : 'COND_IN_LIST', Names : ["Id_Titres"], Value : sValue});
+    }
+    
+    //get the array
+    ary_ = [];
+    //get the element
+    contact_queryLISTSave("COMBO_Contact_Types", ary_, "COMBO_Contact_Types");
+    //get the string
+    sValue = contact_queryArrayToList(ary_["COMBO_Contact_Types"]);
+    //test
+    if(sValue != "" ){
+        ary_Result.push({Method : 'COND_IN_LIST', Names : ["Id_Contact_Types"], Value : sValue});
+    }
+
     //infos section*************************************************
 
     //get the element
@@ -135,8 +198,21 @@ function contact_queryCreateArgs(){
                     ary_Result.push({Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sFonction"], Value : sValue});
                 //}
             }
+
+            //get the array
+            ary_ = [];
+            //get the element
+            contact_queryLISTSave("COMBO_Langues", ary_, "COMBO_Langues");
+            //get the string
+            sValue = contact_queryArrayToList(ary_["COMBO_Langues"]);
+            //test
+            if(sValue != "" ){
+                ary_Result.push({Method : 'COND_IN_LIST', Names : ["Id_Langues"], Value : sValue});
+            }
         }
     }
+
+    
 
     //adresses section**********************************************
 
@@ -195,6 +271,17 @@ function contact_queryCreateArgs(){
                 ary_Result.push({Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sCourriel1", "sCourriel2"], Value : sValue});
 
             }
+
+            //get the array
+            ary_ = [];
+            //get the element
+            contact_queryLISTSave("COMBO_Pays", ary_, "COMBO_Pays");
+            //get the string
+            sValue = contact_queryArrayToList(ary_["COMBO_Pays"]);
+            //test
+            if(sValue != "" ){
+                ary_Result.push({Method : 'COND_IN_LIST', Names : ["Id_Pays"], Value : sValue});
+            }
         }
     }
     
@@ -223,7 +310,6 @@ function contact_queryCreateSelectionField(sNext){
     sCode += "\t" + "</select>" + "\r\n";
     sCode += "\t" + '<input id="SAI_Value_' + sNext + '" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="contact_query_KeySearch(event)"/>';
     sCode += "</div>";
-    //sCode += "</form>";
 
     return sCode;
 }
@@ -283,11 +369,19 @@ function contact_queryPlots(nStart, nLength){
 
     //our code
     var sCode = "";
+    //our Civilites
+    var sCivilite = "";
+    //our Titres
+    var sTitre = "";
+    //our our contact type
+    var sType = "";
 
     //our count
     var nCount = 0;
     //our iterrator
     var nLine = 0;
+    //our position
+    var nPosition = 0;
 
     //get the count
     nCount = Heimdall.members.products.contacts.Segments_List.length;
@@ -306,11 +400,36 @@ function contact_queryPlots(nStart, nLength){
         while(nLine < nCount){
             //get the user
             oQuery = Heimdall.members.products.contacts.Segments_List[nLine];
+            //get the civilities
+            nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", oQuery.getId_Civilites());
+            //our position
+            if(nPosition == POTOURS_FIND_NOTFOUND)
+                sCivilite = "";
+            else
+                sCivilite = Heimdall.members.products.contacts.Civilites[nPosition].getNom();
+            //get the Title
+            nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", oQuery.getId_Titres());
+            //our position
+            if(nPosition == POTOURS_FIND_NOTFOUND)
+                sTitre = "";
+            else
+                sTitre = Heimdall.members.products.contacts.Titres[nPosition].getNom();
+            //get the Title
+            nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Contact_Types, "nId_Contact_Types", oQuery.getId_Contact_Types());
+            //our position
+            if(nPosition == POTOURS_FIND_NOTFOUND)
+                sType = "";
+            else
+                sType = Heimdall.members.products.contacts.Contact_Types[nPosition].getNom();
             //add the code
             sCode += "<div id=\"Query_Line_" + oQuery.getId_Contacts() + "\" onclick=\"notDevYet();\" class=\"OPT_Query\" style=\"width:100%;\">";
-            sCode += "\t" + "<div class=\"heim_Inline_Block\" style=\"width:20%;\">" + oQuery.getPrenom() + " " + oQuery.getNom() + "</div>";
+            sCode += "\t" + "<div class=\"heim_Inline_Block\" style=\"width:5%;\">" + sCivilite + "</div>";
+            sCode += "\t" + "<div class=\"heim_Inline_Block\" style=\"width:10%;\">" + oQuery.getPrenom() + " " + oQuery.getNom() + "</div>";
+            sCode += "\t" + "<div class=\"heim_Inline_Block\" style=\"width:10%;\">" + sTitre + "</div>";
+            sCode += "\t" + "<div class=\"heim_Inline_Block\" style=\"width:5%;\">" + sType + "</div>";
             sCode += "\t" + "<div class=\"heim_Inline_Block\" style=\"width:20%;\"> " + oQuery.members["sFonction"] + "</div>";
-            sCode += "\t" + "<div class=\"heim_Inline_Block\"> " + oQuery.members["sVille"] + "</div>";
+            sCode += "\t" + "<div class=\"heim_Inline_Block\" style=\"width:25%;\"> " + oQuery.members["sAdr1"] + " " + oQuery.members["sAdr2"] + " " + oQuery.members["sAdr3"] + " " + oQuery.members["sCP"] + " " + oQuery.members["sVille"] + " " + oQuery.members["sCedex"] + " " + oQuery.members["sTelephone1"] + " " + oQuery.members["sCourriel1"] + " " + oQuery.members["sTelephone2"] + " " + oQuery.members["sCourriel2"] + "</div>";
+            sCode += "\t" + "<div class=\"heim_Inline_Block\"> " + oQuery.members["sSite"] + "</div>";
             sCode += "</div>";
 
             //Next
