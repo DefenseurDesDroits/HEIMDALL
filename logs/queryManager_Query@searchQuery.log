@@ -1,61 +1,4247 @@
 DEBUG !!!
 The Method : COND_IN_LIST
-The Value : 2, 3
-The Method : COND_IN_LIST
-The Value : 17
-The Method : COND_IN_LIST
-The Value : 1, 2
-The Method : COND_LIKE_SW
-The Value : sub
-The Method : COND_IN_LIST
-The Value : 1
-The Method : COND_LIKE_SW
-The Value : M
-The Method : COND_IN_LIST
-The Value : 1, 3
+The Value : 2
 The Query : 
  SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Noeuds.Id_Noeuds, xxx.Noeuds.Id_Noeuds_Parent, xxx.Contacts.Id_Contacts, xxx.Contacts.Prenom, xxx.Contacts.Nom, xxx.Contacts.Id_Civilites, xxx.Contacts.Id_Titres, xxx.Contacts.Id_Contact_Types
-, xxx.Contact_Infos.Fonction
-, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site
 FROM xxx.Items, xxx.Noeuds, xxx.Contacts
-, xxx.Contact_Infos
-, xxx.Infos
 WHERE  xxx.Items.Id_Items = xxx.Noeuds.Id_Noeuds 
 AND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts
-AND xxx.contacts.id_contact_types <> 0
-AND xxx.Contact_Infos.Id_Contacts = xxx.contacts.id_Contacts AND Id_Civilites IN(2, 3) AND Id_Titres IN(17) AND Id_Contact_Types IN(1, 2) AND (xxx.Contact_Infos.Fonction ILIKE 'sub%') AND Id_Langues IN(1)
-AND xxx.Contact_Infos.Id_Contact_Infos = xxx.Infos.id_Contact_Infos AND (xxx.Infos.Ville ILIKE 'M%') AND Id_Pays IN(1, 3)
+AND xxx.contacts.id_contact_types <> 0 AND Id_Contact_Types IN(2)
 ORDER BY xxx.contacts.nom, xxx.contacts.prenom
 The Array : 
  Array
 (
-    [xxx.Items.Id_Items] => 361
+    [xxx.Items.Id_Items] => 697
     [xxx.Items.Id_groups_json] => 
     [xxx.Items.Id_Accreditations_Item] => 1
-    [xxx.Items.Modifie] => 2016-11-14 11:56:00.167903
+    [xxx.Items.Modifie] => 2016-10-25 09:15:04.917522
     [xxx.Items.Id_Creator] => 1
     [xxx.Items.Id_users_json] => 
-    [xxx.Noeuds.Id_Noeuds] => 361
-    [xxx.Noeuds.Id_Noeuds_Parent] => 361
-    [xxx.Contacts.Id_Contacts] => 361
-    [xxx.Contacts.Prenom] => Morgane
-    [xxx.Contacts.Nom] => Bernard
-    [xxx.Contacts.Id_Civilites] => 3
-    [xxx.Contacts.Id_Titres] => 17
-    [xxx.Contacts.Id_Contact_Types] => 1
-    [fonction] => Substitut Du Procureur
-    [adr1] => 2 Avenue Du Général Leclerc
-    [adr2] => 
-    [adr3] => 
-    [cp] => 77010
-    [cedex] => CEDEX 
-    [ville] => Melun
-    [tel1] => 
-    [courriel1] => morgane.bernard@justice.fr
-    [tel2] => 
-    [courriel2] => 
-    [site] => 
+    [xxx.Noeuds.Id_Noeuds] => 697
+    [xxx.Noeuds.Id_Noeuds_Parent] => 697
+    [xxx.Contacts.Id_Contacts] => 697
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel D'Agen
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
 )
 
-The Function : 
- Substitut Du Procureur
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 699
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:05.223522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 699
+    [xxx.Noeuds.Id_Noeuds_Parent] => 699
+    [xxx.Contacts.Id_Contacts] => 699
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel D'Aix-En-Provence
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 700
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:05.370522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 700
+    [xxx.Noeuds.Id_Noeuds_Parent] => 700
+    [xxx.Contacts.Id_Contacts] => 700
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel D'Aix-En-Provence
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 708
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:06.560522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 708
+    [xxx.Noeuds.Id_Noeuds_Parent] => 708
+    [xxx.Contacts.Id_Contacts] => 708
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel D'Amiens
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 709
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:06.706522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 709
+    [xxx.Noeuds.Id_Noeuds_Parent] => 709
+    [xxx.Contacts.Id_Contacts] => 709
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel D'Amiens
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 710
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:06.853522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 710
+    [xxx.Noeuds.Id_Noeuds_Parent] => 710
+    [xxx.Contacts.Id_Contacts] => 710
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel D'Angers
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 844
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:26.335522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 844
+    [xxx.Noeuds.Id_Noeuds_Parent] => 844
+    [xxx.Contacts.Id_Contacts] => 844
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel D'Orléans
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 845
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:26.487522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 845
+    [xxx.Noeuds.Id_Noeuds_Parent] => 845
+    [xxx.Contacts.Id_Contacts] => 845
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel D'Orléans
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 722
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:08.641522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 722
+    [xxx.Noeuds.Id_Noeuds_Parent] => 722
+    [xxx.Contacts.Id_Contacts] => 722
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Basse-Terre
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 724
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:08.939522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 724
+    [xxx.Noeuds.Id_Noeuds_Parent] => 724
+    [xxx.Contacts.Id_Contacts] => 724
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Bastia
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 725
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:09.090522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 725
+    [xxx.Noeuds.Id_Noeuds_Parent] => 725
+    [xxx.Contacts.Id_Contacts] => 725
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Bastia
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 731
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:09.984522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 731
+    [xxx.Noeuds.Id_Noeuds_Parent] => 731
+    [xxx.Contacts.Id_Contacts] => 731
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Besançon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 738
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:11.038522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 738
+    [xxx.Noeuds.Id_Noeuds_Parent] => 738
+    [xxx.Contacts.Id_Contacts] => 738
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Bordeaux
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 739
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:11.188522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 739
+    [xxx.Noeuds.Id_Noeuds_Parent] => 739
+    [xxx.Contacts.Id_Contacts] => 739
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Bordeaux
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 743
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:11.790522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 743
+    [xxx.Noeuds.Id_Noeuds_Parent] => 743
+    [xxx.Contacts.Id_Contacts] => 743
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Bourges
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 745
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:12.072522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 745
+    [xxx.Noeuds.Id_Noeuds_Parent] => 745
+    [xxx.Contacts.Id_Contacts] => 745
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Bourges
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 750
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:12.821522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 750
+    [xxx.Noeuds.Id_Noeuds_Parent] => 750
+    [xxx.Contacts.Id_Contacts] => 750
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Caen
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 757
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:13.825522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 757
+    [xxx.Noeuds.Id_Noeuds_Parent] => 757
+    [xxx.Contacts.Id_Contacts] => 757
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Cayenne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 763
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:14.690522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 763
+    [xxx.Noeuds.Id_Noeuds_Parent] => 763
+    [xxx.Contacts.Id_Contacts] => 763
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Chambéry
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 770
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:15.711522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 770
+    [xxx.Noeuds.Id_Noeuds_Parent] => 770
+    [xxx.Contacts.Id_Contacts] => 770
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Colmar
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 779
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:16.980522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 779
+    [xxx.Noeuds.Id_Noeuds_Parent] => 779
+    [xxx.Contacts.Id_Contacts] => 779
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Dijon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 781
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:17.275522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 781
+    [xxx.Noeuds.Id_Noeuds_Parent] => 781
+    [xxx.Contacts.Id_Contacts] => 781
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Douai
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 790
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:18.587522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 790
+    [xxx.Noeuds.Id_Noeuds_Parent] => 790
+    [xxx.Contacts.Id_Contacts] => 790
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Fort-De-France
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 794
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:19.166522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 794
+    [xxx.Noeuds.Id_Noeuds_Parent] => 794
+    [xxx.Contacts.Id_Contacts] => 794
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Grenoble
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 806
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:20.919522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 806
+    [xxx.Noeuds.Id_Noeuds_Parent] => 806
+    [xxx.Contacts.Id_Contacts] => 806
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Limoges
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 812
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:21.752522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 812
+    [xxx.Noeuds.Id_Noeuds_Parent] => 812
+    [xxx.Contacts.Id_Contacts] => 812
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Lyon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 819
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:22.752522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 819
+    [xxx.Noeuds.Id_Noeuds_Parent] => 819
+    [xxx.Contacts.Id_Contacts] => 819
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Metz
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 820
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:22.893522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 820
+    [xxx.Noeuds.Id_Noeuds_Parent] => 820
+    [xxx.Contacts.Id_Contacts] => 820
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Metz
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 827
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:23.895522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 827
+    [xxx.Noeuds.Id_Noeuds_Parent] => 827
+    [xxx.Contacts.Id_Contacts] => 827
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Montpellier
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 831
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:24.459522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 831
+    [xxx.Noeuds.Id_Noeuds_Parent] => 831
+    [xxx.Contacts.Id_Contacts] => 831
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Nancy
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 839
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:25.620522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 839
+    [xxx.Noeuds.Id_Noeuds_Parent] => 839
+    [xxx.Contacts.Id_Contacts] => 839
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Nîmes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 840
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:25.764522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 840
+    [xxx.Noeuds.Id_Noeuds_Parent] => 840
+    [xxx.Contacts.Id_Contacts] => 840
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Nîmes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 842
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:26.048522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 842
+    [xxx.Noeuds.Id_Noeuds_Parent] => 842
+    [xxx.Contacts.Id_Contacts] => 842
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Nouméa
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 848
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:26.904522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 848
+    [xxx.Noeuds.Id_Noeuds_Parent] => 848
+    [xxx.Contacts.Id_Contacts] => 848
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Papeete
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 849
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:27.055522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 849
+    [xxx.Noeuds.Id_Noeuds_Parent] => 849
+    [xxx.Contacts.Id_Contacts] => 849
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Papeete
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 854
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:27.828522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 854
+    [xxx.Noeuds.Id_Noeuds_Parent] => 854
+    [xxx.Contacts.Id_Contacts] => 854
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Pau
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 859
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:28.563522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 859
+    [xxx.Noeuds.Id_Noeuds_Parent] => 859
+    [xxx.Contacts.Id_Contacts] => 859
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Poitiers
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 864
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:29.272522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 864
+    [xxx.Noeuds.Id_Noeuds_Parent] => 864
+    [xxx.Contacts.Id_Contacts] => 864
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Reims
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 865
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:29.419522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 865
+    [xxx.Noeuds.Id_Noeuds_Parent] => 865
+    [xxx.Contacts.Id_Contacts] => 865
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Reims
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 867
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:29.706522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 867
+    [xxx.Noeuds.Id_Noeuds_Parent] => 867
+    [xxx.Contacts.Id_Contacts] => 867
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Rennes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 868
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:29.852522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 868
+    [xxx.Noeuds.Id_Noeuds_Parent] => 868
+    [xxx.Contacts.Id_Contacts] => 868
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Rennes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 869
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:29.997522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 869
+    [xxx.Noeuds.Id_Noeuds_Parent] => 869
+    [xxx.Contacts.Id_Contacts] => 869
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Riom
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 870
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:30.143522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 870
+    [xxx.Noeuds.Id_Noeuds_Parent] => 870
+    [xxx.Contacts.Id_Contacts] => 870
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Riom
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 872
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:30.438522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 872
+    [xxx.Noeuds.Id_Noeuds_Parent] => 872
+    [xxx.Contacts.Id_Contacts] => 872
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Rouen
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 873
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:30.586522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 873
+    [xxx.Noeuds.Id_Noeuds_Parent] => 873
+    [xxx.Contacts.Id_Contacts] => 873
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Rouen
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 884
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:32.183522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 884
+    [xxx.Noeuds.Id_Noeuds_Parent] => 884
+    [xxx.Contacts.Id_Contacts] => 884
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Saint-Denis-De-La Réunion
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 885
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:32.321522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 885
+    [xxx.Noeuds.Id_Noeuds_Parent] => 885
+    [xxx.Contacts.Id_Contacts] => 885
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Saint-Denis-De-La Réunion
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 902
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:34.699522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 902
+    [xxx.Noeuds.Id_Noeuds_Parent] => 902
+    [xxx.Contacts.Id_Contacts] => 902
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Toulouse
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 903
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:34.842522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 903
+    [xxx.Noeuds.Id_Noeuds_Parent] => 903
+    [xxx.Contacts.Id_Contacts] => 903
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Toulouse
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 913
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:36.334522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 913
+    [xxx.Noeuds.Id_Noeuds_Parent] => 913
+    [xxx.Contacts.Id_Contacts] => 913
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Versailles
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 914
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:36.477522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 914
+    [xxx.Noeuds.Id_Noeuds_Parent] => 914
+    [xxx.Contacts.Id_Contacts] => 914
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Cour D'Appel De Versailles
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 698
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:05.073522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 698
+    [xxx.Noeuds.Id_Noeuds_Parent] => 698
+    [xxx.Contacts.Id_Contacts] => 698
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Défenseur des droits
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 850
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:27.206522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 850
+    [xxx.Noeuds.Id_Noeuds_Parent] => 850
+    [xxx.Contacts.Id_Contacts] => 850
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Inspection Générale Des Services Judiciaires
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 851
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:27.358522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 851
+    [xxx.Noeuds.Id_Noeuds_Parent] => 851
+    [xxx.Contacts.Id_Contacts] => 851
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Ministère De La Justice
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 696
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:04.733522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 696
+    [xxx.Noeuds.Id_Noeuds_Parent] => 696
+    [xxx.Contacts.Id_Contacts] => 696
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Sénat
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 918
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:37.039522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 918
+    [xxx.Noeuds.Id_Noeuds_Parent] => 918
+    [xxx.Contacts.Id_Contacts] => 918
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Agen
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 701
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:05.521522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 701
+    [xxx.Noeuds.Id_Noeuds_Parent] => 701
+    [xxx.Contacts.Id_Contacts] => 701
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Aix-En-Provence
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 702
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:05.667522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 702
+    [xxx.Noeuds.Id_Noeuds_Parent] => 702
+    [xxx.Contacts.Id_Contacts] => 702
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Ajaccio
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 703
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:05.819522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 703
+    [xxx.Noeuds.Id_Noeuds_Parent] => 703
+    [xxx.Contacts.Id_Contacts] => 703
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Albertville
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 704
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:05.971522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 704
+    [xxx.Noeuds.Id_Noeuds_Parent] => 704
+    [xxx.Contacts.Id_Contacts] => 704
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Albi
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 705
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:06.123522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 705
+    [xxx.Noeuds.Id_Noeuds_Parent] => 705
+    [xxx.Contacts.Id_Contacts] => 705
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Alençon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 706
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:06.272522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 706
+    [xxx.Noeuds.Id_Noeuds_Parent] => 706
+    [xxx.Contacts.Id_Contacts] => 706
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Alès
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 707
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:06.416522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 707
+    [xxx.Noeuds.Id_Noeuds_Parent] => 707
+    [xxx.Contacts.Id_Contacts] => 707
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Amiens
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 711
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:06.999522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 711
+    [xxx.Noeuds.Id_Noeuds_Parent] => 711
+    [xxx.Contacts.Id_Contacts] => 711
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Angers
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 712
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:07.145522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 712
+    [xxx.Noeuds.Id_Noeuds_Parent] => 712
+    [xxx.Contacts.Id_Contacts] => 712
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Angoulême
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 713
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:07.287522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 713
+    [xxx.Noeuds.Id_Noeuds_Parent] => 713
+    [xxx.Contacts.Id_Contacts] => 713
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Annecy
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 714
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:07.438522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 714
+    [xxx.Noeuds.Id_Noeuds_Parent] => 714
+    [xxx.Contacts.Id_Contacts] => 714
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Argentan
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 715
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:07.590522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 715
+    [xxx.Noeuds.Id_Noeuds_Parent] => 715
+    [xxx.Contacts.Id_Contacts] => 715
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Arras
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 716
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:07.741522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 716
+    [xxx.Noeuds.Id_Noeuds_Parent] => 716
+    [xxx.Contacts.Id_Contacts] => 716
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Auch
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 717
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:07.892522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 717
+    [xxx.Noeuds.Id_Noeuds_Parent] => 717
+    [xxx.Contacts.Id_Contacts] => 717
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Aurillac
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 718
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:08.040522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 718
+    [xxx.Noeuds.Id_Noeuds_Parent] => 718
+    [xxx.Contacts.Id_Contacts] => 718
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Auxerre
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 719
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:08.191522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 719
+    [xxx.Noeuds.Id_Noeuds_Parent] => 719
+    [xxx.Contacts.Id_Contacts] => 719
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Avesnes-Sur-Helpe
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 720
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:08.337522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 720
+    [xxx.Noeuds.Id_Noeuds_Parent] => 720
+    [xxx.Contacts.Id_Contacts] => 720
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Avignon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 784
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:17.710522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 784
+    [xxx.Noeuds.Id_Noeuds_Parent] => 784
+    [xxx.Contacts.Id_Contacts] => 784
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Epinal
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 785
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:17.846522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 785
+    [xxx.Noeuds.Id_Noeuds_Parent] => 785
+    [xxx.Contacts.Id_Contacts] => 785
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Evreux
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 786
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:18.003522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 786
+    [xxx.Noeuds.Id_Noeuds_Parent] => 786
+    [xxx.Contacts.Id_Contacts] => 786
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Evry
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 846
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:26.627522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 846
+    [xxx.Noeuds.Id_Noeuds_Parent] => 846
+    [xxx.Contacts.Id_Contacts] => 846
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance D'Orléans
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 721
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:08.489522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 721
+    [xxx.Noeuds.Id_Noeuds_Parent] => 721
+    [xxx.Contacts.Id_Contacts] => 721
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bar-Le-Duc
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 723
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:08.790522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 723
+    [xxx.Noeuds.Id_Noeuds_Parent] => 723
+    [xxx.Contacts.Id_Contacts] => 723
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Basse-Terre
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 726
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:09.241522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 726
+    [xxx.Noeuds.Id_Noeuds_Parent] => 726
+    [xxx.Contacts.Id_Contacts] => 726
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bastia
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 727
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:09.388522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 727
+    [xxx.Noeuds.Id_Noeuds_Parent] => 727
+    [xxx.Contacts.Id_Contacts] => 727
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bayonne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 728
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:09.537522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 728
+    [xxx.Noeuds.Id_Noeuds_Parent] => 728
+    [xxx.Contacts.Id_Contacts] => 728
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Beauvais
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 729
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:09.688522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 729
+    [xxx.Noeuds.Id_Noeuds_Parent] => 729
+    [xxx.Contacts.Id_Contacts] => 729
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Belfort
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 730
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:09.835522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 730
+    [xxx.Noeuds.Id_Noeuds_Parent] => 730
+    [xxx.Contacts.Id_Contacts] => 730
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bergerac
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 732
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:10.141522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 732
+    [xxx.Noeuds.Id_Noeuds_Parent] => 732
+    [xxx.Contacts.Id_Contacts] => 732
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Besançon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 733
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:10.287522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 733
+    [xxx.Noeuds.Id_Noeuds_Parent] => 733
+    [xxx.Contacts.Id_Contacts] => 733
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Béthune
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 734
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:10.431522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 734
+    [xxx.Noeuds.Id_Noeuds_Parent] => 734
+    [xxx.Contacts.Id_Contacts] => 734
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Béziers
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 735
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:10.579522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 735
+    [xxx.Noeuds.Id_Noeuds_Parent] => 735
+    [xxx.Contacts.Id_Contacts] => 735
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Blois
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 736
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:10.731522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 736
+    [xxx.Noeuds.Id_Noeuds_Parent] => 736
+    [xxx.Contacts.Id_Contacts] => 736
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bobigny
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 737
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:10.884522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 737
+    [xxx.Noeuds.Id_Noeuds_Parent] => 737
+    [xxx.Contacts.Id_Contacts] => 737
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bonneville
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 740
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:11.340522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 740
+    [xxx.Noeuds.Id_Noeuds_Parent] => 740
+    [xxx.Contacts.Id_Contacts] => 740
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bordeaux
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 741
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:11.490522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 741
+    [xxx.Noeuds.Id_Noeuds_Parent] => 741
+    [xxx.Contacts.Id_Contacts] => 741
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Boulogne-Sur-Mer
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 742
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:11.640522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 742
+    [xxx.Noeuds.Id_Noeuds_Parent] => 742
+    [xxx.Contacts.Id_Contacts] => 742
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bourg-En-Bresse
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 744
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:11.935522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 744
+    [xxx.Noeuds.Id_Noeuds_Parent] => 744
+    [xxx.Contacts.Id_Contacts] => 744
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bourges
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 746
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:12.226522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 746
+    [xxx.Noeuds.Id_Noeuds_Parent] => 746
+    [xxx.Contacts.Id_Contacts] => 746
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Bourgoin-Jallieu
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 747
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:12.371522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 747
+    [xxx.Noeuds.Id_Noeuds_Parent] => 747
+    [xxx.Contacts.Id_Contacts] => 747
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Brest
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 748
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:12.516522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 748
+    [xxx.Noeuds.Id_Noeuds_Parent] => 748
+    [xxx.Contacts.Id_Contacts] => 748
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Briey
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 749
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:12.673522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 749
+    [xxx.Noeuds.Id_Noeuds_Parent] => 749
+    [xxx.Contacts.Id_Contacts] => 749
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Brive-La-Gaillarde
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 751
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:12.963522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 751
+    [xxx.Noeuds.Id_Noeuds_Parent] => 751
+    [xxx.Contacts.Id_Contacts] => 751
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Caen
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 752
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:13.105522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 752
+    [xxx.Noeuds.Id_Noeuds_Parent] => 752
+    [xxx.Contacts.Id_Contacts] => 752
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Cahors
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 753
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:13.248522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 753
+    [xxx.Noeuds.Id_Noeuds_Parent] => 753
+    [xxx.Contacts.Id_Contacts] => 753
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Cambrai
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 754
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:13.390522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 754
+    [xxx.Noeuds.Id_Noeuds_Parent] => 754
+    [xxx.Contacts.Id_Contacts] => 754
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Carcassonne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 755
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:13.532522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 755
+    [xxx.Noeuds.Id_Noeuds_Parent] => 755
+    [xxx.Contacts.Id_Contacts] => 755
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Carpentras
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 756
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:13.677522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 756
+    [xxx.Noeuds.Id_Noeuds_Parent] => 756
+    [xxx.Contacts.Id_Contacts] => 756
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Castres
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 758
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:13.969522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 758
+    [xxx.Noeuds.Id_Noeuds_Parent] => 758
+    [xxx.Contacts.Id_Contacts] => 758
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Cayenne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 760
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:14.263522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 760
+    [xxx.Noeuds.Id_Noeuds_Parent] => 760
+    [xxx.Contacts.Id_Contacts] => 760
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Chalon-Sur-Saône
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 761
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:14.401522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 761
+    [xxx.Noeuds.Id_Noeuds_Parent] => 761
+    [xxx.Contacts.Id_Contacts] => 761
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Châlons-En-Champagne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 762
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:14.543522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 762
+    [xxx.Noeuds.Id_Noeuds_Parent] => 762
+    [xxx.Contacts.Id_Contacts] => 762
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Chambéry
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 764
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:14.835522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 764
+    [xxx.Noeuds.Id_Noeuds_Parent] => 764
+    [xxx.Contacts.Id_Contacts] => 764
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Chartres
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 765
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:14.980522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 765
+    [xxx.Noeuds.Id_Noeuds_Parent] => 765
+    [xxx.Contacts.Id_Contacts] => 765
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Châteauroux
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 766
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:15.129522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 766
+    [xxx.Noeuds.Id_Noeuds_Parent] => 766
+    [xxx.Contacts.Id_Contacts] => 766
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Chaumont
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 767
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:15.284522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 767
+    [xxx.Noeuds.Id_Noeuds_Parent] => 767
+    [xxx.Contacts.Id_Contacts] => 767
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Cherbourg
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 768
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:15.434522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 768
+    [xxx.Noeuds.Id_Noeuds_Parent] => 768
+    [xxx.Contacts.Id_Contacts] => 768
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Clermont-Ferrand
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 769
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:15.571522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 769
+    [xxx.Noeuds.Id_Noeuds_Parent] => 769
+    [xxx.Contacts.Id_Contacts] => 769
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Colmar
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 771
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:15.853522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 771
+    [xxx.Noeuds.Id_Noeuds_Parent] => 771
+    [xxx.Contacts.Id_Contacts] => 771
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Compiègne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 772
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:15.995522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 772
+    [xxx.Noeuds.Id_Noeuds_Parent] => 772
+    [xxx.Contacts.Id_Contacts] => 772
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Coutances
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 773
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:16.144522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 773
+    [xxx.Noeuds.Id_Noeuds_Parent] => 773
+    [xxx.Contacts.Id_Contacts] => 773
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Créteil
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 774
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:16.296522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 774
+    [xxx.Noeuds.Id_Noeuds_Parent] => 774
+    [xxx.Contacts.Id_Contacts] => 774
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Cusset
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 775
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:16.433522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 775
+    [xxx.Noeuds.Id_Noeuds_Parent] => 775
+    [xxx.Contacts.Id_Contacts] => 775
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Dax
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 776
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:16.563522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 776
+    [xxx.Noeuds.Id_Noeuds_Parent] => 776
+    [xxx.Contacts.Id_Contacts] => 776
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Dieppe
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 777
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:16.697522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 777
+    [xxx.Noeuds.Id_Noeuds_Parent] => 777
+    [xxx.Contacts.Id_Contacts] => 777
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Digne-Les-Bains
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 778
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:16.843522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 778
+    [xxx.Noeuds.Id_Noeuds_Parent] => 778
+    [xxx.Contacts.Id_Contacts] => 778
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Dijon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 780
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:17.128522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 780
+    [xxx.Noeuds.Id_Noeuds_Parent] => 780
+    [xxx.Contacts.Id_Contacts] => 780
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Douai
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 782
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:17.417522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 782
+    [xxx.Noeuds.Id_Noeuds_Parent] => 782
+    [xxx.Contacts.Id_Contacts] => 782
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Draguignan
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 783
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:17.566522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 783
+    [xxx.Noeuds.Id_Noeuds_Parent] => 783
+    [xxx.Contacts.Id_Contacts] => 783
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Dunkerque
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 787
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:18.153522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 787
+    [xxx.Noeuds.Id_Noeuds_Parent] => 787
+    [xxx.Contacts.Id_Contacts] => 787
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Foix
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 788
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:18.297522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 788
+    [xxx.Noeuds.Id_Noeuds_Parent] => 788
+    [xxx.Contacts.Id_Contacts] => 788
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Fontainebleau
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 789
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:18.440522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 789
+    [xxx.Noeuds.Id_Noeuds_Parent] => 789
+    [xxx.Contacts.Id_Contacts] => 789
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Fort-De-France
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 791
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:18.731522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 791
+    [xxx.Noeuds.Id_Noeuds_Parent] => 791
+    [xxx.Contacts.Id_Contacts] => 791
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Gap
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 792
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:18.875522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 792
+    [xxx.Noeuds.Id_Noeuds_Parent] => 792
+    [xxx.Contacts.Id_Contacts] => 792
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Grasse
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 793
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:19.019522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 793
+    [xxx.Noeuds.Id_Noeuds_Parent] => 793
+    [xxx.Contacts.Id_Contacts] => 793
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Grenoble
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 795
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:19.310522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 795
+    [xxx.Noeuds.Id_Noeuds_Parent] => 795
+    [xxx.Contacts.Id_Contacts] => 795
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Guéret
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 796
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:19.452522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 796
+    [xxx.Noeuds.Id_Noeuds_Parent] => 796
+    [xxx.Contacts.Id_Contacts] => 796
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De La Roche-Sur-Yon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 797
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:19.597522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 797
+    [xxx.Noeuds.Id_Noeuds_Parent] => 797
+    [xxx.Contacts.Id_Contacts] => 797
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De La Rochelle
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 798
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:19.749522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 798
+    [xxx.Noeuds.Id_Noeuds_Parent] => 798
+    [xxx.Contacts.Id_Contacts] => 798
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Laon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 799
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:19.905522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 799
+    [xxx.Noeuds.Id_Noeuds_Parent] => 799
+    [xxx.Contacts.Id_Contacts] => 799
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Laval
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 804
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:20.631522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 804
+    [xxx.Noeuds.Id_Noeuds_Parent] => 804
+    [xxx.Contacts.Id_Contacts] => 804
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Libourne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 805
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:20.779522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 805
+    [xxx.Noeuds.Id_Noeuds_Parent] => 805
+    [xxx.Contacts.Id_Contacts] => 805
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Lille
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 807
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:21.057522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 807
+    [xxx.Noeuds.Id_Noeuds_Parent] => 807
+    [xxx.Contacts.Id_Contacts] => 807
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Limoges
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 808
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:21.199522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 808
+    [xxx.Noeuds.Id_Noeuds_Parent] => 808
+    [xxx.Contacts.Id_Contacts] => 808
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Lisieux
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 809
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:21.339522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 809
+    [xxx.Noeuds.Id_Noeuds_Parent] => 809
+    [xxx.Contacts.Id_Contacts] => 809
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Lons-Le-Saunier
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 810
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:21.474522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 810
+    [xxx.Noeuds.Id_Noeuds_Parent] => 810
+    [xxx.Contacts.Id_Contacts] => 810
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Lorient
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 811
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:21.613522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 811
+    [xxx.Noeuds.Id_Noeuds_Parent] => 811
+    [xxx.Contacts.Id_Contacts] => 811
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Lyon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 813
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:21.890522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 813
+    [xxx.Noeuds.Id_Noeuds_Parent] => 813
+    [xxx.Contacts.Id_Contacts] => 813
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Mâcon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 814
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:22.031522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 814
+    [xxx.Noeuds.Id_Noeuds_Parent] => 814
+    [xxx.Contacts.Id_Contacts] => 814
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Mamoudzou
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 815
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:22.180522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 815
+    [xxx.Noeuds.Id_Noeuds_Parent] => 815
+    [xxx.Contacts.Id_Contacts] => 815
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Marseille
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 816
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:22.324522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 816
+    [xxx.Noeuds.Id_Noeuds_Parent] => 816
+    [xxx.Contacts.Id_Contacts] => 816
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Meaux
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 817
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:22.469522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 817
+    [xxx.Noeuds.Id_Noeuds_Parent] => 817
+    [xxx.Contacts.Id_Contacts] => 817
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Melun
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 818
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:22.613522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 818
+    [xxx.Noeuds.Id_Noeuds_Parent] => 818
+    [xxx.Contacts.Id_Contacts] => 818
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Mende
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 821
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:23.033522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 821
+    [xxx.Noeuds.Id_Noeuds_Parent] => 821
+    [xxx.Contacts.Id_Contacts] => 821
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Metz
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 822
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:23.176522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 822
+    [xxx.Noeuds.Id_Noeuds_Parent] => 822
+    [xxx.Contacts.Id_Contacts] => 822
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Mont-De-Marsan
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 823
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:23.317522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 823
+    [xxx.Noeuds.Id_Noeuds_Parent] => 823
+    [xxx.Contacts.Id_Contacts] => 823
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Montargis
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 824
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:23.467522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 824
+    [xxx.Noeuds.Id_Noeuds_Parent] => 824
+    [xxx.Contacts.Id_Contacts] => 824
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Montauban
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 825
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:23.616522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 825
+    [xxx.Noeuds.Id_Noeuds_Parent] => 825
+    [xxx.Contacts.Id_Contacts] => 825
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Montbéliard
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 826
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:23.755522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 826
+    [xxx.Noeuds.Id_Noeuds_Parent] => 826
+    [xxx.Contacts.Id_Contacts] => 826
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Montluçon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 828
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:24.035522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 828
+    [xxx.Noeuds.Id_Noeuds_Parent] => 828
+    [xxx.Contacts.Id_Contacts] => 828
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Montpellier
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 829
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:24.177522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 829
+    [xxx.Noeuds.Id_Noeuds_Parent] => 829
+    [xxx.Contacts.Id_Contacts] => 829
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Moulins
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 830
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:24.319522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 830
+    [xxx.Noeuds.Id_Noeuds_Parent] => 830
+    [xxx.Contacts.Id_Contacts] => 830
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Mulhouse
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 832
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:24.599522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 832
+    [xxx.Noeuds.Id_Noeuds_Parent] => 832
+    [xxx.Contacts.Id_Contacts] => 832
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Nancy
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 833
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:24.742522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 833
+    [xxx.Noeuds.Id_Noeuds_Parent] => 833
+    [xxx.Contacts.Id_Contacts] => 833
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Nanterre
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 834
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:24.884522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 834
+    [xxx.Noeuds.Id_Noeuds_Parent] => 834
+    [xxx.Contacts.Id_Contacts] => 834
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Nantes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 835
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:25.031522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 835
+    [xxx.Noeuds.Id_Noeuds_Parent] => 835
+    [xxx.Contacts.Id_Contacts] => 835
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Narbonne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 836
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:25.172522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 836
+    [xxx.Noeuds.Id_Noeuds_Parent] => 836
+    [xxx.Contacts.Id_Contacts] => 836
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Nevers
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 837
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:25.320522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 837
+    [xxx.Noeuds.Id_Noeuds_Parent] => 837
+    [xxx.Contacts.Id_Contacts] => 837
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Nice
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 838
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:25.472522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 838
+    [xxx.Noeuds.Id_Noeuds_Parent] => 838
+    [xxx.Contacts.Id_Contacts] => 838
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Nîmes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 841
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:25.907522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 841
+    [xxx.Noeuds.Id_Noeuds_Parent] => 841
+    [xxx.Contacts.Id_Contacts] => 841
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Niort
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 852
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:27.516522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 852
+    [xxx.Noeuds.Id_Noeuds_Parent] => 852
+    [xxx.Contacts.Id_Contacts] => 852
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Paris
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 853
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:27.671522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 853
+    [xxx.Noeuds.Id_Noeuds_Parent] => 853
+    [xxx.Contacts.Id_Contacts] => 853
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Paris
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 855
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:27.986522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 855
+    [xxx.Noeuds.Id_Noeuds_Parent] => 855
+    [xxx.Contacts.Id_Contacts] => 855
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Pau
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 856
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:28.140522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 856
+    [xxx.Noeuds.Id_Noeuds_Parent] => 856
+    [xxx.Contacts.Id_Contacts] => 856
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Périgueux
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 857
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:28.284522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 857
+    [xxx.Noeuds.Id_Noeuds_Parent] => 857
+    [xxx.Contacts.Id_Contacts] => 857
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Perpignan
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 858
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:28.423522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 858
+    [xxx.Noeuds.Id_Noeuds_Parent] => 858
+    [xxx.Contacts.Id_Contacts] => 858
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Pointe-À-Pitre
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 860
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:28.702522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 860
+    [xxx.Noeuds.Id_Noeuds_Parent] => 860
+    [xxx.Contacts.Id_Contacts] => 860
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Poitiers
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 759
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:14.111522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 759
+    [xxx.Noeuds.Id_Noeuds_Parent] => 759
+    [xxx.Contacts.Id_Contacts] => 759
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Pontoise
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 861
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:28.846522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 861
+    [xxx.Noeuds.Id_Noeuds_Parent] => 861
+    [xxx.Contacts.Id_Contacts] => 861
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Privas
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 862
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:28.986522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 862
+    [xxx.Noeuds.Id_Noeuds_Parent] => 862
+    [xxx.Contacts.Id_Contacts] => 862
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Quimper
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 863
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:29.128522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 863
+    [xxx.Noeuds.Id_Noeuds_Parent] => 863
+    [xxx.Contacts.Id_Contacts] => 863
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Reims
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 866
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:29.563522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 866
+    [xxx.Noeuds.Id_Noeuds_Parent] => 866
+    [xxx.Contacts.Id_Contacts] => 866
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Rennes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 871
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:30.292522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 871
+    [xxx.Noeuds.Id_Noeuds_Parent] => 871
+    [xxx.Contacts.Id_Contacts] => 871
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Rodez
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 874
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:30.739522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 874
+    [xxx.Noeuds.Id_Noeuds_Parent] => 874
+    [xxx.Contacts.Id_Contacts] => 874
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Rouen
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 883
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:32.035522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 883
+    [xxx.Noeuds.Id_Noeuds_Parent] => 883
+    [xxx.Contacts.Id_Contacts] => 883
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Brieuc
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 894
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:33.587522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 894
+    [xxx.Noeuds.Id_Noeuds_Parent] => 894
+    [xxx.Contacts.Id_Contacts] => 894
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Denis-De-La-Réunion
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 886
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:32.464522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 886
+    [xxx.Noeuds.Id_Noeuds_Parent] => 886
+    [xxx.Contacts.Id_Contacts] => 886
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Etienne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 876
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:31.037522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 876
+    [xxx.Noeuds.Id_Noeuds_Parent] => 876
+    [xxx.Contacts.Id_Contacts] => 876
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Gaudens
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 887
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:32.605522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 887
+    [xxx.Noeuds.Id_Noeuds_Parent] => 887
+    [xxx.Contacts.Id_Contacts] => 887
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Malo
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 888
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:32.749522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 888
+    [xxx.Noeuds.Id_Noeuds_Parent] => 888
+    [xxx.Contacts.Id_Contacts] => 888
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Nazaire
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 889
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:32.893522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 889
+    [xxx.Noeuds.Id_Noeuds_Parent] => 889
+    [xxx.Contacts.Id_Contacts] => 889
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Omer
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 890
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:33.034522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 890
+    [xxx.Noeuds.Id_Noeuds_Parent] => 890
+    [xxx.Contacts.Id_Contacts] => 890
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Pierre
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 891
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:33.177522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 891
+    [xxx.Noeuds.Id_Noeuds_Parent] => 891
+    [xxx.Contacts.Id_Contacts] => 891
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Pierre
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 893
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:33.452522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 893
+    [xxx.Noeuds.Id_Noeuds_Parent] => 893
+    [xxx.Contacts.Id_Contacts] => 893
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saint-Quentin
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 875
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:30.890522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 875
+    [xxx.Noeuds.Id_Noeuds_Parent] => 875
+    [xxx.Contacts.Id_Contacts] => 875
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saintes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 877
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:31.190522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 877
+    [xxx.Noeuds.Id_Noeuds_Parent] => 877
+    [xxx.Contacts.Id_Contacts] => 877
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Sarreguemines
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 878
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:31.332522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 878
+    [xxx.Noeuds.Id_Noeuds_Parent] => 878
+    [xxx.Contacts.Id_Contacts] => 878
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saumur
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 879
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:31.468522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 879
+    [xxx.Noeuds.Id_Noeuds_Parent] => 879
+    [xxx.Contacts.Id_Contacts] => 879
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Saverne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 880
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:31.608522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 880
+    [xxx.Noeuds.Id_Noeuds_Parent] => 880
+    [xxx.Contacts.Id_Contacts] => 880
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Senlis
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 881
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:31.748522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 881
+    [xxx.Noeuds.Id_Noeuds_Parent] => 881
+    [xxx.Contacts.Id_Contacts] => 881
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Sens
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 882
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:31.889522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 882
+    [xxx.Noeuds.Id_Noeuds_Parent] => 882
+    [xxx.Contacts.Id_Contacts] => 882
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Soissons
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 895
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:33.724522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 895
+    [xxx.Noeuds.Id_Noeuds_Parent] => 895
+    [xxx.Contacts.Id_Contacts] => 895
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Strasbourg
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 896
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:33.861522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 896
+    [xxx.Noeuds.Id_Noeuds_Parent] => 896
+    [xxx.Contacts.Id_Contacts] => 896
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Tarascon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 897
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:33.995522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 897
+    [xxx.Noeuds.Id_Noeuds_Parent] => 897
+    [xxx.Contacts.Id_Contacts] => 897
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Tarbes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 898
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:34.130522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 898
+    [xxx.Noeuds.Id_Noeuds_Parent] => 898
+    [xxx.Contacts.Id_Contacts] => 898
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Thionville
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 899
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:34.271522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 899
+    [xxx.Noeuds.Id_Noeuds_Parent] => 899
+    [xxx.Contacts.Id_Contacts] => 899
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Thonon-Les-Bains
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 900
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:34.413522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 900
+    [xxx.Noeuds.Id_Noeuds_Parent] => 900
+    [xxx.Contacts.Id_Contacts] => 900
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Toulon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 901
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:34.556522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 901
+    [xxx.Noeuds.Id_Noeuds_Parent] => 901
+    [xxx.Contacts.Id_Contacts] => 901
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Toulouse
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 904
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:34.983522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 904
+    [xxx.Noeuds.Id_Noeuds_Parent] => 904
+    [xxx.Contacts.Id_Contacts] => 904
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Tours
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 905
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:35.130522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 905
+    [xxx.Noeuds.Id_Noeuds_Parent] => 905
+    [xxx.Contacts.Id_Contacts] => 905
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Troyes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 906
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:35.271522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 906
+    [xxx.Noeuds.Id_Noeuds_Parent] => 906
+    [xxx.Contacts.Id_Contacts] => 906
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Tulle
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 907
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:35.419522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 907
+    [xxx.Noeuds.Id_Noeuds_Parent] => 907
+    [xxx.Contacts.Id_Contacts] => 907
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Valence
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 908
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:35.571522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 908
+    [xxx.Noeuds.Id_Noeuds_Parent] => 908
+    [xxx.Contacts.Id_Contacts] => 908
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Valenciennes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 909
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:35.725522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 909
+    [xxx.Noeuds.Id_Noeuds_Parent] => 909
+    [xxx.Contacts.Id_Contacts] => 909
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Vannes
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 910
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:35.884522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 910
+    [xxx.Noeuds.Id_Noeuds_Parent] => 910
+    [xxx.Contacts.Id_Contacts] => 910
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Verdun
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 911
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:36.035522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 911
+    [xxx.Noeuds.Id_Noeuds_Parent] => 911
+    [xxx.Contacts.Id_Contacts] => 911
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Versailles
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 912
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:36.189522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 912
+    [xxx.Noeuds.Id_Noeuds_Parent] => 912
+    [xxx.Contacts.Id_Contacts] => 912
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Versailles
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 915
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:36.617522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 915
+    [xxx.Noeuds.Id_Noeuds_Parent] => 915
+    [xxx.Contacts.Id_Contacts] => 915
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Vesoul
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 916
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:36.761522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 916
+    [xxx.Noeuds.Id_Noeuds_Parent] => 916
+    [xxx.Contacts.Id_Contacts] => 916
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Vienne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 917
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:36.900522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 917
+    [xxx.Noeuds.Id_Noeuds_Parent] => 917
+    [xxx.Contacts.Id_Contacts] => 917
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance De Villefranche-Sur-Saône
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 803
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:20.482522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 803
+    [xxx.Noeuds.Id_Noeuds_Parent] => 803
+    [xxx.Contacts.Id_Contacts] => 803
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance Des Sables-D'Olonne
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 800
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:20.054522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 800
+    [xxx.Noeuds.Id_Noeuds_Parent] => 800
+    [xxx.Contacts.Id_Contacts] => 800
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance Du Havre
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 801
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:20.198522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 801
+    [xxx.Noeuds.Id_Noeuds_Parent] => 801
+    [xxx.Contacts.Id_Contacts] => 801
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance Du Mans
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 802
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:20.338522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 802
+    [xxx.Noeuds.Id_Noeuds_Parent] => 802
+    [xxx.Contacts.Id_Contacts] => 802
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Grande Instance Du Puy-En-Velay
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 843
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:26.187522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 843
+    [xxx.Noeuds.Id_Noeuds_Parent] => 843
+    [xxx.Contacts.Id_Contacts] => 843
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Première Instance De Nouméa
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 847
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:26.764522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 847
+    [xxx.Noeuds.Id_Noeuds_Parent] => 847
+    [xxx.Contacts.Id_Contacts] => 847
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal De Première Instance De Papeete
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+
+The Array : 
+ Array
+(
+    [xxx.Items.Id_Items] => 892
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-10-25 09:15:33.316522
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 892
+    [xxx.Noeuds.Id_Noeuds_Parent] => 892
+    [xxx.Contacts.Id_Contacts] => 892
+    [xxx.Contacts.Prenom] => 
+    [xxx.Contacts.Nom] => Tribunal Supérieur D'Appel De Saint-Pierre-Et-Miquelon
+    [xxx.Contacts.Id_Civilites] => 1
+    [xxx.Contacts.Id_Titres] => 1
+    [xxx.Contacts.Id_Contact_Types] => 2
+)
+

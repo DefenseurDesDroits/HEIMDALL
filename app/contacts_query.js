@@ -183,7 +183,8 @@ function contact_queryCreateArgs(){
     //element present
     if(oElement != null){
         //if section asked
-        if(oElement.value == 1){
+        if(oElement.selectedIndex == 1){
+        //if(oElement.value == 1){
             //get the element
             oElement = document.getElementById("SAI_Infos_Fonction");
             //element present
@@ -222,7 +223,8 @@ function contact_queryCreateArgs(){
     //element present
     if(oElement != null){
         //if section asked
-        if(oElement.value == 1){
+        if(oElement.selectedIndex == 1){
+        //if(oElement.value == 1){
             //get the element
             oElement = document.getElementById("SAI_Adr_Ville");
             //element present

@@ -12,8 +12,8 @@ include_once("CONTACTS_Infos.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
-//Const HEIMDALL_QM_CONTACTS_SEGEMENT_Debug = false;
-Const HEIMDALL_QM_CONTACTS_SEGEMENT_Debug = true;
+Const HEIMDALL_QM_CONTACTS_SEGEMENT_Debug = false;
+//Const HEIMDALL_QM_CONTACTS_SEGEMENT_Debug = true;
 
 ///[FUNCTION][searchQuery]Function to search the contact
 function searchQuery($Args){
@@ -108,25 +108,27 @@ function searchQuery($Args){
                 }
             }
             if(!$bInfos){
-                //Just in case
-                if(!$bContact_Infos){
-                    //add to the correpondance array
-                    $ary_Corres["sFonction"] = "xxx.Contact_Infos.Fonction";
-                    //Get the selection
-                    $sSelection .= ", xxx.Contact_Infos.Fonction" . "\r\n" ;
-                    //add from the section 
-                    $sFrom .= ", xxx.Contact_Infos" . "\r\n" ;
-                    //add to the Where
-                    $sWhere .= "\r\n" . "AND xxx.Contact_Infos.Id_Contacts = xxx.contacts.id_Contacts";
-                    //our order
-                    //$sOrder .= ", xxx.Contact_Infos.Fonction";
-                    //never go again
-                    $bContact_Infos = true;
-                }
+                
                 //our stage
                 if(in_array("sVille", (array) $ary_Arg["Names"])){
-                    //add to the correpondance array
                     
+                    //Just in case
+                    if(!$bContact_Infos){
+                        //add to the correpondance array
+                        $ary_Corres["sFonction"] = "xxx.Contact_Infos.Fonction";
+                        //Get the selection
+                        $sSelection .= ", xxx.Contact_Infos.Fonction" . "\r\n" ;
+                        //add from the section 
+                        $sFrom .= ", xxx.Contact_Infos" . "\r\n" ;
+                        //add to the Where
+                        $sWhere .= "\r\n" . "AND xxx.Contact_Infos.Id_Contacts = xxx.contacts.id_Contacts";
+                        //our order
+                        //$sOrder .= ", xxx.Contact_Infos.Fonction";
+                        //never go again
+                        $bContact_Infos = true;
+                    }
+                    
+                    //add to the correpondance array
                     $ary_Corres["sAdr1"] = "xxx.Infos.Adr1";
                     $ary_Corres["sAdr2"] = "xxx.Infos.Adr2";
                     $ary_Corres["sAdr3"] = "xxx.Infos.Adr3";
