@@ -1108,8 +1108,11 @@ function contactMenu_query_HTML(){
     sCode += '\t' + "</div>";
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:28%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:28%;height:69%;\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Contacts</div>";
     sCode += '\t' + '\t' + "<form>";
+    //sCode += '\t' + '\t' + "<form>";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Contacts_Prenom\" type=\"text\" value=\"'prenom'\"></input> ";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Contacts_Nom\" type=\"text\" value=\"'nom'\"></input> ";
     sCode += '\t' + '\t' + '\t' + "<br/>";
@@ -1148,8 +1151,10 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + '\t' + "</select>";
     sCode += '\t' + '\t' + "</form>";
     sCode += '\t' + "</div>";
+    sCode += '\t' + "</div>";
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:10%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Infos";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Infos\">";
     sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"0\">Sans les Infos</option>";
@@ -1172,8 +1177,10 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + '\t' +  "</select>";
     sCode += '\t' + '\t' + "</form>";
     sCode += '\t' + "</div>";
+    sCode += '\t' + "</div>";
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:28%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Adresses";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Adresses\">";
     sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"0\">Sans les adresses</option>";
@@ -1198,8 +1205,10 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + '\t' +  "</select>";
     sCode += '\t' + '\t' + "</form>";
     sCode += '\t' + "</div>";
+    sCode += '\t' + "</div>";
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:19%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Segments";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Segments\">";
     sCode += '\t' + '\t' + '\t' + '\t' + "<option value=\"0\">Avec les membres suivants</option>";
@@ -1219,6 +1228,7 @@ function contactMenu_query_HTML(){
     }
     sCode += '\t' + '\t' + '\t' +  "</select>";
     sCode += '\t' + '\t' + "</div>";
+    sCode += '\t' + "</div>";
     sCode += '\t' + "</div>";
 
     sCode += '</div>\r\n';

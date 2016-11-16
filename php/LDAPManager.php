@@ -77,7 +77,8 @@ CONST HEIMDALL_LDAP_Create_Group = true;
 CONST HEIMDALL_LDAP_JWT_Key = "Ragnarok";
 //Max connection time 
 CONST HEIMDALL_LDAP_JWT_DAYS = 2;
-CONST HEIMDALL_LDAP_JWT_MAX_PASS = 5;
+//CONST HEIMDALL_LDAP_JWT_MAX_PASS = 5;
+CONST HEIMDALL_LDAP_JWT_MAX_PASS = 25;
 
 ///[FUNCTION][UsersgetAllInstance]Function to obtain all the Users intance with a pseudo !
 ///[PARAMETER][string][$sUsr]our user login

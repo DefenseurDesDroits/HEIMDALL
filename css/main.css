@@ -46,8 +46,8 @@ div.WIN_Main {
 	float : right;
 }
 .heim_Inline_Block{
-	/*display: inline-flex;*/
-	display: inline-block;
+	display: inline-flex;
+	/*display: inline-block;*/
 	/*display: inline;*/
 }
 .heim_Block{
