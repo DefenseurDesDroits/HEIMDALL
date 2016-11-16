@@ -94,7 +94,9 @@ Heimdall_Contacts = {
         //loop
         while(nLine < nCount){
             //create the code !!!
-            sCode += '<div id="' + Heimdall_Contacts.menus[nLine].id + '" class="OPT_ others" onclick="' + Heimdall_Contacts.menus[nLine].onclick + '">' + Heimdall_Contacts.menus[nLine].text + '</div>';
+            sCode += '<div id="' + Heimdall_Contacts.menus[nLine].id + '" class="OPT_ others" onclick="location.hash = ' + "'" + Heimdall_Contacts.menus[nLine].id + "';" + Heimdall_Contacts.menus[nLine].onclick + '">' + Heimdall_Contacts.menus[nLine].text + '</div>';
+            //sCode += '<div id="' + Heimdall_Contacts.menus[nLine].id + '" class="OPT_ others" onclick="location.hash = ' + "'" + Heimdall_Contacts.menus[nLine].id + "';location.reload();" + '">' + Heimdall_Contacts.menus[nLine].text + '</div>';
+            //sCode += '<div id="' + Heimdall_Contacts.menus[nLine].id + '" class="OPT_ others" onclick="' + Heimdall_Contacts.menus[nLine].onclick + '">' + Heimdall_Contacts.menus[nLine].text + '</div>';
             //Next
             nLine++;
         }

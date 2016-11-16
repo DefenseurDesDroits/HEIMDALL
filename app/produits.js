@@ -146,7 +146,24 @@ var Heimdall = {
                     //init the contact
                     init_contacts();
                     //create the product
-                    Heimdall_Contacts.onProductClick();
+                    if(location.hash == ""){
+                        Heimdall_Contacts.onProductClick();
+                    }
+                    else{
+                        nCount = Heimdall_Contacts.menus.length;
+                        nLine = 0;
+                        while(nLine < nCount){
+                            //if the menu exists
+                            if( "#" + Heimdall_Contacts.menus[nLine].id == location.hash){
+                                Heimdall_Contacts.onProductClick();
+                                eval(Heimdall_Contacts.menus[nLine].onclick);
+                            }
+                            //Next 
+                            nLine++;
+                        }
+                        //Heimdall_Contacts.onProductClick();
+                    }
+                    //Heimdall_Contacts.onProductClick();
 
                     //get the response array
                     Heimdall.members.user = ary_Response;
@@ -455,6 +472,10 @@ function init_Produits(){
     ///[DEBUG]Operaion time !!!
     if(Heimdall.flags.debug){
         console.log("Init sequence : ");
+        // console.log("Location.href : " + location.href);
+        // console.log("Location.pathname : " + location.pathname);
+        // location.hash = "mah";
+        // console.log("Location.hash : " + location.hash);
     }
     ///[/DEBUG]
 
