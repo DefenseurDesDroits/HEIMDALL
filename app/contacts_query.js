@@ -1078,8 +1078,8 @@ function contactMenu_query_HTML(){
 
     sCode += '\t' + '<div id="LAY_Title" class="LAY_ heim_Block"><h1>Requêtes</h1></div>\r\n';
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:10%;height:69%;\">";
-    
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:10%;height:69%;\">";
     sCode += '\t' + '\t' + '<div id="LAY_Query_extended" class="LAY_ heim_Block">';
     //add the filters
     sCode += '\t' + '\t' + '\t' + "<div class=\"LAB_\">Filtres</div>";
@@ -1102,13 +1102,12 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Segment_Nom\" type=\"text\" value=\"'Segments'\"></input> ";
     sCode += '\t' + '\t' + '<div id="BTN_Segments_Save" class="BTN_" onclick="conctact_queryManageSaveFilter();">Save</div>\r\n';
     sCode += '\t' + '\t' + '\t' + "</form>";
-
     sCode += '\t' + '\t' + '</div>\r\n';
     sCode += '\t' + "</div>";
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:28%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:28%;height:69%;\">";
     sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
-    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Block\" style=\"width:28%;height:69%;\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Contacts</div>";
     sCode += '\t' + '\t' + "<form>";
     //sCode += '\t' + '\t' + "<form>";
@@ -1152,7 +1151,8 @@ function contactMenu_query_HTML(){
     sCode += '\t' + "</div>";
     sCode += '\t' + "</div>";
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:10%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:10%;height:69%;\">";
     sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Infos";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Infos\">";
@@ -1178,7 +1178,8 @@ function contactMenu_query_HTML(){
     sCode += '\t' + "</div>";
     sCode += '\t' + "</div>";
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:28%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:28%;height:69%;\">";
     sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Adresses";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Adresses\">";
@@ -1191,6 +1192,7 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_CP\" type=\"text\" value=\"'cp'\" size=\"6\"></input>";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_Tel\" type=\"text\" value=\"'telephone'\" size=\"15\"></input>";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Adr_Courriel\" type=\"text\" value=\"'courriel'\" size=\"15\"></input>";
+    sCode += '\t' + '\t' + '\t' + "<br/>";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Pays\" multiple size=\"3\">";
      //get the count
     nCount = Heimdall.members.products.contacts.Pays.length;
@@ -1206,7 +1208,8 @@ function contactMenu_query_HTML(){
     sCode += '\t' + "</div>";
     sCode += '\t' + "</div>";
 
-    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:19%;height:69%;\">";
+    sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
+    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:19%;height:69%;\">";
     sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Segments";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Segments\">";

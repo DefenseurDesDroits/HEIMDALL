@@ -51,8 +51,8 @@ include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/JWT.php");
 use Firebase\JWT\JWT;
 
 //Debug const
-CONST HEIMDALL_LDAP_Debug = false;
-//CONST HEIMDALL_LDAP_Debug = true;
+//CONST HEIMDALL_LDAP_Debug = false;
+CONST HEIMDALL_LDAP_Debug = true;
 
 //const for choose the right path 
 
@@ -78,7 +78,7 @@ CONST HEIMDALL_LDAP_JWT_Key = "Ragnarok";
 //Max connection time 
 CONST HEIMDALL_LDAP_JWT_DAYS = 2;
 //CONST HEIMDALL_LDAP_JWT_MAX_PASS = 5;
-CONST HEIMDALL_LDAP_JWT_MAX_PASS = 25;
+CONST HEIMDALL_LDAP_JWT_MAX_PASS = 100;
 
 ///[FUNCTION][UsersgetAllInstance]Function to obtain all the Users intance with a pseudo !
 ///[PARAMETER][string][$sUsr]our user login
@@ -767,6 +767,12 @@ function connectionLDAPToken($sToken){
     $oToken = array();
     //our user
     $oUsers = new Users();
+    //our new date
+    $oDate = new DateTime();
+
+    //debugging, the desperate way :D
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@connectionLDAPToken.log", "\r\n\r\n[New Call]\r\n" );
 
     //our returned value
     $ary_result = ["Status" => "",
@@ -782,10 +788,16 @@ function connectionLDAPToken($sToken){
     //get the token array 
     $oToken = checkToken($sToken);
     
+    //debugging, the desperate way :D
+    if(HEIMDALL_LDAP_Debug)
+        file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@connectionLDAPToken.log", "[Exp]" . $oToken["exp"] . "\r\n[Timsetamp]" . $oDate->getTimestamp(), FILE_APPEND);
+
     //check the token !!!!
     if( count($oToken) == 0)//no Token
         return connectionLDAP("", "");//Go there to invoke classic way !!!
     elseif($oToken["pogs"] == 0)//more than X connections without pass by connectionLDAP
+        return connectionLDAP("", "");//Go there to invoke classic way !!!
+    elseif($oToken["exp"] < $oDate->getTimestamp())//expired session
         return connectionLDAP("", "");//Go there to invoke classic way !!!
     
     $oUsers->setID_Users(intval( $oToken["key"] ));

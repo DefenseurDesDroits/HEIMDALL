@@ -1,4 +1,16 @@
 {
+	"app" : {
+		"Version" : "0.4.3",
+		"Date" : "20161117",
+		"Authors" : [
+			{"Author" : "Ludowic \"MagnusMoi\" Emmanuel", "Versions" : ["0.0.0"]}
+		],
+		"Name" : "Heimdall",
+		"Descriptions" : "Application to manage a list of contact"
+	},
+	"versions" : [
+		{"Version" : "0.4.3", "Description" : "initial commit, creation of the Init.json"}
+	],
 	"Users" : {
 		"Admin" : []
 	},
