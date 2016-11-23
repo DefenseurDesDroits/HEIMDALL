@@ -19,6 +19,8 @@ function LAY_Status(){
         oDiv : null,
         ///
         oEvtSrc : null,
+		///
+		sText : "",
 		//[MEMBER][LAY][oParent]The parent Layout
 		oParent : null
     };
@@ -40,6 +42,13 @@ function LAY_Status(){
         return oLAY_Status.members.sName;
     };
     this.myLAY_Status.getId = this.getId;
+
+	///[METHOD]Method to get our text
+	///[RETURNS]string, our text
+    this.getText = function(){
+        return oLAY_Status.members.sText;
+    };
+    this.myLAY_Status.getText = this.getText;
 
 	///[METHOD]Method to get our object
 	///[RETURNS]control, our Parent
@@ -64,6 +73,20 @@ function LAY_Status(){
     };
 	this.myLAY_Status.setName = this.setName;
 
+	///[METHOD]Method to get our text
+    ///[PARAMETER][string][sValue]string, our new text
+	///[RETURNS]boolean, true if done
+    this.setText = function(sValue){
+        if(sValue == null)
+            return false;
+        if(typeof sValue === 'string'){
+            oLAY_Status.members.sText = sValue;
+            return true;
+        }
+        return false;
+    };
+	this.myLAY_Status.setText = this.setText;
+
 	///[METHOD]Method to set our control parent
     ///[PARAMETER][Control][LAY_)]LAY_), our parent
 	///[RETURNS]boolean, true if done
@@ -74,6 +97,25 @@ function LAY_Status(){
 		return true;
     }
     this.myLAY_Status.setParent = this.setParent;
+
+	this.setProgression = function(nPercent){
+		//our element
+		var oElement = document.getElementById("LAY_Status_PG_" + oLAY_Status.getId());
+		
+		//is the element aviable
+		if(oElement != null){
+			//good value
+			if(nPercent > -1 && nPercent < 101){
+				//set the width
+				oElement.style.width = nPercent + "%";
+				//Happy End
+				return true;
+			}
+		}
+		//bad end
+		return false;
+	}
+	this.myLAY_Status.setProgression = this.setProgression;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -99,64 +141,12 @@ function LAY_Status(){
 		}
 		///[/DEBUG]
 
-		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Status.getId() + "\"></div>" + "\r\n";
-
-		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Status('" + oLAY_Status.getId() + "')\">Sauvegarder</div>" + "\r\n";
-		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Status('" + oLAY_Status.getId() + "')\">Supprimer</div>" + "\r\n";
-
-		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
-
-		sCode += "\t" + '<input id="SAI_Adr1_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Adr1_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-		sCode += "\t" + '<input id="SAI_Adr2_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Adr2_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-		sCode += "\t" + '<input id="SAI_Adr3_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Adr3_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-
-		sCode += "\t" + "<br/>" + "\r\n";
-		sCode += "\t" + "<span>CP</span>" + "\r\n";
-		sCode += "\t" + '<input id="SAI_CP_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_CP_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";    
-
-		sCode += "\t" + "<br/>" + "\r\n";
-		sCode += "\t" + "<span>Cedex</span>" + "\r\n";
-		sCode += "\t" + '<input id="SAI_Cedex_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Cedex_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-
-		sCode += "\t" + "<br/>" + "\r\n";
-		sCode += "\t" + "<span>Ville</span>" + "\r\n";
-		sCode += "\t" + '<input id="SAI_Ville_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Ville_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-		
-		sCode += "\t" + "<span>Pays</span>" + "\r\n";
-		sCode += "\t" + "\t" + "<select id=\"COMBO_Pays_" + oLAY_Status.getId() + "\">" + "\r\n";
-		//get the count
-		nCount = Heimdall.members.products.contacts.Pays.length;
-		//init the iterator
-		nIt = 0;
-		//loop
-		while(nIt < nCount){
-			//add option
-			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Pays[nIt].getId_Pays() + "\">" + Heimdall.members.products.contacts.Pays[nIt].getNom() + "</option>" + "\r\n";
-			//Next
-			nIt++;
-		}
-		sCode += "\t" + "\t" + "</select>" + "\r\n";
-
-		sCode += "\t" + "<br/>" + "\r\n";
-		sCode += "\t" + "<span>Site</span>" + "\r\n";
-		sCode += "\t" + '<input id="SAI_Site_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Site_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-		sCode += "\t" + "<br/>";
-
-		sCode += "\t" + "<br/>";
-		
-		sCode += "\t" + '<div>Adresse 1</div>' + "\r\n";
-		sCode += "\t" + "<span>Téléphone 1 </span>" + "\r\n";
-		sCode += "\t" + '<input id="SAI_Tel1_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Tel1_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-		sCode += "\t" + "<span>Courriel 1 </span>" + "\r\n";
-		sCode += "\t" + '<input id="SAI_Courriel1_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Courriel1_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-
-		sCode += "\t" + '<div>Adresse 2</div>' + "\r\n";
-		sCode += "\t" + "<span>Téléphone 2 </span>" + "\r\n";
-		sCode += "\t" + '<input id="SAI_Tel2_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Tel2_' + oLAY_Status.getId() + '" value="' + "" + '"/>' + "\r\n";
-		sCode += "\t" + "<span>Courriel 2 </span>" + "\r\n";
-		sCode += "\t" + '<input id="SAI_Courriel2_' + oLAY_Status.getId() + '" class="SAI_" type="text" name="SAI_Courriel2_' + oLAY_Status.getId() + '" value="' +"" + '"/>' + "\r\n";
-
-		sCode += "\t" + "</form>" + "\r\n";
+		sCode += "\t" + "<div id=\"LAY_Status_" + oLAY_Status.getId() + "\"></div>" + "\r\n";
+		sCode += "\t" + "<div id=\"LAY_Status_Text_" + oLAY_Status.getId() + "\">" + oLAY_Status.getText() + "</div>" + "\r\n";
+		sCode += "\t" + "<div id=\"LAY_Status_Content_" + oLAY_Status.getId() + "\" style=\"width:100%;height:20px;\">" + "\r\n";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Status_PG_" + oLAY_Status.getId() + "\" style=\"background-color:#00FF00;height:20px;\"></div>" + "\r\n";
+		//sCode += "\t" + "\t" + "<div id=\"LAY_Status_PG_" + oLAY_Status.getId() + "\" style=\"background-color:#00FF00;width:0%;height:20px;\"></div>" + "\r\n";
+		sCode += "\t" + "</div>" + "\r\n";
 
 		sCode += "</div>";
 		//console.log(sCode);
@@ -254,10 +244,13 @@ function LAY_Status(){
 				//change
 				ARY_LAY_Status[nPosition] = oLAY_Status;
 			
-			//write
-			console.log("Status" + oLAY_Status.getId());
 			//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
-			oLAY_Status.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Status, null));
+			//oLAY_Status.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Status, null));
+
+			//
+			this.attach();
+			//write
+			console.log("Status_" + oLAY_Status.getId());
 
 			//happy end
 			return true;
@@ -312,7 +305,13 @@ function LAY_Status(){
     ///[PARAMETER][string][sPHP]string, our php file
 	///[RETURNS]boolean, true if done
 	this.init = function(sDivOwner, sDivId, sPHP){
-		return oLAY_Status.initializeLayout(sDivOwner, sDivId);
+		oLAY_Status.initializeLayout(sDivOwner, sDivId);
+		//return oLAY_Status.initializeLayout(sDivOwner, sDivId);
+
+		//our Php
+		if(sPHP != "")
+			oLAY_Status.members.oEvtSrc = new EventSource(sPHP);
+		return true;
 	}
 	this.myLAY_Status.init = this.init;
 
@@ -327,4 +326,5 @@ function LAY_Status(){
 		}
 	}
 	this.myLAY_Status.subComponentLoaded = this.subComponentLoaded;
+
 }

@@ -56,7 +56,7 @@ function contact_queryDoQueryComplete(sIdWaiting, ptrFunctionCreateArg, ptrFunct
     oReq.open("POST", "php/queryManager_Query.php", true);
     //set the request header
     oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-    oReq.send("Id=" +Heimdall.members.user["UserId"] + "&Session=" + "" + "&Action=contacts_query&Args=" + JSON.stringify(ptrFunctionCreateArg())); 
+    oReq.send("Id=" + Heimdall.members.user["UserId"] + "&Session=" + "" + "&Action=contacts_query&Args=" + JSON.stringify(ptrFunctionCreateArg())); 
     //Return the job !
     return true;
 }
@@ -642,7 +642,6 @@ function contact_queryDoQuery(){
     contact_queryDoQueryComplete("LAY_List_User", contact_queryCreateArgs, contact_queryDoQueryResponse);
     //get the PNL_ 
     oElement = document.getElementById("LAY_Rows_Elements");
-    //oElement = document.getElementById("PNL_Win_Inline");
     //clear the layout
     if(oElement != null)
         oElement.innerHTML = "";
@@ -1063,6 +1062,175 @@ function conctact_queryManageSaveFilter(){
     }
 }
 
+function contact_queryCSV(LAY_, ary_){
+
+    //https://developer.mozilla.org/fr/docs/Web/API/Blob
+
+    //our csv code
+    var sCode = "";
+    //our url to download
+    var sUrl = "";
+
+    //our iterator
+    var nLine = 0;
+    //our count
+    var nCount = 0;
+    //percentage
+    var nPercentage = 0;
+
+    //our blob
+    var oBlob = null;
+
+    //our query line object
+    var oQuery = null;
+
+    //our dom element
+    var oElement = null;
+    
+    //Builder the header
+    sCode += "N°CLIENT" + ";";
+    sCode += "NOM" + ";";
+    sCode += "SOCIETE" + ";";
+    sCode += "AD1" + ";";
+    sCode += "AD2/VOIE" + ";";
+    sCode += "AD3/BP" + ";";
+    sCode += "CODE POSTAL" + ";";
+    sCode += "NOMBRE EX";
+    //get the count
+    nCount = ary_.length;
+    //Loop
+    while(nLine < nCount){
+        //get the query
+        oQuery = ary_[nLine];
+
+        //write the File 
+        sCode += "\r\n";
+        sCode += ( ""  + nLine).substr(0, 12) + ";";
+        sCode += ( oQuery.getNom() + " " + oQuery.getPrenom()).toUpperCase().substr(0, 32) + ";";
+        sCode += ( "Société" ).toUpperCase().substr(0, 32) + ";";
+        sCode += ( oQuery.members["sAdr1"] ).toUpperCase().substr(0, 32) + ";";
+        sCode += ( oQuery.members["sAdr2"] ).toUpperCase().substr(0, 32) + ";";
+        sCode += ( oQuery.members["sAdr3"] ).toUpperCase().substr(0, 32) + ";";
+        sCode += ( oQuery.members["sCP"] ).toUpperCase().substr(0, 5) + ";";
+        sCode += ( oQuery.members["sVille"] ).toUpperCase().substr(0, 26) + ";";
+        sCode += ( "1" ).toUpperCase().substr(0, 8);
+
+        //Next
+        nLine++;
+        nPercentage = Math.floor( nLine * 100 / nCount );
+        LAY_.setProgression(nPercentage);
+    }
+
+    //create the blob
+    oBlob = new Blob([sCode], {type: "text/csv"});
+    //oBlob = new Blob([sCode], {type: "application/octet-binary"});
+    //create the url
+    sUrl = URL.createObjectURL(oBlob);
+
+    oElement = document.getElementById("LAY_Status_PG_" + LAY_.getId());
+
+    if(oElement != null){
+        //add the dl link
+        oElement.innerHTML = " <a href=\"" + sUrl + "\">Download</a> ";
+    }
+}
+
+function contact_queryDownLoad(){
+    
+    //create the layout
+    var LAY_ = new LAY_Status();
+    //our text
+    var sText = Heimdall.members.user["UserId"] + "";
+    //var sText = "Export";
+    //our Date
+    var oDate = new Date();
+    //
+    var sMonth = "" + (oDate.getUTCMonth() + 1);
+    var sDay = "" + (oDate.getUTCDate() + 1);
+    var sHour = "" + oDate.getHours();
+    var sMinutes = "" + oDate.getMinutes();
+    var sSecond = "" + oDate.getSeconds();
+
+    //our iterator
+    var nLine = 0;
+    //our count
+    var nCount = 0;
+
+    //our query line object
+    var oQuery = null;
+
+    //
+    var ary_CSV = [];
+    var row_CSV = {};
+
+    sText += "_" + oDate.getUTCFullYear();
+    
+    if(sMonth.length > 1)
+        sText += sMonth;
+    else
+        sText += "0" + sMonth;
+    if(sDay.length > 1)
+        sText += sDay;
+    else
+        sText += "0" + sDay;
+    sText += "_";
+    if(sHour.length > 1)
+        sText += sHour;
+    else
+        sText += "0" + sHour;
+    if(sMinutes.length > 1)
+        sText += sMinutes;
+    else
+        sText += "0" + sMinutes;
+    if(sSecond.length > 1)
+        sText += sSecond;
+    else
+        sText += "0" + sSecond;
+    sText += ".csv";
+    //sText += "_" + oDate.toString();
+    //
+    LAY_.setText(sText);
+
+    // //get the count
+    // nCount = Heimdall.members.products.contacts.Segments_List.length;
+    // //loop
+    // while(nLine < nCount){
+    //     //get the user
+    //     oQuery = Heimdall.members.products.contacts.Segments_List[nLine];
+    //     //
+    //     row_CSV = {
+    //         NClient : (""  + nLine).substr(0, 12),
+    //         Nom : (oQuery.getNom() + " " + oQuery.getPrenom()).toUpperCase().substr(0, 32),
+    //         Societe : ( "Société" ).toUpperCase().substr(0, 32),
+    //         AD1 : ( oQuery.members["sAdr1"] ).toUpperCase().substr(0, 32),
+    //         AD2 : ( oQuery.members["sAdr2"] ).toUpperCase().substr(0, 32),
+    //         AD3 : ( oQuery.members["sAdr3"] ).toUpperCase().substr(0, 32),
+    //         Code_Postal : ( oQuery.members["sCP"] ).toUpperCase().substr(0, 5),
+    //         Ville : ( oQuery.members["sVille"] ).toUpperCase().substr(0, 26),
+    //         Nombre_Ex : ( "1" ).toUpperCase().substr(0, 8)
+    //     };
+    //     //add the one
+    //     ary_CSV.push(row_CSV);
+    //     //Next
+    //     nLine++;
+    // }
+
+    ary_CSV = Heimdall.members.products.contacts.Segments_List.slice();
+
+    //init
+    LAY_.init("OPT_backWork", "PG_" + sText, "");
+    //LAY_.init("OPT_backWork", "PG_" + sText, "php/CONTACTS_Query_EXPORT.php?Filename=Babar&Data=" + JSON.stringify(ary_CSV));
+    //LAY_.setProgression(75);
+    //plots
+    LAY_.ObjToView();
+
+    //Do the job !!!
+    setTimeout(function(){
+        contact_queryCSV(LAY_, ary_CSV);
+    }, 1000);
+    //contact_queryCSV(LAY_, ary_CSV);
+}
+
 ///[FUNCTION][contactMenu_query_HTML]Function to generate the HTML of the sub-menu
 function contactMenu_query_HTML(){
     //our code
@@ -1079,7 +1247,6 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '<div id="LAY_Title" class="LAY_ heim_Block"><h1>Requêtes</h1></div>\r\n';
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
-    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:10%;height:69%;\">";
     sCode += '\t' + '\t' + '<div id="LAY_Query_extended" class="LAY_ heim_Block">';
     //add the filters
     sCode += '\t' + '\t' + '\t' + "<div class=\"LAB_\">Filtres</div>";
@@ -1101,16 +1268,15 @@ function contactMenu_query_HTML(){
     sCode += '\t' + '\t' + '<div id="BTN_Contacts_Query" class="BTN_" onclick="contact_queryDoQuery();">SEARCH</div>\r\n';
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Segment_Nom\" type=\"text\" value=\"'Segments'\"></input> ";
     sCode += '\t' + '\t' + '<div id="BTN_Segments_Save" class="BTN_" onclick="conctact_queryManageSaveFilter();">Save</div>\r\n';
+    sCode += '\t' + '\t' + '<div id="BTN_Segments_Export" class="BTN_" onclick="contact_queryDownLoad();">Export</div>\r\n';
     sCode += '\t' + '\t' + '\t' + "</form>";
     sCode += '\t' + '\t' + '</div>\r\n';
     sCode += '\t' + "</div>";
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
-    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:28%;height:69%;\">";
     sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Contacts</div>";
     sCode += '\t' + '\t' + "<form>";
-    //sCode += '\t' + '\t' + "<form>";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Contacts_Prenom\" type=\"text\" value=\"'prenom'\"></input> ";
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Contacts_Nom\" type=\"text\" value=\"'nom'\"></input> ";
     sCode += '\t' + '\t' + '\t' + "<br/>";
@@ -1152,7 +1318,6 @@ function contactMenu_query_HTML(){
     sCode += '\t' + "</div>";
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
-    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:10%;height:69%;\">";
     sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Infos";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Infos\">";
@@ -1179,7 +1344,6 @@ function contactMenu_query_HTML(){
     sCode += '\t' + "</div>";
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
-    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:28%;height:69%;\">";
     sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Adresses";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Adresses\">";
@@ -1209,7 +1373,6 @@ function contactMenu_query_HTML(){
     sCode += '\t' + "</div>";
 
     sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"height:69%;\">";
-    //sCode += '\t' + "<div class=\"PNL_ heim_Inline_Flex\" style=\"width:19%;height:69%;\">";
     sCode += '\t' + "<div class=\"PNL_ heim_Block\">";
     sCode += '\t' + '\t' + "<div class=\"LAB_\">Segments";
     sCode += '\t' + '\t' + '\t' + "<select id=\"COMBO_Segments\">";

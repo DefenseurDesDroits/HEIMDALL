@@ -70,8 +70,8 @@ CONST HEIMDALL_LDAP_Connection_SEVER_ADR = "192.168.1.16";
 CONST HEIMDALL_LDAP_Connection_DOMAIN = "DC=AC,DC=local";
 //CONST HEIMDALL_LDAP_Connection_DOMAIN = "OU=DDD,DC=AC,DC=local";
 
-//CONST HEIMDALL_LDAP_Create_Group = false;
-CONST HEIMDALL_LDAP_Create_Group = true;
+CONST HEIMDALL_LDAP_Create_Group = false;
+//CONST HEIMDALL_LDAP_Create_Group = true;
 
 //the key 
 CONST HEIMDALL_LDAP_JWT_Key = "Ragnarok";
@@ -789,7 +789,7 @@ function connectionLDAPToken($sToken){
     $oToken = checkToken($sToken);
     
     //debugging, the desperate way :D
-    if(HEIMDALL_LDAP_Debug)
+    if(HEIMDALL_LDAP_Debug && array_key_exists("exp", $oToken))
         file_put_contents(dirname(__FILE__) . "/../logs/LDAPManager@connectionLDAPToken.log", "[Exp]" . $oToken["exp"] . "\r\n[Timsetamp]" . $oDate->getTimestamp(), FILE_APPEND);
 
     //check the token !!!!
@@ -797,7 +797,7 @@ function connectionLDAPToken($sToken){
         return connectionLDAP("", "");//Go there to invoke classic way !!!
     elseif($oToken["pogs"] == 0)//more than X connections without pass by connectionLDAP
         return connectionLDAP("", "");//Go there to invoke classic way !!!
-    elseif($oToken["exp"] < $oDate->getTimestamp())//expired session
+    elseif(array_key_exists("exp", $oToken) && $oToken["exp"] < $oDate->getTimestamp())//expired session
         return connectionLDAP("", "");//Go there to invoke classic way !!!
     
     $oUsers->setID_Users(intval( $oToken["key"] ));
