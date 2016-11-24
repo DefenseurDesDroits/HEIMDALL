@@ -1021,6 +1021,96 @@ function contact_queryFilterCreator(){
     //add to the list
 }
 
+function contact_querySaveTags(oSegments){
+
+    //our Json
+    var ary_ = {};
+
+    //our Json object
+    var oJson = {};
+
+    //our JSON String
+    var sJson = "";
+
+    //iterrator to save the 
+    var nLine = 0;
+    //our count
+    var nCount = 0;
+
+    //our element
+    var oElement = null;
+    //our option
+    var oOption = null;
+
+    //segment test
+    if(oSegments == null)
+        return false;
+    
+    //do stuff
+
+    //get the ary_
+    // try {
+    //     ary_ = JSON.parse(oSegments.getId_Items_Json());
+    // } catch (error) {
+    //     ary_ = [];
+    // }
+
+    ary_ = [];
+
+    //get the count
+    nCount = Heimdall.members.products.contacts.Segments_List.length;
+    //do da loop
+    while(nLine < nCount){
+        //do the job
+        ary_.push({ uid : Heimdall.members.products.contacts.Segments_List[nLine].getId_Contacts(), until : ""});
+        //Next
+        nLine++;
+    }
+
+    //The object
+    oJson = { Nature : "tags", Data : []};
+    //The string
+    sJson = JSON.stringify(oJson);
+
+    console.log("JSON : " + sJson);
+    //set the Json
+    oSegments.setParametres(sJson);
+    //The string
+    sJson = JSON.stringify(ary_);
+    //
+    oSegments.setId_Items_Json(sJson);
+
+    //save
+    oSegments.save(Heimdall.members.user["UserId"], ".");
+
+    //right !
+    return true;
+}
+
+function contact_queryTagsCreator(){
+
+    //our new segments
+    var oSegments = null;
+
+    //to cacth the name
+    var oElement = null;
+
+    oSegments = new Segments();
+    oSegments.setId_Items_Owner(parseInt(Heimdall.members.user["UserId"]));
+    oSegments.setId_Accreditations_Item(1);
+
+    //set the name !!!
+    oElement = document.getElementById("SAI_Tags_Nom");
+    //not null
+    if(oElement != null)
+        oSegments.setNom(oElement.value.trim());
+
+    //warning
+    contact_querySaveTags(oSegments);
+
+    //add to the list
+}
+
 function conctact_queryManageSaveFilter(){
     //
     var oElement = null;
@@ -1055,6 +1145,42 @@ function conctact_queryManageSaveFilter(){
                     if(nLine >= 0){
                         contact_querySaveFiltre(Heimdall.members.products.contacts.Segments_Filtres[nLine]);
                         //console.log("conctact_queryManageSaveFilter => Line step two : " + nLine);
+                    }
+                }
+            }
+        }
+    }
+}
+
+function conctact_queryManageSaveTags(){
+    //
+    var oElement = null;
+    //our line selected
+    var nLine = 0;
+
+    //get the element
+    oElement = document.getElementById("SAI_Tags_Nom");
+
+    //if the element is here
+    if(oElement != null){
+        //not null
+        if(oElement.value.trim() != "" && oElement.value.toUpperCase() != "'TAGS'"){
+            contact_queryTagsCreator();
+        }
+        else{
+            //get the combo box 
+            oElement = document.getElementById("LIST_Tags");
+            //we have one
+            if(oElement != null){
+                //get the line
+                nLine = oElement.selectedIndex;
+                //selected
+                if(nLine >= 0){
+                    //
+                    nLine = oElement.options[nLine].value;
+                    nLine = findInPotoursObjLst(Heimdall.members.products.contacts.Segments_Tags, "nId_Items", nLine);
+                    if(nLine >= 0){
+                        contact_querySaveTags(Heimdall.members.products.contacts.Segments_Tags[nLine]);
                     }
                 }
             }
@@ -1264,11 +1390,15 @@ function contactMenu_query_HTML(){
         nLine++;
     }
     sCode += '\t' + '\t' + '\t' + '\t' + "</select>";
+    //sCode += '\t' + '\t' + '\t' + "</div>";
+    sCode += '\t' + '\t' + '\t' +  "<input id=\"BTN_Contacts_Query\" type=\"submit\" value=\"Search\" onclick=\"contact_queryDoQuery();\"></input> ";
+    //sCode += '\t' + '\t' + '<div id="BTN_Contacts_Query" class="BTN_" onclick="contact_queryDoQuery();">SEARCH</div>\r\n';
     sCode += '\t' + '\t' + '\t' + "</div>";
-    sCode += '\t' + '\t' + '<div id="BTN_Contacts_Query" class="BTN_" onclick="contact_queryDoQuery();">SEARCH</div>\r\n';
     sCode += '\t' + '\t' + '\t' + "<input id=\"SAI_Segment_Nom\" type=\"text\" value=\"'Segments'\"></input> ";
-    sCode += '\t' + '\t' + '<div id="BTN_Segments_Save" class="BTN_" onclick="conctact_queryManageSaveFilter();">Save</div>\r\n';
-    sCode += '\t' + '\t' + '<div id="BTN_Segments_Export" class="BTN_" onclick="contact_queryDownLoad();">Export</div>\r\n';
+    sCode += '\t' + '\t' + '\t' +  "<input id=\"BTN_Segments_Save\" type=\"submit\" value=\"Save\" onclick=\"conctact_queryManageSaveFilter();\"></input> ";
+    //sCode += '\t' + '\t' + '<div id="BTN_Segments_Save" class="BTN_" onclick="conctact_queryManageSaveFilter();">Save</div>\r\n';
+    sCode += '\t' + '\t' + '\t' +  "<input id=\"BTN_Segments_Export\" type=\"submit\" value=\"Export\" onclick=\"contact_queryDownLoad();\"></input> ";
+    //sCode += '\t' + '\t' + '<div id="BTN_Segments_Export" class="BTN_" onclick="contact_queryDownLoad();">Export</div>\r\n';
     sCode += '\t' + '\t' + '\t' + "</form>";
     sCode += '\t' + '\t' + '</div>\r\n';
     sCode += '\t' + "</div>";
@@ -1392,6 +1522,9 @@ function contactMenu_query_HTML(){
         nLine++;
     }
     sCode += '\t' + '\t' + '\t' +  "</select>";
+    sCode += '\t' + '\t' + '\t' +  "<input id=\"SAI_Tags_Nom\" type=\"text\" value=\"'Tags'\"></input> ";
+    sCode += '\t' + '\t' + '\t' +  "<input id=\"BTN_Tags_Save\" type=\"submit\" value=\"Save\" onclick=\"conctact_queryManageSaveTags();\"></input> ";
+    //sCode += '\t' + '\t' + '\t' +  '<div id="BTN_Tags_Save" class="BTN_" style=\"heim_Inline_Flex\" onclick="notDevYet();">Save</div>\r\n';
     sCode += '\t' + '\t' + "</div>";
     sCode += '\t' + "</div>";
     sCode += '\t' + "</div>";

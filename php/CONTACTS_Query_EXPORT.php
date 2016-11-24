@@ -97,8 +97,6 @@ function Export_CSV(){
         file_put_contents(dirname(__FILE__) . "/../logs/CONTACTS_Query_Export@Export_CSV.log", "Filename : " . $_GET['Filename'] . "\r\n",  FILE_APPEND );
         file_put_contents(dirname(__FILE__) . "/../logs/CONTACTS_Query_Export@Export_CSV.log", "Data : " . $_GET['Data'] . "\r\n",  FILE_APPEND );
     }
-        
-    //file_put_contents(dirname(__FILE__) . "/../logs/CONACTS_Query_Export@Export_CSV.log", print_r($oInfos, TRUE) . "\r\n",  FILE_APPEND );
 
     //create the filename
     $sFilename = "";

@@ -5,6 +5,26 @@
 //our gloabal instance object 
 var ARY_LAY_Status = [];
 
+//DELETE_LAY_Status
+function REMOVE_LAY_Status(sId){
+	//our position
+	var nPosition = 0;
+	//our item
+	var oItem = null;
+	
+	//get the position
+	nPosition = findInPotoursObjLst(ARY_LAY_Status, "sName", sId);
+	//In ?
+	if(nPosition == POTOURS_FIND_NOTFOUND)
+		return false;
+	
+	//Suppression
+	ARY_LAY_Status[nPosition].deleteLayout();
+
+	//happy End
+	return true;
+}
+
 function LAY_Status(){
 
     //our super
@@ -141,15 +161,16 @@ function LAY_Status(){
 		}
 		///[/DEBUG]
 
-		sCode += "\t" + "<div id=\"LAY_Status_" + oLAY_Status.getId() + "\"></div>" + "\r\n";
-		sCode += "\t" + "<div id=\"LAY_Status_Text_" + oLAY_Status.getId() + "\">" + oLAY_Status.getText() + "</div>" + "\r\n";
-		sCode += "\t" + "<div id=\"LAY_Status_Content_" + oLAY_Status.getId() + "\" style=\"width:100%;height:20px;\">" + "\r\n";
-		sCode += "\t" + "\t" + "<div id=\"LAY_Status_PG_" + oLAY_Status.getId() + "\" style=\"background-color:#00FF00;height:20px;\"></div>" + "\r\n";
-		//sCode += "\t" + "\t" + "<div id=\"LAY_Status_PG_" + oLAY_Status.getId() + "\" style=\"background-color:#00FF00;width:0%;height:20px;\"></div>" + "\r\n";
+		sCode += "\t" + "<div id=\"LAY_Status_" + oLAY_Status.getId() + "\">" + "\r\n";
+		//sCode += "\t" + "<div id=\"LAY_Status_" + oLAY_Status.getId() + "\"></div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Status_Text_" + oLAY_Status.getId() + "\">" + oLAY_Status.getText() + "</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Status_BTN_" + oLAY_Status.getId() + "\" class=\"BTN_\" onclick=\"REMOVE_LAY_Status('" + oLAY_Status.getId() + "')\">X</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div id=\"LAY_Status_Content_" + oLAY_Status.getId() + "\" style=\"width:100%;height:20px;\">" + "\r\n";
+		sCode += "\t" + "\t" + "\t" + "<div id=\"LAY_Status_PG_" + oLAY_Status.getId() + "\" style=\"background-color:#00FF00;height:20px;\"></div>" + "\r\n";
+		sCode += "\t" + "\t" + "</div>" + "\r\n";
 		sCode += "\t" + "</div>" + "\r\n";
 
 		sCode += "</div>";
-		//console.log(sCode);
 		//return the code
 		return sCode;
     };
