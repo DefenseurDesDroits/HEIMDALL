@@ -6,6 +6,47 @@
 
 const HEIMDALL_NUMBER_OF_GROUPS_MAX = 10;
 
+function contact_groupsMember(oGroup){
+
+    //our iterrator
+    var nLine = 0;
+    //our count
+    var nCount = 0;
+
+    //our aray of members
+    var ary_ = null;
+
+    //our Id list returned
+    var sCode = "";
+
+    try {
+        ary_ = JSON.parse(oGroup.getUGrp_Json());
+    } catch (error) {
+        console.log("contact_groupsMember error " + error);
+        return sCode;
+    }
+
+    //our count
+    nCount = ary_.length;
+    //our first element folks !
+    if(nLine < nCount){
+        //add it !!!
+        sCode += ary_[nLine].uid;
+        //next
+        nLine++;
+    }
+    //our loop
+    while(nLine < nCount){
+        //add it !!!
+        sCode += ", " + ary_[nLine].uid;
+        //next
+        nLine++;
+    }
+    
+    //return the code
+    return sCode;
+}
+
 ///[FUNCTION][contact_groups_KeySearch]Function to manage the enter on the SAI_ Search field
 ///[PARAMETER][Event][event]Next field name
 function contact_groups_KeySearch(event){

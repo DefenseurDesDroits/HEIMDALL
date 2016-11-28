@@ -89,14 +89,65 @@ function contact_queryArrayToList(ary_){
     return sList;
 }
 
+// function contact_queryTagToList(oTag){
+//     //our count
+//     var nCount = 0;
+//     //our iterator
+//     var nLine = 0;
+
+//     //our code
+//     var sCode = "";
+
+//     //our array
+//     var ary_ = null;
+
+//     //check the tag !!!
+//     if(oTag == null)
+//         return sCode;
+
+//     //try it !!!
+//     try {
+//         //get the JSON
+//         ary_ = JSON.parse( oTag.getId_Items_Json() );
+//         console.log("TRY => " + oTag.getId_Items_Json());
+//     } catch (error) {
+//         ary_ = [];
+//         console.log("ERROR => " + error);
+//     }
+
+//     //get the count !!!
+//     nCount = ary_.length;
+//     nLine = 0;
+//     if(nLine < nCount){
+//         //our id !
+//         sCode += ary_[nLine].uid;
+//         //next
+//         nLine++;
+//     }
+//     //the loop
+//     while(nLine < nCount){
+//         //our id !
+//         sCode += ", " + ary_[nLine].uid;
+//         //next
+//         nLine++;
+//     }
+
+//     //our code
+//     return sCode;
+// }
+
 function contact_queryTagToList(oTag){
     //our count
     var nCount = 0;
     //our iterator
     var nLine = 0;
+    //position of the Groups
+    var nPosition = 0;
 
     //our code
     var sCode = "";
+    //our members code
+    var sMember = "";
 
     //our array
     var ary_ = null;
@@ -121,6 +172,14 @@ function contact_queryTagToList(oTag){
     if(nLine < nCount){
         //our id !
         sCode += ary_[nLine].uid;
+        //get the groups position if it's one :
+        nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Groups, 'nId_Items', ary_[nLine].uid);
+        //founded ?
+        if(nPosition != POTOURS_FIND_NOTFOUND){
+            sMember = contact_groupsMember(Heimdall.members.products.contacts.Groups[nLine]);
+            if(sMember != "")
+                sCode += ", " + sMember;
+        }
         //next
         nLine++;
     }
@@ -128,6 +187,14 @@ function contact_queryTagToList(oTag){
     while(nLine < nCount){
         //our id !
         sCode += ", " + ary_[nLine].uid;
+        //get the groups position if it's one :
+        nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Groups, 'nId_Items', ary_[nLine].uid);
+        //founded ?
+        if(nPosition != POTOURS_FIND_NOTFOUND){
+            sMember = contact_groupsMember(Heimdall.members.products.contacts.Groups[nLine]);
+            if(sMember != "")
+                sCode += ", " + sMember;
+        }
         //next
         nLine++;
     }

@@ -66,18 +66,14 @@ function searchQuery($Args){
 
     //recreate the query
     $sSelection = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" ;
-    //$sQuery = "SELECT DISTINCT " . $oContact->getColumns() . "\r\n" ;
     $sFrom .= "FROM " . $oContact->getTable() . "\r\n"  ;
-    //$sQuery .= "FROM " . $oContact->getTable() . "\r\n"  ;
 
     //add the link between column s and foreign Key
     $sWhere .= "WHERE " . $oContact->getLinkConditions(true);
-    //$sQuery .= "WHERE " . $oContact->getLinkConditions(true);
 
     //add type 
     $sWhere .= "\r\n" . "AND xxx.contacts.id_contact_types <> 0";
     //$sWhere .= "\r\n" . "AND xxx.contacts.id_contact_types = 1";
-    //$sQuery .= "\r\n" . "AND xxx.contacts.id_contact_types = 1";
 
     $sOrder .= "\r\n" . "ORDER BY xxx.contacts.nom, xxx.contacts.prenom";
 
@@ -182,27 +178,22 @@ function searchQuery($Args){
                 switch ($sMethod) {
                     case 'LIKE_SW'://Starts with !!! (and not Star Wars you baka !!!)
                         $sWhere .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", $ary_Arg["Value"] . "%", $ary_Corres );
-                        //$sQuery .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", $ary_Arg["Value"] . "%", $ary_Corres );
                         break;
                     case 'LIKE_EW'://Ends with !!!
                         $sWhere .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", "%" . $ary_Arg["Value"], $ary_Corres );
-                        //$sQuery .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", "%" . $ary_Arg["Value"], $ary_Corres );
                         break;
                     case 'LIKE_C'://Contains !!!
                         $sWhere .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", "%" . $ary_Arg["Value"] . "%", $ary_Corres );
-                        //$sQuery .= " AND " . createCondition((array) $ary_Arg["Names"], "ILIKE", "%" . $ary_Arg["Value"] . "%", $ary_Corres );
                         break;
                     case 'IN_LIST':
                         $ary_Obj = (array) $ary_Arg["Names"];
                         if($ary_Arg["Value"] != "")
                             $sWhere .= " AND " . $ary_Obj[0] . " IN(" . $ary_Arg["Value"] . ")";
-                            //$sQuery .= " AND " . $ary_Obj[0] . " IN(" . $ary_Arg["Value"] . ")";
                         break;
                     case 'NIN_LIST':
                         $ary_Obj = (array) $ary_Arg["Names"];
                         if($ary_Arg["Value"] != "")
                             $sWhere .= " AND " . $ary_Obj[0] . " NOT IN(" . $ary_Arg["Value"] . ")";
-                            //$sQuery .= " AND " . $ary_Obj[0] . " NOT IN(" . $ary_Arg["Value"] . ")";
                         break;
                     default:
                         # code...

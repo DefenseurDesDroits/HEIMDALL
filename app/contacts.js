@@ -449,6 +449,60 @@ function loadStatics_Pays(){
 
 }
 
+///[FUNCTION][loadStatics_Organisations]Function to load all the Organisations from the DTB
+///[RETURNS][Boolean]True if done
+function loadStatics_Organisations(){
+
+    //Our request object
+    var oReq = new XMLHttpRequest();
+    //Define the function
+    oReq.onreadystatechange = function(){
+        //if everything is alright
+        if(oReq.readyState == 4 && oReq.status == 200){
+            //our object to convert
+            var oPays = null;
+            //our array of result
+            var ary_Json = JSON.parse(oReq.responseText);
+
+            //our count
+            var nCount = 0;
+            //our iterrator
+            var nLine = 0;
+
+            //reset
+            Heimdall.members.products.contacts.Organisations = [];
+            //get the number of result
+            nCount = ary_Json.length;
+            //loop
+            while(nLine < nCount){
+
+                //realloc the variable
+                oOrganisations = new Organisations();
+                //load it !
+                oOrganisations.loadFromArray(ary_Json[nLine]);
+
+                //add it
+                Heimdall.members.products.contacts.Organisations.push(oOrganisations);
+
+                //next
+                nLine++;
+            }
+
+            Heimdall.flags.waitData = false;
+        }
+    };
+    //prepare the query*********************
+    Heimdall.flags.waitData = true;
+    //check the open
+    oReq.open("POST", "php/Organisations_manager.php", true);
+    //set the request header
+    oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    oReq.send("Id=0&Session=" + "session" + "&Action=LIST"); 
+    //Return the job !
+    return true;
+
+}
+
 ///[FUNCTION][loadStatics_Organisation_Types]Function to load all the kind of operations from the DTB
 ///[RETURNS][Boolean]True if done
 function loadStatics_Organisation_Types(){
@@ -629,7 +683,11 @@ function loadStaticsContactsData(){
     loadStatics_Civilites();
     loadStatics_Titres();
     loadStatics_Accreditations();
+
     //loadStatics_Groups();//do you want security troubles ? O_o
+    loadStatics_Groups();//No but needed for request Y_y
+    loadStatics_Organisations();//Get the organismes !
+
     loadStatics_Pays();
     loadStatics_Langues();
     loadStatics_Organisation_Types();
@@ -1846,6 +1904,7 @@ function init_contacts(){
     Heimdall.members.products.contacts["Groups"] = [];
     Heimdall.members.products.contacts["Accreditations"] = [];
     Heimdall.members.products.contacts["Pays"] = [];
+    Heimdall.members.products.contacts["Organisations"] = [];
     Heimdall.members.products.contacts["Organisation_Types"] = [];
     Heimdall.members.products.contacts["Langues"] = [];
     Heimdall.members.products.contacts["Segments"] = [];
