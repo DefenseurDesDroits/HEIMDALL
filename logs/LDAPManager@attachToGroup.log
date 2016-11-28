@@ -7018,3 +7018,21 @@
 	=> Status : Presse et communication
 	=> Json : [{"uid":"948","until":""}]
 	=> Already in !!!
+
+
+[New Call]
+	=> Group name not null : Défenseur des droits
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Défenseur des droits
+	=> Json : [{"uid":"948","until":""}]
+	=> Already in !!!
+
+
+[New Call]
+	=> Group name not null : Presse et communication
+	=> Groups with this name in DTB : 1
+	=> Obtention 
+	=> Status : Presse et communication
+	=> Json : [{"uid":"948","until":""}]
+	=> Already in !!!
