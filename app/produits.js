@@ -9,6 +9,48 @@
 
 
 Heimdall_Produits = {
+    menus : [
+        {id : "OPT_PRODUCT_Contacts", onclick : "notDevYet();", text : "Nah"},
+        {id : "OPT_PRODUCT_Publications", onclick : "notDevYet();", text : "Nah"},
+        {id : "OPT_PRODUCT_Stocks", onclick : "notDevYet();", text : "Nah"},
+        {id : "OPT_PRODUCT_Campagnes", onclick : "notDevYet();", text : "Nah"}
+    ],
+    menuClassUpdate : function(sId){
+        //our count
+        var nCount = 0;
+        //our iterrator
+        var nLine = 0;
+
+        //the element
+        var oElement = null;
+
+        //get the count
+        nCount = Heimdall_Produits.menus.length;
+        //loop
+        while(nLine < nCount){
+            //get the element
+            oElement = document.getElementById(Heimdall_Produits.menus[nLine].id);
+            //we got it ?
+            if(oElement != null){
+                oElement.className = "OPT_ others";
+            }
+            //Next
+            nLine++;
+        }
+
+        //if Id is good
+        if(sId != null){
+            //the size matter
+            if(sId != ""){
+                //get the element
+                oElement = document.getElementById(sId);
+                //we got it ?
+                if(oElement != null){
+                    oElement.className = "OPT_ current";
+                }
+            }
+        }
+    },
     //our menu to generated
     generateMenuCode : function(){
         return "";
@@ -46,7 +88,10 @@ var Heimdall = {
         products : {
             contacts : {
                 generateMenuCode : Heimdall_Contacts.generateMenuCode
-            }
+            }/*,
+            publications : {
+                generateMenuCode : Heimdall_Publications.generateMenuCode
+            }*/
         },
         user : {},
         connectionWindow : null
@@ -147,6 +192,7 @@ var Heimdall = {
                     init_contacts();
                     //create the product
                     if(location.hash == ""){
+                        console.log("Nope !!!");
                         Heimdall_Contacts.onProductClick();
                     }
                     else{
@@ -155,15 +201,14 @@ var Heimdall = {
                         while(nLine < nCount){
                             //if the menu exists
                             if( "#" + Heimdall_Contacts.menus[nLine].id == location.hash){
+                                console.log("Nope !!!");
                                 Heimdall_Contacts.onProductClick();
                                 eval(Heimdall_Contacts.menus[nLine].onclick);
                             }
                             //Next 
                             nLine++;
                         }
-                        //Heimdall_Contacts.onProductClick();
                     }
-                    //Heimdall_Contacts.onProductClick();
 
                     //get the response array
                     Heimdall.members.user = ary_Response;
@@ -461,9 +506,8 @@ function init_Produits(){
     }
 
     //
-    sCode += '<li class="OPT_ others">Publications</li>';
-	sCode += '<li class="OPT_ others">Stock</li>';
-	sCode += '<li class="OPT_ others">Campagnes</li>';
+	sCode += '<li id="OPT_PRODUCT_Stocks" class="OPT_ others">Stock</li>';
+	sCode += '<li id="OPT_PRODUCT_Campagnes" class="OPT_ others">Campagnes</li>';
 	sCode += '<!--<li class="OPT_ others">Recherche</li> -->';
 
     //add the code

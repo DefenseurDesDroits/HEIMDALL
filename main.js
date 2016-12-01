@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.4.4";
+const MAIN_VERSION = "0.4.5";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! ###################################### */
@@ -52,6 +52,8 @@ var ary_sApp = [
 	"app/contacts_segments.js", 
 	"app/contacts_query.js", 
 	"app/contacts.js", 
+	//Publication part
+	//"app/publications.js", 
 	//The product stuff
 	"app/produits.js"];
 

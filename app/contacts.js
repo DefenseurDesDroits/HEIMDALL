@@ -4,12 +4,12 @@
 *
 */
 
-/// <reference path="../lib/CONTACTS_contact_Types.js" />
-/// <reference path="../lib/CONTACTS_Civilites.js" />
-/// <reference path="../lib/CONTACTS_Titres.js" />
+/// <reference path="../lib/CONTACTS/CONTACTS_contact_Types.js" />
+/// <reference path="../lib/CONTACTS/CONTACTS_Civilites.js" />
+/// <reference path="../lib/CONTACTS/CONTACTS_Titres.js" />
 
-/// <reference path="../lay/LAY_Contacts.js" />
-/// <reference path="../lay/LAY_Organisations.js" />
+/// <reference path="../lay/CONTACTS/LAY_Contacts.js" />
+/// <reference path="../lay/CONTACTS/LAY_Organisations.js" />
 
 const HEIMDALL_AUTO_QUERY_SIZE = 2;
 
@@ -77,7 +77,8 @@ Heimdall_Contacts = {
     },
     //our menu to generated
     generateMenuCode : function(){
-        return '<li class="OPT_ current">Contacts</li>';
+        return '<li id="OPT_PRODUCT_Contacts" class="OPT_ current" onclick="Heimdall_Contacts.onProductClick();">Contacts</li>';
+        //return '<li class="OPT_ current" onclick="Heimdall_Contacts.onProductClick();">Contacts</li>';
     },
     //method to generate
     generateHTML : function(){
@@ -1885,7 +1886,10 @@ function contactMenuCLICK(){
 
     oElement.innerHTML = contactMenuHTML();
 
+    Heimdall_Produits.menuClassUpdate("OPT_PRODUCT_Contacts");
     Heimdall_Contacts.menuClassUpdate("OPT_Contacts_General");
+
+    //Heimdall_Contacts.onProductClick();
 
     return true;
 }
@@ -1918,5 +1922,6 @@ function init_contacts(){
     //init the loader of Civilities/Contact_types
     loadStaticsContactsData();
 
-    return contactMenuCLICK();
+    return true;
+    //return contactMenuCLICK();
 }

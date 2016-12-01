@@ -51,8 +51,8 @@ include (dirname(__FILE__) . "/../libphp/php-jwt-master/src/JWT.php");
 use Firebase\JWT\JWT;
 
 //Debug const
-//CONST HEIMDALL_LDAP_Debug = false;
-CONST HEIMDALL_LDAP_Debug = true;
+CONST HEIMDALL_LDAP_Debug = false;
+//CONST HEIMDALL_LDAP_Debug = true;
 
 //const for choose the right path 
 
