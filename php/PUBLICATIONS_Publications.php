@@ -7,7 +7,8 @@
 
 
 //include to dtb connection
-include_once "PUBLICATIONS_Noeuds.php";
+include_once "CONTACTS_Noeuds.php";
+//include_once "PUBLICATIONS_Noeuds.php";
 
 ///[CLASS][Publications]Tables des publications disponibles dans la base de données
 ///[AUTHOR]LUDO
@@ -45,7 +46,7 @@ class Publications extends Noeuds{
 	///[RETURNS]The Id_Publications
 	public function getId_Publications(){
 		//[ERROR]The column Publications.Publications.nId_Publications has an inheritance : Contacts.Noeuds.nId_Noeuds WITHOUT any linked Column !!!
-		return $this->members["nId_Publications"];
+		return $this->getId_Noeuds();
 	}
 
 	///[METHOD][getNom]Method to get the Nom
@@ -91,8 +92,8 @@ class Publications extends Noeuds{
 	///[PARAMETER][integer][$nValue]Our new value for Id_Publications
 	///[RETURNS]Boolean true if done 
 	public function setId_Publications($nValue){
-		//[ERROR]Return the member
-		return false;
+		//Return the member
+		return $this->setId_Noeuds($nValue);
 	}
 
 	///[METHOD][setNom]Method to set the Nom
@@ -228,6 +229,18 @@ class Publications extends Noeuds{
 
 
 	///[ERROR]getLinkConditions, no PARENT key column detected
+	///[METHOD][getLinkConditions]Method to get the conditions to link with parent table 
+	///[PRAMETER][boolean][$bAll]Parameter to obtain parents Link conditions
+	///[RETURNS][string]string, our conditions 
+	public function getLinkConditions($bAll = false){
+		//get the parent link condition
+		$sParentCondition = parent::getLinkConditions($bAll);
+		//test the parent condition
+		if($sParentCondition != "" && $bAll)
+			return $sParentCondition ." \r\nAND xxx.Noeuds.Id_Noeuds =  xxx.Publications.Id_Publications";
+		else
+			return " xxx.Noeuds.Id_Noeuds = xxx.Publications.Id_Publications";
+	}
 
 
 	///[METHOD][getConditions]Method to get the conditions 
@@ -337,8 +350,10 @@ class Publications extends Noeuds{
 		$sValues .= Quotes( $this->getId_Publications());
 		$sValues .= ", " . Quotes( $this->getNom());
 		$sValues .= ", " . Quotes( $this->getId_Domaines());
-		$sValues .= ", " . Quotes( $this->getCreation());
-		$sValues .= ", " . Quotes( $this->getMaj());
+		$sValues .= ", current_timestamp";
+		//$sValues .= ", " . Quotes( $this->getCreation());
+		$sValues .= ", current_timestamp";
+		//$sValues .= ", " . Quotes( $this->getMaj());
 		if( $this->getDematerialisee())
 			$sValues .= ", " . "TRUE";
 		else
@@ -368,8 +383,10 @@ class Publications extends Noeuds{
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "Nom  = " . Quotes($this->getNom());
 		$Query .= ", " .  "Id_Domaines  = " . Quotes($this->getId_Domaines());
-		$Query .= ", " .  "Creation  = " . Quotes($this->getCreation());
-		$Query .= ", " .  "Maj  = " . Quotes($this->getMaj());
+		//$Query .= ", " .  "Creation  = current_timestamp";
+		//$Query .= ", " .  "Creation  = " . Quotes($this->getCreation());
+		$Query .= ", " .  "Maj  = current_timestamp";
+		//$Query .= ", " .  "Maj  = " . Quotes($this->getMaj());
 		if( $this->getDematerialisee())
 			$Query .= ", " .  "Dematerialisee  = TRUE";
 		else

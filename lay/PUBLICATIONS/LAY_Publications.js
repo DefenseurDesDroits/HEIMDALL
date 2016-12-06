@@ -206,29 +206,13 @@ function LAY_Publications(){
 		}
 		sCode += "\t" + "\t" + "</select>" + "\r\n";
 
-		sCode += '\t\t<input id="SAI_Prenom_' + oLAY_Publications.getId() + '" class="SAI_" type="text" name="SAI_Prenom_' + oLAY_Publications.getId() + '" value=""/>';
-
-		//sCode += "\t" + "<br/>" + "\r\n";
-
-		sCode += "\t" + "\t" + "<select id=\"COMBO_Titres_" + oLAY_Publications.getId() + "\">" + "\r\n";
-		//get the count
-		nCount = Heimdall.members.products.contacts.Titres.length;
-		//init the iterator
-		nIt = 0;
-		//loop
-		while(nIt < nCount){
-			//add option
-			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Titres[nIt].getId_Titres() + "\">" + Heimdall.members.products.contacts.Titres[nIt].getNom() + "</option>" + "\r\n";
-			//Next
-			nIt++;
-		}
-		sCode += "\t" + "\t" + "</select>" + "\r\n";
+		sCode += '\t\t<input id="CHK_Dematerialisee_' + oLAY_Publications.getId() + '" class="SAI_" type="checkbox" name="CHK_Dematerialisee_' + oLAY_Publications.getId() + '" value=""/>';
+		sCode += "Dématerialisée";
 
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Publications('" + oLAY_Publications.getId() + "')\">Sauvegarder</div>" + "\r\n";
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Publications('" + oLAY_Publications.getId() + "')\">Supprimer</div>" + "\r\n";
 
 		sCode += "\t" + "</form>";
-		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId() + "\">---</div>";
 		
 		sCode += "</div>";
 		
@@ -376,13 +360,9 @@ function LAY_Publications(){
 			oLAY_Publications.members.oObj = new Publications();
 			//return false;
 
-		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Publications.getId());
-		if(oElement != null)
-			oElement.value = oLAY_Publications.members.oObj.getPseudo();
-
-		oElement = document.getElementById("COMBO_Civilite_" + oLAY_Publications.getId());
+		oElement = document.getElementById("COMBO_Domaines_" + oLAY_Publications.getId());
 		if(oElement != null){
-			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", oLAY_Publications.members.oObj.getId_Civilites());
+			nPosition = findInPotoursObjLst(Heimdall.members.products.publications.Domaines, "nId_Domaines", oLAY_Publications.members.oObj.getId_Domaines());
 			if(nPosition != POTOURS_FIND_NOTFOUND){
 				//Option created in the same order than stored
 				oElement.selectedIndex = nPosition;
@@ -393,18 +373,9 @@ function LAY_Publications(){
 		if(oElement != null)
 			oElement.value = oLAY_Publications.members.oObj.getNom();
 
-		oElement = document.getElementById("SAI_Prenom_" + oLAY_Publications.getId());
+		oElement = document.getElementById("CHK_Dematerialisee_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oElement.value = oLAY_Publications.members.oObj.getPrenom();
-
-		oElement = document.getElementById("COMBO_Titres_" + oLAY_Publications.getId());
-		if(oElement != null){
-			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", oLAY_Publications.members.oObj.getId_Titres());
-			if(nPosition != POTOURS_FIND_NOTFOUND){
-				//Option created in the same order than stored
-				oElement.selectedIndex = nPosition;
-			}
-		}
+			oElement.value = oLAY_Publications.members.oObj.getDematerialisee();
 
 		return true;
 	};
@@ -418,18 +389,14 @@ function LAY_Publications(){
 		//element 
 		var oElement = null;
 
-		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Publications.getId());
+		oElement = document.getElementById("COMBO_Domaines_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oPublications.setPseudo(oElement.value);
-
-		oElement = document.getElementById("COMBO_Civilite_" + oLAY_Publications.getId());
-		if(oElement != null)
-			oPublications.setId_Civilites(parseInt(Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites()));
+			oPublications.setId_Domaines(parseInt(Heimdall.members.products.publications.Domaines[oElement.selectedIndex].getId_Domaines()));
 
 		///[DEBUG]Operaion time !!!
 		if(Heimdall.flags.debug && oElement != null){
-			console.log("COMBO_Civilite value : "  + oElement.selectedIndex);
-			console.log("COMBO_Civilite ID : "  + Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites());
+			console.log("COMBO_Domaines value : "  + oElement.selectedIndex);
+			console.log("COMBO_Domaines ID : "  + Heimdall.members.products.publications.Domaines[oElement.selectedIndex].getId_Domaines());
 		}
 		///[/DEBUG]
 
@@ -437,20 +404,9 @@ function LAY_Publications(){
 		if(oElement != null)
 			oPublications.setNom(oElement.value);
 
-		oElement = document.getElementById("SAI_Prenom_" + oLAY_Publications.getId());
+		oElement = document.getElementById("CHK_Dematerialisee_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oPublications.setPrenom(oElement.value);
-
-		oElement = document.getElementById("COMBO_Titres_" + oLAY_Publications.getId());
-		if(oElement != null)
-			oPublications.setId_Titres(parseInt(Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres()));
-
-		///[DEBUG]Operaion time !!!
-		if(Heimdall.flags.debug && oElement != null){
-			console.log("COMBO_Titres value : "  + oElement.selectedIndex);
-			console.log("COMBO_Titres ID : "  + Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres());
-		}
-		///[/DEBUG]
+			oPublications.setDematerialisee(oElement.value);
 
 		///[DEBUG]Operation time !!!
 		if(Heimdall.flags.debug){

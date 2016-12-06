@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.4.5";
+const MAIN_VERSION = "0.4.6";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! ###################################### */
@@ -48,7 +48,8 @@ var ary_sFileLib = [
 	"lib/PUBLICATIONS/PUBLICATIONS_Publications.js",
 	"lib/PUBLICATIONS/PUBLICATIONS_Fichiers.js",
 	/*PUBLICATION LAY !!! */
-	"lay/PUBLICATIONS/LAY_Domaines.js"
+	"lay/PUBLICATIONS/LAY_Domaines.js",
+	"lay/PUBLICATIONS/LAY_Publications.js"
 ];
 
 var ary_sApp = [

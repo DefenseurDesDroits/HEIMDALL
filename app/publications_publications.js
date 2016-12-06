@@ -55,7 +55,7 @@ function publications_publicationsDoQueryComplete(sIdWaiting, ptrFunctionCreateA
 
     //prepare the query*********************
     //check the open
-    oReq.open("POST", "php/queryManager_Publicationss.php", true);
+    oReq.open("POST", "php/queryManager_Publications.php", true);
     //set the request header
     oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
     oReq.send("Id=" +Heimdall.members.user["UserId"] + "&Session=" + "" + "&Action=publications_publications&Args=" + JSON.stringify(ptrFunctionCreateArg())); 
@@ -85,7 +85,7 @@ function publications_publicationsCreateArgs(){
     var ary_Result = [];
 
     //the sai_ always here field
-    ary_Result.push({Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sNom", "sPrenom"], Value : oElement.value});
+    ary_Result.push({Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sNom"], Value : oElement.value});
 
     //find next number to add
     nCount = HEIMDALL_NUMBER_OF_FILTER_MAX;
@@ -123,11 +123,10 @@ function publications_publicationsCreateSelectionField(sNext){
 
     //create the block
     sCode += "<div id=\"" + sNext + "\" class=\"" + HEIMDALL_LAY_QUERY_Filter +"\">" + "\r\n";
-    //sCode += "<form id=\"" + sNext + "\" class=\"" + HEIMDALL_LAY_QUERY_Filter +"\">" + "\r\n";
+    
     sCode += "\t" + "<button id=\"BTN_DEL_" + sNext + "\" class=\"BTN_ heim_Inline_Block\" type=\"button\" onclick=\"deleteSelectionField('" + sNext + "')\">-</button>" + "\r\n";
     sCode += "\t" + "<select id=\"COMBO_Column_" + sNext + "\" onkeyup=\"publicationsKeySearch(event)\">" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"sNom\">Nom</option>" + "\r\n";
-    sCode += "\t" + "\t" +"<option value=\"sPrenom\">Prénom</option>" + "\r\n";
     sCode += "\t" + "</select>" + "\r\n";
     sCode += "\t" + "<select id=\"COMBO_COND_" + sNext + "\" onkeyup=\"publicationsKeySearch(event)\">" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_StartsWith + "\">Commence Par</option>" + "\r\n";
@@ -135,9 +134,8 @@ function publications_publicationsCreateSelectionField(sNext){
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_Contains +"\">Contient</option>" + "\r\n";
     sCode += "\t" + "</select>" + "\r\n";
     sCode += "\t" + '<input id="SAI_Value_' + sNext + '" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="publications_publications_KeySearch(event)"/>';
-    //sCode += "\t" + "<div class=\"heim_Inline_Block\">" + sNext + "</div>" + "\r\n";
+    
     sCode += "</div>";
-    //sCode += "</form>";
 
     return sCode;
 }
@@ -221,7 +219,7 @@ function publications_publicationsPlots(nStart, nLength){
             //get the user
             oPublications = Heimdall.members.products.publications.Publications[nLine];
             //add the code
-            sCode += "<div id=\"User_Line_" + oPublications.getId_Publications() + "\" onclick=\"publications_publicationsClick(" + nLine + ")\" class=\"OPT_Publications\">" + oPublications.getNom() + " " + oPublications.getPrenom() + "</div>";
+            sCode += "<div id=\"Publication_Line_" + oPublications.getId_Publications() + "\" onclick=\"publications_publicationsClick(" + nLine + ")\" class=\"OPT_Publications\">" + oPublications.getNom() + "</div>";
             //Next
             nLine++;
         }
@@ -281,10 +279,11 @@ function publications_publicationsClick(nLine){
             oPublications = Heimdall.members.products.publications.Publications[nLine];
             //init
             LAY_.init("PNL_Win", "Publications" +  oPublications.getId_Publications(), oPublications);
+            console.log("Is that Loaded : " + oPublications.exportToJson());
             //When it's load, plots !!!
-            LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded, publications_publicationsLoadedHandle);
+            //LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded, publications_publicationsLoadedHandle);
             //plots
-            //LAY_.ObjToView();
+            LAY_.ObjToView();
         }
     }
 }

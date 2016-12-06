@@ -22,6 +22,7 @@ function createContactType($oCon){
     $sQuery .= "INSERT INTO xxx.contact_types(nom) VALUES ('organisme');";
     $sQuery .= "INSERT INTO xxx.contact_types(nom) VALUES ('user');";
     $sQuery .= "INSERT INTO xxx.contact_types(nom) VALUES ('Groupe');";
+    //$sQuery .= "INSERT INTO xxx.contact_types(nom) VALUES ('Domaine');";
 
     //open
     $oCon->open();

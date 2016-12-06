@@ -793,7 +793,9 @@ function publicationWinPublication(oPublication){
 
     if(oPublication == null){
         oPublication = new Publications();
-        oPublication.setId_Domaine(1);
+        oPublication.setId_Domaines(1);
+        oPublication.setId_Accreditations_Item(1);
+        console.log("NAh Nah !!!");
     }
         
     //create the win form
@@ -855,10 +857,9 @@ function publicationsAddMenu(sDivID){
     sCode += "\t" + "<div>Publications</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Domaine\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();domaineWinPublication(null);\">Ajouter un domaine</div>" + "\r\n";
     //sCode += "\t" + "<div id=\"BTN_Add_Domaine\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();notDevYet();\">Ajouter un domaine</div>" + "\r\n";
-    sCode += "\t" + "<div id=\"BTN_Add_Publication\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();notDevYet();\">Ajouter une publication</div>" + "\r\n";
+    sCode += "\t" + "<div id=\"BTN_Add_Publication\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();publicationWinPublication(null);\">Ajouter une publication</div>" + "\r\n";
+    //sCode += "\t" + "<div id=\"BTN_Add_Publication\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();notDevYet();\">Ajouter une publication</div>" + "\r\n";
     sCode += "\t" + "<div id=\"BTN_Add_Fichier\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();notDevYet();\">Ajouter un fichier</div>" + "\r\n";
-    // sCode += "\t" + "<div id=\"BTN_Add_\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();segmentWinPublication(null);\">Ajouter un segment</div>" + "\r\n";
-    //sCode += "\t" + "<div id=\"BTN_Add_\" class=\"BTN_\" onclick=\"ptrMsgBox.dispose();notDevYet();\">Ajouter un segment</div>" + "\r\n";
 
     sCode += "</div>" + "\r\n";
 
