@@ -1,7 +1,7 @@
 -- #####################################
--- Ludo_DTB_CODE_MAKER_SQL Version 0.4.5.8
+-- Ludo_DTB_CODE_MAKER_SQL Version 0.4.6.0
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 28/07/2016 00:00:00
+-- Automatique generation made on 24/10/2016 00:00:00
 -- #####################################
 
 
@@ -54,15 +54,19 @@ COMMENT ON COLUMN xxx.Item_Types.Nom IS 'Nom de l''item';
 
 CREATE TABLE IF NOT EXISTS xxx.Items (
 	-- Identité de la table	Id_Items serial PRIMARY KEY NOT NULL,
-	-- Groupe possedant l'item	Id_groups_owner integer  NOT NULL,
+	-- Groupes possedant l'item	Id_groups_json varchar(1024)  NOT NULL,
 	-- Clef étrangère sur le niveau d'accreditation	Id_Accreditations_Item integer REFERENCES xxx.Accreditations (Id_Accreditations) ON DELETE CASCADE NULL,
-	-- date de dernière modification	Modifie timestamp  NOT NULL
+	-- date de dernière modification	Modifie timestamp  NOT NULL,
+	-- Id sur l'item créateur de cet item	Id_Creator integer  NOT NULL DEFAULT 0,
+	-- Users allowed to acces to the object	Id_users_json varchar(1024)  NOT NULL
 );
 COMMENT ON TABLE xxx.Items IS 'Table de tous les items avec des droits';
 COMMENT ON COLUMN xxx.Items.Id_Items IS 'Identité de la table';
-COMMENT ON COLUMN xxx.Items.Id_groups_owner IS 'Groupe possedant l''item';
+COMMENT ON COLUMN xxx.Items.Id_groups_json IS 'Groupes possedant l''item';
 COMMENT ON COLUMN xxx.Items.Id_Accreditations_Item IS 'Clef étrangère sur le niveau d''accreditation';
 COMMENT ON COLUMN xxx.Items.Modifie IS 'date de dernière modification';
+COMMENT ON COLUMN xxx.Items.Id_Creator IS 'Id sur l''item créateur de cet item';
+COMMENT ON COLUMN xxx.Items.Id_users_json IS 'Users allowed to acces to the object';
 
 
 -- ++++++++++++++++++++++++++++++++++++
@@ -89,7 +93,7 @@ COMMENT ON COLUMN xxx.Noeuds.Id_Noeuds_Parent IS 'identité de la table sur le n
 CREATE TABLE IF NOT EXISTS xxx.Notes (
 	-- Identifiant sur la tables	Id_Notes integer UNIQUE REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
 	-- Titre de la note	Titre varchar(64)  NOT NULL,
-	-- Urgente la note ?	Urgente bit  NOT NULL,
+	-- Urgente la note ?	Urgente boolean  NOT NULL,
 	-- Le texte de la note	Texte varchar(512)  NOT NULL,
 	-- Objet sur lequel est liée la note	Id_Items_Linked integer REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL
 );
@@ -291,7 +295,7 @@ COMMENT ON COLUMN xxx.Organisation_Types.Nom IS 'Nom du type d''organisation';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Organisations (
-	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE NOT NULL,
+	-- Identifiant hérité de la table Contacts	Id_Organisations integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
 	-- Clef étrangère sur la table Organistion_Types. Type de l'organisation	Id_Organisation_Type integer REFERENCES xxx.Organisation_Types (Id_Organisation_Types) ON DELETE CASCADE NOT NULL,
 	-- New Columns Created with Ludo Library	Acronyme varchar(16)  NOT NULL
 );
@@ -346,12 +350,62 @@ COMMENT ON COLUMN xxx.Notifications.Id_Destinataire IS 'Clef étrangère sur la 
 CREATE TABLE IF NOT EXISTS xxx.Groups (
 	-- Identifiant de la table Groups. Clef étrangère sur la table contact	Id_Groups integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL,
 	-- Json, liste des utilisateurs	UGrp_Json varchar   NOT NULL,
-	-- Ce groupe héberge t'il des fichiers ?	Fichiers bit  NOT NULL
+	-- Ce groupe héberge t'il des fichiers ?	Fichiers boolean  NOT NULL,
+	-- Nom unique du group	NomGroupe varchar(64) UNIQUE NOT NULL
 );
 COMMENT ON TABLE xxx.Groups IS 'Table des groups héritant de la table Contacts';
 COMMENT ON COLUMN xxx.Groups.Id_Groups IS 'Identifiant de la table Groups. Clef étrangère sur la table contact';
 COMMENT ON COLUMN xxx.Groups.UGrp_Json IS 'Json, liste des utilisateurs';
 COMMENT ON COLUMN xxx.Groups.Fichiers IS 'Ce groupe héberge t''il des fichiers ?';
+COMMENT ON COLUMN xxx.Groups.NomGroupe IS 'Nom unique du group';
+
+
+-- ++++++++++++++++++++++++++++++++++++
+-- Table Logs
+-- Description :
+-- 	Table pour enregistrer tous les changements de valeur d'item.
+-- ++++++++++++++++++++++++++++++++++++
+
+CREATE TABLE IF NOT EXISTS xxx.Logs (
+	-- Clef primaire de la table de login.	Id_Logs serial PRIMARY KEY NOT NULL,
+	-- Identifiant de l'objet modifié, cette clef n'est pas étrangère pour ne pas supprimer l'état des objets supprimés.	Id_Items integer  NOT NULL,
+	-- Date de création du log.	Creation varchar(16)  NOT NULL,
+	-- Créateur du Log. Cette clef n'est pas étrangère pour ne pas supprimer l'état des objets supprimés.	Id_Creator integer  NOT NULL,
+	-- Date de validation	Validation varchar(16)  NOT NULL,
+	-- Validateur de cette modification	Id_Validator integer  NOT NULL,
+	-- Json, dernière valeur d'item	Valeur varchar(1024)  NOT NULL,
+	-- L'objet est il en attente de suppression (ou supprimé si Suppression == True And sValidation != '')	Suppression boolean  NOT NULL
+);
+COMMENT ON TABLE xxx.Logs IS 'Table pour enregistrer tous les changements de valeur d''item.';
+COMMENT ON COLUMN xxx.Logs.Id_Logs IS 'Clef primaire de la table de login.';
+COMMENT ON COLUMN xxx.Logs.Id_Items IS 'Identifiant de l''objet modifié, cette clef n''est pas étrangère pour ne pas supprimer l''état des objets supprimés.';
+COMMENT ON COLUMN xxx.Logs.Creation IS 'Date de création du log.';
+COMMENT ON COLUMN xxx.Logs.Id_Creator IS 'Créateur du Log. Cette clef n''est pas étrangère pour ne pas supprimer l''état des objets supprimés.';
+COMMENT ON COLUMN xxx.Logs.Validation IS 'Date de validation';
+COMMENT ON COLUMN xxx.Logs.Id_Validator IS 'Validateur de cette modification';
+COMMENT ON COLUMN xxx.Logs.Valeur IS 'Json, dernière valeur d''item';
+COMMENT ON COLUMN xxx.Logs.Suppression IS 'L''objet est il en attente de suppression (ou supprimé si Suppression == True And sValidation != '''')';
+
+
+-- ++++++++++++++++++++++++++++++++++++
+-- Table Segments
+-- Description :
+-- 	Table gérant les segments.
+-- ++++++++++++++++++++++++++++++++++++
+
+CREATE TABLE IF NOT EXISTS xxx.Segments (
+	-- Clef unique de la table hérité de Items	Id_Segments integer UNIQUE REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
+	-- Propriétaire du segment.	Id_Items_Owner integer REFERENCES xxx.Items (Id_Items) ON DELETE CASCADE NOT NULL,
+	-- Liste des items du segment	Id_Items_Json varchar(1024)  NOT NULL,
+	-- Liste des paramêtres du segments.	Parametres varchar(1024)  NOT NULL,
+	-- Nom du segments	Nom varchar(64)  NOT NULL
+);
+COMMENT ON TABLE xxx.Segments IS 'Table gérant les segments.';
+COMMENT ON COLUMN xxx.Segments.Id_Segments IS 'Clef unique de la table hérité de Items';
+COMMENT ON COLUMN xxx.Segments.Id_Items_Owner IS 'Propriétaire du segment.';
+COMMENT ON COLUMN xxx.Segments.Id_Items_Json IS 'Liste des items du segment';
+COMMENT ON COLUMN xxx.Segments.Parametres IS 'Liste des paramêtres du segments.';
+COMMENT ON COLUMN xxx.Segments.Nom IS 'Nom du segments';
 
 
 

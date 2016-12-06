@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Notifications.php
 //Description : Tables des notifications utilisateurs
 
@@ -150,6 +150,13 @@ class Notifications{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Msg, Id_Auteur, Id_Destinataire";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -190,7 +197,7 @@ class Notifications{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Notifications::getColumns() . "\r\n" . "FROM " . Notifications::getTable() . "\r\n" . "WHERE " . Notifications::getConditions();
 	}
 
 
@@ -241,7 +248,7 @@ class Notifications{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Notifications::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -296,8 +303,7 @@ class Notifications{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Notifications" . " (" . Notifications::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Notifications::getValues() . " )";
 	}
 
 
@@ -308,14 +314,14 @@ class Notifications{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Notifications" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Msg  = " . Quotes($this->getMsg());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Auteur  = " . Quotes($this->getId_Auteur());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Destinataire  = " . Quotes($this->getId_Destinataire());
+		$Query .=  "Msg  = " . Quotes($this->getMsg());
+		$Query .= ", " .  "Id_Auteur  = " . Quotes($this->getId_Auteur());
+		$Query .= ", " .  "Id_Destinataire  = " . Quotes($this->getId_Destinataire());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Notifications = " . Quotes($this->getId_Notifications());
 		//Return the query !!!
 		return $Query;
 	}
@@ -325,7 +331,7 @@ class Notifications{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Notifications" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -355,11 +361,15 @@ class Notifications{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Notifications();
 		//Get the query !!!
-		if($this->getId_Notifications() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			$sQuery = Notifications::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Notifications::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -370,7 +380,7 @@ class Notifications{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Notifications::loadFromConnection($oAgent);
 	}
 
 

@@ -1,0 +1,13 @@
+DEBUG !!!
+QUERY :
+SELECT DISTINCT xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json, xxx.Infos.Id_Infos, xxx.Infos.Adr1, xxx.Infos.Adr2, xxx.Infos.Adr3, xxx.Infos.CP, xxx.Infos.Cedex, xxx.Infos.Ville, xxx.Infos.Telephone1, xxx.Infos.Courriel1, xxx.Infos.Telephone2, xxx.Infos.Courriel2, xxx.Infos.Site, xxx.Infos.Id_Pays, xxx.Infos.Id_Contact_Infos
+FROM xxx.Items, xxx.Infos
+WHERE  xxx.Items.Id_Items = xxx.Infos.Id_Infos
+AND xxx.infos.id_contact_infos = '953'
+AND (
+	id_accreditations_item = 1 
+	OR xxx.Items.id_creator = '948'
+	OR xxx.Items.id_users_json LIKE '%"uid":"948"%'
+	OR xxx.Items.id_groups_json LIKE '%"gid":"950"%'
+	OR xxx.Items.id_groups_json LIKE '%"gid":"951"%'
+)

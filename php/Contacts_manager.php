@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Contacts_manager.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
 
 //include to dtb connection
-include "CONTACTS_Contacts.php";
+include_once "CONTACTS_Contacts.php";
 
 ///[FUNCTION][ContactsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function ContactsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oContacts->setId_Contacts($nId))
+	if($oContacts->setId_Contacts(intval($nId)))
 		$oContacts->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function ContactsgetFromID($nId){
 
 ///[FUNCTION][ContactssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function ContactssaveFromJson($jsonObj){
+function ContactssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oContacts = new Contacts();
 	
 	//Load from Json !
 	$oContacts->loadFromJson($jsonObj);
 	//save the changes
-	$oContacts->save(null);
+	$oContacts->save($oAgent);
 	
 	//Return the present states
-	return $oContactsgetFromID( $oContacts->getId_Contacts() );
+	return ContactsgetFromID( $oContacts->getId_Contacts() );
 };
 
 ///[FUNCTION][ContactsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function ContactsgetAllInstance(){
 	//Our object declaration
 	$oContacts = new Contacts();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oContacts->getColumns() . "\r\n" . "FROM " . $oContacts->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oContacts->getColumns() . "\r\n" . "FROM " . $oContacts->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oContacts->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function ContactsgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function ContactsManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function ContactsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo ContactsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo ContactssaveFromJson($sJson);
+			echo ContactssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo ContactsdeleteFromID($nId);

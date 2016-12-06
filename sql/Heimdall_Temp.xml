@@ -53,10 +53,10 @@
               </DefaultValue>
               <Comment>Identité de la table</Comment>
             </Column>
-            <Column name="nId_groups_owner" deploy_name="Id_groups_owner" key="" foreign="" type="n" isnullable="False">
+            <Column name="sId_groups_json" deploy_name="Id_groups_json" key="" foreign="" type="s1024" isnullable="False">
               <DefaultValue>
               </DefaultValue>
-              <Comment>Groupe possedant l'item</Comment>
+              <Comment>Groupes possedant l'item</Comment>
             </Column>
             <Column name="nId_Accreditations_Item" deploy_name="Id_Accreditations_Item" key="foreign" foreign="Contacts.Accreditations.nId_Accreditations" type="n" isnullable="True">
               <DefaultValue>
@@ -67,6 +67,15 @@
               <DefaultValue>
               </DefaultValue>
               <Comment>date de dernière modification</Comment>
+            </Column>
+            <Column name="nId_Creator" deploy_name="Id_Creator" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>0</DefaultValue>
+              <Comment>Id sur l'item créateur de cet item</Comment>
+            </Column>
+            <Column name="sId_users_json" deploy_name="Id_users_json" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Users allowed to acces to the object</Comment>
             </Column>
           </Columns>
           <Comment>Table de tous les items avec des droits</Comment>
@@ -373,7 +382,7 @@
         </Table>
         <Table name="Organisations" deploy_name="Organisations" inherit="Contacts.Contacts" isview="False">
           <Columns>
-            <Column name="nId_Organisations" deploy_name="Id_Organisations" key="unique" foreign="Contacts.Contacts" type="n" isnullable="False">
+            <Column name="nId_Organisations" deploy_name="Id_Organisations" key="unique" foreign="Contacts.Contacts.nId_Contacts" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Identifiant hérité de la table Contacts</Comment>
@@ -453,8 +462,190 @@
               </DefaultValue>
               <Comment>Ce groupe héberge t'il des fichiers ?</Comment>
             </Column>
+            <Column name="sNomGroupe" deploy_name="NomGroupe" key="unique" foreign="" type="s64" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Nom unique du group</Comment>
+            </Column>
           </Columns>
           <Comment>Table des groups héritant de la table Contacts</Comment>
+        </Table>
+        <Table name="Logs" deploy_name="Logs" inherit="" isview="False">
+          <Columns>
+            <Column name="nId_Logs" deploy_name="Id_Logs" key="primary" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef primaire de la table de login.</Comment>
+            </Column>
+            <Column name="nId_Items" deploy_name="Id_Items" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Identifiant de l'objet modifié, cette clef n'est pas étrangère pour ne pas supprimer l'état des objets supprimés.</Comment>
+            </Column>
+            <Column name="sCreation" deploy_name="Creation" key="" foreign="" type="s16" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Date de création du log.</Comment>
+            </Column>
+            <Column name="nId_Creator" deploy_name="Id_Creator" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Créateur du Log. Cette clef n'est pas étrangère pour ne pas supprimer l'état des objets supprimés.</Comment>
+            </Column>
+            <Column name="sValidation" deploy_name="Validation" key="" foreign="" type="s16" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Date de validation</Comment>
+            </Column>
+            <Column name="nId_Validator" deploy_name="Id_Validator" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Validateur de cette modification</Comment>
+            </Column>
+            <Column name="sValeur" deploy_name="Valeur" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Json, dernière valeur d'item</Comment>
+            </Column>
+            <Column name="bSuppression" deploy_name="Suppression" key="" foreign="" type="b" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>L'objet est il en attente de suppression (ou supprimé si Suppression == True And sValidation != '')</Comment>
+            </Column>
+          </Columns>
+          <Comment>Table pour enregistrer tous les changements de valeur d'item.</Comment>
+        </Table>
+        <Table name="Segments" deploy_name="Segments" inherit="Contacts.Items" isview="False">
+          <Columns>
+            <Column name="nId_Segments" deploy_name="Id_Segments" key="unique" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef unique de la table hérité de Items</Comment>
+            </Column>
+            <Column name="nId_Items_Owner" deploy_name="Id_Items_Owner" key="foreign" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Propriétaire du segment.</Comment>
+            </Column>
+            <Column name="nId_Items_Json" deploy_name="Id_Items_Json" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Liste des items du segment</Comment>
+            </Column>
+            <Column name="sParametres" deploy_name="Parametres" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Liste des paramêtres du segments.</Comment>
+            </Column>
+            <Column name="sNom" deploy_name="Nom" key="" foreign="" type="s64" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Nom du segments</Comment>
+            </Column>
+          </Columns>
+          <Comment>Table gérant les segments.</Comment>
+        </Table>
+      </Tables>
+    </Module>
+    <Module id="Module_20161128_094045" version="">
+      <Info>
+        <Name>Publications</Name>
+        <Author>LUDO</Author>
+        <Dt>
+        </Dt>
+        <Comment>Module de gestion des publications !</Comment>
+        <Imports />
+      </Info>
+      <Tables>
+        <Table name="Domaines" deploy_name="Domaines" inherit="" isview="False">
+          <Columns>
+            <Column name="nId_Domaines" deploy_name="Id_Domaines" key="primary" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Identifiant de la table</Comment>
+            </Column>
+            <Column name="sNom" deploy_name="Nom" key="unique" foreign="" type="s32" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Nom du domaine</Comment>
+            </Column>
+            <Column name="sDescription" deploy_name="Description" key="" foreign="" type="s512" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Description du domaine de publication</Comment>
+            </Column>
+          </Columns>
+          <Comment>Table gérant les domaines des publications</Comment>
+        </Table>
+        <Table name="Publications" deploy_name="Publications" inherit="Contacts.Noeuds" isview="False">
+          <Columns>
+            <Column name="nId_Publications" deploy_name="Id_Publications" key="unique" foreign="Contacts.Noeuds.nId_Noeuds" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef unique de la table publication</Comment>
+            </Column>
+            <Column name="sNom" deploy_name="Nom" key="" foreign="" type="s64" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Nom de la publication</Comment>
+            </Column>
+            <Column name="nId_Domaines" deploy_name="Id_Domaines" key="foreign" foreign="Publications.Domaines.nId_Domaines" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Domaine de la publication</Comment>
+            </Column>
+            <Column name="dtCreation" deploy_name="Creation" key="" foreign="" type="dt" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Date de création de la publication</Comment>
+            </Column>
+            <Column name="dtMaj" deploy_name="Maj" key="" foreign="" type="dt" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Date de mise à jour de la publication</Comment>
+            </Column>
+            <Column name="bDematerialisee" deploy_name="Dematerialisee" key="" foreign="Publications.Publications.nId_Publications" type="b" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>La publication est-elle dématerialisée</Comment>
+            </Column>
+          </Columns>
+          <Comment>Tables des publications disponibles dans la base de données</Comment>
+        </Table>
+        <Table name="Fichiers" deploy_name="Fichiers" inherit="" isview="False">
+          <Columns>
+            <Column name="nId_Fichiers" deploy_name="Id_Fichiers" key="primary" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef primaire des fichiers</Comment>
+            </Column>
+            <Column name="nId_Publications" deploy_name="Id_Publications" key="" foreign="Publications.Publications.nId_Publications" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef étrangère sur les publications</Comment>
+            </Column>
+            <Column name="sPath" deploy_name="Path" key="unique" foreign="" type="s512" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Chemin du fichier sur le serveur</Comment>
+            </Column>
+            <Column name="nFilesize" deploy_name="Filesize" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Taille du fichier sur le serveur</Comment>
+            </Column>
+            <Column name="sChecksum" deploy_name="Checksum" key="" foreign="" type="s1024" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Checksum du fichier</Comment>
+            </Column>
+            <Column name="sVersion" deploy_name="Version" key="" foreign="" type="s32" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Version du fichier</Comment>
+            </Column>
+          </Columns>
+          <Comment>Table des fichiers physiques sur le serveur</Comment>
         </Table>
       </Tables>
     </Module>

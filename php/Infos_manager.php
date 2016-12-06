@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Infos_manager.php
 //Description : Table des adresses. Hérité de la classe item.
 
 
 //include to dtb connection
-include "CONTACTS_Infos.php";
+include_once "CONTACTS_Infos.php";
 
 ///[FUNCTION][InfosgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function InfosgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oInfos->setId_Infos($nId))
+	if($oInfos->setId_Infos(intval($nId)))
 		$oInfos->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function InfosgetFromID($nId){
 
 ///[FUNCTION][InfossaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function InfossaveFromJson($jsonObj){
+function InfossaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oInfos = new Infos();
 	
 	//Load from Json !
 	$oInfos->loadFromJson($jsonObj);
 	//save the changes
-	$oInfos->save(null);
+	$oInfos->save($oAgent);
 	
 	//Return the present states
-	return $oInfosgetFromID( $oInfos->getId_Infos() );
+	return InfosgetFromID( $oInfos->getId_Infos() );
 };
 
 ///[FUNCTION][InfosdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function InfosgetAllInstance(){
 	//Our object declaration
 	$oInfos = new Infos();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oInfos->getColumns() . "\r\n" . "FROM " . $oInfos->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oInfos->getColumns() . "\r\n" . "FROM " . $oInfos->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oInfos->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function InfosgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function InfosManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function InfosManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo InfosgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo InfossaveFromJson($sJson);
+			echo InfossaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo InfosdeleteFromID($nId);

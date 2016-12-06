@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Notes.php
 //Description : Table des notes sur les items
 
@@ -171,6 +171,13 @@ class Notes extends Items{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Notes, Titre, Urgente, Texte, Id_Items_Linked";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -199,7 +206,7 @@ class Notes extends Items{
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
 		//get the parent link condition
-		$sParentCondition = parent::getLinkConditions();
+		$sParentCondition = parent::getLinkConditions($bAll);
 		//test the parent condition
 		if($sParentCondition != "" && $bAll)
 			return $sParentCondition ." \r\nAND xxx.Items.Id_Items =  xxx.Notes.Id_Notes";
@@ -211,14 +218,14 @@ class Notes extends Items{
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Notes.Id_Notes = " . Quotes($this->getId_Notes());
+		return parent::getConditions() . " \r\nAND " . Notes::getLinkConditions() . " \r\nAND xxx.Notes.Id_Notes = " . Quotes($this->getId_Notes());
 	}
 
 
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Notes::getColumns() . "\r\n" . "FROM " . Notes::getTable() . "\r\n" . "WHERE " . Notes::getConditions();
 	}
 
 
@@ -269,7 +276,7 @@ class Notes extends Items{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Notes::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -326,8 +333,7 @@ class Notes extends Items{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Notes" . " (" . Notes::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Notes::getValues() . " )";
 	}
 
 
@@ -338,15 +344,15 @@ class Notes extends Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Notes" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Titre  = " . Quotes($this->getTitre());
-		$Query .= ", " .  $this->getTable() . "." . "Urgente  = " . Quotes($this->getUrgente());
-		$Query .= ", " .  $this->getTable() . "." . "Texte  = " . Quotes($this->getTexte());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Items_Linked  = " . Quotes($this->getId_Items_Linked());
+		$Query .=  "Titre  = " . Quotes($this->getTitre());
+		$Query .= ", " .  "Urgente  = " . Quotes($this->getUrgente());
+		$Query .= ", " .  "Texte  = " . Quotes($this->getTexte());
+		$Query .= ", " .  "Id_Items_Linked  = " . Quotes($this->getId_Items_Linked());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Notes = " . Quotes($this->getId_Notes());
 		//Return the query !!!
 		return $Query;
 	}
@@ -356,7 +362,7 @@ class Notes extends Items{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Notes" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -386,11 +392,17 @@ class Notes extends Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Notes();
 		//Get the query !!!
-		if($this->getId_Notes() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			//Call the parent method
+			parent::save($oAgent);
+			$sQuery = Notes::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Notes::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -401,7 +413,7 @@ class Notes extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Notes::loadFromConnection($oAgent);
 	}
 
 

@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Civilites_manager.php
 //Description : Table des civilités des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Civilites.php";
+include_once "CONTACTS_Civilites.php";
 
 ///[FUNCTION][CivilitesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function CivilitesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oCivilites->setId_Civilites($nId))
+	if($oCivilites->setId_Civilites(intval($nId)))
 		$oCivilites->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function CivilitesgetFromID($nId){
 
 ///[FUNCTION][CivilitessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function CivilitessaveFromJson($jsonObj){
+function CivilitessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oCivilites = new Civilites();
 	
 	//Load from Json !
 	$oCivilites->loadFromJson($jsonObj);
 	//save the changes
-	$oCivilites->save(null);
+	$oCivilites->save($oAgent);
 	
 	//Return the present states
-	return $oCivilitesgetFromID( $oCivilites->getId_Civilites() );
+	return CivilitesgetFromID( $oCivilites->getId_Civilites() );
 };
 
 ///[FUNCTION][CivilitesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function CivilitesgetAllInstance(){
 	//Our object declaration
 	$oCivilites = new Civilites();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oCivilites->getColumns() . "\r\n" . "FROM " . $oCivilites->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oCivilites->getColumns() . "\r\n" . "FROM " . $oCivilites->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oCivilites->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function CivilitesgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function CivilitesManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function CivilitesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo CivilitesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo CivilitessaveFromJson($sJson);
+			echo CivilitessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo CivilitesdeleteFromID($nId);

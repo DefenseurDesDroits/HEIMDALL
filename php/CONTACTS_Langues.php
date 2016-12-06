@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Langues.php
 //Description : Tables des langues
 
@@ -49,15 +49,15 @@ class Langues{
 	///[SECTION][SETTERS]#################################################
 
 	///[METHOD][setId_Langues]Method to set the Id_Langues
-	///[PARAMETER][integer][$lValue]Our new value for Id_Langues
+	///[PARAMETER][integer][$nValue]Our new value for Id_Langues
 	///[RETURNS]Boolean true if done 
-	public function setId_Langues($lValue){
+	public function setId_Langues($nValue){
 		//security on null guy !!!
-		if($lValue == null)
+		if($nValue == null)
 			return false;
 		//security on type guy !!!
-		if(getType($lValue) == 'integer'){
-			 $this->members["nId_Langues"] = $lValue;
+		if(getType($nValue) == 'integer'){
+			 $this->members["nId_Langues"] = $nValue;
 			//Happy end
 			return true;
 		}
@@ -95,6 +95,13 @@ class Langues{
 		if( $bId)
 			return "xxx.Langues.Id_Langues, xxx.Langues.Nom";
 		return "xxx.Langues.Nom";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom";
 	}
 
 
@@ -136,7 +143,7 @@ class Langues{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Langues::getColumns() . "\r\n" . "FROM " . Langues::getTable() . "\r\n" . "WHERE " . Langues::getConditions();
 	}
 
 
@@ -187,7 +194,7 @@ class Langues{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Langues::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -240,8 +247,7 @@ class Langues{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Langues" . " (" . Langues::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Langues::getValues() . " )";
 	}
 
 
@@ -252,12 +258,12 @@ class Langues{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Langues" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
+		$Query .=  "Nom  = " . Quotes($this->getNom());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Langues = " . Quotes($this->getId_Langues());
 		//Return the query !!!
 		return $Query;
 	}
@@ -267,7 +273,7 @@ class Langues{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Langues" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -297,11 +303,15 @@ class Langues{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Langues();
 		//Get the query !!!
-		if($this->getId_Langues() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			$sQuery = Langues::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Langues::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -312,7 +322,7 @@ class Langues{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Langues::loadFromConnection($oAgent);
 	}
 
 

@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Noeuds_manager.php
 //Description : Table pour gérer les noeuds
 
 
 //include to dtb connection
-include "CONTACTS_Noeuds.php";
+include_once "CONTACTS_Noeuds.php";
 
 ///[FUNCTION][NoeudsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function NoeudsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oNoeuds->setId_Noeuds($nId))
+	if($oNoeuds->setId_Noeuds(intval($nId)))
 		$oNoeuds->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function NoeudsgetFromID($nId){
 
 ///[FUNCTION][NoeudssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function NoeudssaveFromJson($jsonObj){
+function NoeudssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oNoeuds = new Noeuds();
 	
 	//Load from Json !
 	$oNoeuds->loadFromJson($jsonObj);
 	//save the changes
-	$oNoeuds->save(null);
+	$oNoeuds->save($oAgent);
 	
 	//Return the present states
-	return $oNoeudsgetFromID( $oNoeuds->getId_Noeuds() );
+	return NoeudsgetFromID( $oNoeuds->getId_Noeuds() );
 };
 
 ///[FUNCTION][NoeudsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function NoeudsgetAllInstance(){
 	//Our object declaration
 	$oNoeuds = new Noeuds();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oNoeuds->getColumns() . "\r\n" . "FROM " . $oNoeuds->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oNoeuds->getColumns() . "\r\n" . "FROM " . $oNoeuds->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oNoeuds->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function NoeudsgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function NoeudsManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function NoeudsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo NoeudsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo NoeudssaveFromJson($sJson);
+			echo NoeudssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo NoeudsdeleteFromID($nId);

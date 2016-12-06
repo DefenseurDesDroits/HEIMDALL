@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Contact_Types.php
 //Description : Table des types de contact
 
@@ -98,6 +98,13 @@ class Contact_Types{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -136,7 +143,7 @@ class Contact_Types{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Contact_Types::getColumns() . "\r\n" . "FROM " . Contact_Types::getTable() . "\r\n" . "WHERE " . Contact_Types::getConditions();
 	}
 
 
@@ -187,7 +194,7 @@ class Contact_Types{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Contact_Types::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -240,8 +247,7 @@ class Contact_Types{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Contact_Types" . " (" . Contact_Types::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Contact_Types::getValues() . " )";
 	}
 
 
@@ -252,12 +258,12 @@ class Contact_Types{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Contact_Types" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
+		$Query .=  "Nom  = " . Quotes($this->getNom());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Contact_Types = " . Quotes($this->getId_Contact_Types());
 		//Return the query !!!
 		return $Query;
 	}
@@ -267,7 +273,7 @@ class Contact_Types{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Contact_Types" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -297,11 +303,15 @@ class Contact_Types{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Contact_Types();
 		//Get the query !!!
-		if($this->getId_Contact_Types() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			$sQuery = Contact_Types::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Contact_Types::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -312,7 +322,7 @@ class Contact_Types{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Contact_Types::loadFromConnection($oAgent);
 	}
 
 

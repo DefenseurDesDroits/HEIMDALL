@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Contacts.php
 //Description : Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 
 
 //include to dtb connection
-include "CONTACTS_Noeuds.php";
+include_once "CONTACTS_Noeuds.php";
 
 ///[CLASS][Contacts]Table des contacts. Hérite de celle Noeuds pour gérer la notion de hiérarchie
 ///[AUTHOR]Ludo
@@ -197,6 +197,13 @@ class Contacts extends Noeuds{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Contacts, Prenom, Nom, Id_Civilites, Id_Titres, Id_Contact_Types";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -226,7 +233,7 @@ class Contacts extends Noeuds{
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
 		//get the parent link condition
-		$sParentCondition = parent::getLinkConditions();
+		$sParentCondition = parent::getLinkConditions($bAll);
 		//test the parent condition
 		if($sParentCondition != "" && $bAll)
 			return $sParentCondition ." \r\nAND xxx.Noeuds.Id_Noeuds =  xxx.Contacts.Id_Contacts";
@@ -238,14 +245,14 @@ class Contacts extends Noeuds{
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Contacts.Id_Contacts = " . Quotes($this->getId_Contacts());
+		return parent::getConditions() . " \r\nAND " . Contacts::getLinkConditions() . " \r\nAND xxx.Contacts.Id_Contacts = " . Quotes($this->getId_Contacts());
 	}
 
 
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Contacts::getColumns() . "\r\n" . "FROM " . Contacts::getTable() . "\r\n" . "WHERE " . Contacts::getConditions();
 	}
 
 
@@ -254,6 +261,7 @@ class Contacts extends Noeuds{
 	///[PARAMETER][boolean][$bFromQuery]Our boolean to know if corresponding array is usefull
 	///[RETURNS]boolean, true if done
 	public function loadFromArray($ary_, $bFromQuery = false){
+    	
 		//Our Corresponding set
 		$bindSet = array();
 		//If we want add Prefixe.Table
@@ -265,6 +273,7 @@ class Contacts extends Noeuds{
 				if(array_key_exists($bindSet[$key], $ary_))
 					$this->members[$key] = $ary_[$bindSet[$key]];
 			};
+			
 		}
 		else
 		{
@@ -274,6 +283,7 @@ class Contacts extends Noeuds{
 					$this->members[$key] = $ary_[$key];
 			};
 		}
+
 		//Return the job !
 		return true;
 	}
@@ -296,10 +306,10 @@ class Contacts extends Noeuds{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Contacts::getSelectQuery();
 		//Our result object
 		$ary_o = null;
-		
+
 		//open first
 		$GLOBALS["oConnection"]->open();
 		//do the select request
@@ -310,6 +320,7 @@ class Contacts extends Noeuds{
 		//now have we something ?
 		if(count($ary_o) <= 0)
 			return false;
+
 		//Return the job !
 		return $this->loadFromArray($ary_o[0], true);
 	}
@@ -354,8 +365,7 @@ class Contacts extends Noeuds{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Contacts" . " (" . Contacts::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Contacts::getValues() . " )";
 	}
 
 
@@ -366,16 +376,16 @@ class Contacts extends Noeuds{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Contacts" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Prenom  = " . Quotes($this->getPrenom());
-		$Query .= ", " .  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Civilites  = " . Quotes($this->getId_Civilites());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Titres  = " . Quotes($this->getId_Titres());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Contact_Types  = " . Quotes($this->getId_Contact_Types());
+		$Query .=  "Prenom  = " . Quotes($this->getPrenom());
+		$Query .= ", " .  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "Id_Civilites  = " . Quotes($this->getId_Civilites());
+		$Query .= ", " .  "Id_Titres  = " . Quotes($this->getId_Titres());
+		$Query .= ", " .  "Id_Contact_Types  = " . Quotes($this->getId_Contact_Types());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Contacts = " . Quotes($this->getId_Contacts());
 		//Return the query !!!
 		return $Query;
 	}
@@ -385,7 +395,7 @@ class Contacts extends Noeuds{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Contacts" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -415,11 +425,17 @@ class Contacts extends Noeuds{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Contacts();
 		//Get the query !!!
-		if($this->getId_Contacts() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			//Call the parent method
+			parent::save($oAgent);
+			$sQuery = Contacts::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Contacts::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -430,7 +446,7 @@ class Contacts extends Noeuds{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Contacts::loadFromConnection($oAgent);
 	}
 
 

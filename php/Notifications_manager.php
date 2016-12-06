@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Notifications_manager.php
 //Description : Tables des notifications utilisateurs
 
 
 //include to dtb connection
-include "CONTACTS_Notifications.php";
+include_once "CONTACTS_Notifications.php";
 
 ///[FUNCTION][NotificationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function NotificationsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oNotifications->setId_Notifications($nId))
+	if($oNotifications->setId_Notifications(intval($nId)))
 		$oNotifications->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function NotificationsgetFromID($nId){
 
 ///[FUNCTION][NotificationssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function NotificationssaveFromJson($jsonObj){
+function NotificationssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oNotifications = new Notifications();
 	
 	//Load from Json !
 	$oNotifications->loadFromJson($jsonObj);
 	//save the changes
-	$oNotifications->save(null);
+	$oNotifications->save($oAgent);
 	
 	//Return the present states
-	return $oNotificationsgetFromID( $oNotifications->getId_Notifications() );
+	return NotificationsgetFromID( $oNotifications->getId_Notifications() );
 };
 
 ///[FUNCTION][NotificationsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function NotificationsgetAllInstance(){
 	//Our object declaration
 	$oNotifications = new Notifications();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oNotifications->getColumns() . "\r\n" . "FROM " . $oNotifications->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oNotifications->getColumns() . "\r\n" . "FROM " . $oNotifications->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oNotifications->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function NotificationsgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function NotificationsManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function NotificationsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo NotificationsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo NotificationssaveFromJson($sJson);
+			echo NotificationssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo NotificationsdeleteFromID($nId);

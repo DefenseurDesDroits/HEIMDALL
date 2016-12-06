@@ -1,0 +1,56 @@
+
+
+[New Call]
+	FromQuery
+	Binding Array
+Array
+(
+    [nId_Contacts] => xxx.Contacts.Id_Contacts
+    [sPrenom] => xxx.Contacts.Prenom
+    [sNom] => xxx.Contacts.Nom
+    [nId_Civilites] => xxx.Contacts.Id_Civilites
+    [nId_Titres] => xxx.Contacts.Id_Titres
+    [nId_Contact_Types] => xxx.Contacts.Id_Contact_Types
+    [nId_Noeuds] => xxx.Noeuds.Id_Noeuds
+    [nId_Noeuds_Parent] => xxx.Noeuds.Id_Noeuds_Parent
+    [nId_Items] => xxx.Items.Id_Items
+    [sId_groups_json] => xxx.Items.Id_groups_json
+    [nId_Accreditations_Item] => xxx.Items.Id_Accreditations_Item
+    [dtModifie] => xxx.Items.Modifie
+    [nId_Creator] => xxx.Items.Id_Creator
+    [sId_users_json] => xxx.Items.Id_users_json
+)
+	Original Array
+Array
+(
+    [xxx.Items.Id_Items] => 684
+    [xxx.Items.Id_groups_json] => 
+    [xxx.Items.Id_Accreditations_Item] => 1
+    [xxx.Items.Modifie] => 2016-09-28 15:57:05.277617
+    [xxx.Items.Id_Creator] => 1
+    [xxx.Items.Id_users_json] => 
+    [xxx.Noeuds.Id_Noeuds] => 684
+    [xxx.Noeuds.Id_Noeuds_Parent] => 684
+    [xxx.Contacts.Id_Contacts] => 684
+    [xxx.Contacts.Prenom] => Nathalie
+    [xxx.Contacts.Nom] => Bajos
+    [xxx.Contacts.Id_Civilites] => 3
+    [xxx.Contacts.Id_Titres] => 65
+    [xxx.Contacts.Id_Contact_Types] => 1
+)
+	Members Array
+Array
+(
+    [nId_Items] => 684
+    [sId_groups_json] => 
+    [nId_Accreditations_Item] => 1
+    [dtModifie] => 2016-09-28 15:57:05.277617
+    [nId_Creator] => 1
+    [sId_users_json] => 
+    [nId_Noeuds_Parent] => 684
+    [sPrenom] => Nathalie
+    [sNom] => Bajos
+    [nId_Civilites] => 3
+    [nId_Titres] => 65
+    [nId_Contact_Types] => 1
+)

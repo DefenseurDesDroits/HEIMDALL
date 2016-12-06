@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Langues_manager.php
 //Description : Tables des langues
 
 
 //include to dtb connection
-include "CONTACTS_Langues.php";
+include_once "CONTACTS_Langues.php";
 
 ///[FUNCTION][LanguesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function LanguesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oLangues->setId_Langues($nId))
+	if($oLangues->setId_Langues(intval($nId)))
 		$oLangues->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function LanguesgetFromID($nId){
 
 ///[FUNCTION][LanguessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function LanguessaveFromJson($jsonObj){
+function LanguessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oLangues = new Langues();
 	
 	//Load from Json !
 	$oLangues->loadFromJson($jsonObj);
 	//save the changes
-	$oLangues->save(null);
+	$oLangues->save($oAgent);
 	
 	//Return the present states
-	return $oLanguesgetFromID( $oLangues->getId_Langues() );
+	return LanguesgetFromID( $oLangues->getId_Langues() );
 };
 
 ///[FUNCTION][LanguesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function LanguesgetAllInstance(){
 	//Our object declaration
 	$oLangues = new Langues();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oLangues->getColumns() . "\r\n" . "FROM " . $oLangues->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oLangues->getColumns() . "\r\n" . "FROM " . $oLangues->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oLangues->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function LanguesgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function LanguesManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function LanguesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo LanguesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo LanguessaveFromJson($sJson);
+			echo LanguessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo LanguesdeleteFromID($nId);

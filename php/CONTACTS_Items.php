@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-16 09:59:51
 //Filename : Contacts_Items.php
 //Description : Table de tous les items avec des droits
 
 
 //include to dtb connection
-include "connection.php";
+include_once "connection.php";
 
 ///[CLASS][Items]Table de tous les items avec des droits
 ///[AUTHOR]Ludo
@@ -17,12 +17,16 @@ class Items{
 
 		///[MEMBER][integer][nId_Items]Identité de la table
 		"nId_Items" => 0,
-		///[MEMBER][integer][nId_groups_owner]Groupe possedant l'item
-		"nId_groups_owner" => 0,
+		///[MEMBER][string][sId_groups_json]Groupes possedant l'item
+		"sId_groups_json" => "",
 		///[MEMBER][integer][nId_Accreditations_Item]Clef étrangère sur le niveau d'accreditation
 		"nId_Accreditations_Item" => 0,
 		///[MEMBER][string "yyyymmdd"][dtModifie]date de dernière modification
-		"dtModifie" => ""
+		"dtModifie" => "",
+		///[MEMBER][integer][nId_Creator]Id sur l'item créateur de cet item
+		"nId_Creator" => 0,
+		///[MEMBER][string][sId_users_json]Users allowed to acces to the object
+		"sId_users_json" => ""
 	);
 	///[SECTION][Builders]#################################################
 
@@ -41,11 +45,11 @@ class Items{
 		return $this->members["nId_Items"];
 	}
 
-	///[METHOD][getId_groups_owner]Method to get the Id_groups_owner
-	///[RETURNS]The Id_groups_owner
-	public function getId_groups_owner(){
+	///[METHOD][getId_groups_json]Method to get the Id_groups_json
+	///[RETURNS]The Id_groups_json
+	public function getId_groups_json(){
 		//Return the member
-		return $this->members["nId_groups_owner"];
+		return $this->members["sId_groups_json"];
 	}
 
 	///[METHOD][getId_Accreditations_Item]Method to get the Id_Accreditations_Item
@@ -60,6 +64,20 @@ class Items{
 	public function getModifie(){
 		//Return the member
 		return $this->members["dtModifie"];
+	}
+
+	///[METHOD][getId_Creator]Method to get the Id_Creator
+	///[RETURNS]The Id_Creator
+	public function getId_Creator(){
+		//Return the member
+		return $this->members["nId_Creator"];
+	}
+
+	///[METHOD][getId_users_json]Method to get the Id_users_json
+	///[RETURNS]The Id_users_json
+	public function getId_users_json(){
+		//Return the member
+		return $this->members["sId_users_json"];
 	}
 
 
@@ -83,16 +101,17 @@ class Items{
 		return false;
 	}
 
-	///[METHOD][setId_groups_owner]Method to set the Id_groups_owner
-	///[PARAMETER][integer][$nValue]Our new value for Id_groups_owner
+	///[METHOD][setId_groups_json]Method to set the Id_groups_json
+	///[PARAMETER][string][$sValue]Our new value for Id_groups_json
 	///[RETURNS]Boolean true if done 
-	public function setId_groups_owner($nValue){
+	public function setId_groups_json($sValue){
 		//security on null guy !!!
-		if($nValue == null)
+		if($sValue == null)
 			return false;
 		//security on type guy !!!
-		if(getType($nValue) == 'integer'){
-			 $this->members["nId_groups_owner"] = $nValue;
+		if(getType($sValue) == 'string'){
+			//Never trust the FRONT !!!
+			 $this->members["sId_groups_json"] = substr($sValue, 0, 1024);
 			//Happy end
 			return true;
 		}
@@ -134,6 +153,41 @@ class Items{
 		return false;
 	}
 
+	///[METHOD][setId_Creator]Method to set the Id_Creator
+	///[PARAMETER][integer][$nValue]Our new value for Id_Creator
+	///[RETURNS]Boolean true if done 
+	public function setId_Creator($nValue){
+		//security on null guy !!!
+		if($nValue == null)
+			return false;
+		//security on type guy !!!
+		if(getType($nValue) == 'integer'){
+			 $this->members["nId_Creator"] = $nValue;
+			//Happy end
+			return true;
+		}
+		//Don't fool me next Time !!!
+		return false;
+	}
+
+	///[METHOD][setId_users_json]Method to set the Id_users_json
+	///[PARAMETER][string][$sValue]Our new value for Id_users_json
+	///[RETURNS]Boolean true if done 
+	public function setId_users_json($sValue){
+		//security on null guy !!!
+		if($sValue == null)
+			return false;
+		//security on type guy !!!
+		if(getType($sValue) == 'string'){
+			//Never trust the FRONT !!!
+			 $this->members["sId_users_json"] = substr($sValue, 0, 1024);
+			//Happy end
+			return true;
+		}
+		//Don't fool me next Time !!!
+		return false;
+	}
+
 
 
 	///[SECTION][WORKSHOP]################################################
@@ -144,8 +198,15 @@ class Items{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Items.Id_Items, xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie";
-		return "xxx.Items.Id_groups_owner, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie";
+			return "xxx.Items.Id_Items, xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json";
+		return "xxx.Items.Id_groups_json, xxx.Items.Id_Accreditations_Item, xxx.Items.Modifie, xxx.Items.Id_Creator, xxx.Items.Id_users_json";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return " Id_groups_json, Id_Accreditations_Item, Modifie, Id_Creator, Id_users_json";
 	}
 
 
@@ -154,9 +215,11 @@ class Items{
 	public function getCorrespondanceArray(){
 		return array(
 			"nId_Items" => "xxx.Items.Id_Items", 
-			"nId_groups_owner" => "xxx.Items.Id_groups_owner", 
+			"sId_groups_json" => "xxx.Items.Id_groups_json", 
 			"nId_Accreditations_Item" => "xxx.Items.Id_Accreditations_Item", 
-			"dtModifie" => "xxx.Items.Modifie"
+			"dtModifie" => "xxx.Items.Modifie", 
+			"nId_Creator" => "xxx.Items.Id_Creator", 
+			"sId_users_json" => "xxx.Items.Id_users_json"
 );
 	}
 
@@ -189,7 +252,7 @@ class Items{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Items::getColumns() . "\r\n" . "FROM " . Items::getTable() . "\r\n" . "WHERE " . Items::getConditions();
 	}
 
 
@@ -240,7 +303,7 @@ class Items{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Items::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -283,9 +346,12 @@ class Items{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getId_groups_owner());
+		$sValues .= Quotes( $this->getId_groups_json());
 		$sValues .= ", " . Quotes( $this->getId_Accreditations_Item());
-		$sValues .= ", " . Quotes( $this->getModifie());
+		$sValues .= ", current_timestamp";
+		//$sValues .= ", " . Quotes( $this->getModifie());
+		$sValues .= ", " . Quotes( $this->getId_Creator());
+		$sValues .= ", " . Quotes( $this->getId_users_json());
 		
 		//return the get value chain !
 		return $sValues;
@@ -295,8 +361,7 @@ class Items{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Items" . " (" . Items::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Items::getValues() . " )";
 	}
 
 
@@ -307,14 +372,17 @@ class Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Items" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Id_groups_owner  = " . Quotes($this->getId_groups_owner());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Accreditations_Item  = " . Quotes($this->getId_Accreditations_Item());
-		$Query .= ", " .  $this->getTable() . "." . "Modifie  = " . Quotes($this->getModifie());
+		$Query .=  "Id_groups_json  = " . Quotes($this->getId_groups_json());
+		$Query .= ", " .  "Id_Accreditations_Item  = " . Quotes($this->getId_Accreditations_Item());
+		$Query .= ", " .  "Modifie  = current_timestamp";
+		//$Query .= ", " .  "Modifie  = " . Quotes($this->getModifie());
+		$Query .= ", " .  "Id_Creator  = " . Quotes($this->getId_Creator());
+		$Query .= ", " .  "Id_users_json  = " . Quotes($this->getId_users_json());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Items = " . Quotes($this->getId_Items());
 		//Return the query !!!
 		return $Query;
 	}
@@ -324,7 +392,7 @@ class Items{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Items" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -355,10 +423,13 @@ class Items{
 		//Our query
 		$sQuery = "";
 		//Get the query !!!
-		if($this->getId_Items() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($this->getId_Items() == 0){
+			$this->setId_Creator(intval($oAgent));
+			$sQuery = Items::getInsertQuery();
+			//echo $sQuery;
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Items::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -368,8 +439,23 @@ class Items{
 		//Close it !!! For Goddess Sake !!!
 		$GLOBALS["oConnection"]->close();
 		
+		//get the last query
+
+		if($this->getId_Items() == 0){
+			//the query
+			$sQuery = "SELECT MAX(xxx.items.id_items) FROM xxx.items WHERE Id_Creator = " . Quotes($oAgent);
+			//open
+			$GLOBALS["oConnection"]->open();
+			//the select query
+			$ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, ["max"], null);
+			//close
+			$GLOBALS["oConnection"]->close();
+
+			$this->setId_Items(intval( $ary_[0]["max"]));
+		}
+
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Items::loadFromConnection($oAgent);
 	}
 
 

@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Accreditations_manager.php
 //Description : Table des accréditations sur les items
 
 
 //include to dtb connection
-include "CONTACTS_Accreditations.php";
+include_once "CONTACTS_Accreditations.php";
 
 ///[FUNCTION][AccreditationsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function AccreditationsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oAccreditations->setId_Accreditations($nId))
+	if($oAccreditations->setId_Accreditations(intval($nId)))
 		$oAccreditations->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function AccreditationsgetFromID($nId){
 
 ///[FUNCTION][AccreditationssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function AccreditationssaveFromJson($jsonObj){
+function AccreditationssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oAccreditations = new Accreditations();
 	
 	//Load from Json !
 	$oAccreditations->loadFromJson($jsonObj);
 	//save the changes
-	$oAccreditations->save(null);
+	$oAccreditations->save($oAgent);
 	
 	//Return the present states
-	return $oAccreditationsgetFromID( $oAccreditations->getId_Accreditations() );
+	return AccreditationsgetFromID( $oAccreditations->getId_Accreditations() );
 };
 
 ///[FUNCTION][AccreditationsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function AccreditationsgetAllInstance(){
 	//Our object declaration
 	$oAccreditations = new Accreditations();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oAccreditations->getColumns() . "\r\n" . "FROM " . $oAccreditations->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oAccreditations->getColumns() . "\r\n" . "FROM " . $oAccreditations->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oAccreditations->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function AccreditationsgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function AccreditationsManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function AccreditationsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo AccreditationsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo AccreditationssaveFromJson($sJson);
+			echo AccreditationssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo AccreditationsdeleteFromID($nId);

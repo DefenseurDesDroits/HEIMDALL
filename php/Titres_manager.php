@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Titres_manager.php
 //Description : Tables des titres des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Titres.php";
+include_once "CONTACTS_Titres.php";
 
 ///[FUNCTION][TitresgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function TitresgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oTitres->setId_Titres($nId))
+	if($oTitres->setId_Titres(intval($nId)))
 		$oTitres->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function TitresgetFromID($nId){
 
 ///[FUNCTION][TitressaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function TitressaveFromJson($jsonObj){
+function TitressaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oTitres = new Titres();
 	
 	//Load from Json !
 	$oTitres->loadFromJson($jsonObj);
 	//save the changes
-	$oTitres->save(null);
+	$oTitres->save($oAgent);
 	
 	//Return the present states
-	return $oTitresgetFromID( $oTitres->getId_Titres() );
+	return TitresgetFromID( $oTitres->getId_Titres() );
 };
 
 ///[FUNCTION][TitresdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function TitresgetAllInstance(){
 	//Our object declaration
 	$oTitres = new Titres();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oTitres->getColumns() . "\r\n" . "FROM " . $oTitres->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oTitres->getColumns() . "\r\n" . "FROM " . $oTitres->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oTitres->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function TitresgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function TitresManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function TitresManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo TitresgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo TitressaveFromJson($sJson);
+			echo TitressaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo TitresdeleteFromID($nId);

@@ -1,7 +1,7 @@
 <?PHP
 
 //call the parent class you baka !
-include "Potours_Connection.php";
+include_once "Potours_Connection.php";
 
 ///[CLASS][Potours_Connection] our class to manage the connection to the database
 class Potours_Connection_PGSQL extends Potours_Connection{
@@ -121,7 +121,8 @@ class Potours_Connection_PGSQL extends Potours_Connection{
 		}
 		
 		//mother class must be inherited so :
-		return array( array("ERROR" => 'Request failed : ' . pg_last_error()) );
+		return array(  );
+		//return array( array("ERROR" => 'Request failed : ' . pg_last_error()) );
 	}
 	
 	///[METHOD][updateRequest]Method to execute an update query

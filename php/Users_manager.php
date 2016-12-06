@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Users_manager.php
 //Description : Table des utilisateurs, héritant de celle des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Users.php";
+include_once "CONTACTS_Users.php";
 
 ///[FUNCTION][UsersgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function UsersgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oUsers->setId_Users($nId))
+	if($oUsers->setId_Users(intval($nId)))
 		$oUsers->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function UsersgetFromID($nId){
 
 ///[FUNCTION][UserssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function UserssaveFromJson($jsonObj){
+function UserssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oUsers = new Users();
 	
 	//Load from Json !
 	$oUsers->loadFromJson($jsonObj);
 	//save the changes
-	$oUsers->save(null);
+	$oUsers->save($oAgent);
 	
 	//Return the present states
-	return $oUsersgetFromID( $oUsers->getId_Users() );
+	return UsersgetFromID( $oUsers->getId_Users() );
 };
 
 ///[FUNCTION][UsersdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function UsersgetAllInstance(){
 	//Our object declaration
 	$oUsers = new Users();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oUsers->getColumns() . "\r\n" . "FROM " . $oUsers->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oUsers->getColumns() . "\r\n" . "FROM " . $oUsers->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oUsers->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function UsersgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function UsersManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function UsersManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo UsersgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo UserssaveFromJson($sJson);
+			echo UserssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo UsersdeleteFromID($nId);

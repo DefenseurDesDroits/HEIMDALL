@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Item_Types.php
 //Description : Table des types d'items
 
@@ -98,6 +98,13 @@ class Item_Types{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -136,7 +143,7 @@ class Item_Types{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Item_Types::getColumns() . "\r\n" . "FROM " . Item_Types::getTable() . "\r\n" . "WHERE " . Item_Types::getConditions();
 	}
 
 
@@ -187,7 +194,7 @@ class Item_Types{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Item_Types::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -240,8 +247,7 @@ class Item_Types{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Item_Types" . " (" . Item_Types::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Item_Types::getValues() . " )";
 	}
 
 
@@ -252,12 +258,12 @@ class Item_Types{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Item_Types" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
+		$Query .=  "Nom  = " . Quotes($this->getNom());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_item_types = " . Quotes($this->getId_item_types());
 		//Return the query !!!
 		return $Query;
 	}
@@ -267,7 +273,7 @@ class Item_Types{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Item_Types" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -297,11 +303,15 @@ class Item_Types{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_item_types();
 		//Get the query !!!
-		if($this->getId_item_types() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			$sQuery = Item_Types::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Item_Types::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -312,7 +322,7 @@ class Item_Types{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Item_Types::loadFromConnection($oAgent);
 	}
 
 

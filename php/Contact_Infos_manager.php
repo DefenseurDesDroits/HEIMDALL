@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Contact_Infos_manager.php
 //Description : Table des informations liées au contact
 
 
 //include to dtb connection
-include "CONTACTS_Contact_Infos.php";
+include_once "CONTACTS_Contact_Infos.php";
 
 ///[FUNCTION][Contact_InfosgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function Contact_InfosgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oContact_Infos->setId_Contact_Infos($nId))
+	if($oContact_Infos->setId_Contact_Infos(intval($nId)))
 		$oContact_Infos->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function Contact_InfosgetFromID($nId){
 
 ///[FUNCTION][Contact_InfossaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function Contact_InfossaveFromJson($jsonObj){
+function Contact_InfossaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oContact_Infos = new Contact_Infos();
 	
 	//Load from Json !
 	$oContact_Infos->loadFromJson($jsonObj);
 	//save the changes
-	$oContact_Infos->save(null);
+	$oContact_Infos->save($oAgent);
 	
 	//Return the present states
-	return $oContact_InfosgetFromID( $oContact_Infos->getId_Contact_Infos() );
+	return Contact_InfosgetFromID( $oContact_Infos->getId_Contact_Infos() );
 };
 
 ///[FUNCTION][Contact_InfosdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function Contact_InfosgetAllInstance(){
 	//Our object declaration
 	$oContact_Infos = new Contact_Infos();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oContact_Infos->getColumns() . "\r\n" . "FROM " . $oContact_Infos->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oContact_Infos->getColumns() . "\r\n" . "FROM " . $oContact_Infos->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oContact_Infos->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function Contact_InfosgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function Contact_InfosManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function Contact_InfosManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo Contact_InfosgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo Contact_InfossaveFromJson($sJson);
+			echo Contact_InfossaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo Contact_InfosdeleteFromID($nId);

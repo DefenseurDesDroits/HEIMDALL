@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Titres.php
 //Description : Tables des titres des contacts
 
@@ -124,6 +124,13 @@ class Titres{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom, Rang";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -163,7 +170,7 @@ class Titres{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Titres::getColumns() . "\r\n" . "FROM " . Titres::getTable() . "\r\n" . "WHERE " . Titres::getConditions();
 	}
 
 
@@ -214,7 +221,7 @@ class Titres{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Titres::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -268,8 +275,7 @@ class Titres{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Titres" . " (" . Titres::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Titres::getValues() . " )";
 	}
 
 
@@ -280,13 +286,13 @@ class Titres{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Titres" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
-		$Query .= ", " .  $this->getTable() . "." . "Rang  = " . Quotes($this->getRang());
+		$Query .=  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "Rang  = " . Quotes($this->getRang());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Titres = " . Quotes($this->getId_Titres());
 		//Return the query !!!
 		return $Query;
 	}
@@ -296,7 +302,7 @@ class Titres{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Titres" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -326,11 +332,15 @@ class Titres{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Titres();
 		//Get the query !!!
-		if($this->getId_Titres() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			$sQuery = Titres::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Titres::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -341,7 +351,7 @@ class Titres{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Titres::loadFromConnection($oAgent);
 	}
 
 

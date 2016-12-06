@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 09:37:29
 //Filename : Contacts_Noeuds.php
 //Description : Table pour gérer les noeuds
 
 
 //include to dtb connection
-include "CONTACTS_Items.php";
+include_once "CONTACTS_Items.php";
 
 ///[CLASS][Noeuds]Table pour gérer les noeuds
 ///[AUTHOR]Ludo
@@ -91,6 +91,13 @@ class Noeuds extends Items{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Noeuds, Id_Noeuds_Parent";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -116,7 +123,7 @@ class Noeuds extends Items{
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
 		//get the parent link condition
-		$sParentCondition = parent::getLinkConditions();
+		$sParentCondition = parent::getLinkConditions($bAll);
 		//test the parent condition
 		if($sParentCondition != "" && $bAll)
 			return $sParentCondition ." \r\nAND xxx.Items.Id_Items =  xxx.Noeuds.Id_Noeuds";
@@ -128,7 +135,7 @@ class Noeuds extends Items{
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Noeuds.Id_Noeuds = " . Quotes($this->getId_Noeuds());
+		return parent::getConditions() . " \r\nAND " . Noeuds::getLinkConditions() . " \r\nAND xxx.Noeuds.Id_Noeuds = " . Quotes($this->getId_Noeuds());
 	}
 
 
@@ -186,7 +193,8 @@ class Noeuds extends Items{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Noeuds::getSelectQuery();
+		//$sQuery = $this->getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -230,7 +238,10 @@ class Noeuds extends Items{
 		$sValues = "";
 		
 		$sValues .= Quotes( $this->getId_Noeuds());
-		$sValues .= ", " . Quotes( $this->getId_Noeuds_Parent());
+		if($this->getId_Noeuds_Parent() == 0)
+			$sValues .= ", " . Quotes( $this->getId_Noeuds());
+		else
+			$sValues .= ", " . Quotes( $this->getId_Noeuds_Parent());
 		
 		//return the get value chain !
 		return $sValues;
@@ -240,8 +251,7 @@ class Noeuds extends Items{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Noeuds" . " (" . Noeuds::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Noeuds::getValues() . " )";
 	}
 
 
@@ -252,12 +262,12 @@ class Noeuds extends Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Noeuds" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Id_Noeuds_Parent  = " . Quotes($this->getId_Noeuds_Parent());
+		$Query .=  "Id_Noeuds_Parent  = " . Quotes($this->getId_Noeuds_Parent());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Noeuds = " . Quotes($this->getId_Noeuds());
 		//Return the query !!!
 		return $Query;
 	}
@@ -267,7 +277,7 @@ class Noeuds extends Items{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Noeuds" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -297,11 +307,15 @@ class Noeuds extends Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Noeuds();
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
-		if($this->getId_Noeuds() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+			$sQuery = Noeuds::getInsertQuery();
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Noeuds::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -312,7 +326,7 @@ class Noeuds extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Noeuds::loadFromConnection($oAgent);
 	}
 
 

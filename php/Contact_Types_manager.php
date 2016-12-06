@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Contact_Types_manager.php
 //Description : Table des types de contact
 
 
 //include to dtb connection
-include "CONTACTS_Contact_Types.php";
+include_once "CONTACTS_Contact_Types.php";
 
 ///[FUNCTION][Contact_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function Contact_TypesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oContact_Types->setId_Contact_Types($nId))
+	if($oContact_Types->setId_Contact_Types(intval($nId)))
 		$oContact_Types->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function Contact_TypesgetFromID($nId){
 
 ///[FUNCTION][Contact_TypessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function Contact_TypessaveFromJson($jsonObj){
+function Contact_TypessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oContact_Types = new Contact_Types();
 	
 	//Load from Json !
 	$oContact_Types->loadFromJson($jsonObj);
 	//save the changes
-	$oContact_Types->save(null);
+	$oContact_Types->save($oAgent);
 	
 	//Return the present states
-	return $oContact_TypesgetFromID( $oContact_Types->getId_Contact_Types() );
+	return Contact_TypesgetFromID( $oContact_Types->getId_Contact_Types() );
 };
 
 ///[FUNCTION][Contact_TypesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function Contact_TypesgetAllInstance(){
 	//Our object declaration
 	$oContact_Types = new Contact_Types();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oContact_Types->getColumns() . "\r\n" . "FROM " . $oContact_Types->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oContact_Types->getColumns() . "\r\n" . "FROM " . $oContact_Types->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oContact_Types->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function Contact_TypesgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function Contact_TypesManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function Contact_TypesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo Contact_TypesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo Contact_TypessaveFromJson($sJson);
+			echo Contact_TypessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo Contact_TypesdeleteFromID($nId);

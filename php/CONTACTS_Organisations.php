@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-16 12:05:35
 //Filename : Contacts_Organisations.php
 //Description : Table des organisations. héritant de celle des contacts
 
 
 //include to dtb connection
-include "CONTACTS_Contacts.php";
+include_once "CONTACTS_Contacts.php";
 
 ///[CLASS][Organisations]Table des organisations. héritant de celle des contacts
 ///[AUTHOR]Ludo
@@ -23,7 +23,7 @@ class Organisations extends Contacts{
 		$OrganisationsmemberSet = array(		
 
 			// ///[MEMBER][integer][nId_Organisations]Identifiant hérité de la table Contacts
-			//"nId_Organisations" => 0 //inherited from => Contacts.Contacts,
+			//"nId_Organisations" => 0 //inherited from => Contacts.Contacts.nId_Contacts,
 			///[MEMBER][integer][nId_Organisation_Type]Clef étrangère sur la table Organistion_Types. Type de l'organisation
 			"nId_Organisation_Type" => 0,
 			///[MEMBER][string][sAcronyme]New Columns Created with Ludo Library
@@ -38,8 +38,8 @@ class Organisations extends Contacts{
 	///[METHOD][getId_Organisations]Method to get the Id_Organisations
 	///[RETURNS]The Id_Organisations
 	public function getId_Organisations(){
-		//[ERROR]The column Contacts.Organisations.nId_Organisations has an inheritance : Contacts.Contacts WITHOUT any linked Column !!!
-		return $this->members["nId_Organisations"];
+		//Return the getter in inheritage
+		return $this->getId_Contacts();
 	}
 
 	///[METHOD][getId_Organisation_Type]Method to get the Id_Organisation_Type
@@ -64,8 +64,8 @@ class Organisations extends Contacts{
 	///[PARAMETER][integer][$nValue]Our new value for Id_Organisations
 	///[RETURNS]Boolean true if done 
 	public function setId_Organisations($nValue){
-		//[ERROR]Return the member
-		return false;
+		//Return the member
+		return $this->setId_Contacts($nValue);
 	}
 
 	///[METHOD][setId_Organisation_Type]Method to set the Id_Organisation_Type
@@ -118,6 +118,13 @@ class Organisations extends Contacts{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Organisations, Id_Organisation_Type, Acronyme";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -139,20 +146,31 @@ class Organisations extends Contacts{
 	}
 
 
-	///[ERROR]getLinkConditions, no PARENT key column detected
+	///[METHOD][getLinkConditions]Method to get the conditions to link with parent table 
+	///[PRAMETER][boolean][$bAll]Parameter to obtain parents Link conditions
+	///[RETURNS][string]string, our conditions 
+	public function getLinkConditions($bAll = false){
+		//get the parent link condition
+		$sParentCondition = parent::getLinkConditions($bAll);
+		//test the parent condition
+		if($sParentCondition != "" && $bAll)
+			return $sParentCondition ." \r\nAND xxx.Contacts.Id_Contacts =  xxx.Organisations.Id_Organisations";
+		else
+			return " xxx.Contacts.Id_Contacts = xxx.Organisations.Id_Organisations";
+	}
 
 
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Organisations.Id_Organisations = " . Quotes($this->getId_Organisations());
+		return parent::getConditions() . " \r\nAND " . Organisations::getLinkConditions() . " \r\nAND xxx.Organisations.Id_Organisations = " . Quotes($this->getId_Organisations());
 	}
 
 
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Organisations::getColumns() . "\r\n" . "FROM " . Organisations::getTable() . "\r\n" . "WHERE " . Organisations::getConditions();
 	}
 
 
@@ -203,7 +221,7 @@ class Organisations extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Organisations::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -258,8 +276,7 @@ class Organisations extends Contacts{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Organisations" . " (" . Organisations::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Organisations::getValues() . " )";
 	}
 
 
@@ -270,13 +287,13 @@ class Organisations extends Contacts{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Organisations" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Id_Organisation_Type  = " . Quotes($this->getId_Organisation_Type());
-		$Query .= ", " .  $this->getTable() . "." . "Acronyme  = " . Quotes($this->getAcronyme());
+		$Query .=  "Id_Organisation_Type  = " . Quotes($this->getId_Organisation_Type());
+		$Query .= ", " .  "Acronyme  = " . Quotes($this->getAcronyme());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Organisations = " . Quotes($this->getId_Organisations());
 		//Return the query !!!
 		return $Query;
 	}
@@ -286,7 +303,7 @@ class Organisations extends Contacts{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Organisations" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -316,11 +333,17 @@ class Organisations extends Contacts{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Organisations();
 		//Get the query !!!
-		if($this->getId_Organisations() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			//Call the parent method
+			parent::save($oAgent);
+			$sQuery = Organisations::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Organisations::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -331,7 +354,7 @@ class Organisations extends Contacts{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Organisations::loadFromConnection($oAgent);
 	}
 
 

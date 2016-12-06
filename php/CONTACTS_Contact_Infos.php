@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Contact_Infos.php
 //Description : Table des informations liées au contact
 
 
 //include to dtb connection
-include "CONTACTS_Items.php";
+include_once "CONTACTS_Items.php";
 
 ///[CLASS][Contact_Infos]Table des informations liées au contact
 ///[AUTHOR]Ludo
@@ -144,6 +144,13 @@ class Contact_Infos extends Items{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Contact_Infos, Id_Contacts, Fonction, Id_Langues";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -171,7 +178,7 @@ class Contact_Infos extends Items{
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
 		//get the parent link condition
-		$sParentCondition = parent::getLinkConditions();
+		$sParentCondition = parent::getLinkConditions($bAll);
 		//test the parent condition
 		if($sParentCondition != "" && $bAll)
 			return $sParentCondition ." \r\nAND xxx.Items.Id_Items =  xxx.Contact_Infos.Id_Contact_Infos";
@@ -183,14 +190,14 @@ class Contact_Infos extends Items{
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Contact_Infos.Id_Contact_Infos = " . Quotes($this->getId_Contact_Infos());
+		return parent::getConditions() . " \r\nAND " . Contact_Infos::getLinkConditions() . " \r\nAND xxx.Contact_Infos.Id_Contact_Infos = " . Quotes($this->getId_Contact_Infos());
 	}
 
 
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Contact_Infos::getColumns() . "\r\n" . "FROM " . Contact_Infos::getTable() . "\r\n" . "WHERE " . Contact_Infos::getConditions();
 	}
 
 
@@ -241,7 +248,7 @@ class Contact_Infos extends Items{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Contact_Infos::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -297,8 +304,7 @@ class Contact_Infos extends Items{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Contact_Infos" . " (" . Contact_Infos::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Contact_Infos::getValues() . " )";
 	}
 
 
@@ -309,14 +315,14 @@ class Contact_Infos extends Items{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Contact_Infos" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Id_Contacts  = " . Quotes($this->getId_Contacts());
-		$Query .= ", " .  $this->getTable() . "." . "Fonction  = " . Quotes($this->getFonction());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Langues  = " . Quotes($this->getId_Langues());
+		$Query .=  "Id_Contacts  = " . Quotes($this->getId_Contacts());
+		$Query .= ", " .  "Fonction  = " . Quotes($this->getFonction());
+		$Query .= ", " .  "Id_Langues  = " . Quotes($this->getId_Langues());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Contact_Infos = " . Quotes($this->getId_Contact_Infos());
 		//Return the query !!!
 		return $Query;
 	}
@@ -326,7 +332,7 @@ class Contact_Infos extends Items{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Contact_Infos" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -356,11 +362,17 @@ class Contact_Infos extends Items{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Contact_Infos();
 		//Get the query !!!
-		if($this->getId_Contact_Infos() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			//Call the parent method
+			parent::save($oAgent);
+			$sQuery = Contact_Infos::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Contact_Infos::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -371,7 +383,7 @@ class Contact_Infos extends Items{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Contact_Infos::loadFromConnection($oAgent);
 	}
 
 

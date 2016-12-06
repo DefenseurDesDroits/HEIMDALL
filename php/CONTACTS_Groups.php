@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-07 11:51:46
 //Filename : Contacts_Groups.php
 //Description : Table des groups héritant de la table Contacts
 
 
 //include to dtb connection
-include "CONTACTS_Contacts.php";
+include_once "CONTACTS_Contacts.php";
 
 ///[CLASS][Groups]Table des groups héritant de la table Contacts
 ///[AUTHOR]Ludo
@@ -27,7 +27,9 @@ class Groups extends Contacts{
 			///[MEMBER][string][jsonUGrp_Json]Json, liste des utilisateurs
 			"jsonUGrp_Json" => "",
 			///[MEMBER][boolean][bFichiers]Ce groupe héberge t'il des fichiers ?
-			"bFichiers" => false
+			"bFichiers" => false,
+			///[MEMBER][string][sNomGroupe]Nom unique du group
+			"sNomGroupe" => ""
 		);
 		//get the legacy
 		$this->members += $GroupsmemberSet;	}
@@ -54,6 +56,13 @@ class Groups extends Contacts{
 	public function getFichiers(){
 		//Return the member
 		return $this->members["bFichiers"];
+	}
+
+	///[METHOD][getNomGroupe]Method to get the NomGroupe
+	///[RETURNS]The NomGroupe
+	public function getNomGroupe(){
+		//Return the member
+		return $this->members["sNomGroupe"];
 	}
 
 
@@ -102,6 +111,24 @@ class Groups extends Contacts{
 		return false;
 	}
 
+	///[METHOD][setNomGroupe]Method to set the NomGroupe
+	///[PARAMETER][string][$sValue]Our new value for NomGroupe
+	///[RETURNS]Boolean true if done 
+	public function setNomGroupe($sValue){
+		//security on null guy !!!
+		if($sValue == null)
+			return false;
+		//security on type guy !!!
+		if(getType($sValue) == 'string'){
+			//Never trust the FRONT !!!
+			 $this->members["sNomGroupe"] = substr($sValue, 0, 64);
+			//Happy end
+			return true;
+		}
+		//Don't fool me next Time !!!
+		return false;
+	}
+
 
 
 	///[SECTION][WORKSHOP]################################################
@@ -112,8 +139,15 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
-		return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers";
+			return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe";
+		return parent::getColumns($bId) . ", xxx.Groups.Id_Groups, xxx.Groups.UGrp_Json, xxx.Groups.Fichiers, xxx.Groups.NomGroupe";
+	}
+
+
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return "Id_Groups, UGrp_Json, Fichiers, NomGroupe";
 	}
 
 
@@ -123,7 +157,8 @@ class Groups extends Contacts{
 		return array(
 			"nId_Groups" => "xxx.Groups.Id_Groups", 
 			"jsonUGrp_Json" => "xxx.Groups.UGrp_Json", 
-			"bFichiers" => "xxx.Groups.Fichiers"
+			"bFichiers" => "xxx.Groups.Fichiers", 
+			"sNomGroupe" => "xxx.Groups.NomGroupe"
 ) + parent::getCorrespondanceArray();
 	}
 
@@ -143,7 +178,7 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
 		//get the parent link condition
-		$sParentCondition = parent::getLinkConditions();
+		$sParentCondition = parent::getLinkConditions($bAll);
 		//test the parent condition
 		if($sParentCondition != "" && $bAll)
 			return $sParentCondition ." \r\nAND xxx.Contacts.Id_Contacts =  xxx.Groups.Id_Groups";
@@ -155,14 +190,14 @@ class Groups extends Contacts{
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return parent::getConditions() . " \r\nAND " . $this->getLinkConditions() . " \r\nAND xxx.Groups.Id_Groups = " . Quotes($this->getId_Groups());
+		return parent::getConditions() . " \r\nAND " . Groups::getLinkConditions() . " \r\nAND xxx.Groups.Id_Groups = " . Quotes($this->getId_Groups());
 	}
 
 
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Groups::getColumns() . "\r\n" . "FROM " . Groups::getTable() . "\r\n" . "WHERE " . Groups::getConditions();
 	}
 
 
@@ -213,7 +248,7 @@ class Groups extends Contacts{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Groups::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -258,7 +293,12 @@ class Groups extends Contacts{
 		
 		$sValues .= Quotes( $this->getId_Groups());
 		$sValues .= ", " . Quotes( $this->getUGrp_Json());
-		$sValues .= ", " . Quotes( $this->getFichiers());
+		if($this->getFichiers())
+			$sValues .= ", true";
+		else
+			$sValues .= ", false";
+		//$sValues .= ", " . Quotes( $this->getFichiers());
+		$sValues .= ", " . Quotes( $this->getNomGroupe());
 		
 		//return the get value chain !
 		return $sValues;
@@ -268,8 +308,7 @@ class Groups extends Contacts{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return parent::getInsertQuery() . ";\r\n" . "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Groups" . " (" . Groups::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Groups::getValues() . " )";
 	}
 
 
@@ -280,13 +319,18 @@ class Groups extends Contacts{
 		$Query = "";
 		
 		//Start the build
-		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Groups" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "UGrp_Json  = " . Quotes($this->getUGrp_Json());
-		$Query .= ", " .  $this->getTable() . "." . "Fichiers  = " . Quotes($this->getFichiers());
+		$Query .=  "UGrp_Json  = " . Quotes($this->getUGrp_Json());
+		if($this->getFichiers())
+			$Query .= ", Fichiers  = true";
+		else
+			$Query .= ", Fichiers  = false";
+		//$Query .= ", " .  "Fichiers  = " . Quotes($this->getFichiers());
+		$Query .= ", " .  "NomGroupe  = " . Quotes($this->getNomGroupe());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Groups = " . Quotes($this->getId_Groups());
 		//Return the query !!!
 		return $Query;
 	}
@@ -296,7 +340,7 @@ class Groups extends Contacts{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Groups" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -326,11 +370,17 @@ class Groups extends Contacts{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Groups();
 		//Get the query !!!
-		if($this->getId_Groups() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			//Call the parent method
+			parent::save($oAgent);
+			$sQuery = Groups::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Groups::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -341,7 +391,7 @@ class Groups extends Contacts{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Groups::loadFromConnection($oAgent);
 	}
 
 

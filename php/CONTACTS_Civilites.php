@@ -1,7 +1,7 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Civilites.php
 //Description : Table des civilités des contacts
 
@@ -125,6 +125,13 @@ class Civilites{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Nom, Abr";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -164,7 +171,7 @@ class Civilites{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Civilites::getColumns() . "\r\n" . "FROM " . Civilites::getTable() . "\r\n" . "WHERE " . Civilites::getConditions();
 	}
 
 
@@ -215,7 +222,7 @@ class Civilites{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Civilites::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -269,8 +276,7 @@ class Civilites{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Civilites" . " (" . Civilites::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Civilites::getValues() . " )";
 	}
 
 
@@ -281,13 +287,13 @@ class Civilites{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Civilites" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
-		$Query .= ", " .  $this->getTable() . "." . "Abr  = " . Quotes($this->getAbr());
+		$Query .=  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "Abr  = " . Quotes($this->getAbr());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Civilites = " . Quotes($this->getId_Civilites());
 		//Return the query !!!
 		return $Query;
 	}
@@ -297,7 +303,7 @@ class Civilites{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Civilites" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -327,11 +333,15 @@ class Civilites{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Civilites();
 		//Get the query !!!
-		if($this->getId_Civilites() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			$sQuery = Civilites::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Civilites::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -342,7 +352,7 @@ class Civilites{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Civilites::loadFromConnection($oAgent);
 	}
 
 

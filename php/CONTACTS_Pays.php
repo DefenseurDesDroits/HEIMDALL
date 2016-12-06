@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-08-30 11:54:32
 //Filename : Contacts_Pays.php
 //Description : Tables des pays
 
 
 //include to dtb connection
-include "connection.php";
+include_once "connection.php";
 
 ///[CLASS][Pays]Tables des pays
 ///[AUTHOR]Ludo
@@ -205,6 +205,13 @@ class Pays{
 	}
 
 
+	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
+	///[RETURNS][string]string, our columns in a list 
+	public function getInsertColumns(){
+		return ", Code, Alpha2, Alpha3, Nom, Id_Langues_Json";
+	}
+
+
 	///[METHOD][getCorrespondanceArray]Method to get the list of the column in a string 
 	///[RETURNS][array]array, our columns correspondance in an array 
 	public function getCorrespondanceArray(){
@@ -247,7 +254,7 @@ class Pays{
 	///[METHOD][getSelectQuery]Method to get the list of the column in a string 
 	///[RETURNS][string]string, select query
 	public function getSelectQuery(){
-		return "SELECT " . $this->getColumns() . "\r\n" . "FROM " . $this->getTable() . "\r\n" . "WHERE " . $this->getConditions();
+		return "SELECT " . Pays::getColumns() . "\r\n" . "FROM " . Pays::getTable() . "\r\n" . "WHERE " . Pays::getConditions();
 	}
 
 
@@ -298,7 +305,7 @@ class Pays{
 	///[RETURNS]boolean, true if done
 	public function loadFromConnection($oAgent){
 		//Our query
-		$sQuery = $this->getSelectQuery();
+		$sQuery = Pays::getSelectQuery();
 		//Our result object
 		$ary_o = null;
 		
@@ -355,8 +362,7 @@ class Pays{
 	///[METHOD][getInsertQuery]Method to get the values 
 	///[RETURNS][string]string, our query 
 	public function getInsertQuery(){
-		//return the query !
-		return "INSERT INTO " . $this->getTable() . " (" . $this->getColumns(false) . ")" . "\r\n" . "VALUES(" . $this->getValues() . " )";
+		return "INSERT INTO " . "xxx.Pays" . " (" . Pays::getInsertColumns() . ")" . "\r\n" . "VALUES(" . Pays::getValues() . " )";
 	}
 
 
@@ -367,16 +373,16 @@ class Pays{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . $this->getTable() . "\r\n" ;
+		$Query .= "UPDATE " . "xxx.Pays" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  $this->getTable() . "." . "Code  = " . Quotes($this->getCode());
-		$Query .= ", " .  $this->getTable() . "." . "Alpha2  = " . Quotes($this->getAlpha2());
-		$Query .= ", " .  $this->getTable() . "." . "Alpha3  = " . Quotes($this->getAlpha3());
-		$Query .= ", " .  $this->getTable() . "." . "Nom  = " . Quotes($this->getNom());
-		$Query .= ", " .  $this->getTable() . "." . "Id_Langues_Json  = " . Quotes($this->getId_Langues_Json());
+		$Query .=  "Code  = " . Quotes($this->getCode());
+		$Query .= ", " .  "Alpha2  = " . Quotes($this->getAlpha2());
+		$Query .= ", " .  "Alpha3  = " . Quotes($this->getAlpha3());
+		$Query .= ", " .  "Nom  = " . Quotes($this->getNom());
+		$Query .= ", " .  "Id_Langues_Json  = " . Quotes($this->getId_Langues_Json());
 		//build the condition
-		$Query .= "WHERE " . $this->getConditions();
+		$Query .= "WHERE Id_Pays = " . Quotes($this->getId_Pays());
 		//Return the query !!!
 		return $Query;
 	}
@@ -386,7 +392,7 @@ class Pays{
 	///[RETURNS][string]string, our query 
 	public function getDeleteQuery(){
 		//return the query !
-		return "DELETE FROM " . $this->getTable() . " WHERE " . $this->getConditions();
+		return "DELETE FROM " . "xxx.Pays" . " WHERE " . $this->getConditions();
 	}
 
 
@@ -416,11 +422,15 @@ class Pays{
 	public function save($oAgent){
 		//Our query
 		$sQuery = "";
+		//Our ID
+		$nId = $this->getId_Pays();
 		//Get the query !!!
-		if($this->getId_Pays() == 0)
-			$sQuery = $this->getInsertQuery();
+		if($nId == 0)
+		{
+			$sQuery = Pays::getInsertQuery();
+		}
 		else
-			$sQuery = $this->getUpdateQuery();
+			$sQuery = Pays::getUpdateQuery();
 		
 		//Use the connection object in : "php/connection.php"
 		//Don't be fool !!! open before eat !!!
@@ -431,7 +441,7 @@ class Pays{
 		$GLOBALS["oConnection"]->close();
 		
 		//Return the job !
-		return $this->loadFromConnection($session, $url, $oAgent);
+		return Pays::loadFromConnection($oAgent);
 	}
 
 

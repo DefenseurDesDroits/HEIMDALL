@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Pays_manager.php
 //Description : Tables des pays
 
 
 //include to dtb connection
-include "CONTACTS_Pays.php";
+include_once "CONTACTS_Pays.php";
 
 ///[FUNCTION][PaysgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function PaysgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oPays->setId_Pays($nId))
+	if($oPays->setId_Pays(intval($nId)))
 		$oPays->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function PaysgetFromID($nId){
 
 ///[FUNCTION][PayssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function PayssaveFromJson($jsonObj){
+function PayssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oPays = new Pays();
 	
 	//Load from Json !
 	$oPays->loadFromJson($jsonObj);
 	//save the changes
-	$oPays->save(null);
+	$oPays->save($oAgent);
 	
 	//Return the present states
-	return $oPaysgetFromID( $oPays->getId_Pays() );
+	return PaysgetFromID( $oPays->getId_Pays() );
 };
 
 ///[FUNCTION][PaysdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function PaysgetAllInstance(){
 	//Our object declaration
 	$oPays = new Pays();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oPays->getColumns() . "\r\n" . "FROM " . $oPays->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oPays->getColumns() . "\r\n" . "FROM " . $oPays->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oPays->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function PaysgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function PaysManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function PaysManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo PaysgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo PayssaveFromJson($sJson);
+			echo PayssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo PaysdeleteFromID($nId);

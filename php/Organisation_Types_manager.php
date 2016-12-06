@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Organisation_Types_manager.php
 //Description : Tables des différants type d'organisations possibles
 
 
 //include to dtb connection
-include "CONTACTS_Organisation_Types.php";
+include_once "CONTACTS_Organisation_Types.php";
 
 ///[FUNCTION][Organisation_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function Organisation_TypesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oOrganisation_Types->setId_Organisation_Types($nId))
+	if($oOrganisation_Types->setId_Organisation_Types(intval($nId)))
 		$oOrganisation_Types->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function Organisation_TypesgetFromID($nId){
 
 ///[FUNCTION][Organisation_TypessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function Organisation_TypessaveFromJson($jsonObj){
+function Organisation_TypessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oOrganisation_Types = new Organisation_Types();
 	
 	//Load from Json !
 	$oOrganisation_Types->loadFromJson($jsonObj);
 	//save the changes
-	$oOrganisation_Types->save(null);
+	$oOrganisation_Types->save($oAgent);
 	
 	//Return the present states
-	return $oOrganisation_TypesgetFromID( $oOrganisation_Types->getId_Organisation_Types() );
+	return Organisation_TypesgetFromID( $oOrganisation_Types->getId_Organisation_Types() );
 };
 
 ///[FUNCTION][Organisation_TypesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function Organisation_TypesgetAllInstance(){
 	//Our object declaration
 	$oOrganisation_Types = new Organisation_Types();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oOrganisation_Types->getColumns() . "\r\n" . "FROM " . $oOrganisation_Types->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oOrganisation_Types->getColumns() . "\r\n" . "FROM " . $oOrganisation_Types->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oOrganisation_Types->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function Organisation_TypesgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function Organisation_TypesManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function Organisation_TypesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo Organisation_TypesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo Organisation_TypessaveFromJson($sJson);
+			echo Organisation_TypessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo Organisation_TypesdeleteFromID($nId);

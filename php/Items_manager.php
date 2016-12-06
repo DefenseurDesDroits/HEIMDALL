@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Items_manager.php
 //Description : Table de tous les items avec des droits
 
 
 //include to dtb connection
-include "CONTACTS_Items.php";
+include_once "CONTACTS_Items.php";
 
 ///[FUNCTION][ItemsgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function ItemsgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oItems->setId_Items($nId))
+	if($oItems->setId_Items(intval($nId)))
 		$oItems->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function ItemsgetFromID($nId){
 
 ///[FUNCTION][ItemssaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function ItemssaveFromJson($jsonObj){
+function ItemssaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oItems = new Items();
 	
 	//Load from Json !
 	$oItems->loadFromJson($jsonObj);
 	//save the changes
-	$oItems->save(null);
+	$oItems->save($oAgent);
 	
 	//Return the present states
-	return $oItemsgetFromID( $oItems->getId_Items() );
+	return ItemsgetFromID( $oItems->getId_Items() );
 };
 
 ///[FUNCTION][ItemsdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function ItemsgetAllInstance(){
 	//Our object declaration
 	$oItems = new Items();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oItems->getColumns() . "\r\n" . "FROM " . $oItems->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oItems->getColumns() . "\r\n" . "FROM " . $oItems->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oItems->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function ItemsgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function ItemsManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function ItemsManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo ItemsgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo ItemssaveFromJson($sJson);
+			echo ItemssaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo ItemsdeleteFromID($nId);

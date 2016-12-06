@@ -1,13 +1,13 @@
 <?PHP
 //Module : Contacts
 //Created by : Ludo
-//Generated on : 2016-07-22 02:19:04
+//Generated on : 2016-09-29 12:49:04
 //Filename : Item_Types_manager.php
 //Description : Table des types d'items
 
 
 //include to dtb connection
-include "CONTACTS_Item_Types.php";
+include_once "CONTACTS_Item_Types.php";
 
 ///[FUNCTION][Item_TypesgetFromID]Function to obtain the json data from 
 ///[PARAMETER][integer][$nId]id of the wanted object
@@ -19,7 +19,7 @@ function Item_TypesgetFromID($nId){
 	$jsonData = "";
 	
 	//if the assignation is good
-	if($oItem_Types->setId_item_types($nId))
+	if($oItem_Types->setId_item_types(intval($nId)))
 		$oItem_Types->loadFromConnection(null);
 	
 	//Get the Json
@@ -31,18 +31,19 @@ function Item_TypesgetFromID($nId){
 
 ///[FUNCTION][Item_TypessaveFromJson]Function to save the an object from it's Json expression
 ///[PARAMETER][json][$jsonObj]our json
+///[PARAMETER][unkown][$jsonObj]our agent
 ///[RETURNS]json, hte json state of the object after change
-function Item_TypessaveFromJson($jsonObj){
+function Item_TypessaveFromJson($jsonObj, $oAgent){
 	//Our object declaration
 	$oItem_Types = new Item_Types();
 	
 	//Load from Json !
 	$oItem_Types->loadFromJson($jsonObj);
 	//save the changes
-	$oItem_Types->save(null);
+	$oItem_Types->save($oAgent);
 	
 	//Return the present states
-	return $oItem_TypesgetFromID( $oItem_Types->getId_item_types() );
+	return Item_TypesgetFromID( $oItem_Types->getId_item_types() );
 };
 
 ///[FUNCTION][Item_TypesdeleteFromID]Function to save the an object from it's Json expression
@@ -67,7 +68,7 @@ function Item_TypesgetAllInstance(){
 	//Our object declaration
 	$oItem_Types = new Item_Types();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oItem_Types->getColumns() . "\r\n" . "FROM " . $oItem_Types->getTable() ;
+	$sQuery = "SELECT DISTINCT " . $oItem_Types->getColumns() . "\r\n" . "FROM " . $oItem_Types->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oItem_Types->getLinkConditions(true);
 	//The array we get
@@ -117,7 +118,7 @@ function Item_TypesgetAllInstance(){
 ///[RETURNS]boolean, true if done
 function Item_TypesManager(){
 	//Our object's id declaration
-	$nID = $_POST["Id"];
+	$nId = $_POST["Id"];
 	//Our json
 	if(array_key_exists("Data", $_POST))
 		$sJson = $_POST["Data"];
@@ -125,13 +126,15 @@ function Item_TypesManager(){
 		$sJson = "";
 	//Our Action
 	$sAction = $_POST["Action"];
+	//Our Agent
+	$oAgent = $_POST["Session"];
 	
 	switch($sAction){
 		case "GET" :
 			echo Item_TypesgetFromID($nId);
 			break;
 		case "SAVE" :
-			echo Item_TypessaveFromJson($sJson);
+			echo Item_TypessaveFromJson($sJson, $oAgent);
 			break;
 		case "DELETE" :
 			echo Item_TypesdeleteFromID($nId);

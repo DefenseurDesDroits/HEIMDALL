@@ -11,7 +11,7 @@
 //include the default DTB
 //include "Potours_Connection.php";
 //include the postGre Sql DTB
-include "Potours_Connection_PGSQL.php";
+include_once "Potours_Connection_PGSQL.php";
 
 //Create the connection object************************
 
@@ -19,8 +19,10 @@ include "Potours_Connection_PGSQL.php";
 //$oConnection = new Potours_Connection("ip", "dtb", "usr", "pwd");
 //default case
 //$oConnection = new Potours_Connection_PGSQL("192.168.1.183:5432", "crm", "infocom", "07_PVo-DT1G6");
-$oConnection = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
-$oConnection->open();
+$oConnection = new Potours_Connection_PGSQL("127.0.0.1", "heimdalldb", "heimdall", "T0RLVQM3+663");
+//$oConnection = new Potours_Connection_PGSQL("192.168.1.184", "heimdalldb", "heimdall", "T0RLVQM3+663");
+//$oConnection = new Potours_Connection_PGSQL("192.168.1.183", "crm", "infocom", "07_PVo-DT1G6");
+//$oConnection->open();
 
 //Quotes Function
 
