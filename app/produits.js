@@ -88,10 +88,10 @@ var Heimdall = {
         products : {
             contacts : {
                 generateMenuCode : Heimdall_Contacts.generateMenuCode
-            }/*,
+            },
             publications : {
                 generateMenuCode : Heimdall_Publications.generateMenuCode
-            }*/
+            }
         },
         user : {},
         connectionWindow : null
@@ -190,6 +190,7 @@ var Heimdall = {
                 case "LDAP_Connection_OK":
                     //init the contact
                     init_contacts();
+                    init_publications();
                     //create the product
                     if(location.hash == ""){
                         console.log("Nope !!!");

@@ -1,15 +1,12 @@
-/// <reference path="../../lib/CONTACTS/CONTACTS_Users.js" />
+/// <reference path="../../lib//PUBLICATIONS/PUBLICATIONS_Publications.js" />
 
-/// <reference path="../../lib/CONTACTS/CONTACTS_Users.js" />
-/// <reference path="../../lib/CONTACTS/CONTACTS_Civilites.js" />
-/// <reference path="../../lib/CONTACTS/CONTACTS_Titres.js" />
 /// <reference path="../../lib/Potours_Legacy.js" />
 
 //our gloabal instance object 
-var ARY_LAY_Users = [];
+var ARY_LAY_Publications = [];
 
-//SAVE_LAY_Users
-function SAVE_LAY_Users(sId){
+//SAVE_LAY_Publications
+function SAVE_LAY_Publications(sId){
 	//our position
 	var nPosition = 0;
 	//our item
@@ -21,15 +18,15 @@ function SAVE_LAY_Users(sId){
 	var oLogs = null;
 
 	//get the position
-	nPosition = findInPotoursObjLst(ARY_LAY_Users, "sName", sId);
+	nPosition = findInPotoursObjLst(ARY_LAY_Publications, "sName", sId);
 	//In ?
 	if(nPosition == POTOURS_FIND_NOTFOUND)
 		return false;
 
 	//Update the object 
-	ARY_LAY_Users[nPosition].ViewToObject();
+	ARY_LAY_Publications[nPosition].ViewToObject();
 	//get the Item
-	oItem = ARY_LAY_Users[nPosition].getObj();
+	oItem = ARY_LAY_Publications[nPosition].getObj();
 
 	//save
 	bResult = oItem.save(Heimdall.members.user["UserId"], ".");
@@ -51,23 +48,23 @@ function SAVE_LAY_Users(sId){
 	return bResult;
 }
 
-//DELETE_LAY_Users
-function DELETE_LAY_Users(sId){
+//DELETE_LAY_Publications
+function DELETE_LAY_Publications(sId){
 	//our position
 	var nPosition = 0;
 	//our item
 	var oItem = null;
 
 	//get the position
-	nPosition = findInPotoursObjLst(ARY_LAY_Users, "sName", sId);
+	nPosition = findInPotoursObjLst(ARY_LAY_Publications, "sName", sId);
 	//In ?
 	if(nPosition == POTOURS_FIND_NOTFOUND)
 		return false;
 	
 	// //Update the object 
-	// ARY_LAY_Users[nPosition].ViewToObject();
+	// ARY_LAY_Publications[nPosition].ViewToObject();
 	// //get the Item
-	// oItem = ARY_LAY_Users[nPosition].members.getObj();
+	// oItem = ARY_LAY_Publications[nPosition].members.getObj();
 
 	// //Sad God Sake !!!
 	// return oItem.delete(Heimdall.members.user["UserId"], ".");
@@ -76,17 +73,17 @@ function DELETE_LAY_Users(sId){
 	return true;
 }
 
-function LAY_Users(){
+function LAY_Publications(){
 
 	//our super
-    this.myLAY_Users = {};
+    this.myLAY_Publications = {};
     //hack
-    var oLAY_Users = this;
+    var oLAY_Publications = this;
 
     this.members = {
-        ///[MEMBER][string][sName]The name of the control Id in HTML
+        ///[MEMBER][string][sName]The name of the control/ Id in HTML
         sName : "",
-		///[MEMBER][Users][oObj]The Users object
+		///[MEMBER][Publications][oObj]The Publications object
 		oObj : null,
         ///[MEMBER][element][oDiv]The dom element
         oDiv : null,
@@ -104,30 +101,30 @@ function LAY_Users(){
 	///[METHOD]Method to get our control name
 	///[RETURNS]string, our control name
     this.getName = function(){
-        return oLAY_Users.members.sName;
+        return oLAY_Publications.members.sName;
     };
-    this.myLAY_Users.getName = this.getName;
+    this.myLAY_Publications.getName = this.getName;
 	
 	///[METHOD]Method to get our control Id
 	///[RETURNS]string, our control Id
     this.getId = function(){
-        return oLAY_Users.members.sName;
+        return oLAY_Publications.members.sName;
     };
-    this.myLAY_Users.getId = this.getId;
+    this.myLAY_Publications.getId = this.getId;
 
 	///[METHOD]Method to get our object
 	///[RETURNS]string, our Object
 	this.getObj = function(){
-		return oLAY_Users.members.oObj;
+		return oLAY_Publications.members.oObj;
 	};
-	this.myLAY_Users.getObj = this.getObj;
+	this.myLAY_Publications.getObj = this.getObj;
 
 	///[METHOD]Method to get our object
 	///[RETURNS]control, our Parent
 	this.getParent = function(){
-		return oLAY_Users.members.oParent;
+		return oLAY_Publications.members.oParent;
 	};
-	this.myLAY_Users.getParent = this.getParent;
+	this.myLAY_Publications.getParent = this.getParent;
 
 	///[SECTION]Setters###############################################
 	
@@ -138,12 +135,12 @@ function LAY_Users(){
         if(sValue == null)
             return false;
         if(typeof sValue === 'string'){
-            oLAY_Users.members.sName = sValue;
+            oLAY_Publications.members.sName = sValue;
             return true;
         }
         return false;
     };
-	this.myLAY_Users.setName = this.setName;
+	this.myLAY_Publications.setName = this.setName;
 	
 	///[METHOD]Method to get our Object
     ///[PARAMETER][string][sValue]string, our new Object
@@ -153,11 +150,11 @@ function LAY_Users(){
 		if(oItem == null)
 			return false;
 		//Affectation
-		oLAY_Users.members.oObj = oItem;
+		oLAY_Publications.members.oObj = oItem;
 		//Happy end 
 		return true
 	};
-	this.myLAY_Users.setObj = this.setObj;
+	this.myLAY_Publications.setObj = this.setObj;
 
 	///[METHOD]Method to set our control parent
     ///[PARAMETER][Control][LAY_]LAY_, our parent
@@ -165,10 +162,10 @@ function LAY_Users(){
 	this.setParent = function(LAY_){
 		if(LAY_ == null)
 			return false;
-		oLAY_Users.members.oParent = LAY_;
+		oLAY_Publications.members.oParent = LAY_;
 		return true;
     }
-    this.myLAY_Users.setParent = this.setParent;
+    this.myLAY_Publications.setParent = this.setParent;
 
 	///[SECTION]WORKSHOP##############################################
 	
@@ -186,36 +183,34 @@ function LAY_Users(){
 		//position of the civilite
 		var nPosition = 0;
 		
-		sCode += "<div id=\"" + oLAY_Users.getId() + "\">";
+		sCode += "<div id=\"" + oLAY_Publications.getId() + "\">";
 		
-		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Users.getId() + "\">" + "</div>";
-		//sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Users.getId() + "\">" + "accreditationsLAYDiv()" + "</div>";
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Publications.getId() + "\">" + "</div>";
 
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
-		sCode += '\t\t<input id="SAI_Pseudo_' + oLAY_Users.getId() + '" class="SAI_" type="text" name="SAI_Pseudo_' + oLAY_Users.getId() + '" value=""/>';
+		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Publications.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Publications.getId() + '" value=""/>';
 		sCode += "<br\>";
 
-		sCode += "\t" + "\t" + "<select id=\"COMBO_Civilite_" + oLAY_Users.getId() + "\">" + "\r\n";
+		sCode += "\t" + "\t" + "<select id=\"COMBO_Domaines_" + oLAY_Publications.getId() + "\">" + "\r\n";
 		//get the count
-		nCount = Heimdall.members.products.contacts.Civilites.length;
+		nCount = Heimdall.members.products.publications.Domaines.length;
 		//init the iterator
 		nIt = 0;
 		//loop
 		while(nIt < nCount){
 			//add option
-			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.contacts.Civilites[nIt].getId_Civilites() + "\">" + Heimdall.members.products.contacts.Civilites[nIt].getNom() + "</option>" + "\r\n";
+			sCode += "\t" + "\t" + "\t" +"<option value=\"" + Heimdall.members.products.publications.Domaines[nIt].getId_Domaines() + "\">" + Heimdall.members.products.publications.Domaines[nIt].getNom() + "</option>" + "\r\n";
 			//Next
 			nIt++;
 		}
 		sCode += "\t" + "\t" + "</select>" + "\r\n";
 
-		sCode += '\t\t<input id="SAI_Nom_' + oLAY_Users.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Users.getId() + '" value=""/>';
-		sCode += '\t\t<input id="SAI_Prenom_' + oLAY_Users.getId() + '" class="SAI_" type="text" name="SAI_Prenom_' + oLAY_Users.getId() + '" value=""/>';
+		sCode += '\t\t<input id="SAI_Prenom_' + oLAY_Publications.getId() + '" class="SAI_" type="text" name="SAI_Prenom_' + oLAY_Publications.getId() + '" value=""/>';
 
 		//sCode += "\t" + "<br/>" + "\r\n";
 
-		sCode += "\t" + "\t" + "<select id=\"COMBO_Titres_" + oLAY_Users.getId() + "\">" + "\r\n";
+		sCode += "\t" + "\t" + "<select id=\"COMBO_Titres_" + oLAY_Publications.getId() + "\">" + "\r\n";
 		//get the count
 		nCount = Heimdall.members.products.contacts.Titres.length;
 		//init the iterator
@@ -229,18 +224,18 @@ function LAY_Users(){
 		}
 		sCode += "\t" + "\t" + "</select>" + "\r\n";
 
-		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Users('" + oLAY_Users.getId() + "')\">Sauvegarder</div>" + "\r\n";
-		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Users('" + oLAY_Users.getId() + "')\">Supprimer</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Publications('" + oLAY_Publications.getId() + "')\">Sauvegarder</div>" + "\r\n";
+		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Publications('" + oLAY_Publications.getId() + "')\">Supprimer</div>" + "\r\n";
 
 		sCode += "\t" + "</form>";
-		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Users.getId() + "\">---</div>";
+		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId() + "\">---</div>";
 		
 		sCode += "</div>";
 		
 		//return the code
 		return sCode;
     };
-    this.myLAY_Users.generateHTML = this.generateHTML;
+    this.myLAY_Publications.generateHTML = this.generateHTML;
 
     ///[METHOD]Method to attach the object
 	///[RETURNS]boolean, true if done
@@ -251,22 +246,22 @@ function LAY_Users(){
         //our count
         var nCount = 0;
 
-        oLAY_Users.members.oDiv = document.getElementById(oLAY_Users.getId());
-        if(oLAY_Users.members.oDiv == null)
+        oLAY_Publications.members.oDiv = document.getElementById(oLAY_Publications.getId());
+        if(oLAY_Publications.members.oDiv == null)
             return false;
 		
 		//the events you spread
-		if(oLAY_Users.getParent() != null){
+		if(oLAY_Publications.getParent() != null){
 			//a div ?
-			if(oLAY_Users.getParent().members.oDiv != null){
+			if(oLAY_Publications.getParent().members.oDiv != null){
 				//add the event listener
-				oLAY_Users.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Users.getParent().subComponentLoaded);
+				oLAY_Publications.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Publications.getParent().subComponentLoaded);
 			}
 		}
 
         return true;
     };
-    this.myLAY_Users.attach = this.attach;
+    this.myLAY_Publications.attach = this.attach;
 
     ///[METHOD]Method to initialize the control
     ///[PARAMETER][string][sDivOwner]string, our owner div Id
@@ -282,11 +277,11 @@ function LAY_Users(){
             return false;
         
         //the inner HTML add
-        oDivOwner.innerHTML += oLAY_Users.generateHTML();
+        oDivOwner.innerHTML += oLAY_Publications.generateHTML();
 
-        return oLAY_Users.attach();
+        return oLAY_Publications.attach();
     };
-    this.myLAY_Users.initialyseComponent = this.initialyseComponent;
+    this.myLAY_Publications.initialyseComponent = this.initialyseComponent;
 
     ///[METHOD]Method to delete the component
 	///[RETURNS]boolean, true if done
@@ -298,18 +293,18 @@ function LAY_Users(){
         var nCount = 0;
 
         //if not attach
-        if(oLAY_Users.members.oDiv == null)
+        if(oLAY_Publications.members.oDiv == null)
             return false;
 
         //remove from the parent node
-        oLAY_Users.members.oDiv.parentNode.removeChild(oLAY_Users.members.oDiv);
+        oLAY_Publications.members.oDiv.parentNode.removeChild(oLAY_Publications.members.oDiv);
         //nullify the div
-        oLAY_Users.members.oDiv = null;
+        oLAY_Publications.members.oDiv = null;
 
         //Happy End
         return true;
     };
-    this.myLAY_Users.deleteComponent = this.deleteComponent;
+    this.myLAY_Publications.deleteComponent = this.deleteComponent;
 
 	///[METHOD]Method to initialize the layout
     ///[PARAMETER][string][sDivOwner]string, our oxner div Id
@@ -319,22 +314,22 @@ function LAY_Users(){
 		//get the position ]:)
 		var nPosition = 0;
 		//initialize the name and ID
-		oLAY_Users.setName(sDivId);
+		oLAY_Publications.setName(sDivId);
 		//Initialise component
-		if(oLAY_Users.initialyseComponent(sDivOwner)){
+		if(oLAY_Publications.initialyseComponent(sDivOwner)){
 			//get the position
-			nPosition = findInPotoursObjLst(ARY_LAY_Users, "sName", sDivId);
+			nPosition = findInPotoursObjLst(ARY_LAY_Publications, "sName", sDivId);
 			if(nPosition == POTOURS_FIND_NOTFOUND)
 				//add to the global array
-				ARY_LAY_Users.push(oLAY_Users);
+				ARY_LAY_Publications.push(oLAY_Publications);
 			else
 				//change
-				ARY_LAY_Users[nPosition] = oLAY_Users;
+				ARY_LAY_Publications[nPosition] = oLAY_Publications;
 			
 			//set the object contact
-			oLAY_Users.LAY_Rights.setObj(oLAY_Users.getObj());
+			oLAY_Publications.LAY_Rights.setObj(oLAY_Publications.getObj());
 			//Accreditation !!!
-			oLAY_Users.LAY_Rights.init("LAY_Accreditation_" + oLAY_Users.getId(), sDivId);
+			oLAY_Publications.LAY_Rights.init("LAY_Accreditation_" + oLAY_Publications.getId(), sDivId);
 			
 			//happy end
 			return true;
@@ -343,7 +338,7 @@ function LAY_Users(){
 		//sad
 		return false;
 	};
-	this.myLAY_Users.initializeLayout = this.initializeLayout;
+	this.myLAY_Publications.initializeLayout = this.initializeLayout;
 	
 	///[METHOD]Method to delete the layout
 	///[RETURNS]boolean, true if done
@@ -351,14 +346,14 @@ function LAY_Users(){
 		//position 
 		var nPosition = 0;
 
-		if(oLAY_Users.deleteComponent()){
+		if(oLAY_Publications.deleteComponent()){
 			//remove from the array now !
 
 			//get the position
-			nPosition = findInPotoursObjLst(ARY_LAY_Users, "sName", oLAY_Users.getId());
+			nPosition = findInPotoursObjLst(ARY_LAY_Publications, "sName", oLAY_Publications.getId());
 			//In ?
 			if(nPosition != POTOURS_FIND_NOTFOUND)
-				ARY_LAY_Users.splice(nPosition, 1);
+				ARY_LAY_Publications.splice(nPosition, 1);
 
 			//Happy "the blue dragon cat" End
 			return true;
@@ -367,7 +362,7 @@ function LAY_Users(){
 		//sad but true ! \m/
 		return false;
 	}
-	this.myLAY_Users.deleteLayout = this.deleteLayout;
+	this.myLAY_Publications.deleteLayout = this.deleteLayout;
 
 	///[METHOD]Method to plots the data of the object
 	///[RETURNS]boolean, true if done
@@ -377,34 +372,34 @@ function LAY_Users(){
 		//our element to do everything
 		var oElement = null;
 
-		if(oLAY_Users.members.oObj == null)
-			oLAY_Users.members.oObj = new Users();
+		if(oLAY_Publications.members.oObj == null)
+			oLAY_Publications.members.oObj = new Publications();
 			//return false;
 
-		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Users.getId());
+		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oElement.value = oLAY_Users.members.oObj.getPseudo();
+			oElement.value = oLAY_Publications.members.oObj.getPseudo();
 
-		oElement = document.getElementById("COMBO_Civilite_" + oLAY_Users.getId());
+		oElement = document.getElementById("COMBO_Civilite_" + oLAY_Publications.getId());
 		if(oElement != null){
-			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", oLAY_Users.members.oObj.getId_Civilites());
+			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Civilites, "nId_Civilites", oLAY_Publications.members.oObj.getId_Civilites());
 			if(nPosition != POTOURS_FIND_NOTFOUND){
 				//Option created in the same order than stored
 				oElement.selectedIndex = nPosition;
 			}
 		}
 			
-		oElement = document.getElementById("SAI_Nom_" + oLAY_Users.getId());
+		oElement = document.getElementById("SAI_Nom_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oElement.value = oLAY_Users.members.oObj.getNom();
+			oElement.value = oLAY_Publications.members.oObj.getNom();
 
-		oElement = document.getElementById("SAI_Prenom_" + oLAY_Users.getId());
+		oElement = document.getElementById("SAI_Prenom_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oElement.value = oLAY_Users.members.oObj.getPrenom();
+			oElement.value = oLAY_Publications.members.oObj.getPrenom();
 
-		oElement = document.getElementById("COMBO_Titres_" + oLAY_Users.getId());
+		oElement = document.getElementById("COMBO_Titres_" + oLAY_Publications.getId());
 		if(oElement != null){
-			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", oLAY_Users.members.oObj.getId_Titres());
+			nPosition = findInPotoursObjLst(Heimdall.members.products.contacts.Titres, "nId_Titres", oLAY_Publications.members.oObj.getId_Titres());
 			if(nPosition != POTOURS_FIND_NOTFOUND){
 				//Option created in the same order than stored
 				oElement.selectedIndex = nPosition;
@@ -413,23 +408,23 @@ function LAY_Users(){
 
 		return true;
 	};
-	this.myLAY_Users.ObjToView = this.ObjToView;
+	this.myLAY_Publications.ObjToView = this.ObjToView;
 	
 	///[METHOD]Method to the view data into the object
 	///[RETURNS]boolean, true if done
 	this.ViewToObject = function(){
 		//get the contact 
-		var oUsers = oLAY_Users.members.oObj;
+		var oPublications = oLAY_Publications.members.oObj;
 		//element 
 		var oElement = null;
 
-		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Users.getId());
+		oElement = document.getElementById("SAI_Pseudo_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oUsers.setPseudo(oElement.value);
+			oPublications.setPseudo(oElement.value);
 
-		oElement = document.getElementById("COMBO_Civilite_" + oLAY_Users.getId());
+		oElement = document.getElementById("COMBO_Civilite_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oUsers.setId_Civilites(parseInt(Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites()));
+			oPublications.setId_Civilites(parseInt(Heimdall.members.products.contacts.Civilites[oElement.selectedIndex].getId_Civilites()));
 
 		///[DEBUG]Operaion time !!!
 		if(Heimdall.flags.debug && oElement != null){
@@ -438,17 +433,17 @@ function LAY_Users(){
 		}
 		///[/DEBUG]
 
-		oElement = document.getElementById("SAI_Nom_" + oLAY_Users.getId());
+		oElement = document.getElementById("SAI_Nom_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oUsers.setNom(oElement.value);
+			oPublications.setNom(oElement.value);
 
-		oElement = document.getElementById("SAI_Prenom_" + oLAY_Users.getId());
+		oElement = document.getElementById("SAI_Prenom_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oUsers.setPrenom(oElement.value);
+			oPublications.setPrenom(oElement.value);
 
-		oElement = document.getElementById("COMBO_Titres_" + oLAY_Users.getId());
+		oElement = document.getElementById("COMBO_Titres_" + oLAY_Publications.getId());
 		if(oElement != null)
-			oUsers.setId_Titres(parseInt(Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres()));
+			oPublications.setId_Titres(parseInt(Heimdall.members.products.contacts.Titres[oElement.selectedIndex].getId_Titres()));
 
 		///[DEBUG]Operaion time !!!
 		if(Heimdall.flags.debug && oElement != null){
@@ -459,18 +454,18 @@ function LAY_Users(){
 
 		///[DEBUG]Operation time !!!
 		if(Heimdall.flags.debug){
-			console.log("UsersLAYDIVSave, json : " + "\r\n" + oUsers.exportToJson());
+			console.log("PublicationsLAYDIVSave, json : " + "\r\n" + oPublications.exportToJson());
 			console.log("user id : " + Heimdall.members.user["UserId"]);
 		}
 		///[/DEBUG]
 		
 		//The right !!!
-		oLAY_Users.LAY_Rights.ViewToObject();
+		oLAY_Publications.LAY_Rights.ViewToObject();
 		//Parano !
-		oLAY_Users.members.oObj = oUsers;
+		oLAY_Publications.members.oObj = oPublications;
 		
 	};
-	this.myLAY_Users.ViewToObject = this.ViewToObject;
+	this.myLAY_Publications.ViewToObject = this.ViewToObject;
 	
 	///[METHOD]Method to initialize the layout
     ///[PARAMETER][string][sDivOwner]string, our oxner div Id
@@ -478,9 +473,9 @@ function LAY_Users(){
     ///[PARAMETER][string][sDivId]string, our div Id
 	///[RETURNS]boolean, true if done
 	this.init = function(sDivOwner, sDivId, oItem){
-		oLAY_Users.setObj(oItem);
-		return oLAY_Users.initializeLayout(sDivOwner, sDivId);
+		oLAY_Publications.setObj(oItem);
+		return oLAY_Publications.initializeLayout(sDivOwner, sDivId);
 	}
-	this.myLAY_Users.init = this.init;
+	this.myLAY_Publications.init = this.init;
 }
 

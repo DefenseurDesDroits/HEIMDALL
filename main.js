@@ -40,7 +40,15 @@ var ary_sFileLib = [
 	"lay/CONTACTS/LAY_LIST_Contact_Infos.js",
 	"lay/CONTACTS/LAY_LIST_Infos.js",
 	"lay/CONTACTS/LAY_Infos.js",
-	"lay/LAY_Status.js"
+	"lay/LAY_Status.js",
+
+	/*PUBLICATION LIB !!! ################################## */
+	/*PUBLICATION OBJ !!! */
+	"lib/PUBLICATIONS/PUBLICATIONS_Domaines.js",
+	"lib/PUBLICATIONS/PUBLICATIONS_Publications.js",
+	"lib/PUBLICATIONS/PUBLICATIONS_Fichiers.js",
+	/*PUBLICATION LAY !!! */
+	"lay/PUBLICATIONS/LAY_Domaines.js"
 ];
 
 var ary_sApp = [
@@ -53,7 +61,9 @@ var ary_sApp = [
 	"app/contacts_query.js", 
 	"app/contacts.js", 
 	//Publication part
-	//"app/publications.js", 
+	"app/publications_publications.js", 
+	"app/publications_domaines.js", 
+	"app/publications.js", 
 	//The product stuff
 	"app/produits.js"];
 
