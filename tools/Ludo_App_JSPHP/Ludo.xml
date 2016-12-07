@@ -6,229 +6,1001 @@ Ludo
 </name>
 </assembly>
 <members>
-<member name="F:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.sFileExtention">
+<member name="M:WIN_LUDO_DTB_LIST_Pogs.setPrefixe(System.String)">
 	<summary>
- Our file extension name
+ Method to change the Prefixe
+ </summary>
+	<param name="sValue">String, our new value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.getPrefixe">
+	<summary>
+ Method to get the prefixe
+ </summary>
+	<returns>String, our prefixe</returns>
+	<remarks></remarks>
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.ViewToLst">
+	<summary>
+ Method to set the list objects value from the view
  </summary>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.getDescription">
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.LstToView">
 	<summary>
- Method to get the description of the class
+ Method to plot list to view
  </summary>
-	<returns>string, our description</returns>
+	<returns>Boolean, true if done</returns>
 	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignName(Ludo.DTB.Ludo_DTB_Column@)">
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.Init(System.Collections.Generic.List{Ludo.DTB.POGS.Ludo_Pogs}@)">
 	<summary>
- Method to write the name of the control 
+ Method to initialize the pogs list
  </summary>
-	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
-	<returns>String, our code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignDeclaration(Ludo.DTB.Ludo_DTB_Column@)">
+	<param name="lst_oItems">List(Of Ludo.DTB.POGS.Ludo_Pogs), list of pogs</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the method LstToView to plot the list</remarks>
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.Init(System.String)">
 	<summary>
- Method to write the declaration of the control 
+ Method to initialize the pogs list
  </summary>
-	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
-	<returns>String, our code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignInitialization(Ludo.DTB.Ludo_DTB_Column@)">
+	<param name="sFile">String, our ini file name</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the Init Method of the layout</remarks>
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.#ctor">
 	<summary>
- Method to write the initialization of the control linked to the Column
- </summary>
-	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
-	<returns>String, our code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
-	<summary>
- Method to write column Edition Code
- </summary>
-	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
-	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
-	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
-	<summary>
- Method to write column Edition Design
- </summary>
-	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
-	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
-	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Header(Ludo.DTB.Ludo_DTB_Table@,System.String,System.String)">
-	<summary>
- Method to write the header of the code edition layout
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, table of the layout</param>
-	<param name="sFilename">String, filename of the layout</param>
-	<param name="sDescription">[OPTIONAL] String, our description</param>
-	<returns>String, the code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_ViewToObj(Ludo.DTB.Ludo_DTB_Table@,System.String)">
-	<summary>
- Method to generate the view ToView Method
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<param name="sTabulation">STring, our tabulation</param>
-	<returns>String, our code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_ObjToView(Ludo.DTB.Ludo_DTB_Table@,System.String)">
-	<summary>
- Method to generate the ObjToView Method
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<param name="sTabulation">STring, our tabulation</param>
-	<returns>String, our code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Init(Ludo.DTB.Ludo_DTB_Table@,System.String)">
-	<summary>
- Method to generate the Init method
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<param name="sTabulation">String, our tabulation</param>
-	<returns>String, our code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Handlers(Ludo.DTB.Ludo_DTB_Table@,System.String)">
-	<summary>
- Method to write the handler of the layout !!!
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<param name="sTabulation">String, our tabulation</param>
-	<returns>String, our code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Builders(Ludo.DTB.Ludo_DTB_Table@,System.String)">
-	<summary>
- Method to write the builders
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<param name="sTabulation">String, our tabulation</param>
-	<returns>String, our code</returns>
-	<remarks></remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- write lay Edition Code
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write lay Edition Design
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write lay_win Edition Code
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write lay_win Edition Design
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write win Edition Code
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write win Edition Design
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnSelectionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
-	<summary>
- Method to write column Selection Code
- </summary>
-	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
-	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
-	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnSelectionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
-	<summary>
- Method to write column Selection Design
- </summary>
-	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
-	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
-	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLaySelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- write lay Selection Code
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLaySelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write lay Selection Design
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinSelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write lay_win Selection Code
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinSelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write lay_win Selection Design
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinSelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write win Selection Code
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinSelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
-	<summary>
- Method write win Selection Design
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<returns>string, the code</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeClass(Ludo.DTB.Ludo_DTB_Table@,System.String,System.Collections.Generic.List{System.String}@)">
-	<summary>
- Method to write all element from a class
- </summary>
-	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
-	<param name="sPath">string, our path</param>
-	<param name="lst_sFiles">list(of string), list of generated files</param>
-	<returns>boolean, true if done</returns>
-	<remarks>It's an override !</remarks>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.ToString">
-	<summary>
- Override of the toString method
- </summary>
-	<returns>string, something fro nothing</returns>
-</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.#ctor">
-	<summary>
- The default builder
+ Default builder
  </summary>
 	<remarks></remarks>
-</member><member name="T:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO">
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.#ctor(System.Collections.Generic.List{Ludo.DTB.POGS.Ludo_Pogs}@)">
 	<summary>
- Class to make the GUI 
+ Builder with list of pogs parameter
+ </summary>
+	<param name="lst_oItems">List(Of Ludo.DTB.POGS.Ludo_Pogs), list of pogs</param>
+	<remarks></remarks>
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.#ctor(System.String)">
+	<summary>
+ Builder with the file name
+ </summary>
+	<param name="sFile">String, our ini file name</param>
+	<remarks></remarks>
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.#ctor(System.Collections.Generic.List{Ludo.DTB.POGS.Ludo_Pogs}@,System.String)">
+	<summary>
+ Builder with list of pogs parameter and the prefixe 
+ </summary>
+	<param name="lst_oItems">List(Of Ludo.DTB.POGS.Ludo_Pogs), list of pogs</param>
+	<param name="sValue">String, our new value of prefixe</param>
+	<remarks></remarks>
+</member><member name="M:WIN_LUDO_DTB_LIST_Pogs.#ctor(System.String,System.String)">
+	<summary>
+ Builder with the file name and the prefixe
+ </summary>
+	<param name="sFile">String, our ini file name</param>
+	<param name="sValue">String, our new value of prefixe</param>
+	<remarks></remarks>
+</member><member name="T:WIN_LUDO_DTB_LIST_Pogs">
+	<summary>
+ Windows to create or modifiy a list of DTB Connexions
+ </summary>
+	<remarks></remarks>
+</member><member name="F:LAY_LUDO_Nodes_Editor.oObj">
+	<summary>
+ our Node reference
+ </summary>
+	<remarks></remarks>
+</member><member name="F:LAY_LUDO_Nodes_Editor.bAutoSave">
+	<summary>
+ If the autosave of changing value in a node is activate after quit the node layout 
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_Nodes_Editor.eEnter">
+	<summary>
+ our event to detect validation by the enter Key
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Nodes_Editor.Init(Ludo.NODE.Ludo_Node@)">
+	<summary>
+ Method to init this Layout 
+ </summary>
+	<param name="oItem">Ludo.NODE.Ludo_Node, our object to edit !!!</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Nodes_Editor.ViewToObj">
+	<summary>
+ Method to set the value of the Corps object with the interface values
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Nodes_Editor.ObjToView">
+	<summary>
+ Method to set the interface with values of theCorps object 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Nodes_Editor.RaiseEnter">
+	<summary>
+ Method to raise the enter event !
+ </summary>
+	<returns>Boolean, true when done!</returns>
+	<remarks></remarks>
+</member><member name="T:LAY_LUDO_Nodes_Editor">
+	<summary>
+ Layout to manage a Ludo Node Tree
+ </summary>
+	<remarks></remarks>
+</member><member name="F:LAY_LUDO_Node.oObj">
+	<summary>
+ our Node reference
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_Node.eEnter">
+	<summary>
+ our event to detect validation by the enter Key
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Node.Init(Ludo.NODE.Ludo_Node@)">
+	<summary>
+ Method to init this Layout 
+ </summary>
+	<param name="oItem">Ludo.NODE.Ludo_Node, our object to edit !!!</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Node.ViewToObj">
+	<summary>
+ Method to set the value of the Corps object with the interface values
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Node.ObjToView">
+	<summary>
+ Method to set the interface with values of theCorps object 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Node.RaiseEnter">
+	<summary>
+ Method to raise the enter event !
+ </summary>
+	<returns>Boolean, true when done!</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Node.SAI_Id_Enter(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage save query form control of sNom
+ </summary>
+	<param name="sender">Object, our object to edit !!!</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our event argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_Node.#ctor">
+	<summary>
+ Builder without parameter : please, be charming, DON'T USE IT :)
+ </summary>
+	<remarks>Generated By Ludo Library \o/</remarks>
+</member><member name="M:LAY_LUDO_Node.#ctor(Ludo.NODE.Ludo_Node)">
+	<summary>
+ Builder with parameter : our favorite one !!!
+ </summary>
+	<param name="oItem">Ludo.NODE.Ludo_Node, our object to edit !!!</param>
+	<remarks>Generated By Ludo Library \m/ Oh Yeah</remarks>
+</member><member name="T:LAY_LUDO_Node">
+	<summary>
+ Layout to manage a Ludo Node
+ </summary>
+	<remarks></remarks>
+</member><member name="F:LAY_LUDO_DTB_Pogs_View.oObj">
+	<summary>
+ our ludo pogs to manage connection in dtb !!!
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Pogs_View.eEnter">
+	<summary>
+ our event to detect validation by the enter Key
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_View.Init(Ludo.DTB.POGS.Ludo_Pogs@)">
+	<summary>
+ Method to init this Layout 
+ </summary>
+	<param name="oItem">Ludo.DTB.POGS.Ludo_Pogs, our object to edit !!!</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_View.ViewToObj">
+	<summary>
+ Method to set the value of the Pogs object with the interface values
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_View.ObjToView">
+	<summary>
+ Method to set the interface with values of the pogs object 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_View.RaiseEnter">
+	<summary>
+ Method to raise the eEnter event
+ </summary>
+	<returns>Boolean, true when done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_View.HANDLER_Enter_Manager(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the enter event key
+ </summary>
+	<param name="sender">Object, sender of the message</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_View.#ctor">
+	<summary>
+ Builder without parameter : please, be charming, DON'T USE IT :)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_View.#ctor(Ludo.DTB.POGS.Ludo_Pogs)">
+	<summary>
+ Builder with parameter : our favorite one !!!
+ </summary>
+	<param name="oItem">Ludo.DTB.POGS.Ludo_Pogs, our object to edit !!!</param>
+	<remarks></remarks>
+</member><member name="T:LAY_LUDO_DTB_Pogs_View">
+	<summary>
+ Our layout to manage the pogs to connect the Dtb
+ </summary>
+	<remarks></remarks>
+</member><member name="F:LAY_LUDO_DTB_Pogs_List.sFilename">
+	<summary>
+ Our filename
+ </summary>
+	<remarks></remarks>
+</member><member name="F:LAY_LUDO_DTB_Pogs_List.sPrefixe">
+	<summary>
+ Our prefixe 
+ </summary>
+	<remarks></remarks>
+</member><member name="F:LAY_LUDO_DTB_Pogs_List.lst_oPogs">
+	<summary>
+ Our list of pogs
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.setPrefixe(System.String)">
+	<summary>
+ Method to change the Prefixe
+ </summary>
+	<param name="sValue">String, our new value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.getPrefixe">
+	<summary>
+ Method to get the prefixe
+ </summary>
+	<returns>String, our prefixe</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.ViewToLst">
+	<summary>
+ Method to set the list objects value from the view
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.LstToView">
+	<summary>
+ Method to plot list to view
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.Init(System.Collections.Generic.List{Ludo.DTB.POGS.Ludo_Pogs}@)">
+	<summary>
+ Method to initialize the pogs list
+ </summary>
+	<param name="lst_oItems">List(Of Ludo.DTB.POGS.Ludo_Pogs), list of pogs</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the method LstToView to plot the list</remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.Init(System.String)">
+	<summary>
+ Method to initialize the pogs list
+ </summary>
+	<param name="sFile">String, our ini file name</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the Init Method with List Of Pogs parameters</remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.doUp(LAY_LUDO_DTB_Pogs_Container@)">
+	<summary>
+ Method to up a container
+ </summary>
+	<param name="oLay">LAY_LUDO_DTB_Pogs_Container, our container</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the method ViewToLst() and LstToView()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.doDown(LAY_LUDO_DTB_Pogs_Container@)">
+	<summary>
+ Method to down a container
+ </summary>
+	<param name="oLay">LAY_LUDO_DTB_Pogs_Container, our container</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the methods ViewToLst() and LstToView()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.doDelete(LAY_LUDO_DTB_Pogs_Container@)">
+	<summary>
+ Method to delete a container
+ </summary>
+	<param name="oLay">LAY_LUDO_DTB_Pogs_Container, our container</param>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the methods ViewToLst() and LstToView()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.doLoad">
+	<summary>
+ Method to load the file name
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the Init() method with the filename string parameters</remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.doSave">
+	<summary>
+ Methoad to save the list of the Ini Pogs
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.doAdd">
+	<summary>
+ Method to add a Pogs
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks>This method calls the methods ViewToLst() and LstToView()</remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.HANDLER_BTN_Up(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the button up of a container
+ </summary>
+	<param name="sender">object, sender of the event</param>
+	<param name="e">EventArgs, our argument of the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.HANDLER_BTN_Down(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the button down of a container
+ </summary>
+	<param name="sender">object, sender of the event</param>
+	<param name="e">EventArgs, our argument of the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.HANDLER_BTN_Delete(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the button delete of a container
+ </summary>
+	<param name="sender">object, sender of the event</param>
+	<param name="e">EventArgs, our argument of the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.BTN_Load_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the load button
+ </summary>
+	<param name="sender">object, sender of the event</param>
+	<param name="e">EventArgs, our argument of the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.SAI_Filename_Enter(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ Handler to manage the enter key up on the sai name field
+ </summary>
+	<param name="sender">object, sender of the event</param>
+	<param name="e">KeyEventArgs, our argument of the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.BTN_Save_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the save button
+ </summary>
+	<param name="sender">object, sender of the event</param>
+	<param name="e">EventArgs, our argument of the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.BTN_Add_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the add button
+ </summary>
+	<param name="sender">object, sender of the event</param>
+	<param name="e">EventArgs, our argument of the event</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.#ctor">
+	<summary>
+ Default builder
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.#ctor(System.Collections.Generic.List{Ludo.DTB.POGS.Ludo_Pogs}@)">
+	<summary>
+ Builder with list of pogs parameter
+ </summary>
+	<param name="lst_oItems">List(Of Ludo.DTB.POGS.Ludo_Pogs), list of pogs</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.#ctor(System.String)">
+	<summary>
+ Builder with the file name
+ </summary>
+	<param name="sFile">String, our ini file name</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.#ctor(System.Collections.Generic.List{Ludo.DTB.POGS.Ludo_Pogs}@,System.String)">
+	<summary>
+ Builder with list of pogs parameter and the prefixe 
+ </summary>
+	<param name="lst_oItems">List(Of Ludo.DTB.POGS.Ludo_Pogs), list of pogs</param>
+	<param name="sValue">String, our new value of prefixe</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_List.#ctor(System.String,System.String)">
+	<summary>
+ Builder with the file name and the prefixe
+ </summary>
+	<param name="sFile">String, our ini file name</param>
+	<param name="sValue">String, our new value of prefixe</param>
+	<remarks></remarks>
+</member><member name="T:LAY_LUDO_DTB_Pogs_List">
+	<summary>
+ Our layout to manage a list of pogs
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Pogs_Container.eEnter">
+	<summary>
+ our event to detect validation by the enter Key
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Pogs_Container.eUp">
+	<summary>
+ our event to move up the Pogs
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Pogs_Container.eDown">
+	<summary>
+ our event to move down the Pogs
+ </summary>
+	<remarks></remarks>
+</member><member name="E:LAY_LUDO_DTB_Pogs_Container.eDelete">
+	<summary>
+ our event to delete the Pogs
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.Init(Ludo.DTB.POGS.Ludo_Pogs@)">
+	<summary>
+ Method to init this Layout 
+ </summary>
+	<param name="oItem">Ludo.DTB.POGS.Ludo_Pogs, our object to edit !!!</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.ViewToObj">
+	<summary>
+ Method to set the value of the Pogs object with the interface values
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.ObjToView">
+	<summary>
+ Method to set the interface with values of the pogs object 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.RaiseEnter">
+	<summary>
+ Method to raise the eEnter event
+ </summary>
+	<returns>Boolean, true when done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.RaiseUp">
+	<summary>
+ Method to raise the eUp event
+ </summary>
+	<returns>Boolean, true when done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.RaiseDelete">
+	<summary>
+ Method to raise the eDelete event
+ </summary>
+	<returns>Boolean, true when done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.RaiseDown">
+	<summary>
+ Method to raise the eDown event
+ </summary>
+	<returns>Boolean, true when done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.setBTN_Up(System.Boolean)">
+	<summary>
+ Method to set the Button Up visibility
+ </summary>
+	<param name="bUp">Boolean, the visibility</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.getBTN_Up">
+	<summary>
+ Method to get the Button Up visibility
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.setBTN_Down(System.Boolean)">
+	<summary>
+ Method to set the Button Dowm visibility
+ </summary>
+	<param name="bDown">Boolean, the visibility</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.getBTN_Down">
+	<summary>
+ Method to get the Button Down visibility
+ </summary>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.setBTN_Delete(System.Boolean)">
+	<summary>
+ Method to set the button Delete visibility
+ </summary>
+	<param name="bDelete">Boolean, the visibility</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.getBTN_Delete">
+	<summary>
+ Method to get the Delete visibility
+ </summary>
+	<returns>Boolean, The value</returns>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.BTN_Up_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the Up Button click !!!
+ </summary>
+	<param name="sender">Object, sender of the message</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.BTN_Down_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the Enter Down Button click !!!
+ </summary>
+	<param name="sender">Object, sender of the message</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.BTN_Delete_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the Enter Delete Button click !!!
+ </summary>
+	<param name="sender">Object, sender of the message</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.LAY_Pogs_Enter(System.Object,System.EventArgs)">
+	<summary>
+ Handler to manage the Enter event of the Pogs View !!!
+ </summary>
+	<param name="sender">Object, sender of the message</param>
+	<param name="e">System.Windows.Forms.KeyEventArgs, our argument</param>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.#ctor">
+	<summary>
+ Builder without parameter : please, be charming, DON'T USE IT :)
+ </summary>
+	<remarks></remarks>
+</member><member name="M:LAY_LUDO_DTB_Pogs_Container.#ctor(Ludo.DTB.POGS.Ludo_Pogs)">
+	<summary>
+ Builder with parameter : our favorite one !!!
+ </summary>
+	<param name="oItem">Ludo.DTB.POGS.Ludo_Pogs, our object to edit !!!</param>
+	<remarks></remarks>
+</member><member name="T:LAY_LUDO_DTB_Pogs_Container">
+	<summary>
+ Our layout to manage the pogs layout into a list
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sId">
+	<summary>
+ Id of the pogs
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sName">
+	<summary>
+ name of the connection
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sMsg">
+	<summary>
+ the message with the connection !
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sImg">
+	<summary>
+ The path of the connection immage !
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sSrv">
+	<summary>
+ The server address
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sUsr">
+	<summary>
+ The Database User
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sPwd">
+	<summary>
+ The password
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sDtb">
+	<summary>
+ The Database name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.DTB.POGS.Ludo_Pogs.sTyp">
+	<summary>
+ The Database  Type !!!
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getId">
+	<summary>
+ Method to get the Id
+ </summary>
+	<returns>String, the Id</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getName">
+	<summary>
+ Method to get the Name
+ </summary>
+	<returns>String, the Name</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getMessage">
+	<summary>
+ Method to get the Message
+ </summary>
+	<returns>String, the Message</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getImage">
+	<summary>
+ Method to get the Image 
+ </summary>
+	<returns>String, the Image</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getServer">
+	<summary>
+ Method to get the Server's address
+ </summary>
+	<returns>String, the Server's address</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getUser">
+	<summary>
+ Method to get the User's name
+ </summary>
+	<returns>String, the User's name</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getPassword">
+	<summary>
+ Method to get the Password
+ </summary>
+	<returns>String, the Password</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getDatabase">
+	<summary>
+ Method to get the Database's Name
+ </summary>
+	<returns>String, the Database's Name</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.getDatabaseType">
+	<summary>
+ Method to get the Database's Type
+ </summary>
+	<returns>String, the Database's Type</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setId(System.String)">
+	<summary>
+ Method to set the id
+ </summary>
+	<param name="sValue">string, our new Id value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setName(System.String)">
+	<summary>
+ Method to set the Name
+ </summary>
+	<param name="sValue">string, our new Name value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setMessage(System.String)">
+	<summary>
+ Method to set the Message
+ </summary>
+	<param name="sValue">string, our new Message value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setImage(System.String)">
+	<summary>
+ Method to set the Image
+ </summary>
+	<param name="sValue">string, our new Image value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setServer(System.String)">
+	<summary>
+ Method to set the Server's address
+ </summary>
+	<param name="sValue">string, our new Server's address value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setUser(System.String)">
+	<summary>
+ Method to set the User
+ </summary>
+	<param name="sValue">string, our new User value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setPassword(System.String)">
+	<summary>
+ Method to set the Password
+ </summary>
+	<param name="sValue">string, our new Password value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setDatabase(System.String)">
+	<summary>
+ Method to set the Database's name
+ </summary>
+	<param name="sValue">string, our new Database's name value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.setDatabaseType(System.String)">
+	<summary>
+ Method to set the Database's type
+ </summary>
+	<param name="sValue">string, our new Database's type value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="P:Ludo.DTB.POGS.Ludo_Pogs.name">
+	<summary>
+ Property to manage the name of the connection
+ </summary>
+	<value>String our connection name</value>
+	<returns>String, the connaction name</returns>
+	<remarks>Calls the setter and the getter</remarks>
+</member><member name="P:Ludo.DTB.POGS.Ludo_Pogs.msg">
+	<summary>
+ Property to manage the message with the connection
+ </summary>
+	<value>String our message</value>
+	<returns>String, the message</returns>
+	<remarks>Calls the setter and the getter</remarks>
+</member><member name="P:Ludo.DTB.POGS.Ludo_Pogs.img">
+	<summary>
+ Property to manage the image with the connection
+ </summary>
+	<value>String our image</value>
+	<returns>String, the image</returns>
+	<remarks>Calls the setter and the getter</remarks>
+</member><member name="P:Ludo.DTB.POGS.Ludo_Pogs.srv">
+	<summary>
+ Property to manage the server's address
+ </summary>
+	<value>String our server's address</value>
+	<returns>String, the server's address</returns>
+	<remarks>Calls the setter and the getter</remarks>
+</member><member name="P:Ludo.DTB.POGS.Ludo_Pogs.usr">
+	<summary>
+ Property to manage the user's name
+ </summary>
+	<value>String our user's name</value>
+	<returns>String, the user's name</returns>
+	<remarks>Calls the setter and the getter</remarks>
+</member><member name="P:Ludo.DTB.POGS.Ludo_Pogs.pwd">
+	<summary>
+ Property to manage the Password
+ </summary>
+	<value>String our Password</value>
+	<returns>String, the Password</returns>
+	<remarks>Calls the setter and the getter</remarks>
+</member><member name="P:Ludo.DTB.POGS.Ludo_Pogs.dtb">
+	<summary>
+ Property to manage the Database's name
+ </summary>
+	<value>String our Database's name</value>
+	<returns>String, the Database's name</returns>
+	<remarks>Calls the setter and the getter</remarks>
+</member><member name="P:Ludo.DTB.POGS.Ludo_Pogs.typ">
+	<summary>
+ Property to manage the Database's type
+ </summary>
+	<value>String our Database's tyoe</value>
+	<returns>String, the Database's type</returns>
+	<remarks>Calls the setter and the getter</remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.loadFromIni(Ludo.INI.Ludo_Ini@,System.String)">
+	<summary>
+ Method to load Pogs from an ini file
+ </summary>
+	<param name="oIni">Ludo.INI.Ludo_Ini, our ini file object</param>
+	<param name="sId_Pogs">String, our Pogs Id</param>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.loadFromIni(System.String@,System.String)">
+	<summary>
+ Method to load Pogs from an ini filename
+ </summary>
+	<param name="sIni">String, ini file name</param>
+	<param name="sId_Pogs">String, our Pogs Id</param>
+	<returns>Boolean, True if done</returns>
+	<remarks>Calls the method loadFromIni with Ludo.INI.Ludo_Ini parameter</remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.saveToIni(Ludo.INI.Ludo_Ini@,System.String)">
+	<summary>
+ Method to save the ini file
+ </summary>
+	<param name="oIni">Ludo.INI.Ludo_Ini, our ini file object</param>
+	<param name="sId_Pogs">String, our Pogs Id</param>
+	<returns>Boolean, True if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.saveToIni(System.String@,System.String)">
+	<summary>
+ Method to save to ini file
+ </summary>
+	<param name="sIni">String, ini file name</param>
+	<param name="sId_Pogs">String, our Pogs Id</param>
+	<returns>Boolean, True if done</returns>
+	<remarks>This method calls the method saveToIni with the ini object parameter, and the save the the ini file</remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.#ctor">
+	<summary>
+ default builder
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.#ctor(Ludo.INI.Ludo_Ini@,System.String)">
+	<summary>
+ Builder with ini file parameter
+ </summary>
+	<param name="oIni">Ludo.INI.Ludo_Ini, our ini file object</param>
+	<param name="sId_Pogs">String, our Pogs Id</param>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.POGS.Ludo_Pogs.#ctor(System.String@,System.String)">
+	<summary>
+ Builder with ini filename parameter
+ </summary>
+	<param name="sIni">String, ini file name</param>
+	<param name="sId_Pogs">String, our Pogs Id</param>
+	<remarks></remarks>
+</member><member name="T:Ludo.DTB.POGS.Ludo_Pogs">
+	<summary>
+ Token to manage the DTB Connections
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.NODE.Ludo_Node.nLUDO_NODE_TYPE_DEFAULT">
+	<summary>
+ our default node type value
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.NODE.Ludo_Node.sLUDO_NODE_TYPE_DEFAULT">
+	<summary>
+ Our default node type name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.NODE.Ludo_Node.nLUDO_NODE_NOT_FOUND">
+	<summary>
+ not found result
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.LudoNodeListFind(System.String,System.Collections.Generic.List{Ludo.NODE.Ludo_Node})">
+	<summary>
+ Method to find an Id in a node list
+ </summary>
+	<param name="sValue">String, our found </param>
+	<param name="lst_o">List(Of Ludo_Node), our list of node</param>
+	<returns>Integer, the position or nLUDO_NODE_NOT_FOUND</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.LudoNodeListFind(Ludo.NODE.Ludo_Node,System.Collections.Generic.List{Ludo.NODE.Ludo_Node})">
+	<summary>
+ Method to find an Id in a node list
+ </summary>
+	<param name="oNode"></param>
+	<param name="lst_o">List(Of Ludo_Node), our list of node</param>
+	<returns>Integer, the position or nLUDO_NODE_NOT_FOUND</returns>
+	<remarks>Calls the LudoNodeListFind function with String sValue parameter</remarks>
+</member><member name="F:Ludo.NODE.Ludo_Node.nNodeType">
+	<summary>
+ The type of node
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.NODE.Ludo_Node.sId">
+	<summary>
+ the id
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.NODE.Ludo_Node.oParent">
+	<summary>
+ the parent node
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Ludo.NODE.Ludo_Node.lst_oChildren">
+	<summary>
+ list of the children
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.setId(System.String)">
+	<summary>
+ Method to set the Id
+ </summary>
+	<param name="sValue">String, our Id value</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.setParent(Ludo.NODE.Ludo_Node@)">
+	<summary>
+ Method to set the parent node
+ </summary>
+	<param name="oNode">Ludo_Node, our node we want add</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.getId">
+	<summary>
+ Method to get the Id
+ </summary>
+	<returns>String, our Id</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.getParent">
+	<summary>
+ Method to get the parent
+ </summary>
+	<returns>Ludo_Node, our parent</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.getChildren">
+	<summary>
+ Method to get the children
+ </summary>
+	<returns>List(Of Ludo_Node), our list of children</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.getNodeType">
+	<summary>
+ Method to get the node type
+ </summary>
+	<returns>Integer, node type</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.getNodeTypeName">
+	<summary>
+ Method to get the node type name
+ </summary>
+	<returns>STring, our node type name</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.getRank">
+	<summary>
+ Method to get the rank of the node
+ </summary>
+	<returns>Integer, our node rank</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.checkId(System.String,System.Boolean)">
+	<summary>
+ Method to check the unicity of the id
+ </summary>
+	<param name="sValue">String, the id we want check</param>
+	<param name="bParent">[OPTIONAL]Boolean, must we check into the parent</param>
+	<returns>Boolean, true if not found</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.addChild(Ludo.NODE.Ludo_Node@)">
+	<summary>
+ Method to add a child
+ </summary>
+	<param name="oNode">Ludo_Node, our node we want add</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.remove">
+	<summary>
+ Method to remove the node from the Parent dependancies
+ </summary>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.removeChild(System.String@)">
+	<summary>
+ Method to remove a child from an Id
+ </summary>
+	<param name="sValue">String, Id of the node we want remove</param>
+	<returns>Boolean, true if remove</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.removeChild(Ludo.NODE.Ludo_Node@)">
+	<summary>
+ Method to remove a chile from a Node
+ </summary>
+	<param name="oNode">Ludo_Node, Node we want remove</param>
+	<returns>Boolean, true if remove</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.ToString">
+	<summary>
+ Method to get the string value
+ </summary>
+	<returns>String, our toString() result</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.toTreeNode">
+	<summary>
+ Method to obtain the treenode of this node
+ </summary>
+	<returns>System.Windows.Forms.TreeNode, our treenode</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.showInTreeNode(System.Windows.Forms.TreeView@)">
+	<summary>
+ Method to export the node to a treeview
+ </summary>
+	<param name="oTreeView">System.Windows.Forms.TreeView, our treeview</param>
+	<returns>Boolean, true if done</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.CreateLayout">
+	<summary>
+ Method obtain the Layout to manage 
+ </summary>
+	<returns>LAY_LUDO_Node, our layout</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.#ctor">
+	<summary>
+ Builder by default
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.NODE.Ludo_Node.#ctor(System.String)">
+	<summary>
+ BUilder with Id
+ </summary>
+	<param name="sValue">STring, our Id</param>
+	<remarks></remarks>
+</member><member name="T:Ludo.NODE.Ludo_Node">
+	<summary>
+ Class to manage node
  </summary>
 	<remarks></remarks>
 </member><member name="F:Ludo.Styles.Consts.LUDO_STYLES_NO_ANCHOR">
@@ -1908,6 +2680,20 @@ Ludo
 </member><member name="T:Ludo.EVENTS.events.LUDO_EVENT_ENTER">
 	<summary>
  Event to signal a validation !
+ </summary>
+	<param name="sender">Object, sender of the event</param>
+	<param name="e">EventArgs, Argument of our signal</param>
+	<remarks></remarks>
+</member><member name="T:Ludo.EVENTS.events.LUDO_EVENT_MOVE_UP">
+	<summary>
+ Event to signal a move up event
+ </summary>
+	<param name="sender">Object, sender of the event</param>
+	<param name="e">EventArgs, Argument of our signal</param>
+	<remarks></remarks>
+</member><member name="T:Ludo.EVENTS.events.LUDO_EVENT_MOVE_DOWN">
+	<summary>
+ Event to signal a move down event
  </summary>
 	<param name="sender">Object, sender of the event</param>
 	<param name="e">EventArgs, Argument of our signal</param>
@@ -7092,6 +7878,20 @@ Ludo
  </summary>
 	<returns>Boolean tru if done</returns>
 	<remarks></remarks>
+</member><member name="M:WIN_LUDO_DTB_Management.OPT_Files_Ini_New_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to execute to create a new ini file
+ </summary>
+	<param name="sender">Object, sender of the event</param>
+	<param name="e">EventArgs, our events</param>
+	<remarks></remarks>
+</member><member name="M:WIN_LUDO_DTB_Management.OPT_Files_Ini_Edit_Click(System.Object,System.EventArgs)">
+	<summary>
+ Handler to execute to load an ini file
+ </summary>
+	<param name="sender">Object, sender of the event</param>
+	<param name="e">EventArgs, our events</param>
+	<remarks></remarks>
 </member><member name="M:WIN_LUDO_DTB_Management.OPT_Files_Import_Click(System.Object,System.EventArgs)">
 	<summary>
  Handler to execute the import task
@@ -8402,6 +9202,231 @@ Ludo
 	<summary>
   Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
 </summary>
+</member><member name="F:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.sFileExtention">
+	<summary>
+ Our file extension name
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.getDescription">
+	<summary>
+ Method to get the description of the class
+ </summary>
+	<returns>string, our description</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignName(Ludo.DTB.Ludo_DTB_Column@)">
+	<summary>
+ Method to write the name of the control 
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignDeclaration(Ludo.DTB.Ludo_DTB_Column@)">
+	<summary>
+ Method to write the declaration of the control 
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesignInitialization(Ludo.DTB.Ludo_DTB_Column@)">
+	<summary>
+ Method to write the initialization of the control linked to the Column
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
+	<summary>
+ Method to write column Edition Code
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnEditionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
+	<summary>
+ Method to write column Edition Design
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Header(Ludo.DTB.Ludo_DTB_Table@,System.String,System.String)">
+	<summary>
+ Method to write the header of the code edition layout
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, table of the layout</param>
+	<param name="sFilename">String, filename of the layout</param>
+	<param name="sDescription">[OPTIONAL] String, our description</param>
+	<returns>String, the code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_ViewToObj(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to generate the view ToView Method
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">STring, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_ObjToView(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to generate the ObjToView Method
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">STring, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Init(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to generate the Init method
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">String, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Handlers(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to write the handler of the layout !!!
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">String, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode_Builders(Ludo.DTB.Ludo_DTB_Table@,System.String)">
+	<summary>
+ Method to write the builders
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sTabulation">String, our tabulation</param>
+	<returns>String, our code</returns>
+	<remarks></remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ write lay Edition Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay Edition Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay_win Edition Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay_win Edition Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinEditionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write win Edition Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinEditionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write win Edition Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnSelectionCode(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
+	<summary>
+ Method to write column Selection Code
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeColumnSelectionDesign(Ludo.DTB.Ludo_DTB_Column@,Ludo.DTB.GUI.Ludo_DTB_GUI_Position@,System.String)">
+	<summary>
+ Method to write column Selection Design
+ </summary>
+	<param name="oColumn">Ludo.DTB.Ludo_DTB_Column, our column</param>
+	<param name="stPosition">[OPTIONAL]Ludo.DTB.GUI.Ludo_DTB_GUI_Position, default position without padding, could be used to return the next position without padding</param>
+	<param name="sTabulation">[OPTIONAL]String, our code tabulation</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLaySelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ write lay Selection Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLaySelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay Selection Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinSelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay_win Selection Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeLayWinSelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write lay_win Selection Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinSelectionCode(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write win Selection Code
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeWinSelectionDesign(Ludo.DTB.Ludo_DTB_Table@)">
+	<summary>
+ Method write win Selection Design
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<returns>string, the code</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.writeClass(Ludo.DTB.Ludo_DTB_Table@,System.String,System.Collections.Generic.List{System.String}@)">
+	<summary>
+ Method to write all element from a class
+ </summary>
+	<param name="oTable">Ludo.DTB.Ludo_DTB_Table, our table</param>
+	<param name="sPath">string, our path</param>
+	<param name="lst_sFiles">list(of string), list of generated files</param>
+	<returns>boolean, true if done</returns>
+	<remarks>It's an override !</remarks>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.ToString">
+	<summary>
+ Override of the toString method
+ </summary>
+	<returns>string, something fro nothing</returns>
+</member><member name="M:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO.#ctor">
+	<summary>
+ The default builder
+ </summary>
+	<remarks></remarks>
+</member><member name="T:Ludo.DTB.GUI.VB.Ludo_DTB_GUI_CODE_MAKER_VB_NET_LUDO">
+	<summary>
+ Class to make the GUI 
+ </summary>
+	<remarks></remarks>
 </member><member name="M:LUDO_CTRL_SAI.getSystemWindowsFormsTextBox">
 	<summary>
  Method to get the original Text object
