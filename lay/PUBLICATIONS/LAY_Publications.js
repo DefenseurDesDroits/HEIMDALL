@@ -94,6 +94,9 @@ function LAY_Publications(){
 	//our right !!!
 	this.LAY_Rights = new LAY_Accreditations_Item();
 
+	//Publications
+	this.LAY_Fichiers = new LAY_LIST_Fichiers();
+
 	///[SECTION]Property##############################################
 	
 	///[SECTION]Getters###############################################
@@ -213,6 +216,7 @@ function LAY_Publications(){
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Publications('" + oLAY_Publications.getId() + "')\">Supprimer</div>" + "\r\n";
 
 		sCode += "\t" + "</form>";
+		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId() + "\"></div>";
 		
 		sCode += "</div>";
 		
@@ -315,6 +319,11 @@ function LAY_Publications(){
 			//Accreditation !!!
 			oLAY_Publications.LAY_Rights.init("LAY_Accreditation_" + oLAY_Publications.getId(), sDivId);
 			
+			//event listener !!
+			oLAY_Publications.LAY_Fichiers.setParent(oLAY_Publications);
+			//init the contact infos !
+			oLAY_Publications.LAY_Fichiers.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId(), "FPS_" + sDivId, oLAY_Publications.getObj());
+
 			//happy end
 			return true;
 		} 
@@ -376,6 +385,11 @@ function LAY_Publications(){
 		oElement = document.getElementById("CHK_Dematerialisee_" + oLAY_Publications.getId());
 		if(oElement != null)
 			oElement.value = oLAY_Publications.members.oObj.getDematerialisee();
+		
+		//logs
+		console.log("LAY_Publications : ObjToView");
+
+		oLAY_Publications.LAY_Fichiers.ObjToView();
 
 		return true;
 	};
@@ -415,6 +429,8 @@ function LAY_Publications(){
 		}
 		///[/DEBUG]
 		
+		oLAY_Publications.LAY_Fichiers.ViewToObject();
+
 		//The right !!!
 		oLAY_Publications.LAY_Rights.ViewToObject();
 		//Parano !
@@ -433,5 +449,22 @@ function LAY_Publications(){
 		return oLAY_Publications.initializeLayout(sDivOwner, sDivId);
 	}
 	this.myLAY_Publications.init = this.init;
+
+	///[METHOD]Method to handle sub component loaded event
+	///[PARAMETER][event][e]event, our event
+	this.subComponentLoaded = function(e){
+
+		if(e != null){
+			if(e.detail.oObject != null){
+				if(e.detail.oObject.getName() == oLAY_Publications.LAY_Fichiers.getName()){
+					//remove handler, cause we are no bad boys :)
+					oLAY_Publications.LAY_Fichiers.members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_Publications.subComponentLoaded);
+					//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
+					oLAY_Publications.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Publications, null));
+				}
+			}
+		}
+	}
+	this.myLAY_Publications.subComponentLoaded = this.subComponentLoaded;
 }
 

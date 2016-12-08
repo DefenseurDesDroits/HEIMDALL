@@ -34,8 +34,7 @@ Heimdall_Publications = {
     menus : [
         {id : "OPT_Publications_General", onclick : "publicationMenu_General_CLICK();", text : "Général"},
         {id : "OPT_Publications_Domaines", onclick : "publicationMenu_Domaines_CLICK();", text : "Domaines"},
-        {id : "OPT_Publications_Publications", onclick : "publicationMenu_Publications_CLICK();", text : "Publications"},
-        {id : "OPT_Publications_Fichiers", onclick : "publicationMenu_Fichiers_CLICK();", text : "Fichiers"}
+        {id : "OPT_Publications_Publications", onclick : "publicationMenu_Publications_CLICK();", text : "Publications"}
     ],
     menuClassUpdate : function(sId){
         //our count

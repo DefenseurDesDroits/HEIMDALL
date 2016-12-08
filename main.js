@@ -49,7 +49,9 @@ var ary_sFileLib = [
 	"lib/PUBLICATIONS/PUBLICATIONS_Fichiers.js",
 	/*PUBLICATION LAY !!! */
 	"lay/PUBLICATIONS/LAY_Domaines.js",
-	"lay/PUBLICATIONS/LAY_Publications.js"
+	"lay/PUBLICATIONS/LAY_Publications.js",
+	"lay/PUBLICATIONS/LAY_Fichiers.js",
+	"lay/PUBLICATIONS/LAY_LIST_Fichiers.js"
 ];
 
 var ary_sApp = [

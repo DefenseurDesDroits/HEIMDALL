@@ -90,7 +90,9 @@ function LAY_Fichiers(){
         ///[MEMBER][element][oDiv]The dom element
         oDiv : null,
 		//[MEMBER][LAY][oParent]The parent Layout
-		oParent : null
+		oParent : null,
+		///[MEMBER][STring][sPath]Path of the new file
+		sPath : ""
     };
 
 	///[SECTION]Property##############################################
@@ -124,6 +126,13 @@ function LAY_Fichiers(){
 		return oLAY_Fichiers.members.oParent;
 	};
 	this.myLAY_Fichiers.getParent = this.getParent;
+
+	///[METHOD]Method to get our file path
+	///[RETURNS]string, our file path
+    this.getPath = function(){
+        return oLAY_Fichiers.members.sPath;
+    };
+    this.myLAY_Fichiers.getName = this.getName;
 
 	///[SECTION]Setters###############################################
 	
@@ -186,11 +195,15 @@ function LAY_Fichiers(){
 
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
-		sCode += '\t\tNom : <input id="SAI_Nom_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Nom_' + oLAY_Fichiers.getId() + '" value=""/>';
+		sCode += '\t\tVersion : <input id="SAI_Version_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Version_' + oLAY_Fichiers.getId() + '" value=""/>';
 		sCode += "\t\t<br/>";
-		sCode += "\t\tDescription : ";
+		sCode += '\t\tFichier local : <input id="SAI_File_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_File_' + oLAY_Fichiers.getId() + '" value=""/>';
 		sCode += "\t\t<br/>";
-		sCode += '\t\t<textarea id="TXT_Description_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="TXT_Description_' + oLAY_Fichiers.getId() + '" cols=\"50\" value=""></textarea>';
+		sCode += '\t\tPath : <input id="SAI_Path_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Path_' + oLAY_Fichiers.getId() + '" value="" readonly/>';
+		sCode += "\t\t<br/>";
+		sCode += '\t\tTaille : <input id="SAI_Filesize_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Filesize_' + oLAY_Fichiers.getId() + '" value="" readonly/>';
+		sCode += "\t\t<br/>";
+		sCode += '\t\tChecksum : <input id="SAI_Checksum_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Checksum_' + oLAY_Fichiers.getId() + '" value="" readonly/>';
 
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right\" onclick=\"SAVE_LAY_Fichiers('" + oLAY_Fichiers.getId() + "')\">Sauvegarder</div>" + "\r\n";
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Fichiers('" + oLAY_Fichiers.getId() + "')\">Supprimer</div>" + "\r\n";
@@ -338,13 +351,21 @@ function LAY_Fichiers(){
 			oLAY_Fichiers.members.oObj = new Fichiers();
 			//return false;
 			
-		oElement = document.getElementById("SAI_Nom_" + oLAY_Fichiers.getId());
+		oElement = document.getElementById("SAI_Version_" + oLAY_Fichiers.getId());
 		if(oElement != null)
-			oElement.value = oLAY_Fichiers.members.oObj.getNom();
+			oElement.value = oLAY_Fichiers.members.oObj.getVersion();
+		
+		oElement = document.getElementById("SAI_Path_" + oLAY_Fichiers.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Fichiers.members.oObj.getPath();
 
-		oElement = document.getElementById("TXT_Description_" + oLAY_Fichiers.getId());
+		oElement = document.getElementById("SAI_Filesize_" + oLAY_Fichiers.getId());
 		if(oElement != null)
-			oElement.value = oLAY_Fichiers.members.oObj.getDescription();
+			oElement.value = oLAY_Fichiers.members.oObj.getFilesize();
+
+		oElement = document.getElementById("SAI_Checksum_" + oLAY_Fichiers.getId());
+		if(oElement != null)
+			oElement.value = oLAY_Fichiers.members.oObj.getChecksum();
 
 		return true;
 	};
@@ -358,13 +379,17 @@ function LAY_Fichiers(){
 		//element 
 		var oElement = null;
 
-		oElement = document.getElementById("SAI_Nom_" + oLAY_Fichiers.getId());
+		oElement = document.getElementById("SAI_Version_" + oLAY_Fichiers.getId());
 		if(oElement != null)
-			oFichiers.setNom(oElement.value);
-		
-		oElement = document.getElementById("TXT_Description_" + oLAY_Fichiers.getId());
+			oFichiers.setVersion(oElement.value);
+
+		oElement = document.getElementById("SAI_File_" + oLAY_Fichiers.getId());
 		if(oElement != null)
-			oFichiers.setDescription(oElement.value);
+			oLAY_Fichiers.members.sPath = oElement.value;
+
+		// oElement = document.getElementById("SAI_Path_" + oLAY_Fichiers.getId());
+		// if(oElement != null)
+		// 	oFichiers.setPath(oElement.value);
 
 		//Parano !
 		oLAY_Fichiers.members.oObj = oFichiers;

@@ -1,8 +1,8 @@
-/// <reference path="../lib/CONTACTS_Logs.js" />
-/// <reference path="../lib/CONTACTS_Contacts.js" />
-/// <reference path="../lib/CONTACTS_Civilites.js" />
-/// <reference path="../lib/CONTACTS_Titres.js" />
-/// <reference path="../lib/Potours_Legacy.js" />
+/// <reference path="../../lib/CONTACTS/CONTACTS_Logs.js" />
+/// <reference path="../../lib/CONTACTS/CONTACTS_Contacts.js" />
+/// <reference path="../../lib/CONTACTS/CONTACTS_Civilites.js" />
+/// <reference path="../../lib/CONTACTS/CONTACTS_Titres.js" />
+/// <reference path="../../lib/Potours_Legacy.js" />
 
 //our gloabal instance object 
 var ARY_LAY_Contacts = [];
