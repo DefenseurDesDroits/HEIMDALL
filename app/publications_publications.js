@@ -281,9 +281,9 @@ function publications_publicationsClick(nLine){
             LAY_.init("PNL_Win", "Publications" +  oPublications.getId_Publications(), oPublications);
             console.log("Is that Loaded : " + oPublications.exportToJson());
             //When it's load, plots !!!
-            //LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded, publications_publicationsLoadedHandle);
+            LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded, publications_publicationsLoadedHandle);
             //plots
-            LAY_.ObjToView();
+            //LAY_.ObjToView();
         }
     }
 }

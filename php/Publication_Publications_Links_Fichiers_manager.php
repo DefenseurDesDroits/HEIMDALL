@@ -34,7 +34,7 @@ function InfosgetAllInstanceWith($nId_Contact, $userId = 0){
 	if($sLinks != "")
 		$sQuery .= "WHERE " . $sLinks;
 	
-    $sQuery .= "\r\n" . "AND xxx.fichies.id_publications = " . Quotes($nId_Contact);
+    $sQuery .= "\r\n" . "AND xxx.fichiers.id_publications = " . Quotes($nId_Contact);
 
 	//right part !!!
     if($userId != 0)

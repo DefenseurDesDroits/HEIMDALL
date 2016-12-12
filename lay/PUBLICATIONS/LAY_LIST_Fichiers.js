@@ -76,17 +76,15 @@ function ADD_LAY_Fichiers(sId){
 	//create the LAY_
     LAY_ = new LAY_Fichiers();
 
-    // //Set item
-    // oItem.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
-    // //Set accreditation all
-    // oItem.setId_Accreditations_Item(1);
-    // //set the fonction
-    // oItem.setFonction("Fonction");
-    // //our contact object
-    // oItem.setId_Contacts(parseInt(LIST_.getObj().getId_Items()));
+    //Set item
+    oItem.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
+    //Set accreditation all
+    oItem.setId_Accreditations_Item(1);
+    //our contact object
+    oItem.setId_Publications(parseInt(LIST_.getObj().getId_Items()));
 
     //set the LAY 
-    LAY_.init("LAY_LIST_" + sId, "LAY_Contacts_Infos", oItem);
+    LAY_.init("LAY_LIST_" + sId, "LAY_Fichier", oItem);
 
     //add it !
     LIST_.ary_LAY_Fichiers.push(LAY_);
@@ -488,7 +486,7 @@ function LAY_LIST_Fichiers(){
 
         //prepare the query*********************
         //check the open
-        oReq.open("POST", "php/Contact_Contacts_Links_Fichiers_manager.php", true);
+        oReq.open("POST", "php/Publication_Publications_Links_Fichiers_manager.php", true);
         //set the request header
         oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
         oReq.send("Id=" + parseInt(Heimdall.members.user["UserId"]) + "&Session=" + "" + "&Action=LIST&Id_Item=" + oLAY_LIST_Fichiers.getObj().getId_Items()); 

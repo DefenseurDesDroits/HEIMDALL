@@ -1,14 +1,14 @@
 <?PHP
 //Module : Publications
 //Created by : LUDO
-//Generated on : 2016-11-29 10:25:42
+//Generated on : 2016-12-09 10:49:49
 //Filename : Publications_Publications.php
 //Description : Tables des publications disponibles dans la base de données
 
 
 //include to dtb connection
+//include to dtb connection
 include_once "CONTACTS_Noeuds.php";
-//include_once "PUBLICATIONS_Noeuds.php";
 
 ///[CLASS][Publications]Tables des publications disponibles dans la base de données
 ///[AUTHOR]LUDO
@@ -45,7 +45,7 @@ class Publications extends Noeuds{
 	///[METHOD][getId_Publications]Method to get the Id_Publications
 	///[RETURNS]The Id_Publications
 	public function getId_Publications(){
-		//[ERROR]The column Publications.Publications.nId_Publications has an inheritance : Contacts.Noeuds.nId_Noeuds WITHOUT any linked Column !!!
+		//Return the getter in inheritage
 		return $this->getId_Noeuds();
 	}
 
@@ -214,7 +214,7 @@ class Publications extends Noeuds{
 			"dtCreation" => "xxx.Publications.Creation", 
 			"dtMaj" => "xxx.Publications.Maj", 
 			"bDematerialisee" => "xxx.Publications.Dematerialisee"
-) + parent::getCorrespondanceArray();
+		) + parent::getCorrespondanceArray();
 	}
 
 
@@ -228,7 +228,6 @@ class Publications extends Noeuds{
 	}
 
 
-	///[ERROR]getLinkConditions, no PARENT key column detected
 	///[METHOD][getLinkConditions]Method to get the conditions to link with parent table 
 	///[PRAMETER][boolean][$bAll]Parameter to obtain parents Link conditions
 	///[RETURNS][string]string, our conditions 

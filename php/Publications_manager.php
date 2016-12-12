@@ -1,7 +1,7 @@
 <?PHP
 //Module : Publications
 //Created by : LUDO
-//Generated on : 2016-11-29 10:25:42
+//Generated on : 2016-12-09 10:49:49
 //Filename : Publications_manager.php
 //Description : Tables des publications disponibles dans la base de données
 

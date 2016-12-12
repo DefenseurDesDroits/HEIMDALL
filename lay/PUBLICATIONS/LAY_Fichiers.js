@@ -1,4 +1,5 @@
 /// <reference path="../../lib/PUBLICATIONS/PUBLICATIONS_Fichiers.js" />
+
 /// <reference path="../../lib/CONTACTS/CONTACTS_Contacts.js" />
 /// <reference path="../../lib/CONTACTS/CONTACTS_Civilites.js" />
 /// <reference path="../../lib/CONTACTS/CONTACTS_Titres.js" />
@@ -33,19 +34,22 @@ function SAVE_LAY_Fichiers(sId){
 	//save
 	bResult = oItem.save(Heimdall.members.user["UserId"], ".");
 
-	// //log it !!!
-	// oLogs = new Logs();
-	// //fill the logs !
-	// oLogs.setId_Items(parseInt(oItem.getId_Items()));
-	// //oLogs.setCreation("YYYYMMDD");
-	// oLogs.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
-	// //oLogs.setValidation("YYYYMMDD");
-	// oLogs.setId_Validator(parseInt(Heimdall.members.user["UserId"]));
-	// oLogs.setValeur(oItem.exportToJson());
-	// oLogs.setSuppression(false);
-	// //save the logs !!!
-	// oLogs.save(Heimdall.members.user["UserId"], ".");
+	//log it !!!
+	oLogs = new Logs();
+	//fill the logs !
+	oLogs.setId_Items(parseInt(oItem.getId_Items()));
+	//oLogs.setCreation("YYYYMMDD");
+	oLogs.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
+	//oLogs.setValidation("YYYYMMDD");
+	oLogs.setId_Validator(parseInt(Heimdall.members.user["UserId"]));
+	oLogs.setValeur(oItem.exportToJson());
+	oLogs.setSuppression(false);
+	//save the logs !!!
+	oLogs.save(Heimdall.members.user["UserId"], ".");
 	
+	if(oItem.getPath() != "")
+		IMPORT_FILE_LAY_Fichier(sId);
+
 	//Sad God Sake !!! 
 	return bResult;
 }
@@ -72,6 +76,35 @@ function DELETE_LAY_Fichiers(sId){
 	// return oItem.delete(Heimdall.members.user["UserId"], ".");
 
 	alert("Delete NotDevYet : " + sId);
+	return true;
+}
+
+//SAVE 
+function IMPORT_FILE_LAY_Fichier(sId){
+	//our position
+	var nPosition = 0;
+	//our item
+	var oItem = null;
+
+	//get the position
+	nPosition = findInPotoursObjLst(ARY_LAY_Fichiers, "sName", sId);
+	//In ?
+	if(nPosition == POTOURS_FIND_NOTFOUND)
+		return false;
+
+	if (window.File && window.FileReader && window.FileList && window.Blob) {
+		//our console log
+		console.log("IMPORT_FILE_LAY_Fichier : OK !!!");
+		//call the write stuff
+
+		//https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications
+
+	} else {
+		alert("The File APIs are not fully supported in this browser.");
+		return false;
+	}
+
+	//happy end
 	return true;
 }
 
@@ -197,7 +230,9 @@ function LAY_Fichiers(){
 
 		sCode += '\t\tVersion : <input id="SAI_Version_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Version_' + oLAY_Fichiers.getId() + '" value=""/>';
 		sCode += "\t\t<br/>";
-		sCode += '\t\tFichier local : <input id="SAI_File_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_File_' + oLAY_Fichiers.getId() + '" value=""/>';
+		//sCode += '\t\tFichier local : <input id="SAI_File_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_File_' + oLAY_Fichiers.getId() + '" value=""/>';
+		sCode += "\t\t<input id=\"BTN_File_\"" + oLAY_Fichiers.getId() + "  type=\"file\" name=\"files[]\"/>";
+		//sCode += "\t\t<input id=\"BTN_File_\"" + oLAY_Fichiers.getId() + "  type=\"file\" name=\"files[]\" onclick=\"IMPORT_FILE_LAY_Fichier('" + oLAY_Fichiers.getId() + "');\" value=\"Fichiers\"/>";
 		sCode += "\t\t<br/>";
 		sCode += '\t\tPath : <input id="SAI_Path_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Path_' + oLAY_Fichiers.getId() + '" value="" readonly/>';
 		sCode += "\t\t<br/>";
@@ -306,6 +341,11 @@ function LAY_Fichiers(){
 				//change
 				ARY_LAY_Fichiers[nPosition] = oLAY_Fichiers;
 			
+			//write
+			console.log("Fichiers : " + oLAY_Fichiers.getId());
+			//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
+			oLAY_Fichiers.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Fichiers, null));
+
 			//happy end
 			return true;
 		} 
@@ -350,7 +390,7 @@ function LAY_Fichiers(){
 		if(oLAY_Fichiers.members.oObj == null)
 			oLAY_Fichiers.members.oObj = new Fichiers();
 			//return false;
-			
+		console.log("LAY_Fichiers ObjToView invoked")
 		oElement = document.getElementById("SAI_Version_" + oLAY_Fichiers.getId());
 		if(oElement != null)
 			oElement.value = oLAY_Fichiers.members.oObj.getVersion();

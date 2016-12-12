@@ -1,33 +1,37 @@
 <?PHP
 //Module : Publications
 //Created by : LUDO
-//Generated on : 2016-11-29 10:25:42
+//Generated on : 2016-12-09 10:49:49
 //Filename : Publications_Domaines.php
 //Description : Table gérant les domaines des publications
 
 
 //include to dtb connection
-include_once "connection.php";
+//include to dtb connection
+include_once "CONTACTS_Noeuds.php";
 
 ///[CLASS][Domaines]Table gérant les domaines des publications
 ///[AUTHOR]LUDO
-class Domaines{
-	//our member data
-	protected $members = array(	
-
-		///[MEMBER][integer][nId_Domaines]Identifiant de la table
-		"nId_Domaines" => 0,
-		///[MEMBER][string][sNom]Nom du domaine
-		"sNom" => "",
-		///[MEMBER][string][sDescription]Description du domaine de publication
-		"sDescription" => ""
-	);
+class Domaines extends Noeuds{
 	///[SECTION][Builders]#################################################
 
 	///[METHOD][__construct]The builder !!!
 	public function __construct(){
-		//nothing to declare Chief !
-	}
+		//call the parent builder
+		parent::__construct();
+		//our new field
+		//our new member data
+		$DomainesmemberSet = array(		
+
+			// ///[MEMBER][integer][nId_Domaines]Identifiant de la table
+			//"nId_Domaines" => 0 //inherited from => Contacts.Noeuds.nId_Noeuds,
+			///[MEMBER][string][sNom]Nom du domaine
+			"sNom" => "",
+			///[MEMBER][string][sDescription]Description du domaine de publication
+			"sDescription" => ""
+		);
+		//get the legacy
+		$this->members += $DomainesmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -35,8 +39,8 @@ class Domaines{
 	///[METHOD][getId_Domaines]Method to get the Id_Domaines
 	///[RETURNS]The Id_Domaines
 	public function getId_Domaines(){
-		//Return the member
-		return $this->members["nId_Domaines"];
+		//Return the getter in inheritage
+		return $this->getId_Noeuds();
 	}
 
 	///[METHOD][getNom]Method to get the Nom
@@ -61,17 +65,8 @@ class Domaines{
 	///[PARAMETER][integer][$nValue]Our new value for Id_Domaines
 	///[RETURNS]Boolean true if done 
 	public function setId_Domaines($nValue){
-		//security on null guy !!!
-		if($nValue == null)
-			return false;
-		//security on type guy !!!
-		if(getType($nValue) == 'integer'){
-			 $this->members["nId_Domaines"] = $nValue;
-			//Happy end
-			return true;
-		}
-		//Don't fool me next Time !!!
-		return false;
+		//Return the member
+		return $this->setId_Noeuds($nValue);
 	}
 
 	///[METHOD][setNom]Method to set the Nom
@@ -120,15 +115,15 @@ class Domaines{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Domaines.Id_Domaines, xxx.Domaines.Nom, xxx.Domaines.Description";
-		return "xxx.Domaines.Nom, xxx.Domaines.Description";
+			return parent::getColumns($bId) . ", xxx.Domaines.Id_Domaines, xxx.Domaines.Nom, xxx.Domaines.Description";
+		return parent::getColumns($bId) . ", xxx.Domaines.Id_Domaines, xxx.Domaines.Nom, xxx.Domaines.Description";
 	}
 
 
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return "Nom, Description";
+		return "Id_Domaines, Nom, Description";
 	}
 
 
@@ -139,7 +134,7 @@ class Domaines{
 			"nId_Domaines" => "xxx.Domaines.Id_Domaines", 
 			"sNom" => "xxx.Domaines.Nom", 
 			"sDescription" => "xxx.Domaines.Description"
-);
+		) + parent::getCorrespondanceArray();
 	}
 
 
@@ -148,8 +143,8 @@ class Domaines{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Domaines";
-		return "xxx.Domaines";
+			return parent::getTable($bTrueName) . ", xxx.Domaines";
+		return parent::getTable($bTrueName) . ", xxx.Domaines";
 	}
 
 
@@ -157,14 +152,20 @@ class Domaines{
 	///[PRAMETER][boolean][$bAll]Parameter to obtain parents Link conditions
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
-		return "";
+		//get the parent link condition
+		$sParentCondition = parent::getLinkConditions($bAll);
+		//test the parent condition
+		if($sParentCondition != "" && $bAll)
+			return $sParentCondition ." \r\nAND xxx.Noeuds.Id_Noeuds =  xxx.Domaines.Id_Domaines";
+		else
+			return " xxx.Noeuds.Id_Noeuds = xxx.Domaines.Id_Domaines";
 	}
 
 
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return "xxx.Domaines.Id_Domaines = " . Quotes($this->getId_Domaines());
+		return parent::getConditions() . " \r\nAND " . Domaines::getLinkConditions() . " \r\nAND xxx.Domaines.Id_Domaines = " . Quotes($this->getId_Domaines());
 	}
 
 
@@ -265,7 +266,8 @@ class Domaines{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getNom());
+		$sValues .= Quotes( $this->getId_Domaines());
+		$sValues .= ", " . Quotes( $this->getNom());
 		$sValues .= ", " . Quotes( $this->getDescription());
 		
 		//return the get value chain !
@@ -287,7 +289,7 @@ class Domaines{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . "xxx.Domaines" . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Domaines" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "Nom  = " . Quotes($this->getNom());
@@ -338,6 +340,8 @@ class Domaines{
 		//Get the query !!!
 		if($nId == 0)
 		{
+			//Call the parent method
+			parent::save($oAgent);
 			$sQuery = Domaines::getInsertQuery();
 		}
 		else

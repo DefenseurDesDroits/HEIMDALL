@@ -1,39 +1,43 @@
 <?PHP
 //Module : Publications
 //Created by : LUDO
-//Generated on : 2016-11-29 10:25:42
+//Generated on : 2016-12-09 10:49:49
 //Filename : Publications_Fichiers.php
 //Description : Table des fichiers physiques sur le serveur
 
 
 //include to dtb connection
-include_once "connection.php";
+//include to dtb connection
+include_once "CONTACTS_Noeuds.php";
 
 ///[CLASS][Fichiers]Table des fichiers physiques sur le serveur
 ///[AUTHOR]LUDO
-class Fichiers{
-	//our member data
-	protected $members = array(	
-
-		///[MEMBER][integer][nId_Fichiers]Clef primaire des fichiers
-		"nId_Fichiers" => 0,
-		///[MEMBER][integer][nId_Publications]Clef étrangère sur les publications
-		"nId_Publications" => 0,
-		///[MEMBER][string][sPath]Chemin du fichier sur le serveur
-		"sPath" => "",
-		///[MEMBER][integer][nFilesize]Taille du fichier sur le serveur
-		"nFilesize" => 0,
-		///[MEMBER][string][sChecksum]Checksum du fichier
-		"sChecksum" => "",
-		///[MEMBER][string][sVersion]Version du fichier
-		"sVersion" => ""
-	);
+class Fichiers extends Noeuds{
 	///[SECTION][Builders]#################################################
 
 	///[METHOD][__construct]The builder !!!
 	public function __construct(){
-		//nothing to declare Chief !
-	}
+		//call the parent builder
+		parent::__construct();
+		//our new field
+		//our new member data
+		$FichiersmemberSet = array(		
+
+			// ///[MEMBER][integer][nId_Fichiers]Clef primaire des fichiers
+			//"nId_Fichiers" => 0 //inherited from => Contacts.Noeuds.nId_Noeuds,
+			///[MEMBER][integer][nId_Publications]Clef étrangère sur les publications
+			"nId_Publications" => 0,
+			///[MEMBER][string][sPath]Chemin du fichier sur le serveur
+			"sPath" => "",
+			///[MEMBER][integer][nFilesize]Taille du fichier sur le serveur
+			"nFilesize" => 0,
+			///[MEMBER][string][sChecksum]Checksum du fichier
+			"sChecksum" => "",
+			///[MEMBER][string][sVersion]Version du fichier
+			"sVersion" => ""
+		);
+		//get the legacy
+		$this->members += $FichiersmemberSet;	}
 
 
 	///[SECTION][GETTERS]#################################################
@@ -41,8 +45,8 @@ class Fichiers{
 	///[METHOD][getId_Fichiers]Method to get the Id_Fichiers
 	///[RETURNS]The Id_Fichiers
 	public function getId_Fichiers(){
-		//Return the member
-		return $this->members["nId_Fichiers"];
+		//Return the getter in inheritage
+		return $this->getId_Noeuds();
 	}
 
 	///[METHOD][getId_Publications]Method to get the Id_Publications
@@ -88,17 +92,8 @@ class Fichiers{
 	///[PARAMETER][integer][$nValue]Our new value for Id_Fichiers
 	///[RETURNS]Boolean true if done 
 	public function setId_Fichiers($nValue){
-		//security on null guy !!!
-		if($nValue == null)
-			return false;
-		//security on type guy !!!
-		if(getType($nValue) == 'integer'){
-			 $this->members["nId_Fichiers"] = $nValue;
-			//Happy end
-			return true;
-		}
-		//Don't fool me next Time !!!
-		return false;
+		//Return the member
+		return $this->setId_Noeuds($nValue);
 	}
 
 	///[METHOD][setId_Publications]Method to set the Id_Publications
@@ -199,15 +194,15 @@ class Fichiers{
 	///[RETURNS][string]string, our columns in a list 
 	public function getColumns($bId = true){
 		if( $bId)
-			return "xxx.Fichiers.Id_Fichiers, xxx.Fichiers.Id_Publications, xxx.Fichiers.Path, xxx.Fichiers.Filesize, xxx.Fichiers.Checksum, xxx.Fichiers.Version";
-		return "xxx.Fichiers.Id_Publications, xxx.Fichiers.Path, xxx.Fichiers.Filesize, xxx.Fichiers.Checksum, xxx.Fichiers.Version";
+			return parent::getColumns($bId) . ", xxx.Fichiers.Id_Fichiers, xxx.Fichiers.Id_Publications, xxx.Fichiers.Path, xxx.Fichiers.Filesize, xxx.Fichiers.Checksum, xxx.Fichiers.Version";
+		return parent::getColumns($bId) . ", xxx.Fichiers.Id_Fichiers, xxx.Fichiers.Id_Publications, xxx.Fichiers.Path, xxx.Fichiers.Filesize, xxx.Fichiers.Checksum, xxx.Fichiers.Version";
 	}
 
 
 	///[METHOD][getInsertColumns]Method to get the list of the column in a string from upade query !!! 
 	///[RETURNS][string]string, our columns in a list 
 	public function getInsertColumns(){
-		return "Id_Publications, Path, Filesize, Checksum, Version";
+		return "Id_Fichiers, Id_Publications, Path, Filesize, Checksum, Version";
 	}
 
 
@@ -221,7 +216,7 @@ class Fichiers{
 			"nFilesize" => "xxx.Fichiers.Filesize", 
 			"sChecksum" => "xxx.Fichiers.Checksum", 
 			"sVersion" => "xxx.Fichiers.Version"
-);
+) + parent::getCorrespondanceArray();
 	}
 
 
@@ -230,8 +225,8 @@ class Fichiers{
 	///[RETURNS][string]string, our table name
 	public function getTable($bTrueName = false){
 		if( $bTrueName)
-			return "xxx.Fichiers";
-		return "xxx.Fichiers";
+			return parent::getTable($bTrueName) . ", xxx.Fichiers";
+		return parent::getTable($bTrueName) . ", xxx.Fichiers";
 	}
 
 
@@ -239,14 +234,20 @@ class Fichiers{
 	///[PRAMETER][boolean][$bAll]Parameter to obtain parents Link conditions
 	///[RETURNS][string]string, our conditions 
 	public function getLinkConditions($bAll = false){
-		return "";
+		//get the parent link condition
+		$sParentCondition = parent::getLinkConditions($bAll);
+		//test the parent condition
+		if($sParentCondition != "" && $bAll)
+			return $sParentCondition ." \r\nAND xxx.Noeuds.Id_Noeuds =  xxx.Fichiers.Id_Fichiers";
+		else
+			return " xxx.Noeuds.Id_Noeuds = xxx.Fichiers.Id_Fichiers";
 	}
 
 
 	///[METHOD][getConditions]Method to get the conditions 
 	///[RETURNS][string]string, our conditions 
 	public function getConditions(){
-		return "xxx.Fichiers.Id_Fichiers = " . Quotes($this->getId_Fichiers());
+		return parent::getConditions() . " \r\nAND " . Fichiers::getLinkConditions() . " \r\nAND xxx.Fichiers.Id_Fichiers = " . Quotes($this->getId_Fichiers());
 	}
 
 
@@ -347,7 +348,8 @@ class Fichiers{
 		//Our values string
 		$sValues = "";
 		
-		$sValues .= Quotes( $this->getId_Publications());
+		$sValues .= Quotes( $this->getId_Fichiers());
+		$sValues .= ", " . Quotes( $this->getId_Publications());
 		$sValues .= ", " . Quotes( $this->getPath());
 		$sValues .= ", " . Quotes( $this->getFilesize());
 		$sValues .= ", " . Quotes( $this->getChecksum());
@@ -372,7 +374,7 @@ class Fichiers{
 		$Query = "";
 		
 		//Start the build
-		$Query .= "UPDATE " . "xxx.Fichiers" . "\r\n" ;
+		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Fichiers" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
 		$Query .=  "Id_Publications  = " . Quotes($this->getId_Publications());
@@ -426,6 +428,8 @@ class Fichiers{
 		//Get the query !!!
 		if($nId == 0)
 		{
+			//Call the parent method
+			parent::save($oAgent);
 			$sQuery = Fichiers::getInsertQuery();
 		}
 		else

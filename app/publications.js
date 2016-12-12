@@ -760,6 +760,7 @@ function domaineWinPublication(oDomaine){
 
     if(oDomaine == null){
         oDomaine = new Domaines();
+        oDomaine.setId_Accreditations_Item(1);
         oDomaine.setNom("#NO NAME !!!");
     }
         

@@ -33,18 +33,18 @@ function SAVE_LAY_Domaines(sId){
 	//save
 	bResult = oItem.save(Heimdall.members.user["UserId"], ".");
 
-	// //log it !!!
-	// oLogs = new Logs();
-	// //fill the logs !
-	// oLogs.setId_Items(parseInt(oItem.getId_Items()));
-	// //oLogs.setCreation("YYYYMMDD");
-	// oLogs.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
-	// //oLogs.setValidation("YYYYMMDD");
-	// oLogs.setId_Validator(parseInt(Heimdall.members.user["UserId"]));
-	// oLogs.setValeur(oItem.exportToJson());
-	// oLogs.setSuppression(false);
-	// //save the logs !!!
-	// oLogs.save(Heimdall.members.user["UserId"], ".");
+	//log it !!!
+	oLogs = new Logs();
+	//fill the logs !
+	oLogs.setId_Items(parseInt(oItem.getId_Items()));
+	//oLogs.setCreation("YYYYMMDD");
+	oLogs.setId_Creator(parseInt(Heimdall.members.user["UserId"]));
+	//oLogs.setValidation("YYYYMMDD");
+	oLogs.setId_Validator(parseInt(Heimdall.members.user["UserId"]));
+	oLogs.setValeur(oItem.exportToJson());
+	oLogs.setSuppression(false);
+	//save the logs !!!
+	oLogs.save(Heimdall.members.user["UserId"], ".");
 	
 	//Sad God Sake !!! 
 	return bResult;
@@ -92,6 +92,9 @@ function LAY_Domaines(){
 		//[MEMBER][LAY][oParent]The parent Layout
 		oParent : null
     };
+
+	//our right !!!
+	this.LAY_Rights = new LAY_Accreditations_Item();
 
 	///[SECTION]Property##############################################
 	
@@ -183,6 +186,8 @@ function LAY_Domaines(){
 		var nPosition = 0;
 		
 		sCode += "<div id=\"" + oLAY_Domaines.getId() + "\">";
+
+		sCode += "\t" + "<div id=\"LAY_Accreditation_" + oLAY_Domaines.getId() + "\">" + "Droits" + "</div>";
 
 		sCode += "\t" + "<form class=\"LAY_\">" + "\r\n";
 
@@ -293,6 +298,11 @@ function LAY_Domaines(){
 				//change
 				ARY_LAY_Domaines[nPosition] = oLAY_Domaines;
 			
+			//set the object contact
+			oLAY_Domaines.LAY_Rights.setObj(oLAY_Domaines.getObj());
+			//Accreditation !!!
+			oLAY_Domaines.LAY_Rights.init("LAY_Accreditation_" + oLAY_Domaines.getId(), sDivId);
+			
 			//happy end
 			return true;
 		} 
@@ -366,6 +376,8 @@ function LAY_Domaines(){
 		if(oElement != null)
 			oDomaines.setDescription(oElement.value);
 
+		//The right !!!
+		oLAY_Domaines.LAY_Rights.ViewToObject();
 		//Parano !
 		oLAY_Domaines.members.oObj = oDomaines;
 		

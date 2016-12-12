@@ -371,7 +371,7 @@ function LAY_Publications(){
 
 		oElement = document.getElementById("COMBO_Domaines_" + oLAY_Publications.getId());
 		if(oElement != null){
-			nPosition = findInPotoursObjLst(Heimdall.members.products.publications.Domaines, "nId_Domaines", oLAY_Publications.members.oObj.getId_Domaines());
+			nPosition = findInPotoursObjLst(Heimdall.members.products.publications.Domaines, "nId_Items", oLAY_Publications.members.oObj.getId_Domaines());
 			if(nPosition != POTOURS_FIND_NOTFOUND){
 				//Option created in the same order than stored
 				oElement.selectedIndex = nPosition;
@@ -467,4 +467,3 @@ function LAY_Publications(){
 	}
 	this.myLAY_Publications.subComponentLoaded = this.subComponentLoaded;
 }
-

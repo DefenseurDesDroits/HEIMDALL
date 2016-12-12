@@ -16,7 +16,7 @@ function searchQuery($Args){
     //Our query 
     $sQuery = "";
     //our contact
-    $oDomaine = new Publications();
+    $oPublication = new Publications();
     //result query array 
     $ary_ = array();
     //result array 
@@ -39,15 +39,15 @@ function searchQuery($Args){
         file_put_contents(dirname(__FILE__) . "/../logs/queryManager_Publications@searchQuery.log", "DEBUG !!!\r\n" );
 
     //coreespondance set 
-    $ary_Corres = $oDomaine->getCorrespondanceArray();
+    $ary_Corres = $oPublication->getCorrespondanceArray();
 
     //recreate the query
-    $sQuery = "SELECT DISTINCT " . $oDomaine->getColumns() . "\r\n" ;
-    $sQuery .= "FROM " . $oDomaine->getTable() . "\r\n"  ;
+    $sQuery = "SELECT DISTINCT " . $oPublication->getColumns() . "\r\n" ;
+    $sQuery .= "FROM " . $oPublication->getTable() . "\r\n"  ;
 
     //add the link between column s and foreign Key
     //$sQuery .= "WHERE Id_Publications <> 0 ";
-    $sQuery .= "WHERE " . $oDomaine->getLinkConditions(true);
+    $sQuery .= "WHERE " . $oPublication->getLinkConditions(true);
 
     //get the count
     $nCount = count($Args);
@@ -106,7 +106,7 @@ function searchQuery($Args){
 
     //get the array (so ugly way bro !!!)
     $GLOBALS["oConnection"]->open();
-    $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", ($oDomaine->getColumns() . "") ), null);
+    $ary_ = $GLOBALS["oConnection"]->selectRequest($sQuery, explode(", ", ($oPublication->getColumns() . "") ), null);
     $GLOBALS["oConnection"]->close();
 
     //get the count
@@ -119,9 +119,9 @@ function searchQuery($Args){
     while($nLine < $nCount){
 
         //do it
-        $oDomaine = new Publications();
-        $oDomaine->loadFromArray($ary_[$nLine], true);
-        $ary_Obj[$nLine] = $oDomaine->exportToArray();
+        $oPublication = new Publications();
+        $oPublication->loadFromArray($ary_[$nLine], true);
+        $ary_Obj[$nLine] = $oPublication->exportToArray();
         
         //Next
         $nLine++;

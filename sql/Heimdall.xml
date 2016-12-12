@@ -557,9 +557,9 @@
         <Imports />
       </Info>
       <Tables>
-        <Table name="Domaines" deploy_name="Domaines" inherit="" isview="False">
+        <Table name="Domaines" deploy_name="Domaines" inherit="Contacts.Noeuds" isview="False">
           <Columns>
-            <Column name="nId_Domaines" deploy_name="Id_Domaines" key="primary" foreign="" type="n" isnullable="False">
+            <Column name="nId_Domaines" deploy_name="Id_Domaines" key="unique" foreign="Contacts.Noeuds.nId_Noeuds" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Identifiant de la table</Comment>
@@ -612,9 +612,9 @@
           </Columns>
           <Comment>Tables des publications disponibles dans la base de données</Comment>
         </Table>
-        <Table name="Fichiers" deploy_name="Fichiers" inherit="" isview="False">
+        <Table name="Fichiers" deploy_name="Fichiers" inherit="Contacts.Noeuds" isview="False">
           <Columns>
-            <Column name="nId_Fichiers" deploy_name="Id_Fichiers" key="primary" foreign="" type="n" isnullable="False">
+            <Column name="nId_Fichiers" deploy_name="Id_Fichiers" key="unique" foreign="Contacts.Noeuds.nId_Noeuds" type="n" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Clef primaire des fichiers</Comment>

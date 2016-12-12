@@ -1,7 +1,7 @@
 -- #####################################
--- Ludo_DTB_CODE_MAKER_SQL Version 0.4.6.0
+-- Ludo_DTB_CODE_MAKER_SQL Version 0.4.6.1
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 28/11/2016 00:00:00
+-- Automatique generation made on 09/12/2016 00:00:00
 -- #####################################
 
 
@@ -425,7 +425,7 @@ COMMENT ON COLUMN xxx.Segments.Nom IS 'Nom du segments';
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Domaines (
-	-- Identifiant de la table	Id_Domaines serial PRIMARY KEY NOT NULL,
+	-- Identifiant de la table	Id_Domaines integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) ON DELETE CASCADE NOT NULL,
 	-- Nom du domaine	Nom varchar(32) UNIQUE NOT NULL,
 	-- Description du domaine de publication	Description varchar(512)  NOT NULL
 );
@@ -442,7 +442,7 @@ COMMENT ON COLUMN xxx.Domaines.Description IS 'Description du domaine de publica
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Publications (
-	-- Clef unique de la table publication	Id_Publications integer UNIQUE NOT NULL,
+	-- Clef unique de la table publication	Id_Publications integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) ON DELETE CASCADE NOT NULL,
 	-- Nom de la publication	Nom varchar(64)  NOT NULL,
 	-- Domaine de la publication	Id_Domaines integer REFERENCES xxx.Domaines (Id_Domaines) ON DELETE CASCADE NOT NULL,
 	-- Date de création de la publication	Creation timestamp  NOT NULL,
@@ -465,7 +465,7 @@ COMMENT ON COLUMN xxx.Publications.Dematerialisee IS 'La publication est-elle d�
 -- ++++++++++++++++++++++++++++++++++++
 
 CREATE TABLE IF NOT EXISTS xxx.Fichiers (
-	-- Clef primaire des fichiers	Id_Fichiers serial PRIMARY KEY NOT NULL,
+	-- Clef primaire des fichiers	Id_Fichiers integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) ON DELETE CASCADE NOT NULL,
 	-- Clef étrangère sur les publications	Id_Publications integer  NOT NULL,
 	-- Chemin du fichier sur le serveur	Path varchar(512) UNIQUE NOT NULL,
 	-- Taille du fichier sur le serveur	Filesize integer  NOT NULL,

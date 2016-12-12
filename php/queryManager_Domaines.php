@@ -46,8 +46,8 @@ function searchQuery($Args){
     $sQuery .= "FROM " . $oDomaine->getTable() . "\r\n"  ;
 
     //add the link between column s and foreign Key
-    $sQuery .= "WHERE Id_Domaines <> 0 ";
-    //$sQuery .= "WHERE " . $oDomaine->getLinkConditions(true);
+    //$sQuery .= "WHERE Id_Domaines <> 0 ";
+    $sQuery .= "WHERE " . $oDomaine->getLinkConditions(true);
 
     //get the count
     $nCount = count($Args);
