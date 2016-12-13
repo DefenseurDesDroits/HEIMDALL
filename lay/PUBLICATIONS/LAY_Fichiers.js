@@ -20,6 +20,9 @@ function SAVE_LAY_Fichiers(sId){
 	//our log object 
 	var oLogs = null;
 
+	//our file input
+	var oElement = null;
+
 	//get the position
 	nPosition = findInPotoursObjLst(ARY_LAY_Fichiers, "sName", sId);
 	//In ?
@@ -30,6 +33,14 @@ function SAVE_LAY_Fichiers(sId){
 	ARY_LAY_Fichiers[nPosition].ViewToObject();
 	//get the Item
 	oItem = ARY_LAY_Fichiers[nPosition].getObj();
+
+	//get the input file element
+	oElement = document.getElementById("BTN_File_" + ARY_LAY_Fichiers[nPosition].getId())
+	if(oElement != null){
+		if(oElement.files.length > 0){
+			oItem.setFile(oElement.files[0]);
+		}
+	}
 
 	//save
 	bResult = oItem.save(Heimdall.members.user["UserId"], ".");
@@ -47,8 +58,8 @@ function SAVE_LAY_Fichiers(sId){
 	//save the logs !!!
 	oLogs.save(Heimdall.members.user["UserId"], ".");
 	
-	if(oItem.getPath() != "")
-		IMPORT_FILE_LAY_Fichier(sId);
+	// if(oItem.getPath() != "")
+	// 	IMPORT_FILE_LAY_Fichier(sId);
 
 	//Sad God Sake !!! 
 	return bResult;
