@@ -41,6 +41,8 @@ function SAVE_LAY_Fichiers(sId){
 			oItem.setFile(oElement.files[0]);
 		}
 	}
+	else
+		console.log("SAVE_LAY_Fichiers, file error")
 
 	//save
 	bResult = oItem.save(Heimdall.members.user["UserId"], ".");
@@ -241,11 +243,10 @@ function LAY_Fichiers(){
 
 		sCode += '\t\tVersion : <input id="SAI_Version_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Version_' + oLAY_Fichiers.getId() + '" value=""/>';
 		sCode += "\t\t<br/>";
-		//sCode += '\t\tFichier local : <input id="SAI_File_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_File_' + oLAY_Fichiers.getId() + '" value=""/>';
-		sCode += "\t\t<input id=\"BTN_File_\"" + oLAY_Fichiers.getId() + "  type=\"file\" name=\"files[]\"/>";
-		//sCode += "\t\t<input id=\"BTN_File_\"" + oLAY_Fichiers.getId() + "  type=\"file\" name=\"files[]\" onclick=\"IMPORT_FILE_LAY_Fichier('" + oLAY_Fichiers.getId() + "');\" value=\"Fichiers\"/>";
+		sCode += "\t\t<input id=\"BTN_File_" + oLAY_Fichiers.getId() + "\" type=\"file\" name=\"files[]\"/>";
 		sCode += "\t\t<br/>";
-		sCode += '\t\tPath : <input id="SAI_Path_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Path_' + oLAY_Fichiers.getId() + '" value="" readonly/>';
+		sCode += '\t\tPath : <a id="LINK_Path_' + oLAY_Fichiers.getId() + '" class="SAI_"  /></a>';
+		//sCode += '\t\tPath : <input id="SAI_Path_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Path_' + oLAY_Fichiers.getId() + '" value="" readonly/>';
 		sCode += "\t\t<br/>";
 		sCode += '\t\tTaille : <input id="SAI_Filesize_' + oLAY_Fichiers.getId() + '" class="SAI_" type="text" name="SAI_Filesize_' + oLAY_Fichiers.getId() + '" value="" readonly/>';
 		sCode += "\t\t<br/>";
@@ -406,9 +407,23 @@ function LAY_Fichiers(){
 		if(oElement != null)
 			oElement.value = oLAY_Fichiers.members.oObj.getVersion();
 		
-		oElement = document.getElementById("SAI_Path_" + oLAY_Fichiers.getId());
-		if(oElement != null)
-			oElement.value = oLAY_Fichiers.members.oObj.getPath();
+		oElement = document.getElementById("LINK_Path_" + oLAY_Fichiers.getId());
+		if(oElement != null){
+			//set the text to zero
+			oElement.innerHTML = "";
+			//have we a path ?
+			if(oLAY_Fichiers.members.oObj.getPath() != ""){
+				//our path
+				oElement.href = oLAY_Fichiers.members.oObj.getPath();
+				//set the text
+				oElement.innerHTML = "Télécharger";
+			}
+			
+		}
+
+		// oElement = document.getElementById("SAI_Path_" + oLAY_Fichiers.getId());
+		// if(oElement != null)
+		// 	oElement.value = oLAY_Fichiers.members.oObj.getPath();
 
 		oElement = document.getElementById("SAI_Filesize_" + oLAY_Fichiers.getId());
 		if(oElement != null)
