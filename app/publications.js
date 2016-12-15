@@ -32,7 +32,7 @@ var WIN_Publications = null;
 
 Heimdall_Publications = {
     menus : [
-        {id : "OPT_Publications_General", onclick : "publicationMenu_General_CLICK();", text : "Général"},
+        //{id : "OPT_Publications_General", onclick : "publicationMenu_General_CLICK();", text : "Général"},
         {id : "OPT_Publications_Domaines", onclick : "publicationMenu_Domaines_CLICK();", text : "Domaines"},
         {id : "OPT_Publications_Publications", onclick : "publicationMenu_Publications_CLICK();", text : "Publications"}
     ],
