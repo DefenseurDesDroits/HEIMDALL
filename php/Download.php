@@ -22,10 +22,8 @@ function writeFileOnServer($sType, $sPath){
 	if(! is_dir($sServerPath))
 		mkdir($sServerPath);
 
+	//our futur file server location
 	$sFileServer = $sServerPath . basename($_FILES[$sType]['name']);
-	//$sFileServer = $sPath . $sDate . "/" . basename($_FILES[$sType]['name']);
-	//$uploadfile = $sPath . basename($_FILES[$sType]['name']);
-	//$uploadfile = $sPath . basename($_FILES['userfile']['name']);
 
 	//debugging, the desperate way
     if(HEIMDALL_DL_Debug)
@@ -36,9 +34,7 @@ function writeFileOnServer($sType, $sPath){
         file_put_contents(dirname(__FILE__) . "/../logs/Download@writeFileOnServer.log", "Temp Filename on server : !!!" . $_FILES[$sType]['tmp_name'] . "\r\n",  FILE_APPEND );
 
 	if (move_uploaded_file($_FILES[$sType]['tmp_name'], $sFileServer)) 	{
-	//if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) 	{
-  		//echo "success";
-		  
+  		//A Success ! Like Rogue One
 	} else {
   		// WARNING! DO NOT USE "FALSE" STRING AS A RESPONSE!
   		// Otherwise onSubmit event will not be fired
