@@ -624,7 +624,7 @@
               </DefaultValue>
               <Comment>Clef étrangère sur les publications</Comment>
             </Column>
-            <Column name="sPath" deploy_name="Path" key="unique" foreign="" type="s512" isnullable="False">
+            <Column name="sPath" deploy_name="Path" key="" foreign="" type="s512" isnullable="False">
               <DefaultValue>
               </DefaultValue>
               <Comment>Chemin du fichier sur le serveur</Comment>

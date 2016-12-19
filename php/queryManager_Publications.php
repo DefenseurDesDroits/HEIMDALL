@@ -7,8 +7,8 @@ include_once("queryTools.php");
 
 //define const 
 const QUERY_METHOD_LIKE = "Like";
-//Const HEIMDALL_QM_PUBLICATIONS_Debug = false;
-Const HEIMDALL_QM_PUBLICATIONS_Debug = true;
+Const HEIMDALL_QM_PUBLICATIONS_Debug = false;
+//Const HEIMDALL_QM_PUBLICATIONS_Debug = true;
 
 ///[FUNCTION][searchQuery]Function to search the contact
 function searchQuery($Args){

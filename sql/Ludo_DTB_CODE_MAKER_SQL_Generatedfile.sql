@@ -1,7 +1,7 @@
 -- #####################################
 -- Ludo_DTB_CODE_MAKER_SQL Version 0.4.6.1
 -- Created By Ludowic EMMANUEL
--- Automatique generation made on 09/12/2016 00:00:00
+-- Automatique generation made on 19/12/2016 00:00:00
 -- #####################################
 
 
@@ -467,7 +467,7 @@ COMMENT ON COLUMN xxx.Publications.Dematerialisee IS 'La publication est-elle d�
 CREATE TABLE IF NOT EXISTS xxx.Fichiers (
 	-- Clef primaire des fichiers	Id_Fichiers integer UNIQUE REFERENCES xxx.Noeuds (Id_Noeuds) ON DELETE CASCADE NOT NULL,
 	-- Clef étrangère sur les publications	Id_Publications integer  NOT NULL,
-	-- Chemin du fichier sur le serveur	Path varchar(512) UNIQUE NOT NULL,
+	-- Chemin du fichier sur le serveur	Path varchar(512)  NOT NULL,
 	-- Taille du fichier sur le serveur	Filesize integer  NOT NULL,
 	-- Checksum du fichier	Checksum varchar(1024)  NOT NULL,
 	-- Version du fichier	Version varchar(32)  NOT NULL

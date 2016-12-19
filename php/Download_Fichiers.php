@@ -35,7 +35,8 @@ function doManager($oPokemon){
     }
 
     //execute the write and riecive the new path value !
-    $sFile = writeFileOnServer(HEIMDALL_DEFAULT_TYP, HEIMDALL_DEFAULT_DIR);
+    $sFile = writeFileOnServerId(HEIMDALL_DEFAULT_TYP, HEIMDALL_DEFAULT_DIR, $nId);
+    //$sFile = writeFileOnServer(HEIMDALL_DEFAULT_TYP, HEIMDALL_DEFAULT_DIR);
 
     //save the file
     $oFichiers->setPath( str_replace(HEIMDALL_DEFAULT_DIR, HEIMDALL_DEFAULT_DIR_SAVED, $sFile) );
