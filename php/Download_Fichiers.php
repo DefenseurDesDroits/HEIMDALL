@@ -43,7 +43,8 @@ function doManager($oPokemon){
     //get the filesize
     $oFichiers->setFilesize(filesize($sFile));
     //get the hash 
-    $oFichiers->setChecksum(md5_file($sFile));
+    $oFichiers->setChecksum(hash("sha512", $sFile));//http://php.net/manual/en/function.hash.php
+    //$oFichiers->setChecksum(md5_file($sFile));
 
     //save the server path 
     $oFichiers->save($oAgent);
