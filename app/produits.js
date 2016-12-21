@@ -6,8 +6,6 @@
 
 /// <reference path="contacts.js" />
 
-
-
 Heimdall_Produits = {
     menus : [
         {id : "OPT_PRODUCT_Contacts", onclick : "notDevYet();", text : "Nah"},
@@ -91,6 +89,10 @@ var Heimdall = {
             },
             publications : {
                 generateMenuCode : Heimdall_Publications.generateMenuCode
+            }
+            ,
+            stocks : {
+                generateMenuCode : Heimdall_Stocks.generateMenuCode
             }
         },
         user : {},
@@ -191,6 +193,7 @@ var Heimdall = {
                     //init the contact
                     init_contacts();
                     init_publications();
+                    init_stocks();
                     //create the product
                     if(location.hash == ""){
                         console.log("Nope !!!");
@@ -507,7 +510,7 @@ function init_Produits(){
     }
 
     //
-	sCode += '<li id="OPT_PRODUCT_Stocks" class="OPT_ others">Stock</li>';
+	//sCode += '<li id="OPT_PRODUCT_Stocks" class="OPT_ others">Stock</li>';
 	sCode += '<li id="OPT_PRODUCT_Campagnes" class="OPT_ others">Campagnes</li>';
 	sCode += '<!--<li class="OPT_ others">Recherche</li> -->';
 

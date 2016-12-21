@@ -4,7 +4,7 @@
 //Filename : main.js
 //Description : Main file of our main app
 
-const MAIN_VERSION = "0.4.7";
+const MAIN_VERSION = "0.4.8";
 
 var ary_sFileLib = [
 	/*CONTACT LIB !!! ###################################### */
@@ -51,7 +51,16 @@ var ary_sFileLib = [
 	"lay/PUBLICATIONS/LAY_Domaines.js",
 	"lay/PUBLICATIONS/LAY_Publications.js",
 	"lay/PUBLICATIONS/LAY_Fichiers.js",
-	"lay/PUBLICATIONS/LAY_LIST_Fichiers.js"
+	"lay/PUBLICATIONS/LAY_LIST_Fichiers.js",
+
+	/*STOCK LIB !!! ################################## */
+	/*STOCK OBJ !!! */
+	"lib/STOCKS/STOCKS_Locations.js",
+	"lib/STOCKS/STOCKS_Stocks.js",
+	"lib/STOCKS/STOCKS_Mouvements.js",
+	/*PUBLICATION LAY !!! */
+	"lay/STOCKS/LAY_Locations.js",
+	"lay/STOCKS/LAY_Stocks.js"
 ];
 
 var ary_sApp = [
@@ -67,6 +76,10 @@ var ary_sApp = [
 	"app/publications_publications.js", 
 	"app/publications_domaines.js", 
 	"app/publications.js", 
+	//Stock part
+	"app/stocks_locations.js", 
+	"app/stocks_stocks.js", 
+	"app/stocks.js", 
 	//The product stuff
 	"app/produits.js"];
 
