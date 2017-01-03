@@ -5,6 +5,11 @@
 //our gloabal instance object 
 var ARY_LAY_Publications = [];
 
+//
+const HEIMDALL_LAY_FILES_EXTENDED_ID = "LAY_LIST_FILES_";
+//
+//const HEIMDALL_LAY_STOCKS_EXTENDED_ID = "LAY_LIST_STOCKS_";
+
 //SAVE_LAY_Publications
 function SAVE_LAY_Publications(sId){
 	//our position
@@ -216,7 +221,9 @@ function LAY_Publications(){
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Publications('" + oLAY_Publications.getId() + "')\">Supprimer</div>" + "\r\n";
 
 		sCode += "\t" + "</form>";
-		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId() + "\"></div>";
+		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_FILES_EXTENDED_ID + oLAY_Publications.getId() + "\"></div>";
+		//sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId() + "\"></div>";
+		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_STOCKS_EXTENDED_ID + oLAY_Publications.getId() + "\"></div>";
 		
 		sCode += "</div>";
 		
@@ -322,7 +329,8 @@ function LAY_Publications(){
 			//event listener !!
 			oLAY_Publications.LAY_Fichiers.setParent(oLAY_Publications);
 			//init the contact infos !
-			oLAY_Publications.LAY_Fichiers.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId(), "FPS_" + sDivId, oLAY_Publications.getObj());
+			oLAY_Publications.LAY_Fichiers.init(HEIMDALL_LAY_FILES_EXTENDED_ID + oLAY_Publications.getId(), "FPS_" + sDivId, oLAY_Publications.getObj());
+			//oLAY_Publications.LAY_Fichiers.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId(), "FPS_" + sDivId, oLAY_Publications.getObj());
 
 			//happy end
 			return true;

@@ -11,7 +11,8 @@
 /// <reference path="../lay/CONTACTS/LAY_Contacts.js" />
 /// <reference path="../lay/CONTACTS/LAY_Organisations.js" />
 
-const HEIMDALL_LAY_STOCKS_EXTENDED_ID = "LAY_Stock_extension_";
+//const HEIMDALL_LAY_STOCKS_EXTENDED_ID = "LAY_Stock_extension_";
+const HEIMDALL_LAY_STOCKS_EXTENDED_ID = "LAY_LIST_STOCKS_";
 const HEIMDALL_LAY_STOCKS_EXTENDED_ADDRESS_ID = "LAY_Stock_extension_address_";
 
 var WIN_Stocks = null;

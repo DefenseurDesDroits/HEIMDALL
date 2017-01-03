@@ -95,7 +95,7 @@ function LAY_Stocks(){
 	this.LAY_Rights = new LAY_Accreditations_Item();
 
 	//Stocks
-	//this.LAY_Mouvements = new LAY_LIST_Mouvements();
+	this.LAY_Mouvements = new LAY_LIST_Mouvements();
 
 	///[SECTION]Property##############################################
 	
@@ -315,10 +315,10 @@ function LAY_Stocks(){
 			//Accreditation !!!
 			oLAY_Stocks.LAY_Rights.init("LAY_Accreditation_" + oLAY_Stocks.getId(), sDivId);
 			
-			// //event listener !!
-			// oLAY_Stocks.LAY_Mouvements.setParent(oLAY_Stocks);
-			// //init the contact infos !
-			// oLAY_Stocks.LAY_Mouvements.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Stocks.getId(), "FPS_" + sDivId, oLAY_Stocks.getObj());
+			//event listener !!
+			oLAY_Stocks.LAY_Mouvements.setParent(oLAY_Stocks);
+			//init the contact infos !
+			oLAY_Stocks.LAY_Mouvements.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Stocks.getId(), "FPS_" + sDivId, oLAY_Stocks.getObj());
 
 			//happy end
 			return true;
@@ -377,7 +377,7 @@ function LAY_Stocks(){
 		//logs
 		console.log("LAY_Stocks : ObjToView");
 
-		//oLAY_Stocks.LAY_Mouvements.ObjToView();
+		oLAY_Stocks.LAY_Mouvements.ObjToView();
 
 		return true;
 	};

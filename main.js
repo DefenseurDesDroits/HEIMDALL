@@ -60,7 +60,10 @@ var ary_sFileLib = [
 	"lib/STOCKS/STOCKS_Mouvements.js",
 	/*PUBLICATION LAY !!! */
 	"lay/STOCKS/LAY_Locations.js",
-	"lay/STOCKS/LAY_Stocks.js"
+	"lay/STOCKS/LAY_Stocks.js",
+	"lay/STOCKS/LAY_Mouvements.js",
+	"lay/STOCKS/LAY_LIST_Stocks.js",
+	"lay/STOCKS/LAY_LIST_Mouvements.js"
 ];
 
 var ary_sApp = [
