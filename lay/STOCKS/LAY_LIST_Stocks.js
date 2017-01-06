@@ -84,7 +84,7 @@ function ADD_LAY_Stocks(sId){
     oItem.setId_Publications(parseInt(LIST_.getObj().getId_Items()));
 
     //set the LAY 
-    LAY_.init("LAY_LIST_" + sId, "LAY_Fichier", oItem);
+    LAY_.init("LAY_LIST_" + sId, "LAY_Stock", oItem);
 
     //add it !
     LIST_.ary_LAY_Stocks.push(LAY_);
@@ -486,7 +486,7 @@ function LAY_LIST_Stocks(){
 
         //prepare the query*********************
         //check the open
-        oReq.open("POST", "php/Publication_Publications_Links_Stocks_manager.php", true);
+        oReq.open("POST", "php/Stock_Publications_Links_Stocks_manager.php", true);
         //set the request header
         oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
         oReq.send("Id=" + parseInt(Heimdall.members.user["UserId"]) + "&Session=" + "" + "&Action=LIST&Id_Item=" + oLAY_LIST_Stocks.getObj().getId_Items()); 

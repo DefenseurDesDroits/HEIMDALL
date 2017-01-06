@@ -5,6 +5,8 @@
 //our gloabal instance object 
 var ARY_LAY_Stocks = [];
 
+const HEIMDALL_LAY_MOUVEMENTS_EXTENDED_ID = "LAY_LIST_MOUVEMENTS_";
+
 //SAVE_LAY_Stocks
 function SAVE_LAY_Stocks(sId){
 	//our position
@@ -212,7 +214,8 @@ function LAY_Stocks(){
 		sCode += "\t" + "\t" + "<div class=\"BTN_ BTN_Fiche heim_Right heim_Inline_Block\" onclick=\"DELETE_LAY_Stocks('" + oLAY_Stocks.getId() + "')\">Supprimer</div>" + "\r\n";
 
 		sCode += "\t" + "</form>";
-		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Stocks.getId() + "\"></div>";
+		sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_MOUVEMENTS_EXTENDED_ID + oLAY_Stocks.getId() + "\"></div>";
+		//sCode += "\t" + "<div id=\"" + HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Stocks.getId() + "\"></div>";
 		
 		sCode += "</div>";
 		
@@ -239,7 +242,8 @@ function LAY_Stocks(){
 			//a div ?
 			if(oLAY_Stocks.getParent().members.oDiv != null){
 				//add the event listener
-				oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Stocks.getParent().subComponentLoaded);
+				oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Stocks.getParent().subComponentStockLoaded);
+				//oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Stocks.getParent().subComponentLoaded);
 			}
 		}
 
@@ -318,7 +322,7 @@ function LAY_Stocks(){
 			//event listener !!
 			oLAY_Stocks.LAY_Mouvements.setParent(oLAY_Stocks);
 			//init the contact infos !
-			oLAY_Stocks.LAY_Mouvements.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Stocks.getId(), "FPS_" + sDivId, oLAY_Stocks.getObj());
+			oLAY_Stocks.LAY_Mouvements.init(HEIMDALL_LAY_MOUVEMENTS_EXTENDED_ID + oLAY_Stocks.getId(), "MPS_" + sDivId, oLAY_Stocks.getObj());
 
 			//happy end
 			return true;
@@ -409,7 +413,7 @@ function LAY_Stocks(){
 		}
 		///[/DEBUG]
 		
-		//oLAY_Stocks.LAY_Mouvements.ViewToObject();
+		oLAY_Stocks.LAY_Mouvements.ViewToObject();
 
 		//The right !!!
 		oLAY_Stocks.LAY_Rights.ViewToObject();

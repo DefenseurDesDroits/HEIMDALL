@@ -6,6 +6,8 @@
 
 const HEIMDALL_NUMBER_OF_PUBLICATIONS_MAX = 10;
 
+var bExtensionStock = false;
+
 ///[FUNCTION][publications_publications_KeySearch]Function to manage the enter on the SAI_ Search field
 ///[PARAMETER][Event][event]Next field name
 function publications_publications_KeySearch(event){
@@ -267,6 +269,9 @@ function publications_publicationsClick(nLine){
     //our element
     var oElement = null;
 
+    //set the stock option
+    LAY_.setStockShowed(bExtensionStock);
+
     //not negative
     if(nLine >= 0){
         //in the range ?
@@ -342,7 +347,8 @@ function publications_publicationsDoQuery(){
 }
 
 ///[FUNCTION][publicationsMenu_publications_CLICK]Function to generate the HTML of the sub-menu
-function publicationsMenu_publications_HTML(){
+function publicationsMenu_publications_HTML(sTitle = "Publications", bStocks = false){
+//function publicationsMenu_publications_HTML(){
     //our code
     var sCode = "";
 
@@ -351,10 +357,13 @@ function publicationsMenu_publications_HTML(){
     //our iterator
     var nLine = 0;
 
+    bExtensionStock = bStocks;
+
     //build da code !!!
     sCode += '<div id="PNL_Research" class="PNL_ heim_Inline_Block">\r\n';
 
-    sCode += '\t<div id="LAY_Title" class="LAY_ heim_Block"><h1>Publications</h1></div>\r\n';
+    sCode += '\t<div id="LAY_Title" class="LAY_ heim_Block"><h1>' + sTitle + '</h1></div>\r\n';
+    //sCode += '\t<div id="LAY_Title" class="LAY_ heim_Block"><h1>Publications</h1></div>\r\n';
     sCode += '<br/>\r\n';
     sCode += '\t<div id="LAY_Query" class="LAY_ heim_Right heim_Block">';
 

@@ -393,7 +393,8 @@ function stocksMenu_stocks_CLICK(){
     //get the content layout
     var oElement = document.getElementById("LAY_Content");
 
-    oElement.innerHTML = stocksMenu_stocks_HTML();
+    oElement.innerHTML = publicationsMenu_publications_HTML("Stocks", true);
+    //oElement.innerHTML = stocksMenu_stocks_HTML();
 
     Heimdall_Stocks.menuClassUpdate("OPT_Stocks_Stocks");
 

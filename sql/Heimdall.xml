@@ -649,5 +649,92 @@
         </Table>
       </Tables>
     </Module>
+    <Module id="Module_20161219_150026" version="">
+      <Info>
+        <Name>Stocks</Name>
+        <Author>LUDO</Author>
+        <Dt>
+        </Dt>
+        <Comment>Module to manage the Stocks</Comment>
+        <Imports />
+      </Info>
+      <Tables>
+        <Table name="Locations" deploy_name="Locations" inherit="Contacts.Items" isview="False">
+          <Columns>
+            <Column name="nId_Locations" deploy_name="Id_Locations" key="unique" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef unique de la table locations</Comment>
+            </Column>
+            <Column name="sNom" deploy_name="Nom" key="" foreign="" type="s64" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Le nom du lieux</Comment>
+            </Column>
+          </Columns>
+          <Comment>Lieux du stock</Comment>
+        </Table>
+        <Table name="Stocks" deploy_name="Stocks" inherit="Contacts.Items" isview="False">
+          <Columns>
+            <Column name="nId_Stocks" deploy_name="Id_Stocks" key="unique" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Notre clef unique</Comment>
+            </Column>
+            <Column name="nId_Locations" deploy_name="Id_Locations" key="foreign" foreign="Stocks.Locations.nId_Locations" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Le lieux du stock</Comment>
+            </Column>
+            <Column name="nId_Publications" deploy_name="Id_Publications" key="foreign" foreign="Publications.Publications.nId_Publications" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>La publication</Comment>
+            </Column>
+          </Columns>
+          <Comment>Notre table pour gérer les tables entre la location et les publications</Comment>
+        </Table>
+        <Table name="Mouvements" deploy_name="Mouvements" inherit="Contacts.Items" isview="False">
+          <Columns>
+            <Column name="nId_Mouvements" deploy_name="Id_Mouvements" key="unique" foreign="Contacts.Items.nId_Items" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef de la table</Comment>
+            </Column>
+            <Column name="dtEffectif" deploy_name="Effectif" key="" foreign="" type="dt" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Hour of effective time</Comment>
+            </Column>
+            <Column name="nId_Stocks" deploy_name="Id_Stocks" key="" foreign="Stocks.Stocks.nId_Stocks" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Le stock du mouvement</Comment>
+            </Column>
+            <Column name="nQuantite" deploy_name="Quantite" key="" foreign="" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>La quantite du mouvement</Comment>
+            </Column>
+            <Column name="sMotif" deploy_name="Motif" key="" foreign="" type="s256" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Motif du mouvement</Comment>
+            </Column>
+            <Column name="sClef_Operation" deploy_name="Clef_Operation" key="" foreign="" type="s64" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Clef de l'operation</Comment>
+            </Column>
+            <Column name="nId_Contacts" deploy_name="Id_Contacts" key="" foreign="Contacts.Contacts.nId_Contacts" type="n" isnullable="False">
+              <DefaultValue>
+              </DefaultValue>
+              <Comment>Responsable du mouvement</Comment>
+            </Column>
+          </Columns>
+          <Comment>La table qui note les mouvements</Comment>
+        </Table>
+      </Tables>
+    </Module>
   </Modules>
 </Ludo_DTB>

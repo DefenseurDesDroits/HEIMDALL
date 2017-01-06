@@ -246,9 +246,9 @@ class Mouvements extends Items{
 		$sParentCondition = parent::getLinkConditions($bAll);
 		//test the parent condition
 		if($sParentCondition != "" && $bAll)
-			return $sParentCondition ." \r\nAND xxx.Contacts.Id_Contacts =  xxx.Mouvements.Id_Contacts";
+			return $sParentCondition ." \r\nAND xxx.Items.Id_Items =  xxx.Mouvements.Id_Mouvements";
 		else
-			return " xxx.Contacts.Id_Contacts = xxx.Mouvements.Id_Contacts";
+			return " xxx.Items.Id_Items = xxx.Mouvements.Id_Mouvements";
 	}
 
 
