@@ -243,7 +243,8 @@ function LAY_LIST_Stocks(){
 			//a div ?
 			if(oLAY_LIST_Stocks.getParent().members.oDiv != null){
 				//add the event listener
-				oLAY_LIST_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Stocks.getParent().subComponentLoaded);
+				oLAY_LIST_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded_Stock,oLAY_LIST_Stocks.getParent().subComponentStockLoaded);
+				//oLAY_LIST_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Stocks.getParent().subComponentLoaded);
 			}
 		}
 
@@ -458,12 +459,17 @@ function LAY_LIST_Stocks(){
             nLine++;
         }
 
+        console.log("LAY_LIST_Stocks : responseList Done !!!");
+
         //if no result !!!
         if(nLine == 0){
             //to obtain the master's ObjToView
-            eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Stocks, null);
+            eventL = Heimdall.methods.createStockLoadedEvent(oLAY_LIST_Stocks, null);
+            //eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Stocks, null);
             //spread the word of our master and lord Cthulhu
             oLAY_LIST_Stocks.members.oDiv.dispatchEvent(eventL);
+
+            console.log("LAY_LIST_Stocks : responseList Spread Done !!!");
         }
         
     };
@@ -490,6 +496,9 @@ function LAY_LIST_Stocks(){
         //set the request header
         oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
         oReq.send("Id=" + parseInt(Heimdall.members.user["UserId"]) + "&Session=" + "" + "&Action=LIST&Id_Item=" + oLAY_LIST_Stocks.getObj().getId_Items()); 
+
+        console.log("LAY_LIST_Stocks : postList Done !!!");
+
         //Return the job !
         return true;
     };

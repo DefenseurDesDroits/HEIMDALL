@@ -355,9 +355,9 @@ function LAY_Publications(){
 			oLAY_Publications.members.nFlags = 0;
 
 			//event listener !!
-			//oLAY_Publications.LAY_Fichiers.setParent(oLAY_Publications);
+			oLAY_Publications.LAY_Fichiers.setParent(oLAY_Publications);
 			//init the contact infos !
-			//oLAY_Publications.LAY_Fichiers.init(HEIMDALL_LAY_FILES_EXTENDED_ID + oLAY_Publications.getId(), "FPS_" + sDivId, oLAY_Publications.getObj());
+			oLAY_Publications.LAY_Fichiers.init(HEIMDALL_LAY_FILES_EXTENDED_ID + oLAY_Publications.getId(), "FPS_" + sDivId, oLAY_Publications.getObj());
 			//oLAY_Publications.LAY_Fichiers.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Publications.getId(), "FPS_" + sDivId, oLAY_Publications.getObj());
 
 			console.log("LAY_Publication : initializeLayout, LAY_Fichiers");
@@ -544,11 +544,15 @@ function LAY_Publications(){
 				}
 				else if(e.detail.oObject.getName() == oLAY_Publications.LAY_Stocks.getName()){
 					//remove handler, cause we are no bad boys :)
-					oLAY_Publications.LAY_Stocks.members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_Publications.subComponentLoaded);
+					//oLAY_Publications.LAY_Stocks.members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_Publications.subComponentLoaded);
+					oLAY_Publications.LAY_Stocks.members.oDiv.removeEventListener(Heimdall.Events.loaded_Stock, oLAY_Publications.subComponentLoaded);
 
 					oLAY_Publications.members.bStockLoaded = true;
 					//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
 					oLAY_Publications.spreadMsg("StockLoaded");
+				}
+				else{
+					oLAY_Publications.spreadMsg("What ??? " + e.detail.oObject.getName());
 				}
 			}
 		}
@@ -556,6 +560,7 @@ function LAY_Publications(){
 	this.myLAY_Publications.subComponentLoaded = this.subComponentLoaded;
 
 	this.subComponentStockLoaded = function(e){
+		oLAY_Publications.spreadMsg("Trollolo");
 		oLAY_Publications.subComponentLoaded(e);
 	}
 	this.myLAY_Publications.subComponentStockLoad = this.subComponentStockLoad;

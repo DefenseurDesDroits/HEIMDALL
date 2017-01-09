@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS xxx.Mouvements (
 	-- Hour of effective time
 	Effectif timestamp  NOT NULL,
 	-- Le stock du mouvement
-	Id_Stocks integer UNIQUE REFERENCES xxx.Stocks (Id_Stocks) ON DELETE CASCADE NOT NULL,
+	Id_Stocks integer REFERENCES xxx.Stocks (Id_Stocks) ON DELETE CASCADE NOT NULL,
 	-- La quantite du mouvement
 	Quantite integer  NOT NULL,
 	-- Motif du mouvement
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS xxx.Mouvements (
 	-- Clef de l'operation
 	Clef_Operation varchar(64)  NOT NULL,
 	-- Responsable du mouvement
-	Id_Contacts integer UNIQUE REFERENCES xxx.Contacts (Id_Contacts) ON DELETE CASCADE NOT NULL
+	Id_Contacts integer  NOT NULL
 );
 COMMENT ON TABLE xxx.Mouvements IS 'La table qui note les mouvements';
 COMMENT ON COLUMN xxx.Mouvements.Id_Mouvements IS 'Clef de la table';
