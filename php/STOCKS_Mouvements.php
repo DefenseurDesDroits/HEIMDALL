@@ -28,7 +28,7 @@ class Mouvements extends Items{
 			///[MEMBER][string "yyyymmdd"][dtEffectif]Hour of effective time
 			"dtEffectif" => "",
 			// ///[MEMBER][integer][nId_Stocks]Le stock du mouvement
-			//"nId_Stocks" => 0 //inherited from => Stocks.Stocks.nId_Stocks,
+			"nId_Stocks" => 0, //inherited from => Stocks.Stocks.nId_Stocks,
 			///[MEMBER][integer][nQuantite]La quantite du mouvement
 			"nQuantite" => 0,
 			///[MEMBER][string][sMotif]Motif du mouvement
@@ -36,7 +36,7 @@ class Mouvements extends Items{
 			///[MEMBER][string][sClef_Operation]Clef de l'operation
 			"sClef_Operation" => "",
 			// ///[MEMBER][integer][nId_Contacts]Responsable du mouvement
-			//"nId_Contacts" => 0 //inherited from => Contacts.Contacts.nId_Contacts,
+			"nId_Contacts" => 0 //inherited from => Contacts.Contacts.nId_Contacts,
 		);
 		//get the legacy
 		$this->members += $MouvementsmemberSet;	}
@@ -62,7 +62,7 @@ class Mouvements extends Items{
 	///[RETURNS]The Id_Stocks
 	public function getId_Stocks(){
 		//Return the getter in inheritage
-		return $this->getId_Stocks();
+		return $this->members["nId_Stocks"];
 	}
 
 	///[METHOD][getQuantite]Method to get the Quantite
@@ -90,7 +90,7 @@ class Mouvements extends Items{
 	///[RETURNS]The Id_Contacts
 	public function getId_Contacts(){
 		//Return the getter in inheritage
-		return $this->getId_Contacts();
+		return $this->members["nId_Contacts"];
 	}
 
 
@@ -126,8 +126,17 @@ class Mouvements extends Items{
 	///[PARAMETER][integer][$nValue]Our new value for Id_Stocks
 	///[RETURNS]Boolean true if done 
 	public function setId_Stocks($nValue){
-		//Return the member
-		return $this->setId_Stocks($nValue);
+		//security on null guy !!!
+		if($nValue == null)
+			return false;
+		//security on type guy !!!
+		if(getType($nValue) == 'integer'){
+			 $this->members["nId_Stocks"] = $nValue;
+			//Happy end
+			return true;
+		}
+		//Don't fool me next Time !!!
+		return false;
 	}
 
 	///[METHOD][setQuantite]Method to set the Quantite
@@ -187,8 +196,17 @@ class Mouvements extends Items{
 	///[PARAMETER][integer][$nValue]Our new value for Id_Contacts
 	///[RETURNS]Boolean true if done 
 	public function setId_Contacts($nValue){
-		//Return the member
-		return $this->setId_Contacts($nValue);
+		//security on null guy !!!
+		if($nValue == null)
+			return false;
+		//security on type guy !!!
+		if(getType($nValue) == 'integer'){
+			 $this->members["nId_Contacts"] = $nValue;
+			//Happy end
+			return true;
+		}
+		//Don't fool me next Time !!!
+		return false;
 	}
 
 
@@ -357,7 +375,8 @@ class Mouvements extends Items{
 		$sValues = "";
 		
 		$sValues .= Quotes( $this->getId_Mouvements());
-		$sValues .= ", " . Quotes( $this->getEffectif());
+		$sValues .= ", " . Quotes( $this->getEffectif() . " 00:00:00");
+		//$sValues .= ", " . Quotes( $this->getEffectif());
 		$sValues .= ", " . Quotes( $this->getId_Stocks());
 		$sValues .= ", " . Quotes( $this->getQuantite());
 		$sValues .= ", " . Quotes( $this->getMotif());

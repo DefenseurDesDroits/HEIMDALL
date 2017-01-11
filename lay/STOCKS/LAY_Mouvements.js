@@ -313,9 +313,12 @@ function LAY_Mouvements(){
 			oLAY_Mouvements.LAY_Rights.init("LAY_Accreditation_" + oLAY_Mouvements.getId(), sDivId);
 			
 			// //event listener !!
-			oLAY_Mouvements.LAY_Mouvements.setParent(oLAY_Mouvements);
+			//oLAY_Mouvements.LAY_Mouvements.setParent(oLAY_Mouvements);
 			// //init the contact infos !
-			oLAY_Mouvements.LAY_Mouvements.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Mouvements.getId(), "FPS_" + sDivId, oLAY_Mouvements.getObj());
+			//oLAY_Mouvements.LAY_Mouvements.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Mouvements.getId(), "FPS_" + sDivId, oLAY_Mouvements.getObj());
+
+			//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
+			oLAY_Mouvements.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Mouvements, null));
 
 			//happy end
 			return true;
@@ -364,6 +367,7 @@ function LAY_Mouvements(){
 
 		oElement = document.getElementById("SAI_Date_Mouvements_" + oLAY_Mouvements.getId());
 		if(oElement != null){
+			console.log("SAI_Date_Mouvements " + oLAY_Mouvements.members.oObj.getEffectif());
 			oElement.value = oLAY_Mouvements.members.oObj.getEffectif();
 		}
 
@@ -401,6 +405,7 @@ function LAY_Mouvements(){
 
 		oElement = document.getElementById("SAI_Date_Mouvements_" + oLAY_Mouvements.getId());
 		if(oElement != null){
+			console.log("Date : " + oElement.value);
 			oLAY_Mouvements.members.oObj.setEffectif(oElement.value);
 		}
 

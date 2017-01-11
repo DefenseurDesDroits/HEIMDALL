@@ -242,10 +242,12 @@ function LAY_Stocks(){
 			//a div ?
 			if(oLAY_Stocks.getParent().members.oDiv != null){
 				//add the event listener
-				oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded_Stock,oLAY_Stocks.getParent().subComponentStockLoaded);
+				oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded_Stock,oLAY_Stocks.getParent().subComponentLoaded);
+				//oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded_Stock,oLAY_Stocks.getParent().subComponentStockLoaded);
 				//oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Stocks.getParent().subComponentLoaded);
 				
-				console.log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+				//ok !!!
+				//console.log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
 			}
 		}
 
@@ -323,6 +325,8 @@ function LAY_Stocks(){
 			
 			//event listener !!
 			oLAY_Stocks.LAY_Mouvements.setParent(oLAY_Stocks);
+			oLAY_Stocks.LAY_Mouvements.setObj(oLAY_Stocks.getObj());
+			console.log("LAY_Stock ID : " + oLAY_Stocks.getObj().getId_Items());
 			//init the contact infos !
 			oLAY_Stocks.LAY_Mouvements.init(HEIMDALL_LAY_MOUVEMENTS_EXTENDED_ID + oLAY_Stocks.getId(), "MPS_" + sDivId, oLAY_Stocks.getObj());
 

@@ -63,6 +63,8 @@ function ADD_LAY_Mouvements(sId){
     //our List
     var LIST_ = null;
 	
+    console.log("XOXOXOXOXOXOX");
+
 	//get the position
 	nPosition = findInPotoursObjLst(ARY_LAY_LIST_Mouvements, "sName", sId);
 	//In ?
@@ -83,7 +85,14 @@ function ADD_LAY_Mouvements(sId){
     //Set accreditation all
     oItem.setId_Accreditations_Item(1);
     //our contact object
-    oItem.setId_Mouvements(parseInt(LIST_.getObj().getId_Items()));
+    //oItem.setId_Mouvements(parseInt(LIST_.getObj().getId_Items()));
+
+    console.log("Stock ID : " + JSON.stringify(LIST_.getObj()));
+    console.log("LAY_LIST_" + sId);
+    
+    //console.log("Stock ID : " + parseInt(LIST_.getObj().getId_Items()));
+
+    oItem.setId_Stocks(parseInt(LIST_.getObj().getId_Items()));
 
     //set the LAY 
     LAY_.init("LAY_LIST_" + sId, "LAY_Mouvement", oItem);
@@ -531,9 +540,11 @@ function LAY_LIST_Mouvements(){
                 //if it's the last
                 if(nPosition == oLAY_LIST_Mouvements.ary_LAY_Mouvements.length - 1){
                     //to obtain the master's ObjToView
-                    eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Mouvements, null);
+                    eventL = Heimdall.methods.createMouvementsLoadedEvent(oLAY_LIST_Mouvements, null);
                     //spread the word of our master and lord Cthulhu
                     oLAY_LIST_Mouvements.members.oDiv.dispatchEvent(eventL);
+
+                    console.log("LAY_LIST_Mouvements 3:16 ");
                 }                
 
 				// if(e.detail.oObject.getName() == oLAY_LIST_Mouvements.LIST_Infos.getName()){

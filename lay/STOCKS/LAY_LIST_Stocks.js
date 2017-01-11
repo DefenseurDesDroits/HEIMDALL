@@ -513,6 +513,8 @@ function LAY_LIST_Stocks(){
         //our event
         var eventL = null;
 
+        console.log("LAY_LIST_Stocks : subComponentLoaded IN");
+
 		if(e != null){
 			if(e.detail.oObject != null){
                 //find 
