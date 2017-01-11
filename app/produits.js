@@ -77,7 +77,9 @@ var Heimdall = {
         //Our event to says : Hi load complete !!!!
         loaded : "Heimdall_Data_Loaded",
         //
-        loaded_Stock : "Heimdall_Stock_Data_Loaded"
+        loaded_Stock : "Heimdall_Stock_Data_Loaded",
+        //
+        loaded_Mouvements : "Heimdall_Mouvements_Data_Loaded"
     },
     flags :  {
         waitData : true,
@@ -438,6 +440,9 @@ var Heimdall = {
         },
         createStockLoadedEvent : function(oThrower, oArg){
             return Heimdall.methods.createEvent(Heimdall.Events.loaded_Stock, oThrower, oArg);
+        },
+        createMouvementsLoadedEvent : function(oThrower, oArg){
+            return Heimdall.methods.createEvent(Heimdall.Events.loaded_Mouvements, oThrower, oArg);
         }
     },
     debug : {

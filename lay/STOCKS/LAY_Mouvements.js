@@ -235,6 +235,8 @@ function LAY_Mouvements(){
 			if(oLAY_Mouvements.getParent().members.oDiv != null){
 				//add the event listener
 				oLAY_Mouvements.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Mouvements.getParent().subComponentLoaded);
+				
+				console.log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
 			}
 		}
 
@@ -311,9 +313,9 @@ function LAY_Mouvements(){
 			oLAY_Mouvements.LAY_Rights.init("LAY_Accreditation_" + oLAY_Mouvements.getId(), sDivId);
 			
 			// //event listener !!
-			// oLAY_Mouvements.LAY_Mouvements.setParent(oLAY_Mouvements);
+			oLAY_Mouvements.LAY_Mouvements.setParent(oLAY_Mouvements);
 			// //init the contact infos !
-			// oLAY_Mouvements.LAY_Mouvements.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Mouvements.getId(), "FPS_" + sDivId, oLAY_Mouvements.getObj());
+			oLAY_Mouvements.LAY_Mouvements.init(HEIMDALL_LAY_CONTACT_EXTENDED_ADDRESS_ID + oLAY_Mouvements.getId(), "FPS_" + sDivId, oLAY_Mouvements.getObj());
 
 			//happy end
 			return true;

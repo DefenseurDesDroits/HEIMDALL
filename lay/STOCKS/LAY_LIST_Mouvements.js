@@ -245,7 +245,8 @@ function LAY_LIST_Mouvements(){
 			//a div ?
 			if(oLAY_LIST_Mouvements.getParent().members.oDiv != null){
 				//add the event listener
-				oLAY_LIST_Mouvements.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Mouvements.getParent().subComponentLoaded);
+				oLAY_LIST_Mouvements.members.oDiv.addEventListener(Heimdall.Events.loaded_Mouvements,oLAY_LIST_Mouvements.getParent().subComponentLoaded);
+				//oLAY_LIST_Mouvements.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_LIST_Mouvements.getParent().subComponentLoaded);
 			}
 		}
 
@@ -456,16 +457,22 @@ function LAY_LIST_Mouvements(){
             LAY_.setParent(oLAY_LIST_Mouvements);
             LAY_.init("LAY_LIST_" + oLAY_LIST_Mouvements.getId(), "LAY_Mouvements_" + oItem.getId_Items(), oItem);
 
+            console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+
             //Next
             nLine++;
         }
 
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
         //if no result !!!
         if(nLine == 0){
             //to obtain the master's ObjToView
-            eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Mouvements, null);
+            eventL = Heimdall.methods.createMouvementsLoadedEvent(oLAY_LIST_Mouvements, null);
+            //eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Mouvements, null);
             //spread the word of our master and lord Cthulhu
             oLAY_LIST_Mouvements.members.oDiv.dispatchEvent(eventL);
+            console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         }
         
     };
@@ -519,6 +526,7 @@ function LAY_LIST_Mouvements(){
 
                 //remove handler, cause we are no bad boys :)
 				oLAY_LIST_Mouvements.ary_LAY_Mouvements[nPosition].members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_LIST_Mouvements.subComponentLoaded);
+
 
                 //if it's the last
                 if(nPosition == oLAY_LIST_Mouvements.ary_LAY_Mouvements.length - 1){

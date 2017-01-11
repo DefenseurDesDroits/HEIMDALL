@@ -530,16 +530,20 @@ function LAY_LIST_Stocks(){
                 //if it's the last
                 if(nPosition == oLAY_LIST_Stocks.ary_LAY_Stocks.length - 1){
                     //to obtain the master's ObjToView
-                    eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Stocks, null);
+                    eventL = Heimdall.methods.createStockLoadedEvent(oLAY_LIST_Stocks, null);
+                    //eventL = Heimdall.methods.createLoadedEvent(oLAY_LIST_Stocks, null);
                     //spread the word of our master and lord Cthulhu
                     oLAY_LIST_Stocks.members.oDiv.dispatchEvent(eventL);
+                    
+                    console.log("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
                 }                
 
 				// if(e.detail.oObject.getName() == oLAY_LIST_Stocks.LIST_Infos.getName()){
 				// 	//remove handler, cause we are no bad boys :)
 				//     window.removeEventListener(Heimdall.Events.loaded, oLAY_LIST_Stocks.subComponentLoaded);
 				// 	//spread the message : No Mercy For the Rebels Troup StormTroopers !!!
-				// 	oLAY_LIST_Stocks.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_LIST_Stocks, null));
+				// 	oLAY_LIST_Stocks.members.oDiv.dispatchEvent( Heimdall.methods.createStockLoadedEvent(oLAY_LIST_Stocks, null));
+				// 	//oLAY_LIST_Stocks.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_LIST_Stocks, null));
 				// }
 			}
 		}

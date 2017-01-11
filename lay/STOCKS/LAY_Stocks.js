@@ -242,8 +242,10 @@ function LAY_Stocks(){
 			//a div ?
 			if(oLAY_Stocks.getParent().members.oDiv != null){
 				//add the event listener
-				oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Stocks.getParent().subComponentStockLoaded);
+				oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded_Stock,oLAY_Stocks.getParent().subComponentStockLoaded);
 				//oLAY_Stocks.members.oDiv.addEventListener(Heimdall.Events.loaded,oLAY_Stocks.getParent().subComponentLoaded);
+				
+				console.log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
 			}
 		}
 
@@ -263,7 +265,7 @@ function LAY_Stocks(){
 
         if(oDivOwner == null)
             return false;
-        
+
         //the inner HTML add
         oDivOwner.innerHTML += oLAY_Stocks.generateHTML();
 
@@ -443,7 +445,11 @@ function LAY_Stocks(){
 					//remove handler, cause we are no bad boys :)
 					oLAY_Stocks.LAY_Mouvements.members.oDiv.removeEventListener(Heimdall.Events.loaded, oLAY_Stocks.subComponentLoaded);
 					//spread the message : No Mercy For the Rebels Troops StormTroopers !!!
-					oLAY_Stocks.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Stocks, null));
+					oLAY_Stocks.members.oDiv.dispatchEvent( Heimdall.methods.createStockLoadedEvent(oLAY_Stocks, null));
+					//oLAY_Stocks.members.oDiv.dispatchEvent( Heimdall.methods.createLoadedEvent(oLAY_Stocks, null));
+					console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+					console.log("#############" + oLAY_Stocks.members.oDiv.id);
+					//console.log("#############" + oLAY_Stocks.members.oDiv.Name);
 				}
 			}
 		}
