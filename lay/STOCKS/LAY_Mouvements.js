@@ -373,10 +373,11 @@ function LAY_Mouvements(){
 
 		oElement = document.getElementById("SAI_Quantite_Mouvements_" + oLAY_Mouvements.getId());
 		if(oElement != null){
-			oElement.value = oLAY_Mouvements.members.oObj.setQuantite();
+			oElement.value = parseInt(oLAY_Mouvements.members.oObj.getQuantite());
+			//oElement.value = oLAY_Mouvements.members.oObj.getQuantite();
 		}
 
-		oElement = document.getElementById("SAI_Motifs_Mouvements_" + oLAY_Mouvements.getId());
+		oElement = document.getElementById("SAI_Motif_Mouvements_" + oLAY_Mouvements.getId());
 		if(oElement != null){
 			oElement.value = oLAY_Mouvements.members.oObj.getMotif();
 		}
@@ -414,7 +415,7 @@ function LAY_Mouvements(){
 			oLAY_Mouvements.members.oObj.setQuantite(parseInt(oElement.value));
 		}
 
-		oElement = document.getElementById("SAI_Motifs_Mouvements_" + oLAY_Mouvements.getId());
+		oElement = document.getElementById("SAI_Motif_Mouvements_" + oLAY_Mouvements.getId());
 		if(oElement != null){
 			oLAY_Mouvements.members.oObj.setMotif(oElement.value);
 		}

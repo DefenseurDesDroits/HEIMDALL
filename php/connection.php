@@ -2,7 +2,7 @@
 
 //Module : Common
 //Created by : Ludowic "MagnusMoi" EMMANUEL
-//Filename : Noeuds.php
+//Filename : connection.php
 //Description : Connection file
 
 //Connection 

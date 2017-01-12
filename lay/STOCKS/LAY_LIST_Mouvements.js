@@ -385,10 +385,14 @@ function LAY_LIST_Mouvements(){
         //Loop
         while(nLine < nCount){
             //
+            console.log("LAY_LIST_Mouvements : ObjToView " + nLine + "/" + nCount);
+            //
             oLAY_LIST_Mouvements.ary_LAY_Mouvements[nLine].ObjToView();
             //Next
             nLine++;
         }
+
+        console.log("LAY_LIST_Mouvements : ObjToView " + nLine + "/" + nCount);
 
 		return true;
 	};

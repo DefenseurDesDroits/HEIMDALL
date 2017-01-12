@@ -1,0 +1,12 @@
+{
+	"connection" : {
+		"address" : "127.0.0.1",
+		"database" : "Database Name",
+		"user" : "Jane Shepard",
+		"password" : "pwd"
+	},
+	"sources" : [
+		"default"
+	],
+	"logs" : "/LOGS"
+}

@@ -405,14 +405,17 @@ class Mouvements extends Items{
 		$Query .= parent::getUpdateQuery() . ";\r\n" . "UPDATE " . "xxx.Mouvements" . "\r\n" ;
 		//build the set
 		$Query .= "SET " . "\r\n" ;
-		$Query .=  "Id_Mouvements  = " . Quotes($this->getId_Mouvements());
-		$Query .= ", " .  "Effectif  = " . Quotes($this->getEffectif());
+		//$Query .=  "Id_Mouvements  = " . Quotes($this->getId_Mouvements());
+		$Query .= "Effectif  = " . Quotes($this->getEffectif());
+		//$Query .= ", " .  "Effectif  = " . Quotes($this->getEffectif());
 		$Query .= ", " .  "Id_Stocks  = " . Quotes($this->getId_Stocks());
 		$Query .= ", " .  "Quantite  = " . Quotes($this->getQuantite());
 		$Query .= ", " .  "Motif  = " . Quotes($this->getMotif());
 		$Query .= ", " .  "Clef_Operation  = " . Quotes($this->getClef_Operation());
+		$Query .= ", " .  "Id_Contacts = " . Quotes($this->getId_Contacts());
 		//build the condition
-		$Query .= "WHERE Id_Contacts = " . Quotes($this->getId_Contacts());
+		$Query .= "WHERE Id_Mouvements = " . Quotes($this->getId_Mouvements());
+		//$Query .= "WHERE Id_Contacts = " . Quotes($this->getId_Contacts());
 		//Return the query !!!
 		return $Query;
 	}
@@ -453,12 +456,14 @@ class Mouvements extends Items{
 		//Our query
 		$sQuery = "";
 		//Our ID
-		$nId = $this->getId_Contacts();
+		$nId = $this->getId_Mouvements();
+		//Call the parent method
+		parent::save($oAgent);
 		//Get the query !!!
 		if($nId == 0)
 		{
 			//Call the parent method
-			parent::save($oAgent);
+			//parent::save($oAgent);
 			$sQuery = Mouvements::getInsertQuery();
 		}
 		else
