@@ -34,6 +34,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Connection of the project
+connection.php
+
 # Windows
 # =========================
 
