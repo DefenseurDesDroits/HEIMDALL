@@ -12,8 +12,8 @@ include_once("queryTools.php");
 include_once("STOCKS_Mouvements.php");
 
 //Debug const
-//CONST HEIMDALL_LINK_Debug = false;
-CONST HEIMDALL_LINK_Debug = true;
+CONST HEIMDALL_LINK_Debug = false;
+//CONST HEIMDALL_LINK_Debug = true;
 
 ///[FUNCTION][InfosgetAllInstance]Function to get all the instance with : a contact info
 ///[PARAMETER][integer][$nId_Mouvements]the id contact infos we want to
@@ -51,6 +51,8 @@ function InfosgetAllInstanceWith($nId_Contact, $userId = 0){
         file_put_contents(dirname(__FILE__) . "/../logs/LINKManager@InfosgetAllInstanceWith.log", "\r\n\r\n[New Call]\r\n" . $sQuery);
         //file_put_contents(dirname(__FILE__) . "/../logs/LINKManager@InfosgetAllInstanceWith.log", "\r\n\r\n[New Call]\r\n" . $sQuery,  FILE_APPEND );
 	
+	$sQuery .= "\r\n" . "ORDER BY xxx.mouvements.effectif DESC";
+
 	//Open the query
 	$GLOBALS["oConnection"]->open();
 	//Get the array

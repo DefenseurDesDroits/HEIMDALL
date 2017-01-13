@@ -368,7 +368,8 @@ function LAY_Mouvements(){
 		oElement = document.getElementById("SAI_Date_Mouvements_" + oLAY_Mouvements.getId());
 		if(oElement != null){
 			console.log("SAI_Date_Mouvements " + oLAY_Mouvements.members.oObj.getEffectif());
-			oElement.value = oLAY_Mouvements.members.oObj.getEffectif();
+			oElement.value = oLAY_Mouvements.members.oObj.getEffectif().slice(0, 10);
+			//oElement.value = oLAY_Mouvements.members.oObj.getEffectif();
 		}
 
 		oElement = document.getElementById("SAI_Quantite_Mouvements_" + oLAY_Mouvements.getId());

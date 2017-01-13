@@ -56,6 +56,7 @@ class Mouvements extends Items{
 	public function getEffectif(){
 		//Return the member
 		return $this->members["dtEffectif"];
+		//return substr($this->members["dtEffectif"], 0, 10);
 	}
 
 	///[METHOD][getId_Stocks]Method to get the Id_Stocks
@@ -375,8 +376,8 @@ class Mouvements extends Items{
 		$sValues = "";
 		
 		$sValues .= Quotes( $this->getId_Mouvements());
-		$sValues .= ", " . Quotes( $this->getEffectif() . " 00:00:00");
-		//$sValues .= ", " . Quotes( $this->getEffectif());
+		//$sValues .= ", " . Quotes( $this->getEffectif() . " 00:00:00");
+		$sValues .= ", " . Quotes( $this->getEffectif());
 		$sValues .= ", " . Quotes( $this->getId_Stocks());
 		$sValues .= ", " . Quotes( $this->getQuantite());
 		$sValues .= ", " . Quotes( $this->getMotif());
