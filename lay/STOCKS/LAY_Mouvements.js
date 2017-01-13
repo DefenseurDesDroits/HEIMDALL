@@ -129,6 +129,13 @@ function LAY_Mouvements(){
 	};
 	this.myLAY_Mouvements.getParent = this.getParent;
 
+	///[METHOD]Method to get our volume object
+	///[RETURNS]integer, Quantum of the transaction !
+	this.getVolume = function(){
+		return parseInt(oLAY_Mouvements.members.oObj.getQuantite());
+	};
+	this.myLAY_Mouvements.getVolume = this.getVolume;
+
 	///[SECTION]Setters###############################################
 	
 	///[METHOD]Method to get our control Name

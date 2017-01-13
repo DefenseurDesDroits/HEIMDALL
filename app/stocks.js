@@ -19,7 +19,7 @@ var WIN_Stocks = null;
 
 Heimdall_Stocks = {
     menus : [
-        {id : "OPT_Stocks_Locations", onclick : "stockMenu_Locations_CLICK();", text : "Locations"},
+        {id : "OPT_Stocks_Locations", onclick : "stockMenu_Locations_CLICK();", text : "Emplacements"},
         {id : "OPT_Stocks_Stocks", onclick : "stockMenu_Stocks_CLICK();", text : "Stocks"}
     ],
     menuClassUpdate : function(sId){

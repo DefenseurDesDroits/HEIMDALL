@@ -32,11 +32,10 @@ Heimdall_Contacts = {
     menus : [
         {id : "OPT_Contacts_General", onclick : "contactMenuCLICK();", text : "Général"},
         {id : "OPT_Contacts_Contacts", onclick : "contactMenu_contacts_CLICK();", text : "Contacts"},
-        {id : "OPT_Contacts_Users", onclick : "contactMenu_users_CLICK();", text : "Users"},
+        {id : "OPT_Contacts_Users", onclick : "contactMenu_users_CLICK();", text : "Utilisateurs"},
         {id : "OPT_Contacts_Organisations", onclick : "contactMenu_organisations_CLICK();", text : "Organisations"},
         {id : "OPT_Contacts_Groups", onclick : "contactMenu_groups_CLICK();", text : "Groupes"},
         {id : "OPT_Contacts_Query", onclick : "contactMenu_query_CLICK();", text : "Requêtes"},
-        //{id : "OPT_Contacts_Query", onclick : "notDevYet();", text : "Requêtes"},
         {id : "OPT_Contacts_Segments", onclick : "contactMenu_segments_CLICK();", text : "Segments"}
     ],
     menuClassUpdate : function(sId){

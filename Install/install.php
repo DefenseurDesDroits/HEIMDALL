@@ -6,6 +6,10 @@
 //Filename : install.php
 //Description : Install file !
 
+//CONST PART############################################
+
+include_once("install_consts.php");
+
 function createConnection($sIp, $sDtb, $sUsr, $sPwd){
 	
 	//our files 
@@ -153,8 +157,10 @@ function createCivilites($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Civilites"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Civilites();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
-			$oItem->setAbr($oCSV->getCell(1, $nLine, ""));
+            $oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_CIVILITES_NAME, $nLine, ""));
+			$oItem->setAbr($oCSV->getCellFromName(INSTALL_CONTACTS_CIVILITES_ABR, $nLine, ""));
+			// $oItem->setNom($oCSV->getCell(0, $nLine, ""));
+			// $oItem->setAbr($oCSV->getCell(1, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -238,7 +244,8 @@ function createOrganisation_Types($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Organisation_Types"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Organisation_Types();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_ORGANISATION_TYPES_NAME, $nLine, ""));
+			//$oItem->setNom($oCSV->getCell(0, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -294,7 +301,8 @@ function createLangues($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Langues"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Langues();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_LANGUE_NAME, $nLine, ""));
+			//$oItem->setNom($oCSV->getCell(0, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -350,10 +358,14 @@ function createPays($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Pays"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Pays();
-			$oItem->setCode($oCSV->getCell(0, $nLine, ""));
-			$oItem->setAlpha2($oCSV->getCell(1, $nLine, ""));
-			$oItem->setAlpha3($oCSV->getCell(2, $nLine, ""));
-			$oItem->setNom($oCSV->getCell(3, $nLine, ""));
+			$oItem->setCode($oCSV->getCellFromName(INSTALL_CONTACTS_COUNTRY_CODE, $nLine, ""));
+			$oItem->setAlpha2($oCSV->getCellFromName(INSTALL_CONTACTS_COUNTRY_ALPHA2, $nLine, ""));
+			$oItem->setAlpha3($oCSV->getCellFromName(INSTALL_CONTACTS_COUNTRY_ALPHA3, $nLine, ""));
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_COUNTRY_NAME, $nLine, ""));
+            // $oItem->setCode($oCSV->getCell(0, $nLine, ""));
+			// $oItem->setAlpha2($oCSV->getCell(1, $nLine, ""));
+			// $oItem->setAlpha3($oCSV->getCell(2, $nLine, ""));
+			// $oItem->setNom($oCSV->getCell(3, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -409,8 +421,10 @@ function createTitres($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Titres"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Titres();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
-			$oItem->setRang($oCSV->getCell(1, $nLine, ""));
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_TITRES_NAME, $nLine, ""));
+			$oItem->setRang($oCSV->getCellFromName(INSTALL_CONTACTS_TITRES_RANK, $nLine, ""));
+            // $oItem->setNom($oCSV->getCell(0, $nLine, ""));
+			// $oItem->setRang($oCSV->getCell(1, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -445,7 +459,7 @@ function createContacts($Dir, $oDeus){
     $nCell = 0;
 	
 	//our filename
-	$sCSV = $Dir . "/" . "CONTACTS_Titres.csv";
+	$sCSV = $Dir . "/" . "CONTACTS_Contacts.csv";
 	//our query 
 	$sQuery = "";
 	
@@ -463,24 +477,23 @@ function createContacts($Dir, $oDeus){
     //columns
     $nSize = $oCSV->getColumnCount();
 
-    echo("<br/>" . "CONTACTS_Titres : Nombre de colonnes : " . $nSize . "| Nombre de lignes : " . $nCount ) ;
+    echo("<br/>" . "CONTACTS_Contacts : Nombre de colonnes : " . $nSize . "| Nombre de lignes : " . $nCount ) ;
 	
 	while($nLine < $nCount){
 		//not already in ?
-		if(findInPotoursObjArray($oDeus["Contacts"]["Titres"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
+		if(findInPotoursObjArray($oDeus["Contacts"]["Contacts"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
-			$oItem = new Titres();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
-			$oItem->setRang($oCSV->getCell(1, $nLine, ""));
+			$oItem = new Contacts();
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_TITRES_NAME, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
 			
 			//yes i love living with risk !!!
-			$oItem->setId_Titres(count($oDeus["Contacts"]["Titres"]) + 1);
+			$oItem->setId_Contacts(count($oDeus["Contacts"]["Contacts"]) + 1);
 			
 			//push it in the sac !!!
-			array_push($oDeus["Contacts"]["Titres"], $oItem);
+			array_push($oDeus["Contacts"]["Contacts"], $oItem);
 		}
 		//Next
 		$nLine++;
