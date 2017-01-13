@@ -6,8 +6,6 @@
 
 /// <reference path="contacts.js" />
 
-
-
 Heimdall_Produits = {
     menus : [
         {id : "OPT_PRODUCT_Contacts", onclick : "notDevYet();", text : "Nah"},
@@ -77,7 +75,11 @@ Heimdall_Produits = {
 var Heimdall = {
     Events : {
         //Our event to says : Hi load complete !!!!
-        loaded : "Heimdall_Data_Loaded"
+        loaded : "Heimdall_Data_Loaded",
+        //
+        loaded_Stock : "Heimdall_Stock_Data_Loaded",
+        //
+        loaded_Mouvements : "Heimdall_Mouvements_Data_Loaded"
     },
     flags :  {
         waitData : true,
@@ -91,6 +93,10 @@ var Heimdall = {
             },
             publications : {
                 generateMenuCode : Heimdall_Publications.generateMenuCode
+            }
+            ,
+            stocks : {
+                generateMenuCode : Heimdall_Stocks.generateMenuCode
             }
         },
         user : {},
@@ -191,6 +197,7 @@ var Heimdall = {
                     //init the contact
                     init_contacts();
                     init_publications();
+                    init_stocks();
                     //create the product
                     if(location.hash == ""){
                         console.log("Nope !!!");
@@ -430,6 +437,12 @@ var Heimdall = {
         },
         createLoadedEvent : function(oThrower, oArg){
             return Heimdall.methods.createEvent(Heimdall.Events.loaded, oThrower, oArg);
+        },
+        createStockLoadedEvent : function(oThrower, oArg){
+            return Heimdall.methods.createEvent(Heimdall.Events.loaded_Stock, oThrower, oArg);
+        },
+        createMouvementsLoadedEvent : function(oThrower, oArg){
+            return Heimdall.methods.createEvent(Heimdall.Events.loaded_Mouvements, oThrower, oArg);
         }
     },
     debug : {
@@ -507,7 +520,7 @@ function init_Produits(){
     }
 
     //
-	sCode += '<li id="OPT_PRODUCT_Stocks" class="OPT_ others">Stock</li>';
+	//sCode += '<li id="OPT_PRODUCT_Stocks" class="OPT_ others">Stock</li>';
 	sCode += '<li id="OPT_PRODUCT_Campagnes" class="OPT_ others">Campagnes</li>';
 	sCode += '<!--<li class="OPT_ others">Recherche</li> -->';
 

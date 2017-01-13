@@ -1,23 +1,62 @@
 /*
-* FIle to init and manage the publications products sub menu
+* FIle to init and manage the stocks products sub menu
 *
 *
 */
 
-const HEIMDALL_NUMBER_OF_PUBLICATIONS_MAX = 10;
+const HEIMDALL_NUMBER_OF_LOCATIONS_MAX = 10;
 
-var bExtensionStock = false;
+function stocks_locationsMember(oLocation){
 
-///[FUNCTION][publications_publications_KeySearch]Function to manage the enter on the SAI_ Search field
+    //our iterrator
+    var nLine = 0;
+    //our count
+    var nCount = 0;
+
+    //our aray of members
+    var ary_ = null;
+
+    //our Id list returned
+    var sCode = "";
+
+    try {
+        ary_ = JSON.parse(oLocation.getUGrp_Json());
+    } catch (error) {
+        console.log("stocks_locationsMember error " + error);
+        return sCode;
+    }
+
+    //our count
+    nCount = ary_.length;
+    //our first element folks !
+    if(nLine < nCount){
+        //add it !!!
+        sCode += ary_[nLine].uid;
+        //next
+        nLine++;
+    }
+    //our loop
+    while(nLine < nCount){
+        //add it !!!
+        sCode += ", " + ary_[nLine].uid;
+        //next
+        nLine++;
+    }
+    
+    //return the code
+    return sCode;
+}
+
+///[FUNCTION][stocks_locations_KeySearch]Function to manage the enter on the SAI_ Search field
 ///[PARAMETER][Event][event]Next field name
-function publications_publications_KeySearch(event){
+function stocks_locations_KeySearch(event){
     //ths SAI Value
     var sValue = "";
     //our element 
     var oElement = null;
 
     if(event.keyCode == 13)
-        publications_publicationsDoQuery();
+        stocks_locationsDoQuery();
 
     oElement = document.getElementById("SAI_search_Query");
 
@@ -25,16 +64,16 @@ function publications_publications_KeySearch(event){
         sValue = oElement.value;
 
         if(sValue.length > HEIMDALL_AUTO_QUERY_SIZE)
-            publications_publicationsDoQuery();
+            stocks_locationsDoQuery();
     }
 }
 
-///[FUNCTION][publications_publicationsDoQueryComplete]Function to manage the research for every case
+///[FUNCTION][stocks_locationsDoQueryComplete]Function to manage the research for every case
 ///[PARAMETER][String][sIdWaiting]our id to plots the query work
 ///[PARAMETER][Pointer][ptrFunctionCreateArg]Function to create the argument of query (no parameter)
 ///[PARAMETER][Pointer][ptrFunctionResponse]Function to analyse the responseText (one parameter string)
 ///[RETURNS][Boolean]True if done
-function publications_publicationsDoQueryComplete(sIdWaiting, ptrFunctionCreateArg, ptrFunctionResponse){
+function stocks_locationsDoQueryComplete(sIdWaiting, ptrFunctionCreateArg, ptrFunctionResponse){
     //get the content layout
     var oElement = document.getElementById(sIdWaiting);
 
@@ -57,17 +96,17 @@ function publications_publicationsDoQueryComplete(sIdWaiting, ptrFunctionCreateA
 
     //prepare the query*********************
     //check the open
-    oReq.open("POST", "php/queryManager_Publications.php", true);
+    oReq.open("POST", "php/queryManager_Locations.php", true);
     //set the request header
     oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-    oReq.send("Id=" +Heimdall.members.user["UserId"] + "&Session=" + "" + "&Action=publications_publications&Args=" + JSON.stringify(ptrFunctionCreateArg())); 
+    oReq.send("Id=" +Heimdall.members.user["UserId"] + "&Session=" + "" + "&Action=stocks_locations&Args=" + JSON.stringify(ptrFunctionCreateArg())); 
     //Return the job !
     return true;
 }
 
-///[FUNCTION][publications_publicationsCreateArgs]Function to plot line of publications
+///[FUNCTION][stocks_locationsCreateArgs]Function to plot line of stocks
 ///[RETURNS][Array of Arguments]Array of arguments
-function publications_publicationsCreateArgs(){
+function stocks_locationsCreateArgs(){
 
     //get the content layout
     var oElement = document.getElementById("SAI_search_Query");
@@ -87,7 +126,7 @@ function publications_publicationsCreateArgs(){
     var ary_Result = [];
 
     //the sai_ always here field
-    ary_Result.push({Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sNom"], Value : oElement.value});
+    ary_Result.push({Method : HEIMDALL_QUERY_METHOD_LIKE_StartsWith, Names : ["sNom", "sDescription"], Value : oElement.value});
 
     //find next number to add
     nCount = HEIMDALL_NUMBER_OF_FILTER_MAX;
@@ -116,10 +155,10 @@ function publications_publicationsCreateArgs(){
     return ary_Result;
 }
 
-///[FUNCTION][publications_publicationsCreateSelectionField]Function to plot line of publications
+///[FUNCTION][stocks_locationsCreateSelectionField]Function to plot line of stocks
 ///[PARAMETER][String][sNext]Next field name
 ///[RETURNS][Boolean]True if done
-function publications_publicationsCreateSelectionField(sNext){
+function stocks_locationsCreateSelectionField(sNext){
     //our code
     var sCode = "";
 
@@ -127,24 +166,25 @@ function publications_publicationsCreateSelectionField(sNext){
     sCode += "<div id=\"" + sNext + "\" class=\"" + HEIMDALL_LAY_QUERY_Filter +"\">" + "\r\n";
     
     sCode += "\t" + "<button id=\"BTN_DEL_" + sNext + "\" class=\"BTN_ heim_Inline_Block\" type=\"button\" onclick=\"deleteSelectionField('" + sNext + "')\">-</button>" + "\r\n";
-    sCode += "\t" + "<select id=\"COMBO_Column_" + sNext + "\" onkeyup=\"publicationsKeySearch(event)\">" + "\r\n";
+    sCode += "\t" + "<select id=\"COMBO_Column_" + sNext + "\" onkeyup=\"stocksKeySearch(event)\">" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"sNom\">Nom</option>" + "\r\n";
+    //sCode += "\t" + "\t" +"<option value=\"sDescription\">Description</option>" + "\r\n";
     sCode += "\t" + "</select>" + "\r\n";
-    sCode += "\t" + "<select id=\"COMBO_COND_" + sNext + "\" onkeyup=\"publicationsKeySearch(event)\">" + "\r\n";
+    sCode += "\t" + "<select id=\"COMBO_COND_" + sNext + "\" onkeyup=\"stocksKeySearch(event)\">" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_StartsWith + "\">Commence Par</option>" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_EndsWith +"\">Termine Par</option>" + "\r\n";
     sCode += "\t" + "\t" +"<option value=\"" + HEIMDALL_QUERY_METHOD_LIKE_Contains +"\">Contient</option>" + "\r\n";
     sCode += "\t" + "</select>" + "\r\n";
-    sCode += "\t" + '<input id="SAI_Value_' + sNext + '" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="publications_publications_KeySearch(event)"/>';
+    sCode += "\t" + '<input id="SAI_Value_' + sNext + '" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="stocks_locations_KeySearch(event)"/>';
     
     sCode += "</div>";
 
     return sCode;
 }
 
-///[FUNCTION][publications_publicationsAddSelectionField]Function to plot line of publications
+///[FUNCTION][stocks_locationsAddSelectionField]Function to plot line of stocks
 ///[RETURNS][Boolean]True if done
-function publications_publicationsAddSelectionField(){
+function stocks_locationsAddSelectionField(){
 
     //get container element 
     var oElement = document.getElementById("LAY_Query_extended");
@@ -179,21 +219,21 @@ function publications_publicationsAddSelectionField(){
 
     oElement = document.getElementById(HEIMDALL_LAY_QUERY_Filter_Container + nLine);
     //Add it
-    oElement.innerHTML += publications_publicationsCreateSelectionField(sNext);
+    oElement.innerHTML += stocks_locationsCreateSelectionField(sNext);
 
     return true;
 }
 
-///[FUNCTION][publications_publicationsCreateSelectionField]Function to plot line of publications
+///[FUNCTION][stocks_locationsCreateSelectionField]Function to plot line of stocks
 ///[PARAMETER][Integer][nStart]The start point
-///[PARAMETER][Integer][nLength]The numbers of ploted publications
+///[PARAMETER][Integer][nLength]The numbers of ploted locations
 ///[RETURNS][Boolean]True if done
-function publications_publicationsPlots(nStart, nLength){
+function stocks_locationsPlots(nStart, nLength){
     //our element
     var oElement = null;
 
     //our user
-    var oPublications = null;
+    var oLocations = null;
 
     //our code
     var sCode = "";
@@ -204,7 +244,7 @@ function publications_publicationsPlots(nStart, nLength){
     var nLine = 0;
 
     //get the count
-    nCount = Heimdall.members.products.publications.Publications.length;
+    nCount = Heimdall.members.products.stocks.Locations.length;
     //
     if(nStart + nLength < nCount)
         nCount = nStart + nLength;
@@ -219,20 +259,20 @@ function publications_publicationsPlots(nStart, nLength){
         //our loop
         while(nLine < nCount){
             //get the user
-            oPublications = Heimdall.members.products.publications.Publications[nLine];
+            oLocations = Heimdall.members.products.stocks.Locations[nLine];
             //add the code
-            sCode += "<div id=\"Publication_Line_" + oPublications.getId_Publications() + "\" onclick=\"publications_publicationsClick(" + nLine + ")\" class=\"OPT_Publications\">" + oPublications.getNom() + "</div>";
+            sCode += "<div id=\"Locations_Line_" + oLocations.getId_Locations() + "\" onclick=\"stocks_locationsClick(" + nLine + ")\" class=\"OPT_Locations\">" + oLocations.getNom() + "</div>";
             //Next
             nLine++;
         }
         //BTN_ for the previous
         if(nStart >= nLength){
-            nStart -= HEIMDALL_NUMBER_OF_PUBLICATIONS_MAX;
-            sCode += "<div id=\"BTN_Previous_Publications\" onclick=\"publications_publicationsPlots(" + nStart + ", " + nLength + ")\">Afficher les " + nLength + " précédents</div>";
+            nStart -= HEIMDALL_NUMBER_OF_LOCATIONS_MAX;
+            sCode += "<div id=\"BTN_Previous_Locations\" onclick=\"stocks_locationsPlots(" + nStart + ", " + nLength + ")\">Afficher les " + nLength + " précédents</div>";
         }
         //BTN_ for the next ten
-        if(nCount < Heimdall.members.products.publications.Publications.length)
-            sCode += "<div id=\"BTN_Next_Publications\" onclick=\"publications_publicationsPlots(" + nCount + ", " + nLength + ")\">Afficher les " + nLength + " suivants</div>";
+        if(nCount < Heimdall.members.products.stocks.Locations.length)
+            sCode += "<div id=\"BTN_Next_Locations\" onclick=\"stocks_locationsPlots(" + nCount + ", " + nLength + ")\">Afficher les " + nLength + " suivants</div>";
 
         //add tho the element
         oElement.innerHTML = sCode;
@@ -242,62 +282,39 @@ function publications_publicationsPlots(nStart, nLength){
     return true;
 }
 
-///[FUNCTION][publications_publicationsLoadedHandle]Function to load 
-///[PARAMETER][Event][e]The event
-function publications_publicationsLoadedHandle(e){
-    //get the Lay who throw it ]:)
-    var LAY_ = e.detail.oObject;
-
-    //security
-    if(LAY_ != null){
-        //plot !
-        LAY_.ObjToView();
-        //remove the eventlistener
-        LAY_.members.oDiv.removeEventListener(Heimdall.Events.loaded, publications_publicationsLoadedHandle);
-        //
-        console.log("publications_publicationsLoadedHandle");
-    }
-}
-
-///[FUNCTION][publications_publicationsClick]Function to manage the click on the user menu
+///[FUNCTION][stocks_locationsClick]Function to manage the click on the user menu
 ///[PARAMETER][Integer][nLine]The line of the user 
-function publications_publicationsClick(nLine){
-    //our publications layout
-    var LAY_ = new LAY_Publications();
-    //our publications
-    var oPublications = null;
+function stocks_locationsClick(nLine){
+    //our locations layout
+    var LAY_ = new LAY_Locations();
+    //our stocks
+    var oLocations = null;
     //our element
     var oElement = null;
-
-    //set the stock option
-    LAY_.setStockShowed(bExtensionStock);
 
     //not negative
     if(nLine >= 0){
         //in the range ?
-        if(nLine < Heimdall.members.products.publications.Publications.length){
+        if(nLine < Heimdall.members.products.stocks.Locations.length){
             //get the PNL_
             oElement = document.getElementById("PNL_Win");
             //clean the element
             oElement.innerHTML = "";
-            //get the publications
-            oPublications = Heimdall.members.products.publications.Publications[nLine];
+            //get the stocks
+            oLocations = Heimdall.members.products.stocks.Locations[nLine];
             //init
-            LAY_.init("PNL_Win", "Publications" +  oPublications.getId_Publications(), oPublications);
-            console.log("Is that Loaded : " + oPublications.exportToJson());
-            //When it's load, plots !!!
-            LAY_.members.oDiv.addEventListener(Heimdall.Events.loaded, publications_publicationsLoadedHandle);
+            LAY_.init("PNL_Win", "Locations" +  oLocations.getId_Locations(), oLocations);
             //plots
-            //LAY_.ObjToView();
+            LAY_.ObjToView();
         }
     }
 }
 
-///[FUNCTION][publications_publicationsDoQueryResponse]Function to manage the research response from the server
+///[FUNCTION][stocks_locationsDoQueryResponse]Function to manage the research response from the server
 ///[PARAMETER][String][sText]our response text to parse as Json
-function publications_publicationsDoQueryResponse(sText){
-    //the publications
-    var oPublications = null;
+function stocks_locationsDoQueryResponse(sText){
+    //the locations
+    var oLocations = null;
 
     //our count
     var nCount = 0;
@@ -310,33 +327,33 @@ function publications_publicationsDoQueryResponse(sText){
     //get the array
     ary_ = JSON.parse(sText);
 
-    //restart the array of publications
-    Heimdall.members.products.publications.Publications = [];
+    //restart the array of locations
+    Heimdall.members.products.stocks.Locations = [];
 
     //get the count 
     nCount = ary_.length;
     //start the loop
     while(nLine < nCount){
         //our user
-        oPublications = new Publications();
+        oLocations = new Locations();
         //load
-        oPublications.loadFromArray(ary_[nLine]);
+        oLocations.loadFromArray(ary_[nLine]);
         //push to the global array
-        Heimdall.members.products.publications.Publications.push(oPublications);
+        Heimdall.members.products.stocks.Locations.push(oLocations);
         //Next
         nLine++;
     }
 
     //Plots !
-    return publications_publicationsPlots(0, HEIMDALL_NUMBER_OF_PUBLICATIONS_MAX);
+    return stocks_locationsPlots(0, HEIMDALL_NUMBER_OF_LOCATIONS_MAX);
 }
 
-///[FUNCTION][publications_publicationsDoQuery]Function to exceute the research
-function publications_publicationsDoQuery(){
+///[FUNCTION][stocks_locationsDoQuery]Function to exceute the research
+function stocks_locationsDoQuery(){
     //our element
     var oElement = null;
     //call the generique function
-    publications_publicationsDoQueryComplete("LAY_List_User", publications_publicationsCreateArgs, publications_publicationsDoQueryResponse);
+    stocks_locationsDoQueryComplete("LAY_List_User", stocks_locationsCreateArgs, stocks_locationsDoQueryResponse);
     //get the PNL_
     oElement = document.getElementById("PNL_Win");
     //clear the layout
@@ -346,9 +363,8 @@ function publications_publicationsDoQuery(){
     return true;
 }
 
-///[FUNCTION][publicationsMenu_publications_CLICK]Function to generate the HTML of the sub-menu
-function publicationsMenu_publications_HTML(sTitle = "Publications", bStocks = false){
-//function publicationsMenu_publications_HTML(){
+///[FUNCTION][stocksMenu_locations_CLICK]Function to generate the HTML of the sub-menu
+function stocksMenu_locations_HTML(){
     //our code
     var sCode = "";
 
@@ -357,18 +373,15 @@ function publicationsMenu_publications_HTML(sTitle = "Publications", bStocks = f
     //our iterator
     var nLine = 0;
 
-    bExtensionStock = bStocks;
-
     //build da code !!!
     sCode += '<div id="PNL_Research" class="PNL_ heim_Inline_Block">\r\n';
 
-    sCode += '\t<div id="LAY_Title" class="LAY_ heim_Block"><h1>' + sTitle + '</h1></div>\r\n';
-    //sCode += '\t<div id="LAY_Title" class="LAY_ heim_Block"><h1>Publications</h1></div>\r\n';
+    sCode += '\t<div id="LAY_Title" class="LAY_ heim_Block"><h1>Locations</h1></div>\r\n';
     sCode += '<br/>\r\n';
     sCode += '\t<div id="LAY_Query" class="LAY_ heim_Right heim_Block">';
 
-    sCode += '\t\t<input id="SAI_search_Query" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="publications_publications_KeySearch(event)"/>';
-    sCode += '\t\t<button id="BTN_Search_Query" class="BTN_" type="button" onclick="publications_publicationsDoQuery()">Q</button>';
+    sCode += '\t\t<input id="SAI_search_Query" class="SAI_" type="text" name="SAI_search_Query" value="" onkeyup="stocks_locations_KeySearch(event)"/>';
+    sCode += '\t\t<button id="BTN_Search_Query" class="BTN_" type="button" onclick="stocks_locationsDoQuery()">Q</button>';
     
     sCode += '\t</div>\r\n';
     sCode += '<br/>\r\n';
@@ -384,7 +397,8 @@ function publicationsMenu_publications_HTML(sTitle = "Publications", bStocks = f
         nLine++;
     }
 
-    sCode += '\t<button id="BTN_Add_Query_Condition" class="BTN_" type="button" onclick="publications_publicationsAddSelectionField()">+</button>';
+    //sCode += '\t<button id="BTN_Add_Query_Condition" class="BTN_" type="button" onclick="notDevYet()">+</button>';
+    sCode += '\t<button id="BTN_Add_Query_Condition" class="BTN_" type="button" onclick="stocks_locationsAddSelectionField()">+</button>';
 
     sCode += '\t</div>\r\n';
     
@@ -397,14 +411,14 @@ function publicationsMenu_publications_HTML(sTitle = "Publications", bStocks = f
     return sCode;
 }
 
-///[FUNCTION][publicationsMenu_publications_CLICK]Function to manage the click on the sub-menu
-function publicationsMenu_publications_CLICK(){
+///[FUNCTION][stocksMenu_locations_CLICK]Function to manage the click on the sub-menu
+function stocksMenu_locations_CLICK(){
     //get the content layout
     var oElement = document.getElementById("LAY_Content");
 
-    oElement.innerHTML = publicationsMenu_publications_HTML();
+    oElement.innerHTML = stocksMenu_locations_HTML();
 
-    Heimdall_Publications.menuClassUpdate("OPT_Publications_Publications");
+    Heimdall_Publications.menuClassUpdate("OPT_Publications_Locations");
 
     return true;
 }
