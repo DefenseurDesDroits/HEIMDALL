@@ -762,12 +762,242 @@ function createPackage($Dir, $oDeus){
 	return $oDeus;
 }
 
+function loadContact_Types($oDeus){
+
+	//Our object declaration
+	$oItem = new Contact_Types();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Titres();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Contact_Types"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadPays($oDeus){
+
+	//Our object declaration
+	$oItem = new Pays();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Pays();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Pays"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadOrganisation_Types($oDeus){
+
+	//Our object declaration
+	$oItem = new Organisation_Types();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Organisation_Types();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Organisation_Types"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadLangues($oDeus){
+
+	//Our object declaration
+	$oItem = new Langues();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Langues();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Langues"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadContacts($oDeus){
+
+	//Our object declaration
+	$oItem = new Contacts();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Contacts();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Contacts"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
 function loadTitres($oDeus){
 
 	//Our object declaration
 	$oItem = new Titres();
 	//Our select query
-	$sQuery = "SELECT DISTINCT " . $oTitres->getColumns() . "\r\n" . "FROM " . $oTitres->getTable() . "\r\n";
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
 	//Link Condition
 	$sLinks = $oItem->getLinkConditions(true);
 	//The array we get
@@ -810,6 +1040,16 @@ function loadTitres($oDeus){
 
 function loadDeus($oDeus){
 
+	//get the types of contacts
+	$oDeus = loadContact_Types($oDeus);
+	//get the Countries
+	$oDeus = loadPays($oDeus);
+	//get the types of organisation
+	$oDeus = loadOrganisation_Types($oDeus);
+	//get the languages
+	$oDeus = loadLangues($oDeus);
+	//get the contacts
+	$oDeus = loadContacts($oDeus);
 	//get the titles
 	$oDeus = loadTitres($oDeus);
 
