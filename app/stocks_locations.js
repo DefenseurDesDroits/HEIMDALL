@@ -418,7 +418,7 @@ function stocksMenu_locations_CLICK(){
 
     oElement.innerHTML = stocksMenu_locations_HTML();
 
-    Heimdall_Publications.menuClassUpdate("OPT_Publications_Locations");
+    Heimdall_Stocks.menuClassUpdate("OPT_Stocks_Locations");
 
     return true;
 }

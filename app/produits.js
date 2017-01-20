@@ -204,6 +204,8 @@ var Heimdall = {
                         Heimdall_Contacts.onProductClick();
                     }
                     else{
+
+                        //Contacts
                         nCount = Heimdall_Contacts.menus.length;
                         nLine = 0;
                         while(nLine < nCount){
@@ -212,10 +214,45 @@ var Heimdall = {
                                 console.log("Nope !!!");
                                 Heimdall_Contacts.onProductClick();
                                 eval(Heimdall_Contacts.menus[nLine].onclick);
+
+                                nLine += nCount;
                             }
                             //Next 
                             nLine++;
                         }
+
+                        //Publications
+                        nCount = Heimdall_Publications.menus.length;
+                        nLine = 0;
+                        while(nLine < nCount){
+                            //if the menu exists
+                            if( "#" + Heimdall_Publications.menus[nLine].id == location.hash){
+                                console.log("Nope !!!");
+                                Heimdall_Publications.onProductClick();
+                                eval(Heimdall_Publications.menus[nLine].onclick);
+
+                                nLine += nCount;
+                            }
+                            //Next 
+                            nLine++;
+                        }
+
+                        //Stocks
+                        nCount = Heimdall_Stocks.menus.length;
+                        nLine = 0;
+                        while(nLine < nCount){
+                            //if the menu exists
+                            if( "#" + Heimdall_Stocks.menus[nLine].id == location.hash){
+                                console.log("Nope !!!");
+                                Heimdall_Stocks.onProductClick();
+                                eval(Heimdall_Stocks.menus[nLine].onclick);
+
+                                nLine += nCount;
+                            }
+                            //Next 
+                            nLine++;
+                        }
+
                     }
 
                     //get the response array

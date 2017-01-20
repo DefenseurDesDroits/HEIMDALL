@@ -216,6 +216,9 @@ function LAY_LIST_Mouvements(){
         //our 
 		sCode += "<div id=\"" + oLAY_LIST_Mouvements.getId() + "\">";
 		
+        //
+        sCode += "\t" + "<div id=\"LAY_Menu_Status_" + oLAY_LIST_Mouvements.getId() + "\"></div>" + "\r\n";
+
         //Menu
 		sCode += "\t" + "<div id=\"LAY_Menu_" + oLAY_LIST_Mouvements.getId() + "\">" + "\r\n";
         
@@ -380,17 +383,27 @@ function LAY_LIST_Mouvements(){
         //our iterator
         var nLine = 0;
 		
+        //our stock level
+        var nQuantite = 0;
+
         //get our count
         nCount = oLAY_LIST_Mouvements.ary_LAY_Mouvements.length;
         //Loop
         while(nLine < nCount){
-            //
+            //control
             console.log("LAY_LIST_Mouvements : ObjToView " + nLine + "/" + nCount);
-            //
+            //plots
             oLAY_LIST_Mouvements.ary_LAY_Mouvements[nLine].ObjToView();
+            //get the number
+            nQuantite += oLAY_LIST_Mouvements.ary_LAY_Mouvements[nLine].getVolume();
             //Next
             nLine++;
         }
+
+        oElement = document.getElementById("LAY_Menu_Status_" + oLAY_LIST_Mouvements.getId());
+		if(oElement != null){
+			oElement.innerHTML = "Volume restant : " + nQuantite;
+		}
 
         console.log("LAY_LIST_Mouvements : ObjToView " + nLine + "/" + nCount);
 

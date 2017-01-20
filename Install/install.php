@@ -6,6 +6,10 @@
 //Filename : install.php
 //Description : Install file !
 
+//CONST PART############################################
+
+include_once("install_consts.php");
+
 function createConnection($sIp, $sDtb, $sUsr, $sPwd){
 	
 	//our files 
@@ -153,8 +157,10 @@ function createCivilites($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Civilites"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Civilites();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
-			$oItem->setAbr($oCSV->getCell(1, $nLine, ""));
+            $oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_CIVILITES_NAME, $nLine, ""));
+			$oItem->setAbr($oCSV->getCellFromName(INSTALL_CONTACTS_CIVILITES_ABR, $nLine, ""));
+			// $oItem->setNom($oCSV->getCell(0, $nLine, ""));
+			// $oItem->setAbr($oCSV->getCell(1, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -238,7 +244,8 @@ function createOrganisation_Types($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Organisation_Types"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Organisation_Types();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_ORGANISATION_TYPES_NAME, $nLine, ""));
+			//$oItem->setNom($oCSV->getCell(0, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -294,7 +301,8 @@ function createLangues($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Langues"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Langues();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_LANGUE_NAME, $nLine, ""));
+			//$oItem->setNom($oCSV->getCell(0, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -350,10 +358,14 @@ function createPays($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Pays"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Pays();
-			$oItem->setCode($oCSV->getCell(0, $nLine, ""));
-			$oItem->setAlpha2($oCSV->getCell(1, $nLine, ""));
-			$oItem->setAlpha3($oCSV->getCell(2, $nLine, ""));
-			$oItem->setNom($oCSV->getCell(3, $nLine, ""));
+			$oItem->setCode($oCSV->getCellFromName(INSTALL_CONTACTS_COUNTRY_CODE, $nLine, ""));
+			$oItem->setAlpha2($oCSV->getCellFromName(INSTALL_CONTACTS_COUNTRY_ALPHA2, $nLine, ""));
+			$oItem->setAlpha3($oCSV->getCellFromName(INSTALL_CONTACTS_COUNTRY_ALPHA3, $nLine, ""));
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_COUNTRY_NAME, $nLine, ""));
+            // $oItem->setCode($oCSV->getCell(0, $nLine, ""));
+			// $oItem->setAlpha2($oCSV->getCell(1, $nLine, ""));
+			// $oItem->setAlpha3($oCSV->getCell(2, $nLine, ""));
+			// $oItem->setNom($oCSV->getCell(3, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -409,8 +421,10 @@ function createTitres($Dir, $oDeus){
 		if(findInPotoursObjArray($oDeus["Contacts"]["Titres"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
 			//if not fine !!!
 			$oItem = new Titres();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
-			$oItem->setRang($oCSV->getCell(1, $nLine, ""));
+			$oItem->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_TITRES_NAME, $nLine, ""));
+			$oItem->setRang($oCSV->getCellFromName(INSTALL_CONTACTS_TITRES_RANK, $nLine, ""));
+            // $oItem->setNom($oCSV->getCell(0, $nLine, ""));
+			// $oItem->setRang($oCSV->getCell(1, $nLine, ""));
 			
 			//save it !!!
 			$oItem->save(0);
@@ -443,14 +457,28 @@ function createContacts($Dir, $oDeus){
     $nSize = 0;
     //our iterrator for cells
     $nCell = 0;
+	//get the address index 
+	$nEMailIndex = 0;
+	//get the civilite Index
+	$nCiviliteIndex = 0;
+	//get the title Index
+	$nTitleIndex = 0;
 	
 	//our filename
-	$sCSV = $Dir . "/" . "CONTACTS_Titres.csv";
+	$sCSV = $Dir . "/" . "CONTACTS_Contacts.csv";
 	//our query 
 	$sQuery = "";
+	//our email 
+	$sEmail = "";
 	
 	//our Item 
 	$oItem = null;
+	//our contacts
+	$oContacts = null;
+	//our contact_info 
+	$oContact_Infos = null;
+	//our info 
+	$oInfos = null;
 	
 	//our CSV File
     $oCSV = new Potours_Data();
@@ -463,32 +491,114 @@ function createContacts($Dir, $oDeus){
     //columns
     $nSize = $oCSV->getColumnCount();
 
-    echo("<br/>" . "CONTACTS_Titres : Nombre de colonnes : " . $nSize . "| Nombre de lignes : " . $nCount ) ;
+    echo("<br/>" . "CONTACTS_Contacts : Nombre de colonnes : " . $nSize . "| Nombre de lignes : " . $nCount ) ;
 	
 	while($nLine < $nCount){
-		//not already in ?
-		if(findInPotoursObjArray($oDeus["Contacts"]["Titres"], "sNom", $oCSV->getCell(0, $nLine, "")) == -1){
-			//if not fine !!!
-			$oItem = new Titres();
-			$oItem->setNom($oCSV->getCell(0, $nLine, ""));
-			$oItem->setRang($oCSV->getCell(1, $nLine, ""));
-			
-			//save it !!!
-			$oItem->save(0);
-			
-			//yes i love living with risk !!!
-			$oItem->setId_Titres(count($oDeus["Contacts"]["Titres"]) + 1);
-			
-			//push it in the sac !!!
-			array_push($oDeus["Contacts"]["Titres"], $oItem);
+
+		//reset the index 
+		$nEMailIndex = -1;
+
+		//our email
+		$sEmail = $oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_EMAIL, $nLine, "");
+
+		//find the email address
+		if($sEmail != "")
+			$nEMailIndex = findInPotoursObjArray($oDeus["Contacts"]["Infos"], "sCourriel1", $sEmail);
+
+		if($nEMailIndex != -1){
+			//Find the people
 		}
+		else{
+			//create all !
+			$oContacts = new Contacts();
+
+			//items fields****************************************************
+			$oContacts->setId_Groups_json("");
+			$oContacts->setId_Accreditations_Item(1);
+			$oContacts->setId_Creator(0);
+			$oContacts->setId_users_json("");
+
+			//Contacts fields*************************************************
+			//Prenom
+			$oContacts->setPrenom($oCSV->getCellFromName(INSTALL_CONTACTS_CONTACTS_FIRSTNAME, $nLine, ""));
+			//Nom
+			$oContacts->setNom($oCSV->getCellFromName(INSTALL_CONTACTS_CONTACTS_NAME, $nLine, ""));
+			//our index for civilite
+			$nCiviliteIndex = findInPotoursObjArray($oDeus["Contacts"]["Civilites"], "sNom", $oCSV->getCellFromName(INSTALL_CONTACTS_CONTACTS_CIVILITY, $nLine, ""));
+			//
+			if($nCiviliteIndex == -1)
+				$nCiviliteIndex = 1;
+			//set the civilite
+			$oContacts->setId_Civilites( $oDeus["Contacts"]["Civilites"][$nCiviliteIndex]->getId_Civilites() );
+			//our Title 
+			$nTitleIndex = findInPotoursObjArray($oDeus["Contacts"]["Titres"], "sNom", $oCSV->getCellFromName(INSTALL_CONTACTS_CONTACTS_TITLE, $nLine, ""));
+			//
+			if($nTitleIndex == -1)
+				$nTitleIndex = 1;
+			//set the titles
+			$oContacts->setId_Titres( $oDeus["Contacts"]["Titres"][$nTitleIndex]->getId_Titres() );
+			//set the contact types 
+			$oContacts->setId_Contact_Types(1);
+
+			//save the contact 
+			$oContacts->save(0);
+			//Push It !!!
+			array_push($oDeus["Contacts"]["Contacts"], $oContacts);
+
+			//Info contacts***************************************************
+			
+			//allocation
+			$oContact_Infos = new Contact_Infos();
+			//set the contact !
+			$oContact_Infos->setId_Contacts($oContacts->getId_Contacts());
+			//set the languages (default)
+			$oContact_Infos->setId_Langues(1);
+			//set the function 
+			$oContact_Infos->setFonction($oCSV->getCellFromName(INSTALL_CONTACTS_CONTACT_INFOS_FUNCTION, $nLine, ""));
+
+			//save the contact info 
+			$oContact_Infos->save(0);
+			//Push It 
+			array_push($oDeus["Contacts"]["Contact_Infos"], $oContact_Infos);
+
+			//Info************************************************************
+			
+			//allocation
+			$oInfos = new Infos();
+
+			//our adr 1
+			$oInfos->setAdr1($oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_ADR1, $nLine, ""));
+			//our adr 2
+			$oInfos->setAdr2($oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_ADR2, $nLine, ""));
+			//our adr 3
+			$oInfos->setAdr3($oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_ADR3, $nLine, ""));
+			//our cp
+			$oInfos->setCP($oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_CP, $nLine, ""));
+			//our cedex
+			$oInfos->setCedex($oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_CEDEX, $nLine, ""));
+			//our city
+			$oInfos->setVille($oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_CITY, $nLine, ""));
+			//our phone
+			$oInfos->setTelephone1($oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_PHONE, $nLine, ""));
+			//our Email
+			$oInfos->setCourriel1($oCSV->getCellFromName(INSTALL_CONTACTS_ADDRESS_EMAIL, $nLine, ""));
+
+			//set the Contact_Infos
+			$oContact_Infos->setId_Contact_Infos($oContact_Infos->getId_Contact_Infos());
+
+			//save the info !
+			$oContact_Infos->save(0);
+			//Push It !
+			array_push($oDeus["Contacts"]["Infos"], $oInfos);
+
+		}
+
 		//Next
 		$nLine++;
 	}
 	
     return $oDeus;
 }
-
 
 function createGroups($Dir, $oDeus){
 
@@ -652,6 +762,301 @@ function createPackage($Dir, $oDeus){
 	return $oDeus;
 }
 
+function loadContact_Types($oDeus){
+
+	//Our object declaration
+	$oItem = new Contact_Types();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Titres();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Contact_Types"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadPays($oDeus){
+
+	//Our object declaration
+	$oItem = new Pays();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Pays();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Pays"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadOrganisation_Types($oDeus){
+
+	//Our object declaration
+	$oItem = new Organisation_Types();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Organisation_Types();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Organisation_Types"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadLangues($oDeus){
+
+	//Our object declaration
+	$oItem = new Langues();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Langues();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Langues"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadContacts($oDeus){
+
+	//Our object declaration
+	$oItem = new Contacts();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Contacts();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Contacts"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadTitres($oDeus){
+
+	//Our object declaration
+	$oItem = new Titres();
+	//Our select query
+	$sQuery = "SELECT DISTINCT " . $oItem->getColumns() . "\r\n" . "FROM " . $oItem->getTable() . "\r\n";
+	//Link Condition
+	$sLinks = $oItem->getLinkConditions(true);
+	//The array we get
+	$ary_ = array();
+	//The array we throw
+	$ary_Result = array();
+	//Our count
+	$nCount = 0;
+	//Our iterrator
+	$nLine = 0;
+	
+	//Add the link
+	if($sLinks != "")
+		$sQuery .= "WHERE " . $sLinks;
+	
+	//Open the query
+	$GLOBALS["oConnection"]->open();
+	//Get the array
+	$ary_ =  $GLOBALS["oConnection"]->selectRequest($sQuery, explode( ", ", $oItem->getColumns()), null);
+	//Close the query
+	$GLOBALS["oConnection"]->close();
+	
+	//Get the loop
+	$nCount = count($ary_);
+	//Do the loop
+	while($nLine < $nCount){
+		//create a new instance
+		$oItem = new Titres();
+		//load the data
+		$oItem->loadFromArray($ary_[$nLine], true);
+		//add the data
+		array_push($oDeus["Contacts"]["Titres"], $oItem);
+		//Next
+		$nLine++;
+	}
+
+	//return Deus !!!
+	return $oDeus;
+}
+
+function loadDeus($oDeus){
+
+	//get the types of contacts
+	$oDeus = loadContact_Types($oDeus);
+	//get the Countries
+	$oDeus = loadPays($oDeus);
+	//get the types of organisation
+	$oDeus = loadOrganisation_Types($oDeus);
+	//get the languages
+	$oDeus = loadLangues($oDeus);
+	//get the contacts
+	$oDeus = loadContacts($oDeus);
+	//get the titles
+	$oDeus = loadTitres($oDeus);
+
+	//return the all things
+	return $oDeus;
+}
+
 function loadPackages($oJson){
 	
 	//our number of packages
@@ -678,8 +1083,11 @@ function loadPackages($oJson){
 	include_once("../php/Groups_manager_2.php");
 	//PHP Objects
 	include_once("../php/CONTACTS_Contacts.php");
+	include_once("../php/CONTACTS_Titres.php");
+	include_once("../php/CONTACTS_Pays.php");
 	include_once("../php/CONTACTS_Users.php");
 	include_once("../php/CONTACTS_Organisations.php");
+	include_once("../php/CONTACTS_Organisation_Types.php");
 	include_once("../php/CONTACTS_Contact_Infos.php");
 	include_once("../php/CONTACTS_Infos.php");
 	
@@ -697,6 +1105,7 @@ function loadPackages($oJson){
 			"Organisations" => [],
 			"Users" => [],
 			"Groups" => [],
+			"Contact_Infos" => []
 			"Infos" => []
 		],
 		"Publications" => [
@@ -709,6 +1118,10 @@ function loadPackages($oJson){
 			"Stocks" => []
 		]
 	];
+
+	//load the existing Deus
+
+
 	//Count the packages 
 	$nCount = count($oJson["sources"]);
 	//create the packages

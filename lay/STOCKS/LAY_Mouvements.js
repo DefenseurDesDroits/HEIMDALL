@@ -129,6 +129,13 @@ function LAY_Mouvements(){
 	};
 	this.myLAY_Mouvements.getParent = this.getParent;
 
+	///[METHOD]Method to get our volume object
+	///[RETURNS]integer, Quantum of the transaction !
+	this.getVolume = function(){
+		return parseInt(oLAY_Mouvements.members.oObj.getQuantite());
+	};
+	this.myLAY_Mouvements.getVolume = this.getVolume;
+
 	///[SECTION]Setters###############################################
 	
 	///[METHOD]Method to get our control Name
@@ -368,7 +375,8 @@ function LAY_Mouvements(){
 		oElement = document.getElementById("SAI_Date_Mouvements_" + oLAY_Mouvements.getId());
 		if(oElement != null){
 			console.log("SAI_Date_Mouvements " + oLAY_Mouvements.members.oObj.getEffectif());
-			oElement.value = oLAY_Mouvements.members.oObj.getEffectif();
+			oElement.value = oLAY_Mouvements.members.oObj.getEffectif().slice(0, 10);
+			//oElement.value = oLAY_Mouvements.members.oObj.getEffectif();
 		}
 
 		oElement = document.getElementById("SAI_Quantite_Mouvements_" + oLAY_Mouvements.getId());

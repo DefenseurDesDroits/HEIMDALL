@@ -1,5 +1,7 @@
 <?PHP 
 
+Const POTOURS_DATA_COLUMN_NOT_FOUND = -1;
+
 class Potours_Data{
 
     //our header list 
@@ -20,6 +22,28 @@ class Potours_Data{
         return count($this->ary_Data);
     }
 
+    public function getColumnIndex($sColumnName){
+        //our count
+        $nCount = 0;
+        //our iterrator
+        $nLine = 0;
+
+        //get the count
+        $nCount = count($this->$ary_Header);
+
+        //loop !
+        while($nLine < $nCount){
+            //compare
+            if($this->$ary_Header[$nLine] == $sColumnName)
+                return $nLine;
+            //Next
+            $nLine++;
+        }
+
+        //bad gateaway
+        return POTOURS_DATA_COLUMN_NOT_FOUND;
+    }
+
     public function getCell($nColumn, $nLine, $sDefault = ""){
 
         if($nColumn < 0 || $nLine < 0)
@@ -36,6 +60,10 @@ class Potours_Data{
 
         //default stuff
         return $sDefault;
+    }
+
+    public function getCellFromName($sColumnName, $nLine, $sDefault = ""){
+        return $this->getCell($this->getColumnIndex($sColumnName), $nLine, $sDefault = "");
     }
 
     public function loadCSV($sFilename, $sDelimitor, $bHeader = false){
@@ -85,6 +113,7 @@ class Potours_Data{
 
                 if($nLine > 0){
                     if($bHeader){
+                        //to erase the header of Data
                         $this->ary_Data[$nLine - 1] = $this->ary_Data[$nLine];
                     }     
                 }
@@ -93,6 +122,7 @@ class Potours_Data{
                 $nLine++;
             }
 
+            //to erase the header of Data
             if($bHeader)
                 array_pop($this->ary_Data);
 
