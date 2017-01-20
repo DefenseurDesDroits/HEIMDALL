@@ -1,0 +1,467 @@
+/*Styles files of the application*/
+
+/*CLASS******************************/
+
+/* Our Body shape */
+html, body{
+	/*to force our min body height*/
+	height: 100vh;
+	/*width: 100vw;*/
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/*Our win main class*/
+div.WIN_Main {
+	
+	width : 100%;
+	height : 100%;
+	/*background-color: #3498DB*/
+	background-color: #ECF0F1;
+	margin : 0;
+	border : 0;
+	padding : 0;
+	/*position: fixed;*/
+	display : flex;
+}
+
+/*Current selected class*/
+.current{
+	
+}
+/*Not current selected class*/
+.others{
+	
+}
+
+.heim_Left{
+	float : left;
+}
+.heim_Center{
+	/*float : initial;*/
+	padding-left: 40%;
+	/*padding-right: 50%;*/
+}
+.heim_Right{
+	float : right;
+}
+.heim_Inline_Block{
+	/*display: inline-flex;*/
+	display: inline-block;
+	/*display: inline;*/
+}
+.heim_Inline_Flex{
+	display: inline-flex;
+	/*display: inline-block;*/
+	/*display: inline;*/
+}
+.heim_Block{
+	display: block;
+}
+
+/*our menu class*/
+.MENU_{
+	height: 100%;
+	/*display: block;*/
+}
+
+.NAV{
+	
+}
+
+.OPT_{
+	/*display : block;*/
+}
+.OPT_.current{
+	background-color: #ECF0F1;
+	color: #3498DB;
+}
+.OPT_:hover{
+	cursor : default;
+}
+.OPT_.others:hover{
+	background-color: #389CDF;
+	/*color: #E8ECED;*/
+	color : #FF0000;
+	transition : color 2s;
+}
+.OPT_.current:hover{
+	color : #FF0000;
+	transition : color 2s;
+}
+
+.OPT_Users{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Users:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+.OPT_Groups{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Groups:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+.OPT_Organisations{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Organisations:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+.OPT_Contacts{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Contacts:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+.OPT_Segments{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Segments:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+.OPT_Domaines{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Domaines:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+.OPT_Publications{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Publications:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+.OPT_Locations{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	border-width: 1px;
+	border-color: #3353ff;
+	margin-top: 2px;
+	margin-right: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+.OPT_Locations:hover{
+	cursor : pointer;
+
+	transition : color 2s;
+	background-color: #A0D0FF;
+	color : #FF0000;
+	border-color: #3353ff;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-left: 0px;
+	margin-bottom: 1px;
+}
+
+.BTN_{
+	cursor : pointer;
+}
+
+.BTN_Fiche{
+	background-color: #33e3e3;
+	width : 100px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: center;
+	border-style: double;
+	border-color: #3353ff;
+	border-width: 1px;
+}
+
+.LAY_{
+	cursor : default;
+}
+
+.LAY_Extension{
+	width : 100%;
+}
+
+.LIST_{
+	background-color: #A0D0FF;
+}
+
+.LIST_Item{
+	background-color: #ECF0F1;
+	color: #3353ff;
+	border-color: #666;
+	border-style: solid;
+	border-top-width: 2px;
+}
+
+.LIST_Item_Selected{
+	color: #ECF0F1;
+	background-color: #3353ff;
+	border-color: #666;
+	border-style: solid;
+	border-top-width: 2px;
+}
+
+.PNL_{
+	background-color: #00FF00
+}
+
+h1{
+	font-size: 2.75em;
+}
+
+.inlineContact{
+	border-width: 2;
+	border-color : #3498DB;
+}
+.inlineContact:hover{
+	cursor : pointer;
+}
+
+.inlineContact_Contact{
+	width : 50%;
+}
+
+.inlineContact_Organisation{
+	width : 40%;
+}
+
+.inlineContact_Organisation_Organisation{
+	width : 50%;
+}
+
+.paire{
+	background-color: #3498DB;
+	color : #ECF0F1;
+}
+
+.impaire{
+	background-color: #ECF0F1;
+	color : #3498DB;
+}
+
+/*ITEMS******************************/
+
+#OPT_Menu{
+	background-color: #3498DB;
+	color: #ECF0F1;
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+	/*position: fixed;*/
+	/*width: 150px;*/
+	width: 10%;
+}
+
+#OPT_user{
+	text-align : center;
+}
+
+#OPT_shrink{
+	text-align : right;
+}
+
+#OPT_bottom{
+	bottom : 5px;
+	position: fixed;
+	text-align : center;
+}
+
+#LAY_App{
+	background-color: #FF0000;
+	color: #0000FF;
+	height: 100%;
+	width: 95%;
+	/*display: block;*/
+	/*position: fixed;
+	left : 150px;*/
+	display: block;
+	
+}
+
+#BTN_User{
+	float : right;
+}
+
+#BTN_Add{
+	float : right;
+}
+
+#LAB_User{
+	display : inline-block;
+	float : right;
+}
+#LAB_User:hover{
+	cursor : default;
+}
+
+#LAY_Search{
+	background-color: #3498FF;
+	width: 100%;
+	/*height : 25px;*/
+	/*height : 3%;*/
+	position : relative;
+}
+
+#LAY_Title{
+	height : 50px;
+}
+#LAY_Query{
+	height : 50px;
+}
+
+#PNL_Research{
+	/*width: 250px;*/
+	width: 14%;
+	height: 100%;
+	background-color: #38AFEF;
+}
+#PNL_Research_Inline{
+	/*width: 250px;*/
+	width: 100%;
+	min-height: 25%;
+	/*height: 25%;*/
+	background-color: #38AFEF;
+}
+
+#PNL_List{
+	min-width : 85%;
+	height: 100%;
+	position: absolute;
+	overflow-y: scroll;
+}
+#PNL_Win{
+	min-width : 85%;
+	height: 100%;
+	position: absolute;
+	overflow-y: scroll;
+}
+#PNL_Win_Inline{
+	min-width : 100%;
+	height: 75%;
+	position: absolute;
+	overflow-y: scroll;
+}
+
+#LAY_Content{
+	background-color: #ECF0F1;
+	color: #3498DB;
+	width: 100%;
+	height: 97%;
+	position : relative;
+}
+
+#BTN_More_Contacts{
+	background-color : #666;
+	color : #ECF0F1;
+	width: 100%;
+	height: 25px;
+	text-align: center;
+}
